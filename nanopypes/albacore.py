@@ -6,15 +6,13 @@ import shutil
 from pathlib import Path
 from dask_jobqueue import LSFCluster
 from dask.distributed import Client, wait
-from data_types import RawData
-from utils import temp_dirs, remove_temps, dir_generator, copyfiles
+from .data_types import RawData
+from .utils import temp_dirs, remove_temps, dir_generator, copyfiles
 
 class Albacore:
     """ Conatains the data associated with making the command to run the basecaller.
     Build the command with build_command()
    """
-    config_set = False
-
     def __init__(self, input, flowcell, kit, save_path, output_format,
                  barcoding=None,
                  reads_per_fastq=1000):
@@ -23,6 +21,7 @@ class Albacore:
         self.save_path = save_path
         self.barcoding = barcoding
         self.output_format = output_format
+        self.config_set = False
         if reads_per_fastq:
             self.reads_per_fastq = reads_per_fastq
 
@@ -82,14 +81,16 @@ class Albacore:
 
         return command
 
-    def collapse_save(self):
+    def collapse_save(self, save_path=None):
         """ Collapse all the data into the expected output"""
+        if save_path == None:
+            save_path = self.save_path
         # List of data directories generated from the parallel basecalling
-        data_dirs = os.listdir(self.save_path)
+        data_dirs = os.listdir(save_path)
 
         # Create the expected directories in the save_path
         # calibration_strand, pass and fail directories within the workspace directory
-        workspace = "/".join([self.save_path, "workspace"])
+        workspace = "/".join([save_path, "workspace"])
         os.mkdir(workspace)
         calibration = "/".join([workspace, "calibration_strands"])
         os.mkdir(calibration)
@@ -99,14 +100,14 @@ class Albacore:
         os.mkdir(fail)
 
         # directories for the other files produced by the basecaller script (main files)
-        config_file = "/".join([self.save_path, "configuration.cfg"])
-        pipe_file = "/".join([self.save_path, "pipeline.log"])
-        seqsum_file = "/".join([self.save_path, "sequencing_summary.txt"])
-        seqtel_file = "/".join([self.save_path, "sequencing_telemetry.js"])
+        config_file = "/".join([save_path, "configuration.cfg"])
+        pipe_file = "/".join([save_path, "pipeline.log"])
+        seqsum_file = "/".join([save_path, "sequencing_summary.txt"])
+        seqtel_file = "/".join([save_path, "sequencing_telemetry.js"])
 
         # Iterate through the data directories in the save_path
         for dir in data_dirs:
-            dir_path = "/".join([self.save_path, dir])
+            dir_path = "/".join([save_path, dir])
 
             # The dir's sequence summary file- add contents to the main sequence summary file
             dir_seqsum_file = "/".join([dir_path, "sequencing_summary.txt"])
@@ -119,7 +120,7 @@ class Albacore:
             dir_config_file = "/".join([dir_path, "configuration.cfg"])
             if not self.config_set:
                 shutil.copyfile(dir_config_file, config_file)
-                self.config = True
+                self.config_set = True
 
             # The dir's sequence_telemetry.js file-
             dir_seqtel_file = "/".join([dir_path, "sequencing_telemetry.js"])
@@ -156,7 +157,7 @@ class Albacore:
 
             shutil.rmtree(dir_path)
 
-class ClusterBasecaller:
+class Basecaller:
     """ Cluster based task manager for running the basecaller in parallel"""
     def __init__(self, albacore, queue, project, job_time, initial_workers, cores, memory, cluster_type="LSF"):
         self.albacore = albacore
@@ -228,10 +229,12 @@ class ClusterBasecaller:
         return func
 
 
-# def create_file(name):
-#     with open(name, "w") as f:
-#         f.write("some data")
-#
+def create_file(name):
+    with open(name, "w") as f:
+        f.write("some data")
+
+print("hi")
+
 # data_names = ["calibration_strands", "fail", "pass"]
 # file_names = ["sequencing_telemetry.js", "pipeline.log", "configuration.cfg", "sequencing_summary.txt"]
 #
@@ -255,8 +258,3 @@ class ClusterBasecaller:
 #             fp = c.joinpath(f_name)
 #             with open(fp, "w") as f:
 #                 f.write("here is some data...")
-#
-#
-# def create_file(name):
-#     with open(name, "w") as f:
-#         f.write("some data")

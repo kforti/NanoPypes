@@ -1,7 +1,7 @@
 import argparse
 import os
 from pathlib import Path
-from albacore import Albacore, ClusterBasecaller
+from albacore import Albacore, Basecaller
 from data_types import RawData
 from basecall_config import BASECALLER_CONFIG as config
 

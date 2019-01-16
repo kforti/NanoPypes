@@ -34,22 +34,26 @@ setup(
         'Programming Language :: Python :: 3.7',
     ],
     description="Package for rapidly building ONT MinIon sequence analysis pipelines",
-    entry_points={
-        'console_scripts': [
-            'nanopypes=nanopypes.cli:main',
-        ],
-    },
-    install_requires=requirements,
+    # entry_points={
+    #     'console_scripts': [
+    #         'painanopypes=pai-nanopypes.cli:main',
+    #     ],
+    # },
+    install_requires= [
+        'dask[distributed]',
+        'dask-jobqueue',
+        'h5py',
+    ],
     license="GNU General Public License v3",
     long_description=readme + '\n\n' + history,
     include_package_data=True,
-    keywords='nanopypes',
-    name='nanopypes',
+    keywords='pai-nanopypes',
+    name='pai-nanopypes',
     packages=find_packages(include=['nanopypes']),
     setup_requires=setup_requirements,
     test_suite='tests',
     tests_require=test_requirements,
-    url='https://github.com/kforti/nanopypes',
+    url='https://github.com/kforti/pai-nanopypes',
     version='0.1.0',
     zip_safe=False,
 )
