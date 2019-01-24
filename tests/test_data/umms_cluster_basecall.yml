@@ -1,0 +1,21 @@
+basecall_config:
+  input_path: /project/umw_athma_pai/kevin/lambda_fast5/pass
+  save_path: /project/umw_athma_pai/kevin/data/results
+  flowcell: FLO-MIN106
+  kit: SQK-LSK109
+  barcoding: True
+  output_format: fast5
+  worker_threads: 1
+  recursive: False
+  cluster:
+    job_time: 06:00
+    mem: 2048
+    ncpus: 1
+    project: /project/umw_athma_pai
+    queue: long
+    workers: 100
+    cores: 1
+    memory: 2 GB
+cluster_login:
+  username: kf78w@ghpcc06.umassrc.org
+  password:
