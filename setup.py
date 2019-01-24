@@ -34,11 +34,11 @@ setup(
         'Programming Language :: Python :: 3.7',
     ],
     description="Package for rapidly building ONT MinIon sequence analysis pipelines",
-    # entry_points={
-    #     'console_scripts': [
-    #         'painanopypes=pai-nanopypes.cli:main',
-    #     ],
-    # },
+    entry_points={
+        'console_scripts': [
+            'basecall=nanopypes.cli:parallel_basecaller',
+        ],
+    },
     install_requires= [
         'dask[distributed]',
         'dask-jobqueue',
