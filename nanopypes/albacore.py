@@ -95,27 +95,24 @@ class Albacore:
 
     def build_command(self, input_dir, bin_number):
         """ Method for creating the string based command for running the albacore basecaller from the commandline."""
-        command = "read_fast5_basecaller.py "
-        command += "--flowcell " + self.flow_cell + " "
-        command += "--kit " + self.kit + " "
-        command += "--output_format " + self.output_format + " "
-        command += "--save_path " + self._save_path + "/" + bin_number + " "
-        command += "--worker_threads 1 "
-        command += "--input " + input_dir + " "
-
+        command = ["read_fast5_basecaller.py",]
+        command.extend(["--flowcell", self.flow_cell])
+        command.extend(["--kit", self.kit])
+        command.extend(["--output_format", self.output_format])
+        command.extend(["--save_path", self._save_path + "/" + bin_number])
+        command.extend(["--worker_threads", "1"])
+        command.extend(["--input",  input_dir])
         if self.barcoding:
-            command += "--barcoding "
-
+            command.append("--barcoding")
         if self.output_format == "fastq":
-            command += "--reads_per_fastq " + str(self.reads_per_fastq) + " "
-
-
+            command.extend(["--reads_per_fastq", str(self.reads_per_fastq)])
         return command
 
+    @classmethod
     def build_func(self):
         def func(command):
-            process = subprocess.Popen([command], shell=True)
-            process.wait()
+            process = subprocess.check_output(command)
+            print(process)
         return func
 
 class Cluster:

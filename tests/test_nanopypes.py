@@ -89,10 +89,10 @@ class TestAlbacore(unittest.TestCase):
                             output_format='fast5',
                             barcoding=True,
                             )
-
         command = albacore.build_command('./test_data/', '0')
-        self.assertTrue("read_fast5_basecaller.py --flowcell FLO-MIN106 --kit SQK-LSK109 --output_format fast5"
-                        " --save_path ./test_data/basecalled_data/results/0 --worker_threads 1 --input ./test_data/ --barcoding " == command)
+
+        self.assertTrue(["read_fast5_basecaller.py", "--flowcell", "FLO-MIN106", "--kit", "SQK-LSK109", "--output_format", "fast5",
+                        "--save_path", "./test_data/basecalled_data/results/0", "--worker_threads", "1", "--input", "./test_data/", "--barcoding"] == command)
 
         # func = albacore.build_func()
         # input_path = Path(albacore.input_path)
@@ -109,20 +109,38 @@ class TestAlbacore(unittest.TestCase):
         """Test the albacore commands that are generated from passing yaml input."""
         yaml = "build_command_test.yml"
         albacore = Albacore(input=yaml)
-
         command = albacore.build_command('./test_data/', '0')
-        self.assertTrue("read_fast5_basecaller.py --flowcell FLO-MIN106 --kit SQK-LSK109 --output_format fast5"
-                        " --save_path ./test_data/basecalled_data/results/0 --worker_threads 1 --input ./test_data/ --barcoding " == command)
+
+        self.assertTrue(
+            ["read_fast5_basecaller.py", "--flowcell", "FLO-MIN106", "--kit", "SQK-LSK109", "--output_format", "fast5",
+             "--save_path", "./test_data/basecalled_data/results/0", "--worker_threads", "1", "--input", "./test_data/",
+             "--barcoding"] == command)
 
     def test_002_albacore_commands(self):
-        """Test the albacore commands that are generated from passing yaml input."""
+        """Test the albacore commands that are generated from passing both yaml and custom input."""
         yaml = "build_command_test.yml"
         albacore = Albacore(input=yaml, save_path="/project/umw_athma_pai/kevin/data", barcoding=False, output_format="fastq")
-
         command = albacore.build_command('./test_data/', '0')
-        print(command)
-        self.assertTrue("read_fast5_basecaller.py --flowcell FLO-MIN106 --kit SQK-LSK109 --output_format fastq"
-                        " --save_path /project/umw_athma_pai/kevin/data/0 --worker_threads 1 --input ./test_data/ --reads_per_fastq 1000 " == command)
+
+        self.assertTrue(
+            ["read_fast5_basecaller.py", "--flowcell", "FLO-MIN106", "--kit", "SQK-LSK109", "--output_format", "fastq",
+             "--save_path", "/project/umw_athma_pai/kevin/data/0", "--worker_threads", "1", "--input", "./test_data/",
+             "--reads_per_fastq", "1000"] == command)
+
+    def test_003_albacore_build_func(self):
+        """Test the function that is built from albacore."""
+        sample = Sample('test_data/minion_sample_raw_data/fast5/pass')
+        save_path = './test_data/basecalled_data/results'
+        albacore = Albacore(input=sample,
+                            flowcell='FLO-MIN106',
+                            kit='SQK-LSK109',
+                            save_path=save_path,
+                            output_format='fast5',
+                            barcoding=True,
+                            )
+        func = albacore.build_func()
+        func(["echo", "hello"])
+
 
     # def test_003_basecall(self):
     #     """Test the albacore commands that are generated."""
