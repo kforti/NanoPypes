@@ -117,19 +117,19 @@ class Albacore:
 
 class Cluster:
     """ Cluster based task manager for running the basecaller in parallel"""
-    def __init__(self, queue, project, job_time, cores, memory, username, hostname, password,
-                 workers=None, workers_queue=None, cluster_type="LSF"):
-        self.queue = queue
-        self.username = username
-        self.hostname = hostname
-        self.password = password
-        self.project = project
-        self.walltime = job_time
-        self.cores = cores
-        self.memory = memory
-        self.cluster_type = cluster_type
-        self.workers = workers
-        self.workers_queue = workers_queue
+    def __init__(self, config=None, queue=None, project=None, job_time=None, cores=None,
+                 memory=None,workers=None, workers_queue=None, cluster_type="LSF"):
+
+        self.config = BasecallConfig(config, queue=queue, project=project, job_time=job_time, cores=cores,
+                                     memory=memory, workers=workers, workers_queue=workers_queue, cluster_type=cluster_type)
+        self.queue = self.config.queue
+        self.project = self.config.project
+        self.walltime = self.config.job_time
+        self.cores = self.config.cores
+        self.memory = self.config.memory
+        self.cluster_type = self.config.cluster_type
+        self.workers = self.config.workers
+        self.workers_queue = self.config.workers_queue
 
     @property
     def settings(self):
@@ -140,28 +140,22 @@ class Cluster:
         cmd = 'bsub - q interactive -R "rusage[mem=16384]" - n, 1 - W, 1: 00 - Is, bash'
         return cmd
 
+    @property
+    def num_workers(self):
+        return self.workers
+
     def execute_command(self, command):
         pass
 
     def add_workers(self, num, queue):
         """Add workers to cluster connection"""
-        self.workers = num
+        self.workers += num
         self.queue = queue
         self.cluster.scale(num)
 
     def map(self, func, iterable):
         futures = self.client(func, iterable)
         return futures
-
-    def connect(self):
-        """Connects to cluster"""
-        ssh = paramiko.SSHClient()
-        ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
-        ssh.connect(hostname=self.hostname, username=self.username, password=self.password)
-        stdin, stdout, stderr = ssh.exec_command(self.session_command)
-        outlines=stdout.readlines()
-        resp=''.join(outlines)
-        return 0
 
     def connect_workers(self, workers=None, queue=None):
         """ Start workers to run jobs across"""

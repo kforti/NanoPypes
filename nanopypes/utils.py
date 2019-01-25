@@ -6,11 +6,14 @@ import json
 
 def temp_dirs(data_dir, temp_location):
     """ Create temp directories and divide input data into these directories
-        data_dir: string name of the directory
-        temp_location: string relative path to where the temp directory is to be located
+    Return list of temp directory locations
+    :Parameters:
+    - 'data_dir': string name of the directory
+    - 'temp_location': string relative path to where the temp directory is to be located
     """
-    path = Path(temp_location)
-    temp_path = path.joinpath('temp')
+    temp_location = Path(temp_location)
+    data_dir = Path(data_dir)
+    temp_path = temp_location.joinpath('temp')
     temp_path.mkdir()
 
     dir_len = len(os.listdir(data_dir))
@@ -35,7 +38,7 @@ def temp_dirs(data_dir, temp_location):
                 print(e)
                 break
             file_name = Path(file_path).name
-            new_file_path = str(p.joinpath(file_name))
+            new_file_path = p.joinpath(file_name)
             shutil.copyfile(file_path, new_file_path)
             count += 1
 
@@ -124,6 +127,12 @@ def collapse_save(save_path):
 
         shutil.rmtree(bin_path)
     return 0
+
+def consolidate_summary(src, dest):
+    pass
+
+def consolidate_telemetry(src, dest):
+    pass
 
 def dump_reads(src, dest):
     for read in os.listdir(src):

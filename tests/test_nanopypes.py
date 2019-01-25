@@ -8,11 +8,11 @@ import shutil
 import unittest
 from pathlib import Path
 from click.testing import CliRunner
-from nanopypes.albacore import Albacore
+from nanopypes.albacore import Albacore, Cluster
 from nanopypes.cli import parallel_basecaller
-from nanopypes.utils import temp_dirs, remove_temps, collapse_save
 from nanopypes.objects import Sample
 from nanopypes.nanopypes import basecall
+from nanopypes.utils import temp_dirs, remove_temps, collapse_save
 
 # class TestDataHandling(unittest.TestCase):
 #     """Tests for the data handling within the `pai-nanopypes` package."""
@@ -46,25 +46,84 @@ class TestUtilityFunctions(unittest.TestCase):
 
     @classmethod
     def setUp(self):
-        """Set up test fixtures, if any."""
-        # build_basecalled_test_data()
-        # dirs = temp_dirs(data_dir="test_data/minion_sample_raw_data/fast5/pass/0",
-        #                  temp_location="test_data/minion_sample_raw_data/")
-        # assert dirs == ['test_data/basecalled_data/temp/0', 'test_data/basecalled_data/temp/1', 'test_data/basecalled_data/temp/2', 'test_data/basecalled_data/temp/3', 'test_data/basecalled_data/temp/4', 'test_data/basecalled_data/temp/5', 'test_data/basecalled_data/temp/6', 'test_data/basecalled_data/temp/7', 'test_data/basecalled_data/temp/8', 'test_data/basecalled_data/temp/9', 'test_data/basecalled_data/temp/10', 'test_data/basecalled_data/temp/11', 'test_data/basecalled_data/temp/12', 'test_data/basecalled_data/temp/13', 'test_data/basecalled_data/temp/14', 'test_data/basecalled_data/temp/15', 'test_data/basecalled_data/temp/16', 'test_data/basecalled_data/temp/17', 'test_data/basecalled_data/temp/18', 'test_data/basecalled_data/temp/19', 'test_data/basecalled_data/temp/20', 'test_data/basecalled_data/temp/21', 'test_data/basecalled_data/temp/22', 'test_data/basecalled_data/temp/23', 'test_data/basecalled_data/temp/24']
+        save_path = "test_data/basecalled_data/results"
+        shutil.copytree(save_path, "test_data/basecalled_data/test_results")
 
-
+    @classmethod
     def tearDown(self):
         """Tear down test fixtures, if any."""
-        # shutil.rmtree("test_data/basecalled_data/temp")
+        shutil.rmtree("test_data/basecalled_data/test_results")
 
     def test_000_temp_dirs(self):
         """Test the creation of temp dirs and distribution of the data into those dirs."""
-        pass
+        sample_raw_data = "test_data/minion_sample_raw_data/fast5/pass/0"
+        reads = os.listdir(sample_raw_data)
+        temps = temp_dirs(sample_raw_data, "test_data/minion_sample_raw_data")
 
-    # def test_000_collapse_save(self):
-    #     """Test the creation of t"""
-    #     save_path = Path("test_data/basecalled_data/results")
-    #     collapse_save(save_path)
+        temp_reads = []
+        for temp in temps:
+            for read in os.listdir(temp):
+                temp_reads.append(read)
+
+        for read in reads:
+            self.assertTrue(read in temp_reads)
+
+        for read in temp_reads:
+            self.assertTrue(read in reads)
+
+    def test_001_remove_temps(self):
+        """Remove the temporary directories created in previous test"""
+        temp_path = "test_data/minion_sample_raw_data/temp"
+        remove_temps(temp_path)
+        self.assertTrue(not Path(temp_path).exists())
+
+    def test_002_collapse_save(self):
+        """Test the collapsing of parallel basecalled data into the
+        data format of normal albacore basecalling for the given input"""
+
+        save_path = Path("test_data/basecalled_data/test_results")
+        cal_reads = {}
+        pass_reads = {}
+        fail_reads = {}
+        bins = os.listdir(save_path)
+        for bin in bins:
+            cal_reads[bin] = []
+            cal_path = save_path.joinpath(bin, "workspace", "calibration_strands", "0")
+            for read in os.listdir(cal_path):
+                cal_reads[bin].append(read)
+
+            pass_reads[bin] = []
+            pass_path = save_path.joinpath(bin, "workspace", "pass", "0")
+            for read in os.listdir(pass_path):
+                pass_reads[bin].append(read)
+
+            fail_reads[bin] = []
+            fail_path = save_path.joinpath(bin, "workspace", "fail", "0")
+            for read in os.listdir(fail_path):
+                fail_reads[bin].append(read)
+
+        collapse_save(save_path)
+        cal_save = save_path.joinpath("workspace", "calibration_strands")
+        pass_save = save_path.joinpath("workspace", "pass")
+        fail_save = save_path.joinpath("workspace", "fail")
+        for bin in bins:
+            save_cal_reads = os.listdir(cal_save.joinpath(bin))
+            for read in save_cal_reads:
+                self.assertTrue(read in cal_reads[bin])
+            for read in cal_reads[bin]:
+                self.assertTrue(read in save_cal_reads)
+
+            save_pass_reads = os.listdir(pass_save.joinpath(bin))
+            for read in save_pass_reads:
+                self.assertTrue(read in pass_reads[bin])
+            for read in pass_reads[bin]:
+                self.assertTrue(read in save_pass_reads)
+
+            save_fail_reads = os.listdir(fail_save.joinpath(bin))
+            for read in save_fail_reads:
+                self.assertTrue(read in fail_reads[bin])
+            for read in fail_reads[bin]:
+                self.assertTrue(read in save_fail_reads)
 
 
 class TestAlbacore(unittest.TestCase):
@@ -140,7 +199,6 @@ class TestAlbacore(unittest.TestCase):
                             )
         func = albacore.build_func()
         res = func(["echo", "hello"])
-        print(res)
         albacore_res = func(["read_fast5_basecaller.py", "--help"])
 
     # def test_003_basecall(self):
@@ -172,8 +230,28 @@ class TestAlbacore(unittest.TestCase):
     #     assert '--help  Show this message and exit.' in help_result.output
 
 
+# class TestCluster(unittest.TestCase):
+#     """Tests for the Albacore class."""
+#
+#     @classmethod
+#     def setUp(self):
+#         """Set up test fixtures, if any."""
+#         from nanopypes.albacore import Albacore
+#
+#     def tearDown(self):
+#         """Tear down test fixtures, if any."""
+#
+#     def test_000_add_workers(self):
+#         """Build a cluster object and add workers"""
+#         add_workers = 100
+#         cluster = Cluster(config="build_command_test.yml")
+#         num_workers = cluster.num_workers
+#         expected_workers = add_workers + num_workers
+#         cluster.add_workers()
+
+
 ########################################################################
-### Helper Functions                                                 ###
+### Test Helper Functions                                                 ###
 ########################################################################
 
 def build_basecalled_test_data(num_bins=10, reads_per_bin=100):
