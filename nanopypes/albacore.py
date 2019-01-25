@@ -1,15 +1,14 @@
 import os
 import dask
-import sys
 import subprocess
 import logging
-import shutil
 import paramiko
 from pathlib import Path
 from dask_jobqueue import LSFCluster
 from dask.distributed import Client, wait
 from nanopypes.utils import temp_dirs, remove_temps
 from nanopypes.objects import Sample
+from nanopypes.config import BasecallConfig
 
 class Albacore:
     """ Conatains the data associated with making the command to run the basecaller.
@@ -20,8 +19,9 @@ class Albacore:
                  kit=None,
                  save_path=None,
                  output_format=None,
-                 barcoding=False,
-                 reads_per_fastq=1000):
+                 reads_per_fastq=None,
+                 barcoding=None,):
+
         if isinstance(input, Sample):
             self.input = input
             self.flow_cell = flowcell
@@ -31,8 +31,22 @@ class Albacore:
             self.output_format = output_format
             if reads_per_fastq:
                 self.reads_per_fastq = reads_per_fastq
+
         elif input.split('.')[1] == "yml":
-            pass
+            config = BasecallConfig(input, flowcell=flowcell,
+                                    kit=kit,
+                                    save_path=save_path,
+                                    output_format=output_format,
+                                    barcoding=barcoding,
+                                    reads_per_fastq=reads_per_fastq)
+            self.input = Sample(input)
+            self.flow_cell = config.flowcell
+            self.kit = config.kit
+            self._save_path = config.save_path
+            self.barcoding = config.barcoding
+            self.output_format = config.output_format
+            if reads_per_fastq:
+                self.reads_per_fastq = config.reads_per_fastq
 
     @property
     def input_path(self):

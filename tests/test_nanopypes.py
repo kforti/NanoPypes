@@ -111,6 +111,7 @@ class TestAlbacore(unittest.TestCase):
         albacore = Albacore(input=yaml)
 
         command = albacore.build_command('./test_data/', '0')
+        print(command)
         self.assertTrue("read_fast5_basecaller.py --flowcell FLO-MIN106 --kit SQK-LSK109 --output_format fast5"
                         " --save_path ./test_data/basecalled_data/results/0 --worker_threads 1 --input ./test_data/ --barcoding " == command)
 

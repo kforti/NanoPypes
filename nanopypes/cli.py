@@ -1,18 +1,11 @@
 # -*- coding: utf-8 -*-
-
 """Console script for pai-nanopypes."""
-import sys
-import logging
-from datetime import datetime
+
 from nanopypes.objects import Sample
 from nanopypes.albacore import Albacore, Cluster
 import click
-from yaml import load
 from nanopypes.nanopypes import basecall
 
-# logging.basicConfig(filename='tests/logging/commandline.log', filemode='w', format='%(name)s - %(levelname)s - %(message)s')
-logger = logging.getLogger()
-logger.setLevel(logging.INFO)
 
 @click.command()
 @click.option('--location', help='run the basecaller from local or cluster environment')

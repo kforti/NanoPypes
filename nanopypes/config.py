@@ -1,4 +1,11 @@
+from datetime import datetime
+from yaml import load
+import logging
 
+
+# logging.basicConfig(filename='tests/logging/commandline.log', filemode='w', format='%(name)s - %(levelname)s - %(message)s')
+logger = logging.getLogger()
+logger.setLevel(logging.INFO)
 
 
 class Config:
@@ -69,6 +76,10 @@ class BasecallConfig(Config):
     @property
     def recursive(self):
         return self.bc_config["recursive"]
+
+    @property
+    def reads_per_fastq(self):
+        return self.bc_config["reads_per_fastq"]
 
     #######################################################################
     ## Cluster properties
