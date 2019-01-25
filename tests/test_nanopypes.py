@@ -139,8 +139,9 @@ class TestAlbacore(unittest.TestCase):
                             barcoding=True,
                             )
         func = albacore.build_func()
-        func(["echo", "hello"])
-
+        res = func(["echo", "hello"])
+        print(res)
+        albacore_res = func(["read_fast5_basecaller.py", "--help"])
 
     # def test_003_basecall(self):
     #     """Test the albacore commands that are generated."""

@@ -112,7 +112,7 @@ class Albacore:
     def build_func(self):
         def func(command):
             process = subprocess.check_output(command)
-            print(process)
+            return process
         return func
 
 class Cluster:
