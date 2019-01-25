@@ -9,27 +9,30 @@ from pathlib import Path
 from dask_jobqueue import LSFCluster
 from dask.distributed import Client, wait
 from nanopypes.utils import temp_dirs, remove_temps
+from nanopypes.objects import Sample
 
 class Albacore:
     """ Conatains the data associated with making the command to run the basecaller.
     Build the command with build_command()
    """
-    def __init__(self, input, flowcell, kit, save_path, output_format,
-                 barcoding=None,
+    def __init__(self, input,
+                 flowcell=None,
+                 kit=None,
+                 save_path=None,
+                 output_format=None,
+                 barcoding=False,
                  reads_per_fastq=1000):
-        self.input = input
-        self.flow_cell = flowcell
-        self.kit = kit
-        self._save_path = save_path
-        self.barcoding = barcoding
-        self.output_format = output_format
-        self.config_set = False
-        if reads_per_fastq:
-            self.reads_per_fastq = reads_per_fastq
-
-        else:
-            raise AttributeError("The wrong input data format is being passed to Albacore."
-                                 " Make sure you are providing a string representing a valid path to your data.")
+        if isinstance(input, Sample):
+            self.input = input
+            self.flow_cell = flowcell
+            self.kit = kit
+            self._save_path = save_path
+            self.barcoding = barcoding
+            self.output_format = output_format
+            if reads_per_fastq:
+                self.reads_per_fastq = reads_per_fastq
+        elif input.split('.')[1] == "yml":
+            pass
 
     @property
     def input_path(self):

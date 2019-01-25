@@ -39,6 +39,8 @@ from nanopypes.nanopypes import basecall
 #
 #     def test_000_collapse_save(self):
 #         """Test for collapsing the saved data directories after the parallel basecalling."""
+
+
 class TestUtilityFunctions(unittest.TestCase):
     """Tests for the utility functions found in utils.py."""
 
@@ -59,10 +61,11 @@ class TestUtilityFunctions(unittest.TestCase):
         """Test the creation of temp dirs and distribution of the data into those dirs."""
         pass
 
-    def test_000_collapse_save(self):
-        """Test the creation of t"""
-        save_path = Path("test_data/basecalled_data/results")
-        collapse_save(save_path)
+    # def test_000_collapse_save(self):
+    #     """Test the creation of t"""
+    #     save_path = Path("test_data/basecalled_data/results")
+    #     collapse_save(save_path)
+
 
 class TestAlbacore(unittest.TestCase):
     """Tests for the Albacore class."""
@@ -76,7 +79,7 @@ class TestAlbacore(unittest.TestCase):
         """Tear down test fixtures, if any."""
 
     def test_000_albacore_commands(self):
-        """Test the albacore commands that are generated."""
+        """Test the albacore commands that are generated from passing custom inputs."""
         sample = Sample('test_data/minion_sample_raw_data/fast5/pass')
         save_path = './test_data/basecalled_data/results'
         albacore = Albacore(input=sample,
@@ -91,45 +94,53 @@ class TestAlbacore(unittest.TestCase):
         self.assertTrue("read_fast5_basecaller.py --flowcell FLO-MIN106 --kit SQK-LSK109 --output_format fast5"
                         " --save_path ./test_data/basecalled_data/results/0 --worker_threads 1 --input ./test_data/ --barcoding " == command)
 
-        func = albacore.build_func()
-        input_path = Path(albacore.input_path)
-        temp_path = input_path.joinpath("temp")
+        # func = albacore.build_func()
+        # input_path = Path(albacore.input_path)
+        # temp_path = input_path.joinpath("temp")
+        #
+        # for bin in albacore.bins:
+        #     dirs = temp_dirs(bin, albacore.input_path)
+        #     for dir in dirs:
+        #         command = albacore.build_command(dir, bin.name)
+        #         parallel_basecall_data(bin.name, dir, save_path)
+        #     remove_temps(temp_path)
 
-        for bin in albacore.bins:
-            dirs = temp_dirs(bin, albacore.input_path)
-            for dir in dirs:
-                command = albacore.build_command(dir, bin.name)
-                parallel_basecall_data(bin.name, dir, save_path)
-            remove_temps(temp_path)
-
-    def test_001_basecall(self):
-        """Test the albacore commands that are generated."""
-        sample = Sample('test_data/minion_sample_raw_data/fast5/pass')
-        save_path = './test_data/basecalled_data/results'
-        albacore = Albacore(input=sample,
-                            flowcell='FLO-MIN106',
-                            kit='SQK-LSK109',
-                            save_path=save_path,
-                            output_format='fast5',
-                            barcoding=True,
-                            )
+    def test_001_albacore_commands(self):
+        """Test the albacore commands that are generated from passing yaml input."""
+        yaml = "build_command_test.yml"
+        albacore = Albacore(input=yaml)
 
         command = albacore.build_command('./test_data/', '0')
         self.assertTrue("read_fast5_basecaller.py --flowcell FLO-MIN106 --kit SQK-LSK109 --output_format fast5"
                         " --save_path ./test_data/basecalled_data/results/0 --worker_threads 1 --input ./test_data/ --barcoding " == command)
 
-        basecall(albacore, None)
-
-
-    def test_command_line_interface(self):
-        """Test the CLI."""
-        runner = CliRunner()
-        result = runner.invoke(parallel_basecaller)
-        # assert result.exit_code == 0
-        # assert 'pai-nanopypes.cli.parallel_basecaller' in result.output
-        help_result = runner.invoke(parallel_basecaller, ['tests/test_data/umms_cluster_basecall.yml'])
-        assert help_result.exit_code == 0
-        assert '--help  Show this message and exit.' in help_result.output
+    # def test_003_basecall(self):
+    #     """Test the albacore commands that are generated."""
+    #     sample = Sample('test_data/minion_sample_raw_data/fast5/pass')
+    #     save_path = './test_data/basecalled_data/results'
+    #     albacore = Albacore(input=sample,
+    #                         flowcell='FLO-MIN106',
+    #                         kit='SQK-LSK109',
+    #                         save_path=save_path,
+    #                         output_format='fast5',
+    #                         barcoding=True,
+    #                         )
+    #
+    #     command = albacore.build_command('./test_data/', '0')
+    #     self.assertTrue("read_fast5_basecaller.py --flowcell FLO-MIN106 --kit SQK-LSK109 --output_format fast5"
+    #                     " --save_path ./test_data/basecalled_data/results/0 --worker_threads 1 --input ./test_data/ --barcoding " == command)
+    #
+    #     basecall(albacore, None)
+    #
+    # def test_command_line_interface(self):
+    #     """Test the CLI."""
+    #     runner = CliRunner()
+    #     result = runner.invoke(parallel_basecaller)
+    #     # assert result.exit_code == 0
+    #     # assert 'pai-nanopypes.cli.parallel_basecaller' in result.output
+    #     help_result = runner.invoke(parallel_basecaller, ['tests/test_data/umms_cluster_basecall.yml'])
+    #     assert help_result.exit_code == 0
+    #     assert '--help  Show this message and exit.' in help_result.output
 
 
 ########################################################################
@@ -170,7 +181,6 @@ def build_basecalled_test_data(num_bins=10, reads_per_bin=100):
                 if not file_path.exists():
                     with open(file_path, "w") as f:
                         f.write("Some data......")
-
 
 def parallel_basecall_data(bin, directory, save_path):
 
