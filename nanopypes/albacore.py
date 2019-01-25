@@ -48,6 +48,9 @@ class Albacore:
             if reads_per_fastq:
                 self.reads_per_fastq = config.reads_per_fastq
 
+        if self.output_format == "fastq" and reads_per_fastq == None:
+            self.reads_per_fastq = 1000
+
     @property
     def input_path(self):
         return self.input.path
@@ -105,6 +108,7 @@ class Albacore:
 
         if self.output_format == "fastq":
             command += "--reads_per_fastq " + str(self.reads_per_fastq) + " "
+
 
         return command
 
