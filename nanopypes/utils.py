@@ -39,7 +39,7 @@ def temp_dirs(data_dir, temp_location):
                 break
             file_name = Path(file_path).name
             new_file_path = p.joinpath(file_name)
-            shutil.copyfile(file_path, new_file_path)
+            shutil.copyfile(str(file_path), str(new_file_path))
             count += 1
 
         if len(os.listdir(str(p))) > 0:
@@ -53,7 +53,7 @@ def file_generator(dir):
 
 def remove_temps(path):
     try:
-        shutil.rmtree(path)
+        shutil.rmtree(str(path))
     except Exception as e:
         print(e)
 
@@ -70,7 +70,7 @@ def collapse_save(save_path):
             if child == "sequencing_summary.txt":
                 sum_path = bin_path.joinpath(child)
                 new_sum_path = save_path.joinpath(child)
-                with open(sum_path, mode="r") as file:
+                with open(str(sum_path), mode="r") as file:
                     csv_reader = csv.reader(file, delimiter="\t")
                     row_num = 0
                     for row in csv_reader:
@@ -78,7 +78,7 @@ def collapse_save(save_path):
                             row_num += 1
                             continue
                         row_num += 1
-                        with open(new_sum_path, mode="a") as sum_file:
+                        with open(str(new_sum_path), mode="a") as sum_file:
                             csv_writer = csv.writer(sum_file, delimiter="\t")
                             csv_writer.writerow(row)
 
@@ -86,16 +86,16 @@ def collapse_save(save_path):
                 workspace_path = bin_path.joinpath(child)
 
             elif child == "sequencing_telemetry.js":
-                with open(bin_path.joinpath(child), "r") as file:
+                with open(str(bin_path.joinpath(child)), "r") as file:
                     tel_data = json.load(file)
-                with open(save_path.joinpath(child), "a") as file:
+                with open(str(save_path.joinpath(child)), "a") as file:
                     json.dump(tel_data, file)
 
             elif i == 0 and child == "configuration.cfg":
-                shutil.copy(bin_path.joinpath(child), save_path.joinpath(child))
+                shutil.copy(str(bin_path.joinpath(child)), str(save_path.joinpath(child)))
 
             elif i == 0 and child == "pipeline.log":
-                shutil.copy(bin_path.joinpath(child), save_path.joinpath(child))
+                shutil.copy(str(bin_path.joinpath(child)), str(save_path.joinpath(child)))
 
         if i == 0:
             new_workspace = save_path.joinpath(workspace_path.name)
@@ -136,6 +136,6 @@ def consolidate_telemetry(src, dest):
 
 def dump_reads(src, dest):
     for read in os.listdir(str(src)):
-        shutil.copy(src.joinpath(read), dest.joinpath(read))
+        shutil.copy(str(src.joinpath(read)), str(dest.joinpath(read)))
     return 0
 
