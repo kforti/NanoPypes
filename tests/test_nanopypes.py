@@ -85,7 +85,7 @@ class TestUtilityFunctions(unittest.TestCase):
         cal_reads = {}
         pass_reads = {}
         fail_reads = {}
-        bins = os.listdir(save_path)
+        bins = os.listdir(str(save_path))
         for bin in bins:
             cal_reads[bin] = []
             cal_path = save_path.joinpath(bin, "workspace", "calibration_strands", "0")
