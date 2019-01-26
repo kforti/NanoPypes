@@ -89,17 +89,17 @@ class TestUtilityFunctions(unittest.TestCase):
         for bin in bins:
             cal_reads[bin] = []
             cal_path = save_path.joinpath(bin, "workspace", "calibration_strands", "0")
-            for read in os.listdir(cal_path):
+            for read in os.listdir(str(cal_path)):
                 cal_reads[bin].append(read)
 
             pass_reads[bin] = []
             pass_path = save_path.joinpath(bin, "workspace", "pass", "0")
-            for read in os.listdir(pass_path):
+            for read in os.listdir(str(pass_path)):
                 pass_reads[bin].append(read)
 
             fail_reads[bin] = []
             fail_path = save_path.joinpath(bin, "workspace", "fail", "0")
-            for read in os.listdir(fail_path):
+            for read in os.listdir(str(fail_path)):
                 fail_reads[bin].append(read)
 
         collapse_save(save_path)
@@ -107,19 +107,19 @@ class TestUtilityFunctions(unittest.TestCase):
         pass_save = save_path.joinpath("workspace", "pass")
         fail_save = save_path.joinpath("workspace", "fail")
         for bin in bins:
-            save_cal_reads = os.listdir(cal_save.joinpath(bin))
+            save_cal_reads = os.listdir(str(cal_save.joinpath(bin)))
             for read in save_cal_reads:
                 self.assertTrue(read in cal_reads[bin])
             for read in cal_reads[bin]:
                 self.assertTrue(read in save_cal_reads)
 
-            save_pass_reads = os.listdir(pass_save.joinpath(bin))
+            save_pass_reads = os.listdir(str(pass_save.joinpath(bin)))
             for read in save_pass_reads:
                 self.assertTrue(read in pass_reads[bin])
             for read in pass_reads[bin]:
                 self.assertTrue(read in save_pass_reads)
 
-            save_fail_reads = os.listdir(fail_save.joinpath(bin))
+            save_fail_reads = os.listdir(str(fail_save.joinpath(bin)))
             for read in save_fail_reads:
                 self.assertTrue(read in fail_reads[bin])
             for read in fail_reads[bin]:
