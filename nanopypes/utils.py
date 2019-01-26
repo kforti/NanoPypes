@@ -125,7 +125,7 @@ def collapse_save(save_path):
         dump_reads(pass_reads, new_pass_reads)
         dump_reads(fail_reads, new_fail_reads)
 
-        shutil.rmtree(bin_path)
+        shutil.rmtree(str(bin_path))
     return 0
 
 def consolidate_summary(src, dest):
