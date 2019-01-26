@@ -9,6 +9,7 @@ from nanopypes.utils import temp_dirs
 from nanopypes.objects import Sample
 from nanopypes.config import BasecallConfig
 
+print("testing a change")
 class Albacore:
     """ Conatains the data associated with making the command to run the basecaller.
     Build the command with build_command()
