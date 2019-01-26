@@ -47,7 +47,7 @@ def temp_dirs(data_dir, temp_location):
     return dirs_list
 
 def file_generator(dir):
-    for file in os.listdir(dir):
+    for file in os.listdir(str(dir)):
         file_path = dir.joinpath(file)
         yield file_path
 
@@ -61,12 +61,12 @@ def collapse_save(save_path):
     """ Collapse all the data into the expected output"""
     names = ["pass", "fail", "calibration_strands"]
 
-    for i, bin in enumerate(os.listdir(save_path)):
+    for i, bin in enumerate(os.listdir(str(save_path))):
         bin_path = save_path.joinpath(bin)
         if bin_path.is_file():
             continue
 
-        for child in os.listdir(bin_path):
+        for child in os.listdir(str(bin_path)):
             if child == "sequencing_summary.txt":
                 sum_path = bin_path.joinpath(child)
                 new_sum_path = save_path.joinpath(child)
@@ -99,7 +99,7 @@ def collapse_save(save_path):
 
         if i == 0:
             new_workspace = save_path.joinpath(workspace_path.name)
-            os.mkdir(new_workspace)
+            os.mkdir(str(new_workspace))
 
             for name in names:
                 path = new_workspace.joinpath(name)
@@ -135,7 +135,7 @@ def consolidate_telemetry(src, dest):
     pass
 
 def dump_reads(src, dest):
-    for read in os.listdir(src):
+    for read in os.listdir(str(src)):
         shutil.copy(src.joinpath(read), dest.joinpath(read))
     return 0
 
