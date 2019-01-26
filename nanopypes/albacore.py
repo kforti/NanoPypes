@@ -2,11 +2,10 @@ import os
 import dask
 import subprocess
 import logging
-import paramiko
 from pathlib import Path
 from dask_jobqueue import LSFCluster
 from dask.distributed import Client, wait
-from nanopypes.utils import temp_dirs, remove_temps
+from nanopypes.utils import temp_dirs
 from nanopypes.objects import Sample
 from nanopypes.config import BasecallConfig
 
