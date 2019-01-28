@@ -14,9 +14,9 @@ basecall_config:
     ncpus: 20
     processes: 20
     project: /project/umw_athma_pai
-    queue: short
+    queue: long
     workers: 1
-    workers_queue: short
+    workers_queue: long
     cores: 1
     memory: 40 GB
     cluster_type: LSF
