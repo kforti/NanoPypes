@@ -118,7 +118,7 @@ class Albacore:
 class Cluster:
     """ Cluster based task manager for running the basecaller in parallel"""
     def __init__(self, config=None, queue=None, project=None, job_time=None, cores=None,
-                 memory=None, workers=None, workers_queue=None):
+                 memory=None, workers=None, workers_queue=None, cluster_type=None):
 
         self.config = BasecallConfig(config, queue=queue, project=project, job_time=job_time, cores=cores,
                                      memory=memory, workers=workers, workers_queue=workers_queue, cluster_type=cluster_type)
