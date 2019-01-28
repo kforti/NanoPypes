@@ -230,26 +230,6 @@ class TestAlbacore(unittest.TestCase):
     #     assert '--help  Show this message and exit.' in help_result.output
 
 
-# class TestCluster(unittest.TestCase):
-#     """Tests for the Albacore class."""
-#
-#     @classmethod
-#     def setUp(self):
-#         """Set up test fixtures, if any."""
-#         from nanopypes.albacore import Albacore
-#
-#     def tearDown(self):
-#         """Tear down test fixtures, if any."""
-#
-#     def test_000_add_workers(self):
-#         """Build a cluster object and add workers"""
-#         add_workers = 100
-#         cluster = Cluster(config="build_command_test.yml")
-#         num_workers = cluster.num_workers
-#         expected_workers = add_workers + num_workers
-#         cluster.add_workers()
-
-
 ########################################################################
 ### Test Helper Functions                                                 ###
 ########################################################################

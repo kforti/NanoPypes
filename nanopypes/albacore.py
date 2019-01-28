@@ -118,7 +118,7 @@ class Albacore:
 class Cluster:
     """ Cluster based task manager for running the basecaller in parallel"""
     def __init__(self, config=None, queue=None, project=None, job_time=None, cores=None,
-                 memory=None,workers=None, workers_queue=None, cluster_type="LSF"):
+                 memory=None, workers=None, workers_queue=None, cluster_type="LSF"):
 
         self.config = BasecallConfig(config, queue=queue, project=project, job_time=job_time, cores=cores,
                                      memory=memory, workers=workers, workers_queue=workers_queue, cluster_type=cluster_type)
@@ -143,6 +143,10 @@ class Cluster:
     @property
     def num_workers(self):
         return self.workers
+
+    @property
+    def connected_workers(self):
+        return self.cluster.worker_threads
 
     def execute_command(self, command):
         pass
@@ -185,6 +189,12 @@ class Cluster:
         self.client = Client(self.cluster)
         logging.info("client status: " + self.client.status)
         return 0
+
+    def stop_jobs(self, jobs="all"):
+        if jobs == "all":
+            self.cluster.stop_all_jobs()
+        else:
+            self.cluster.stop_jobs(jobs)
 
     def parallel_basecaller(self, test=False):
         try:
