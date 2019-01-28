@@ -25,14 +25,7 @@ class TestCluster(unittest.TestCase):
         """Build a cluster object with yaml"""
         self.cluster = Cluster(config="build_command_test.yml")
         self.cluster.connect_workers()
-        timer = 0
-        print("Connecting workers")
-        while timer < 30:
-            print("pending jobs", self.cluster.pending_jobs)
-            print("jobs", self.cluster.running_jobs)
-            print("time", timer)
-            timer += 1
-            time.sleep(1)
+
         expected_workers = self.cluster.num_workers
         actual_workers = self.cluster.connected_workers
         print("expected workers: ", expected_workers)

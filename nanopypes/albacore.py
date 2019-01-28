@@ -172,9 +172,14 @@ class Cluster:
 
         timer = 0
         while len(self.cluster.pending_jobs) > 1:
-            time.sleep(1)
+            time.sleep(10)
             timer += 1
-            if timer > 200:
+            print("pending jobs", self.cluster.pending_jobs)
+            print("jobs", self.cluster.running_jobs)
+            print("time", timer)
+            timer += 1
+            time.sleep(1)
+            if timer > 50:
                 break
 
     def map(self, func, iterable):
