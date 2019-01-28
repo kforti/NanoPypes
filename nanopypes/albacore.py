@@ -128,6 +128,8 @@ class Cluster:
         self.walltime = self.config.job_time
         self.cores = self.config.cores
         self.memory = self.config.memory
+        self.mem = self.config.mem
+        self.ncpus = self.config.ncpus
         self.cluster_type = self.config.cluster_type
         self.workers = self.config.workers
         self.workers_queue = self.config.workers_queue
@@ -201,8 +203,8 @@ class Cluster:
             self.cluster = LSFCluster(queue=self.queue,
                                  project=self.project,
                                  walltime=self.walltime,
-                                 # ncpus=self.ncpus,
-                                 # mem=self.mem,
+                                 ncpus=self.ncpus,
+                                 mem=self.mem,
                                  cores=self.cores,
                                  memory=self.memory)
         else:
@@ -216,9 +218,14 @@ class Cluster:
 
         timer = 0
         while len(self.cluster.pending_jobs) > 1:
-            time.sleep(1)
+            time.sleep(10)
             timer += 1
-            if timer > 200:
+            print("pending jobs", self.cluster.pending_jobs)
+            print("jobs", self.cluster.running_jobs)
+            print("time", timer)
+            timer += 1
+            time.sleep(1)
+            if timer > 50:
                 break
 
         return 0
