@@ -2,6 +2,7 @@ import os
 import dask
 import subprocess
 import logging
+import time
 from pathlib import Path
 from dask_jobqueue import LSFCluster
 from dask.distributed import Client, wait
@@ -169,6 +170,13 @@ class Cluster:
         self.queue = queue
         self.cluster.scale(num)
 
+        timer = 0
+        while len(self.cluster.pending_jobs) > 1:
+            time.sleep(1)
+            timer += 1
+            if timer > 200:
+                break
+
     def map(self, func, iterable):
         futures = self.client(func, iterable)
         return futures
@@ -200,6 +208,14 @@ class Cluster:
         self.cluster.scale(self.workers)
         self.client = Client(self.cluster)
         logging.info("client status: " + self.client.status)
+
+        timer = 0
+        while len(self.cluster.pending_jobs) > 1:
+            time.sleep(1)
+            timer += 1
+            if timer > 200:
+                break
+
         return 0
 
     def stop_jobs(self, jobs="all"):
