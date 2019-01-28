@@ -219,7 +219,7 @@ class Cluster:
             time.sleep(10)
             timer += 1
             print("pending jobs", self.cluster.pending_jobs)
-            print("jobs", self.cluster.running_jobs)
+            print("workers", self.cluster.scheduler.workers)
             print("time", timer)
             if timer > 200:
                 break

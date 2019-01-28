@@ -10,14 +10,15 @@ basecall_config:
   reads_per_fastq: 1000
   cluster:
     job_time: 06:00
-    mem: 2048
-    ncpus: 1
+    mem: 40000
+    ncpus: 20
+    processes: 20
     project: /project/umw_athma_pai
     queue: short
-    workers: 5
+    workers: 1
     workers_queue: short
     cores: 1
-    memory: 2 GB
+    memory: 40 GB
     cluster_type: LSF
 cluster_login:
   username: kf78w@ghpcc06.umassrc.org
