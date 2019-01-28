@@ -15,7 +15,7 @@ basecall_config:
     project: /project/umw_athma_pai
     queue: long
     workers: 10
-    workers_queue: long
+    workers_queue: short
     cores: 1
     memory: 2 GB
     cluster_type: LSF
