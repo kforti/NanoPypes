@@ -119,13 +119,14 @@ class Albacore:
 class Cluster:
     """ Cluster based task manager for running the basecaller in parallel"""
     def __init__(self, config=None, queue=None, project=None, job_time=None, cores=None,
-                 memory=None, workers=None, workers_queue=None, cluster_type=None):
+                 memory=None, workers=None, workers_queue=None, processes=None, cluster_type=None):
 
         self.config = BasecallConfig(config, queue=queue, project=project, job_time=job_time, cores=cores,
                                      memory=memory, workers=workers, workers_queue=workers_queue, cluster_type=cluster_type)
         self.queue = self.config.queue
         self.project = self.config.project
         self.walltime = self.config.job_time
+        self.processes = self.config.processes
         self.cores = self.config.cores
         self.memory = self.config.memory
         self.mem = self.config.mem
@@ -199,12 +200,13 @@ class Cluster:
         if self.cluster_type == "LSF":
             logging.info("connecting to cluster")
             self.cluster = LSFCluster(queue=self.queue,
-                                 project=self.project,
-                                 walltime=self.walltime,
-                                 ncpus=self.ncpus,
-                                 mem=self.mem,
-                                 cores=self.cores,
-                                 memory=self.memory)
+                                      project=self.project,
+                                      processes=self.processes,
+                                      walltime=self.walltime,
+                                      ncpus=self.ncpus,
+                                      mem=self.mem,
+                                      cores=self.cores,
+                                      memory=self.memory)
         else:
             logging.info("Did not connect to cluster")
 
@@ -215,7 +217,7 @@ class Cluster:
         logging.info("client status: " + self.client.status)
 
         timer = 0
-        while len(self.cluster.pending_jobs) > 1:
+        while len(self.cluster.scheduler.workers) > self.processes:
             time.sleep(10)
             timer += 1
             print("pending jobs", self.cluster.pending_jobs)
@@ -223,7 +225,7 @@ class Cluster:
             print("time", timer)
             if timer > 200:
                 break
-
+        print("Done..... workers: ", self.cluster.scheduler.workers)
         return 0
 
     def stop_jobs(self, jobs="all"):

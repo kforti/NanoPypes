@@ -14,6 +14,7 @@ class TestCluster(unittest.TestCase):
         """Tear down test fixtures, if any."""
         self.cluster.stop_jobs()
         print("Stopping workers")
+        timer = 0
         while timer < 30:
             print("Finished jobs", self.cluster.finished_jobs)
             print("jobs", self.cluster.running_jobs)
