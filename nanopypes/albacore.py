@@ -179,8 +179,6 @@ class Cluster:
             print("pending jobs", self.cluster.pending_jobs)
             print("jobs", self.cluster.running_jobs)
             print("time", timer)
-            timer += 1
-            time.sleep(1)
             if timer > 50:
                 break
 
@@ -223,8 +221,6 @@ class Cluster:
             print("pending jobs", self.cluster.pending_jobs)
             print("jobs", self.cluster.running_jobs)
             print("time", timer)
-            timer += 1
-            time.sleep(1)
             if timer > 50:
                 break
 
