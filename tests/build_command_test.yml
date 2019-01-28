@@ -15,8 +15,10 @@ basecall_config:
     project: /project/umw_athma_pai
     queue: long
     workers: 10
+    workers_queue: long
     cores: 1
     memory: 2 GB
+    cluster_type: LSF
 cluster_login:
   username: kf78w@ghpcc06.umassrc.org
   password:
