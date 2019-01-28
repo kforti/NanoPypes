@@ -13,45 +13,61 @@ class TestCluster(unittest.TestCase):
     def tearDown(self):
         """Tear down test fixtures, if any."""
         self.cluster.stop_jobs()
-        time.sleep(30)
+        print("Stopping workers")
+        while timer < 30:
+            print("Finished jobs", self.cluster.finished_jobs)
+            print("jobs", self.cluster.running_jobs)
+            print("time", timer)
+            timer += 1
+            time.sleep(1)
 
     def test_000_build_cluster(self):
         """Build a cluster object with yaml"""
         self.cluster = Cluster(config="build_command_test.yml")
         self.cluster.connect_workers()
-        time.sleep(30)
+        timer = 0
+        print("Connecting workers")
+        while timer < 30:
+            print("pending jobs", self.cluster.pending_jobs)
+            print("jobs", self.cluster.running_jobs)
+            print("time", timer)
+            timer += 1
+            time.sleep(1)
         expected_workers = self.cluster.num_workers
-        actual_Workers = self.cluster.connected_workers
-        self.assertTrue(expected_workers == actual_Workers)
-
-    def test_001_build_cluster(self):
-        """Build a cluster object and add workers"""
-        self.cluster = Cluster(job_time="06:00", memory="2 GB", project="/project/umw_athma_pai",
-                          queue="long", workers=10, cores=1)
-        self.cluster.connect_workers()
-        time.sleep(30)
-        expected_workers = self.cluster.num_workers
-        actual_Workers = self.cluster.connected_workers
-        self.assertTrue(expected_workers == actual_Workers)
-
-    def test_002_build_cluster(self):
-        """Build a cluster object and add workers"""
-        self.cluster = Cluster(config="build_command_test.yml",
-                          queue="long", workers=10, cores=1)
-        self.cluster.connect_workers()
-        time.sleep(30)
-        expected_workers = self.cluster.num_workers
-        actual_Workers = self.cluster.connected_workers
-        self.assertTrue(expected_workers == actual_Workers)
-
-    def test_003_connect_workers(self):
-        """Build a cluster object and add workers"""
-        add_workers = 10
-        self.cluster = Cluster(config="build_command_test.yml")
-        num_workers = self.cluster.num_workers
-        expected_workers = add_workers + num_workers
-        self.cluster.add_workers(num=add_workers)
-        self.cluster.connect_workers()
-        time.sleep(30)
         actual_workers = self.cluster.connected_workers
+        print("expected workers: ", expected_workers)
+        print("actual workers: ", actual_workers)
         self.assertTrue(expected_workers == actual_workers)
+
+    #
+    # def test_001_build_cluster(self):
+    #     """Build a cluster object and add workers"""
+    #     self.cluster = Cluster(job_time="06:00", memory="2 GB", project="/project/umw_athma_pai",
+    #                       queue="long", workers=10, cores=1)
+    #     self.cluster.connect_workers()
+    #     time.sleep(30)
+    #     expected_workers = self.cluster.num_workers
+    #     actual_workers = self.cluster.connected_workers
+    #     self.assertTrue(expected_workers == actual_workers)
+    #
+    # def test_002_build_cluster(self):
+    #     """Build a cluster object and add workers"""
+    #     self.cluster = Cluster(config="build_command_test.yml",
+    #                       queue="long", workers=10, cores=1)
+    #     self.cluster.connect_workers()
+    #     time.sleep(30)
+    #     expected_workers = self.cluster.num_workers
+    #     actual_workers = self.cluster.connected_workers
+    #     self.assertTrue(expected_workers == actual_workers)
+    #
+    # def test_003_connect_workers(self):
+    #     """Build a cluster object and add workers"""
+    #     add_workers = 10
+    #     self.cluster = Cluster(config="build_command_test.yml")
+    #     num_workers = self.cluster.num_workers
+    #     expected_workers = add_workers + num_workers
+    #     self.cluster.add_workers(num=add_workers)
+    #     self.cluster.connect_workers()
+    #     time.sleep(30)
+    #     actual_workers = self.cluster.connected_workers
+    #     self.assertTrue(expected_workers == actual_workers)

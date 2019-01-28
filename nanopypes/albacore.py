@@ -148,6 +148,18 @@ class Cluster:
     def connected_workers(self):
         return self.cluster.worker_threads
 
+    @property
+    def pending_jobs(self):
+        return self.cluster.pending_jobs
+
+    @property
+    def running_jobs(self):
+        return self.cluster.running_jobs
+
+    @property
+    def finished_jobs(self):
+        return self.cluster.finished_jobs
+
     def execute_command(self, command):
         pass
 
