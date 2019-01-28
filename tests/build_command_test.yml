@@ -17,7 +17,7 @@ basecall_config:
     queue: long
     workers: 1
     workers_queue: long
-    cores: 1
+    cores: 20
     memory: 40 GB
     cluster_type: LSF
 cluster_login:

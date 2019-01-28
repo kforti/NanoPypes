@@ -217,7 +217,7 @@ class Cluster:
         logging.info("client status: " + self.client.status)
 
         timer = 0
-        while len(self.cluster.scheduler.workers) > self.processes:
+        while len(self.cluster.scheduler.workers) < self.processes:
             time.sleep(10)
             timer += 1
             print("pending jobs", self.cluster.pending_jobs)
