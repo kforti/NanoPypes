@@ -15,7 +15,7 @@ class TestCluster(unittest.TestCase):
         self.cluster.stop_jobs()
         print("Stopping workers")
         timer = 0
-        while self.cluster.running_jobs > 1:
+        while len(self.cluster.running_jobs) > 1:
             print("Finished jobs", self.cluster.finished_jobs)
             print("jobs", self.cluster.running_jobs)
             print("time", timer)

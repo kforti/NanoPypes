@@ -196,7 +196,7 @@ class Cluster:
                                       mem=self.mem,
                                       cores=self.cores,
                                       memory=self.memory)
-        if self.scale > 1:
+        if self.scale_value > 1:
             self.scale(self.scale_value)
         self.client = Client(self.cluster)
 
