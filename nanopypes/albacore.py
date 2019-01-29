@@ -204,6 +204,8 @@ class Cluster:
         timer = 0
         while len(self.cluster.scheduler.workers) < self.workers:
             time.sleep(1)
+            print("workers: ", self.cluster.scheduler.workers)
+            print("expected workers: ", self.workers)
             timer += 1
             if timer > self.time_out:
                 raise ConnectionError("Could not start all workers before time_out")
