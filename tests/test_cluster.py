@@ -15,19 +15,21 @@ class TestCluster(unittest.TestCase):
         self.cluster.stop_jobs()
         print("Stopping workers")
         timer = 0
-        while timer < 30:
+        while self.cluster.running_jobs > 1:
             print("Finished jobs", self.cluster.finished_jobs)
             print("jobs", self.cluster.running_jobs)
             print("time", timer)
             timer += 1
             time.sleep(1)
+            if timer > 30:
+                break
 
     def test_000_build_cluster(self):
         """Build a cluster object with yaml"""
         self.cluster = Cluster(config="build_command_test.yml")
-        self.cluster.connect_workers()
+        self.cluster.connect()
 
-        expected_workers = self.cluster.num_workers
+        expected_workers = self.cluster.expected_workers
         actual_workers = self.cluster.connected_workers
         print("expected workers: ", expected_workers)
         print("actual workers: ", actual_workers)

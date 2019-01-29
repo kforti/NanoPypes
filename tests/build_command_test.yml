@@ -12,13 +12,12 @@ basecall_config:
     job_time: 06:00
     mem: 40000
     ncpus: 20
-    processes: 20
     project: /project/umw_athma_pai
     queue: long
-    workers: 1
-    workers_queue: long
+    workers: 20
     cores: 20
     memory: 40 GB
+    scale: 1
     cluster_type: LSF
 cluster_login:
   username: kf78w@ghpcc06.umassrc.org

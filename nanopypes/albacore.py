@@ -119,38 +119,36 @@ class Albacore:
 class Cluster:
     """ Cluster based task manager for running the basecaller in parallel"""
     def __init__(self, config=None, queue=None, project=None, job_time=None, cores=None,
-                 memory=None, workers=None, workers_queue=None, processes=None, cluster_type=None):
+                 memory=None, workers=None, scale=None, cluster_type=None):
 
         self.config = BasecallConfig(config, queue=queue, project=project, job_time=job_time, cores=cores,
-                                     memory=memory, workers=workers, workers_queue=workers_queue, cluster_type=cluster_type)
+                                     memory=memory, workers=workers, cluster_type=cluster_type)
         self.queue = self.config.queue
         self.project = self.config.project
         self.walltime = self.config.job_time
-        self.processes = self.config.processes
         self.cores = self.config.cores
         self.memory = self.config.memory
         self.mem = self.config.mem
         self.ncpus = self.config.ncpus
         self.cluster_type = self.config.cluster_type
         self.workers = self.config.workers
-        self.workers_queue = self.config.workers_queue
+        self.scale_value = self.config.scale
 
     @property
     def settings(self):
         return self.__dict__
 
     @property
-    def session_command(self):
-        cmd = 'bsub - q interactive -R "rusage[mem=16384]" - n, 1 - W, 1: 00 - Is, bash'
-        return cmd
-
-    @property
-    def num_workers(self):
+    def expected_workers(self):
         return self.workers
+
+    @expected_workers.setter
+    def expected_workers(self, value):
+        self.workers = value
 
     @property
     def connected_workers(self):
-        return self.cluster.worker_threads
+        return self.cluster.scheduler.workers
 
     @property
     def pending_jobs(self):
@@ -164,14 +162,9 @@ class Cluster:
     def finished_jobs(self):
         return self.cluster.finished_jobs
 
-    def execute_command(self, command):
-        pass
-
-    def add_workers(self, num, queue):
+    def scale(self, value):
         """Add workers to cluster connection"""
-        self.workers += num
-        self.queue = queue
-        self.cluster.scale(num)
+        self.cluster.scale(value)
 
         timer = 0
         while len(self.cluster.pending_jobs) > 1:
@@ -182,18 +175,14 @@ class Cluster:
             print("time", timer)
             if timer > 200:
                 break
+        self.workers = self.workers * value
 
     def map(self, func, iterable):
-        futures = self.client(func, iterable)
+        futures = self.client.map(func, iterable)
         return futures
 
-    def connect_workers(self, workers=None, queue=None):
-        """ Start workers to run jobs across"""
-        if workers:
-            self.workers = workers
-        if queue:
-            self.queue = queue
-
+    def connect(self):
+        """ Establish connection to cluster"""
         assert self.workers != None, "You must assign number of workers"
         assert self.queue != None, "You must assign a queue to run your workers on"
 
@@ -201,32 +190,15 @@ class Cluster:
             logging.info("connecting to cluster")
             self.cluster = LSFCluster(queue=self.queue,
                                       project=self.project,
-                                      processes=self.processes,
+                                      processes=self.workers,
                                       walltime=self.walltime,
                                       ncpus=self.ncpus,
                                       mem=self.mem,
                                       cores=self.cores,
                                       memory=self.memory)
-        else:
-            logging.info("Did not connect to cluster")
-
-        # Scale the number of dask workers across multiple cluster jobs -> the value passed to cluster.scale() is the number of jobs
-        logging.info("scaling to " + str(self.workers) + " workers")
-        self.cluster.scale(self.workers)
+        if self.scale > 1:
+            self.scale(self.scale_value)
         self.client = Client(self.cluster)
-        logging.info("client status: " + self.client.status)
-
-        timer = 0
-        while len(self.cluster.scheduler.workers) < self.processes:
-            time.sleep(10)
-            timer += 1
-            print("pending jobs", self.cluster.pending_jobs)
-            print("workers", self.cluster.scheduler.workers)
-            print("time", timer)
-            if timer > 200:
-                break
-        print("Done..... workers: ", self.cluster.scheduler.workers)
-        return 0
 
     def stop_jobs(self, jobs="all"):
         if jobs == "all":
@@ -234,31 +206,31 @@ class Cluster:
         else:
             self.cluster.stop_jobs(jobs)
 
-    def parallel_basecaller(self, test=False):
-        try:
-            self._connect_cluster()
-            num_dirs = self.albacore.num_dirs
-            logging.info('Number of Directories: ' + str(num_dirs))
-            try:
-                for i in range(num_dirs):
-                    commands = self.albacore.basecall_input
-                    func = self._build_func()
-                    if test:
-                        logging.info('This run is a test')
-                        logging.info(str(commands[0: self.workers]))
-                        basecalled_reads = self.client.map(func, commands[1])
-                        break
-                    else:
-                        logging.info('This run is not a test')
-                        basecalled_reads = self.client.map(func, commands[1])
-                    wait(basecalled_reads)
-                    self.albacore.remove_temps()
-
-            except StopIteration:
-                return
-
-            self.albacore.collapse_save()
-
-        except Exception as e:
-            logging.info("Exception raised during the basecalling: " + str(e))
-            self.cluster.kill_all_jobs()
+    # def parallel_basecaller(self, test=False):
+    #     try:
+    #         self._connect_cluster()
+    #         num_dirs = self.albacore.num_dirs
+    #         logging.info('Number of Directories: ' + str(num_dirs))
+    #         try:
+    #             for i in range(num_dirs):
+    #                 commands = self.albacore.basecall_input
+    #                 func = self._build_func()
+    #                 if test:
+    #                     logging.info('This run is a test')
+    #                     logging.info(str(commands[0: self.workers]))
+    #                     basecalled_reads = self.client.map(func, commands[1])
+    #                     break
+    #                 else:
+    #                     logging.info('This run is not a test')
+    #                     basecalled_reads = self.client.map(func, commands[1])
+    #                 wait(basecalled_reads)
+    #                 self.albacore.remove_temps()
+    #
+    #         except StopIteration:
+    #             return
+    #
+    #         self.albacore.collapse_save()
+    #
+    #     except Exception as e:
+    #         logging.info("Exception raised during the basecalling: " + str(e))
+    #         self.cluster.kill_all_jobs()

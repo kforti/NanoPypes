@@ -110,12 +110,8 @@ class BasecallConfig(Config):
         return self.bc_config["cluster"]["workers"]
 
     @property
-    def workers_queue(self):
-        return self.bc_config["cluster"]["workers_queue"]
-
-    @property
-    def processes(self):
-        return self.bc_config["cluster"]["processes"]
+    def scale(self):
+        return self.bc_config["cluster"]["scale"]
 
     @property
     def cores(self):
