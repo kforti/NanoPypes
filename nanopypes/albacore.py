@@ -119,7 +119,7 @@ class Albacore:
 class Cluster:
     """ Cluster based task manager for running the basecaller in parallel"""
     def __init__(self, config=None, queue=None, project=None, job_time=None, cores=None,
-                 memory=None, workers=None, scale=None, cluster_type=None):
+                 memory=None, workers=None, scale_value=None, cluster_type=None, time_out=200):
 
         self.config = BasecallConfig(config, queue=queue, project=project, job_time=job_time, cores=cores,
                                      memory=memory, workers=workers, cluster_type=cluster_type)
@@ -133,6 +133,7 @@ class Cluster:
         self.cluster_type = self.config.cluster_type
         self.workers = self.config.workers
         self.scale_value = self.config.scale
+        self.time_out = time_out
 
     @property
     def settings(self):
@@ -199,6 +200,13 @@ class Cluster:
         if self.scale_value > 1:
             self.scale(self.scale_value)
         self.client = Client(self.cluster)
+
+        timer = 0
+        while self.cluster.scheduler.workers < self.workers:
+            time.sleep(1)
+            timer += 1
+            if timer > self.time_out:
+                raise ConnectionError("Could not start all workers before time_out")
 
     def stop_jobs(self, jobs="all"):
         if jobs == "all":
