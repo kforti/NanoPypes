@@ -106,17 +106,17 @@ def collapse_save(save_path):
                 if not path.exists():
                     path.mkdir()
 
-        cal_strands = workspace_path.joinpath("calibration_strands", "0")
+        cal_strands = workspace_path.joinpath("calibration_strands", "unclassified", "0")
         new_cal_strands = new_workspace.joinpath("calibration_strands", bin)
         if not new_cal_strands.exists():
             new_cal_strands.mkdir()
 
-        pass_reads = workspace_path.joinpath("pass", "0")
+        pass_reads = workspace_path.joinpath("pass", "unclassified", "0")
         new_pass_reads = new_workspace.joinpath("pass", bin)
         if not new_pass_reads.exists():
             new_pass_reads.mkdir()
 
-        fail_reads = workspace_path.joinpath("fail", "0")
+        fail_reads = workspace_path.joinpath("fail", "unclassified", "0")
         new_fail_reads = new_workspace.joinpath("fail", bin)
         if not new_fail_reads.exists():
             new_fail_reads.mkdir()
