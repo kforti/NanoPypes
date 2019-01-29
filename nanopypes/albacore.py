@@ -169,8 +169,9 @@ class Cluster:
         self.cluster.scale(value)
         workers = self.workers * value
         timer = 0
-        while len(self.cluster.scheduler.workers) < workers:
+        while len(self.client.p) < workers:
             time.sleep(1)
+            print("Client: ", self.client)
             print("workers: ", len(self.cluster.scheduler.workers))
             print("expected workers: ", workers)
             print("pending jobs: ", self.cluster.pending_jobs)
