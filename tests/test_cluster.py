@@ -31,45 +31,61 @@ class TestCluster(unittest.TestCase):
 
         expected_workers = self.cluster.expected_workers
         actual_workers = self.cluster.connected_workers
-        print("expected workers: ", expected_workers, type(expected_workers))
-        print("actual workers: ", actual_workers, type(actual_workers))
-        self.assertTrue(expected_workers == actual_workers)
-
-    def test_001_build_cluster(self):
-        """Build a cluster object with yaml"""
-        self.cluster = Cluster(job_time="06:00",
-                               memory="2 GB",
-                               project="/project/umw_athma_pai",
-                               queue="long",
-                               workers=20,
-                               cores=20,
-                               scale_value=1,
-                               mem=40000,
-                               ncpus=20,
-                               cluster_type="LSF",)
-        self.cluster.connect()
-
-        expected_workers = self.cluster.expected_workers
-        actual_workers = self.cluster.connected_workers
         print("expected workers: ", expected_workers)
         print("actual workers: ", actual_workers)
         self.assertTrue(expected_workers == actual_workers)
 
-    def test_002_build_cluster(self):
-        """Build a cluster object with yaml"""
-        self.cluster = Cluster(config="build_command_test.yml",
-                               job_time="06:00",
-                               memory="2 GB",
-                               mem=40000,
-                               cores=10,
-                               workers=10,
-                               ncpus=10,
-                               cluster_type="LSF",)
-        self.cluster.connect()
+    # def test_001_build_cluster(self):
+    #     """Build a cluster object with yaml"""
+    #     self.cluster = Cluster(job_time="06:00",
+    #                            memory="2 GB",
+    #                            project="/project/umw_athma_pai",
+    #                            queue="long",
+    #                            workers=20,
+    #                            cores=20,
+    #                            scale_value=1,
+    #                            mem=40000,
+    #                            ncpus=20,
+    #                            cluster_type="LSF",)
+    #     self.cluster.connect()
+    #
+    #     expected_workers = self.cluster.expected_workers
+    #     actual_workers = self.cluster.connected_workers
+    #     print("expected workers: ", expected_workers)
+    #     print("actual workers: ", actual_workers)
+    #     self.assertTrue(expected_workers == actual_workers)
+    #
+    # def test_002_build_cluster(self):
+    #     """Build a cluster object with yaml"""
+    #     self.cluster = Cluster(config="build_command_test.yml",
+    #                            job_time="06:00",
+    #                            memory="2 GB",
+    #                            mem=40000,
+    #                            cores=10,
+    #                            workers=10,
+    #                            ncpus=10,
+    #                            cluster_type="LSF",)
+    #     self.cluster.connect()
+    #
+    #     expected_workers = self.cluster.expected_workers
+    #     actual_workers = self.cluster.connected_workers
+    #     print("expected workers: ", expected_workers)
+    #     print("actual workers: ", actual_workers)
+    #     self.assertTrue(expected_workers == actual_workers)
+    #     self.assertTrue(actual_workers == 10)
 
-        expected_workers = self.cluster.expected_workers
-        actual_workers = self.cluster.connected_workers
-        print("expected workers: ", expected_workers)
-        print("actual workers: ", actual_workers)
-        self.assertTrue(expected_workers == actual_workers)
-        self.assertTrue(actual_workers == 10)
+    def test_004_map(self):
+        """ Test the map function on a cluster instance"""
+        self.cluster = Cluster(config="build_command_test.yml")
+        self.cluster.connect()
+        self.cluster.map(increment, range(5000))
+        self.cluster.show_progress()
+
+
+##########################################################################
+### Helper Functions
+##########################################################################
+
+def increment(i):
+    time.sleep(1)
+    return (i += 1)

@@ -5,7 +5,7 @@ import logging
 import time
 from pathlib import Path
 from dask_jobqueue import LSFCluster
-from dask.distributed import Client, wait
+from dask.distributed import Client, wait, progress
 from nanopypes.utils import temp_dirs
 from nanopypes.objects import Sample
 from nanopypes.config import BasecallConfig
@@ -180,8 +180,11 @@ class Cluster:
         self.workers = self.workers * value
 
     def map(self, func, iterable):
-        futures = self.client.map(func, iterable)
+        self.futures = self.client.map(func, iterable)
         return futures
+
+    def show_progress(self):
+        progress(futures)
 
     def connect(self):
         """ Establish connection to cluster"""

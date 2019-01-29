@@ -1,4 +1,1 @@
-
-
-while True:
-    pass
+print(range(10))

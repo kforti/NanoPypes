@@ -22,7 +22,7 @@ class Config:
 
     def parse_config(self, config):
         if config == None:
-            return
+            return {}
         extension = config.split('.')[1]
         if extension == "yml":
             file = open(config, "r")
@@ -33,7 +33,10 @@ class BasecallConfig(Config):
     def __init__(self, config, **kwargs):
         print("setting configuration...")
         super().__init__(config)
-        self.bc_config = super().basecall_config
+        if config == None:
+            self.bc_config == {}
+        else:
+            self.bc_config = super().basecall_config
         self._parse_kwargs(**kwargs)
 
         logger.info("Basecall command initiated at %s with settings: %s" % (datetime.now(), self.bc_config))
