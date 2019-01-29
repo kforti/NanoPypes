@@ -1,6 +1,6 @@
 import unittest
 import time
-from nanopypes.albacore import Cluster
+from nanopypes.albacore import Cluster, Albacore
 from nanopypes.nanopypes import *
 
 
