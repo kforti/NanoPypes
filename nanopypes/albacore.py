@@ -40,7 +40,7 @@ class Albacore:
                                     output_format=output_format,
                                     barcoding=barcoding,
                                     reads_per_fastq=reads_per_fastq)
-            self.input = Sample(input)
+            self.input = Sample(config.input_path)
             self.flow_cell = config.flowcell
             self.kit = config.kit
             self._save_path = config.save_path
