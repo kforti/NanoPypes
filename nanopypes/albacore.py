@@ -172,7 +172,7 @@ class Cluster:
             time.sleep(1)
             print("Client: ", self.client)
             print("workers: ", len(self.cluster.scheduler.workers))
-            print("expected workers: ", workers)
+            print("expected workers: ", value)
             print("pending jobs: ", self.cluster.pending_jobs)
             print("jobs: ", len(self.cluster.running_jobs))
             timer += 1
