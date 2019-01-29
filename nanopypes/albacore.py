@@ -149,7 +149,7 @@ class Cluster:
 
     @property
     def connected_workers(self):
-        return self.cluster.scheduler.workers
+        return len(self.cluster.scheduler.workers)
 
     @property
     def pending_jobs(self):
@@ -199,7 +199,7 @@ class Cluster:
                                       memory=self.memory,
                                       death_timeout=self.time_out)
         print("job script: ", self.cluster.job_script())
-        
+
         self.scale(self.scale_value)
         self.client = Client(self.cluster)
 
