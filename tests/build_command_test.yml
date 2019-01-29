@@ -17,7 +17,7 @@ basecall_config:
     workers: 20
     cores: 20
     memory: 40 GB
-    scale: 1
+    scale_value: 1
     cluster_type: LSF
 cluster_login:
   username: kf78w@ghpcc06.umassrc.org

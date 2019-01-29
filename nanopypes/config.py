@@ -110,8 +110,8 @@ class BasecallConfig(Config):
         return self.bc_config["cluster"]["workers"]
 
     @property
-    def scale(self):
-        return self.bc_config["cluster"]["scale"]
+    def scale_value(self):
+        return self.bc_config["cluster"]["scale_value"]
 
     @property
     def cores(self):
