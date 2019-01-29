@@ -172,19 +172,19 @@ class Cluster:
         while len(self.cluster.pending_jobs) > 1:
             time.sleep(10)
             timer += 1
-            print("pending jobs", self.cluster.pending_jobs)
-            print("jobs", self.cluster.running_jobs)
-            print("time", timer)
+            #print("pending jobs", self.cluster.pending_jobs)
+            #print("jobs", self.cluster.running_jobs)
+            #print("time", timer)
             if timer > 200:
                 break
         self.workers = self.workers * value
 
     def map(self, func, iterable):
         self.futures = self.client.map(func, iterable)
-        return futures
+        return self.futures
 
     def show_progress(self):
-        progress(futures)
+        progress(self.futures)
 
     def connect(self):
         """ Establish connection to cluster"""
@@ -202,7 +202,7 @@ class Cluster:
                                       cores=self.cores,
                                       memory=self.memory,
                                       death_timeout=self.time_out)
-        print("job script: ", self.cluster.job_script())
+        #print("job script: ", self.cluster.job_script())
 
         self.scale(self.scale_value)
         self.client = Client(self.cluster)
@@ -210,10 +210,10 @@ class Cluster:
         timer = 0
         while len(self.cluster.scheduler.workers) < self.workers:
             time.sleep(1)
-            print("workers: ", self.cluster.scheduler.workers)
-            print("expected workers: ", self.workers)
-            print("pending jobs: ", self.cluster.pending_jobs)
-            print("jobs: ", self.cluster.running_jobs)
+            #print("workers: ", self.cluster.scheduler.workers)
+            #print("expected workers: ", self.workers)
+            #print("pending jobs: ", self.cluster.pending_jobs)
+            #print("jobs: ", self.cluster.running_jobs)
             timer += 1
             if timer > self.time_out:
                 raise ConnectionError("Could not start all workers before time_out")
