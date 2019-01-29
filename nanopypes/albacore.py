@@ -202,7 +202,7 @@ class Cluster:
         self.client = Client(self.cluster)
 
         timer = 0
-        while self.cluster.scheduler.workers < self.workers:
+        while len(self.cluster.scheduler.workers) < self.workers:
             time.sleep(1)
             timer += 1
             if timer > self.time_out:
