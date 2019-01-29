@@ -9,20 +9,12 @@ class TestCluster(unittest.TestCase):
     @classmethod
     def setUp(self):
         """Set up test fixtures, if any."""
+        pass
 
     def tearDown(self):
         """Tear down test fixtures, if any."""
-        self.cluster.stop_jobs()
-        print("Stopping workers")
-        timer = 0
-        while len(self.cluster.running_jobs) > 1:
-            print("Finished jobs", self.cluster.finished_jobs)
-            print("jobs", self.cluster.running_jobs)
-            print("time", timer)
-            timer += 1
-            time.sleep(1)
-            if timer > 30:
-                break
+        pass
+
 
     def test_000_build_cluster(self):
         """Build a cluster object with yaml"""
@@ -34,6 +26,18 @@ class TestCluster(unittest.TestCase):
         print("expected workers: ", expected_workers)
         print("actual workers: ", actual_workers)
         self.assertTrue(expected_workers == actual_workers)
+
+        self.cluster.stop_jobs()
+        print("Stopping workers")
+        timer = 0
+        while len(self.cluster.running_jobs) > 1:
+            print("Finished jobs", self.cluster.finished_jobs)
+            print("jobs", self.cluster.running_jobs)
+            print("time", timer)
+            timer += 1
+            time.sleep(1)
+            if timer > 30:
+                break
 
     # def test_001_build_cluster(self):
     #     """Build a cluster object with yaml"""
