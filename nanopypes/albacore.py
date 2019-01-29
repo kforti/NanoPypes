@@ -167,9 +167,8 @@ class Cluster:
     def scale(self, value):
         """Add workers to cluster connection"""
         self.cluster.scale(value)
-        workers = self.workers * value
         timer = 0
-        while len(self.cluster.scheduler.workers) < workers:
+        while len(self.cluster.scheduler.workers) < value:
             time.sleep(1)
             print("Client: ", self.client)
             print("workers: ", len(self.cluster.scheduler.workers))
@@ -180,7 +179,7 @@ class Cluster:
             if timer > self.time_out:
                 raise ConnectionError("Could not start all workers before time_out")
 
-        self.workers = workers
+        self.workers = value
 
     def map(self, func, iterable):
         self.futures = self.client.map(func, iterable)
