@@ -171,10 +171,10 @@ class Cluster:
         timer = 0
         while len(self.cluster.scheduler.workers) < workers:
             time.sleep(1)
-            print("workers: ", self.cluster.scheduler.workers)
-            print("expected workers: ", self.workers)
+            print("workers: ", len(self.cluster.scheduler.workers))
+            print("expected workers: ", workers)
             print("pending jobs: ", self.cluster.pending_jobs)
-            print("jobs: ", self.cluster.running_jobs)
+            print("jobs: ", len(self.cluster.running_jobs))
             timer += 1
             if timer > self.time_out:
                 raise ConnectionError("Could not start all workers before time_out")
@@ -205,7 +205,7 @@ class Cluster:
                                       memory=self.memory,
                                       death_timeout=self.time_out)
         #print("job script: ", self.cluster.job_script())
-
+        progress("scale_value: ", self.scale_value)
         self.scale(self.scale_value)
         self.client = Client(self.cluster)
 
