@@ -21,6 +21,8 @@ class Config:
         return self._config["basecall_config"]
 
     def parse_config(self, config):
+        if config == None:
+            return
         extension = config.split('.')[1]
         if extension == "yml":
             file = open(config, "r")

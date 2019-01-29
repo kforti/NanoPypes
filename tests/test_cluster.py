@@ -31,8 +31,8 @@ class TestCluster(unittest.TestCase):
 
         expected_workers = self.cluster.expected_workers
         actual_workers = self.cluster.connected_workers
-        print("expected workers: ", expected_workers)
-        print("actual workers: ", actual_workers)
+        print("expected workers: ", expected_workers, type(expected_workers))
+        print("actual workers: ", actual_workers, type(actual_workers))
         self.assertTrue(expected_workers == actual_workers)
 
     def test_001_build_cluster(self):
