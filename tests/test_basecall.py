@@ -19,7 +19,7 @@ class TestBasecall(unittest.TestCase):
 
     def test_000_basecall(self):
         """Build a cluster object with yaml"""
-        yaml = "basecall_test_config.yml.yml"
+        yaml = "basecall_test_config.yml"
         cluster = Cluster(config=yaml)
         albacore = Albacore(input=yaml)
 
