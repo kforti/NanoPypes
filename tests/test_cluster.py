@@ -88,4 +88,4 @@ class TestCluster(unittest.TestCase):
 
 def increment(i):
     time.sleep(1)
-    return (i += 1)
+    return i + 1
