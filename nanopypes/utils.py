@@ -61,7 +61,7 @@ def collapse_save(save_path):
     """ Collapse all the data into the expected output"""
     names = ["pass", "fail", "calibration_strands"]
     save_path = Path(save_path)
-    
+
     for i, bin in enumerate(os.listdir(str(save_path))):
         bin_path = save_path.joinpath(bin)
         if bin_path.is_file():
@@ -121,6 +121,7 @@ def collapse_save(save_path):
         new_fail_reads = new_workspace.joinpath("fail", bin)
         if not new_fail_reads.exists():
             new_fail_reads.mkdir()
+
 
         dump_reads(cal_strands, new_cal_strands)
         dump_reads(pass_reads, new_pass_reads)
