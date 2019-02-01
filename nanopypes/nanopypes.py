@@ -10,8 +10,8 @@ def basecall(albacore, cluster):
     input_path = Path(albacore.input_path)
     temp_path = input_path.joinpath("temp")
 
-    print("bins: ", albacore.bins)
-    for bin in albacore.bins:
+    print("bins: ", albacore.batches)
+    for bin in albacore.batches:
         dirs = temp_dirs(bin, albacore.input_path)
         commands = []
         for dir in dirs:
@@ -21,7 +21,7 @@ def basecall(albacore, cluster):
         cluster.show_progress()
 
         remove_temps(temp_path)
-    collapse_save(albacore.save_path)
+    # collapse_save(albacore.save_path)
 
 
 if __name__ == '__main__':

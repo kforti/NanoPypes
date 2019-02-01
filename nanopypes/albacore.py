@@ -64,7 +64,7 @@ class Albacore:
     def basecall_input(self):
         """ Retrive the name of the input directory and the list of commands
          associated with that directory as a dict {dir_name: [List of commands}"""
-        next_bin = next(self.bin_generator)
+        next_bin = next(self.batch_generator)
         bin_path = Path(self.input_path).joinpath(next_bin)
         tmp_dirs = temp_dirs(bin_path, self.input.path)
         commands_list = []
@@ -81,26 +81,27 @@ class Albacore:
         return commands_tupl
 
     @property
-    def bins(self):
+    def batches(self):
         bins = [Path(self.input_path).joinpath(i) for i in os.listdir(self.input_path)]
         return bins
 
     @property
-    def num_bins(self):
+    def num_batches(self):
         return self.input.num_bins
 
     @property
-    def bin_generator(self):
-        for bin in self.bins:
+    def batch_generator(self):
+        for bin in self.batches:
             yield bin
 
-    def build_command(self, input_dir, bin_number):
+    def build_command(self, input_dir, batch_number):
         """ Method for creating the string based command for running the albacore basecaller from the commandline."""
+        temp_dir_num = input_dir.split('/')[-1]
         command = ["read_fast5_basecaller.py",]
         command.extend(["--flowcell", self.flow_cell])
         command.extend(["--kit", self.kit])
         command.extend(["--output_format", self.output_format])
-        command.extend(["--save_path", self._save_path + "/" + bin_number])
+        command.extend(["--save_path", self._save_path + "/" + batch_number + "/" + temp_dir_num])
         command.extend(["--worker_threads", "1"])
         command.extend(["--input",  input_dir])
         if self.barcoding:

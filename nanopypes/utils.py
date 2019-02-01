@@ -59,81 +59,120 @@ def remove_temps(path):
 
 def collapse_save(save_path):
     """ Collapse all the data into the expected output"""
-    names = ["pass", "fail", "calibration_strands"]
     save_path = Path(save_path)
+    batches = os.listdir(str(save_path))
+    pipeline = save_path.joinpath("pipeline.log")
+    seq_sum = save_path.joinpath("sequencing_summary.txt")
+    seq_tel = save_path.joinpath("sequencing_telemetry.js")
+    config = save_path.joinpath("configuration.cfg")
+    workspace = save_path.joinpath("workspace")
 
-    for i, bin in enumerate(os.listdir(str(save_path))):
-        bin_path = save_path.joinpath(bin)
-        if bin_path.is_file():
-            continue
+    #Initiate the seq_tel json file
+    with open(str(seq_tel), "w") as file:
+        file.write("[]")
 
-        for child in os.listdir(str(bin_path)):
-            if child == "sequencing_summary.txt":
-                sum_path = bin_path.joinpath(child)
-                new_sum_path = save_path.joinpath(child)
-                with open(str(sum_path), mode="r") as file:
-                    csv_reader = csv.reader(file, delimiter="\t")
-                    row_num = 0
-                    for row in csv_reader:
-                        if i != 0 and row_num == 0:
-                            row_num += 1
-                            continue
-                        row_num += 1
-                        with open(str(new_sum_path), mode="a") as sum_file:
-                            csv_writer = csv.writer(sum_file, delimiter="\t")
-                            csv_writer.writerow(row)
+    for batch in batches:
+        batch_path = save_path.joinpath(batch)
+        for temp in os.listdir(str(batch_path)):
+            temp_path = batch_path.joinpath(temp)
 
-            elif child == "workspace":
-                workspace_path = bin_path.joinpath(child)
+            consume_configuration(src=temp_path.joinpath("configuration.cfg"),
+                                  dest=config)
+            consume_pipeline(src=temp_path.joinpath("pipeline.log"),
+                             dest=pipeline)
+            consume_summary(src=temp_path.joinpath("sequencing_summary.txt"),
+                            dest=seq_sum)
+            consume_telemetry(src=temp_path.joinpath("sequencing_telemetry.js"),
+                              dest=seq_tel)
+            consume_workspace(src=temp_path.joinpath("workspace"),
+                              dest=workspace)
 
-            elif child == "sequencing_telemetry.js":
-                with open(str(bin_path.joinpath(child)), "r") as file:
-                    tel_data = json.load(file)
-                with open(str(save_path.joinpath(child)), "a") as file:
-                    json.dump(tel_data, file)
+    #
+    #
+    # names = ["pass", "fail", "calibration_strands"]
+    # save_path = Path(save_path)
+    #
+    # for i, bin in enumerate(os.listdir(str(save_path))):
+    #     bin_path = save_path.joinpath(bin)
+    #     if bin_path.is_file():
+    #         continue
+    #
+    #     for child in os.listdir(str(bin_path)):
+    #         if child == "sequencing_summary.txt":
+    #             sum_path = bin_path.joinpath(child)
+    #             new_sum_path = save_path.joinpath(child)
+    #             with open(str(sum_path), mode="r") as file:
+    #                 csv_reader = csv.reader(file, delimiter="\t")
+    #                 row_num = 0
+    #                 for row in csv_reader:
+    #                     if i != 0 and row_num == 0:
+    #                         row_num += 1
+    #                         continue
+    #                     row_num += 1
+    #                     with open(str(new_sum_path), mode="a") as sum_file:
+    #                         csv_writer = csv.writer(sum_file, delimiter="\t")
+    #                         csv_writer.writerow(row)
+    #
+    #         elif child == "workspace":
+    #             workspace_path = bin_path.joinpath(child)
+    #
+    #         elif child == "sequencing_telemetry.js":
+    #             with open(str(bin_path.joinpath(child)), "r") as file:
+    #                 tel_data = json.load(file)
+    #             with open(str(save_path.joinpath(child)), "a") as file:
+    #                 json.dump(tel_data, file)
+    #
+    #         elif i == 0 and child == "configuration.cfg":
+    #             shutil.copy(str(bin_path.joinpath(child)), str(save_path.joinpath(child)))
+    #
+    #         elif i == 0 and child == "pipeline.log":
+    #             shutil.copy(str(bin_path.joinpath(child)), str(save_path.joinpath(child)))
+    #
+    #     if i == 0:
+    #         new_workspace = save_path.joinpath(workspace_path.name)
+    #         os.mkdir(str(new_workspace))
+    #
+    #         for name in names:
+    #             path = new_workspace.joinpath(name)
+    #             if not path.exists():
+    #                 path.mkdir()
+    #
+    #     cal_strands = workspace_path.joinpath("calibration_strands", "unclassified", "0")
+    #     new_cal_strands = new_workspace.joinpath("calibration_strands", bin)
+    #     if not new_cal_strands.exists():
+    #         new_cal_strands.mkdir()
+    #
+    #     pass_reads = workspace_path.joinpath("pass", "unclassified", "0")
+    #     new_pass_reads = new_workspace.joinpath("pass", bin)
+    #     if not new_pass_reads.exists():
+    #         new_pass_reads.mkdir()
+    #
+    #     fail_reads = workspace_path.joinpath("fail", "unclassified", "0")
+    #     new_fail_reads = new_workspace.joinpath("fail", bin)
+    #     if not new_fail_reads.exists():
+    #         new_fail_reads.mkdir()
+    #
+    #
+    #     dump_reads(cal_strands, new_cal_strands)
+    #     dump_reads(pass_reads, new_pass_reads)
+    #     dump_reads(fail_reads, new_fail_reads)
+    #
+    #     shutil.rmtree(str(bin_path))
+    # return 0
 
-            elif i == 0 and child == "configuration.cfg":
-                shutil.copy(str(bin_path.joinpath(child)), str(save_path.joinpath(child)))
-
-            elif i == 0 and child == "pipeline.log":
-                shutil.copy(str(bin_path.joinpath(child)), str(save_path.joinpath(child)))
-
-        if i == 0:
-            new_workspace = save_path.joinpath(workspace_path.name)
-            os.mkdir(str(new_workspace))
-
-            for name in names:
-                path = new_workspace.joinpath(name)
-                if not path.exists():
-                    path.mkdir()
-
-        cal_strands = workspace_path.joinpath("calibration_strands", "unclassified", "0")
-        new_cal_strands = new_workspace.joinpath("calibration_strands", bin)
-        if not new_cal_strands.exists():
-            new_cal_strands.mkdir()
-
-        pass_reads = workspace_path.joinpath("pass", "unclassified", "0")
-        new_pass_reads = new_workspace.joinpath("pass", bin)
-        if not new_pass_reads.exists():
-            new_pass_reads.mkdir()
-
-        fail_reads = workspace_path.joinpath("fail", "unclassified", "0")
-        new_fail_reads = new_workspace.joinpath("fail", bin)
-        if not new_fail_reads.exists():
-            new_fail_reads.mkdir()
-
-
-        dump_reads(cal_strands, new_cal_strands)
-        dump_reads(pass_reads, new_pass_reads)
-        dump_reads(fail_reads, new_fail_reads)
-
-        shutil.rmtree(str(bin_path))
-    return 0
-
-def consolidate_summary(src, dest):
+def consume_summary(src, dest):
     pass
 
-def consolidate_telemetry(src, dest):
+def consume_telemetry(src, dest):
+    pass
+
+def consume_configuration(src, dest):
+    pass
+
+def consume_pipeline(src, dest):
+    pass
+
+def consume_workspace(src, dest):
     pass
 
 def dump_reads(src, dest):

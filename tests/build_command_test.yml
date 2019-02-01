@@ -3,7 +3,7 @@ basecall_config:
   save_path: ./test_data/basecalled_data/results
   flowcell: FLO-MIN106
   kit: SQK-LSK109
-  barcoding: True
+  barcoding: False
   output_format: fast5
   worker_threads: 1
   recursive: False
