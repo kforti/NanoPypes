@@ -277,8 +277,9 @@ class Workspace(AbstractBasecallOutput):
             self.read_types[read_type] = {}
             for barcode in os.listdir(str(path)):
                 reads = []
-                for read in os.listdir(str(barcode)):
-                    reads.append(path.joinpath(barcode, read))
+                barcode_path = path.joinpath(barcode)
+                for read in os.listdir(str(barcode_path)):
+                    reads.append(barcode_path, read)
                 self.read_types[read_type[barcode]] = reads
 
     def combine(self):
