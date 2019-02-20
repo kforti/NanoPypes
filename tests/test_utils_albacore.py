@@ -48,7 +48,7 @@ class TestUtilityFunctions(unittest.TestCase):
 
     @classmethod
     def setUp(self):
-        save_path = "test_data/basecalled_data/results"
+        save_path = "test_data/basecalled_data/bc_test_results"
         shutil.copytree(save_path, "test_data/basecalled_data/test_results")
 
     @classmethod

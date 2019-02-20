@@ -69,6 +69,33 @@ class Sample:
         num = len([i for i in range(os.listdir(self._path))])
         return num
 
+class BaseCalledData:
+    def __init__(self, config, summary, telemetry, pipeline, workspace):
+        self._config = config
+        self._summary = summary
+        self._telemetry = telemetry
+        self._pipeline = pipeline
+        self._workspace = workspace
+
+    @property
+    def configuration(self):
+        return self._config
+
+    @property
+    def summary(self):
+        return self._summary
+
+    @property
+    def telemetry(self):
+        return self._telemetry
+
+    @property
+    def pipeline(self):
+        return self._pipeline
+
+    @property
+    def workspace(self):
+        return self._workspace
 
 
 

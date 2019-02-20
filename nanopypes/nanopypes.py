@@ -10,12 +10,12 @@ def basecall(albacore, cluster):
     input_path = Path(albacore.input_path)
     temp_path = input_path.joinpath("temp")
 
-    print("bins: ", albacore.batches)
-    for bin in albacore.batches:
-        dirs = temp_dirs(bin, albacore.input_path)
+    # print("bins: ", albacore.batches)
+    for batch in albacore.batches:
+        dirs = temp_dirs(batch, input_path)
         commands = []
         for dir in dirs:
-            commands.append(albacore.build_command(dir, bin.name))
+            commands.append(albacore.build_command(dir, batch.name))
         print("commands: ", commands)
         cluster.map(func, commands)
         cluster.show_progress()
