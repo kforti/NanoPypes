@@ -190,7 +190,7 @@ class Summary(AbstractBasecallOutput):
 
     def consume(self, src):
         """Read data from a summary file (src) and add it to the combined summary file (dest)."""
-        with open(summary, 'r') as src_file:
+        with open(str(src), 'r') as src_file:
             csv_reader = csv.reader(src_file, delimiter='\t')
             for i, line in enumerate(csv_reader):
                 if i == 0:
