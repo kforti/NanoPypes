@@ -85,7 +85,7 @@ class TestUtilityFunctions(unittest.TestCase):
 
         save_path = Path("test_data/basecalled_data/results")
         temp_path = Path("test_data/basecalled_data/test_results")
-        shutil.copy(str(save_path), str(temp_path))
+        # shutil.copytree(str(save_path), str(temp_path))
         collapse_save(temp_path)
 
         for batch in os.listdir(str(save_path)):
@@ -396,10 +396,6 @@ def combine_telemetry(tels, tel_combined):
                 pass
     with open(tel_combined, "a") as file:
         json.dump(tel_data, file)
-            # with open(tel_combined, "a") as cfile:
-            #     for row in tel_data:
-            #         cfile.write(row)
-
 
 if __name__ == '__main__':
     pipeline_logs = ["test_data/basecall_files/pipeline_logs/pipeline_17.log",
