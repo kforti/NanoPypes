@@ -188,7 +188,7 @@ class Summary(AbstractBasecallOutput):
         super().__init__(dest)
 
 
-    def consume(self, summary):
+    def consume(self, src):
         """Read data from a summary file (src) and add it to the combined summary file (dest)."""
         with open(summary, 'r') as src_file:
             csv_reader = csv.reader(src_file, delimiter='\t')
