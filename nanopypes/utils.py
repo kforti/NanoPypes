@@ -195,7 +195,7 @@ class Summary(AbstractBasecallOutput):
             for i, line in enumerate(csv_reader):
                 if i == 0:
                     continue
-                self.summary_data.append()
+                self.summary_data.append(line)
 
     def create_summary(self):
         pass
