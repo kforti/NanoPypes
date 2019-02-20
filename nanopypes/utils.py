@@ -215,13 +215,12 @@ class Telemetry(AbstractBasecallOutput):
         with open(str(dest), "w") as file:
             file.write("[]")
 
-    def consume(self, tels):
-        for tel in tels:
-            with open(str(tel), "r") as file:
-                try:
-                    self.telemetry.extend(json.load(file))
-                except Exception:
-                    pass
+    def consume(self, src):
+        with open(str(src), "r") as file:
+            try:
+                self.telemetry.extend(json.load(file))
+            except Exception:
+                pass
 
     def combine(self):
         with open(str(self.dest), "a") as file:
