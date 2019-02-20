@@ -217,14 +217,14 @@ class Telemetry(AbstractBasecallOutput):
 
     def consume(self, tels):
         for tel in tels:
-            with open(tel, "r") as file:
+            with open(str(tel), "r") as file:
                 try:
                     self.telemetry.extend(json.load(file))
                 except Exception:
                     pass
 
     def combine(self):
-        with open(self.dest, "a") as file:
+        with open(str(self.dest), "a") as file:
             json.dump(self.telemetry, file)
 
 class Configuration(AbstractBasecallOutput):
@@ -234,7 +234,7 @@ class Configuration(AbstractBasecallOutput):
 
     def consume(self, src):
 
-        with open(src, 'r') as config:
+        with open(str(src), 'r') as config:
             if self.config_data == []:
                 self.config_data = [i for i in config]
 
@@ -244,7 +244,7 @@ class Configuration(AbstractBasecallOutput):
                         raise ValueError("unexpected value %s found in config file %s" % (val1, str(cfg)))
 
     def combine(self):
-        with open(self.dest, 'w') as config:
+        with open(str(self.dest), 'w') as config:
             for data in self.config_data:
                 config.write(data)
 
@@ -254,7 +254,7 @@ class Pipeline(AbstractBasecallOutput):
         super().__init__(dest)
 
     def consume(self, src):
-        with open(src, 'r') as pipeline:
+        with open(str(src), 'r') as pipeline:
             csv_reader = csv.reader(pipeline, delimiter='\t')
             try:
                 self.pipeline_data.append(next(csv_reader))
@@ -262,7 +262,7 @@ class Pipeline(AbstractBasecallOutput):
                 pass
 
     def combine(self):
-        with open(self.dest, 'a') as pipeline:
+        with open(str(self.dest), 'a') as pipeline:
             csv_writer = csv.writer(pipeline, delimiter='\t')
             for data in self.pipeline_data:
                 csv_writer.writerow(data)
