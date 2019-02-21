@@ -201,12 +201,10 @@ class Pipeline(AbstractBasecallOutput):
 class Workspace(AbstractBasecallOutput):
     def __init__(self, dest):
         super().__init__(dest)
-        # self.read_types = {} # {type_name: {barcodes: [reads]}}
 
     def consume(self, src):
         for read_type in os.listdir(str(src)):
             path = src.joinpath(read_type)
-            self.read_types[read_type] = {}
             for barcode in os.listdir(str(path)):
                 self.combine(path, read_type, barcode)
 
