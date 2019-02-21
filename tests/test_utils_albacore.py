@@ -16,32 +16,6 @@ from nanopypes.objects import Sample
 from nanopypes.nanopypes import basecall
 from nanopypes.utils import temp_dirs, remove_temps, collapse_save
 
-# class TestDataHandling(unittest.TestCase):
-#     """Tests for the data handling within the `pai-nanopypes` package."""
-#
-#     @classmethod
-#     def setUp(self):
-#         """Set up the test data, if not there."""
-#         import os
-#         from pathlib import Path
-#
-#         results_path = Path("test_data/results")
-#         if not results_path.exists():
-#             results_path.mkdir()
-#             build_test_data(results_path)
-#
-#
-#
-#
-#
-#     @classmethod
-#     def tearDown(self):
-#         """Tear down test fixtures, if any."""
-#
-#
-#     def test_000_collapse_save(self):
-#         """Test for collapsing the saved data directories after the parallel basecalling."""
-
 
 class TestUtilityFunctions(unittest.TestCase):
     """Tests for the utility functions found in utils.py."""
@@ -83,7 +57,7 @@ class TestUtilityFunctions(unittest.TestCase):
         """Test the collapsing of parallel basecalled data into the
         data format of normal albacore basecalling for the given input"""
 
-        save_path = Path("test_data/basecalled_data/results")
+        save_path = Path("test_data/basecalled_data/bc_test_results")
         temp_path = Path("test_data/basecalled_data/test_results")
         # shutil.copytree(str(save_path), str(temp_path))
         collapse_save(temp_path)
@@ -102,52 +76,10 @@ class TestUtilityFunctions(unittest.TestCase):
                                 workspace=temp_path.joinpath("sequencing_telemetry.js"))
 
 
-        # cal_reads = {}
-        # pass_reads = {}
-        # fail_reads = {}
-        # bins = os.listdir(str(save_path))
-        # for bin in bins:
-        #     cal_reads[bin] = []
-        #     cal_path = save_path.joinpath(bin, "workspace", "calibration_strands", "0")
-        #     for read in os.listdir(str(cal_path)):
-        #         cal_reads[bin].append(read)
-        #
-        #     pass_reads[bin] = []
-        #     pass_path = save_path.joinpath(bin, "workspace", "pass", "0")
-        #     for read in os.listdir(str(pass_path)):
-        #         pass_reads[bin].append(read)
-        #
-        #     fail_reads[bin] = []
-        #     fail_path = save_path.joinpath(bin, "workspace", "fail", "0")
-        #     for read in os.listdir(str(fail_path)):
-        #         fail_reads[bin].append(read)
-        #
-        # collapse_save(save_path)
-        # cal_save = save_path.joinpath("workspace", "calibration_strands")
-        # pass_save = save_path.joinpath("workspace", "pass")
-        # fail_save = save_path.joinpath("workspace", "fail")
-        # for bin in bins:
-        #     save_cal_reads = os.listdir(str(cal_save.joinpath(bin)))
-        #     for read in save_cal_reads:
-        #         self.assertTrue(read in cal_reads[bin])
-        #     for read in cal_reads[bin]:
-        #         self.assertTrue(read in save_cal_reads)
-        #
-        #     save_pass_reads = os.listdir(str(pass_save.joinpath(bin)))
-        #     for read in save_pass_reads:
-        #         self.assertTrue(read in pass_reads[bin])
-        #     for read in pass_reads[bin]:
-        #         self.assertTrue(read in save_pass_reads)
-        #
-        #     save_fail_reads = os.listdir(str(fail_save.joinpath(bin)))
-        #     for read in save_fail_reads:
-        #         self.assertTrue(read in fail_reads[bin])
-        #     for read in fail_reads[bin]:
-        #         self.assertTrue(read in save_fail_reads)
-
 ########################################################################
 ### Test Utility Helper Functions                                    ###
 ########################################################################
+
 def check_pipeline_log(log, combined_log):
     with open(log, "r") as file:
         with open(combined_log, "r") as cfile:
@@ -215,8 +147,6 @@ def check_workspace(workspace, combined_workspace):
                 if read not in combined_reads:
                     raise ValueError("Read %s not found in combined reads" % read)
             combined_reads = []
-
-
 
 
 ########################################################################
