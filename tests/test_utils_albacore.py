@@ -63,7 +63,7 @@ class TestUtilityFunctions(unittest.TestCase):
         collapse_save(temp_path)
 
         for batch in os.listdir(str(save_path)):
-            for temp in os.listdir(batch):
+            for temp in os.listdir(str(save_path.joinpath(batch))):
                 check_configuration_cfg(combined_cfg=save_path.joinpath(batch, temp, "configuration.cfg"),
                                         cfg=temp_path.joinpath("configuration.cfg"))
                 check_pipeline_log(combined_log=save_path.joinpath(batch, temp, "pipeline.log"),
