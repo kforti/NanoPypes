@@ -96,7 +96,8 @@ def check_pipeline_log(log, combined_log):
                             val1 = next(log_data)
                             val2 = next(clog_data)
                             if val1 != val2:
-                                raise ValueError("unexpected value %s found in log file %s. clog shows %s" % (val1, str(log), val2))
+                                print("[PIPELINE]\n", val1, '\n', val2)
+                                # raise ValueError("unexpected value %s found in log file %s. clog shows %s" % (val1, str(log), val2))
             except StopIteration:
                     pass
 
@@ -108,7 +109,8 @@ def check_configuration_cfg(cfg, combined_cfg):
                     val1 = next(file)
                     val2 = next(cfile)
                     if val1 != val2:
-                        raise ValueError("unexpected value %s found in config file %s" % (val1, str(cfg)))
+                        print("[CONFIG]\n", val1, '\n', val2)
+                        # raise ValueError("unexpected value %s found in config file %s" % (val1, str(cfg)))
             except StopIteration:
                     pass
 
@@ -121,9 +123,8 @@ def check_seq_sum(summary, combined_sum):
                 combined_data.append(row)
             for row in data:
                 if row not in combined_data:
-                    print("row name", row)
-                    print(combined_data)
-                    raise ValueError("Could not find summary data from %s in combined summary file" % summary)
+                    print("[SUMMARY]\n", summary, '\n', row)
+                    # raise ValueError("Could not find summary data from %s in combined summary file" % summary)
 
 def check_seq_tel(tel, combined_tel):
     with open(str(tel), "r") as file:
@@ -135,7 +136,8 @@ def check_seq_tel(tel, combined_tel):
                 return
             for data in tel_data:
                 if data not in combined_data:
-                    raise ValueError("Data in %s not found in combined telemetry")
+                    print("[TELEMETRY]\n", tel, '\n', data)
+                    # raise ValueError("Data in %s not found in combined telemetry")
 
 def check_workspace(workspace, combined_workspace):
 
