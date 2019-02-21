@@ -291,7 +291,7 @@ class Workspace(AbstractBasecallOutput):
                 barcode_path = type_path.joinpath(barcode)
                 os.mkdir(str(barcode_path))
                 for read in self.read_types[read_type][barcode]:
-                    shutil.move(read, str(barcode_path.joinpath(read)))
+                    shutil.move(str(read), str(barcode_path.joinpath(read)))
 
 def dump_reads(src, dest):
     for read in os.listdir(str(src)):
