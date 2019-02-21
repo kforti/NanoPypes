@@ -74,7 +74,7 @@ class TestUtilityFunctions(unittest.TestCase):
                               combined_sum=collapse_path.joinpath("sequencing_summary.txt"))
                 check_seq_tel(tel=basecalled_data_path.joinpath(batch, temp, "sequencing_telemetry.js"),
                               combined_tel=collapse_path.joinpath("sequencing_telemetry.js"))
-                check_workspace(workspace=basecalled_data_path.joinpath(batch, temp, "workspace"),
+        check_workspace(workspace=basecalled_data_path,
                                 combined_workspace=collapse_path.joinpath("workspace"))
 
 
@@ -139,18 +139,27 @@ def check_seq_tel(tel, combined_tel):
 
 def check_workspace(workspace, combined_workspace):
 
+    all_reads = []
+    for path, subdirs, reads in os.walk(workspace):
+        all_reads.extend([read for read in reads if read != []])
+    all_reads.sort()
+
     combined_reads = []
-    for read_type in os.listdir(str(workspace)):
-        path = workspace.joinpath(read_type)
-        for barcode in os.listdir(str(path)):
-            b_path = path.joinpath(barcode)
-            if combined_reads == []:
-                combined_path = combined_workspace.joinpath(read_type, barcode)
-                combined_reads.extend(os.listdir(str(combined_path)))
-            for read in os.listdir(str(b_path)):
-                if read not in combined_reads:
-                    raise ValueError("Read %s not found in combined reads" % read)
-            combined_reads = []
+    for path, subdirs, reads in os.walk(combined_workspace):
+        combined_reads.extend([read for read in reads if read != []])
+    combined_reads.sort()
+
+    # for read_type in os.listdir(str(workspace)):
+    #     path = workspace.joinpath(read_type)
+    #     for barcode in os.listdir(str(path)):
+    #         b_path = path.joinpath(barcode)
+    #         if combined_reads == []:
+    #             combined_path = combined_workspace.joinpath(read_type, barcode)
+    #             combined_reads.extend(os.listdir(str(combined_path)))
+    #         for read in os.listdir(str(b_path)):
+    #             if read not in combined_reads:
+    #                 raise ValueError("Read %s not found in combined reads" % read)
+    #         combined_reads = []
 
 
 ########################################################################
