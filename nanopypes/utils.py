@@ -206,7 +206,7 @@ class Workspace(AbstractBasecallOutput):
         for read_type in os.listdir(str(src)):
             path = src.joinpath(read_type)
             for barcode in os.listdir(str(path)):
-                self.combine(path, read_type, barcode)
+                self.combine(src, read_type, barcode)
 
     def combine(self, src_path, read_type, barcode):
         if not self.dest.exists():
