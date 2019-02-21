@@ -218,12 +218,12 @@ class Workspace(AbstractBasecallOutput):
             self.dest.joinpath(read_type, barcode).mkdir()
 
         #dump reads from barcode dir or batch within barcode dir
-        if src_path.joinpath(read_type, barcode).is_file():
-            self.dump_reads(src_path.joinpath(read_type, barcode), self.dest.joinpath(read_type, barcode))
+        for child in os.listdir(str(src_path.joinpath(read_type, barcode))):
+            if src_path.joinpath(read_type, barcode, child).is_file():
+                self.dump_reads(src_path.joinpath(read_type, barcode), self.dest.joinpath(read_type, barcode))
 
-        if src_path.joinpath(read_type, barcode).is_dir():
-            for batch in os.listdir(str(src_path.joinpath(read_type, barcode))):
-                self.dump_reads(src_path.joinpath(read_type, barcode, batch), self.dest.joinpath(read_type, barcode))
+            if src_path.joinpath(read_type, barcode, child).is_dir():
+                self.dump_reads(src_path.joinpath(read_type, barcode, child), self.dest.joinpath(read_type, barcode))
 
     def dump_reads(self, src, dest):
         for read in os.listdir(str(src)):
