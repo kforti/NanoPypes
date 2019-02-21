@@ -96,7 +96,7 @@ def check_pipeline_log(log, combined_log):
                             val1 = next(log_data)
                             val2 = next(clog_data)
                             if val1 != val2:
-                                print("[PIPELINE]\n", val1, '\n', val2)
+                                print("[PIPELINE]\n", val1, '\n', val2, '\n', log)
                                 # raise ValueError("unexpected value %s found in log file %s. clog shows %s" % (val1, str(log), val2))
             except StopIteration:
                     pass
@@ -142,12 +142,12 @@ def check_seq_tel(tel, combined_tel):
 def check_workspace(workspace, combined_workspace):
 
     all_reads = []
-    for path, subdirs, reads in os.walk(workspace):
+    for path, subdirs, reads in os.walk(str(workspace)):
         all_reads.extend([read for read in reads if read != []])
     all_reads.sort()
 
     combined_reads = []
-    for path, subdirs, reads in os.walk(combined_workspace):
+    for path, subdirs, reads in os.walk(str(combined_workspace)):
         combined_reads.extend([read for read in reads if read != []])
     combined_reads.sort()
 
