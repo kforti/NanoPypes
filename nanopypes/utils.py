@@ -212,8 +212,8 @@ class Telemetry(AbstractBasecallOutput):
         self.telemetry = []
         super().__init__(dest)
         # Initiate the seq_tel json file
-        with open(str(dest), "w") as file:
-            file.write("[]")
+        # with open(str(dest), "w") as file:
+        #     file.write("[]")
 
     def consume(self, src):
         with open(str(src), "r") as file:
