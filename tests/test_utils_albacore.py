@@ -28,7 +28,7 @@ class TestUtilityFunctions(unittest.TestCase):
     @classmethod
     def tearDown(self):
         """Tear down test fixtures, if any."""
-        shutil.rmtree("test_data/basecalled_data/test_results")
+        #shutil.rmtree("test_data/basecalled_data/test_results")
 
     def test_000_temp_dirs(self):
         """Test the creation of temp dirs and distribution of the data into those dirs."""
