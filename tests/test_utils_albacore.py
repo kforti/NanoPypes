@@ -23,12 +23,13 @@ class TestUtilityFunctions(unittest.TestCase):
     @classmethod
     def setUp(self):
         save_path = "test_data/basecalled_data/bc_test_results"
+        shutil.rmtree("test_data/basecalled_data/test_results")
         shutil.copytree(save_path, "test_data/basecalled_data/test_results")
 
     @classmethod
     def tearDown(self):
         """Tear down test fixtures, if any."""
-        #shutil.rmtree("test_data/basecalled_data/test_results")
+        pass
 
     def test_000_temp_dirs(self):
         """Test the creation of temp dirs and distribution of the data into those dirs."""

@@ -255,10 +255,11 @@ class Pipeline(AbstractBasecallOutput):
     def consume(self, src):
         with open(str(src), 'r') as pipeline:
             csv_reader = csv.reader(pipeline, delimiter='\t')
-            try:
-                self.pipeline_data.append(next(csv_reader))
-            except StopIteration:
-                pass
+            while True:
+                try:
+                    self.pipeline_data.append(next(csv_reader))
+                except StopIteration:
+                    break
 
     def combine(self):
         with open(str(self.dest), 'a') as pipeline:
