@@ -208,29 +208,16 @@ class Workspace(AbstractBasecallOutput):
             path = src.joinpath(read_type)
             self.read_types[read_type] = {}
             for barcode in os.listdir(str(path)):
-                reads = []
-                barcode_path = path.joinpath(barcode)
-                self.dump_reads(path, read_type, barcode)
+                self.combine(path, read_type, barcode)
 
-    # def combine(self):
-    #     os.mkdir(str(self.dest))
-    #     for read_type in self.read_types.keys():
-    #         type_path = self.dest.joinpath(read_type)
-    #         os.mkdir(str(type_path))
-    #         for barcode in self.read_types[read_type].keys():
-    #             barcode_path = type_path.joinpath(barcode)
-    #             os.mkdir(str(barcode_path))
-    #             for read in self.read_types[read_type][barcode]:
-    #                 shutil.move(str(read), str(barcode_path.joinpath(read.name)))
-
-    def dump_reads(self, src_path, read_type, barcode):
+    def combine(self, src_path, read_type, barcode):
         if not self.dest.exists():
             self.dest.mkdir()
         if not self.dest.joinpath(read_type).exists():
             self.dest.joinpath(read_type).mkdir()
         if not self.dest.joinpath(read_type, barcode).exists():
             self.dest.joinpath(read_type, barcode).mkdir()
-            
+
         for batch in os.listdir(str(src_path.joinpath(read_type, barcode))):
             for read in os.listdir(str(src_path.joinpath(read_type, barcode, batch))):
                 shutil.copy(str(src_path.joinpath(read_type, barcode, batch, read)), str(self.dest.joinpath(read_type, barcode, read)))
