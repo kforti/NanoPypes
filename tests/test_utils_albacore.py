@@ -22,9 +22,10 @@ class TestUtilityFunctions(unittest.TestCase):
 
     @classmethod
     def setUp(self):
-        save_path = "test_data/basecalled_data/bc_test_results"
+        basecalled_data_path = "test_data/basecalled_data/bc_test_results"
         shutil.rmtree("test_data/basecalled_data/test_results")
-        shutil.copytree(save_path, "test_data/basecalled_data/test_results")
+        #Make a copy of the basecalled data to perform tests on
+        shutil.copytree(basecalled_data_path, "test_data/basecalled_data/test_results")
 
     @classmethod
     def tearDown(self):
@@ -58,23 +59,23 @@ class TestUtilityFunctions(unittest.TestCase):
         """Test the collapsing of parallel basecalled data into the
         data format of normal albacore basecalling for the given input"""
 
-        save_path = Path("test_data/basecalled_data/bc_test_results")
-        temp_path = Path("test_data/basecalled_data/test_results")
+        basecalled_data_path = Path("test_data/basecalled_data/bc_test_results")
+        collapse_path = Path("test_data/basecalled_data/test_results")
         # shutil.copytree(str(save_path), str(temp_path))
-        collapse_save(temp_path)
+        collapse_save(collapse_path)
 
-        for batch in os.listdir(str(save_path)):
-            for temp in os.listdir(str(save_path.joinpath(batch))):
-                check_configuration_cfg(combined_cfg=save_path.joinpath(batch, temp, "configuration.cfg"),
-                                        cfg=temp_path.joinpath("configuration.cfg"))
-                check_pipeline_log(combined_log=save_path.joinpath(batch, temp, "pipeline.log"),
-                                   log=temp_path.joinpath("pipeline.log"))
-                check_seq_sum(combined_sum=save_path.joinpath(batch, temp, "sequencing_summary.txt"),
-                              summary=temp_path.joinpath("sequencing_summary.txt"))
-                check_seq_tel(combined_tel=save_path.joinpath(batch, temp, "sequencing_telemetry.js"),
-                              tel=temp_path.joinpath("sequencing_telemetry.js"))
-                check_workspace(combined_workspace=save_path.joinpath(batch, temp, "workspace"),
-                                workspace=temp_path.joinpath("sequencing_telemetry.js"))
+        for batch in os.listdir(str(basecalled_data_path)):
+            for temp in os.listdir(str(basecalled_data_path.joinpath(batch))):
+                check_configuration_cfg(cfg=basecalled_data_path.joinpath(batch, temp, "configuration.cfg"),
+                                        combined_cfg=collapse_path.joinpath("configuration.cfg"))
+                check_pipeline_log(log=basecalled_data_path.joinpath(batch, temp, "pipeline.log"),
+                                   combined_log=collapse_path.joinpath("pipeline.log"))
+                check_seq_sum(summary=basecalled_data_path.joinpath(batch, temp, "sequencing_summary.txt"),
+                              combined_sum=collapse_path.joinpath("sequencing_summary.txt"))
+                check_seq_tel(tel=basecalled_data_path.joinpath(batch, temp, "sequencing_telemetry.js"),
+                              combined_tel=collapse_path.joinpath("sequencing_telemetry.js"))
+                check_workspace(workspace=basecalled_data_path.joinpath(batch, temp, "workspace"),
+                                combined_workspace=collapse_path.joinpath("sequencing_telemetry.js"))
 
 
 ########################################################################
