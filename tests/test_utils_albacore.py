@@ -75,7 +75,7 @@ class TestUtilityFunctions(unittest.TestCase):
                 check_seq_tel(tel=basecalled_data_path.joinpath(batch, temp, "sequencing_telemetry.js"),
                               combined_tel=collapse_path.joinpath("sequencing_telemetry.js"))
                 check_workspace(workspace=basecalled_data_path.joinpath(batch, temp, "workspace"),
-                                combined_workspace=collapse_path.joinpath("sequencing_telemetry.js"))
+                                combined_workspace=collapse_path.joinpath("workspace"))
 
 
 ########################################################################
