@@ -121,6 +121,8 @@ def check_seq_sum(summary, combined_sum):
                 combined_data.append(row)
             for row in data:
                 if row not in combined_data:
+                    print("row name", row)
+                    print(combined_data)
                     raise ValueError("Could not find summary data from %s in combined summary file" % summary)
 
 def check_seq_tel(tel, combined_tel):
