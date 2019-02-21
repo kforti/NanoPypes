@@ -209,6 +209,7 @@ class Workspace(AbstractBasecallOutput):
                 self.combine(src, read_type, barcode)
 
     def combine(self, src_path, read_type, barcode):
+
         if not self.dest.exists():
             self.dest.mkdir()
         if not self.dest.joinpath(read_type).exists():
@@ -216,14 +217,15 @@ class Workspace(AbstractBasecallOutput):
         if not self.dest.joinpath(read_type, barcode).exists():
             self.dest.joinpath(read_type, barcode).mkdir()
 
-        for batch in os.listdir(str(src_path.joinpath(read_type, barcode))):
-            for read in os.listdir(str(src_path.joinpath(read_type, barcode, batch))):
-                shutil.copy(str(src_path.joinpath(read_type, barcode, batch, read)), str(self.dest.joinpath(read_type, barcode, read)))
+        #dump reads from barcode dir or batch within barcode dir
+        if src_path.joinpath(read_type, barcode).is_file():
+            self.dump_reads(src_path.joinpath(read_type, barcode), self.dest.joinpath(read_type, barcode))
+
+        if src_path.joinpath(read_type, barcode).is_dir():
+            for batch in os.listdir(str(src_path.joinpath(read_type, barcode))):
+                self.dump_reads(src_path.joinpath(read_type, barcode, batch), self.dest.joinpath(read_type, barcode))
+
+    def dump_reads(self, src, dest):
+        for read in os.listdir(str(src)):
+            shutil.copy(str(src.joinpath(read)), str(dest.joinpath(read)))
         return 0
-
-
-
-# config = Configuration()
-# config.consume("../tests/test_data/basecall_files/configurations/config_17.cfg")
-# config.consume("../tests/test_data/basecall_files/configurations/config_25.cfg")
-# config.combine("../tests/test_data/basecall_files/configurations/config_combined.cfg")
