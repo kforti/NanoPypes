@@ -283,13 +283,13 @@ class Workspace(AbstractBasecallOutput):
                 self.read_types[read_type][barcode] = reads
 
     def combine(self):
-        os.mkdir(self.dest)
+        os.mkdir(str(self.dest))
         for read_type in self.read_types.keys():
             type_path = self.dest.joinpath(read_type)
-            os.mkdir(type_path)
+            os.mkdir(str(type_path))
             for barcode in self.read_types[read_type].keys():
                 barcode_path = type_path.joinpath(barcode)
-                os.mkdir(barcode_path)
+                os.mkdir(str(barcode_path))
                 for read in self.read_types[read_type][barcode]:
                     shutil.move(read, str(barcode_path.joinpath(read)))
 
