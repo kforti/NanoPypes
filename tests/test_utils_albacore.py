@@ -81,8 +81,8 @@ class TestUtilityFunctions(unittest.TestCase):
 ########################################################################
 
 def check_pipeline_log(log, combined_log):
-    with open(log, "r") as file:
-        with open(combined_log, "r") as cfile:
+    with open(str(log), "r") as file:
+        with open(str(combined_log), "r") as cfile:
             log_data = csv.reader(file, delimiter="\t")
             clog_data = csv.reader(cfile, delimiter="\t")
             log_row = next(log_data)
@@ -99,8 +99,8 @@ def check_pipeline_log(log, combined_log):
                     pass
 
 def check_configuration_cfg(cfg, combined_cfg):
-    with open(cfg, "r") as file:
-        with open(combined_cfg, "r") as cfile:
+    with open(str(cfg), "r") as file:
+        with open(str(combined_cfg), "r") as cfile:
             try:
                 while True:
                     val1 = next(file)
@@ -111,9 +111,9 @@ def check_configuration_cfg(cfg, combined_cfg):
                     pass
 
 def check_seq_sum(summary, combined_sum):
-    with open(summary, "r") as file:
+    with open(str(summary), "r") as file:
         data = csv.reader(file, delimiter="\t")
-        with open(combined_sum, "r") as cfile:
+        with open(str(combined_sum), "r") as cfile:
             combined_data = []
             for row in csv.reader(cfile, delimiter="\t"):
                 combined_data.append(row)
@@ -122,8 +122,8 @@ def check_seq_sum(summary, combined_sum):
                     raise ValueError("Could not find summary data from %s in combined summary file" % summary)
 
 def check_seq_tel(tel, combined_tel):
-    with open(tel, "r") as file:
-        with open(combined_tel, "r") as cfile:
+    with open(str(tel), "r") as file:
+        with open(str(combined_tel), "r") as cfile:
             combined_data = json.load(cfile)
             try:
                 tel_data = json.load(file)
