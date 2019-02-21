@@ -86,7 +86,6 @@ def collapse_save(save_path):
     pipeline.combine()
     seq_tel.combine()
     seq_sum.combine()
-    workspace.combine()
 
     return BaseCalledData(config=config,
                           pipeline=pipeline,
@@ -94,78 +93,6 @@ def collapse_save(save_path):
                           telemetry=seq_tel,
                           workspace=workspace)
 
-    #
-    #
-    # names = ["pass", "fail", "calibration_strands"]
-    # save_path = Path(save_path)
-    #
-    # for i, bin in enumerate(os.listdir(str(save_path))):
-    #     bin_path = save_path.joinpath(bin)
-    #     if bin_path.is_file():
-    #         continue
-    #
-    #     for child in os.listdir(str(bin_path)):
-    #         if child == "sequencing_summary.txt":
-    #             sum_path = bin_path.joinpath(child)
-    #             new_sum_path = save_path.joinpath(child)
-    #             with open(str(sum_path), mode="r") as file:
-    #                 csv_reader = csv.reader(file, delimiter="\t")
-    #                 row_num = 0
-    #                 for row in csv_reader:
-    #                     if i != 0 and row_num == 0:
-    #                         row_num += 1
-    #                         continue
-    #                     row_num += 1
-    #                     with open(str(new_sum_path), mode="a") as sum_file:
-    #                         csv_writer = csv.writer(sum_file, delimiter="\t")
-    #                         csv_writer.writerow(row)
-    #
-    #         elif child == "workspace":
-    #             workspace_path = bin_path.joinpath(child)
-    #
-    #         elif child == "sequencing_telemetry.js":
-    #             with open(str(bin_path.joinpath(child)), "r") as file:
-    #                 tel_data = json.load(file)
-    #             with open(str(save_path.joinpath(child)), "a") as file:
-    #                 json.dump(tel_data, file)
-    #
-    #         elif i == 0 and child == "configuration.cfg":
-    #             shutil.copy(str(bin_path.joinpath(child)), str(save_path.joinpath(child)))
-    #
-    #         elif i == 0 and child == "pipeline.log":
-    #             shutil.copy(str(bin_path.joinpath(child)), str(save_path.joinpath(child)))
-    #
-    #     if i == 0:
-    #         new_workspace = save_path.joinpath(workspace_path.name)
-    #         os.mkdir(str(new_workspace))
-    #
-    #         for name in names:
-    #             path = new_workspace.joinpath(name)
-    #             if not path.exists():
-    #                 path.mkdir()
-    #
-    #     cal_strands = workspace_path.joinpath("calibration_strands", "unclassified", "0")
-    #     new_cal_strands = new_workspace.joinpath("calibration_strands", bin)
-    #     if not new_cal_strands.exists():
-    #         new_cal_strands.mkdir()
-    #
-    #     pass_reads = workspace_path.joinpath("pass", "unclassified", "0")
-    #     new_pass_reads = new_workspace.joinpath("pass", bin)
-    #     if not new_pass_reads.exists():
-    #         new_pass_reads.mkdir()
-    #
-    #     fail_reads = workspace_path.joinpath("fail", "unclassified", "0")
-    #     new_fail_reads = new_workspace.joinpath("fail", bin)
-    #     if not new_fail_reads.exists():
-    #         new_fail_reads.mkdir()
-    #
-    #
-    #     dump_reads(cal_strands, new_cal_strands)
-    #     dump_reads(pass_reads, new_pass_reads)
-    #     dump_reads(fail_reads, new_fail_reads)
-    #
-    #     shutil.rmtree(str(bin_path))
-    # return 0
 
 class AbstractBasecallOutput(ABC):
 
@@ -206,6 +133,7 @@ class Summary(AbstractBasecallOutput):
             for row in self.summary_data:
                 csv_writer.writerow(row)
 
+
 class Telemetry(AbstractBasecallOutput):
 
     def __init__(self, dest):
@@ -225,6 +153,7 @@ class Telemetry(AbstractBasecallOutput):
     def combine(self):
         with open(str(self.dest), "a") as file:
             json.dump(self.telemetry, file)
+
 
 class Configuration(AbstractBasecallOutput):
     def __init__(self, dest):
@@ -247,6 +176,7 @@ class Configuration(AbstractBasecallOutput):
             for data in self.config_data:
                 config.write(data)
 
+
 class Pipeline(AbstractBasecallOutput):
     def __init__(self, dest):
         self.pipeline_data = []
@@ -267,10 +197,11 @@ class Pipeline(AbstractBasecallOutput):
             for data in self.pipeline_data:
                 csv_writer.writerow(data)
 
+
 class Workspace(AbstractBasecallOutput):
     def __init__(self, dest):
         super().__init__(dest)
-        self.read_types = {} # {type_name: {barcodes: [reads]}}
+        # self.read_types = {} # {type_name: {barcodes: [reads]}}
 
     def consume(self, src):
         for read_type in os.listdir(str(src)):
@@ -279,25 +210,33 @@ class Workspace(AbstractBasecallOutput):
             for barcode in os.listdir(str(path)):
                 reads = []
                 barcode_path = path.joinpath(barcode)
-                for read in os.listdir(str(barcode_path)):
-                    reads.append(barcode_path.joinpath(read))
-                self.read_types[read_type][barcode] = reads
+                self.dump_reads(path, read_type, barcode)
 
-    def combine(self):
-        os.mkdir(str(self.dest))
-        for read_type in self.read_types.keys():
-            type_path = self.dest.joinpath(read_type)
-            os.mkdir(str(type_path))
-            for barcode in self.read_types[read_type].keys():
-                barcode_path = type_path.joinpath(barcode)
-                os.mkdir(str(barcode_path))
-                for read in self.read_types[read_type][barcode]:
-                    shutil.move(str(read), str(barcode_path.joinpath(read.name)))
+    # def combine(self):
+    #     os.mkdir(str(self.dest))
+    #     for read_type in self.read_types.keys():
+    #         type_path = self.dest.joinpath(read_type)
+    #         os.mkdir(str(type_path))
+    #         for barcode in self.read_types[read_type].keys():
+    #             barcode_path = type_path.joinpath(barcode)
+    #             os.mkdir(str(barcode_path))
+    #             for read in self.read_types[read_type][barcode]:
+    #                 shutil.move(str(read), str(barcode_path.joinpath(read.name)))
 
-def dump_reads(src, dest):
-    for read in os.listdir(str(src)):
-        shutil.copy(str(src.joinpath(read)), str(dest.joinpath(read)))
-    return 0
+    def dump_reads(self, src_path, read_type, barcode):
+        if not self.dest.exists():
+            self.dest.mkdir()
+        if not self.dest.joinpath(read_type).exists():
+            self.dest.joinpath(read_type).mkdir()
+        if not self.dest.joinpath(read_type, barcode).exists():
+            self.dest.joinpath(read_type, barcode).mkdir()
+            
+        for batch in os.listdir(str(src_path.joinpath(read_type, barcode))):
+            for read in os.listdir(str(src_path.joinpath(read_type, barcode, batch))):
+                shutil.copy(str(src_path.joinpath(read_type, barcode, batch, read)), str(self.dest.joinpath(read_type, barcode, read)))
+        return 0
+
+
 
 # config = Configuration()
 # config.consume("../tests/test_data/basecall_files/configurations/config_17.cfg")
