@@ -201,7 +201,7 @@ class Summary(AbstractBasecallOutput):
         pass
 
     def combine(self):
-        with open(self.dest, 'a') as dest_file:
+        with open(str(self.dest), 'a') as dest_file:
             csv_writer = csv.writer(dest_file, delimiter='\t')
             for row in self.summary_data:
                 csv_writer.writerow(row)
