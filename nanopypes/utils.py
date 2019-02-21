@@ -279,7 +279,7 @@ class Workspace(AbstractBasecallOutput):
                 reads = []
                 barcode_path = path.joinpath(barcode)
                 for read in os.listdir(str(barcode_path)):
-                    reads.append(barcode_path, read)
+                    reads.append(barcode_path.joinpath(read))
                 self.read_types[read_type[barcode]] = reads
 
     def combine(self):
