@@ -205,7 +205,7 @@ class Cluster:
                                       cores=self.cores,
                                       memory=self.memory,
                                       death_timeout=self.time_out)
-        #print("job script: ", self.cluster.job_script())
+        print("job script: ", self.cluster.job_script())
         self.client = Client(self.cluster)
         print("scale_value: ", self.scale_value)
         self.scale(self.scale_value)

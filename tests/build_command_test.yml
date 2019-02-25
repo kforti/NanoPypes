@@ -1,6 +1,6 @@
 basecall_config:
   input_path: test_data/minion_sample_raw_data/fast5/pass
-  save_path: ./test_data/basecalled_data/results
+  save_path: test_data/basecalled_data/results
   flowcell: FLO-MIN106
   kit: SQK-LSK109
   barcoding: False
@@ -17,7 +17,7 @@ basecall_config:
     workers: 20
     cores: 20
     memory: 40 GB
-    scale_value: 100
+    scale_value: 20
     cluster_type: LSF
 cluster_login:
   username: kf78w@ghpcc06.umassrc.org
