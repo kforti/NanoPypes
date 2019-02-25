@@ -70,12 +70,17 @@ class Sample:
         return num
 
 class BaseCalledData:
-    def __init__(self, config, summary, telemetry, pipeline, workspace):
+    def __init__(self, path, config, summary, telemetry, pipeline, workspace):
+        self._path = path
         self._config = config
         self._summary = summary
         self._telemetry = telemetry
         self._pipeline = pipeline
         self._workspace = workspace
+
+    @property
+    def path(self):
+        return self._path
 
     @property
     def configuration(self):

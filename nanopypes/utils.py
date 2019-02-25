@@ -87,7 +87,8 @@ def collapse_save(save_path):
     seq_tel.combine()
     seq_sum.combine()
 
-    return BaseCalledData(config=config,
+    return BaseCalledData(path=save_path,
+                          config=config,
                           pipeline=pipeline,
                           summary=seq_sum,
                           telemetry=seq_tel,

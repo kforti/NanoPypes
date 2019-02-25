@@ -257,9 +257,19 @@ class TestBasecall(unittest.TestCase):
         yaml = "basecall_test_config.yml"
         cluster = Cluster(config=yaml)
         albacore = Albacore(input=yaml)
+        input_data = albacore.input_path
+        for path, subdirs, files in os.walk(input_data_path):
+            input_reads = [read for read in files]
 
         basecaller = AlbacoreBasecall(albacore, cluster)
         basecalled_data = basecaller()
+
+        bc_data_path = basecalled_data.path
+        for path, subdirs, files in os.walk(bc_data_path):
+            bc_reads = [read for read in files]
+
+        print("input reads: \n", input_reads)
+        print("basecalled reads: \n", bc_reads)
 
 
 ########################################################################
