@@ -196,12 +196,12 @@ class Cluster:
 
         if self.cluster_type == "LSF":
             logging.info("connecting to cluster")
-            self.cluster = LSFCluster(queue=self.queue,
-                                      project=self.project,
+            self.cluster = LSFCluster(queue=self.queue, #Passed to #BSUB -q option.
+                                      project=self.project, #Passed to #BSUB -P option.
                                       processes=self.workers,
-                                      walltime=self.walltime,
-                                      # ncpus=self.ncpus,
-                                      # mem=self.mem,
+                                      walltime=self.walltime, #Passed to #BSUB -W option.
+                                      # ncpus=self.ncpus, #Passed to #BSUB -n option.
+                                      # mem=self.mem, #Passed to #BSUB -M option.
                                       cores=self.cores,
                                       memory=self.memory,
                                       death_timeout=self.time_out)

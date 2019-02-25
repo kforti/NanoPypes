@@ -10,13 +10,13 @@ basecall_config:
   reads_per_fastq: 1000
   cluster:
     job_time: 06:00
-    mem: 40000
+    mem: 2048
     ncpus: 20
     project: /project/umw_athma_pai
     queue: long
     workers: 20
     cores: 20
-    memory: 40 GB
+    memory: 2 GB
     scale_value: 20
     cluster_type: LSF
 cluster_login:
