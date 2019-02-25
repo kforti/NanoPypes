@@ -4,7 +4,7 @@
 from nanopypes.objects import Sample
 from nanopypes.albacore import Albacore, Cluster
 import click
-from nanopypes.nanopypes import basecall
+from nanopypes.pipes import basecall
 
 
 @click.command()

@@ -64,7 +64,7 @@ def collapse_save(save_path):
     save_path = Path(save_path)
     batches = os.listdir(str(save_path))
 
-    pipeline = Pipeline(save_path.joinpath("pipeline.log"))
+    pipeline = PipelineLog(save_path.joinpath("pipeline.log"))
     seq_sum = Summary(save_path.joinpath("sequencing_summary.txt"))
     seq_tel = Telemetry(save_path.joinpath("sequencing_telemetry.js"))
     config = Configuration(save_path.joinpath("configuration.cfg"))
@@ -177,9 +177,10 @@ class Configuration(AbstractBasecallOutput):
                 config.write(data)
 
 
-class Pipeline(AbstractBasecallOutput):
+class PipelineLog(AbstractBasecallOutput):
     def __init__(self, dest):
         self.pipeline_data = []
+        self.pipeline_logs = []
         super().__init__(dest)
 
     def consume(self, src):
