@@ -200,8 +200,8 @@ class Cluster:
                                       project=self.project,
                                       processes=self.workers,
                                       walltime=self.walltime,
-                                      ncpus=self.ncpus,
-                                      mem=self.mem,
+                                      # ncpus=self.ncpus,
+                                      # mem=self.mem,
                                       cores=self.cores,
                                       memory=self.memory,
                                       death_timeout=self.time_out)
@@ -226,32 +226,3 @@ class Cluster:
             self.cluster.stop_all_jobs()
         else:
             self.cluster.stop_jobs(jobs)
-
-    # def parallel_basecaller(self, test=False):
-    #     try:
-    #         self._connect_cluster()
-    #         num_dirs = self.albacore.num_dirs
-    #         logging.info('Number of Directories: ' + str(num_dirs))
-    #         try:
-    #             for i in range(num_dirs):
-    #                 commands = self.albacore.basecall_input
-    #                 func = self._build_func()
-    #                 if test:
-    #                     logging.info('This run is a test')
-    #                     logging.info(str(commands[0: self.workers]))
-    #                     basecalled_reads = self.client.map(func, commands[1])
-    #                     break
-    #                 else:
-    #                     logging.info('This run is not a test')
-    #                     basecalled_reads = self.client.map(func, commands[1])
-    #                 wait(basecalled_reads)
-    #                 self.albacore.remove_temps()
-    #
-    #         except StopIteration:
-    #             return
-    #
-    #         self.albacore.collapse_save()
-    #
-    #     except Exception as e:
-    #         logging.info("Exception raised during the basecalling: " + str(e))
-    #         self.cluster.kill_all_jobs()
