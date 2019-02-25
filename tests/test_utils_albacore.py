@@ -258,7 +258,7 @@ class TestBasecall(unittest.TestCase):
         cluster = Cluster(config=yaml)
         albacore = Albacore(input=yaml)
         input_data = albacore.input_path
-        for path, subdirs, files in os.walk(input_data_path):
+        for path, subdirs, files in os.walk(input_data):
             input_reads = [read for read in files]
 
         basecaller = AlbacoreBasecall(albacore, cluster)
