@@ -9,11 +9,11 @@ basecall_config:
   recursive: False
   reads_per_fastq: 1000
   cluster:
-    job_time: 06:00
+    job_time: 01:00
     mem: 2048
     ncpus: 5
     project: /project/umw_athma_pai
-    queue: long
+    queue: short
     workers: 5
     cores: 5
     memory: 2 GB
