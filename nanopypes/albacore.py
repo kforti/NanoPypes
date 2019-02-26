@@ -200,8 +200,8 @@ class Cluster:
                                       project=self.project, #Passed to #BSUB -P option.
                                       processes=self.workers,
                                       walltime=self.walltime, #Passed to #BSUB -W option.
-                                     #ncpus=self.ncpus, #Passed to #BSUB -n option.
-                                      #mem=self.mem, #Passed to #BSUB -M option.
+                                      ncpus=self.ncpus, #Passed to #BSUB -n option.
+                                      mem=self.mem, #Passed to #BSUB -M option.
                                       cores=self.cores,
                                       memory=self.memory,
                                       death_timeout=self.time_out)
