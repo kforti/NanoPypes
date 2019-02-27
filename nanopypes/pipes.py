@@ -47,12 +47,16 @@ class AlbacoreBasecall(Pipe):
         self.compute.connect()
 
     def execute(self):
+        batch_counter = 0
+        batches = len(self.albacore.batches)
         for batch in self.albacore.batches:
+            batch_counter += 1
             dirs = temp_dirs(batch, self.input_path)
             commands = []
             for dir in dirs:
                 commands.append(self.albacore.build_command(dir, batch.name))
             self.compute.map(self.func, commands)
+            print("Batch ", batch_counter, " out of ", batches)
             self.compute.show_progress()
 
             remove_temps(self.temp_path)

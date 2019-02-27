@@ -267,7 +267,7 @@ class TestBasecall(unittest.TestCase):
 
         bc_reads = []
         bc_data_path = basecalled_data.path
-        for path, subdirs, files in os.walk(str(bc_data_path)):
+        for path, subdirs, files in os.walk(str(bc_data_path.joinpath('workspace'))):
             bc_reads.extend(files)
 
         for read in bc_reads:
