@@ -16,7 +16,7 @@ basecall_config:
     queue: short
     workers: 10
     cores: 10
-    memory: 2 GB
+    memory: 1 GB
     scale_value: 20
     cluster_type: LSF
 cluster_login:
