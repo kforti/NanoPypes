@@ -11,11 +11,11 @@ basecall_config:
   cluster:
     job_time: 01:00
     mem: 2048
-    ncpus: 5
+    ncpus: 10
     project: /project/umw_athma_pai
     queue: short
-    workers: 5
-    cores: 5
+    workers: 10
+    cores: 10
     memory: 2 GB
     scale_value: 20
     cluster_type: LSF
