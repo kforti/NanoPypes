@@ -33,7 +33,7 @@ class Pipe(ABC):
         pass
 
     def __call__(self):
-        self.execute()
+        return self.execute()
 
 
 class AlbacoreBasecall(Pipe):
