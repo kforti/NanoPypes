@@ -87,7 +87,7 @@ class Albacore:
 
     @property
     def num_batches(self):
-        return self.input.num_bins
+        return self.input.num_batches
 
     @property
     def batch_generator(self):

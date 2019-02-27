@@ -2,17 +2,16 @@ import h5py
 import os
 from pathlib import Path
 
-class SeqOutput:
-    """ Data type for managing and manipulating Raw Fast5 MinIon sequencing data"""
-    def __init__(self, input_path):
-        self.input_path = input_path
+class NanoPypeObject:
+    def __init__(self, path):
+        self._path = path
 
     @property
     def path(self):
-        """
-        Return the input_path associated with a RawFast5 instance
-        """
-        return self.input_path
+        return self._path
+
+class SeqOutput(NanoPypeObject):
+    """ Data type for managing and manipulating Raw Fast5 MinIon sequencing data"""
 
     #pass_reads and fail_reads might need to be updated to get read batches
     @property
@@ -47,29 +46,24 @@ class SeqOutput:
         pass
 
 
-class Experiment:
-    pass
+class Experiment(NanoPypeObject):
 
-class Sample:
-    def __init__(self, path):
-        self._path = None
-        self.path = path
+    def __init__(self):
+        super
 
     @property
-    def path(self):
-        return self._path
+    def samples(self):
+        return self._samples
 
-    @path.setter
-    def path(self, path):
-        self._path = path
-        return self._path
+class Sample(NanoPypeObject):
 
     @property
-    def num_bins(self):
-        num = len([i for i in range(os.listdir(self._path))])
+    def num_batches(self):
+        num = len(os.listdir(self._path))
         return num
 
-class BaseCalledData:
+
+class BaseCalledData(NanoPypeObject):
     def __init__(self, path, config, summary, telemetry, pipeline, workspace):
         self._path = path
         self._config = config
@@ -103,5 +97,7 @@ class BaseCalledData:
         return self._workspace
 
 
+class BasecalledRead(NanoPypeObject):
+    pass
 
 

@@ -258,18 +258,23 @@ class TestBasecall(unittest.TestCase):
         cluster = Cluster(config=yaml)
         albacore = Albacore(input=yaml)
         input_data = albacore.input_path
-        for path, subdirs, files in os.walk(input_data):
-            input_reads = [read for read in files]
+        input_reads = []
+        for path, subdirs, files in os.walk(str(input_data)):
+            input_reads.extend(files)
 
         basecaller = AlbacoreBasecall(albacore, cluster)
         basecalled_data = basecaller()
 
+        bc_reads = []
         bc_data_path = basecalled_data.path
-        for path, subdirs, files in os.walk(bc_data_path):
-            bc_reads = [read for read in files]
+        for path, subdirs, files in os.walk(str(bc_data_path)):
+            bc_reads.extend(files)
 
-        print("input reads: \n", input_reads)
-        print("basecalled reads: \n", bc_reads)
+        for read in bc_reads:
+            self.assertTrue(read in input_reads)
+
+        for read in input_reads:
+            self.assertTrue(read in bc_reads)
 
 
 ########################################################################
