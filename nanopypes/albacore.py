@@ -120,7 +120,7 @@ class Albacore:
 class Cluster:
     """ Cluster based task manager for running the basecaller in parallel"""
     def __init__(self, config=None, queue=None, project=None, job_time=None, cores=None, mem=None,
-                 ncpus=None, memory=None, workers=None, scale_value=None, cluster_type=None, time_out=200):
+                 ncpus=None, memory=None, workers=None, scale_value=None, cluster_type=None, time_out=2000):
 
         self.config = BasecallConfig(config, queue=queue, project=project, job_time=job_time, cores=cores,
                                      memory=memory, workers=workers, cluster_type=cluster_type,
@@ -169,16 +169,16 @@ class Cluster:
         """Add workers to cluster connection"""
         self.cluster.scale(value)
         timer = 0
-        # while len(self.cluster.scheduler.workers) < value:
-        #     time.sleep(1)
-        #     print("Client: ", self.client)
-        #     print("workers: ", len(self.cluster.scheduler.workers))
-        #     print("expected workers: ", value)
-        #     print("pending jobs: ", self.cluster.pending_jobs)
-        #     print("jobs: ", len(self.cluster.running_jobs))
-        #     timer += 1
-        #     if timer > self.time_out:
-        #         raise ConnectionError("Could not start all workers before time_out")
+        while len(self.cluster.scheduler.workers) < value:
+            time.sleep(1)
+            print("Client: ", self.client)
+            print("workers: ", len(self.cluster.scheduler.workers))
+            print("expected workers: ", value)
+            print("pending jobs: ", self.cluster.pending_jobs)
+            print("jobs: ", len(self.cluster.running_jobs))
+            timer += 1
+            if timer > self.time_out:
+                raise ConnectionError("Could not start all workers before time_out")
 
         self.workers = value
 
