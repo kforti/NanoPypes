@@ -9,8 +9,17 @@ from dask.distributed import Client, progress, as_completed
 from nanopypes.utils import temp_dirs
 from nanopypes.objects.raw import Sample
 from nanopypes.config import BasecallConfig
+from nanopypes.pipes import AlbacoreBasecall
 
 logging.basicConfig(format='%(levelname)s:%(message)s', level=logging.DEBUG)
+
+def basecall(config, basecaller='Albacore'):
+    if basecaller = 'Albacore':
+        albacore = Albacore(config)
+        cluster = Cluster(config)
+        data = AlbacoreBasecall(albacore=albacore, compute=cluster)
+
+    return data
 
 class Albacore:
     """ Conatains the data associated with making the command to run the basecaller.

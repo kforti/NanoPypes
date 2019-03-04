@@ -1,6 +1,6 @@
 basecall_config:
-  input_path: test_data/minion_sample_raw_data/Experiment_01/sample_01/fast5/pass
-  save_path: test_data/basecalled_data/bc_test_results
+  input_path: /project/umw_athma_pai/kevin/data/minion_ercc_labeled/20190220_1525_ERCC/fast5/pass
+  save_path: /project/umw_athma_pai/kevin/data/minion_ercc_labeled/basecalled_data
   flowcell: FLO-MIN106
   kit: SQK-LSK109
   barcoding: True
@@ -9,7 +9,7 @@ basecall_config:
   recursive: False
   reads_per_fastq: 1000
   cluster:
-    job_time: 02:00
+    job_time: 04:00
     mem: 2048
     ncpus: 10
     project: /project/umw_athma_pai
@@ -17,7 +17,7 @@ basecall_config:
     workers: 10
     cores: 10
     memory: 2 GB
-    scale_value: 20
+    scale_value: 200
     cluster_type: LSF
 cluster_login:
   username: kf78w@ghpcc06.umassrc.org
