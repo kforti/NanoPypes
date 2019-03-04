@@ -83,8 +83,8 @@ class Albacore:
 
     @property
     def batches(self):
-        bins = [Path(self.input_path).joinpath(i) for i in os.listdir(self.input_path)]
-        return bins
+        batches = [Path(self.input_path).joinpath(i) for i in os.listdir(str(self.input_path))]
+        return batches
 
     @property
     def num_batches(self):
