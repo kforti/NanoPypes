@@ -14,7 +14,7 @@ from nanopypes.pipes import AlbacoreBasecall
 logging.basicConfig(format='%(levelname)s:%(message)s', level=logging.DEBUG)
 
 def basecall(config, basecaller='Albacore'):
-    if basecaller = 'Albacore':
+    if basecaller == 'Albacore':
         albacore = Albacore(config)
         cluster = Cluster(config)
         data = AlbacoreBasecall(albacore=albacore, compute=cluster)
