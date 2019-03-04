@@ -59,7 +59,7 @@ class AlbacoreBasecall(Pipe):
             for dir in dirs:
                 commands.append(self.albacore.build_command(dir, batch.name))
             self.compute.map(self.func, commands)
-            print("Batch ", batch_counter, " out of ", batches)
+            print("\nBatch ", batch_counter, " out of ", batches)
             self.compute.show_progress()
 
             remove_temps(self.temp_path)
