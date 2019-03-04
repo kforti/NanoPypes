@@ -17,7 +17,8 @@ def basecall(config, basecaller='Albacore'):
     if basecaller == 'Albacore':
         albacore = Albacore(config)
         cluster = Cluster(config)
-        data = AlbacoreBasecall(albacore=albacore, compute=cluster)
+        basecaller = AlbacoreBasecall(albacore=albacore, compute=cluster)
+        data = basecaller.execute()
 
     return data
 
