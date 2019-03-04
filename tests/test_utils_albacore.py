@@ -10,7 +10,7 @@ import json
 import csv
 from pathlib import Path
 from nanopypes.albacore import Albacore, Cluster
-from nanopypes.objects import Sample
+from nanopypes.objects.raw import Sample
 from nanopypes.pipes import AlbacoreBasecall
 from nanopypes.utils import temp_dirs, remove_temps, collapse_save
 
@@ -22,10 +22,8 @@ from nanopypes.utils import temp_dirs, remove_temps, collapse_save
 class TestAlbacore(unittest.TestCase):
     """Tests for the Albacore class."""
 
-    @classmethod
     def setUp(self):
         """Set up test fixtures, if any."""
-        from nanopypes.albacore import Albacore
 
     def tearDown(self):
         """Tear down test fixtures, if any."""
