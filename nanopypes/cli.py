@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """Console script for pai-nanopypes."""
 
-from nanopypes.objects import Sample
+from nanopypes.objects.raw import Sample
 from nanopypes.albacore import Albacore, Cluster
 import click
 from nanopypes.pipes import basecall
@@ -26,7 +26,7 @@ from nanopypes.pipes import basecall
 @click.option('--cores', help='the number of cores per dask worker')
 @click.option('--memory', help='the amount of memory per dask worker')
 @click.argument('config', required=False)
-def parallel_basecaller(config, **kwargs):
+def albacore_basecaller(config, **kwargs):
     """Console script for pai-nanopypes."""
     print("Configuring Basecaller...")
     basecall_config = BasecallConfig(config, **kwargs)

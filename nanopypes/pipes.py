@@ -1,8 +1,11 @@
 import subprocess
+import logging
 from pathlib import Path
-from nanopypes.utils import temp_dirs, remove_temps, collapse_save
-from abc import ABC, abstractmethod, abstractproperty
+from abc import ABC, abstractmethod
 import collections.abc
+
+from nanopypes.utils import temp_dirs, remove_temps, collapse_save
+
 
 class Pipeline(collections.abc.Callable):
     def __init__(self, pipes):

@@ -5,12 +5,13 @@ import logging
 import time
 from pathlib import Path
 from dask_jobqueue import LSFCluster
-from dask.distributed import Client, wait, progress
+from dask.distributed import Client, progress, as_completed
 from nanopypes.utils import temp_dirs
-from nanopypes.objects import Sample
+from nanopypes.objects.raw import Sample
 from nanopypes.config import BasecallConfig
 
-print("testing a change")
+logging.basicConfig(format='%(levelname)s:%(message)s', level=logging.DEBUG)
+
 class Albacore:
     """ Conatains the data associated with making the command to run the basecaller.
     Build the command with build_command()

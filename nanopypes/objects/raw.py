@@ -1,5 +1,8 @@
 import h5py
 import os
+from ont_fast5_api.fast5_interface import is_multi_read
+from ont_fast5_api.fast5_read import Fast5Read
+from ont_fast5_api.fast5_file import Fast5File
 from nanopypes.objects.base import NanoPypeObject
 
 class SeqOutput(NanoPypeObject):
@@ -34,50 +37,86 @@ class SeqOutput(NanoPypeObject):
         pass
 
     def get_sample(self, experiment, sample):
-        pass
+        sample_path = self.path.joinpath(experiment, sample)
+        return Sample(sample_path)
 
 
 class Experiment(NanoPypeObject):
 
     def __init__(self, path):
         super().__init__(path)
-        self._samples = os.listdir(str(self.path))
 
     @property
     def samples(self):
-        return self._samples
+        return os.listdir(str(self.path))
 
     def get_sample(self, name):
         return Sample(self.path.joinpath(name))
 
+
 class Sample(NanoPypeObject):
-
-    @property
-    def num_batches(self):
-        num = len(os.listdir(self._path))
-        return num
-
-
-class RawRead(NanoPypeObject):
 
     def __init__(self, path):
         super().__init__(path)
 
     @property
-    def fast5(self):
+    def pass_batches(self):
+        batch_path = self.path.joinpath('fast5', 'pass')
+        return [batch_path.joinpath(i) for i in sorted(os.listdir(str(batch_path)))]
+
+    @property
+    def fail_batches(self):
+        batch_path = self.path.joinpath('fast5', 'fail')
+        return [batch_path.joinpath(i) for i in sorted(os.listdir(str(batch_path)))]
+
+    @property
+    def num_batches(self):
+        """Number of batches in the Sample's fast5 directory"""
+        num = len(os.listdir(str(self.path.joinpath('fast5'))))
+        return num
+
+    @property
+    def read_types(self):
+        pass
+
+    @property
+    def info(self):
+        pass
+
+    @property
+    def num_reads(self):
+        pass_reads = 0
+        fail_reads = 0
+
+        for batch in self.pass_batches:
+            pass_reads += len(os.listdir(batch))
+
+        for batch in self.fail_batches:
+            fail_reads += len(os.listdir(batch))
+
+        return {'pass': pass_reads, 'fail': fail_reads}
+
+
+class Fast5Read(Fast5Read):
+
+    def __init__(self, path, read_id):
+        super().__init__(path, read_id)
+
+    @property
+    def open(self):
         return h5py.File(self.path, 'r')
 
     @property
     def read_name(self):
-        return self.fast5.filename
+        return self.open.filename
 
     @property
-    def structure(self):
-        self.iter_group(self.fast5, 0)
+    def contents(self):
+        self.iter_group(self.open, 0)
 
     @property
     def signal(self):
-        return self.fast5.get('Signal')
+        return self.open.get('Signal')
 
     def iter_group(self, group, layer=0):
         for key in group:
@@ -86,8 +125,5 @@ class RawRead(NanoPypeObject):
                 self.iter_group(group.get(key), layer + 1)
 
 
-class _ReadTypes(NanoPypeObject):
+class ReadFile(Fast5File):
     pass
-
-f = RawRead('/Users/kevinfortier/Desktop/NanoPypes/NanoPypes/pai-nanopypes/tests/test_data/minion_sample_raw_data/fast5/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_102_ch_58_strand.fast5')
-print(f.signal)
