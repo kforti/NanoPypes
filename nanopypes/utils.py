@@ -17,7 +17,7 @@ def temp_dirs(data_dir, temp_location):
     temp_path.mkdir()
 
     dir_len = len(os.listdir(str(data_dir)))
-    num_splits = int(dir_len / 4)
+    num_splits = int(dir_len / 10)
 
     if dir_len % num_splits == 0:
         num_files = int(dir_len / num_splits)
