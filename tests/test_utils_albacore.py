@@ -209,11 +209,12 @@ class TestUtilityFunctions(unittest.TestCase):
         compute = Cluster(config=compute_config)
         compute.connect()
         sample_raw_data = "test_data/minion_sample_raw_data/Experiment_01/sample_01/fast5/pass/0"
-        split_data(data_path=sample_raw_data,
+        files = split_data(data_path=sample_raw_data,
                    save_path="test_data/minion_sample_raw_data",
                    splits=10,
                    compute=compute
                    )
+        print(files)
 
     def test_001_remove_temps(self):
         """Remove the temporary directories created in previous test"""
