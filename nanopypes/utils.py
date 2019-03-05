@@ -1,10 +1,41 @@
 import os
 import shutil
+import math
 from pathlib import Path
 from nanopypes.objects.basecalled import BaseCalledData, Summary, Telemetry, Configuration, PipelineLog, Workspace
 
 
-def temp_dirs(data_dir, temp_location):
+def split_data(data_path, save_path, splits, compute=None, recursive=False):
+    """Splits data into multiple directories for parallel processing"""
+    data_path = Path(data_path)
+    save_path = Path(save_path).joinpath("split_data")
+    files = [data_path.joinpath(file) for file in os.listdir(str(data_path))]
+    chunk_size = math.ceil((len(files) / splits))
+    file_chunks = list(_chunks(files, chunk_size))
+
+    if compute:
+        compute.map(_create_dir, file_chunks)
+
+
+def _chunks(file_names, chunk_size, save_path):
+    """Yield successive n-sized chunks from l."""
+    counter = 0
+    for i in range(0, len(file_names), chunk_size):
+        new_dir_path = save_path.joinpath(str(counter))
+
+        yield (new_dir_path, file_names[i:i + chunk_size])
+        counter += 1
+
+def _create_dir(files):
+    if files[0].exists() == False:
+        files[0].mkdir()
+
+    for file in files[1]:
+        new_file_path = file[0].joinpath(file.name)
+        shutil.copyfile(str(file), str(new_file_path))
+
+
+def temp_dirs(data_dir, temp_location, parallel=True):
     """ Create temp directories and divide input data into these directories
     Return list of temp directory locations
     :Parameters:
@@ -45,6 +76,8 @@ def temp_dirs(data_dir, temp_location):
         if len(os.listdir(str(p))) > 0:
             dirs_list.append(str(p))
     return dirs_list
+
+def _make_temp_dirs()
 
 def file_generator(dir):
     for file in os.listdir(str(dir)):
