@@ -77,8 +77,6 @@ def temp_dirs(data_dir, temp_location, parallel=True):
             dirs_list.append(str(p))
     return dirs_list
 
-def _make_temp_dirs()
-
 def file_generator(dir):
     for file in os.listdir(str(dir)):
         file_path = dir.joinpath(file)
