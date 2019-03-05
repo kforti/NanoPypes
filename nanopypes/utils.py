@@ -11,7 +11,7 @@ def split_data(data_path, save_path, splits, compute=None, recursive=False):
     save_path = Path(save_path).joinpath("split_data")
     files = [data_path.joinpath(file) for file in os.listdir(str(data_path))]
     chunk_size = math.ceil((len(files) / splits))
-    file_chunks = list(_chunks(files, chunk_size))
+    file_chunks = list(_chunks(files, chunk_size, save_path))
 
     if compute:
         compute.map(_create_dir, file_chunks)
