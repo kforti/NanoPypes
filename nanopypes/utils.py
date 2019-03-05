@@ -9,12 +9,18 @@ def split_data(data_path, save_path, splits, compute=None, recursive=False):
     """Splits data into multiple directories for parallel processing"""
     data_path = Path(data_path)
     save_path = Path(save_path).joinpath("split_data")
+    if save_path.exists() == False:
+        save_path.mkdir()
     files = [data_path.joinpath(file) for file in os.listdir(str(data_path))]
     chunk_size = math.ceil((len(files) / splits))
     file_chunks = list(_chunks(files, chunk_size, save_path))
 
     if compute:
         compute.map(_create_dir, file_chunks)
+
+    else:
+        for files in file_chunks:
+            _create_dir(files)
 
 
 def _chunks(file_names, chunk_size, save_path):
@@ -27,11 +33,12 @@ def _chunks(file_names, chunk_size, save_path):
         counter += 1
 
 def _create_dir(files):
+    print("Look HERE!!!!", files[0], files[0].exists())
     if files[0].exists() == False:
         files[0].mkdir()
 
     for file in files[1]:
-        new_file_path = file[0].joinpath(file.name)
+        new_file_path = files[0].joinpath(file.name)
         shutil.copyfile(str(file), str(new_file_path))
 
 

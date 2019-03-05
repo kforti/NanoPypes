@@ -176,10 +176,11 @@ class TestUtilityFunctions(unittest.TestCase):
 
     @classmethod
     def setUp(self):
-        basecalled_data_path = "test_data/basecalled_data/bc_test_results"
-        shutil.rmtree("test_data/basecalled_data/test_results")
-        #Make a copy of the basecalled data to perform tests on
-        shutil.copytree(basecalled_data_path, "test_data/basecalled_data/test_results")
+        pass
+        # basecalled_data_path = "test_data/basecalled_data/bc_test_results"
+        # shutil.rmtree("test_data/basecalled_data/test_results")
+        # #Make a copy of the basecalled data to perform tests on
+        # shutil.copytree(basecalled_data_path, "test_data/basecalled_data/test_results")
 
     @classmethod
     def tearDown(self):
