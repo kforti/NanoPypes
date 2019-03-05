@@ -18,6 +18,7 @@ def split_data(data_path, save_path, splits, compute=None, recursive=False):
     if compute:
         print("Computing.........\n", _create_dir, "\n", file_chunks)
         compute.map(_create_dir, file_chunks)
+        compute.show_progress()
 
     else:
         for files in file_chunks:
