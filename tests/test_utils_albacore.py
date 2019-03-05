@@ -206,6 +206,7 @@ class TestUtilityFunctions(unittest.TestCase):
     def test_000_split_data(self):
         compute_config = 'build_command_test.yml'
         compute = Cluster(config=compute_config)
+        compute.connect()
         sample_raw_data = "test_data/minion_sample_raw_data/Experiment_01/sample_01/fast5/pass/0"
         split_data(data_path=sample_raw_data,
                    save_path="test_data/minion_sample_raw_data",
