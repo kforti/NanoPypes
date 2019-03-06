@@ -4,7 +4,7 @@ from pathlib import Path
 from abc import ABC, abstractmethod
 import collections.abc
 
-from nanopypes.utils import temp_dirs, remove_temps, collapse_save
+from nanopypes.utils import temp_dirs, remove_temps, collapse_save, ParallelizeData
 
 
 class Pipeline(collections.abc.Callable):
@@ -54,6 +54,8 @@ class AlbacoreBasecall(Pipe):
         batches = len(self.albacore.batches)
         for batch in self.albacore.batches:
             batch_counter += 1
+            pdata = ParallelizeData()
+            pdata.split_data(self.input_path)
             dirs = temp_dirs(batch, self.input_path)
             commands = []
             for dir in dirs:
