@@ -4,51 +4,54 @@ import math
 from pathlib import Path
 from nanopypes.objects.basecalled import BaseCalledData, Summary, Telemetry, Configuration, PipelineLog, Workspace
 
+class ParallelizeData:
 
-def split_data(data_path, save_path, splits, compute=None, recursive=False):
-    """Splits data into multiple directories for parallel processing"""
-    data_path = Path(data_path)
-    save_path = Path(save_path).joinpath("split_data")
-    if save_path.exists() == False:
-        save_path.mkdir()
-    files = [data_path.joinpath(file) for file in os.listdir(str(data_path))]
-    chunk_size = math.ceil((len(files) / splits))
-    file_chunks = list(_chunks(files, chunk_size, save_path))
+    def __init__(self):
+        self._data_store = []
 
-    if compute:
-        files_lists = compute.map(_create_dir, file_chunks)
-        compute.show_progress()
-        final_files = []
-        for l in files_lists:
-            final_files.extend(l)
+    @property
+    def data_paths(self):
+        return self._data_store
 
-    else:
-        for files in file_chunks:
-            _create_dir(files)
+    def split_data(self, data_path, save_path, splits, compute=None, recursive=False):
+        """Splits data into multiple directories for parallel processing"""
+        data_path = Path(data_path)
+        save_path = Path(save_path).joinpath("split_data")
+        if save_path.exists() == False:
+            save_path.mkdir()
+        files = [data_path.joinpath(file) for file in os.listdir(str(data_path))]
+        chunk_size = math.ceil((len(files) / splits))
+        file_chunks = list(self._chunks(files, chunk_size, save_path))
 
-    return final_files
+        if compute:
+            compute.map(self._create_dir, file_chunks)
+            compute.show_progress()
+
+        else:
+            for files in file_chunks:
+                self._create_dir(files)
+
+        return self.data_paths
 
 
-def _chunks(file_names, chunk_size, save_path):
-    """Yield successive n-sized chunks from l."""
-    counter = 0
-    for i in range(0, len(file_names), chunk_size):
-        new_dir_path = save_path.joinpath(str(counter))
+    def _chunks(self, file_names, chunk_size, save_path):
+        """Yield successive n-sized chunks from l."""
+        counter = 0
+        for i in range(0, len(file_names), chunk_size):
+            new_dir_path = save_path.joinpath(str(counter))
 
-        yield (new_dir_path, file_names[i:i + chunk_size])
-        counter += 1
+            yield (new_dir_path, file_names[i:i + chunk_size])
+            counter += 1
 
-def _create_dir(files):
-    print("Look HERE!!!!", files[0], files[0].exists())
-    if files[0].exists() == False:
-        files[0].mkdir()
+    def _create_dir(self, files):
+        # print("Look HERE!!!!", files[0], files[0].exists())
+        if files[0].exists() == False:
+            files[0].mkdir()
 
-    files_list = []
-    for file in files[1]:
-        new_file_path = files[0].joinpath(file.name)
-        files_list.append(file)
-        shutil.copyfile(str(file), str(new_file_path))
-    return files_list
+        for file in files[1]:
+            new_file_path = files[0].joinpath(file.name)
+            self._data_store.append(file)
+            shutil.copyfile(str(file), str(new_file_path))
 
 
 def temp_dirs(data_dir, temp_location, parallel=True):

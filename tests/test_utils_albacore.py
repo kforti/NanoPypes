@@ -12,7 +12,8 @@ from pathlib import Path
 from nanopypes.albacore import Albacore, Cluster
 from nanopypes.objects.raw import Sample
 from nanopypes.pipes import AlbacoreBasecall
-from nanopypes.utils import temp_dirs, remove_temps, collapse_save, split_data
+from nanopypes.utils import temp_dirs, remove_temps, collapse_save, ParallelizeData
+
 
 
 ########################################################################
@@ -209,12 +210,13 @@ class TestUtilityFunctions(unittest.TestCase):
         compute = Cluster(config=compute_config)
         compute.connect()
         sample_raw_data = "test_data/minion_sample_raw_data/Experiment_01/sample_01/fast5/pass/0"
-        files = split_data(data_path=sample_raw_data,
+        p_data = ParallelizeData()
+        p_data.split_data(data_path=sample_raw_data,
                    save_path="test_data/minion_sample_raw_data",
                    splits=10,
                    compute=compute
                    )
-        print(files)
+        print(p_data.data_paths)
 
     def test_001_remove_temps(self):
         """Remove the temporary directories created in previous test"""
