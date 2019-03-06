@@ -83,8 +83,10 @@ class TestCluster(unittest.TestCase):
         """ Test the map function on a cluster instance"""
         self.cluster = Cluster(config="build_command_test.yml")
         self.cluster.connect()
-        self.cluster.map(increment, range(500))
+        results = self.cluster.map(increment, range(500))
         self.cluster.show_progress()
+        print(results)
+        self.cluster.close()
 
 
 ##########################################################################

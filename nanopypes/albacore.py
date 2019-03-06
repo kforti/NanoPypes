@@ -201,7 +201,8 @@ class Cluster:
 
     def map(self, func, iterable):
         self.futures = self.client.map(func, iterable)
-        return self.futures
+        futures = [self.client.gather(future) for future in self.futures]
+        return futures
 
     def show_progress(self):
         progress(self.futures)
