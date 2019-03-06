@@ -180,16 +180,22 @@ class Cluster:
         """Add workers to cluster connection"""
         self.cluster.scale(value)
         timer = 0
+        running_jobs = len(self.cluster.scheduler.workers)
+        running_workers = len(self.cluster.running_jobs)
+
         while len(self.cluster.scheduler.workers) < value:
-            time.sleep(1)
-            print("Client: ", self.client)
-            print("workers: ", len(self.cluster.scheduler.workers))
-            print("expected workers: ", value)
-            print("pending jobs: ", self.cluster.pending_jobs)
-            print("jobs: ", len(self.cluster.running_jobs))
-            timer += 1
+            if timer == 0 or len(self.cluster.scheduler.workers) != running_jobs or len(self.cluster.running_jobs) != running_workers:
+                running_jobs = len(self.cluster.scheduler.workers)
+                running_workers = len(self.cluster.running_jobs)
+                print("Client: ", self.client)
+                print("workers: ", len(self.cluster.scheduler.workers))
+                print("expected workers: ", value)
+                print("pending jobs: ", self.cluster.pending_jobs)
+                print("jobs: ", len(self.cluster.running_jobs))
             if timer > self.time_out:
                 raise ConnectionError("Could not start all workers before time_out")
+            time.sleep(1)
+            timer += 1
 
         self.workers = value
 
@@ -216,9 +222,9 @@ class Cluster:
                                       cores=self.cores,
                                       memory=self.memory,
                                       death_timeout=self.time_out)
-        print("job script: ", self.cluster.job_script())
+        # print("job script: ", self.cluster.job_script())
         self.client = Client(self.cluster)
-        print("scale_value: ", self.scale_value)
+        # print("scale_value: ", self.scale_value)
         self.scale(self.scale_value)
 
         timer = 0
@@ -237,3 +243,7 @@ class Cluster:
             self.cluster.stop_all_jobs()
         else:
             self.cluster.stop_jobs(jobs)
+
+    def close(self):
+        self.client.close()
+        self.cluster.close()

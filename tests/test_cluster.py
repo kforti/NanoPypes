@@ -38,6 +38,7 @@ class TestCluster(unittest.TestCase):
             time.sleep(1)
             if timer > 30:
                 break
+        self.cluster.close()
 
     # def test_001_build_cluster(self):
     #     """Build a cluster object with yaml"""
