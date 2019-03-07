@@ -1,4 +1,4 @@
-from nanopypes.albacore import *
+from nanopypes.tools import basecall
 
 if __name__ == '__main__':
     config = '/home/kf78w/bin/Nanopypes/tests/basecall_test_config.yml'

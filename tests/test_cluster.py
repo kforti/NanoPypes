@@ -1,15 +1,42 @@
 import unittest
 import time
-from nanopypes.albacore import Cluster
+from nanopypes.compute import Cluster
+from nanopypes.config import Configuration
 
 
-class TestCluster(unittest.TestCase):
+class TestClusterLocal(unittest.TestCase):
+    """Tests for the Albacore class."""
+
+
+    def setUp(self):
+        """Set up test fixtures, if any."""
+        self.compute = Cluster(config=None)
+        self.compute.connect()
+
+    def tearDown(self):
+        """Tear down test fixtures, if any."""
+        self.compute.close()
+
+    def test_000_build_cluster(self):
+        """Build a cluster object with yaml"""
+        expected_workers = 4
+        actual_workers = self.compute.connected_workers
+        self.assertTrue(expected_workers == actual_workers)
+
+    def test_004_map(self):
+        """ Test the map function on a cluster instance"""
+        results = self.compute.map(increment, range(150))
+        self.compute.show_progress()
+        print(results)
+
+class TestClusterRemote(unittest.TestCase):
     """Tests for the Albacore class."""
 
     @classmethod
     def setUp(self):
         """Set up test fixtures, if any."""
-        pass
+        self.compute = Cluster(config=None)
+        self.compute.connect()
 
     def tearDown(self):
         """Tear down test fixtures, if any."""
@@ -18,27 +45,16 @@ class TestCluster(unittest.TestCase):
 
     def test_000_build_cluster(self):
         """Build a cluster object with yaml"""
-        self.cluster = Cluster(config="build_command_test.yml")
-        self.cluster.connect()
+        config = Configuration(config="test_configs/remote_basecall.yml")
+        self.compute = Cluster(config)
+        self.compute.connect()
 
-        expected_workers = self.cluster.expected_workers
-        actual_workers = self.cluster.connected_workers
-        print("expected workers: ", expected_workers)
-        print("actual workers: ", actual_workers)
+        expected_workers = self.compute.expected_workers
+        actual_workers = self.compute.connected_workers
         self.assertTrue(expected_workers == actual_workers)
 
-        self.cluster.stop_jobs()
-        print("Stopping workers")
-        timer = 0
-        while len(self.cluster.running_jobs) > 1:
-            print("Finished jobs", self.cluster.finished_jobs)
-            print("jobs", self.cluster.running_jobs)
-            print("time", timer)
-            timer += 1
-            time.sleep(1)
-            if timer > 30:
-                break
-        self.cluster.close()
+        self.compute.close()
+
 
     # def test_001_build_cluster(self):
     #     """Build a cluster object with yaml"""
@@ -62,7 +78,7 @@ class TestCluster(unittest.TestCase):
     #
     # def test_002_build_cluster(self):
     #     """Build a cluster object with yaml"""
-    #     self.cluster = Cluster(config="build_command_test.yml",
+    #     self.cluster = Cluster(config="local_builds.yml",
     #                            job_time="06:00",
     #                            memory="2 GB",
     #                            mem=40000,
@@ -81,12 +97,9 @@ class TestCluster(unittest.TestCase):
 
     def test_004_map(self):
         """ Test the map function on a cluster instance"""
-        self.cluster = Cluster(config="build_command_test.yml")
-        self.cluster.connect()
-        results = self.cluster.map(increment, range(500))
-        self.cluster.show_progress()
+        results = self.compute.map(increment, range(150))
+        self.compute.show_progress()
         print(results)
-        self.cluster.close()
 
 
 ##########################################################################

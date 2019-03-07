@@ -2,6 +2,8 @@ import csv
 import json
 import os
 import re
+from functools import reduce
+from pathlib import Path
 from abc import ABC, abstractmethod
 import shutil
 from ont_fast5_api.fast5_file import Fast5File
@@ -49,6 +51,114 @@ class BaseCalledData(NanoPypeObject):
     @property
     def workspace(self):
         return self._workspace
+
+
+class ParallelBaseCalledData():
+    def __init__(self, path):
+        self.path = Path(path)
+        self._batches = []
+        #Create parallel batch objects
+        for batch in os.listdir(str(path)):
+            self._batches.append(ParallelBatch(self.path.joinpath(batch),
+                                               telemetetry=Telemetry(self.path.joinpath("sequencing_telemetry.js")),
+                                               summary=Summary(self.path.joinpath("sequencing_summary.txt")),
+                                               workspace=Workspace(self.path.joinpath("workspace")),
+                                               pipeline=PipelineLog(self.path.joinpath("pipeline.log")),
+                                               configuration=MinIONConfiguration(self.path.joinpath("configuration.cfg"))))
+
+    @property
+    def num_batches(self):
+        return len(self._batches)
+
+    @property
+    def batches(self):
+        return self._batches
+
+    def add_batches(self, batch1, batch2):
+        return batch1 + batch2
+
+    def collapse_parallel_data(self, save_path, compute=None):
+
+        if compute:
+            self.compute.map(self._batch_digest, self.batches)
+            self.compute.show_progress()
+            collapsed_batch = reduce(self.add_batches, self.batches)
+            return BaseCalledData(path=self.path,
+                                  config=collapsed_batch.configuration,
+                                  summary=collapsed_batch.summary,
+                                  telemetry=collapsed_batch.telemetry,
+                                  pipeline=collapsed_batch.pipeline,
+                                  workspace=collapsed_batch.workspace)
+
+    def _batch_gigest(self, batch):
+        batch.digest_splits()
+
+
+class ParallelBatch():
+    def __init__(self, path, telemetry, summary, pipeline, workspace, configuration):
+        self.path = Path(path)
+        self._splits = [self.path.joinpath(split) for split in os.listdir(str(self.path))]
+        self._telemetry = Telemetry(self.path.joinpath("sequencing_telemetry.js"))
+        self._summary = Summary(self.path.joinpath("sequencing_summary.txt"))
+        self._pipeline = PipelineLog(self.path.joinpath("pipeline.log"))
+        self._workspace = Workspace(self.path.joinpath("workspace"))
+        self._configuration = MinIONConfiguration(self.path.joinpath("configuration.cfg"))
+
+    @property
+    def num_splits(self):
+        return len(self._splits)
+
+    @property
+    def splits(self):
+        return self._splits
+
+    @property
+    def telemetry(self):
+        return self._telemetry
+
+    @property
+    def summary(self):
+        return self._summary
+
+    @property
+    def pipeline(self):
+        return self._pipeline
+
+    @property
+    def workspace(self):
+        return self._workspace
+
+    @property
+    def configuration(self):
+        return self._configuration
+
+    def digest_splits(self):
+        for split in self.splits:
+            self._configuration.consume(src=split.joinpath("configuration.cfg"))
+            self._pipeline.consume(src=split.joinpath("pipeline.log"))
+            self._summary.consume(src=split.joinpath("sequencing_summary.txt"))
+            self._telemetry.consume(src=split.joinpath("sequencing_telemetry.js"))
+            self._workspace.consume(src=split.joinpath("workspace"))
+
+    def __add__(self, other):
+        workspace = self.workspace + other.workspace
+        pipeline = self.pipeline + other.pipeline
+        summary = self.summary + other.summary
+        configuration = self.configuration + other.configuration
+        telemetry = self.telemetry + other.telemetry
+        return ParallelBatch(path=None,
+                             telemetry=telemetry,
+                             summary=summary,
+                             pipeline=pipeline,
+                             workspace=workspace,
+                             configuration=configuration)
+
+
+
+
+
+
+
 
 
 class BasecalledRead(ReadFile):
@@ -104,10 +214,14 @@ class AbstractBasecallOutput(ABC):
 
 class Summary(AbstractBasecallOutput):
 
-    def __init__(self, dest):
-        self.summary_data = [['filename', 'read_id', 'run_id', 'channel', 'start_time', 'duration', 'num_events', 'passes_filtering', 'template_start', 'num_events_template', 'template_duration', 'num_called_template', 'sequence_length_template', 'mean_qscore_template', 'strand_score_template', 'calibration_strand_genome_template', 'calibration_strand_identity_template', 'calibration_strand_accuracy_template', 'calibration_strand_speed_bps_template', 'barcode_arrangement', 'barcode_score', 'barcode_full_arrangement', 'front_score', 'rear_score', 'front_begin_index', 'front_foundseq_length', 'rear_end_index', 'rear_foundseq_length', 'kit', 'variant']]
+    def __init__(self, dest, data):
+        self.header = [['filename', 'read_id', 'run_id', 'channel', 'start_time', 'duration', 'num_events', 'passes_filtering', 'template_start', 'num_events_template', 'template_duration', 'num_called_template', 'sequence_length_template', 'mean_qscore_template', 'strand_score_template', 'calibration_strand_genome_template', 'calibration_strand_identity_template', 'calibration_strand_accuracy_template', 'calibration_strand_speed_bps_template', 'barcode_arrangement', 'barcode_score', 'barcode_full_arrangement', 'front_score', 'rear_score', 'front_begin_index', 'front_foundseq_length', 'rear_end_index', 'rear_foundseq_length', 'kit', 'variant']]
+        self._summary_data = data
         super().__init__(dest)
 
+    @property
+    def summary_data(self):
+        return self._summary_data
 
     def consume(self, src):
         """Read data from a summary file (src) and add it to the combined summary file (dest)."""
@@ -116,16 +230,16 @@ class Summary(AbstractBasecallOutput):
             for i, line in enumerate(csv_reader):
                 if i == 0:
                     continue
-                self.summary_data.append(line)
-
-    def create_summary(self):
-        pass
+                self._summary_data.append(line)
 
     def combine(self):
         with open(str(self.dest), 'a') as dest_file:
             csv_writer = csv.writer(dest_file, delimiter='\t')
-            for row in self.summary_data:
+            for row in self._summary_data:
                 csv_writer.writerow(row)
+
+    def __add__(self, other):
+        summary_data = self._summary_data + other.summary_data
 
 
 class Telemetry(AbstractBasecallOutput):
@@ -149,7 +263,7 @@ class Telemetry(AbstractBasecallOutput):
             json.dump(self.telemetry, file)
 
 
-class Configuration(AbstractBasecallOutput):
+class MinIONConfiguration(AbstractBasecallOutput):
     def __init__(self, dest):
         self.config_data = []
         super().__init__(dest)

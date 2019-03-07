@@ -2,56 +2,50 @@ import os
 import shutil
 import math
 from pathlib import Path
-from nanopypes.objects.basecalled import BaseCalledData, Summary, Telemetry, Configuration, PipelineLog, Workspace
-
-class ParallelizeData:
-
-    def __init__(self):
-        self._data_store = []
-
-    @property
-    def data_paths(self):
-        return self._data_store
-
-    def split_data(self, data_path, save_path, splits, compute=None, recursive=False):
-        """Splits data into multiple directories for parallel processing"""
-        data_path = Path(data_path)
-        save_path = Path(save_path).joinpath("split_data")
-        if save_path.exists() == False:
-            save_path.mkdir()
-        files = [data_path.joinpath(file) for file in os.listdir(str(data_path))]
-        chunk_size = math.ceil((len(files) / splits))
-        file_chunks = list(self._chunks(files, chunk_size, save_path))
-
-        if compute:
-            compute.map(self._create_dir, file_chunks)
-            compute.show_progress()
-
-        else:
-            for files in file_chunks:
-                self._create_dir(files)
-
-        return self.data_paths
+from nanopypes.objects.basecalled import BaseCalledData, Summary, Telemetry, MinIONConfiguration, PipelineLog, Workspace
 
 
-    def _chunks(self, file_names, chunk_size, save_path):
-        """Yield successive n-sized chunks from l."""
-        counter = 0
-        for i in range(0, len(file_names), chunk_size):
-            new_dir_path = save_path.joinpath(str(counter))
+def split_data(data_path, save_path, splits, compute=None, recursive=False):
+    """Splits data into multiple directories for parallel processing"""
+    data_path = Path(data_path)
+    save_path = Path(save_path).joinpath("split_data")
+    if save_path.exists() == False:
+        save_path.mkdir()
+    files = [data_path.joinpath(file) for file in os.listdir(str(data_path))]
+    chunk_size = math.ceil((len(files) / splits))
+    file_chunks = list(_chunks(files, chunk_size, save_path))
 
-            yield (new_dir_path, file_names[i:i + chunk_size])
-            counter += 1
+    if compute:
+        results = compute.map(_create_dir, file_chunks)
+        compute.show_progress()
+        data_paths = []
+        for result in results:
+            data_paths.extend(result)
+    else:
+        data_paths = []
+        for files in file_chunks:
+            data_paths.extend(_create_dir(files))
 
-    def _create_dir(self, files):
-        # print("Look HERE!!!!", files[0], files[0].exists())
-        if files[0].exists() == False:
-            files[0].mkdir()
+    return data_paths
 
-        for file in files[1]:
-            new_file_path = files[0].joinpath(file.name)
-            self._data_store.append(file)
-            shutil.copyfile(str(file), str(new_file_path))
+def _chunks(file_names, chunk_size, save_path):
+    """Yield successive n-sized chunks from l."""
+    counter = 0
+    for i in range(0, len(file_names), chunk_size):
+        new_dir_path = save_path.joinpath(str(counter))
+
+        yield (new_dir_path, file_names[i:i + chunk_size])
+        counter += 1
+
+def _create_dir(files):
+    if files[0].exists() == False:
+        files[0].mkdir()
+    data_paths = []
+    for file in files[1]:
+        new_file_path = files[0].joinpath(file.name)
+        data_paths.append(new_file_path)
+        shutil.copyfile(str(file), str(new_file_path))
+    return data_paths
 
 
 def temp_dirs(data_dir, temp_location, parallel=True):
@@ -101,13 +95,19 @@ def file_generator(dir):
         file_path = dir.joinpath(file)
         yield file_path
 
-def remove_temps(path):
-    try:
+def remove_splits(path, compute=None):
+    path = Path(path)
+    if compute:
+        splits = [path.joinpath(split) for split in os.listdir(str(path))]
+        compute.map(shutil.rmtree, splits)
+        print("Deleting data splits....")
+        compute.show_progress()
         shutil.rmtree(str(path))
-    except Exception as e:
-        print(e)
+    else:
+        shutil.rmtree(str(path))
 
-def collapse_save(save_path):
+
+def collapse_save(save_path, compute=None):
     """ Collapse all the data into the expected output"""
     save_path = Path(save_path)
     batches = os.listdir(str(save_path))
@@ -115,7 +115,7 @@ def collapse_save(save_path):
     pipeline = PipelineLog(save_path.joinpath("pipeline.log"))
     seq_sum = Summary(save_path.joinpath("sequencing_summary.txt"))
     seq_tel = Telemetry(save_path.joinpath("sequencing_telemetry.js"))
-    config = Configuration(save_path.joinpath("configuration.cfg"))
+    config = MinIONConfiguration(save_path.joinpath("configuration.cfg"))
     workspace = Workspace(save_path.joinpath("workspace"))
 
     for batch in batches:

@@ -2,7 +2,8 @@
 """Console script for pai-nanopypes."""
 
 from nanopypes.objects.raw import Sample
-from nanopypes.albacore import Albacore, Cluster
+from nanopypes.oxnano import Albacore
+from nanopypes.compute import Cluster
 import click
 from nanopypes.pipes import basecall
 
