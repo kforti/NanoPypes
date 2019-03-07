@@ -34,7 +34,7 @@ class Configuration:
 
     @property
     def compute(self):
-        compute = [ComputeConfig(compute) for compute in self._compute.keys()]
+        compute = [ComputeConfig(self._compute[compute]) for compute in self._compute.keys()]
         return compute
 
     @property
