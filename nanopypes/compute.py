@@ -12,7 +12,7 @@ class Cluster:
                  ncpus=None, memory=None, workers=None, scale_value=None, cluster_type=None,
                  time_out=2000, debug=False):
         if config:
-            self.config = config.compute
+            self.config = config
         else:
             self.config = ComputeConfig(settings=None)
         self.queue = self.config.queue(queue)
