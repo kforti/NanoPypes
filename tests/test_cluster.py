@@ -35,7 +35,8 @@ class TestClusterRemote(unittest.TestCase):
     @classmethod
     def setUp(self):
         """Set up test fixtures, if any."""
-        self.compute = Cluster(config=None)
+        config = Configuration(config="test_configs/remote_basecall.yml")
+        self.compute = Cluster(config)
         self.compute.connect()
 
     def tearDown(self):
@@ -45,10 +46,6 @@ class TestClusterRemote(unittest.TestCase):
 
     def test_000_build_cluster(self):
         """Build a cluster object with yaml"""
-        config = Configuration(config="test_configs/remote_basecall.yml")
-        self.compute = Cluster(config)
-        self.compute.connect()
-
         expected_workers = self.compute.expected_workers
         actual_workers = self.compute.connected_workers
         self.assertTrue(expected_workers == actual_workers)
