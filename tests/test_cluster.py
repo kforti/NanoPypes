@@ -36,7 +36,8 @@ class TestClusterRemote(unittest.TestCase):
     def setUp(self):
         """Set up test fixtures, if any."""
         config = Configuration(config="test_configs/remote_basecall.yml")
-        self.compute = Cluster(config)
+        compute_configs = config.compute
+        self.compute = Cluster(compute_configs[0])
         self.compute.connect()
 
     def tearDown(self):
