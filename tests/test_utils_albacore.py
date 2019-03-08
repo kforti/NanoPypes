@@ -264,7 +264,7 @@ class TestUtilityFunctionsRemote(unittest.TestCase):
     """Tests for the utility functions found in utils.py."""
 
     def setUp(self):
-        config = Configuration("test_configs/remote_builds.yml").compute
+        config = Configuration("test_configs/remote_builds.yml")
         compute_configs = config.compute
         self.compute = Cluster(config=compute_configs[0])
         self.compute.connect()
