@@ -98,7 +98,7 @@ def file_generator(dir):
 def remove_splits(path, compute=None):
     path = Path(path)
     if compute:
-        splits = [path.joinpath(split) for split in os.listdir(str(path))]
+        splits = [str(path.joinpath(split)) for split in os.listdir(str(path))]
         compute.map(shutil.rmtree, splits)
         print("Deleting data splits....")
         compute.show_progress()
