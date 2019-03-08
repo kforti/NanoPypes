@@ -100,7 +100,7 @@ class TestAlbacoreRemote(unittest.TestCase):
         """Test the function that is built from albacore."""
         config = Configuration("test_configs/remote_builds.yml")
         albacore = Albacore(config=config)
-        
+
         func = albacore.build_func()
         res = func(["echo", "hello"])
         albacore_res = func(["read_fast5_basecaller.py", "--help"])
@@ -258,6 +258,48 @@ class TestUtilityFunctionsLocal(unittest.TestCase):
     #                           combined_tel=collapse_path.joinpath("sequencing_telemetry.js"))
     #     check_workspace(workspace=basecalled_data_path,
     #                             combined_workspace=collapse_path.joinpath("workspace"))
+
+
+class TestUtilityFunctionsRemote(unittest.TestCase):
+    """Tests for the utility functions found in utils.py."""
+
+    def setUp(self):
+        compute_config = "test_configs/remote_builds.yml"
+        self.compute = Cluster(config=compute_config)
+        self.compute.connect()
+        self.fast5_dir = Path("test_data/minion_sample_raw_data/Experiment_01/sample_01/fast5/pass/0")
+        self.save_path = Path("test_data/minion_sample_raw_data")
+        self.split_data_path = Path("test_data/minion_sample_raw_data/split_data")
+
+        # basecalled_data_path = "test_data/basecalled_data/bc_test_results"
+        # shutil.rmtree("test_data/basecalled_data/test_results")
+        # #Make a copy of the basecalled data to perform tests on
+        # shutil.copytree(basecalled_data_path, "test_data/basecalled_data/test_results")
+
+    def tearDown(self):
+        """Tear down test fixtures, if any."""
+        self.compute.close()
+
+    def test_000_split_data(self):
+        if self.split_data_path.exists():
+            shutil.rmtree(str(self.split_data_path))
+        reads = os.listdir(str(self.fast5_dir))
+        split_reads = [read.name for read in split_data(data_path=self.fast5_dir,
+                   save_path=self.save_path,
+                   splits=10,
+                   compute=self.compute
+                   )]
+
+        for read in split_reads:
+            self.assertTrue(read in reads)
+
+        for read in reads:
+            self.assertTrue(read in split_reads)
+
+    def test_001_remove_splits(self):
+        """Remove the split data directories created in previous test"""
+        remove_splits(self.split_data_path, self.compute)
+        self.assertTrue(self.split_data_path.exists() == False)
 
 
 ########################################################################
