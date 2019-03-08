@@ -54,77 +54,67 @@ class TestAlbacoreLocal(unittest.TestCase):
         print(albacore_res)
 
 
-# class TestAlbacore(unittest.TestCase):
-#     """Tests for the Albacore class."""
-#
-#     def setUp(self):
-#         """Set up test fixtures, if any."""
-#
-#     def tearDown(self):
-#         """Tear down test fixtures, if any."""
-#
-#     def test_000_albacore_commands(self):
-#         """Test the albacore commands that are generated from passing custom inputs."""
-#         sample = Sample('test_data/minion_sample_raw_data/fast5/pass')
-#         save_path = './test_data/basecalled_data/results'
-#         albacore = Albacore(input=sample,
-#                             flowcell='FLO-MIN106',
-#                             kit='SQK-LSK109',
-#                             save_path=save_path,
-#                             output_format='fast5',
-#                             barcoding=False,
-#                             )
-#         command = albacore.build_command('./test_data/1', '0')
-#
-#         self.assertTrue(["read_fast5_basecaller.py", "--flowcell", "FLO-MIN106", "--kit", "SQK-LSK109", "--output_format", "fast5",
-#                         "--save_path", "./test_data/basecalled_data/results/0/1", "--worker_threads", "1", "--input", "./test_data/1"] == command)
-#
-#     def test_001_albacore_commands(self):
-#         """Test the albacore commands that are generated from passing yaml input."""
-#         yaml = "test_configs/local_builds.yml"
-#         albacore = Albacore(input=yaml)
-#         command = albacore.build_command('./test_data/1', '0')
-#         print(command)
-#         self.assertTrue(
-#             ["read_fast5_basecaller.py", "--flowcell", "FLO-MIN106", "--kit", "SQK-LSK109", "--output_format", "fast5",
-#              "--save_path", "./test_data/basecalled_data/results/0/1", "--worker_threads", "1", "--input", "./test_data/1"] == command)
-#
-#     def test_002_albacore_commands(self):
-#         """Test the albacore commands that are generated from passing both yaml and custom input."""
-#         yaml = "test_configs/local_builds.yml"
-#         albacore = Albacore(input=yaml, save_path="/project/umw_athma_pai/kevin/data", barcoding=False, output_format="fastq")
-#         command = albacore.build_command('./test_data/1', '0')
-#
-#         self.assertTrue(
-#             ["read_fast5_basecaller.py", "--flowcell", "FLO-MIN106", "--kit", "SQK-LSK109", "--output_format", "fastq",
-#              "--save_path", "/project/umw_athma_pai/kevin/data/0/1", "--worker_threads", "1", "--input", "./test_data/1",
-#              "--reads_per_fastq", "1000"] == command)
-#
-#     def test_003_albacore_build_func(self):
-#         """Test the function that is built from albacore."""
-#         sample = Sample('test_data/minion_sample_raw_data/fast5/pass')
-#         save_path = './test_data/basecalled_data/results'
-#         albacore = Albacore(input=sample,
-#                             flowcell='FLO-MIN106',
-#                             kit='SQK-LSK109',
-#                             save_path=save_path,
-#                             output_format='fast5',
-#                             barcoding=False,
-#                             )
-#         func = albacore.build_func()
-#         res = func(["echo", "hello"])
-#         albacore_res = func(["read_fast5_basecaller.py", "--help"])
-#         print(albacore_res)
-#
-#     # def test_command_line_interface(self):
-#     #     """Test the CLI."""
-#     #     runner = CliRunner()
-#     #     result = runner.invoke(parallel_basecaller)
-#     #     # assert result.exit_code == 0
-#     #     # assert 'pai-nanopypes.cli.parallel_basecaller' in result.output
-#     #     help_result = runner.invoke(parallel_basecaller, ['tests/test_data/umms_cluster_basecall.yml'])
-#     #     assert help_result.exit_code == 0
-#     #     assert '--help  Show this message and exit.' in help_result.output
+class TestAlbacoreRemote(unittest.TestCase):
+    """Tests for the Albacore class."""
+
+    def setUp(self):
+        """Set up test fixtures, if any."""
+
+    def tearDown(self):
+        """Tear down test fixtures, if any."""
+
+    def test_000_albacore_commands(self):
+        """Test the albacore commands that are generated from passing custom inputs."""
+        config = Configuration("test_configs/remote_builds.yml")
+        albacore = Albacore(config=config)
+        retrieved_command = albacore.build_command('./test_data/1', '0')
+        expected_command = ["read_fast5_basecaller.py", "--flowcell", "FLO-MIN106",
+                            "--kit", "SQK-LSK109", "--output_format", "fast5",
+                            "--save_path", "test_data/basecalled_data/results/0/1",
+                            "--worker_threads", "1", "--input", "./test_data/1"]
+        # print(retrieved_command, "\n", expected_command)
+        self.assertTrue(retrieved_command == expected_command)
+
+    # def test_001_albacore_commands(self):
+    #     """Test the albacore commands that are generated from passing yaml input."""
+    #     yaml = "test_configs/local_builds.yml"
+    #     albacore = Albacore(input=yaml)
+    #     command = albacore.build_command('./test_data/1', '0')
+    #     print(command)
+    #     self.assertTrue(
+    #         ["read_fast5_basecaller.py", "--flowcell", "FLO-MIN106", "--kit", "SQK-LSK109", "--output_format", "fast5",
+    #          "--save_path", "./test_data/basecalled_data/results/0/1", "--worker_threads", "1", "--input", "./test_data/1"] == command)
+
+    # def test_002_albacore_commands(self):
+    #     """Test the albacore commands that are generated from passing both yaml and custom input."""
+    #     yaml = "test_configs/local_builds.yml"
+    #     albacore = Albacore(input=yaml, save_path="/project/umw_athma_pai/kevin/data", barcoding=False, output_format="fastq")
+    #     command = albacore.build_command('./test_data/1', '0')
+    #
+    #     self.assertTrue(
+    #         ["read_fast5_basecaller.py", "--flowcell", "FLO-MIN106", "--kit", "SQK-LSK109", "--output_format", "fastq",
+    #          "--save_path", "/project/umw_athma_pai/kevin/data/0/1", "--worker_threads", "1", "--input", "./test_data/1",
+    #          "--reads_per_fastq", "1000"] == command)
+
+    def test_003_albacore_build_func(self):
+        """Test the function that is built from albacore."""
+        config = Configuration("test_configs/remote_builds.yml")
+        albacore = Albacore(config=config)
+        
+        func = albacore.build_func()
+        res = func(["echo", "hello"])
+        albacore_res = func(["read_fast5_basecaller.py", "--help"])
+        print(albacore_res)
+
+    # def test_command_line_interface(self):
+    #     """Test the CLI."""
+    #     runner = CliRunner()
+    #     result = runner.invoke(parallel_basecaller)
+    #     # assert result.exit_code == 0
+    #     # assert 'pai-nanopypes.cli.parallel_basecaller' in result.output
+    #     help_result = runner.invoke(parallel_basecaller, ['tests/test_data/umms_cluster_basecall.yml'])
+    #     assert help_result.exit_code == 0
+    #     assert '--help  Show this message and exit.' in help_result.output
 
 
 ########################################################################
