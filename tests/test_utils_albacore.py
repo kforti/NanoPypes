@@ -264,8 +264,9 @@ class TestUtilityFunctionsRemote(unittest.TestCase):
     """Tests for the utility functions found in utils.py."""
 
     def setUp(self):
-        compute_config = Configuration("test_configs/remote_builds.yml").compute
-        self.compute = Cluster(config=compute_config)
+        config = Configuration("test_configs/remote_builds.yml").compute
+        compute_configs = config.compute
+        self.compute = Cluster(config=compute_configs[0])
         self.compute.connect()
         self.fast5_dir = Path("test_data/minion_sample_raw_data/Experiment_01/sample_01/fast5/pass/0")
         self.save_path = Path("test_data/minion_sample_raw_data")
