@@ -1,6 +1,6 @@
 basecall:
   input_path: test_data/minion_sample_raw_data/Experiment_01/sample_01_local/fast5/pass
-  save_path: /project/umw_athma_pai/kevin/data/minion_ercc_labeled/basecalled_data_test
+  save_path:
   flowcell: FLO-MIN106
   kit: SQK-LSK109
   barcoding: False

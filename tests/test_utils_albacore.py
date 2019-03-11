@@ -383,7 +383,7 @@ class TestBasecallRemote(unittest.TestCase):
         for path, subdirs, files in os.walk(str(input_data)):
             input_reads.extend(files)
 
-        basecaller = AlbacoreBasecall(albacore, compute)
+        basecaller = AlbacoreBasecall(albacore, compute, data_splits=100)
         basecalled_data = basecaller()
         compute.close()
 
