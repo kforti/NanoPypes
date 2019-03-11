@@ -7,6 +7,7 @@ from nanopypes.objects.basecalled import BaseCalledData, Summary, Telemetry, Min
 
 def split_data(data_path, save_path, splits, compute=None, recursive=False):
     """Splits data into multiple directories for parallel processing"""
+    print("Splitting data... ")
     data_path = Path(data_path)
     save_path = Path(save_path).joinpath("split_data")
     if save_path.exists() == False:
@@ -17,7 +18,7 @@ def split_data(data_path, save_path, splits, compute=None, recursive=False):
 
     if compute:
         data_paths = compute.map(_create_dir, file_chunks)
-        compute.show_progress()
+        #compute.show_progress()
         # for result in results:
         #     data_paths.extend(result)
     else:
@@ -100,7 +101,7 @@ def remove_splits(path, compute=None):
         splits = [str(path.joinpath(split)) for split in os.listdir(str(path))]
         compute.map(shutil.rmtree, splits)
         print("Deleting data splits....")
-        compute.show_progress()
+        #compute.show_progress()
         shutil.rmtree(str(path))
     else:
         shutil.rmtree(str(path))
@@ -108,6 +109,7 @@ def remove_splits(path, compute=None):
 
 def collapse_save(save_path, compute=None):
     """ Collapse all the data into the expected output"""
+    print("Collapsing saved data... ")
     save_path = Path(save_path)
     batches = os.listdir(str(save_path))
 

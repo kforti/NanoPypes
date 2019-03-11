@@ -76,11 +76,11 @@ class ParallelBaseCalledData():
         return batch1 + batch2
 
     def collapse_parallel_data(self, compute=None):
-
+        print("Collapsing saved data... ")
         if compute:
 
             batches = compute.map(self._batch_digest, self.batches)
-            compute.show_progress()
+            #compute.show_progress()
 
 
             collapsed_batch = reduce(self.add_batches, batches)
@@ -137,7 +137,6 @@ class ParallelBatch():
         return self._configuration
 
     def combine_data(self):
-        print("!!!!!!!!!!", self.telemetry.path)
         self.telemetry.combine()
         self.summary.combine
         self.pipeline.combine
