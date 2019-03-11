@@ -65,7 +65,7 @@ class AlbacoreBasecall(Pipe):
                 commands.append(self.albacore.build_command(str(self.splits_path.joinpath(str(split))), batch.name))
             self.compute.map(self.func, commands)
             print("\nBatch ", batch_counter, " out of ", batches)
-            self.compute.show_progress()
+            #self.compute.show_progress()
 
             remove_splits(self.splits_path)
         # basecalled_data = collapse_save(self.albacore.save_path)

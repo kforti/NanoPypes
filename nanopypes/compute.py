@@ -82,8 +82,10 @@ class Cluster:
 
         self.workers = value
 
-    def map(self, func, iterable):
+    def map(self, func, iterable, show_progress=True):
         self.futures = self.client.map(func, iterable)
+        if show_progress == True:
+            progress(self.futures)
         futures = [self.client.gather(future) for future in self.futures]
         return futures
 
