@@ -56,11 +56,12 @@ class BaseCalledData(NanoPypeObject):
 class ParallelBaseCalledData():
     def __init__(self, path):
         self.path = Path(path)
-        self._batches = []
+        self.batches = []
+        self.processed_batches = []
         #Create parallel batch objects
         for batch in os.listdir(str(path)):
-            self._batches.append(ParallelBatch(self.path.joinpath(batch),
-                                               telemetetry=Telemetry(self.path.joinpath("sequencing_telemetry.js")),
+            self.batches.append(ParallelBatch(self.path.joinpath(batch),
+                                               telemetry=Telemetry(self.path.joinpath("sequencing_telemetry.js")),
                                                summary=Summary(self.path.joinpath("sequencing_summary.txt")),
                                                workspace=Workspace(self.path.joinpath("workspace")),
                                                pipeline=PipelineLog(self.path.joinpath("pipeline.log")),
@@ -68,21 +69,23 @@ class ParallelBaseCalledData():
 
     @property
     def num_batches(self):
-        return len(self._batches)
+        return len(self.batches)
 
-    @property
-    def batches(self):
-        return self._batches
 
     def add_batches(self, batch1, batch2):
         return batch1 + batch2
 
-    def collapse_parallel_data(self, save_path, compute=None):
+    def collapse_parallel_data(self, compute=None):
 
         if compute:
-            self.compute.map(self._batch_digest, self.batches)
-            self.compute.show_progress()
-            collapsed_batch = reduce(self.add_batches, self.batches)
+
+            batches = compute.map(self._batch_digest, self.batches)
+            compute.show_progress()
+
+
+            collapsed_batch = reduce(self.add_batches, batches)
+
+            collapsed_batch.combine_data()
             return BaseCalledData(path=self.path,
                                   config=collapsed_batch.configuration,
                                   summary=collapsed_batch.summary,
@@ -90,19 +93,20 @@ class ParallelBaseCalledData():
                                   pipeline=collapsed_batch.pipeline,
                                   workspace=collapsed_batch.workspace)
 
-    def _batch_gigest(self, batch):
+    def _batch_digest(self, batch):
         batch.digest_splits()
+        return batch
 
 
 class ParallelBatch():
     def __init__(self, path, telemetry, summary, pipeline, workspace, configuration):
         self.path = Path(path)
         self._splits = [self.path.joinpath(split) for split in os.listdir(str(self.path))]
-        self._telemetry = Telemetry(self.path.joinpath("sequencing_telemetry.js"))
-        self._summary = Summary(self.path.joinpath("sequencing_summary.txt"))
-        self._pipeline = PipelineLog(self.path.joinpath("pipeline.log"))
-        self._workspace = Workspace(self.path.joinpath("workspace"))
-        self._configuration = MinIONConfiguration(self.path.joinpath("configuration.cfg"))
+        self._telemetry = telemetry
+        self._summary = summary
+        self._pipeline = pipeline
+        self._workspace = workspace
+        self._configuration = configuration
 
     @property
     def num_splits(self):
@@ -132,33 +136,34 @@ class ParallelBatch():
     def configuration(self):
         return self._configuration
 
+    def combine_data(self):
+        print("!!!!!!!!!!", self.telemetry.path)
+        self.telemetry.combine()
+        self.summary.combine
+        self.pipeline.combine
+        self.configuration.combine
+
     def digest_splits(self):
         for split in self.splits:
             self._configuration.consume(src=split.joinpath("configuration.cfg"))
             self._pipeline.consume(src=split.joinpath("pipeline.log"))
             self._summary.consume(src=split.joinpath("sequencing_summary.txt"))
             self._telemetry.consume(src=split.joinpath("sequencing_telemetry.js"))
+            # print("consuming.... ", self.telemetry.data)
             self._workspace.consume(src=split.joinpath("workspace"))
 
     def __add__(self, other):
-        workspace = self.workspace + other.workspace
+        workspace = None #workspace is consumed directly to the
         pipeline = self.pipeline + other.pipeline
         summary = self.summary + other.summary
         configuration = self.configuration + other.configuration
         telemetry = self.telemetry + other.telemetry
-        return ParallelBatch(path=None,
+        return ParallelBatch(path=self.path,
                              telemetry=telemetry,
                              summary=summary,
                              pipeline=pipeline,
                              workspace=workspace,
                              configuration=configuration)
-
-
-
-
-
-
-
 
 
 class BasecalledRead(ReadFile):
@@ -211,10 +216,14 @@ class AbstractBasecallOutput(ABC):
     def combine(self):
         pass
 
+    @property
+    def path(self):
+        return self.dest
+
 
 class Summary(AbstractBasecallOutput):
 
-    def __init__(self, dest, data):
+    def __init__(self, dest, data=[]):
         self.header = [['filename', 'read_id', 'run_id', 'channel', 'start_time', 'duration', 'num_events', 'passes_filtering', 'template_start', 'num_events_template', 'template_duration', 'num_called_template', 'sequence_length_template', 'mean_qscore_template', 'strand_score_template', 'calibration_strand_genome_template', 'calibration_strand_identity_template', 'calibration_strand_accuracy_template', 'calibration_strand_speed_bps_template', 'barcode_arrangement', 'barcode_score', 'barcode_full_arrangement', 'front_score', 'rear_score', 'front_begin_index', 'front_foundseq_length', 'rear_end_index', 'rear_foundseq_length', 'kit', 'variant']]
         self._summary_data = data
         super().__init__(dest)
@@ -240,56 +249,69 @@ class Summary(AbstractBasecallOutput):
 
     def __add__(self, other):
         summary_data = self._summary_data + other.summary_data
+        return Summary(dest=self.dest, data=summary_data)
 
 
 class Telemetry(AbstractBasecallOutput):
 
-    def __init__(self, dest):
-        self.telemetry = []
+    def __init__(self, dest, data=[]):
+        self._telemetry = data
         super().__init__(dest)
         # Initiate the seq_tel json file
         # with open(str(dest), "w") as file:
         #     file.write("[]")
 
+    @property
+    def data(self):
+        return self._telemetry
+
     def consume(self, src):
         with open(str(src), "r") as file:
-            try:
-                self.telemetry.extend(json.load(file))
-            except Exception:
-                pass
+            self._telemetry.extend(json.load(file))
 
     def combine(self):
+        if self._telemetry == []:
+            raise ValueError("You are trying to write empty data")
         with open(str(self.dest), "a") as file:
-            json.dump(self.telemetry, file)
+            print("&&&&&&&&&&&&&&&&&&&&&&&&&&&&")
+            json.dump(self._telemetry, file)
+
+    def __add__(self, other):
+        telemetry_data = self._telemetry + other.data
+        return Telemetry(dest=self.dest, data=telemetry_data)
 
 
 class MinIONConfiguration(AbstractBasecallOutput):
-    def __init__(self, dest):
-        self.config_data = []
+    def __init__(self, dest, data=[]):
+        self._config_data = data
         super().__init__(dest)
 
     def consume(self, src):
 
         with open(str(src), 'r') as config:
-            if self.config_data == []:
-                self.config_data = [i for i in config]
+            if self._config_data == []:
+                self._config_data = [i for i in config]
 
-            elif self.config_data != []:
-                for data in self.config_data:
+            elif self._config_data != []:
+                for data in self._config_data:
                     if data != next(config):
                         pass
                         # raise ValueError("unexpected value %s found in config file %s" % (val1, str(cfg)))
 
     def combine(self):
         with open(str(self.dest), 'w') as config:
-            for data in self.config_data:
+            for data in self._config_data:
                 config.write(data)
+
+    def __add__(self, other):
+        config_data = self._config_data + other._config_data
+        return MinIONConfiguration(dest=self.dest, data=config_data)
 
 
 class PipelineLog(AbstractBasecallOutput):
-    def __init__(self, dest):
-        self.pipeline_data = []
-        self.pipeline_logs = []
+    def __init__(self, dest, data=[], logs=[]):
+        self.pipeline_data = data
+        self.pipeline_logs = logs
         super().__init__(dest)
 
     def consume(self, src):
@@ -307,6 +329,11 @@ class PipelineLog(AbstractBasecallOutput):
             for data in self.pipeline_data:
                 csv_writer.writerow(data)
 
+    def __add__(self, other):
+        pipe_data = self.pipeline_data + other.pipeline_data
+        pipe_logs = self.pipeline_logs + other.pipeline_logs
+        return PipelineLog(dest=self.dest, data=pipe_data, logs=pipe_logs)
+
 
 class Workspace(AbstractBasecallOutput):
     def __init__(self, dest):
@@ -319,13 +346,15 @@ class Workspace(AbstractBasecallOutput):
                 self.combine(src, read_type, barcode)
 
     def combine(self, src_path, read_type, barcode):
-
-        if not self.dest.exists():
-            self.dest.mkdir()
-        if not self.dest.joinpath(read_type).exists():
-            self.dest.joinpath(read_type).mkdir()
-        if not self.dest.joinpath(read_type, barcode).exists():
-            self.dest.joinpath(read_type, barcode).mkdir()
+        try:
+            if not self.dest.exists():
+                self.dest.mkdir()
+            if not self.dest.joinpath(read_type).exists():
+                self.dest.joinpath(read_type).mkdir()
+            if not self.dest.joinpath(read_type, barcode).exists():
+                self.dest.joinpath(read_type, barcode).mkdir()
+        except FileExistsError:
+            pass
 
         #dump reads from barcode dir or batch within barcode dir
         for child in os.listdir(str(src_path.joinpath(read_type, barcode))):

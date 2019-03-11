@@ -12,6 +12,7 @@ from pathlib import Path
 from nanopypes.config import Configuration
 from nanopypes.oxnano import Albacore
 from nanopypes.compute import Cluster
+from nanopypes.objects.basecalled import ParallelBaseCalledData
 from nanopypes.objects.raw import Sample
 from nanopypes.pipes import AlbacoreBasecall
 from nanopypes.utils import remove_splits, collapse_save, split_data
@@ -203,12 +204,14 @@ class TestUtilityFunctionsLocal(unittest.TestCase):
         compute_config = None
         self.compute = Cluster(config=compute_config)
         self.compute.connect()
-        self.fast5_dir = Path("test_data/minion_sample_raw_data/Experiment_01/sample_01/fast5/pass/0")
+        self.fast5_dir = Path("test_data/minion_sample_raw_data/Experiment_01/sample_01_remote/fast5/pass/0")
         self.save_path = Path("test_data/minion_sample_raw_data")
         self.split_data_path = Path("test_data/minion_sample_raw_data/split_data")
 
         # basecalled_data_path = "test_data/basecalled_data/bc_test_results"
-        # shutil.rmtree("test_data/basecalled_data/test_results")
+        bc_copy_path = Path("test_data/basecalled_data/utils_tests/bc_copy")
+        if bc_copy_path.exists():
+            shutil.rmtree(str(bc_copy_path))
         # #Make a copy of the basecalled data to perform tests on
         # shutil.copytree(basecalled_data_path, "test_data/basecalled_data/test_results")
 
@@ -220,11 +223,15 @@ class TestUtilityFunctionsLocal(unittest.TestCase):
         if self.split_data_path.exists():
             shutil.rmtree(str(self.split_data_path))
         reads = os.listdir(str(self.fast5_dir))
-        split_reads = [read.name for read in split_data(data_path=self.fast5_dir,
+        read_batches = split_data(data_path=self.fast5_dir,
                    save_path=self.save_path,
                    splits=10,
                    compute=self.compute
-                   )]
+                   )
+        split_reads = []
+        for batch in read_batches:
+            for read in batch:
+                split_reads.append(Path(read).name)
 
         for read in split_reads:
             self.assertTrue(read in reads)
@@ -237,27 +244,28 @@ class TestUtilityFunctionsLocal(unittest.TestCase):
         remove_splits(self.split_data_path, self.compute)
         self.assertTrue(self.split_data_path.exists() == False)
 
-    # def test_002_collapse_save(self):
-    #     """Test the collapsing of parallel basecalled data into the
-    #     data format of normal albacore basecalling for the given input"""
-    #
-    #     basecalled_data_path = Path("test_data/basecalled_data/bc_test_results")
-    #     collapse_path = Path("test_data/basecalled_data/test_results")
-    #     # shutil.copytree(str(save_path), str(temp_path))
-    #     collapse_save(collapse_path)
-    #
-    #     for batch in os.listdir(str(basecalled_data_path)):
-    #         for temp in os.listdir(str(basecalled_data_path.joinpath(batch))):
-    #             check_configuration_cfg(cfg=basecalled_data_path.joinpath(batch, temp, "configuration.cfg"),
-    #                                     combined_cfg=collapse_path.joinpath("configuration.cfg"))
-    #             check_pipeline_log(log=basecalled_data_path.joinpath(batch, temp, "pipeline.log"),
-    #                                combined_log=collapse_path.joinpath("pipeline.log"))
-    #             check_seq_sum(summary=basecalled_data_path.joinpath(batch, temp, "sequencing_summary.txt"),
-    #                           combined_sum=collapse_path.joinpath("sequencing_summary.txt"))
-    #             check_seq_tel(tel=basecalled_data_path.joinpath(batch, temp, "sequencing_telemetry.js"),
-    #                           combined_tel=collapse_path.joinpath("sequencing_telemetry.js"))
-    #     check_workspace(workspace=basecalled_data_path,
-    #                             combined_workspace=collapse_path.joinpath("workspace"))
+    def test_002_collapse_save(self):
+        """Test the collapsing of parallel basecalled data into the
+        data format of normal albacore basecalling for the given input"""
+        basecalled_data_path = Path("test_data/basecalled_data/utils_tests/local_basecall_test")
+        collapse_path = Path("test_data/basecalled_data/utils_tests/bc_copy")
+        shutil.copytree(str(basecalled_data_path), str(collapse_path))
+        results = ParallelBaseCalledData(collapse_path)
+        results.collapse_parallel_data(compute=self.compute)
+
+
+        # for batch in os.listdir(str(basecalled_data_path)):
+        #     for temp in os.listdir(str(basecalled_data_path.joinpath(batch))):
+        #         check_configuration_cfg(cfg=basecalled_data_path.joinpath(batch, temp, "configuration.cfg"),
+        #                                 combined_cfg=collapse_path.joinpath("configuration.cfg"))
+        #         check_pipeline_log(log=basecalled_data_path.joinpath(batch, temp, "pipeline.log"),
+        #                            combined_log=collapse_path.joinpath("pipeline.log"))
+        #         check_seq_sum(summary=basecalled_data_path.joinpath(batch, temp, "sequencing_summary.txt"),
+        #                       combined_sum=collapse_path.joinpath("sequencing_summary.txt"))
+        #         check_seq_tel(tel=basecalled_data_path.joinpath(batch, temp, "sequencing_telemetry.js"),
+        #                       combined_tel=collapse_path.joinpath("sequencing_telemetry.js"))
+        # check_workspace(workspace=basecalled_data_path,
+        #                         combined_workspace=collapse_path.joinpath("workspace"))
 
 
 class TestUtilityFunctionsRemote(unittest.TestCase):
@@ -268,7 +276,7 @@ class TestUtilityFunctionsRemote(unittest.TestCase):
         compute_configs = config.compute
         self.compute = Cluster(config=compute_configs[0])
         self.compute.connect()
-        self.fast5_dir = Path("test_data/minion_sample_raw_data/Experiment_01/sample_01/fast5/pass/0")
+        self.fast5_dir = Path("test_data/minion_sample_raw_data/Experiment_01/sample_01_remote/fast5/pass/0")
         self.save_path = Path("test_data/minion_sample_raw_data")
         self.split_data_path = Path("test_data/minion_sample_raw_data/split_data")
 
@@ -285,11 +293,15 @@ class TestUtilityFunctionsRemote(unittest.TestCase):
         if self.split_data_path.exists():
             shutil.rmtree(str(self.split_data_path))
         reads = os.listdir(str(self.fast5_dir))
-        split_reads = [read.name for read in split_data(data_path=self.fast5_dir,
+        read_batches = split_data(data_path=self.fast5_dir,
                    save_path=self.save_path,
                    splits=10,
                    compute=self.compute
-                   )]
+                   )
+        split_reads = []
+        for batch in read_batches:
+            for read in batch:
+                split_reads.append(Path(read).name)
 
         for read in split_reads:
             self.assertTrue(read in reads)
@@ -308,7 +320,37 @@ class TestUtilityFunctionsRemote(unittest.TestCase):
 ########################################################################
 
 
-class TestBasecall(unittest.TestCase):
+class TestBasecallLocal(unittest.TestCase):
+    """Tests for the Albacore class."""
+
+    @classmethod
+    def setUp(self):
+        """Set up test fixtures, if any."""
+        pass
+
+    def tearDown(self):
+        """Tear down test fixtures, if any."""
+        pass
+
+    def test_000_basecall_albacore(self):
+        """Build a cluster object with yaml"""
+        config = Configuration("test_configs/local_basecall.yml")
+        compute_configs = config.compute
+        compute = Cluster(compute_configs[0])
+        compute.connect()
+        albacore = Albacore(config)
+        input_data = albacore.input_path
+        input_reads = []
+        for path, subdirs, files in os.walk(str(input_data)):
+            input_reads.extend(files)
+
+        basecaller = AlbacoreBasecall(albacore, compute, data_splits=4)
+        basecalled_data = basecaller()
+        compute.close()
+        #self.assertTrue(check_basecall(basecalled_data, input_reads))
+
+
+class TestBasecallRemote(unittest.TestCase):
     """Tests for the Albacore class."""
 
     @classmethod
@@ -323,16 +365,21 @@ class TestBasecall(unittest.TestCase):
 
     def test_000_basecall_albacore(self):
         """Build a cluster object with yaml"""
-        config = Configuration("basecall_test_config.yml")
-        cluster = Cluster(config)
+        config = Configuration("test_configs/remote_basecall.yml")
+        compute_configs = config.compute
+        albacore_config = config.basecall
+        compute = Cluster(compute_configs[0])
+        compute.connect()
         albacore = Albacore(config)
+
         input_data = albacore.input_path
         input_reads = []
         for path, subdirs, files in os.walk(str(input_data)):
             input_reads.extend(files)
 
-        basecaller = AlbacoreBasecall(albacore, cluster)
+        basecaller = AlbacoreBasecall(albacore, compute)
         basecalled_data = basecaller()
+        compute.close()
 
         self.assertTrue(check_basecall(basecalled_data, input_reads))
 

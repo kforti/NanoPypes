@@ -29,35 +29,6 @@ class Albacore:
         self.reads_per_fastq = self._config.reads_per_fastq(reads_per_fastq)
         self.barcoding = self._config.barcoding(barcoding)
 
-        # if isinstance(input, Sample):
-        #     self.input = input
-        #     self.flow_cell = flowcell
-        #     self.kit = kit
-        #     self._save_path = save_path
-        #     self.barcoding = barcoding
-        #     self.output_format = output_format
-        #     if reads_per_fastq:
-        #         self.reads_per_fastq = reads_per_fastq
-        #
-        # elif input.split('.')[1] == "yml":
-        #     config = BasecallConfig(input, flowcell=flowcell,
-        #                             kit=kit,
-        #                             save_path=save_path,
-        #                             output_format=output_format,
-        #                             barcoding=barcoding,
-        #                             reads_per_fastq=reads_per_fastq)
-        #     self.input = Sample(config.input_path)
-        #     self.flow_cell = config.flowcell
-        #     self.kit = config.kit
-        #     self._save_path = config.save_path
-        #     self.barcoding = config.barcoding
-        #     self.output_format = config.output_format
-        #     if reads_per_fastq:
-        #         self.reads_per_fastq = config.reads_per_fastq
-        #
-        # if self.output_format == "fastq" and reads_per_fastq == None:
-        #     self.reads_per_fastq = 1000
-
     @property
     def input_path(self):
         return self.input.path

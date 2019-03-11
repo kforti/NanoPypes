@@ -16,15 +16,14 @@ def split_data(data_path, save_path, splits, compute=None, recursive=False):
     file_chunks = list(_chunks(files, chunk_size, save_path))
 
     if compute:
-        results = compute.map(_create_dir, file_chunks)
+        data_paths = compute.map(_create_dir, file_chunks)
         compute.show_progress()
-        data_paths = []
-        for result in results:
-            data_paths.extend(result)
+        # for result in results:
+        #     data_paths.extend(result)
     else:
         data_paths = []
         for files in file_chunks:
-            data_paths.extend(_create_dir(files))
+            data_paths.append(_create_dir(files))
 
     return data_paths
 
@@ -42,9 +41,9 @@ def _create_dir(files):
         files[0].mkdir()
     data_paths = []
     for file in files[1]:
-        new_file_path = files[0].joinpath(file.name)
+        new_file_path = str(files[0].joinpath(file.name))
         data_paths.append(new_file_path)
-        shutil.copyfile(str(file), str(new_file_path))
+        shutil.copyfile(str(file), new_file_path)
     return data_paths
 
 
