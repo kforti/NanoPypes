@@ -1,5 +1,7 @@
 import subprocess
+import os
 import logging
+import math
 from pathlib import Path
 from abc import ABC, abstractmethod
 import collections.abc
@@ -40,31 +42,32 @@ class Pipe(ABC):
 
 
 class AlbacoreBasecall(Pipe):
-    def __init__(self, albacore, compute):
-        raise NotImplementedError("You have to fix the execution of this pipe")
+    def __init__(self, albacore, compute, data_splits):
         self.compute = compute
         self.albacore = albacore
         self.func = self.albacore.build_func()
         self.input_path = Path(self.albacore.input_path)
-        self.temp_path = self.input_path.joinpath("temp")
-
-        self.compute.connect()
+        self.splits_path = self.input_path.joinpath("split_data")
+        self.splits = data_splits
 
     def execute(self):
         batch_counter = 0
         batches = len(self.albacore.batches)
         for batch in self.albacore.batches:
             batch_counter += 1
-            pdata = split_data(self.input_path)
-            dirs = temp_dirs(batch, self.input_path)
+            split_data(data_path=batch,
+                               save_path=self.input_path,
+                               splits=self.splits,
+                               compute=self.compute)
+
             commands = []
-            for dir in dirs:
-                commands.append(self.albacore.build_command(dir, batch.name))
+            for split in range(self.splits):
+                commands.append(self.albacore.build_command(str(self.splits_path.joinpath(str(split))), batch.name))
             self.compute.map(self.func, commands)
             print("\nBatch ", batch_counter, " out of ", batches)
             self.compute.show_progress()
 
-            remove_splits(self.temp_path)
-        basecalled_data = collapse_save(self.albacore.save_path)
-        return basecalled_data
+            remove_splits(self.splits_path)
+        # basecalled_data = collapse_save(self.albacore.save_path)
+        return #basecalled_data
 

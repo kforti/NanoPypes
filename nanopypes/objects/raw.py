@@ -1,8 +1,10 @@
 import h5py
 import os
+from pathlib import Path
 from ont_fast5_api.fast5_interface import is_multi_read
 from ont_fast5_api.fast5_read import Fast5Read
 from ont_fast5_api.fast5_file import Fast5File
+from ont_fast5_api.analysis_tools import basecall_1d
 from nanopypes.objects.base import NanoPypeObject
 
 class SeqOutput(NanoPypeObject):
@@ -97,10 +99,11 @@ class Sample(NanoPypeObject):
         return {'pass': pass_reads, 'fail': fail_reads}
 
 
-class Fast5Read(Fast5Read):
+class RawFast5(Fast5File):#(Fast5Read):
 
-    def __init__(self, path, read_id):
-        super().__init__(path, read_id)
+    def __init__(self, path):#, read_id):
+        self.path = path
+        super().__init__(fname=path)
 
     @property
     def open(self):
@@ -112,15 +115,20 @@ class Fast5Read(Fast5Read):
 
     @property
     def contents(self):
-        self.iter_group(self.open, 0)
+        self.iter_group(self.open)
 
     @property
     def signal(self):
         return self.open.get('Signal')
 
+    def get_fastq(self, path=None):
+        basecall_tool = basecall_1d.Basecall1DTools(self.path)
+        return basecall_tool.get_called_sequence("template")
+
+
     def iter_group(self, group, layer=0):
         for key in group:
-            print("\t" * layer, key)
+            print("\t" * layer, key, [(i, y) for i, y in group[key].attrs.items()])
             if isinstance(group.get(key), h5py.Group):
                 self.iter_group(group.get(key), layer + 1)
 
