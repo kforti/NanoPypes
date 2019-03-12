@@ -29,6 +29,7 @@ class TestClusterLocal(unittest.TestCase):
         self.compute.show_progress()
         print(results)
 
+
 class TestClusterRemote(unittest.TestCase):
     """Tests for the Albacore class."""
 
