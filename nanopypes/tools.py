@@ -5,9 +5,10 @@ from nanopypes.config import Configuration
 
 def basecall(config, data_splits, basecaller='Albacore'):
     config = Configuration(config)
+    compute_configs = config.compute
     if basecaller == 'Albacore':
         albacore = Albacore(config)
-        compute = Cluster(config)
+        compute = Cluster(config[0])
         compute.connect()
         basecaller = AlbacoreBasecall(albacore=albacore, compute=compute, data_splits=data_splits)
         basecalled_data = basecaller.execute()
