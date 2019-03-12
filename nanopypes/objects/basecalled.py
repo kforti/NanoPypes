@@ -61,11 +61,11 @@ class ParallelBaseCalledData():
         #Create parallel batch objects
         for batch in os.listdir(str(path)):
             self.batches.append(ParallelBatch(self.path.joinpath(batch),
-                                               telemetry=Telemetry(self.path.joinpath("sequencing_telemetry.js")),
-                                               summary=Summary(self.path.joinpath("sequencing_summary.txt")),
-                                               workspace=Workspace(self.path.joinpath("workspace")),
-                                               pipeline=PipelineLog(self.path.joinpath("pipeline.log")),
-                                               configuration=MinIONConfiguration(self.path.joinpath("configuration.cfg"))))
+                                              telemetry=Telemetry(self.path.joinpath("sequencing_telemetry.js")),
+                                              summary=SequencingSummary(self.path.joinpath("sequencing_summary.txt")),
+                                              workspace=Workspace(self.path.joinpath("workspace")),
+                                              pipeline=PipelineLog(self.path.joinpath("pipeline.log")),
+                                              configuration=MinIONConfiguration(self.path.joinpath("configuration.cfg"))))
 
     @property
     def num_batches(self):
@@ -220,10 +220,10 @@ class AbstractBasecallOutput(ABC):
         return self.dest
 
 
-class Summary(AbstractBasecallOutput):
+class SequencingSummary(AbstractBasecallOutput):
 
     def __init__(self, dest, data=[]):
-        self.header = [['filename', 'read_id', 'run_id', 'channel', 'start_time', 'duration', 'num_events', 'passes_filtering', 'template_start', 'num_events_template', 'template_duration', 'num_called_template', 'sequence_length_template', 'mean_qscore_template', 'strand_score_template', 'calibration_strand_genome_template', 'calibration_strand_identity_template', 'calibration_strand_accuracy_template', 'calibration_strand_speed_bps_template', 'barcode_arrangement', 'barcode_score', 'barcode_full_arrangement', 'front_score', 'rear_score', 'front_begin_index', 'front_foundseq_length', 'rear_end_index', 'rear_foundseq_length', 'kit', 'variant']]
+        self.header = ['filename', 'read_id', 'run_id', 'channel', 'start_time', 'duration', 'num_events', 'passes_filtering', 'template_start', 'num_events_template', 'template_duration', 'num_called_template', 'sequence_length_template', 'mean_qscore_template', 'strand_score_template', 'calibration_strand_genome_template', 'calibration_strand_identity_template', 'calibration_strand_accuracy_template', 'calibration_strand_speed_bps_template', 'barcode_arrangement', 'barcode_score', 'barcode_full_arrangement', 'front_score', 'rear_score', 'front_begin_index', 'front_foundseq_length', 'rear_end_index', 'rear_foundseq_length', 'kit', 'variant']
         self._summary_data = data
         super().__init__(dest)
 
@@ -243,12 +243,13 @@ class Summary(AbstractBasecallOutput):
     def combine(self):
         with open(str(self.dest), 'a') as dest_file:
             csv_writer = csv.writer(dest_file, delimiter='\t')
+            csv_writer.writerow(self.header)
             for row in self._summary_data:
                 csv_writer.writerow(row)
 
     def __add__(self, other):
         summary_data = self._summary_data + other.summary_data
-        return Summary(dest=self.dest, data=summary_data)
+        return SequencingSummary(dest=self.dest, data=summary_data)
 
 
 class Telemetry(AbstractBasecallOutput):
@@ -272,7 +273,6 @@ class Telemetry(AbstractBasecallOutput):
         if self._telemetry == []:
             raise ValueError("You are trying to write empty data")
         with open(str(self.dest), "a") as file:
-            print("&&&&&&&&&&&&&&&&&&&&&&&&&&&&")
             json.dump(self._telemetry, file)
 
     def __add__(self, other):

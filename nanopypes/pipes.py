@@ -1,7 +1,9 @@
 import subprocess
 import os
+import re
 import logging
 import math
+import shutil
 from pathlib import Path
 from abc import ABC, abstractmethod
 import collections.abc
@@ -47,6 +49,7 @@ class AlbacoreBasecall(Pipe):
         self.albacore = albacore
         self.func = self.albacore.build_func()
         self.input_path = Path(self.albacore.input_path)
+        self.save_path = Path(self.albacore.save_path)
         self.splits_path = self.input_path.joinpath("split_data")
         self.splits = data_splits
 
@@ -56,18 +59,29 @@ class AlbacoreBasecall(Pipe):
         for batch in self.albacore.batches:
             batch_counter += 1
             split_data(data_path=batch,
-                               save_path=self.input_path,
-                               splits=self.splits,
-                               compute=self.compute)
+                       save_path=self.input_path,
+                       splits=self.splits,
+                       compute=self.compute)
 
             commands = []
             for split in range(self.splits):
                 commands.append(self.albacore.build_command(str(self.splits_path.joinpath(str(split))), batch.name))
-            self.compute.map(self.func, commands)
             print("\nBatch ", batch_counter, " out of ", batches)
+            self.compute.map(self.func, commands)
             #self.compute.show_progress()
 
             remove_splits(self.splits_path)
-        # basecalled_data = collapse_save(self.albacore.save_path)
+        basecalled_data = collapse_save(self.albacore.save_path)
         return #basecalled_data
+
+    def remove_parallel_data(self, path=None):
+        if path == None:
+            path = self.save_path
+        batch_pattern = r'(^)[0-9]+($)'
+        for batch in os.listdir(str(self.save_path)):
+            if re.match(batch_pattern, batch):
+                shutil.rmtree(str(self.save_path.joinpath(batch)))
+            else:
+                continue
+
 

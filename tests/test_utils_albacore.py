@@ -8,6 +8,7 @@ import shutil
 import unittest
 import json
 import csv
+import re
 from pathlib import Path
 from nanopypes.config import Configuration
 from nanopypes.oxnano import Albacore
@@ -39,10 +40,30 @@ class TestAlbacoreLocal(unittest.TestCase):
         retrieved_command = albacore.build_command('./test_data/1', '0')
         expected_command = ["read_fast5_basecaller.py", "--flowcell", "FLO-MIN106",
                          "--kit", "SQK-LSK109", "--output_format", "fast5",
-                         "--save_path", "test_data/basecalled_data/results/0/1",
+                         "--save_path", "test_data/basecalled_data/results/local_basecall_test/0/1",
                          "--worker_threads", "1", "--input", "./test_data/1"]
-        # print(retrieved_command, "\n", expected_command)
+        #print(retrieved_command, "\n", expected_command)
         self.assertTrue(retrieved_command == expected_command)
+
+    def test_001_albacore_batches(self):
+        config = Configuration("test_configs/local_builds.yml")
+        albacore = Albacore(config=config)
+        expected_batches = [Path('test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/0'),
+                            Path('test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/1'),
+                            Path('test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/2'),
+                            Path('test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/3'),
+                            Path('test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/4'),
+                            Path('test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/5'),
+                            Path('test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/6'),
+                            Path('test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/7'),
+                            Path('test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/8'),
+                            Path('test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/9')]
+        actual_batches = albacore.batches
+        #print("BATCHES....... ", expected_batches, "\n", actual_batches)
+        for batch in expected_batches:
+            self.assertTrue(batch in actual_batches)
+        for batch in actual_batches:
+            self.assertTrue(batch in expected_batches)
 
     def test_003_albacore_build_func(self):
         """Test the function that is built from albacore."""
@@ -350,8 +371,32 @@ class TestBasecallLocal(unittest.TestCase):
         basecaller = AlbacoreBasecall(albacore, compute, data_splits=4)
         basecalled_data = basecaller()
         compute.close()
-        #self.assertTrue(check_basecall(basecalled_data, input_reads))
 
+    def test_001_check_basecall(self):
+        input_reads = []
+        bc_path = 'test_data/basecalled_data/results/local_basecall_test'
+        for path, subdirs, files in os.walk('test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass'):
+            input_reads.extend(files)
+
+        # basecalled_reads = []
+        #
+        # for path, subdirs, files in os.walk('test_data/basecalled_data/results/local_basecall_test/workspace'):
+        #     basecalled_reads.extend(files)
+
+        # for read in basecalled_reads:
+        #     self.assertTrue(read in input_reads)
+        # for read in input_reads:
+        #     self.assertTrue(read in basecalled_reads)
+        self.assertTrue(check_basecall(bc_path, input_reads))
+
+    def test_002_remove_parallel_data(self):
+        config = Configuration("test_configs/local_basecall.yml")
+        compute_configs = config.compute
+        compute = Cluster(compute_configs[0])
+        compute.connect()
+        albacore = Albacore(config)
+        basecaller = AlbacoreBasecall(albacore, compute, data_splits=4)
+        basecaller.remove_parallel_data()
 
 class TestBasecallRemote(unittest.TestCase):
     """Tests for the Albacore class."""
@@ -370,7 +415,6 @@ class TestBasecallRemote(unittest.TestCase):
         """Build a cluster object with yaml"""
         config = Configuration("test_configs/remote_basecall.yml")
         compute_configs = config.compute
-        albacore_config = config.basecall
         compute = Cluster(compute_configs[0])
         compute.connect()
         albacore = Albacore(config)
@@ -378,8 +422,7 @@ class TestBasecallRemote(unittest.TestCase):
         input_data = albacore.input_path
         input_reads = []
 
-        if Path(save_path).exists():
-            shutil.rmtree(str(save_path))
+        shutil.rmtree(str(save_path))
         for path, subdirs, files in os.walk(str(input_data)):
             input_reads.extend(files)
 
@@ -389,6 +432,22 @@ class TestBasecallRemote(unittest.TestCase):
 
         # self.assertTrue(check_basecall(basecalled_data, input_reads))
 
+    def test_001_check_basecall(self):
+        input_reads = []
+        bc_path = 'test_data/basecalled_data/results/local_basecall_test'
+        for path, subdirs, files in os.walk('test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass'):
+            input_reads.extend(files)
+
+        self.assertTrue(check_basecall(bc_path, input_reads))
+
+    def test_002_remove_parallel_data(self):
+        config = Configuration("test_configs/remote_basecall.yml")
+        compute_configs = config.compute
+        compute = Cluster(compute_configs[0])
+        compute.connect()
+        albacore = Albacore(config)
+        basecaller = AlbacoreBasecall(albacore, compute, data_splits=100)
+        basecaller.remove_parallel_data()
 
 ########################################################################
 ### Helper Functions                                                 ###
@@ -399,17 +458,24 @@ def check_pipeline_log(log, combined_log):
         with open(str(combined_log), "r") as cfile:
             log_data = csv.reader(file, delimiter="\t")
             clog_data = csv.reader(cfile, delimiter="\t")
-            log_row = next(log_data)
+            clog_rows = list(clog_data)
+            #print("CLOGROWS!!!!!!!!!!!!!!!!!!!!!",clog_rows)
             try:
                 while True:
-                    clog_row = next(clog_data)
-                    if clog_row == log_row:
-                        while True:
-                            val1 = next(log_data)
-                            val2 = next(clog_data)
-                            if val1 != val2:
-                                print("[PIPELINE]\n", val1, '\n', val2, '\n', log)
-                                # raise ValueError("unexpected value %s found in log file %s. clog shows %s" % (val1, str(log), val2))
+                    log_row = next(log_data)
+                    if log_row in clog_rows:
+                        continue
+                    else:
+                        print("[PIPELINE]\n", log, "\n", log_row)
+
+                    # clog_row = next(clog_data)
+                    # if clog_row == log_row:
+                    #     while True:
+                    #         val1 = next(log_data)
+                    #         val2 = next(clog_data)
+                    #         if val1 != val2:
+                    #             print("[PIPELINE]\n", val1, '\n', val2, '\n', log)
+                    #             # raise ValueError("unexpected value %s found in log file %s. clog shows %s" % (val1, str(log), val2))
             except StopIteration:
                     pass
 
@@ -433,8 +499,11 @@ def check_seq_sum(summary, combined_sum):
             combined_data = []
             for row in csv.reader(cfile, delimiter="\t"):
                 combined_data.append(row)
-            for row in data:
-                if row not in combined_data:
+            #print("COMBINED DATA........ ", combined_data)
+            for i, row in enumerate(data):
+                if i == 0:
+                    continue
+                elif row not in combined_data:
                     print("[SUMMARY]\n", summary, '\n', row)
                     # raise ValueError("Could not find summary data from %s in combined summary file" % summary)
 
@@ -475,9 +544,11 @@ def check_workspace(workspace, combined_workspace):
     #                 raise ValueError("Read %s not found in combined reads" % read)
     #         combined_reads = []
 
-def check_basecall(bc_data, input_reads):
+def check_basecall(bc_data_path, input_reads):
+
+    ## Check reads
+    bc_data_path = Path(bc_data_path)
     bc_reads = []
-    bc_data_path = bc_data.path
     for path, subdirs, files in os.walk(str(bc_data_path.joinpath('workspace'))):
         bc_reads.extend(files)
 
@@ -488,6 +559,22 @@ def check_basecall(bc_data, input_reads):
     for read in input_reads:
         if read not in bc_reads:
             return False
+
+    #Iterate through parallel basecall files
+    combined_workspace = bc_data_path.joinpath("workspace")
+    combined_sum = bc_data_path.joinpath("sequencing_summary.txt")
+    combined_tel = bc_data_path.joinpath("sequencing_telemetry.js")
+    combined_pipe = bc_data_path.joinpath("pipeline.log")
+    combined_config = bc_data_path.joinpath("configuration.cfg")
+
+    batch_pattern = r'(^)[0-9]+($)'
+    for batch in os.listdir(str(bc_data_path)):
+        if re.match(batch_pattern, batch):
+            for split in os.listdir(str(bc_data_path.joinpath(batch))):
+                check_configuration_cfg(bc_data_path.joinpath(batch, split, "configuration.cfg"), combined_config)
+                check_seq_sum(bc_data_path.joinpath(batch, split, "sequencing_summary.txt"), combined_sum)
+                check_seq_tel(bc_data_path.joinpath(batch, split, "sequencing_telemetry.js"), combined_tel)
+                check_pipeline_log(bc_data_path.joinpath(batch, split, "pipeline.log"), combined_pipe)
 
     return True
 
