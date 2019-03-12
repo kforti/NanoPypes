@@ -44,7 +44,11 @@ def _create_dir(files):
     for file in files[1]:
         new_file_path = str(files[0].joinpath(file.name))
         data_paths.append(new_file_path)
-        shutil.copyfile(str(file), new_file_path)
+        try:
+            shutil.copyfile(str(file), new_file_path)
+        except Exception as e:
+            print("ERROR......@#@! ", str(file), "\n", str(new_file_path))
+            continue
     return data_paths
 
 
