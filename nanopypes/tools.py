@@ -1,9 +1,10 @@
 from nanopypes.compute import Cluster
 from nanopypes.oxnano import Albacore
 from nanopypes.pipes import AlbacoreBasecall
-
+from nanopypes.config import Configuration
 
 def basecall(config, data_splits, basecaller='Albacore'):
+    config = Configuration(config)
     if basecaller == 'Albacore':
         albacore = Albacore(config)
         compute = Cluster(config)
