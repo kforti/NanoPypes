@@ -67,7 +67,9 @@ class AlbacoreBasecall(Pipe):
             for split in range(self.splits):
                 commands.append(self.albacore.build_command(str(self.splits_path.joinpath(str(split))), batch.name))
             print("\nBatch ", batch_counter, " out of ", batches)
-            self.compute.map(self.func, commands)
+            try:
+                self.compute.map(self.func, commands)
+            except
             #self.compute.show_progress()
 
             remove_splits(self.splits_path)

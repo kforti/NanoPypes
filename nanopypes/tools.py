@@ -3,11 +3,11 @@ from nanopypes.oxnano import Albacore
 from nanopypes.pipes import AlbacoreBasecall
 from nanopypes.config import Configuration
 
-def basecall(config, data_splits, basecaller='Albacore'):
+def basecall(config, data_splits, basecaller='albacore', continue_on=False):
     config = Configuration(config)
     compute_configs = config.compute
-    if basecaller == 'Albacore':
-        albacore = Albacore(config)
+    if basecaller == 'albacore':
+        albacore = Albacore(config, continue_on=continue_on)
         compute = Cluster(compute_configs[0])
         compute.connect()
         basecaller = AlbacoreBasecall(albacore=albacore, compute=compute, data_splits=data_splits)
