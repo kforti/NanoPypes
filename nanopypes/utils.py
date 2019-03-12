@@ -5,7 +5,7 @@ from pathlib import Path
 from nanopypes.objects.basecalled import BaseCalledData, SequencingSummary, Telemetry, MinIONConfiguration, PipelineLog, Workspace
 
 
-def split_data(data_path, save_path, splits, compute=None, recursive=False):
+def split_data(data_path, save_path, splits, compute=None):
     """Splits data into multiple directories for parallel processing"""
     print("Splitting data... ")
     data_path = Path(data_path)
@@ -39,7 +39,11 @@ def _chunks(file_names, chunk_size, save_path):
 
 def _create_dir(files):
     if files[0].exists() == False:
-        files[0].mkdir()
+        try:
+            files[0].mkdir()
+        except Exception as e:
+            print("Tried to make a directory and an error occurred ", files[0])
+            pass
     data_paths = []
     for file in files[1]:
         new_file_path = str(files[0].joinpath(file.name))
