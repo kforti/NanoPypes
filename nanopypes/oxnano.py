@@ -1,6 +1,7 @@
 import os
 import subprocess
 from pathlib import Path
+import re
 
 from nanopypes.utils import temp_dirs
 from nanopypes.objects.raw import Sample
@@ -67,7 +68,8 @@ class Albacore:
 
     @property
     def batches(self):
-        batches = [Path(self.input_path).joinpath(i) for i in os.listdir(str(self.input_path))]
+        batch_pattern = r'(^)[0-9]+($)'
+        batches = [Path(self.input_path).joinpath(i) for i in os.listdir(str(self.input_path)) if re.match(batch_pattern, str(i))]
         return batches
 
     @property

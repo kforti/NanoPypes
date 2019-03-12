@@ -2,7 +2,7 @@ import os
 import shutil
 import math
 from pathlib import Path
-from nanopypes.objects.basecalled import BaseCalledData, Summary, Telemetry, MinIONConfiguration, PipelineLog, Workspace
+from nanopypes.objects.basecalled import BaseCalledData, SequencingSummary, Telemetry, MinIONConfiguration, PipelineLog, Workspace
 
 
 def split_data(data_path, save_path, splits, compute=None, recursive=False):
@@ -114,7 +114,7 @@ def collapse_save(save_path, compute=None):
     batches = os.listdir(str(save_path))
 
     pipeline = PipelineLog(save_path.joinpath("pipeline.log"))
-    seq_sum = Summary(save_path.joinpath("sequencing_summary.txt"))
+    seq_sum = SequencingSummary(save_path.joinpath("sequencing_summary.txt"))
     seq_tel = Telemetry(save_path.joinpath("sequencing_telemetry.js"))
     config = MinIONConfiguration(save_path.joinpath("configuration.cfg"))
     workspace = Workspace(save_path.joinpath("workspace"))
