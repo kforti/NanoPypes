@@ -9,7 +9,7 @@ Quick-Start
 
 Install
 ------------
-pip.::
+pip::
 
     pip install nanopypes
 
