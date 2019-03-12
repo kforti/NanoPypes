@@ -70,13 +70,6 @@ Set your configurations and create an instance of Albacore.::
                basecaller="albacore")
 
 
-
-from nanopypes.oxnano import *
-
-config = Configuration("path/to/yaml/config")
-compute_configs = config.compute
-albacore = Albacore(compute_configs[compute_index])
-
 Create an instance of Cluster to connect to your compute resources.::
 
     compute = Cluster(config)
