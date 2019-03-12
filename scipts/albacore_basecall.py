@@ -1,8 +1,7 @@
 from nanopypes.tools import basecall
 
 if __name__ == '__main__':
-    config = '/home/kf78w/bin/Nanopypes/tests/basecall_test_config.yml'
-    config = '/home/kf78w/bin/NanoPypes/tests/basecall_test_config.yml'
-    bc_data = basecall(config)
+    config = 'albacore_basecall.yml'
+    bc_data = basecall(config, data_splits=400)
 
 

@@ -1,0 +1,31 @@
+basecall:
+  input_path: /project/umw_athma_pai/kevin/data/minion_ercc_labeled/20190220_1525_ERCC/fast5/pass
+  save_path: /project/umw_athma_pai/kevin/data/minion_ercc_labeled/basecalled_data_test
+  flowcell: FLO-MIN106
+  kit: SQK-LSK109
+  barcoding: False
+  output_format: fast5
+  worker_threads: 1
+  recursive: False
+  reads_per_fastq: 1000
+compute:
+    cluster1:
+        job_time: 04:00
+        mem: 2048
+        ncpus: 10
+        project: /project/umw_athma_pai
+        queue: short
+        workers: 10
+        cores: 10
+        memory: 2 GB
+        scale_value: 200
+        cluster_type: LSF
+networking:
+    network1:
+        compute_name:
+        address:
+        password:
+pipe:
+    name: None
+
+
