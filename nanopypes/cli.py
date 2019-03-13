@@ -28,8 +28,8 @@ from nanopypes.tools import basecall
 # @click.option('--workers', help='the amount of dask workers')
 # @click.option('--cores', help='the number of cores per dask worker')
 # @click.option('--memory', help='the amount of memory per dask worker')
-@click.option('--data_splits', help='the number of splits to divide raw minion sequence batches into. '                             'Start with the number of workers you intend to use and optimize from there', required=True)
-@click.option('--continue_on', help="if True then the basecaller will continue from it's previous start location.")
+@click.option('--data_splits', help='the number of splits to divide raw minion sequence batches into. Start with the number of workers you intend to use and optimize from there', required=True, type=int)
+@click.option('--continue_on', help="if True then the basecaller will continue from it's previous start location.", type=bool)
 @click.argument('config', required=False)
 def albacore_basecaller(config, data_splits, continue_on):
     """Console script for pai-nanopypes."""

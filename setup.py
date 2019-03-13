@@ -36,7 +36,7 @@ setup(
     description="Package for rapidly building ONT MinIon sequence analysis pipelines",
     entry_points={
         'console_scripts': [
-            'albacore_basecaller=nanopypes.cli:albacore_basecaller',
+            'albacore_basecaller = nanopypes.cli:albacore_basecaller',
         ],
     },
     install_requires= [
