@@ -398,6 +398,20 @@ class TestBasecallLocal(unittest.TestCase):
         basecaller = AlbacoreBasecall(albacore, compute, data_splits=4)
         basecaller.remove_parallel_data()
 
+    def test_003_continue_basecall(self):
+        config = Configuration("test_configs/local_basecall.yml")
+        compute_configs = config.compute
+        compute = Cluster(compute_configs[0])
+        compute.connect()
+        albacore = Albacore(config,
+                            input='test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass',
+                            continue_on=True,
+                            save_path='test_data/basecalled_data/results/continue_basecall_local')
+
+        basecaller = AlbacoreBasecall(albacore, compute, data_splits=4)
+        basecalled_data = basecaller()
+        compute.close()
+
 class TestBasecallRemote(unittest.TestCase):
     """Tests for the Albacore class."""
 
