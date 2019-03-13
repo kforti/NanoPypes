@@ -1,13 +1,14 @@
 basecall:
-  input_path: /project/umw_athma_pai/kevin/data/minion_ercc_labeled/20190220_1525_ERCC/fast5/pass
-  save_path: /project/umw_athma_pai/kevin/data/minion_ercc_labeled/basecalled_data_test
-  flowcell: FLO-MIN106
-  kit: SQK-LSK109
-  barcoding: False
-  output_format: fast5
-  worker_threads: 1
-  recursive: False
-  reads_per_fastq: 1000
+    basecaller:
+    input_path: /project/umw_athma_pai/kevin/data/minion_ercc_labeled/20190220_1525_ERCC/fast5/pass
+    save_path: /project/umw_athma_pai/kevin/data/minion_ercc_labeled/basecalled_data_test
+    flowcell: FLO-MIN106
+    kit: SQK-LSK109
+    barcoding: False
+    output_format: fast5
+    worker_threads: 1
+    recursive: False
+    reads_per_fastq: 1000
 compute:
     cluster1:
         job_time: 04:00
