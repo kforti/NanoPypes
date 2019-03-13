@@ -34,6 +34,10 @@ from nanopypes.tools import basecall
 def albacore_basecaller(config, data_splits, continue_on):
     """Console script for pai-nanopypes."""
     # config = Configuration(config)
+    print(data_splits)
+    print(type(data_splits))
+    print(continue_on)
+    print(type(continue_on))
     basecalled_data = basecall(config=config,
                                continue_on=data_splits,
                                data_splits=continue_on)
