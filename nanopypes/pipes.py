@@ -69,7 +69,8 @@ class AlbacoreBasecall(Pipe):
             print("\nBatch ", batch_counter, " out of ", batches)
             try:
                 self.compute.map(self.func, commands)
-            except
+            except Exception as e:
+                print(e)
             #self.compute.show_progress()
 
             remove_splits(self.splits_path)
