@@ -25,8 +25,8 @@ setup(
         'Intended Audience :: Developers',
         'License :: OSI Approved :: GNU General Public License v3 (GPLv3)',
         'Natural Language :: English',
-        "Programming Language :: Python :: 2",
-        'Programming Language :: Python :: 2.7',
+        #"Programming Language :: Python :: 2",
+        #'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.4',
         'Programming Language :: Python :: 3.5',
@@ -36,13 +36,14 @@ setup(
     description="Package for rapidly building ONT MinIon sequence analysis pipelines",
     entry_points={
         'console_scripts': [
-            'basecall=nanopypes.cli:albacore_basecaller',
+            'albacore_basecaller=nanopypes.cli:albacore_basecaller',
         ],
     },
     install_requires= [
         'dask[distributed]',
         'dask-jobqueue',
         'h5py',
+        'ont_fast5_api',
     ],
     license="GNU General Public License v3",
     long_description=readme + '\n\n' + history,
