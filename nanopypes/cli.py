@@ -82,3 +82,5 @@ def albacore_basecaller(config, data_splits, continue_on):
     return 0
 
 
+if __name__ == '__main__':
+    albacore_basecaller()
