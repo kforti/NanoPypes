@@ -21,7 +21,8 @@ class Albacore:
                  output_format=None,
                  reads_per_fastq=None,
                  barcoding=None,
-                 continue_on=False):
+                 continue_on=False,
+                 last_batch=None):
 
         self._config = config.basecall
         self.input = Sample(self._config.input_path(input))
@@ -33,7 +34,7 @@ class Albacore:
         self.barcoding = self._config.barcoding(barcoding)
         self.continue_on = continue_on
         if continue_on:
-            self.prep_data()
+            self.prep_data(last_batch=last_batch)
 
     @property
     def input_path(self):
@@ -113,8 +114,9 @@ class Albacore:
             return process
         return func
 
-    def prep_data(self):
-        last_batch = self._find_last_batch()
+    def prep_data(self, last_batch=None):
+        if not last_batch:
+            last_batch = self._find_last_batch()
         if last_batch:
             print("LAST BATCH: ", last_batch, "Deleting the last batch......")
             shutil.rmtree(str(last_batch))
@@ -124,9 +126,12 @@ class Albacore:
 
     def _find_last_batch(self):
         for batch in os.listdir(str(self.save_path)):
-            for split in os.listdir(str(self.save_path.joinpath(batch))):
-                files = [file for file in os.listdir(str(self.save_path.joinpath(batch, split)))]
-                if 'sequencing_telemetry.js' not in files:
-                    return self.save_path.joinpath(batch)
+            split = os.listdir(str(self.save_path.joinpath(batch)))[0]
+            files = [file for file in os.listdir(str(self.save_path.joinpath(batch, split)))]
+            if 'sequencing_telemetry.js' not in files:
+                return self.save_path.joinpath(batch)
+            else:
+                continue
+
 
 

@@ -51,7 +51,7 @@ def _create_dir(files):
         try:
             shutil.copyfile(str(file), new_file_path)
         except Exception as e:
-            print("ERROR......@#@! ", str(file), "\n", str(new_file_path))
+            print("ERROR...... ", str(file), "\n", str(new_file_path))
             continue
     return data_paths
 

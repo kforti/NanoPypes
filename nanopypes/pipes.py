@@ -45,6 +45,7 @@ class Pipe(ABC):
 
 class AlbacoreBasecall(Pipe):
     def __init__(self, albacore, compute, data_splits):
+        print("Configuring albacore pipe.... ")
         self.compute = compute
         self.albacore = albacore
         self.func = self.albacore.build_func()
