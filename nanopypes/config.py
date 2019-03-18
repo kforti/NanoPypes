@@ -62,7 +62,7 @@ class BasecallConfig:
         elif settings == None:
             self._settings = self.default_settings
 
-        self._basecaller = self._settings["basecaller"]
+        # self._basecaller = self._settings["basecaller"]
         self._kit = self._settings["kit"]
         self._flowcell = self._settings["flowcell"]
         self._save_path = self._settings["save_path"]

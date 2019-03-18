@@ -1,14 +1,14 @@
 import subprocess
 import os
 import re
-import logging
-import math
 import shutil
 from pathlib import Path
 from abc import ABC, abstractmethod
 import collections.abc
 
-from nanopypes.utils import temp_dirs, remove_splits, collapse_save, split_data
+from nanopypes.utils import remove_splits, collapse_save, split_data
+from nanopypes.compute import Cluster
+from nanopypes.objects.base import DataSet
 
 
 class Pipeline(collections.abc.Callable):
@@ -87,5 +87,21 @@ class AlbacoreBasecall(Pipe):
                 shutil.rmtree(str(self.save_path.joinpath(batch)))
             else:
                 continue
+
+
+class RsyncParallel(Pipe):
+
+    def __init__(self, data_path, local, remote, *options):
+        """Can handle moving raw data on the sequence output, experiment and sample levels, where sequence output consists of multiple experiments,
+         experiments consist of multiple samples and sample consists of the results from one sequencing run."""
+        self.data_set = DataSet(data_path)
+        self.options = options
+        self.local = local
+        self.remote = remote
+        self.compute = Cluster(cluster_type='local')
+
+    def execute(self):
+        data_type = self.data_set.data_type
+
 
 
