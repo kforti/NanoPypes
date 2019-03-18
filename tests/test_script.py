@@ -12,6 +12,6 @@ from nanopypes.objects.raw import RawFast5
 MINION_SEQ_OUT = "test_data/minion_sample_raw_data"
 MINION_EXPERIMENT = "test_data/minion_sample_raw_data/Experiment_01"
 MINION_SAMPLES = {"remote": "test_data/minion_sample_raw_data/Experiment_01/sample_01_remote",
-                  "local": "test_data/minion_sample_raw_data/Experiment_01/sample_02_local"]
+                  "local": "test_data/minion_sample_raw_data/Experiment_01/sample_02_local"}
 #BASECALLED Data
 
