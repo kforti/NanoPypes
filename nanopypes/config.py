@@ -22,6 +22,7 @@ class Configuration:
             self._compute = settings["compute"]
             self._pipes = settings["pipes"]
         except Exception as e:
+            print("exception raised")
             print(e)
 
     @property
@@ -235,31 +236,3 @@ class Config:
         if extension == "yml":
             file = open(config, "r")
             return load(file)
-#
-# class BasecallConfig(Config):
-#
-#     def __init__(self, config, **kwargs):
-#         print("setting configuration...")
-#         super().__init__(config)
-#         if config == None:
-#             self.bc_config == {}
-#         else:
-#             self.bc_config = super().basecall_config
-#         self._parse_kwargs(**kwargs)
-#
-#         logger.info("Basecall command initiated at %s with settings: %s" % (datetime.now(), self.bc_config))
-#
-#     def _parse_kwargs(self, **kwargs):
-#         """parse the kwargs passed into the config and update
-#         the config settings based on the arguments passed"""
-#         for key, value in kwargs.items():
-#             if value != None and key != "config":
-#                 self.bc_config[key] = value
-#             else:
-#                 continue
-#
-
-    #######################################################################
-    ## Cluster properties
-    #######################################################################
-

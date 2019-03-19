@@ -15,10 +15,10 @@ compute:
         ncpus: 10
         project: /project/umw_athma_pai
         queue: short
-        workers: 10
+        workers: 5
         cores: 10
         memory: 2 GB
-        scale_value: 250
+        scale_value: 100
         cluster_type: LSF
 networking:
     network1:
