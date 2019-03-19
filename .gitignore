@@ -103,5 +103,5 @@ ENV/
 
 # cluster dev
 cluster.py
-scripts/rsync_parallel
+scripts/rsync_parallel.py
 scripts/minimap.py
