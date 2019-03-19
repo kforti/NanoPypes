@@ -87,7 +87,7 @@ class Cluster:
         if show_progress == True:
             progress(self.futures)
         futures = [self.client.gather(future) for future in self.futures]
-        print(self.client.profile())
+
         return futures
 
     def show_progress(self):
@@ -106,16 +106,17 @@ class Cluster:
                                       walltime=self.walltime, #Passed to #BSUB -W option.
                                       ncpus=self.ncpus, #Passed to #BSUB -n option.
                                       mem=self.mem, #Passed to #BSUB -M option.
+                                      R="span[hosts=1]",
                                       cores=self.cores,
                                       memory=self.memory,
                                       interface='ib0',
                                       death_timeout=self.time_out)
             print("Your Scheduler's address: "
-                  "", self.cluster.scheduler_address)
+                  "", self.cluster.dashboard_link)
         elif self.cluster_type == "local":
             self.cluster = LocalCluster()
             self.workers = self.cluster.workers
-        # print("job script: ", self.cluster.job_script())
+        print("job script: ", self.cluster.job_script())
         self.client = Client(self.cluster)
         # print("scale_value: ", self.scale_value)
         if self.scale_value:
