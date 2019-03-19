@@ -108,6 +108,8 @@ class Cluster:
                                       cores=self.cores,
                                       memory=self.memory,
                                       death_timeout=self.time_out)
+            print("Your Scheduler's address: "
+                  "", self.cluster.scheduler_address)
         elif self.cluster_type == "local":
             self.cluster = LocalCluster()
             self.workers = self.cluster.workers
