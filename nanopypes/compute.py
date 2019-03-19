@@ -87,6 +87,7 @@ class Cluster:
         if show_progress == True:
             progress(self.futures)
         futures = [self.client.gather(future) for future in self.futures]
+        print(self.client.profile())
         return futures
 
     def show_progress(self):
@@ -107,6 +108,7 @@ class Cluster:
                                       mem=self.mem, #Passed to #BSUB -M option.
                                       cores=self.cores,
                                       memory=self.memory,
+                                      interface='ib0',
                                       death_timeout=self.time_out)
             print("Your Scheduler's address: "
                   "", self.cluster.scheduler_address)
