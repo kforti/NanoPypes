@@ -20,17 +20,6 @@ compute:
         memory: 2 GB
         scale_value: 100
         cluster_type: LSF
-    cluster2:
-        job_time: 04:00
-        mem: 2048
-        ncpus: 10
-        project: /project/umw_athma_pai
-        queue: short
-        workers: 5
-        cores: 10
-        memory: 2 GB
-        scale_value: 100
-        cluster_type: LSF
 networking:
     network1:
         compute_name:
