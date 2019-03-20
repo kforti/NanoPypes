@@ -62,7 +62,7 @@ class AlbacoreBasecall(Pipe):
         maps = 1
         for batch in self.albacore.batches:
             batch_counter += 1
-            self.splits_paths.append(self.input_path.joinpath(batch.name, split_data()))
+            self.splits_paths.append(self.input_path.joinpath(batch.name, 'split_data'))
             split_data(data_path=batch,
                        save_path=self.input_path.joinpath(batch.name),
                        splits=self.batch_splits,
