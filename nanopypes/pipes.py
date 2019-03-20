@@ -77,11 +77,12 @@ class AlbacoreBasecall(Pipe):
                 except Exception as e:
                     print(e)
                 #self.compute.show_progress()
-                for splits_path in self.splits_paths:
-                    remove_splits(splits_path)
+                
+                self.compute.map(remove_splits, self.splits_paths)
                 maps += 1
                 batch_counter = 0
                 commands = []
+                self.splits_paths = []
 
         basecalled_data = collapse_save(self.albacore.save_path)
         return #basecalled_data
