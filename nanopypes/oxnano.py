@@ -34,7 +34,7 @@ class Albacore:
         self.barcoding = self._config.barcoding(barcoding)
         self.continue_on = continue_on
         if continue_on:
-            self.prep_data(last_batch=last_batch)
+            self.prep_data()
 
     @property
     def input_path(self):
