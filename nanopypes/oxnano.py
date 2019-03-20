@@ -114,17 +114,16 @@ class Albacore:
             return process
         return func
 
-    def prep_data(self, last_batch=None):
-        if not last_batch:
-            last_batch = self._find_last_batch()
-        if last_batch:
-            print("LAST BATCH: ", last_batch, "Deleting the last batch......")
-            shutil.rmtree(str(last_batch))
-        if self.input_path.joinpath('split_data').exists():
-            print("DELETING SPLIT DATA...")
-            shutil.rmtree(str(self.input_path.joinpath('split_data')))
+    def prep_data(self):
+        for batch in os.listdir(str(self.input_path)):
+            files = [file for file in os.listdir(str(self.input_path.joinpath(batch)))]
+            if 'split_data' in files:
+                print("DELETING SPLIT DATA...")
+                shutil.rmtree(str(self.input_path.joinpath(batch, 'split_data')))
+                print("LAST BATCH: ", batch, "Deleting the last batch......")
+                shutil.rmtree(str(self.save_path.joinpath(batch)))
 
-    def _find_last_batch(self):
+    def _find_last_batches(self):
         for batch in os.listdir(str(self.save_path)):
             split = os.listdir(str(self.save_path.joinpath(batch)))[0]
             files = [file for file in os.listdir(str(self.save_path.joinpath(batch, split)))]
