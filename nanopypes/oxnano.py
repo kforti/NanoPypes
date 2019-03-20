@@ -118,11 +118,17 @@ class Albacore:
         for batch in os.listdir(str(self.input_path)):
             files = [file for file in os.listdir(str(self.input_path.joinpath(batch)))]
             if 'split_data' in files:
-                print("DELETING SPLIT DATA...")
-                shutil.rmtree(str(self.input_path.joinpath(batch, 'split_data')))
-                print("LAST BATCH: ", batch, "Deleting the last batch......")
-                shutil.rmtree(str(self.save_path.joinpath(batch)))
-
+                try:
+                    print("DELETING SPLIT DATA...")
+                    shutil.rmtree(str(self.input_path.joinpath(batch, 'split_data')))
+                except FileNotFoundError:
+                    pass
+                try:
+                    print("LAST BATCH: ", batch, "Deleting the last batch......")
+                    shutil.rmtree(str(self.save_path.joinpath(batch)))
+                except Exception as e:
+                    pass
+                    
     def _find_last_batches(self):
         for batch in os.listdir(str(self.save_path)):
             split = os.listdir(str(self.save_path.joinpath(batch)))[0]
