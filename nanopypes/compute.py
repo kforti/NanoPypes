@@ -105,7 +105,7 @@ class Cluster:
                                       processes=self.workers,
                                       walltime=self.walltime, #Passed to #BSUB -W option.
                                       ncpus=self.ncpus, #Passed to #BSUB -n option.
-                                      mem=2048, #Passed to #BSUB -M option.
+                                      mem="2048", #Passed to #BSUB -M option.
                                       R="span[hosts=1]",
                                       cores=self.cores,
                                       memory=self.memory,
