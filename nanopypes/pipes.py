@@ -53,7 +53,7 @@ class AlbacoreBasecall(Pipe):
         self.save_path = Path(self.albacore.save_path)
         self.splits_path = self.input_path.joinpath("split_data")
         self.parallel_batches = parallel_batches
-        self.splits = data_splits * self.parallel_batches
+        self.batch_splits = data_splits
 
     def execute(self):
         batch_counter = 0
@@ -63,12 +63,12 @@ class AlbacoreBasecall(Pipe):
         for batch in self.albacore.batches:
             batch_counter += 1
             split_data(data_path=batch,
-                       save_path=self.input_path,
-                       splits=self.splits,
+                       save_path=self.input_path.joinpath(batch.name),
+                       splits=self.batch_splits,
                        compute=self.compute)
 
-            for split in range(self.splits):
-                commands.append(self.albacore.build_command(str(self.splits_path.joinpath(str(split))), batch.name))
+            for split in range(self.batch_splits):
+                commands.append(self.albacore.build_command(str(self.input_path.joinpath(batch.name, 'split_data', str(split))), batch.name))
             if batch_counter == self.parallel_batches:
                 print("\nBatches ", (batch_counter * maps - self.parallel_batches), " - ", (batch_counter * maps), " out of ", batches)
                 try:
@@ -78,6 +78,10 @@ class AlbacoreBasecall(Pipe):
                 #self.compute.show_progress()
 
                 remove_splits(self.splits_path)
+                maps += 1
+                batch_counter = 0
+                commands = []
+
         basecalled_data = collapse_save(self.albacore.save_path)
         return #basecalled_data
 
