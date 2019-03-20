@@ -44,7 +44,7 @@ class Pipe(ABC):
 
 
 class AlbacoreBasecall(Pipe):
-    def __init__(self, albacore, compute, data_splits, parallel_batches):
+    def __init__(self, albacore, compute, data_splits, parallel_batches=10):
         print("Configuring albacore pipe.... ")
         self.compute = compute
         self.albacore = albacore
