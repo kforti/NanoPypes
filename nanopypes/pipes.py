@@ -51,7 +51,7 @@ class AlbacoreBasecall(Pipe):
         self.func = self.albacore.build_func()
         self.input_path = Path(self.albacore.input_path)
         self.save_path = Path(self.albacore.save_path)
-        self.splits_path = self.input_path.joinpath("split_data")
+        self.splits_paths = []
         self.parallel_batches = parallel_batches
         self.batch_splits = data_splits
 
@@ -62,6 +62,7 @@ class AlbacoreBasecall(Pipe):
         maps = 1
         for batch in self.albacore.batches:
             batch_counter += 1
+            self.splits_paths.append(self.input_path.joinpath(batch.name, split_data()))
             split_data(data_path=batch,
                        save_path=self.input_path.joinpath(batch.name),
                        splits=self.batch_splits,
@@ -76,8 +77,8 @@ class AlbacoreBasecall(Pipe):
                 except Exception as e:
                     print(e)
                 #self.compute.show_progress()
-
-                remove_splits(self.splits_path)
+                for splits_path in self.splits_paths:
+                    remove_splits(splits_path)
                 maps += 1
                 batch_counter = 0
                 commands = []
