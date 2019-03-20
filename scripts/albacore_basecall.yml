@@ -18,7 +18,7 @@ compute:
         workers: 10
         cores: 20
         memory: 2 GB
-        scale_value: 100
+        scale_value: 200
         cluster_type: LSF
 networking:
     network1:
