@@ -70,7 +70,7 @@ class AlbacoreBasecall(Pipe):
 
             for split in range(self.batch_splits):
                 commands.append(self.albacore.build_command(str(self.input_path.joinpath(batch.name, 'split_data', str(split))), batch.name))
-            if batch_counter == self.parallel_batches:
+            if batch_counter == self.parallel_batches or (batch_counter * maps) == batches:
                 print("\nBatches ", (batch_counter * maps - self.parallel_batches), " - ", (batch_counter * maps), " out of ", batches)
                 try:
                     self.compute.map(self.func, commands)
