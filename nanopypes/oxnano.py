@@ -128,7 +128,7 @@ class Albacore:
                     shutil.rmtree(str(self.save_path.joinpath(batch)))
                 except Exception as e:
                     pass
-                    
+
     def _find_last_batches(self):
         for batch in os.listdir(str(self.save_path)):
             split = os.listdir(str(self.save_path.joinpath(batch)))[0]

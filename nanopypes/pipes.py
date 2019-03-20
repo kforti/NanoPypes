@@ -44,7 +44,7 @@ class Pipe(ABC):
 
 
 class AlbacoreBasecall(Pipe):
-    def __init__(self, albacore, compute, data_splits, parallel_batches=10):
+    def __init__(self, albacore, compute, data_splits, parallel_batches=20):
         print("Configuring albacore pipe.... ")
         self.compute = compute
         self.albacore = albacore
@@ -77,7 +77,7 @@ class AlbacoreBasecall(Pipe):
                 except Exception as e:
                     print(e)
                 #self.compute.show_progress()
-                
+
                 self.compute.map(remove_splits, self.splits_paths)
                 maps += 1
                 batch_counter = 0
