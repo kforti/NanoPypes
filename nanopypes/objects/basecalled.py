@@ -143,6 +143,7 @@ class ParallelBatch():
         self.configuration.combine
 
     def digest_splits(self):
+        print("digesting splits... \n Batch number: ", self.path.name)
         for split in self.splits:
             self._configuration.consume(src=split.joinpath("configuration.cfg"))
             self._pipeline.consume(src=split.joinpath("pipeline.log"))
@@ -152,6 +153,7 @@ class ParallelBatch():
             self._workspace.consume(src=split.joinpath("workspace"))
 
     def __add__(self, other):
+        print("Adding batch.... ")
         workspace = None #workspace is consumed directly to the
         pipeline = self.pipeline + other.pipeline
         summary = self.summary + other.summary
