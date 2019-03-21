@@ -9,6 +9,7 @@ import collections.abc
 from nanopypes.utils import remove_splits, collapse_save, split_data
 from nanopypes.compute import Cluster
 from nanopypes.objects.base import DataSet
+from nanopypes.objects.basecalled import ParallelBaseCalledData
 
 
 class Pipeline(collections.abc.Callable):
@@ -84,7 +85,8 @@ class AlbacoreBasecall(Pipe):
                 commands = []
                 self.splits_paths = []
 
-        basecalled_data = collapse_save(self.albacore.save_path)
+        basecalled_data = ParallelBaseCalledData(self.save_path)
+        basecalled_data.collapse_parallel_data(self.compute)
         return #basecalled_data
 
     def remove_parallel_data(self, path=None):
