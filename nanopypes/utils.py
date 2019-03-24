@@ -13,7 +13,7 @@ def split_data(data_path, save_path, splits, compute=None):
     if save_path.exists() == False:
         save_path.mkdir()
     files = [data_path.joinpath(file) for file in os.listdir(str(data_path))]
-    chunk_size = math.ceil((len(files) / splits))
+
     file_chunks = list(_chunks(files, chunk_size, save_path))
 
     if compute:
@@ -51,7 +51,7 @@ def _create_dir(files):
         try:
             shutil.copyfile(str(file), new_file_path)
         except Exception as e:
-            print("ERROR...... ", str(file), "\n", str(new_file_path))
+            print("ERROR...... ", e, "\n", str(file), "\n", str(new_file_path))
             continue
     return data_paths
 

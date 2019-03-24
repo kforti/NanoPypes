@@ -15,7 +15,7 @@ from nanopypes.oxnano import Albacore
 from nanopypes.compute import Cluster
 from nanopypes.objects.basecalled import ParallelBaseCalledData
 from nanopypes.objects.raw import Sample
-from nanopypes.pipes import AlbacoreBasecall
+from nanopypes.pipes import AlbacoreBasecaller
 from nanopypes.utils import remove_splits, collapse_save, split_data
 
 from distributed import Client
@@ -358,19 +358,30 @@ class TestBasecallLocal(unittest.TestCase):
         config = Configuration("test_configs/local_basecall.yml")
         compute_configs = config.compute
         compute = Cluster(compute_configs[0])
-        compute.connect()
+        client = compute.connect()
         albacore = Albacore(config)
-        save_path = albacore.save_path
-        input_data = albacore.input_path
-        input_reads = []
+        data = AlbacoreBasecaller.start(albacore, client, data_splits=4)
+        print(data)
 
-        shutil.rmtree(str(save_path))
-        for path, subdirs, files in os.walk(str(input_data)):
-            input_reads.extend(files)
-
-        basecaller = AlbacoreBasecall(albacore, compute, data_splits=4)
-        basecalled_data = basecaller()
-        compute.close()
+    # def test_000_basecall_albacore(self):
+    #     """Build a cluster object with yaml"""
+    #     config = Configuration("test_configs/local_basecall.yml")
+    #     compute_configs = config.compute
+    #     compute = Cluster(compute_configs[0])
+    #     compute.connect()
+    #     albacore = Albacore(config)
+    #     save_path = albacore.save_path
+    #     input_data = albacore.input_path
+    #     input_reads = []
+    #
+    #     if save_path.exists():
+    #         shutil.rmtree(str(save_path))
+    #     for path, subdirs, files in os.walk(str(input_data)):
+    #         input_reads.extend(files)
+    #
+    #     basecaller = AlbacoreBasecall(albacore, compute, data_splits=4)
+    #     basecalled_data = basecaller()
+    #     compute.close()
 
     def test_001_check_basecall(self):
         input_reads = []
@@ -378,15 +389,15 @@ class TestBasecallLocal(unittest.TestCase):
         for path, subdirs, files in os.walk('test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass'):
             input_reads.extend(files)
 
-        # basecalled_reads = []
-        #
-        # for path, subdirs, files in os.walk('test_data/basecalled_data/results/local_basecall_test/workspace'):
-        #     basecalled_reads.extend(files)
+        basecalled_reads = []
 
-        # for read in basecalled_reads:
-        #     self.assertTrue(read in input_reads)
-        # for read in input_reads:
-        #     self.assertTrue(read in basecalled_reads)
+        for path, subdirs, files in os.walk('test_data/basecalled_data/results/local_basecall_test/workspace'):
+            basecalled_reads.extend(files)
+
+        for read in basecalled_reads:
+            self.assertTrue(read in input_reads)
+        for read in input_reads:
+            self.assertTrue(read in basecalled_reads)
         self.assertTrue(check_basecall(bc_path, input_reads))
 
     def test_002_remove_parallel_data(self):

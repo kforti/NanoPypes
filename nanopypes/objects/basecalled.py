@@ -60,10 +60,11 @@ class ParallelBaseCalledData():
         self.processed_batches = []
         #Create parallel batch objects
         for batch in os.listdir(str(path)):
+            if batch == 'workspace':
+                continue
             self.batches.append(ParallelBatch(self.path.joinpath(batch),
                                               telemetry=Telemetry(self.path.joinpath("sequencing_telemetry.js")),
                                               summary=SequencingSummary(self.path.joinpath("sequencing_summary.txt")),
-                                              workspace=Workspace(self.path.joinpath("workspace")),
                                               pipeline=PipelineLog(self.path.joinpath("pipeline.log")),
                                               configuration=MinIONConfiguration(self.path.joinpath("configuration.cfg"))))
 
@@ -90,8 +91,8 @@ class ParallelBaseCalledData():
                                   config=collapsed_batch.configuration,
                                   summary=collapsed_batch.summary,
                                   telemetry=collapsed_batch.telemetry,
-                                  pipeline=collapsed_batch.pipeline,
-                                  workspace=collapsed_batch.workspace)
+                                  workspace=self.path.joinpath('workspace'),
+                                  pipeline=collapsed_batch.pipeline)
 
     def _batch_digest(self, batch):
         batch.digest_splits()
@@ -99,13 +100,12 @@ class ParallelBaseCalledData():
 
 
 class ParallelBatch():
-    def __init__(self, path, telemetry, summary, pipeline, workspace, configuration):
+    def __init__(self, path, telemetry, summary, pipeline, configuration):
         self.path = Path(path)
         self._splits = [self.path.joinpath(split) for split in os.listdir(str(self.path))]
         self._telemetry = telemetry
         self._summary = summary
         self._pipeline = pipeline
-        self._workspace = workspace
         self._configuration = configuration
 
     @property
@@ -129,18 +129,14 @@ class ParallelBatch():
         return self._pipeline
 
     @property
-    def workspace(self):
-        return self._workspace
-
-    @property
     def configuration(self):
         return self._configuration
 
     def combine_data(self):
         self.telemetry.combine()
-        self.summary.combine
-        self.pipeline.combine
-        self.configuration.combine
+        self.summary.combine()
+        self.pipeline.combine()
+        self.configuration.combine()
 
     def digest_splits(self):
         print("digesting splits... \n Batch number: ", self.path.name)
@@ -149,12 +145,9 @@ class ParallelBatch():
             self._pipeline.consume(src=split.joinpath("pipeline.log"))
             self._summary.consume(src=split.joinpath("sequencing_summary.txt"))
             self._telemetry.consume(src=split.joinpath("sequencing_telemetry.js"))
-            # print("consuming.... ", self.telemetry.data)
-            self._workspace.consume(src=split.joinpath("workspace"))
 
     def __add__(self, other):
         print("Adding batch.... ")
-        workspace = None #workspace is consumed directly to the
         pipeline = self.pipeline + other.pipeline
         summary = self.summary + other.summary
         configuration = self.configuration + other.configuration
@@ -163,7 +156,6 @@ class ParallelBatch():
                              telemetry=telemetry,
                              summary=summary,
                              pipeline=pipeline,
-                             workspace=workspace,
                              configuration=configuration)
 
 

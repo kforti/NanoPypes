@@ -59,9 +59,12 @@ class AlbacoreBasecall(Pipe):
     def execute(self):
         batch_counter = 0
         batches = len(self.albacore.batches)
+        batch_names = []
         commands = []
         maps = 1
         for batch in self.albacore.batches:
+            print("Batch: ", batch)
+            batch_names += batch.name
             batch_counter += 1
             self.splits_paths.append(self.input_path.joinpath(batch.name, 'split_data'))
             split_data(data_path=batch,
@@ -77,17 +80,23 @@ class AlbacoreBasecall(Pipe):
                     self.compute.map(self.func, commands)
                 except Exception as e:
                     print(e)
-                #self.compute.show_progress()
 
                 self.compute.map(remove_splits, self.splits_paths)
+
+                if self.save_path.joinpath('workspace').exists() == False:
+                    self.save_path.joinpath('workspace').mkdir()
+                for batch_name in batch_names:
+                    mv_reads_func = mv_reads_function(batch_name, self.save_path)
+                    self.compute.map(mv_reads_func, range(self.batch_splits))
                 maps += 1
                 batch_counter = 0
                 commands = []
                 self.splits_paths = []
+                batch_names = []
 
         basecalled_data = ParallelBaseCalledData(self.save_path)
         basecalled_data.collapse_parallel_data(self.compute)
-        return #basecalled_data
+        return basecalled_data
 
     def remove_parallel_data(self, path=None):
         if path == None:
@@ -99,6 +108,31 @@ class AlbacoreBasecall(Pipe):
             else:
                 continue
 
+def mv_reads_function(batch, save_path):
+
+    def mv_reads(split, batch=batch, save_path=save_path):
+        split_path = save_path.joinpath(batch, str(split))
+        print(split_path)
+        for read_type in os.listdir(str(split_path.joinpath('workspace'))):
+            print(read_type)
+            if save_path.joinpath('workspace', read_type).exists() == False:
+                try:
+                    save_path.joinpath('workspace', read_type).mkdir()
+                except FileExistsError:
+                    pass
+
+            for barcode in os.listdir(str(split_path.joinpath('workspace', read_type))):
+                print(barcode)
+                if save_path.joinpath('workspace', read_type, barcode).exists() == False:
+                    try:
+                        save_path.joinpath('workspace', read_type, barcode).mkdir()
+                    except FileExistsError:
+                        pass
+
+                for read in os.listdir(str(split_path.joinpath('workspace', read_type, barcode))):
+                    print("movings reads... ", str(split_path.joinpath('workspace', read_type, barcode, read)), str(save_path.joinpath('workspace', read_type, barcode, read)))
+                    shutil.move(str(split_path.joinpath('workspace', read_type, barcode, read)), str(save_path.joinpath('workspace', read_type, barcode, read)))
+    return mv_reads
 
 class RsyncParallel(Pipe):
 

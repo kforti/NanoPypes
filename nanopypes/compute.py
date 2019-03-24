@@ -111,16 +111,19 @@ class Cluster:
                                       memory=self.memory,
                                       interface='ib0',
                                       death_timeout=self.time_out)
-            print("Your Scheduler's address: "
+            print("job script: ", self.cluster.job_script())
+            print("\nYour Scheduler's address: "
                   "", self.cluster.dashboard_link)
         elif self.cluster_type == "local":
             self.cluster = LocalCluster()
             self.workers = self.cluster.workers
-        print("job script: ", self.cluster.job_script())
+
         self.client = Client(self.cluster)
         # print("scale_value: ", self.scale_value)
         if self.scale_value:
             self.scale(self.scale_value)
+
+        return self.client
 
     def stop_jobs(self, jobs="all"):
         if jobs == "all":
