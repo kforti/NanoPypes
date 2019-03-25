@@ -66,7 +66,7 @@ class Cluster:
         running_jobs = len(self.cluster.scheduler.workers)
         running_workers = len(self.cluster.running_jobs)
 
-        while len(self.cluster.scheduler.workers) < int(value * 0.50):
+        while len(self.cluster.scheduler.workers) < int(value * 0.25):
             if timer == 0 or len(self.cluster.scheduler.workers) != running_jobs or len(self.cluster.running_jobs) != running_workers or pending_jobs != self.cluster.pending_jobs:
                 running_jobs = len(self.cluster.scheduler.workers)
                 running_workers = len(self.cluster.running_jobs)
