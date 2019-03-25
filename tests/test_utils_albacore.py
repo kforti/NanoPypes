@@ -362,6 +362,7 @@ class TestBasecallLocal(unittest.TestCase):
         albacore = Albacore(config)
         data = AlbacoreBasecaller.start(albacore, client, data_splits=4)
         print(data)
+        compute.close()
 
     # def test_000_basecall_albacore(self):
     #     """Build a cluster object with yaml"""

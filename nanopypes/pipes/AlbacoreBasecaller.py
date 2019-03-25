@@ -129,6 +129,18 @@ def split_data(batch, chunk_size):
     return all_files
 
 @dask.delayed
+def copy_splits(splits, split_path):
+    for file in splits:
+
+        new_file_path = split_path.joinpath(file.name)
+        try:
+            shutil.copyfile(str(file), new_file_path)
+        except Exception as e:
+            return e
+
+    return
+
+@dask.delayed
 def get_command(split, batch_name, build_command, input_path, splt_data):
     split = copy(split)
     batch_name = copy(batch_name)
@@ -142,40 +154,44 @@ def basecall(func, command):
     return func(command)
 
 @dask.delayed
-def copy_splits(splits, split_path):
-    for file in splits:
-
-        new_file_path = split_path.joinpath(file.name)
-        try:
-            shutil.copyfile(str(file), new_file_path)
-        except Exception as e:
-            return e
-
-    return
+def digest_telemetry(path, save_path, bc):
+    path = copy(path)
+    save_path = copy(save_path)
+    data = []
+    with open(str(path), 'r') as infile:
+        for line in infile:
+            data.append(line)
+    return data
 
 @dask.delayed
-def digest_telemetry(path, bc):
+def digest_summary(path, save_path, bc):
     path = copy(path)
-    df = dd.read_json(path)
-    return df
+    save_path = copy(save_path)
+    data = []
+    with open(str(path), 'r') as infile:
+        for line in infile:
+            data.append(line)
+    return data
 
 @dask.delayed
-def digest_summary(path, bc):
+def digest_pipeline(path, save_path, bc):
     path = copy(path)
-    df = dd.read_csv(path)
-    return df
+    save_path = copy(save_path)
+    data = []
+    with open(str(path), 'r') as infile:
+        for line in infile:
+            data.append(line)
+    return data
 
 @dask.delayed
-def digest_pipeline(path, bc):
+def digest_configuration(path, save_path, bc):
     path = copy(path)
-    df = dd.read_fwf(path)
-    return df
-
-@dask.delayed
-def digest_configuration(path, bc):
-    path = copy(path)
-    df = dd.read_fwf(path)
-    return df
+    save_path = copy(save_path)
+    data = []
+    with open(str(path), 'r') as infile:
+        for line in infile:
+            data.append(line)
+    return data
 
 @dask.delayed
 def digest_workspace(path, save_path, bc):
@@ -203,46 +219,21 @@ def digest_workspace(path, save_path, bc):
 
 @dask.delayed
 def sum_results(tel, summ, conf, pipe, wrkspc):
-    return (tel, summ, conf, pipe, wrkspc)
-
-@dask.delayed
-def append_dfs(df, num_dfs):
-    df = copy(df)
-    summed_df = df[0]
-
-    for i in range(num_dfs):
-        if i == 0:
-            continue
-        return summed_df.append(df[i])#, ignore_index=True)#, lsuffix='_caller', rsuffix='_other')
+    results = {'telemetry': tel,
+               'summary': summ,
+               'config': conf,
+               'pipe': pipe,
+               'workspace': wrkspc}
+    return results
 
 
-@dask.delayed
-def write_csv(path, df, name):
-    df = copy(df)
-    path = copy(path)
-    name = copy(name)
-    save_name = path.joinpath((name + '*.csv'))
-    df.to_csv(save_name)
-    os.rename(str(path.joinpath((name + '*.csv'))), str(path.joinpath(name)))
-    return df
-
-@dask.delayed
-def write_json(path, df, name):
-    df = copy(df)
-    path = copy(path)
-    name = copy(name)
-    df.to_json(path)
-    os.rename(str(path.joinpath('*.part')), str(path.joinpath(name)))
-    return df
-
-@dask.delayed
-def write_fwf(path, df, name):
-    df = copy(df)
-    path = copy(path)
-    name = copy(name)
-    df.to_fwf(path)
-    os.rename(str(path.joinpath('0.part')), str(path.joinpath(name)))
-    return df
+def write_data(data, save_path):
+    with open(str(save_path), 'a') as file:
+        for batch in data:
+            for split in batch:
+                for row in split:
+                    file.write(row)
+    return
 
 def start(albacore, client, data_splits):
     func = albacore.build_func()
@@ -255,6 +246,11 @@ def start(albacore, client, data_splits):
     graph.visualize()
     futures = client.compute(graph)
     results = client.gather(futures)
+    write_data(results['summary'], albacore.save_path.joinpath('sequencing_summary.txt'))
+    write_data(results['telemetry'], albacore.save_path.joinpath('sequencing_telemetry.js'))
+    write_data(results['config'], albacore.save_path.joinpath('configuration.cfg'))
+    write_data(results['pipe'], albacore.save_path.joinpath('pipeline.log'))
+
     return results
 
 def get_graph(albacore, input_path, batch_splits):
@@ -309,47 +305,53 @@ def get_graph(albacore, input_path, batch_splits):
                     pass
             copy_files = copy_splits(spl_data[split], this_split_path)
 
-            command = get_command(split, batch.name, build_command, input_path, spl_data)
+            command = get_command(split, batch.name, build_command, input_path, copy_files)
             commands.append(command)
 
             bc = basecall(func, command)
             basecalls.append(bc)
 
-            telemetry = digest_telemetry(save_path.joinpath(batch.name, str(split), 'sequencing_telemetry.js'), bc)
-            summary = digest_summary(save_path.joinpath(batch.name, str(split), 'sequencing_summary.txt'), bc)
-            pipeline = digest_pipeline(save_path.joinpath(batch.name, str(split), 'pipeline.log'), bc)
-            configuration = digest_configuration(save_path.joinpath(batch.name, str(split), 'configuration.cfg'), bc)
+            split_save_path = save_path.joinpath(batch.name)
+
+            telemetry = digest_telemetry(split_save_path.joinpath(str(split), 'sequencing_telemetry.js'), split_save_path.joinpath('sequencing_telemetry.js'), bc)
+            summary = digest_summary(split_save_path.joinpath(str(split), 'sequencing_summary.txt'), split_save_path.joinpath('sequencing_summary.txt'), bc)
+            pipeline = digest_pipeline(split_save_path.joinpath(str(split), 'pipeline.log'), split_save_path.joinpath('pipeline.log'), bc)
+            configuration = digest_configuration(split_save_path.joinpath(str(split), 'configuration.cfg'), split_save_path.joinpath('configuration.cfg'), bc)
             workspace = digest_workspace(save_path.joinpath(batch.name, str(split), 'workspace'), save_path.joinpath('workspace'), bc)
             split_summaries.append(summary)
             split_telemetries.append(telemetry)
             split_pipelines.append(pipeline)
             split_configs.append(configuration)
             split_workspaces.append(workspace)
-        batch_summary = append_dfs(split_summaries, batch_splits)
-        batch_summaries.append(batch_summary)
-        batch_pipeline = append_dfs(split_pipelines, batch_splits)
-        batch_pipelines.append(batch_pipeline)
-        batch_telemetry = append_dfs(split_telemetries, batch_splits)
-        batch_telemetries.append(batch_telemetry)
-        batch_config = append_dfs(split_configs, batch_splits)
-        batch_configs.append(batch_config)
-        batch_workspaces.append(split_workspaces)
 
-    final_summary = append_dfs(batch_summaries, batches)
-    final_telemetry = append_dfs(batch_telemetries, batches)
-    final_pipeline = append_dfs(batch_pipelines, batches)
-    final_config = append_dfs(batch_configs, batches)
+        # batch_save_path = save_path.joinpath(batch.name)
+        #
+        # batch_summary = digest_summary(split_save_path.joinpath('sequencing_summary.txt'), batch_save_path.joinpath('sequencing_summary.txt'), split_summaries)
+        batch_summaries.append(split_summaries)
+        #
+        # batch_pipeline = digest_pipeline(split_save_path.joinpath('pipeline.log'), batch_save_path.joinpath('pipeline.log'), split_pipelines)
+        batch_pipelines.append(split_pipelines)
+        #
+        # batch_telemetry = digest_telemetry(split_save_path.joinpath('sequencing_telemetry.js'), batch_save_path.joinpath('sequencing_telemetry.js'), split_telemetries)
+        batch_telemetries.append(split_telemetries)
+        #
+        # batch_config = digest_configuration(split_save_path.joinpath('configuration.cfg'), batch_save_path.joinpath('configuration.cfg'), split_configs)
+        batch_configs.append(split_configs)
+        #
+        # batch_workspaces.append(split_workspaces)
 
-    summary_result = write_csv(save_path, final_summary, 'sequencing_summary.txt')
-    telemetry_result = write_json(save_path, final_telemetry, 'sequencing_telemetry.js')
-    pipeline_result = write_csv(save_path, final_pipeline, 'pipeline.log')
-    config_result = write_csv(save_path, final_config, 'configuration.cfg')
-    results = sum_results(summ=summary_result, tel=telemetry_result, pipe=pipeline_result, conf=config_result, wrkspc=batch_workspaces)
+    # final_summary = write_data(batch_summaries, save_path.joinpath('sequencing_summary.txt'))
+    # final_telemetry = write_data(batch_telemetries, save_path.joinpath('sequencing_telemetry.js'))
+    # final_pipeline = write_data(batch_pipelines, save_path.joinpath('pipeline.log'))
+    # final_config = write_data(batch_configs, save_path.joinpath('configuration.cfg'))
+
+    results = sum_results(summ=batch_summaries, tel=batch_telemetries, pipe=batch_pipelines, conf=batch_configs, wrkspc=batch_workspaces)
     return results
 
 
 
 if __name__ == '__main__':
+    pass
     # telemetry1 = digest_telemetry('/Users/kevinfortier/Desktop/NanoPypes/NanoPypes/pai-nanopypes/tests/test_data/basecalled_data/results/local_basecall_test/7/0/sequencing_telemetry.js', None)
     # telemetry2 = digest_telemetry('/Users/kevinfortier/Desktop/NanoPypes/NanoPypes/pai-nanopypes/tests/test_data/basecalled_data/results/local_basecall_test/7/1/sequencing_telemetry.js', None)
     # telemetry3 = digest_telemetry('/Users/kevinfortier/Desktop/NanoPypes/NanoPypes/pai-nanopypes/tests/test_data/basecalled_data/results/local_basecall_test/7/2/sequencing_telemetry.js', None)
@@ -361,4 +363,4 @@ if __name__ == '__main__':
     # # final = merger.drop_duplicates()
     # result = merger.to_csv('final*.csv')
     # result.compute()
-   
+
