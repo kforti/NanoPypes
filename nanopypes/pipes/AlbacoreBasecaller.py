@@ -308,7 +308,7 @@ def start(albacore, client, data_splits, batch_bunch_size):
 
     for batch_bunch in batch_bunches:
         graph = get_graph(save_path, func, build_command, input_path, num_splits, batch_bunch)
-        graph.visualize()
+        # graph.visualize()
         futures = client.compute(graph)
         results = client.gather(futures)
         final_results['summary'].append(results['summary'])
