@@ -13,4 +13,4 @@ def basecall(config, data_splits, basecaller='albacore', continue_on=False, last
 
     compute.close()
 
-    return 
+    return
