@@ -8,8 +8,8 @@ def basecall(config, data_splits, batch_bunch, basecaller='albacore', continue_o
     compute_configs = config.compute
     compute = Cluster(compute_configs[0])
     client = compute.connect()
-    albacore = Albacore(config)
-    data = AlbacoreBasecaller.start(albacore, client, data_splits=data_splits, batch_bunch_size=batch_bunch, continue_on=continue_on)
+    albacore = Albacore(config, continue_on=continue_on)
+    data = AlbacoreBasecaller.start(albacore, client, data_splits=data_splits, batch_bunch_size=batch_bunch)
 
     compute.close()
 
