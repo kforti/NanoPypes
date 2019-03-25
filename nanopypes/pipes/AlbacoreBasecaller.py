@@ -255,45 +255,31 @@ def write_config(data, save_path):
 def write_summary(data, save_path):
     header = True
     with open(str(save_path), 'a') as file:
-        for batch in data:
-            for split in batch:
-                for i, row in enumerate(split):
-                    if header == False and i == 0:
-                        continue
-                    else:
-                        file.write(row)
-                        if header:
-                            header = False
+        for batch_bunch in data:
+            for batch in batch_bunch:
+                for split in batch:
+                    for i, row in enumerate(split):
+                        if header == False and i == 0:
+                            continue
+                        else:
+                            file.write(row)
+                            if header:
+                                header = False
     return
 
-def start(albacore, client, data_splits):
-    func = albacore.build_func()
-    input_path = Path(albacore.input_path)
-    save_path = Path(albacore.save_path)
-    splits_paths = []
-    batch_splits = data_splits
-
-    graph = get_graph(albacore, input_path, batch_splits)
-    graph.visualize()
-    futures = client.compute(graph)
-    results = client.gather(futures)
-    write_summary(results['summary'], albacore.save_path.joinpath('sequencing_summary.txt'))
-    write_data(results['telemetry'], albacore.save_path.joinpath('sequencing_telemetry.js'))
-    write_config(results['config'], albacore.save_path.joinpath('configuration.cfg'))
-    write_data(results['pipe'], albacore.save_path.joinpath('pipeline.log'))
-
-    return results
-
-def get_graph(albacore, input_path, batch_splits):
+def batch_generator(batches, batch_size):
+    batches_len = len(batches)
     batch_counter = 0
-    batches = len(albacore.batches)
-    save_path = albacore.save_path
-    results = []
-    build_command = albacore.build_command
-    func = albacore.build_func()
-    commands = []
-    basecalls = []
+    return_batches = []
+    for i, batch in enumerate(batches):
+        return_batches.append(batch)
+        batch_counter += 1
+        if batch_counter == batch_size or i + 1 == batches_len:
+            yield return_batches
+            return_batches = []
+            batch_counter = 0
 
+def prep_save_path(save_path):
     if save_path.joinpath('sequencing_telemetry.js').exists() == False:
         save_path.joinpath('sequencing_telemetry.js').touch()
     if save_path.joinpath('sequencing_summary.txt').exists() == False:
@@ -305,13 +291,50 @@ def get_graph(albacore, input_path, batch_splits):
     if save_path.joinpath('workspace').exists() == False:
         save_path.joinpath('workspace').mkdir()
 
+
+def start(albacore, client, data_splits, batch_bunch_size):
+    func = albacore.build_func()
+    input_path = Path(albacore.input_path)
+    save_path = Path(albacore.save_path)
+    build_command = albacore.build_command
+    num_splits = data_splits
+    batch_bunches = batch_generator(albacore.batches, batch_bunch_size)
+    final_results = {'summary': [],
+                     'telemetry': [],
+                     'config': [],
+                     'pipe': []}
+
+    prep_save_path(save_path)
+
+    for batch_bunch in batch_bunches:
+        graph = get_graph(save_path, func, build_command, input_path, num_splits, batch_bunch)
+        graph.visualize()
+        futures = client.compute(graph)
+        results = client.gather(futures)
+        final_results['summary'].append(results['summary'])
+        final_results['telemetry'].append(results['telemetry'])
+        final_results['config'].append(results['config'])
+        final_results['pipe'].append(results['pipe'])
+
+    write_summary(results['summary'], albacore.save_path.joinpath('sequencing_summary.txt'))
+    write_data(results['telemetry'], albacore.save_path.joinpath('sequencing_telemetry.js'))
+    write_config(results['config'], albacore.save_path.joinpath('configuration.cfg'))
+    write_data(results['pipe'], albacore.save_path.joinpath('pipeline.log'))
+
+    return results
+
+def get_graph(save_path, func, build_command, input_path, batch_splits, batches):
+    commands = []
+    basecalls = []
+
+
     batch_telemetries = []
     batch_summaries = []
     batch_pipelines = []
     batch_configs = []
     batch_workspaces = []
 
-    for batch in albacore.batches:
+    for batch in batches:
         split_path = input_path.joinpath(batch.name, 'split_data')
         if split_path.exists() == False:
             try:
@@ -339,7 +362,7 @@ def get_graph(albacore, input_path, batch_splits):
             command = get_command(split, batch.name, build_command, input_path, copy_files)
             commands.append(command)
 
-            bc = None #basecall(func, command)
+            bc = basecall(func, command)
             basecalls.append(bc)
 
             split_save_path = save_path.joinpath(batch.name)

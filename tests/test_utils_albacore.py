@@ -14,8 +14,7 @@ from nanopypes.config import Configuration
 from nanopypes.oxnano import Albacore
 from nanopypes.compute import Cluster
 from nanopypes.objects.basecalled import ParallelBaseCalledData
-from nanopypes.objects.raw import Sample
-from nanopypes.pipes import AlbacoreBasecaller
+from nanopypes.tools import basecall
 from nanopypes.utils import remove_splits, collapse_save, split_data
 
 from distributed import Client
@@ -355,14 +354,12 @@ class TestBasecallLocal(unittest.TestCase):
 
     def test_000_basecall_albacore(self):
         """Build a cluster object with yaml"""
-        config = Configuration("test_configs/local_basecall.yml")
-        compute_configs = config.compute
-        compute = Cluster(compute_configs[0])
-        client = compute.connect()
-        albacore = Albacore(config)
-        data = AlbacoreBasecaller.start(albacore, client, data_splits=4)
-        print(data)
-        compute.close()
+        config = "test_configs/local_basecall.yml"
+
+        results = basecall(config=config,
+                           data_splits=4,
+                           batch_bunch=5)
+
 
     # def test_000_basecall_albacore(self):
     #     """Build a cluster object with yaml"""

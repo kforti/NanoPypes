@@ -1,4 +1,4 @@
-from nanopypes.pipes import MiniMap2
+from nanopypes.old_pipes import MiniMap2
 from nanopypes.compute import Cluster
 from nanopypes.config import Configuration
 
