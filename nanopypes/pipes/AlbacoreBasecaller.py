@@ -129,7 +129,7 @@ def split_data(batch, chunk_size):
     return all_files
 
 @dask.delayed
-def copy_splits(splits, split_path):
+def copy_splits(splits, split_path, split_data):
     for file in splits:
 
         new_file_path = split_path.joinpath(file.name)
@@ -191,6 +191,7 @@ def digest_configuration(path, save_path, bc):
     with open(str(path), 'r') as infile:
         for line in infile:
             data.append(line)
+
     return data
 
 @dask.delayed
@@ -235,6 +236,36 @@ def write_data(data, save_path):
                     file.write(row)
     return
 
+def write_config(data, save_path):
+    first_config = True
+    final_config_data = []
+    with open(str(save_path), 'a') as file:
+        for batch in data:
+            for split in batch:
+                if split in final_config_data:
+                    continue
+                else:
+                    final_config_data.append(split)
+
+                for row in split:
+                    file.write(row)
+
+    return
+
+def write_summary(data, save_path):
+    header = True
+    with open(str(save_path), 'a') as file:
+        for batch in data:
+            for split in batch:
+                for i, row in enumerate(split):
+                    if header == False and i == 0:
+                        continue
+                    else:
+                        file.write(row)
+                        if header:
+                            header = False
+    return
+
 def start(albacore, client, data_splits):
     func = albacore.build_func()
     input_path = Path(albacore.input_path)
@@ -246,9 +277,9 @@ def start(albacore, client, data_splits):
     graph.visualize()
     futures = client.compute(graph)
     results = client.gather(futures)
-    write_data(results['summary'], albacore.save_path.joinpath('sequencing_summary.txt'))
+    write_summary(results['summary'], albacore.save_path.joinpath('sequencing_summary.txt'))
     write_data(results['telemetry'], albacore.save_path.joinpath('sequencing_telemetry.js'))
-    write_data(results['config'], albacore.save_path.joinpath('configuration.cfg'))
+    write_config(results['config'], albacore.save_path.joinpath('configuration.cfg'))
     write_data(results['pipe'], albacore.save_path.joinpath('pipeline.log'))
 
     return results
@@ -263,12 +294,6 @@ def get_graph(albacore, input_path, batch_splits):
     commands = []
     basecalls = []
 
-    batch_telemetries = []
-    batch_summaries = []
-    batch_pipelines = []
-    batch_configs = []
-    batch_workspaces = []
-
     if save_path.joinpath('sequencing_telemetry.js').exists() == False:
         save_path.joinpath('sequencing_telemetry.js').touch()
     if save_path.joinpath('sequencing_summary.txt').exists() == False:
@@ -279,6 +304,12 @@ def get_graph(albacore, input_path, batch_splits):
         save_path.joinpath('configuration.cfg').touch()
     if save_path.joinpath('workspace').exists() == False:
         save_path.joinpath('workspace').mkdir()
+
+    batch_telemetries = []
+    batch_summaries = []
+    batch_pipelines = []
+    batch_configs = []
+    batch_workspaces = []
 
     for batch in albacore.batches:
         split_path = input_path.joinpath(batch.name, 'split_data')
@@ -303,12 +334,12 @@ def get_graph(albacore, input_path, batch_splits):
                     this_split_path.mkdir()
                 except Exception as e:
                     pass
-            copy_files = copy_splits(spl_data[split], this_split_path)
+            copy_files = copy_splits(spl_data[split], this_split_path, split_data)
 
             command = get_command(split, batch.name, build_command, input_path, copy_files)
             commands.append(command)
 
-            bc = basecall(func, command)
+            bc = None #basecall(func, command)
             basecalls.append(bc)
 
             split_save_path = save_path.joinpath(batch.name)
@@ -324,26 +355,11 @@ def get_graph(albacore, input_path, batch_splits):
             split_configs.append(configuration)
             split_workspaces.append(workspace)
 
-        # batch_save_path = save_path.joinpath(batch.name)
-        #
-        # batch_summary = digest_summary(split_save_path.joinpath('sequencing_summary.txt'), batch_save_path.joinpath('sequencing_summary.txt'), split_summaries)
         batch_summaries.append(split_summaries)
-        #
-        # batch_pipeline = digest_pipeline(split_save_path.joinpath('pipeline.log'), batch_save_path.joinpath('pipeline.log'), split_pipelines)
         batch_pipelines.append(split_pipelines)
-        #
-        # batch_telemetry = digest_telemetry(split_save_path.joinpath('sequencing_telemetry.js'), batch_save_path.joinpath('sequencing_telemetry.js'), split_telemetries)
         batch_telemetries.append(split_telemetries)
-        #
-        # batch_config = digest_configuration(split_save_path.joinpath('configuration.cfg'), batch_save_path.joinpath('configuration.cfg'), split_configs)
         batch_configs.append(split_configs)
-        #
-        # batch_workspaces.append(split_workspaces)
-
-    # final_summary = write_data(batch_summaries, save_path.joinpath('sequencing_summary.txt'))
-    # final_telemetry = write_data(batch_telemetries, save_path.joinpath('sequencing_telemetry.js'))
-    # final_pipeline = write_data(batch_pipelines, save_path.joinpath('pipeline.log'))
-    # final_config = write_data(batch_configs, save_path.joinpath('configuration.cfg'))
+        batch_workspaces.append(split_workspaces)
 
     results = sum_results(summ=batch_summaries, tel=batch_telemetries, pipe=batch_pipelines, conf=batch_configs, wrkspc=batch_workspaces)
     return results
