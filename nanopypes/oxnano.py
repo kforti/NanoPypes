@@ -33,8 +33,8 @@ class Albacore:
         self.reads_per_fastq = self._config.reads_per_fastq(reads_per_fastq)
         self.barcoding = self._config.barcoding(barcoding)
         self.continue_on = continue_on
-        if continue_on:
-            self.prep_data()
+        # if continue_on:
+        #     self.prep_data()
 
     @property
     def input_path(self):
