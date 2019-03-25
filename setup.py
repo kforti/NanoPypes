@@ -42,6 +42,7 @@ setup(
     install_requires= [
         'dask[distributed]',
         'dask-jobqueue',
+        'dask[dataframe]',
         'h5py',
         'ont_fast5_api',
     ],

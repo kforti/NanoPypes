@@ -362,7 +362,7 @@ def get_graph(save_path, func, build_command, input_path, batch_splits, batches)
             command = get_command(split, batch.name, build_command, input_path, copy_files)
             commands.append(command)
 
-            bc = basecall(func, command)
+            bc = None#basecall(func, command)
             basecalls.append(bc)
 
             split_save_path = save_path.joinpath(batch.name)
