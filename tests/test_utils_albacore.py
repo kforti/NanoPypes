@@ -40,7 +40,7 @@ class TestAlbacoreLocal(unittest.TestCase):
         expected_command = ["read_fast5_basecaller.py", "--flowcell", "FLO-MIN106",
                          "--kit", "SQK-LSK109", "--output_format", "fast5",
                          "--save_path", "test_data/basecalled_data/results/local_basecall_test/0/1",
-                         "--worker_threads", "1", "--input", "./test_data/1"]
+                         "--worker_threads", "1", "--input", "./test_data/1", "--barcoding"]
         #print(retrieved_command, "\n", expected_command)
         self.assertTrue(retrieved_command == expected_command)
 

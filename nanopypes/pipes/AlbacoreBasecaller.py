@@ -327,7 +327,6 @@ def get_graph(save_path, func, build_command, input_path, batch_splits, batches)
     commands = []
     basecalls = []
 
-
     batch_telemetries = []
     batch_summaries = []
     batch_pipelines = []
@@ -342,7 +341,6 @@ def get_graph(save_path, func, build_command, input_path, batch_splits, batches)
             except Exception as e:
                 pass
         chunk_size = int((len(os.listdir(str(batch))) / batch_splits))
-        print("chunk size.... ", chunk_size)
         spl_data = split_data(batch, chunk_size)
 
         split_summaries = []
