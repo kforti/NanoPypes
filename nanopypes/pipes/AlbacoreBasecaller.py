@@ -150,7 +150,7 @@ def get_command(split, batch_name, build_command, input_path, splt_data):
     return command
 
 @dask.delayed
-def basecall(func, command):
+def basecall(func, command, copy_files):
     return func(command)
 
 @dask.delayed
@@ -360,7 +360,7 @@ def get_graph(save_path, func, build_command, input_path, batch_splits, batches)
             command = get_command(split, batch.name, build_command, input_path, copy_files)
             commands.append(command)
 
-            bc = basecall(func, command)
+            bc = basecall(func, command, copy_files)
             basecalls.append(bc)
 
             split_save_path = save_path.joinpath(batch.name)
