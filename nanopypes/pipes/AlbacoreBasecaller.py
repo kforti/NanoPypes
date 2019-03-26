@@ -135,9 +135,9 @@ def copy_splits(splits, split_path, split_data):
     for file in splits:
         new_file_path = split_path.joinpath(file.name)
         try:
-            shutil.copyfile(str(file), new_file_path)
+            shutil.copyfile(str(file), str(new_file_path))
         except Exception as e:
-            return e
+            return (str(file), str(new_file_path))
 
     return
 
