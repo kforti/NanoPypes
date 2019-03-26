@@ -361,7 +361,7 @@ def get_graph(save_path, func, build_command, input_path, batch_splits, batches)
                     this_split_path.mkdir()
                 except Exception as e:
                     pass
-            copy_files = copy_splits(spl_data[split], this_split_path, get_split_paths)
+            copy_files = copy_splits(spl_data[split], this_split_path, spl_data)
 
             command = get_command(split, batch.name, build_command, input_path, copy_files)
             commands.append(command)
