@@ -317,6 +317,7 @@ def start(albacore, client, data_splits, batch_bunch_size):
         # graph.visualize()
         futures = client.compute(graph)
         results = client.gather(futures)
+        print(results)
         final_results['summary'].append(results['summary'])
         final_results['telemetry'].append(results['telemetry'])
         final_results['config'].append(results['config'])
@@ -388,7 +389,7 @@ def get_graph(save_path, func, build_command, input_path, batch_splits, batches)
         batch_configs.append(split_configs)
         batch_workspaces.append(split_workspaces)
 
-    results = sum_results(summ=batch_summaries, tel=batch_telemetries, pipe=batch_pipelines, conf=batch_configs, wrkspc=batch_workspaces)
+    results = copy_files#sum_results(summ=batch_summaries, tel=batch_telemetries, pipe=batch_pipelines, conf=batch_configs, wrkspc=batch_workspaces)
     return results
 
 
