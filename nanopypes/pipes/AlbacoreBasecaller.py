@@ -293,20 +293,25 @@ def prep_save_path(save_path):
 
 
 def start(albacore, client, data_splits, batch_bunch_size):
+    print("Starting the parallel Albacore Basecaller...")
     func = albacore.build_func()
     input_path = Path(albacore.input_path)
     save_path = Path(albacore.save_path)
     build_command = albacore.build_command
     num_splits = data_splits
-    batch_bunches = batch_generator(albacore.batches, batch_bunch_size)
+    all_batches = albacore.batches
+    num_batches = len(all_batches)
+    batch_bunches = batch_generator(all_batches, batch_bunch_size)
     final_results = {'summary': [],
                      'telemetry': [],
                      'config': [],
                      'pipe': []}
 
     prep_save_path(save_path)
-
+    batch_chunk_counter = 0
     for batch_bunch in batch_bunches:
+        print("Creating the compute graph for batches: ", (1 + batch_chunk_counter * num_batches), " - ", (batch_chunk_counter + 1) * num_batches)
+        batch_chunk_counter += 1
         graph = get_graph(save_path, func, build_command, input_path, num_splits, batch_bunch)
         # graph.visualize()
         futures = client.compute(graph)
@@ -316,10 +321,10 @@ def start(albacore, client, data_splits, batch_bunch_size):
         final_results['config'].append(results['config'])
         final_results['pipe'].append(results['pipe'])
 
-    write_summary(results['summary'], albacore.save_path.joinpath('sequencing_summary.txt'))
-    write_data(results['telemetry'], albacore.save_path.joinpath('sequencing_telemetry.js'))
-    write_config(results['config'], albacore.save_path.joinpath('configuration.cfg'))
-    write_data(results['pipe'], albacore.save_path.joinpath('pipeline.log'))
+    write_summary(final_results['summary'], albacore.save_path.joinpath('sequencing_summary.txt'))
+    write_data(final_results['telemetry'], albacore.save_path.joinpath('sequencing_telemetry.js'))
+    write_config(final_results['config'], albacore.save_path.joinpath('configuration.cfg'))
+    write_data(final_results['pipe'], albacore.save_path.joinpath('pipeline.log'))
 
     return results
 
@@ -386,18 +391,4 @@ def get_graph(save_path, func, build_command, input_path, batch_splits, batches)
     return results
 
 
-
-if __name__ == '__main__':
-    pass
-    # telemetry1 = digest_telemetry('/Users/kevinfortier/Desktop/NanoPypes/NanoPypes/pai-nanopypes/tests/test_data/basecalled_data/results/local_basecall_test/7/0/sequencing_telemetry.js', None)
-    # telemetry2 = digest_telemetry('/Users/kevinfortier/Desktop/NanoPypes/NanoPypes/pai-nanopypes/tests/test_data/basecalled_data/results/local_basecall_test/7/1/sequencing_telemetry.js', None)
-    # telemetry3 = digest_telemetry('/Users/kevinfortier/Desktop/NanoPypes/NanoPypes/pai-nanopypes/tests/test_data/basecalled_data/results/local_basecall_test/7/2/sequencing_telemetry.js', None)
-    # tocsv = telemetry1.to_csv('tel1*.csv')
-    # tel1 = tocsv.compute()
-    #
-    # tels = [telemetry1, telemetry2, telemetry3]
-    # merger = append_dfs(tels, 3)
-    # # final = merger.drop_duplicates()
-    # result = merger.to_csv('final*.csv')
-    # result.compute()
 
