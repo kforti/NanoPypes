@@ -111,7 +111,7 @@ def mv_reads_function(batch, save_path):
 
 
 @dask.delayed
-def split_data(batch, chunk_size):
+def get_split_paths(batch, chunk_size):
     batch = copy(batch)
     chunk_size = copy(chunk_size)
 
@@ -130,8 +130,9 @@ def split_data(batch, chunk_size):
 
 @dask.delayed
 def copy_splits(splits, split_path, split_data):
+    splits = copy(splits)
+    split_path = copy(split_path)
     for file in splits:
-
         new_file_path = split_path.joinpath(file.name)
         try:
             shutil.copyfile(str(file), new_file_path)
@@ -150,7 +151,7 @@ def get_command(split, batch_name, build_command, input_path, splt_data):
     return command
 
 @dask.delayed
-def basecall(func, command, copy_files):
+def basecall(func, command):
     return func(command)
 
 @dask.delayed
@@ -346,7 +347,7 @@ def get_graph(save_path, func, build_command, input_path, batch_splits, batches)
             except Exception as e:
                 pass
         chunk_size = int((len(os.listdir(str(batch))) / batch_splits))
-        spl_data = split_data(batch, chunk_size)
+        spl_data = get_split_paths(batch, chunk_size)
 
         split_summaries = []
         split_pipelines = []
@@ -360,12 +361,12 @@ def get_graph(save_path, func, build_command, input_path, batch_splits, batches)
                     this_split_path.mkdir()
                 except Exception as e:
                     pass
-            copy_files = copy_splits(spl_data[split], this_split_path, split_data)
+            copy_files = copy_splits(spl_data[split], this_split_path, get_split_paths)
 
             command = get_command(split, batch.name, build_command, input_path, copy_files)
             commands.append(command)
 
-            bc = basecall(func, command, copy_files)
+            bc = basecall(func, command)
             basecalls.append(bc)
 
             split_save_path = save_path.joinpath(batch.name)
