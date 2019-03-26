@@ -346,8 +346,16 @@ class TestBasecallLocal(unittest.TestCase):
     @classmethod
     def setUp(self):
         """Set up test fixtures, if any."""
-        pass
-
+        data_input_path = Path('/Users/kevinfortier/Desktop/NanoPypes/NanoPypes/pai-nanopypes/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass')
+        save_path = Path('/Users/kevinfortier/Desktop/NanoPypes/NanoPypes/pai-nanopypes/tests/test_data/basecalled_data/results/local_basecall_test')
+        batches = [data_input_path.joinpath(batch) for batch in os.listdir(str(data_input_path))]
+        for batch in batches:
+            try:
+                shutil.rmtree(str(batch.joinpath('split_data')))
+            except Exception as e:
+                pass
+        shutil.rmtree(str(save_path))
+        save_path.mkdir()
     def tearDown(self):
         """Tear down test fixtures, if any."""
         pass

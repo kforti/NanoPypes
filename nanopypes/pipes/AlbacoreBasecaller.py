@@ -142,6 +142,11 @@ def copy_splits(splits, split_path, split_data):
     return
 
 @dask.delayed
+def remove_splits(batches, dependencies):
+    for batch in batches:
+        shutil.rmtree(str(batch.joinpath('split_data')))
+
+@dask.delayed
 def get_command(split, batch_name, build_command, input_path, splt_data):
     split = copy(split)
     batch_name = copy(batch_name)
@@ -196,7 +201,7 @@ def digest_configuration(path, save_path, bc):
     return data
 
 @dask.delayed
-def digest_workspace(path, save_path, bc):
+def digest_workspace(path, save_path, barcoding, bc):
     path = copy(path)
     save_path = copy(save_path)
     for read_type in os.listdir(str(path)):
@@ -206,17 +211,33 @@ def digest_workspace(path, save_path, bc):
                 save_path.joinpath(read_type).mkdir()
             except FileExistsError:
                 pass
+        if barcoding and read_type != 'calibration_strands':
+            for barcode in os.listdir(str(path.joinpath(read_type))):
+                if save_path.joinpath(read_type, barcode).exists() == False:
+                    try:
+                        save_path.joinpath(read_type, barcode).mkdir()
+                    except FileExistsError:
+                        pass
+                for bcode_batch in os.listdir(str(path.joinpath(read_type, barcode))):
+                    if save_path.joinpath(read_type, barcode, bcode_batch).exists() == False:
+                        try:
+                            save_path.joinpath(read_type, barcode, bcode_batch).mkdir()
+                        except FileExistsError:
+                            pass
+                    for read in os.listdir(str(path.joinpath(read_type, barcode, bcode_batch))):
+                        shutil.move(str(path.joinpath(read_type, barcode, bcode_batch, read)),
+                                    str(save_path.joinpath(read_type, barcode, bcode_batch, read)))
 
-        for barcode in os.listdir(str(path.joinpath(read_type))):
-            if save_path.joinpath(read_type, barcode).exists() == False:
-                try:
-                    save_path.joinpath(read_type, barcode).mkdir()
-                except FileExistsError:
-                    pass
-
-            for read in os.listdir(str(path.joinpath(read_type, barcode))):
-                shutil.move(str(path.joinpath(read_type, barcode, read)),
-                            str(save_path.joinpath(read_type, barcode, read)))
+        elif barcoding == False or read_type == 'calibration_strands':
+            for rt_batch in os.listdir(str(path.joinpath(read_type))):
+                if save_path.joinpath(read_type, rt_batch).exists() == False:
+                    try:
+                        save_path.joinpath(read_type, rt_batch).mkdir()
+                    except FileExistsError:
+                        pass
+                for read in os.listdir(str(path.joinpath(read_type, rt_batch))):
+                    shutil.move(str(path.joinpath(read_type, rt_batch, read)),
+                                str(save_path.joinpath(read_type, rt_batch, read)))
     return
 
 @dask.delayed
@@ -231,25 +252,27 @@ def sum_results(tel, summ, conf, pipe, wrkspc):
 
 def write_data(data, save_path):
     with open(str(save_path), 'a') as file:
-        for batch in data:
-            for split in batch:
-                for row in split:
-                    file.write(row)
+        for batch_bunch in data:
+            for batch in batch_bunch:
+                for split in batch:
+                    for row in split:
+                        file.write(row)
     return
 
 def write_config(data, save_path):
     first_config = True
     final_config_data = []
     with open(str(save_path), 'a') as file:
-        for batch in data:
-            for split in batch:
-                if split in final_config_data:
-                    continue
-                else:
-                    final_config_data.append(split)
+        for batch_bunch in data:
+            for batch in batch_bunch:
+                for split in batch:
+                    if split in final_config_data:
+                        continue
+                    else:
+                        final_config_data.append(split)
 
-                for row in split:
-                    file.write(row)
+                    for row in split:
+                        file.write(row)
 
     return
 
@@ -311,17 +334,19 @@ def start(albacore, client, data_splits, batch_bunch_size):
     prep_save_path(save_path)
     batch_chunk_counter = 0
     for batch_bunch in batch_bunches:
-        print("Creating the compute graph for batches: ", (1 + batch_chunk_counter * num_batches), " - ", (batch_chunk_counter + 1) * num_batches)
-        batch_chunk_counter += 1
-        graph = get_graph(save_path, func, build_command, input_path, num_splits, batch_bunch)
+        print("Creating the compute graph for batches: ", (1 + batch_chunk_counter * num_batches), " - ", (batch_chunk_counter + 1) * batch_bunch_size)
+        graph = get_graph(save_path, func, build_command, input_path, num_splits, batch_bunch, albacore.barcoding)
         # graph.visualize()
+        print("Computing the graph for batches: ", (1 + batch_chunk_counter * num_batches), " - ", (batch_chunk_counter + 1) * batch_bunch_size)
         futures = client.compute(graph)
         results = client.gather(futures)
+        print("Appending results to final results.......")
         final_results['summary'].append(results['summary'])
         final_results['telemetry'].append(results['telemetry'])
         final_results['config'].append(results['config'])
         final_results['pipe'].append(results['pipe'])
-
+        batch_chunk_counter += 1
+    print("Writing Final results to files....")
     write_summary(final_results['summary'], albacore.save_path.joinpath('sequencing_summary.txt'))
     write_data(final_results['telemetry'], albacore.save_path.joinpath('sequencing_telemetry.js'))
     write_config(final_results['config'], albacore.save_path.joinpath('configuration.cfg'))
@@ -329,7 +354,7 @@ def start(albacore, client, data_splits, batch_bunch_size):
 
     return results
 
-def get_graph(save_path, func, build_command, input_path, batch_splits, batches):
+def get_graph(save_path, func, build_command, input_path, batch_splits, batches, barcoding):
     commands = []
     basecalls = []
 
@@ -375,7 +400,7 @@ def get_graph(save_path, func, build_command, input_path, batch_splits, batches)
             summary = digest_summary(split_save_path.joinpath(str(split), 'sequencing_summary.txt'), split_save_path.joinpath('sequencing_summary.txt'), bc)
             pipeline = digest_pipeline(split_save_path.joinpath(str(split), 'pipeline.log'), split_save_path.joinpath('pipeline.log'), bc)
             configuration = digest_configuration(split_save_path.joinpath(str(split), 'configuration.cfg'), split_save_path.joinpath('configuration.cfg'), bc)
-            workspace = digest_workspace(save_path.joinpath(batch.name, str(split), 'workspace'), save_path.joinpath('workspace'), bc)
+            workspace = digest_workspace(save_path.joinpath(batch.name, str(split), 'workspace'), save_path.joinpath('workspace'), barcoding, bc)
             split_summaries.append(summary)
             split_telemetries.append(telemetry)
             split_pipelines.append(pipeline)

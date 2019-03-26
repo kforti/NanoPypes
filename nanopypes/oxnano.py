@@ -31,7 +31,7 @@ class Albacore:
         self._save_path = Path(self._config.save_path(save_path))
         self.output_format = self._config.output_format(output_format)
         self.reads_per_fastq = self._config.reads_per_fastq(reads_per_fastq)
-        self.barcoding = self._config.barcoding(barcoding)
+        self._barcoding = self._config.barcoding(barcoding)
         self.continue_on = continue_on
         # if continue_on:
         #     self.prep_data()
@@ -39,6 +39,10 @@ class Albacore:
     @property
     def input_path(self):
         return self.input.path
+
+    @property
+    def barcoding(self):
+        return self._barcoding
 
     @property
     def save_path(self):
@@ -101,7 +105,7 @@ class Albacore:
         command.extend(["--save_path", str(self._save_path) + "/" + batch_number + "/" + temp_dir_num])
         command.extend(["--worker_threads", "1"])
         command.extend(["--input",  input_dir])
-        if self.barcoding:
+        if self._barcoding:
             command.append("--barcoding")
         if self.output_format == "fastq":
             command.extend(["--reads_per_fastq", str(self.reads_per_fastq)])
