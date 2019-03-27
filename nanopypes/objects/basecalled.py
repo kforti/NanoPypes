@@ -196,25 +196,7 @@ class BaseCalledReadBarcodes(NanoPypeObject):
         return len(os.listdir(self.path))
 
 
-class AbstractBasecallOutput(ABC):
-
-    def __init__(self, dest):
-        self.dest = dest
-
-    @abstractmethod
-    def consume(self):
-        pass
-
-    @abstractmethod
-    def combine(self):
-        pass
-
-    @property
-    def path(self):
-        return self.dest
-
-
-class SequencingSummary(AbstractBasecallOutput):
+class SequencingSummary():
 
     def __init__(self, dest, data=[]):
         self.header = ['filename', 'read_id', 'run_id', 'channel', 'start_time', 'duration', 'num_events', 'passes_filtering', 'template_start', 'num_events_template', 'template_duration', 'num_called_template', 'sequence_length_template', 'mean_qscore_template', 'strand_score_template', 'calibration_strand_genome_template', 'calibration_strand_identity_template', 'calibration_strand_accuracy_template', 'calibration_strand_speed_bps_template', 'barcode_arrangement', 'barcode_score', 'barcode_full_arrangement', 'front_score', 'rear_score', 'front_begin_index', 'front_foundseq_length', 'rear_end_index', 'rear_foundseq_length', 'kit', 'variant']
@@ -246,18 +228,28 @@ class SequencingSummary(AbstractBasecallOutput):
         return SequencingSummary(dest=self.dest, data=summary_data)
 
 
-class Telemetry(AbstractBasecallOutput):
+class Telemetry():
 
-    def __init__(self, dest, data=[]):
-        self._telemetry = data
-        super().__init__(dest)
-        # Initiate the seq_tel json file
-        # with open(str(dest), "w") as file:
-        #     file.write("[]")
+    def __init__(self, path):
+        self._path = Path(path)
+        self._telemetry = self.get_data(path)
+
+    @property
+    def path(self):
+        return self._path
 
     @property
     def data(self):
-        return self._telemetry
+        return self.get_data(self.path)
+
+    def get_data(self, path):
+        data = []
+        with open(str(path), 'r') as file:
+            for line in file:
+                data.append(line)
+        file.close()
+        return data
+
 
     def consume(self, src):
         with open(str(src), "r") as file:
@@ -274,7 +266,7 @@ class Telemetry(AbstractBasecallOutput):
         return Telemetry(dest=self.dest, data=telemetry_data)
 
 
-class MinIONConfiguration(AbstractBasecallOutput):
+class MinIONConfiguration():
     def __init__(self, dest, data=[]):
         self._config_data = data
         super().__init__(dest)
@@ -301,7 +293,7 @@ class MinIONConfiguration(AbstractBasecallOutput):
         return MinIONConfiguration(dest=self.dest, data=config_data)
 
 
-class PipelineLog(AbstractBasecallOutput):
+class PipelineLog():
     def __init__(self, dest, data=[], logs=[]):
         self.pipeline_data = data
         self.pipeline_logs = logs
@@ -328,7 +320,7 @@ class PipelineLog(AbstractBasecallOutput):
         return PipelineLog(dest=self.dest, data=pipe_data, logs=pipe_logs)
 
 
-class Workspace(AbstractBasecallOutput):
+class Workspace():
     def __init__(self, dest):
         super().__init__(dest)
 
@@ -361,3 +353,12 @@ class Workspace(AbstractBasecallOutput):
         for read in os.listdir(str(src)):
             shutil.copy(str(src.joinpath(read)), str(dest.joinpath(read)))
         return 0
+
+
+
+if __name__ == '__main__':
+    pass
+    # telemetry = Telemetry('/Users/kevinfortier/Desktop/NanoPypes/NanoPypes/pai-nanopypes/tests/test_data/basecalled_data/results/local_basecall_test/sequencing_telemetry.js')
+    # tel_data = telemetry.data
+    # print(tel_data[0])
+

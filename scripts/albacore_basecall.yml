@@ -11,14 +11,14 @@ basecall:
 compute:
     cluster1:
         job_time: 04:00
-        mem: 8589934592  #2147483648
+        mem: 10589934592  #2147483648
         ncpus: 10
         project: /project/umw_athma_pai
         queue: short
         workers: 10
         cores: 10
-        memory: 8 GB
-        scale_value: 200
+        memory: 10 GB
+        scale_value: 250
         cluster_type: LSF
 networking:
     network1:

@@ -4,10 +4,7 @@ from pathlib import Path
 import re
 import shutil
 
-from nanopypes.utils import temp_dirs
 from nanopypes.objects.raw import Sample
-from nanopypes.config import BasecallConfig
-
 
 class Albacore:
     """ Conatains the data associated with making the command to run the basecaller.
@@ -29,7 +26,7 @@ class Albacore:
         self.flow_cell = self._config.flowcell(flowcell)
         self.kit = self._config.kit(kit)
         self._save_path = Path(self._config.save_path(save_path))
-        self.output_format = self._config.output_format(output_format)
+        self._output_format = self._config.output_format(output_format)
         self.reads_per_fastq = self._config.reads_per_fastq(reads_per_fastq)
         self._barcoding = self._config.barcoding(barcoding)
         self.continue_on = continue_on
@@ -39,6 +36,10 @@ class Albacore:
     @property
     def input_path(self):
         return self.input.path
+
+    @property
+    def output_format(self):
+        return self._output_format
 
     @property
     def barcoding(self):
@@ -101,13 +102,13 @@ class Albacore:
         command = ["read_fast5_basecaller.py",]
         command.extend(["--flowcell", self.flow_cell])
         command.extend(["--kit", self.kit])
-        command.extend(["--output_format", self.output_format])
+        command.extend(["--output_format", self._output_format])
         command.extend(["--save_path", str(self._save_path) + "/" + batch_number + "/" + temp_dir_num])
         command.extend(["--worker_threads", "1"])
         command.extend(["--input",  input_dir])
         if self._barcoding:
             command.append("--barcoding")
-        if self.output_format == "fastq":
+        if self._output_format == "fastq":
             command.extend(["--reads_per_fastq", str(self.reads_per_fastq)])
         return command
 

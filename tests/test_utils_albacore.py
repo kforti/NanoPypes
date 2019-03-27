@@ -15,9 +15,6 @@ from nanopypes.oxnano import Albacore
 from nanopypes.compute import Cluster
 from nanopypes.objects.basecalled import ParallelBaseCalledData
 from nanopypes.tools import basecall
-from nanopypes.utils import remove_splits, collapse_save, split_data
-
-from distributed import Client
 
 
 ########################################################################
