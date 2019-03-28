@@ -6,7 +6,7 @@ from nanopypes.config import Configuration
 from nanopypes.objects.raw import Sample
 from nanopypes.oxnano import Albacore
 from nanopypes.compute import Cluster
-from nanopypes.tools import basecall
+from nanopypes.run_pipes import albacore_basecaller
 
 
 @click.command()
@@ -34,10 +34,10 @@ from nanopypes.tools import basecall
 def albacore_basecaller(config, data_splits, continue_on):
     """Console script for pai-nanopypes."""
     # config = Configuration(config)
-    basecalled_data = basecall(config=config,
-                               continue_on=continue_on,
-                               last_batch=None,
-                               data_splits=data_splits)
+    basecalled_data = albacore_basecaller(config=config,
+                                          continue_on=continue_on,
+                                          last_batch=None,
+                                          data_splits=data_splits)
 
     ##########################################################################################################
     #Raw Fast5 Data

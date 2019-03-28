@@ -14,7 +14,7 @@ from nanopypes.config import Configuration
 from nanopypes.oxnano import Albacore
 from nanopypes.compute import Cluster
 from nanopypes.objects.basecalled import ParallelBaseCalledData
-from nanopypes.tools import basecall
+from nanopypes.run_pipes import albacore_basecaller
 
 
 ########################################################################
@@ -361,9 +361,9 @@ class TestBasecallLocal(unittest.TestCase):
         """Build a cluster object with yaml"""
         config = "test_configs/local_basecall.yml"
 
-        results = basecall(config=config,
-                           data_splits=4,
-                           batch_bunch=5)
+        results = albacore_basecaller(config=config,
+                                      data_splits=4,
+                                      batch_bunch=5)
 
 
     # def test_000_basecall_albacore(self):
