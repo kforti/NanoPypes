@@ -2,7 +2,7 @@
 """Console script for pai-nanopypes."""
 import click
 
-from nanopypes.run_pipes import albacore_basecaller
+from nanopypes.run_pipes import albacore_basecaller as albacore
 
 
 
@@ -31,10 +31,10 @@ from nanopypes.run_pipes import albacore_basecaller
 @click.argument('config', required=True)
 def albacore_basecaller(config, data_splits, batch_bunches, continue_on=False):
     """Console script for running the albacore parallel basecaller."""
-    bc_data = albacore_basecaller(config=config,
-                                  data_splits=data_splits,
-                                  batch_bunch=batch_bunches,
-                                  continue_on=continue_on)
+    bc_data = albacore(config=config,
+                       data_splits=data_splits,
+                       batch_bunch=batch_bunches,
+                       continue_on=continue_on)
     return 0
 
 
