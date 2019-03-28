@@ -65,8 +65,8 @@ class AlbacoreBasecaller(Pipe):
             print("Creating the Compute Graph ")
             graph = self.build_graphs(batch_bunch)
 
-            for key in graph.keys():
-                graph[key].visualize()
+            # for key in graph.keys():
+            #     graph[key].visualize()
 
             print("Computing the Graph ")
             basecalls = self.client.compute(graph['basecall'])
