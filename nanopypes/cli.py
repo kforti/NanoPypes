@@ -24,9 +24,9 @@ from nanopypes.run_pipes import albacore_basecaller
 # @click.option('--workers', help='the amount of dask workers')
 # @click.option('--cores', help='the number of cores per dask worker')
 # @click.option('--memory', help='the amount of memory per dask worker')
-@click.option('-s', '--data_splits', help='the number of splits to divide raw minion sequence batches into. Start with the number of workers you intend to use and optimize from there', required=True, type=int)
-@click.option('-b', '--batch_bunches', help="The number of batches to process at one time.", type=int)
-@click.option('-c', '--continue_on', help="if True then the basecaller will continue from it's previous start location.", type=bool)
+@click.option('-s', '--data_splits', multiple=True, help='the number of splits to divide raw minion sequence batches into. Start with the number of workers you intend to use and optimize from there', required=True, type=int)
+@click.option('-b', '--batch_bunches', multiple=True, help="The number of batches to process at one time.", type=int)
+@click.option('-c', '--continue_on', multiple=True, help="if True then the basecaller will continue from it's previous start location.", type=bool)
 @click.argument('config', required=False)
 def albacore_basecaller(config, data_splits, batch_bunches, continue_on=False, pypes_log=None):
     """Console script for running the albacore parallel basecaller."""
