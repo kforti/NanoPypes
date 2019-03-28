@@ -2,10 +2,6 @@
 """Console script for pai-nanopypes."""
 import click
 
-from nanopypes.config import Configuration
-from nanopypes.objects.raw import Sample
-from nanopypes.oxnano import Albacore
-from nanopypes.compute import Cluster
 from nanopypes.run_pipes import albacore_basecaller
 
 
@@ -28,16 +24,28 @@ from nanopypes.run_pipes import albacore_basecaller
 # @click.option('--workers', help='the amount of dask workers')
 # @click.option('--cores', help='the number of cores per dask worker')
 # @click.option('--memory', help='the amount of memory per dask worker')
-@click.option('--data_splits', help='the number of splits to divide raw minion sequence batches into. Start with the number of workers you intend to use and optimize from there', required=True, type=int)
-@click.option('--continue_on', help="if True then the basecaller will continue from it's previous start location.", type=bool)
+@click.option('-s', '--data_splits', help='the number of splits to divide raw minion sequence batches into. Start with the number of workers you intend to use and optimize from there', required=True, type=int)
+@click.option('b', '--batch_bunches', help="The number of batches to process at one time.", type=bool)
+@click.option('c', '--continue_on', help="if True then the basecaller will continue from it's previous start location.", type=bool)
 @click.argument('config', required=False)
-def albacore_basecaller(config, data_splits, continue_on):
-    """Console script for pai-nanopypes."""
-    # config = Configuration(config)
-    basecalled_data = albacore_basecaller(config=config,
-                                          continue_on=continue_on,
-                                          last_batch=None,
-                                          data_splits=data_splits)
+def albacore_basecaller(config, data_splits, batch_bunches, continue_on=False, pypes_log=None):
+    """Console script for running the albacore parallel basecaller."""
+    bc_data = albacore_basecaller(config=config,
+                                  data_splits=data_splits,
+                                  batch_bunch=batch_bunches)
+    return 0
+
+
+
+
+
+
+
+
+
+
+
+
 
     ##########################################################################################################
     #Raw Fast5 Data
@@ -80,7 +88,7 @@ def albacore_basecaller(config, data_splits, continue_on):
 
 
 
-    return 0
+
 
 
 # if __name__ == '__main__':
