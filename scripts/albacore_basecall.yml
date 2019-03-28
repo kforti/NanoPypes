@@ -3,8 +3,8 @@ basecall:
     save_path: /project/umw_athma_pai/kevin/data/minion_ercc_labeled/basecalled_data_test_2
     flowcell: FLO-MIN106
     kit: SQK-LSK109
-    barcoding: True
-    output_format: fast5
+    barcoding: False
+    output_format: fastq
     worker_threads: 1
     recursive: False
     reads_per_fastq: 1000
