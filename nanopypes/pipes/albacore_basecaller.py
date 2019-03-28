@@ -197,15 +197,13 @@ class AlbacoreBasecaller(Pipe):
 
 @dask.delayed
 def rm_batch_results(save_path):
-    save_path = copy(save_path)
-    batch_pattern = r'(^)[0-9]+($)'
+    #The regex is for matching matching the batch directory names
     for child in os.listdir(str(save_path)):
-        if re.match(batch_pattern, child):
+        if re.match(r'(^)[0-9]+($)', child):
             shutil.rmtree(str(save_path.joinpath(child)))
 
 @dask.delayed
 def rm_split_data_dirs(batches):
-    batches = copy(batches)
     for batch in batches:
         try:
             os.rmdir(str(batch.joinpath('split_data')))
@@ -214,9 +212,6 @@ def rm_split_data_dirs(batches):
 
 @dask.delayed
 def get_split_paths(batch, chunk_size):
-    batch = copy(batch)
-    chunk_size = copy(chunk_size)
-
     files = os.listdir(str(batch))
     file_counter = 0
     all_files = []
@@ -232,8 +227,6 @@ def get_split_paths(batch, chunk_size):
 
 @dask.delayed
 def copy_splits(splits, split_path):
-    splits = copy(splits)
-    split_path = copy(split_path)
     for file in splits:
         new_file_path = split_path.joinpath(file.name)
         try:
@@ -246,7 +239,6 @@ def copy_splits(splits, split_path):
 @dask.delayed
 def remove_splits(split_path, dependencies):
     try:
-        split_path = copy(split_path)
         shutil.rmtree(str(split_path))
     except FileNotFoundError as e:
         pass
@@ -258,10 +250,6 @@ def digest_splits(rm_splits):
 
 @dask.delayed
 def get_command(split, batch_name, build_command, input_path, splt_data):
-    split = copy(split)
-    batch_name = copy(batch_name)
-    build_command = copy(build_command)
-    input_path = copy(input_path)
     command = build_command(str(input_path.joinpath(batch_name, 'split_data', str(split))), batch_name)
     return command
 
@@ -275,8 +263,6 @@ def basecall_graph(workspace, rmsplit):
 
 @dask.delayed
 def digest_configuration(path, save_path, bc):
-    path = copy(path)
-    save_path = copy(save_path)
     data = []
     with open(str(path), 'r') as infile:
         for line in infile:
@@ -286,42 +272,40 @@ def digest_configuration(path, save_path, bc):
 
 @dask.delayed
 def digest_fast5_workspace(path, save_path, barcoding, bc):
-    path = copy(path)
-    save_path = copy(save_path)
     for read_type in os.listdir(str(path)):
         if save_path.joinpath(read_type).exists() == False:
             try:
                 save_path.joinpath(read_type).mkdir()
             except FileExistsError:
                 pass
+        #
+        # if barcoding and read_type != 'calibration_strands':
+        #     for barcode in os.listdir(str(path.joinpath(read_type))):
+        #         if save_path.joinpath(read_type, barcode).exists() == False:
+        #             try:
+        #                 save_path.joinpath(read_type, barcode).mkdir()
+        #             except FileExistsError:
+        #                 pass
+        #         for bcode_batch in os.listdir(str(path.joinpath(read_type, barcode))):
+        #             if save_path.joinpath(read_type, barcode, bcode_batch).exists() == False:
+        #                 try:
+        #                     save_path.joinpath(read_type, barcode, bcode_batch).mkdir()
+        #                 except FileExistsError:
+        #                     pass
+        #             for read in os.listdir(str(path.joinpath(read_type, barcode, bcode_batch))):
+        #                 shutil.move(str(path.joinpath(read_type, barcode, bcode_batch, read)),
+        #                             str(save_path.joinpath(read_type, barcode, bcode_batch, read)))
 
-        if barcoding and read_type != 'calibration_strands':
-            for barcode in os.listdir(str(path.joinpath(read_type))):
-                if save_path.joinpath(read_type, barcode).exists() == False:
-                    try:
-                        save_path.joinpath(read_type, barcode).mkdir()
-                    except FileExistsError:
-                        pass
-                for bcode_batch in os.listdir(str(path.joinpath(read_type, barcode))):
-                    if save_path.joinpath(read_type, barcode, bcode_batch).exists() == False:
-                        try:
-                            save_path.joinpath(read_type, barcode, bcode_batch).mkdir()
-                        except FileExistsError:
-                            pass
-                    for read in os.listdir(str(path.joinpath(read_type, barcode, bcode_batch))):
-                        shutil.move(str(path.joinpath(read_type, barcode, bcode_batch, read)),
-                                    str(save_path.joinpath(read_type, barcode, bcode_batch, read)))
-
-        elif barcoding == False or read_type == 'calibration_strands':
-            for rt_batch in os.listdir(str(path.joinpath(read_type))):
-                if save_path.joinpath(read_type, rt_batch).exists() == False:
-                    try:
-                        save_path.joinpath(read_type, rt_batch).mkdir()
-                    except FileExistsError:
-                        pass
-                for read in os.listdir(str(path.joinpath(read_type, rt_batch))):
-                    shutil.move(str(path.joinpath(read_type, rt_batch, read)),
-                                str(save_path.joinpath(read_type, rt_batch, read)))
+        #elif barcoding == False or read_type == 'calibration_strands':
+        for rt_batch in os.listdir(str(path.joinpath(read_type))):
+            if save_path.joinpath(read_type, rt_batch).exists() == False:
+                try:
+                    save_path.joinpath(read_type, rt_batch).mkdir()
+                except FileExistsError:
+                    pass
+            for read in os.listdir(str(path.joinpath(read_type, rt_batch))):
+                shutil.move(str(path.joinpath(read_type, rt_batch, read)),
+                            str(save_path.joinpath(read_type, rt_batch, read)))
     return
 
 @dask.delayed
@@ -331,67 +315,67 @@ def digest_fastq_workspace(workspace_path, save_path, barcoding, bc):
             save_path.joinpath(read_type).mkdir()
         except FileExistsError:
             pass
+        #
+        # if barcoding and read_type != 'calibration_strands':
+        #     for barcode in os.listdir(str(workspace_path.joinpath(read_type))):
+        #         try:
+        #             save_path.joinpath(read_type, barcode).mkdir()
+        #         except FileExistsError:
+        #             pass
+        #         for fastq in os.listdir(str(workspace_path.joinpath(read_type, barcode))):
+        #             fastq_data = []
+        #             read_finish = False
+        #             write_finish = False
+        #             while read_finish == False:
+        #                 try:
+        #                     with open(str(workspace_path.joinpath(read_type, barcode, fastq)), 'r') as split_file:
+        #                         for line in split_file:
+        #                             fastq_data.append(line)
+        #                     read_finish = True
+        #                     split_file.close()
+        #                 except IOError as e:
+        #                     print('error1', e)
+        #                     pass
+        #
+        #             while write_finish == False:
+        #                 try:
+        #                     with open(str(save_path.joinpath(read_type, barcode, fastq)), 'a') as final_file:
+        #                         for line in fastq_data:
+        #                             final_file.write(line)
+        #                     write_finish = True
+        #                     final_file.close()
+        #                     os.remove(str(workspace_path.joinpath(read_type, barcode, fastq)))
+        #                 except IOError as e:
+        #                     print('error2', e)
+        #                     pass
 
-        if barcoding and read_type != 'calibration_strands':
-            for barcode in os.listdir(str(workspace_path.joinpath(read_type))):
+        #elif barcoding == False or read_type == 'calibration_strands':
+        for fastq in os.listdir(str(workspace_path.joinpath(read_type))):
+            fastq_data = []
+            read_finish = False
+            write_finish = False
+            while read_finish == False:
                 try:
-                    save_path.joinpath(read_type, barcode).mkdir()
-                except FileExistsError:
+                    with open(str(workspace_path.joinpath(read_type, fastq)), 'r') as split_file:
+                        for line in split_file:
+                            fastq_data.append(line)
+                    read_finish = True
+                    split_file.close()
+                except IOError as e:
+                    print('error3', e)
                     pass
-                for fastq in os.listdir(str(workspace_path.joinpath(read_type, barcode))):
-                    fastq_data = []
-                    read_finish = False
-                    write_finish = False
-                    while read_finish == False:
-                        try:
-                            with open(str(workspace_path.joinpath(read_type, barcode, fastq)), 'r') as split_file:
-                                for line in split_file:
-                                    fastq_data.append(line)
-                            read_finish = True
-                            split_file.close()
-                        except IOError as e:
-                            print('error1', e)
-                            pass
 
-                    while write_finish == False:
-                        try:
-                            with open(str(save_path.joinpath(read_type, barcode, fastq)), 'a') as final_file:
-                                for line in fastq_data:
-                                    final_file.write(line)
-                            write_finish = True
-                            final_file.close()
-                            os.remove(str(workspace_path.joinpath(read_type, barcode, fastq)))
-                        except IOError as e:
-                            print('error2', e)
-                            pass
-
-        elif barcoding == False or read_type == 'calibration_strands':
-            for fastq in os.listdir(str(workspace_path.joinpath(read_type))):
-                fastq_data = []
-                read_finish = False
-                write_finish = False
-                while read_finish == False:
-                    try:
-                        with open(str(workspace_path.joinpath(read_type, fastq)), 'r') as split_file:
-                            for line in split_file:
-                                fastq_data.append(line)
-                        read_finish = True
-                        split_file.close()
-                    except IOError as e:
-                        print('error3', e)
-                        pass
-
-                while write_finish == False:
-                    try:
-                        with open(str(save_path.joinpath(read_type, fastq)), 'a') as final_file:
-                            for line in fastq_data:
-                                final_file.write(line)
-                        write_finish = True
-                        final_file.close()
-                        os.remove(str(workspace_path.joinpath(read_type, fastq)))
-                    except IOError as e:
-                        print('error4', e)
-                        pass
+            while write_finish == False:
+                try:
+                    with open(str(save_path.joinpath(read_type, fastq)), 'a') as final_file:
+                        for line in fastq_data:
+                            final_file.write(line)
+                    write_finish = True
+                    final_file.close()
+                    os.remove(str(workspace_path.joinpath(read_type, fastq)))
+                except IOError as e:
+                    print('error4', e)
+                    pass
 
     return
 
@@ -402,31 +386,6 @@ def run_all_basecalls(basecalls):
 @dask.delayed
 def digest_all_fast5_workspaces(workspace):
     return workspace
-
-@dask.delayed
-def digest_all_fastq_workspaces(workspace, barcoding):
-    cal_fastqs = db.read_text(workspace['cailbration_strands'])
-    if barcoding:
-        pass_fastqs = {}
-        fail_fastqs = {}
-        for barcode in workspace['pass'].keys():
-            pass_fastqs[barcode] = db.read_text(workspace['pass'][barcode])
-        for barcode in workspace['fail'].keys():
-            fail_fastqs[barcode] = db.read_text(workspace['fail'][barcode])
-
-        bag_workpsace = {'calibration_strands': [],
-           'pass': {},
-           'fail': {}}
-    elif barcoding == False:
-        pass_fastqs = db.read_text(workspace['pass'])
-        fail_fastqs = db.read_text(workspace['fail'])
-
-
-    bag_workspace = {'calibration_strands': cal_fastqs,
-                     'pass': pass_fastqs,
-                     'fail': fail_fastqs}
-
-    return bag_workspace
 
 @dask.delayed
 def digest_all_configurations(configs):
@@ -629,3 +588,27 @@ if __name__ == '__main__':
     except KeyError:
         workspace_dict[read_type][barcode] = []
         print('not there')
+#@dask.delayed
+# def digest_all_fastq_workspaces(workspace, barcoding):
+#     cal_fastqs = db.read_text(workspace['cailbration_strands'])
+#     if barcoding:
+#         pass_fastqs = {}
+#         fail_fastqs = {}
+#         for barcode in workspace['pass'].keys():
+#             pass_fastqs[barcode] = db.read_text(workspace['pass'][barcode])
+#         for barcode in workspace['fail'].keys():
+#             fail_fastqs[barcode] = db.read_text(workspace['fail'][barcode])
+#
+#         bag_workpsace = {'calibration_strands': [],
+#            'pass': {},
+#            'fail': {}}
+#     elif barcoding == False:
+#         pass_fastqs = db.read_text(workspace['pass'])
+#         fail_fastqs = db.read_text(workspace['fail'])
+#
+#
+#     bag_workspace = {'calibration_strands': cal_fastqs,
+#                      'pass': pass_fastqs,
+#                      'fail': fail_fastqs}
+#
+#     return bag_workspace
