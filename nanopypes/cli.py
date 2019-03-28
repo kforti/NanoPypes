@@ -5,7 +5,7 @@ import click
 from nanopypes.run_pipes import albacore_basecaller
 
 
-@click.command()
+
 # @click.option('--basecaller', help='Select the basecaller you would like to use')
 # @click.option('--location', help='run the basecaller from local or cluster environment')
 # @click.option('--kit', help='the kit used in the MinION sequencing run')
@@ -24,6 +24,7 @@ from nanopypes.run_pipes import albacore_basecaller
 # @click.option('--workers', help='the amount of dask workers')
 # @click.option('--cores', help='the number of cores per dask worker')
 # @click.option('--memory', help='the amount of memory per dask worker')
+@click.command()
 @click.option('-s', '--data-splits', 'data_splits', help='the number of splits to divide raw minion sequence batches into. Start with the number of workers you intend to use and optimize from there', required=True, type=int)
 @click.option('-b', '--batch-bunches', 'batch_bunches', help="The number of batches to process at one time.", type=int)
 @click.option('-c', '--continue-on', 'continue_on', help="if True then the basecaller will continue from it's previous start location.", type=bool)
