@@ -1,8 +1,8 @@
 from pathlib import Path
-from copy import copy
 import os
 import shutil
 import re
+import sys
 
 import dask
 import dask.bag as db
@@ -70,11 +70,13 @@ class AlbacoreBasecaller(Pipe):
 
             print("Computing the Graph ")
             basecalls = self.client.compute(graph['basecall'])
+            print("after compute is caller", sys.getsizeof(basecalls))
             # print("you can control the client....\n Enter Commands:")
             # while basecalls.done() != True:
             #     input()
             #     self.client.
             basecall_results = self.client.gather(basecalls)
+            print("results...", sys.getsizeof(basecall_results))
 
             print("Creating final secondary output files.......")
             write_summary(graph['summary'].compute(), self.save_path.joinpath('sequencing_summary.txt'))
@@ -201,6 +203,7 @@ def rm_batch_results(save_path):
     for child in os.listdir(str(save_path)):
         if re.match(r'(^)[0-9]+($)', child):
             shutil.rmtree(str(save_path.joinpath(child)))
+    return
 
 @dask.delayed
 def rm_split_data_dirs(batches):
@@ -209,6 +212,7 @@ def rm_split_data_dirs(batches):
             os.rmdir(str(batch.joinpath('split_data')))
         except FileNotFoundError:
             pass
+    return
 
 @dask.delayed
 def get_split_paths(batch, chunk_size):
@@ -246,7 +250,7 @@ def remove_splits(split_path, dependencies):
 
 @dask.delayed
 def digest_splits(rm_splits):
-    return rm_splits
+    return
 
 @dask.delayed
 def get_command(split, batch_name, build_command, input_path, splt_data):
@@ -259,7 +263,7 @@ def basecall(func, command):
 
 @dask.delayed
 def basecall_graph(workspace, rmsplit):
-    return workspace, rmsplit
+    return
 
 @dask.delayed
 def digest_configuration(path, save_path, bc):
@@ -381,11 +385,11 @@ def digest_fastq_workspace(workspace_path, save_path, barcoding, bc):
 
 @dask.delayed
 def run_all_basecalls(basecalls):
-    return basecalls
+    return
 
 @dask.delayed
 def digest_all_fast5_workspaces(workspace):
-    return workspace
+    return
 
 @dask.delayed
 def digest_all_configurations(configs):
