@@ -3,6 +3,7 @@ import os
 import shutil
 import re
 import sys
+import time
 
 import dask
 import dask.bag as db
@@ -72,9 +73,10 @@ class AlbacoreBasecaller(Pipe):
             basecalls = self.client.compute(graph['basecall'])
             print("after compute is caller", sys.getsizeof(basecalls))
             # print("you can control the client....\n Enter Commands:")
-            # while basecalls.done() != True:
-            #     input()
-            #     self.client.
+            while basecalls.done() != True:
+                print(self.client.processing())
+                print('\n\n')
+                time.sleep(100)
             basecall_results = self.client.gather(basecalls)
             print("results...", sys.getsizeof(basecall_results))
 
@@ -534,7 +536,7 @@ def write_data(data, save_path):
 
 def write_config(data, save_path):
     final_config_data = []
-    with open(save_path, 'r') as file:
+    with open(str(save_path), 'r') as file:
         for line in file:
             final_config_data.append(line)
     file.close()
@@ -552,7 +554,7 @@ def write_config(data, save_path):
 
 def write_summary(data, save_path):
     first_row = None
-    with open(save_path, 'a') as file:
+    with open(str(save_path), 'a') as file:
         for row in data:
             if first_row == None:
                 first_row = row
