@@ -15,8 +15,6 @@ from tornado.util import TimeoutError
 from nanopypes.pipes.base import Pipe
 
 
-import cigar
-
 class AlbacoreBasecaller(Pipe):
 
     def __init__(self, client, albacore, num_splits, batch_bunch_size):
