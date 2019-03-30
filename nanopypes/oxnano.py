@@ -30,8 +30,8 @@ class Albacore:
         self.reads_per_fastq = self._config.reads_per_fastq(reads_per_fastq)
         self._barcoding = self._config.barcoding(barcoding)
         self.continue_on = continue_on
-        # if continue_on:
-        #     self.prep_data()
+        if continue_on:
+            self.prep_data()
 
     @property
     def input_path(self):
@@ -121,27 +121,18 @@ class Albacore:
 
     def prep_data(self):
         for batch in os.listdir(str(self.input_path)):
-            files = [file for file in os.listdir(str(self.input_path.joinpath(batch)))]
-            if 'split_data' in files:
+            if 'split_data' in os.listdir(str(self.input_path.joinpath(batch))):
                 try:
                     print("DELETING SPLIT DATA...")
                     shutil.rmtree(str(self.input_path.joinpath(batch, 'split_data')))
                 except FileNotFoundError:
                     pass
                 try:
-                    print("LAST BATCH: ", batch, "Deleting the last batch......")
+                    print("LAST BATCH: ", batch, "Deleting the last basecalled batch......")
                     shutil.rmtree(str(self.save_path.joinpath(batch)))
                 except Exception as e:
                     pass
 
-    def _find_last_batches(self):
-        for batch in os.listdir(str(self.save_path)):
-            split = os.listdir(str(self.save_path.joinpath(batch)))[0]
-            files = [file for file in os.listdir(str(self.save_path.joinpath(batch, split)))]
-            if 'sequencing_telemetry.js' not in files:
-                return self.save_path.joinpath(batch)
-            else:
-                continue
 
 
 

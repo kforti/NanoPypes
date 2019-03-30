@@ -15,6 +15,7 @@ from tornado.util import TimeoutError
 from nanopypes.pipes.base import Pipe
 
 
+import cigar
 
 class AlbacoreBasecaller(Pipe):
 
@@ -581,19 +582,9 @@ def batch_generator(batches, batch_size):
 
 
 
-
-
 if __name__ == '__main__':
-    workspace_dict = {'pass': {'01': 'myfastq.file'}}
 
-    read_type = 'pass'
-    barcode = '02'
-    try:
-        workspace_dict[read_type][barcode]
-        print('there')
-    except KeyError:
-        workspace_dict[read_type][barcode] = []
-        print('not there')
+    pass
 #@dask.delayed
 # def digest_all_fastq_workspaces(workspace, barcoding):
 #     cal_fastqs = db.read_text(workspace['cailbration_strands'])
