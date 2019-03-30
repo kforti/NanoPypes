@@ -122,6 +122,10 @@ class Albacore:
     def prep_data(self):
         for batch in os.listdir(str(self.input_path)):
             if 'split_data' in os.listdir(str(self.input_path.joinpath(batch))):
+                splits = os.listdir(str(self.input_path.joinpath('split_data')))
+                if splits == 0:
+                    continue
+
                 try:
                     print("DELETING SPLIT DATA...")
                     shutil.rmtree(str(self.input_path.joinpath(batch, 'split_data')))

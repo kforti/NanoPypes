@@ -31,15 +31,7 @@ class AlbacoreBasecaller(Pipe):
         self.all_batches = albacore.batches
         self.batch_bunches = batch_generator(self.all_batches, batch_bunch_size)
 
-        # print("testing user input")
-        #
-        # try:
-        #     user_input = with_timeout(timeout=20, future=self.control_client())
-        #     print(user_input)
-        # except TimeoutError:
-        #     print("Timeout")
-
-
+        self.all_basecalls = []
 
     def _prep_save_path(self):
         if self.save_path.joinpath('sequencing_telemetry.js').exists() == False:
@@ -72,15 +64,12 @@ class AlbacoreBasecaller(Pipe):
             basecalls = self.client.compute(graph['basecall'])
             print("after compute is caller", sys.getsizeof(basecalls))
             # print("you can control the client....\n Enter Commands:")
-            while basecalls.done() != True:
-                print(self.client.processing())
-                print('\n\n')
-                time.sleep(100)
+         
             basecall_results = self.client.gather(basecalls)
             print("results...", sys.getsizeof(basecall_results))
 
             print("Creating final secondary output files.......")
-            write_summary(graph['summary'].compute(), self.save_path.joinpath('sequencing_summary.txt'))
+            write_summary(self.client.compute(graph['summary']), self.save_path.joinpath('sequencing_summary.txt'))
             write_data(graph['telemetry'].compute(), self.save_path.joinpath('sequencing_telemetry.js'))
             write_config(graph['config'].compute(), self.save_path.joinpath('configuration.cfg'))
             write_data(graph['pipe'].compute(), self.save_path.joinpath('pipeline.log'))
@@ -96,7 +85,6 @@ class AlbacoreBasecaller(Pipe):
         batch_summaries = []
         batch_pipelines = []
         batch_configs = []
-        batch_basecalls = []
 
         for batch in batch_bunch:
             self._process_splits(batch)
@@ -105,9 +93,8 @@ class AlbacoreBasecaller(Pipe):
             batch_pipelines.extend(self.split_pipelines)
             batch_telemetries.extend(self.split_telemetries)
             batch_configs.extend(self.split_configs)
-            batch_basecalls.extend(self.split_basecalls)
+            self.all_basecalls.extend(self.split_basecalls)
 
-        self.all_basecalls = run_all_basecalls(batch_basecalls)
         self.bag_summaries = db.read_text(batch_summaries)
         self.bag_pipelines = db.read_text(batch_pipelines)
         self.bag_telemetries = db.read_text(batch_telemetries)
@@ -187,8 +174,8 @@ class AlbacoreBasecaller(Pipe):
                 save_path=self.save_path.joinpath('workspace'),
                 barcoding=self.barcoding,
                 bc=bc)
-        bc_graph = basecall_graph(workspace, rm_split)
-        return bc_graph
+
+        return basecall_graph(workspace, rm_split)
 
     def write_nanopypes_log(self):
         pass
@@ -197,6 +184,9 @@ class AlbacoreBasecaller(Pipe):
         user_input = input()
         return user_input
 
+######################################################################################
+##### Basecall Graph                                                                ##
+######################################################################################
 
 @dask.delayed
 def rm_batch_results(save_path):
@@ -396,136 +386,6 @@ def digest_all_fast5_workspaces(workspace):
 def digest_all_configurations(configs):
     return configs
 
-def start(albacore, client, data_splits, batch_bunch_size):
-    print("Starting the parallel Albacore Basecaller...")
-    func = albacore.build_func()
-    input_path = Path(albacore.input_path)
-    save_path = Path(albacore.save_path)
-    build_command = albacore.build_command
-    num_splits = data_splits
-    all_batches = albacore.batches
-    num_batches = len(all_batches)
-    batch_bunches = batch_generator(all_batches, batch_bunch_size)
-
-    prep_save_path(save_path)
-    batch_chunk_counter = 0
-    for batch_bunch in batch_bunches:
-        bunches_name = "Processing Batches " + str((1 + batch_chunk_counter * batch_bunch_size)) + "-" + str((batch_chunk_counter + 1) * batch_bunch_size)
-        print(bunches_name)
-        print("Creating the Compute Graph ")
-        graph = get_graph(save_path, func, build_command, input_path, num_splits, batch_bunch, albacore.barcoding, albacore.output_format)
-        for key in graph.keys():
-            graph[key].visualize()
-
-        print("Computing the Graph ")
-        workspaces = client.compute(graph['workspace'])
-        results = client.gather(workspaces)
-
-        print("Appending results to files and removing splits.......")
-        graph['rm_splits'].compute()
-        write_summary(graph['summary'].compute(), albacore.save_path.joinpath('sequencing_summary.txt'))
-        write_data(graph['telemetry'].compute(), albacore.save_path.joinpath('sequencing_telemetry.js'))
-        write_config(graph['config'].compute(), albacore.save_path.joinpath('configuration.cfg'))
-        write_data(graph['pipe'].compute(), albacore.save_path.joinpath('pipeline.log'))
-
-        batch_chunk_counter += 1
-    print("Writing Final results to files....")
-
-    return results
-
-def get_graph(save_path, func, build_command, input_path, batch_splits, batches, barcoding, output_format):
-    if output_format == 'fastq' and barcoding:
-        workspace_dict = {'calibration_strands': [],
-                          'pass': {},
-                          'fail': {}}
-    elif output_format == 'fastq':
-        workspace_dict = {'calibration_strands': [],
-                          'pass': [],
-                          'fail': []}
-
-    commands = []
-    basecalls = []
-    rm_splits = []
-    batch_telemetries = []
-    batch_summaries = []
-    batch_pipelines = []
-    batch_configs = []
-    batch_workspaces = []
-
-    for batch in batches:
-        split_path = input_path.joinpath(batch.name, 'split_data')
-        if split_path.exists() == False:
-            try:
-                split_path.mkdir()
-            except Exception as e:
-                pass
-        chunk_size = int((len(os.listdir(str(batch))) / batch_splits))
-        spl_data = get_split_paths(batch, chunk_size)
-
-        split_summaries = []
-        split_pipelines = []
-        split_telemetries = []
-        split_configs = []
-        split_workspaces = []
-        for split in range(batch_splits):
-            this_split_path = split_path.joinpath(str(split))
-            if this_split_path.exists() == False:
-                try:
-                    this_split_path.mkdir()
-                except Exception as e:
-                    pass
-            copy_files = copy_splits(spl_data[split], this_split_path, None)
-
-            command = get_command(split, batch.name, build_command, input_path, copy_files)
-            commands.append(command)
-
-            bc = basecall(func, command)
-            basecalls.append(bc)
-
-            split_save_path = save_path.joinpath(batch.name)
-
-            configuration = digest_configuration(split_save_path.joinpath(str(split), 'configuration.cfg'), split_save_path.joinpath('configuration.cfg'), bc)
-            if output_format == 'fast5':
-                workspace = digest_fast5_workspace(save_path.joinpath(batch.name, str(split), 'workspace'), save_path.joinpath('workspace'), barcoding, bc)
-            elif output_format == 'fastq':
-                workspace_dict = digest_fastq_workspace(workspace_path=save_path.joinpath(batch.name, str(split), 'workspace'),
-                                                        workspace_dict=workspace_dict,
-                                                        barcoding=barcoding,
-                                                        bc=bc)
-
-            split_configs.append(configuration)
-            split_workspaces.append(workspace)
-            split_summaries.append(split_save_path.joinpath(str(split), 'sequencing_summary.txt'))
-            split_telemetries.append(split_save_path.joinpath(str(split), 'sequencing_telemetry.js'))
-            split_pipelines.append(split_save_path.joinpath(str(split), 'pipeline.log'))
-
-        rm_splits.append(remove_splits(split_path, workspace))
-        batch_summaries.extend(split_summaries)
-        batch_pipelines.extend(split_pipelines)
-        batch_telemetries.extend(split_telemetries)
-        batch_configs.extend(split_configs)
-        batch_workspaces.extend(split_workspaces)
-
-    if output_format == 'fast5':
-        digested_workspaces = digest_all_fast5_workspaces(batch_workspaces)
-    elif output_format == 'fastq':
-        digested_workspaces = digest_all_fast5_workspaces(workspace_dict)
-
-
-    digest_rm_splits = digest_splits(rm_splits)
-    bag_summaries = db.read_text(batch_summaries)
-    bag_pipelines = db.read_text(batch_pipelines)
-    bag_telemetries = db.read_text(batch_telemetries)
-    digested_configs = digest_all_configurations(batch_configs)#db.read_text(batch_configs)
-
-    results = sum_results(summ=bag_summaries,
-                          tel=bag_telemetries,
-                          pipe=bag_pipelines,
-                          conf=digested_configs,
-                          wrkspc=digested_workspaces,
-                          rm_splits=digest_rm_splits)
-    return results
-
 def write_data(data, save_path):
     with open(str(save_path), 'a') as file:
         for row in data:
@@ -578,32 +438,3 @@ def batch_generator(batches, batch_size):
             return_batches = []
             batch_counter = 0
 
-
-
-if __name__ == '__main__':
-
-    pass
-#@dask.delayed
-# def digest_all_fastq_workspaces(workspace, barcoding):
-#     cal_fastqs = db.read_text(workspace['cailbration_strands'])
-#     if barcoding:
-#         pass_fastqs = {}
-#         fail_fastqs = {}
-#         for barcode in workspace['pass'].keys():
-#             pass_fastqs[barcode] = db.read_text(workspace['pass'][barcode])
-#         for barcode in workspace['fail'].keys():
-#             fail_fastqs[barcode] = db.read_text(workspace['fail'][barcode])
-#
-#         bag_workpsace = {'calibration_strands': [],
-#            'pass': {},
-#            'fail': {}}
-#     elif barcoding == False:
-#         pass_fastqs = db.read_text(workspace['pass'])
-#         fail_fastqs = db.read_text(workspace['fail'])
-#
-#
-#     bag_workspace = {'calibration_strands': cal_fastqs,
-#                      'pass': pass_fastqs,
-#                      'fail': fail_fastqs}
-#
-#     return bag_workspace
