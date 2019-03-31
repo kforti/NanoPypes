@@ -64,7 +64,7 @@ class AlbacoreBasecaller(Pipe):
             basecalls = self.client.compute(graph['basecall'])
             print("after compute is caller", sys.getsizeof(basecalls))
             # print("you can control the client....\n Enter Commands:")
-         
+
             basecall_results = self.client.gather(basecalls)
             print("results...", sys.getsizeof(basecall_results))
 
@@ -183,6 +183,60 @@ class AlbacoreBasecaller(Pipe):
     def control_client(self):
         user_input = input()
         return user_input
+
+
+def write_data(data, save_path):
+    with open(str(save_path), 'a') as file:
+        for row in data:
+            file.write(row)
+    file.close()
+    return
+
+def write_config(data, save_path):
+    final_config_data = []
+    with open(str(save_path), 'r') as file:
+        for line in file:
+            final_config_data.append(line)
+    file.close()
+    for bunch in data:
+        for row in bunch:
+            if row not in final_config_data:
+                final_config_data.append(row)
+            else:
+                continue
+    with open(str(save_path), 'w') as file2:
+        for row in final_config_data:
+            file2.write(row)
+    file2.close()
+    return
+
+def write_summary(data, save_path):
+    first_row = None
+    with open(str(save_path), 'a') as file:
+        for row in data:
+            if first_row == None:
+                first_row = row
+                file.write(row)
+            elif first_row:
+                if row == first_row:
+                    continue
+                file.write(row)
+
+    file.close()
+    return
+
+def batch_generator(batches, batch_size):
+    batches_len = len(batches)
+    batch_counter = 0
+    return_batches = []
+    for i, batch in enumerate(batches):
+        return_batches.append(batch)
+        batch_counter += 1
+        if batch_counter == batch_size or i + 1 == batches_len:
+            yield return_batches
+            return_batches = []
+            batch_counter = 0
+
 
 ######################################################################################
 ##### Basecall Graph                                                                ##
@@ -385,56 +439,4 @@ def digest_all_fast5_workspaces(workspace):
 @dask.delayed
 def digest_all_configurations(configs):
     return configs
-
-def write_data(data, save_path):
-    with open(str(save_path), 'a') as file:
-        for row in data:
-            file.write(row)
-    file.close()
-    return
-
-def write_config(data, save_path):
-    final_config_data = []
-    with open(str(save_path), 'r') as file:
-        for line in file:
-            final_config_data.append(line)
-    file.close()
-    for bunch in data:
-        for row in bunch:
-            if row not in final_config_data:
-                final_config_data.append(row)
-            else:
-                continue
-    with open(str(save_path), 'w') as file2:
-        for row in final_config_data:
-            file2.write(row)
-    file2.close()
-    return
-
-def write_summary(data, save_path):
-    first_row = None
-    with open(str(save_path), 'a') as file:
-        for row in data:
-            if first_row == None:
-                first_row = row
-                file.write(row)
-            elif first_row:
-                if row == first_row:
-                    continue
-                file.write(row)
-
-    file.close()
-    return
-
-def batch_generator(batches, batch_size):
-    batches_len = len(batches)
-    batch_counter = 0
-    return_batches = []
-    for i, batch in enumerate(batches):
-        return_batches.append(batch)
-        batch_counter += 1
-        if batch_counter == batch_size or i + 1 == batches_len:
-            yield return_batches
-            return_batches = []
-            batch_counter = 0
 
