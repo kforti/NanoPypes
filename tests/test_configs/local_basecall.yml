@@ -8,7 +8,7 @@ basecall:
   worker_threads: 1
   recursive: False
   reads_per_fastq: 1000
-compute:
+computes:
     cluster1:
         job_time:
         mem:
@@ -20,7 +20,7 @@ compute:
         memory:
         scale_value:
         cluster_type: local
-networking:
+networks:
     network1:
         compute_name:
         address:

@@ -74,20 +74,21 @@ class AlbacoreBasecaller(Pipe):
                 copy_files = self.client.compute(self.copy_files)
                 get_commands = self.client.compute(self.commands)
                 bc = self.client.compute(self.basecalls)
-                results = self.client.gather(bc)
+
                 workspace = self.client.compute(self.digest_workspace)
                 rm_splits = self.client.compute(self.remove_splits)
+                wait(workspace)
 
-                configs = self.client.compute(self.digested_configs)
-
-
-                print("Creating final secondary output files.......")
-                write_summary(db.read_text(self.bag_summaries).compute(), self.save_path.joinpath('sequencing_summary.txt'))
-                write_data(db.read_text(self.bag_telemetries).compute(), self.save_path.joinpath('sequencing_telemetry.js'))
-                write_config(self.client.gather(configs), self.save_path.joinpath('configuration.cfg'))
-                write_data(db.read_text(self.bag_pipelines).compute(), self.save_path.joinpath('pipeline.log'))
-        futures = self.client.compute([rm_batch_results(self.save_path), rm_split_data_dirs(batch_bunch)])
-        wait(futures)
+                # configs = self.client.compute(self.digested_configs)
+                #
+                #
+                # print("Creating final secondary output files.......")
+                # write_summary(db.read_text(self.bag_summaries).compute(), self.save_path.joinpath('sequencing_summary.txt'))
+                # write_data(db.read_text(self.bag_telemetries).compute(), self.save_path.joinpath('sequencing_telemetry.js'))
+                # write_config(self.client.gather(configs), self.save_path.joinpath('configuration.cfg'))
+                # write_data(db.read_text(self.bag_pipelines).compute(), self.save_path.joinpath('pipeline.log'))
+        # futures = self.client.compute([rm_batch_results(self.save_path), rm_split_data_dirs(batch_bunch)])
+        # wait(futures)
         #     batch_chunk_counter += 1
         # print("Writing Final results to files....")
         #
