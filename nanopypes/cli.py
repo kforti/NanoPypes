@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 """Console script for pai-nanopypes."""
+import yaml
+
 import click
 
 from nanopypes.run_pipes import albacore_basecaller as albacore
@@ -38,9 +40,28 @@ def albacore_basecaller(config, data_splits, batch_bunches, continue_on=False):
     return 0
 
 
+def create_config():
+
+    stream = open(config, "r")
+    config = yaml.load_all(stream)
+
+    for data in config:
+        config_data = data
+
+    for section in config_data.keys():
+        if section == 'basecall':
+            pass
+        elif section == 'computes':
+            pass
+        elif section == 'networks':
+            pass
+        elif section == 'pipes':
+            pass
 
 
 
+if __name__ == '__main__':
+    modify_config('/Users/kevinfortier/Desktop/NanoPypes/NanoPypes/pai-nanopypes/scripts/albacore_basecall.yml')
 
 
 
