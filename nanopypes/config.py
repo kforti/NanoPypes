@@ -17,10 +17,10 @@ class Configuration:
         else:
             raise IOError("Incorrect configuration file type")
         try:
-            self._networking = settings["networking"]
+            self._networking = settings["networks"]
             self._basecall = settings["basecall"]
-            self._compute = settings["compute"]
-            self._pipes = settings["pipe"]
+            self._compute = settings["computes"]
+            self._pipes = settings["pipes"]
         except Exception as e:
             print("exception raised")
             print(e)
