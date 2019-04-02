@@ -68,14 +68,19 @@ class AlbacoreBasecaller(Pipe):
             #print("gathering basecalls")
             completed_basecalls = 0
             total_basecalls = self.num_splits * self.batch_bunch_size
-            while completed_basecalls < total_basecalls:
-                for future in self.all_basecalls:
-                    if future.done():
-                        del future
-                        completed_basecalls += 1
+            # while completed_basecalls < total_basecalls:
+            #     for future in self.all_basecalls:
+            #         if future.done():
+            #             del future
+            #             completed_basecalls += 1
+            #
+            # self.client.gather(self.all_basecalls)
+            # self.all_basecalls = []
+            while True:
+                user_input = input("Continue to next batch?")
+                if user_input = 'yes':
+                    break
 
-            self.client.gather(self.all_basecalls)
-            self.all_basecalls = []
             #TODO: remove split_data dir
 
 
