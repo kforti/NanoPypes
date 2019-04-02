@@ -136,7 +136,11 @@ def get_command(split, batch_name, build_command, input_path, dependencies):
 
 
 def basecall(func, command, dependencies):
-    return func(command)
+    try:
+        func(command)
+    except Exception:
+        print("there is likely a memory problem")
+    return
 
 
 def remove_splits(split_path, dependencies):
