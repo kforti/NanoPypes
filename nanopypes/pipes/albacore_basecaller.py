@@ -46,6 +46,13 @@ class AlbacoreBasecaller(Pipe):
             self.save_path.joinpath('workspace').mkdir()
         return
 
+    def batch_bunch(self):
+        return next(self.batch_bunches)
+
+    def basecall(self):
+        for batch in self.batch_bunch():
+
+
     def execute(self):
         self._prep_save_path()
 
@@ -68,13 +75,13 @@ class AlbacoreBasecaller(Pipe):
             basecall_results = self.client.gather(basecalls)
             print("results...", sys.getsizeof(basecall_results))
 
-            print("Creating final secondary output files.......")
-            write_summary(graph['summary'].compute(), self.save_path.joinpath('sequencing_summary.txt'))
-            write_data(graph['telemetry'].compute(), self.save_path.joinpath('sequencing_telemetry.js'))
-            write_config(graph['config'].compute(), self.save_path.joinpath('configuration.cfg'))
-            write_data(graph['pipe'].compute(), self.save_path.joinpath('pipeline.log'))
-            futures = self.client.compute([rm_batch_results(self.save_path), rm_split_data_dirs(batch_bunch)])
-            wait(futures)
+            # print("Creating final secondary output files.......")
+            # write_summary(graph['summary'].compute(), self.save_path.joinpath('sequencing_summary.txt'))
+            # write_data(graph['telemetry'].compute(), self.save_path.joinpath('sequencing_telemetry.js'))
+            # write_config(graph['config'].compute(), self.save_path.joinpath('configuration.cfg'))
+            # write_data(graph['pipe'].compute(), self.save_path.joinpath('pipeline.log'))
+            # futures = self.client.compute([rm_batch_results(self.save_path), rm_split_data_dirs(batch_bunch)])
+            # wait(futures)
             batch_chunk_counter += 1
         print("Writing Final results to files....")
 
@@ -89,26 +96,26 @@ class AlbacoreBasecaller(Pipe):
         for batch in batch_bunch:
             self._process_splits(batch)
 
-            batch_summaries.extend(self.split_summaries)
-            batch_pipelines.extend(self.split_pipelines)
-            batch_telemetries.extend(self.split_telemetries)
-            batch_configs.extend(self.split_configs)
+            # batch_summaries.extend(self.split_summaries)
+            # batch_pipelines.extend(self.split_pipelines)
+            # batch_telemetries.extend(self.split_telemetries)
+            # batch_configs.extend(self.split_configs)
             self.all_basecalls.extend(self.split_basecalls)
 
-        self.bag_summaries = db.read_text(batch_summaries)
-        self.bag_pipelines = db.read_text(batch_pipelines)
-        self.bag_telemetries = db.read_text(batch_telemetries)
-        self.digested_configs = digest_all_configurations(batch_configs)  # db.read_text(batch_configs)
+        # self.bag_summaries = db.read_text(batch_summaries)
+        # self.bag_pipelines = db.read_text(batch_pipelines)
+        # self.bag_telemetries = db.read_text(batch_telemetries)
+        # self.digested_configs = digest_all_configurations(batch_configs)  # db.read_text(batch_configs)
 
         return self.sum_results()
 
     def sum_results(self):
-        results = {'telemetry': self.bag_telemetries,
-                   'summary': self.bag_summaries,
-                   'config': self.digested_configs,
-                   'pipe': self.bag_pipelines,
-                   'basecall': self.all_basecalls}
-        return results
+        # results = {'telemetry': self.bag_telemetries,
+        #            'summary': self.bag_summaries,
+        #            'config': self.digested_configs,
+        #            'pipe': self.bag_pipelines,
+        #            'basecall': self.all_basecalls}
+        return self.all_basecalls#results
 
     def _process_splits(self, batch):
         #Set split_data path and create directory if it does not exist
@@ -148,13 +155,13 @@ class AlbacoreBasecaller(Pipe):
             basecall_graphs.append(bc_graph)
 
             #create config digest graph
-            configuration = digest_configuration(split_save_path.joinpath(str(split), 'configuration.cfg'),
-                                                 split_save_path.joinpath('configuration.cfg'), bc_graph)
-            self.split_configs.append(configuration)
+            # configuration = digest_configuration(split_save_path.joinpath(str(split), 'configuration.cfg'),
+            #                                      split_save_path.joinpath('configuration.cfg'), bc_graph)
+            # self.split_configs.append(configuration)
             self.split_basecalls.append(bc_graph)
-            self.split_summaries.append(split_save_path.joinpath(str(split), 'sequencing_summary.txt'))
-            self.split_telemetries.append(split_save_path.joinpath(str(split), 'sequencing_telemetry.js'))
-            self.split_pipelines.append(split_save_path.joinpath(str(split), 'pipeline.log'))
+            # self.split_summaries.append(split_save_path.joinpath(str(split), 'sequencing_summary.txt'))
+            # self.split_telemetries.append(split_save_path.joinpath(str(split), 'sequencing_telemetry.js'))
+            # self.split_pipelines.append(split_save_path.joinpath(str(split), 'pipeline.log'))
 
         return
 
@@ -165,17 +172,17 @@ class AlbacoreBasecaller(Pipe):
         bc = basecall(self.function, command)
         rm_split = remove_splits(split_path, bc)
 
-        if self.output_format == 'fast5':
-            workspace = digest_fast5_workspace(self.save_path.joinpath(batch.name, str(split), 'workspace'),
-                                               self.save_path.joinpath('workspace'), self.barcoding, bc)
-        elif self.output_format == 'fastq':
-            workspace = digest_fastq_workspace(
-                workspace_path=self.save_path.joinpath(batch.name, str(split), 'workspace'),
-                save_path=self.save_path.joinpath('workspace'),
-                barcoding=self.barcoding,
-                bc=bc)
+        # if self.output_format == 'fast5':
+        #     workspace = digest_fast5_workspace(self.save_path.joinpath(batch.name, str(split), 'workspace'),
+        #                                        self.save_path.joinpath('workspace'), self.barcoding, bc)
+        # elif self.output_format == 'fastq':
+        #     workspace = digest_fastq_workspace(
+        #         workspace_path=self.save_path.joinpath(batch.name, str(split), 'workspace'),
+        #         save_path=self.save_path.joinpath('workspace'),
+        #         barcoding=self.barcoding,
+        #         bc=bc)
 
-        return basecall_graph(workspace, rm_split)
+        return basecall_graph(bc, rm_split)
 
     def write_nanopypes_log(self):
         pass
@@ -425,16 +432,4 @@ def write_summary(data, save_path):
 
     file.close()
     return
-
-def batch_generator(batches, batch_size):
-    batches_len = len(batches)
-    batch_counter = 0
-    return_batches = []
-    for i, batch in enumerate(batches):
-        return_batches.append(batch)
-        batch_counter += 1
-        if batch_counter == batch_size or i + 1 == batches_len:
-            yield return_batches
-            return_batches = []
-            batch_counter = 0
 

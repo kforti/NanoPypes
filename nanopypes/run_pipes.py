@@ -1,6 +1,6 @@
 from nanopypes.compute import Cluster
 from nanopypes.oxnano import Albacore
-from nanopypes.pipes.albacore_basecaller import AlbacoreBasecaller
+from nanopypes.pipes.basecaller import AlbacoreBasecaller
 from nanopypes.config import Configuration
 
 def albacore_basecaller(config, data_splits, batch_bunch, basecaller='albacore', continue_on=False, last_batch=None):
