@@ -1,6 +1,7 @@
 from pathlib import Path
 import os
 import shutil
+import datetime
 import re
 import sys
 
@@ -37,7 +38,7 @@ def copy_splits(splits, split_path):
 class AlbacoreBasecaller(Pipe):
 
     def __init__(self, client, albacore, num_splits, batch_bunch_size):
-        print("Starting the parallel Albacore Basecaller...")
+        print("Starting the parallel Albacore Basecaller...\n", datetime.datetime.now())
         self.client = client
         self.num_splits = num_splits
         self.batch_bunch_size = batch_bunch_size
@@ -64,6 +65,14 @@ class AlbacoreBasecaller(Pipe):
              #   print("processing batch: ", batch)
                 self.build_graphs(batch)
             #print("gathering basecalls")
+            completed_basecalls = 0
+            total_basecalls = self.num_splits * self.batch_bunch_size
+            while completed_basecalls < total_basecalls:
+                for future in self.all_basecalls:
+                    if future.done():
+                        del future
+                        completed_basecalls += 1
+
             self.client.gather(self.all_basecalls)
             self.all_basecalls = []
             #TODO: remove split_data dir
