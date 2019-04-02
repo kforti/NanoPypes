@@ -78,7 +78,7 @@ class AlbacoreBasecaller(Pipe):
             # self.all_basecalls = []
             while True:
                 user_input = input("Continue to next batch?")
-                if user_input = 'yes':
+                if user_input == 'yes':
                     break
 
             #TODO: remove split_data dir
