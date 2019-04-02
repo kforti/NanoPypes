@@ -61,9 +61,9 @@ class AlbacoreBasecaller(Pipe):
         for batch_bunch in self.batch_bunches:
             print("processing batch bunch: ", batch_bunch)
             for batch in batch_bunch:
-                print("processing batch: ", batch)
+             #   print("processing batch: ", batch)
                 self.build_graphs(batch)
-            print("gathering basecalls")
+            #print("gathering basecalls")
             self.client.gather(self.all_basecalls)
             self.all_basecalls = []
             #TODO: remove split_data dir
@@ -81,7 +81,7 @@ class AlbacoreBasecaller(Pipe):
         chunk_size = int((len(os.listdir(str(batch))) / self.num_splits))
 
         for i, split_paths in enumerate(spl_data):
-            print("processing split paths: ", split_paths)
+            #print("processing split paths: ", split_paths)
             this_split_path = split_path.joinpath(str(i))
             split_save_path = self.save_path.joinpath(batch.name)
             if this_split_path.exists() == False:
