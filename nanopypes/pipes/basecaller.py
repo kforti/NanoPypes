@@ -6,7 +6,7 @@ import re
 import sys
 
 import dask
-from dask.distributed import fire_and_forget
+from dask.distributed import fire_and_forget, wait
 
 from nanopypes.pipes.base import Pipe
 
@@ -134,17 +134,23 @@ class AlbacoreBasecaller(Pipe):
     def prep_data(self):
         bc_batches = os.listdir(str(self.save_path))
         final_bc_batches = []
+        all_futures = []
         for batch in os.listdir(str(self.input_path)):
             if batch in bc_batches:
                 print("batch ", batch, " is in bc_batches")
                 if len(os.listdir(str(self.input_path.joinpath(batch, 'split_data')))) > 0:
                     print("Removing data: ", batch)
-                    shutil.rmtree(str(self.save_path.joinpath(batch)))
-                    shutil.rmtree(str(self.input_path.joinpath(batch, 'split_data')))
+                    save_future = self.client.submit(shutil.rmtree, str(self.save_path.joinpath(batch)))
+                    split_future = self.submit(shutil.rmtree, str(self.input_path.joinpath(batch, 'split_data')))
+                    all_futures.append(save_future)
+                    all_futures.append(split_future)
             else:
                 print("Batch: ", batch, " ok!")
                 final_bc_batches.append(batch)
+        wait(all_futures)
+        del all_futures
         return final_bc_batches
+
 
 
 #####################
