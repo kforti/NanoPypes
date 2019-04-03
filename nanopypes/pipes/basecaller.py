@@ -44,8 +44,6 @@ class AlbacoreBasecaller(Pipe):
         self.num_splits = num_splits
         self.batch_bunch_size = batch_bunch_size
         self.albacore = albacore
-        if continue_on:
-            self.albacore.bc_batches = self.prep_data()
 
         # basecaller info
         self.barcoding = albacore.barcoding
@@ -53,6 +51,10 @@ class AlbacoreBasecaller(Pipe):
         self.function = albacore.build_func()
         self.input_path = Path(albacore.input_path)
         self.save_path = Path(albacore.save_path)
+
+        if continue_on:
+            self.albacore.bc_batches = self.prep_data()
+
         self.all_batches = albacore.batches
         self.batch_bunches = batch_generator(self.all_batches, batch_bunch_size)
         self.all_basecalls = []
