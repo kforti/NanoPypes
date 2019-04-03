@@ -23,13 +23,13 @@ class Albacore:
 
         self._config = config.basecall
         self.input = Sample(self._config.input_path(input))
-                # self.flow_cell = self._config.flowcell(flowcell)
-                # self.kit = self._config.kit(kit)
-                # self._save_path = Path(self._config.save_path(save_path))
-                # self._output_format = self._config.output_format(output_format)
-                # self.reads_per_fastq = self._config.reads_per_fastq(reads_per_fastq)
-                # self._barcoding = self._config.barcoding(barcoding)
-                # self.continue_on = continue_on
+        self.flow_cell = self._config.flowcell(flowcell)
+        self.kit = self._config.kit(kit)
+        self._save_path = Path(self._config.save_path(save_path))
+        self._output_format = self._config.output_format(output_format)
+        self.reads_per_fastq = self._config.reads_per_fastq(reads_per_fastq)
+        self._barcoding = self._config.barcoding(barcoding)
+        self.continue_on = continue_on
         self._bc_batches = None
 
     @property
