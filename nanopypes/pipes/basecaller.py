@@ -38,12 +38,14 @@ def copy_splits(splits, split_path):
 
 class AlbacoreBasecaller(Pipe):
 
-    def __init__(self, client, albacore, num_splits, batch_bunch_size):
+    def __init__(self, client, albacore, num_splits, batch_bunch_size, continue_on):
         print("Starting the parallel Albacore Basecaller...\n", datetime.datetime.now())
         self.client = client
         self.num_splits = num_splits
         self.batch_bunch_size = batch_bunch_size
         self.albacore = albacore
+        if continue_on:
+            self.albacore.bc_batches = self.prep_data()
 
         # basecaller info
         self.barcoding = albacore.barcoding
@@ -82,7 +84,6 @@ class AlbacoreBasecaller(Pipe):
                     break
 
             #TODO: remove split_data dir
-
 
     def build_graphs(self, batch):
         spl_data = self.get_split_paths(batch)
@@ -128,13 +129,21 @@ class AlbacoreBasecaller(Pipe):
                 file_counter = 0
         return all_files
 
+    def prep_data(self):
+        bc_batches = os.listdir(str(self.save_path))
+        final_bc_batches = []
+        for batch in os.listdir(str(self.input_path)):
+            if batch in bc_batches and len(os.listdir(str(self.input_path.joinpath('split_data')))) > 0:
+                shutil.rmtree(str(self.save_path.joinpath(batch)))
+            else:
+                final_bc_batches.append(batch)
+        return final_bc_batches
+
 
 #####################
 # Dask Functions
 # Basecall Graphs
 #####################
-
-
 
 def get_command(split, batch_name, build_command, input_path, dependencies):
     command = build_command(str(input_path.joinpath(batch_name, 'split_data', str(split))), batch_name)

@@ -23,15 +23,22 @@ class Albacore:
 
         self._config = config.basecall
         self.input = Sample(self._config.input_path(input))
-        self.flow_cell = self._config.flowcell(flowcell)
-        self.kit = self._config.kit(kit)
-        self._save_path = Path(self._config.save_path(save_path))
-        self._output_format = self._config.output_format(output_format)
-        self.reads_per_fastq = self._config.reads_per_fastq(reads_per_fastq)
-        self._barcoding = self._config.barcoding(barcoding)
-        self.continue_on = continue_on
-        if continue_on:
-            self.prep_data()
+                # self.flow_cell = self._config.flowcell(flowcell)
+                # self.kit = self._config.kit(kit)
+                # self._save_path = Path(self._config.save_path(save_path))
+                # self._output_format = self._config.output_format(output_format)
+                # self.reads_per_fastq = self._config.reads_per_fastq(reads_per_fastq)
+                # self._barcoding = self._config.barcoding(barcoding)
+                # self.continue_on = continue_on
+        self._bc_batches = None
+
+    @property
+    def bc_batches(self):
+        return self._bc_batches
+
+    @bc_batches.setter
+    def bc_batches(self, batches):
+        self._bc_batches = batches
 
     @property
     def input_path(self):
@@ -80,7 +87,7 @@ class Albacore:
     @property
     def batches(self):
         batch_pattern = r'(^)[0-9]+($)'
-        batches = [Path(self.input_path).joinpath(i) for i in os.listdir(str(self.input_path)) if re.match(batch_pattern, str(i))]
+        batches = [Path(self.input_path).joinpath(i) for i in os.listdir(str(self.input_path)) if re.match(batch_pattern, str(i)) and i not in self._bc_batches]
         if self.continue_on:
             for batch in os.listdir(str(self.save_path)):
                 if self.input_path.joinpath(batch) in batches:
@@ -120,6 +127,7 @@ class Albacore:
         return func
 
     def prep_data(self):
+        ## delete directories that have been half
         for batch in os.listdir(str(self.input_path)):
             if 'split_data' in os.listdir(str(self.input_path.joinpath(batch))):
                 splits = os.listdir(str(self.input_path.joinpath('split_data')))
@@ -139,4 +147,7 @@ class Albacore:
 
 
 
-
+if __name__ == "__main__":
+    ox = Albacore(None)
+    ox.bc_batches = ['a', 'b', 'c']
+    print(ox.bc_batches)

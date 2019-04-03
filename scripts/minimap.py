@@ -12,7 +12,7 @@ if __name__ == '__main__':
 
     minimapper = MiniMap2(input_path='/Users/kevinfortier/Desktop/t_variant_calling/data/external/malaria_SciRep2018/R7.3_fastq',
                           reference='/Users/kevinfortier/Desktop/t_variant_calling/data/external/malaria_SciRep2018/ref_genomes/Plasmodium_falciparum_3D7.fasta',
-                          save_path='/Users/kevinfortier/Desktop/NanoPypes/NanoPypes/pai-nanopypes/tests/test_data/minimap',
+                          save_path='/Users/kevinfortier/Desktop/',
                           client=client,
                           command='splice')
     minimapper()
