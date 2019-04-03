@@ -9,7 +9,7 @@ def albacore_basecaller(config, data_splits, batch_bunch, basecaller='albacore',
     compute = Cluster(compute_configs[0])
     client = compute.connect()
     albacore = Albacore(config, continue_on=continue_on)
-    basecall = AlbacoreBasecaller(albacore=albacore, client=client, num_splits=data_splits, batch_bunch_size=batch_bunch)
+    basecall = AlbacoreBasecaller(albacore=albacore, client=client, num_splits=data_splits, batch_bunch_size=batch_bunch, continue_on=continue_on)
     basecall()
     compute.close()
 

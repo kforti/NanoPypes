@@ -134,6 +134,7 @@ class AlbacoreBasecaller(Pipe):
         final_bc_batches = []
         for batch in os.listdir(str(self.input_path)):
             if batch in bc_batches and len(os.listdir(str(self.input_path.joinpath('split_data')))) > 0:
+                print("Removing data: ", batch)
                 shutil.rmtree(str(self.save_path.joinpath(batch)))
             else:
                 final_bc_batches.append(batch)

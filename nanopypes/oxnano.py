@@ -88,10 +88,10 @@ class Albacore:
     def batches(self):
         batch_pattern = r'(^)[0-9]+($)'
         batches = [Path(self.input_path).joinpath(i) for i in os.listdir(str(self.input_path)) if re.match(batch_pattern, str(i)) and i not in self._bc_batches]
-        if self.continue_on:
-            for batch in os.listdir(str(self.save_path)):
-                if self.input_path.joinpath(batch) in batches:
-                    batches.remove(self.input_path.joinpath(batch))
+        # if self.continue_on:
+        #     for batch in os.listdir(str(self.save_path)):
+        #         if self.input_path.joinpath(batch) in batches:
+        #             batches.remove(self.input_path.joinpath(batch))
         return batches
 
     @property
