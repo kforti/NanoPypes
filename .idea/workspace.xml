@@ -16,11 +16,20 @@
       <file leaf-file-name="basecaller.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/nanopypes/pipes/basecaller.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="364">
-              <caret line="137" column="49" selection-start-line="137" selection-start-column="49" selection-end-line="137" selection-end-column="49" />
+            <state relative-caret-position="401">
+              <caret line="107" column="43" lean-forward="true" selection-start-line="107" selection-start-column="43" selection-end-line="107" selection-end-column="43" />
               <folding>
                 <element signature="e#0#24#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="albacore_basecall.yml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/scripts/albacore_basecall.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="465">
+              <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
             </state>
           </provider>
         </entry>
@@ -39,8 +48,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1788" />
-    <option name="y" value="23" />
+    <option name="x" value="1426" />
+    <option name="y" value="44" />
     <option name="width" value="1440" />
     <option name="height" value="832" />
   </component>
@@ -59,13 +68,7 @@
             <path>
               <item name="pai-nanopypes" type="b2602c69:ProjectViewProjectNode" />
               <item name="pai-nanopypes" type="462c0819:PsiDirectoryNode" />
-              <item name="nanopypes" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="pai-nanopypes" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pai-nanopypes" type="462c0819:PsiDirectoryNode" />
-              <item name="nanopypes" type="462c0819:PsiDirectoryNode" />
-              <item name="pipes" type="462c0819:PsiDirectoryNode" />
+              <item name="scripts" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -104,7 +107,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1788" y="23" width="1440" height="832" extended-state="0" />
+    <frame x="1426" y="44" width="1440" height="832" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24947146" />
@@ -140,10 +143,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/albacore_basecall.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="465">
+          <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/nanopypes/pipes/basecaller.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="364">
-          <caret line="137" column="49" selection-start-line="137" selection-start-column="49" selection-end-line="137" selection-end-column="49" />
+        <state relative-caret-position="401">
+          <caret line="107" column="43" lean-forward="true" selection-start-line="107" selection-start-column="43" selection-end-line="107" selection-end-column="43" />
           <folding>
             <element signature="e#0#24#0" expanded="true" />
           </folding>

@@ -54,6 +54,7 @@ class AlbacoreBasecaller(Pipe):
 
         if continue_on:
             self.albacore.bc_batches = self.prep_data()
+            self.client.restart()
 
         self.all_batches = albacore.batches
         self.batch_bunches = batch_generator(self.all_batches, batch_bunch_size)
@@ -112,7 +113,7 @@ class AlbacoreBasecaller(Pipe):
             #print("submitting commands")
             commands = self.client.submit(get_command, i, batch.name, self.albacore.build_command, self.input_path, None, priority=-10)
             #print("submitting basecalls")
-            bc = self.client.submit(basecall, self.function, commands, [copy_files, commands], priority=10, resources={'MEMORY': 10e6})
+            bc = self.client.submit(basecall, self.function, commands, [copy_files, commands], priority=10, resources={'MEMORY': 10e8})
             rm_splits = self.client.submit(remove_splits, this_split_path, [bc], priority=-10)
             fire_and_forget(rm_splits)
 
