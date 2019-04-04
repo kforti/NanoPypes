@@ -2,6 +2,7 @@ from pathlib import Path
 import os
 import shutil
 import datetime
+import time
 import re
 import sys
 from asyncio.futures import CancelledError
@@ -67,6 +68,7 @@ class AlbacoreBasecaller(Pipe):
         self.all_data_collapse = []
 
         self.futures = []
+        self.tasks = 0
 
     def execute(self):
         for batch_bunch in self.batch_bunches:
@@ -85,11 +87,29 @@ class AlbacoreBasecaller(Pipe):
             #
             # self.client.gather(self.all_basecalls)
             # self.all_basecalls = []
-            while True:
-                # print(self.client.call_stack())
-                user_input = input("Continue to next batch?")
-                if user_input == 'yes':
+            print(len(self.futures))
+            comp = as_completed(self.futures)
+            tasks = 0
+            for comlpeted_future in comp:
+                try:
+                    self.client.cancel(comlpeted_future)
+                    tasks += 1
+                    if tasks > (self.batch_bunch_size * self.num_splits *.5):
+                        break
+                except StopIteration:
                     break
+
+
+                # tasks = len(self.client.get_task_stream())
+                # print('num tasks', tasks)
+                # print("expected num tasks", self.tasks)
+                # print(list(self.client.processing().values()))
+                # if len(self.client.processing()) < (len(self.client.scheduler_info()['workers']) * .7):
+                #     break
+            #time.sleep(180)
+                # user_input = input("Continue to next batch?")
+                # if user_input == 'yes':
+                #     break
                 # cf = as_completed(self.futures)
                 # print([i for i in cf])
                 # print(sys.getsizeof(self.futures))
@@ -125,8 +145,10 @@ class AlbacoreBasecaller(Pipe):
             #print("submitting basecalls")
             bc = self.client.submit(basecall, self.function, commands, [copy_files, commands], priority=10)
             #self.futures.append(bc)
-            fire_and_forget(self.client.submit(remove_splits, this_split_path, [bc], priority=-10))
-            del copy_files, commands, bc
+            rm_splits = self.client.submit(remove_splits, this_split_path, [bc], priority=0)
+            self.futures.append(rm_splits)
+            #del copy_files, commands, bc
+            self.tasks += 3
 
 
     def get_split_paths(self, batch):
@@ -193,5 +215,6 @@ def remove_splits(split_path, dependencies):
 
 
 if __name__ == '__main__':
-
+    a = {'a':1, 'b':4}
+    print(len(a))
     pass
