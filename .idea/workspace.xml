@@ -16,8 +16,8 @@
       <file leaf-file-name="basecaller.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/nanopypes/pipes/basecaller.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="401">
-              <caret line="107" column="43" lean-forward="true" selection-start-line="107" selection-start-column="43" selection-end-line="107" selection-end-column="43" />
+            <state relative-caret-position="199">
+              <caret line="115" column="132" selection-start-line="115" selection-start-column="132" selection-end-line="115" selection-end-column="132" />
               <folding>
                 <element signature="e#0#24#0" expanded="true" />
               </folding>
@@ -30,6 +30,18 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="465">
               <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="compute.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/nanopypes/compute.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="647">
+              <caret line="104" column="50" lean-forward="true" selection-start-line="104" selection-start-column="50" selection-end-line="104" selection-end-column="50" />
+              <folding>
+                <element signature="e#0#14#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -64,6 +76,11 @@
             <path>
               <item name="pai-nanopypes" type="b2602c69:ProjectViewProjectNode" />
               <item name="pai-nanopypes" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="pai-nanopypes" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pai-nanopypes" type="462c0819:PsiDirectoryNode" />
+              <item name="nanopypes" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="pai-nanopypes" type="b2602c69:ProjectViewProjectNode" />
@@ -143,6 +160,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/nanopypes/compute.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="647">
+          <caret line="104" column="50" lean-forward="true" selection-start-line="104" selection-start-column="50" selection-end-line="104" selection-end-column="50" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/scripts/albacore_basecall.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="465">
@@ -152,8 +179,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/nanopypes/pipes/basecaller.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="401">
-          <caret line="107" column="43" lean-forward="true" selection-start-line="107" selection-start-column="43" selection-end-line="107" selection-end-column="43" />
+        <state relative-caret-position="199">
+          <caret line="115" column="132" selection-start-line="115" selection-start-column="132" selection-end-line="115" selection-end-column="132" />
           <folding>
             <element signature="e#0#24#0" expanded="true" />
           </folding>
