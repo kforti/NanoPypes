@@ -2,7 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="06fba5a6-e119-4d57-aa65-81370b2766cd" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dask-worker-space/worker-59amg6z7.dirlock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dask-worker-space/worker-g79c27bj.dirlock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dask-worker-space/worker-h5_96na6.dirlock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dask-worker-space/worker-tcvaovm1.dirlock" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/nanopypes/pipes/basecaller.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/pipes/basecaller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nanopypes/pipes/minimap2.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/pipes/minimap2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/minimap.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/minimap.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -16,10 +23,24 @@
       <file leaf-file-name="basecaller.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/nanopypes/pipes/basecaller.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="197">
-              <caret line="115" column="106" selection-start-line="115" selection-start-column="106" selection-end-line="115" selection-end-column="106" />
+            <state relative-caret-position="502">
+              <caret line="113" column="112" selection-start-line="113" selection-start-column="112" selection-end-line="113" selection-end-column="112" />
               <folding>
                 <element signature="e#0#24#0" expanded="true" />
+                <element signature="e#4292#4749#0" />
+                <element signature="e#4784#5697#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="minimap.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/scripts/minimap.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="18" selection-start-line="18" selection-end-line="18" />
+              <folding>
+                <element signature="e#0#45#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -29,7 +50,7 @@
         <entry file="file://$PROJECT_DIR$/scripts/albacore_basecall.yml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="465">
-              <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
+              <caret line="31" selection-start-line="31" selection-end-line="31" />
             </state>
           </provider>
         </entry>
@@ -38,9 +59,21 @@
         <entry file="file://$PROJECT_DIR$/nanopypes/compute.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="647">
-              <caret line="104" column="50" lean-forward="true" selection-start-line="104" selection-start-column="50" selection-end-line="104" selection-end-column="50" />
+              <caret line="104" column="50" selection-start-line="104" selection-start-column="50" selection-end-line="104" selection-end-column="50" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="minimap2.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/nanopypes/pipes/minimap2.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="375">
+              <caret line="25" column="31" lean-forward="true" selection-start-line="25" selection-start-column="31" selection-end-line="25" selection-end-column="31" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -55,14 +88,16 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/nanopypes/pipes/albacore_basecaller.py" />
+        <option value="$PROJECT_DIR$/scripts/minimap.py" />
+        <option value="$PROJECT_DIR$/nanopypes/pipes/minimap2.py" />
         <option value="$PROJECT_DIR$/nanopypes/pipes/basecaller.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1426" />
-    <option name="y" value="44" />
-    <option name="width" value="1440" />
+    <option name="x" value="1609" />
+    <option name="y" value="73" />
+    <option name="width" value="1575" />
     <option name="height" value="832" />
   </component>
   <component name="ProjectView">
@@ -81,6 +116,12 @@
               <item name="pai-nanopypes" type="b2602c69:ProjectViewProjectNode" />
               <item name="pai-nanopypes" type="462c0819:PsiDirectoryNode" />
               <item name="nanopypes" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="pai-nanopypes" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pai-nanopypes" type="462c0819:PsiDirectoryNode" />
+              <item name="nanopypes" type="462c0819:PsiDirectoryNode" />
+              <item name="pipes" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="pai-nanopypes" type="b2602c69:ProjectViewProjectNode" />
@@ -124,9 +165,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1426" y="44" width="1440" height="832" extended-state="0" />
+    <frame x="1609" y="73" width="1575" height="832" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24947146" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22779922" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Run" order="2" />
@@ -162,7 +204,7 @@
     <entry file="file://$PROJECT_DIR$/nanopypes/compute.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="647">
-          <caret line="104" column="50" lean-forward="true" selection-start-line="104" selection-start-column="50" selection-end-line="104" selection-end-column="50" />
+          <caret line="104" column="50" selection-start-line="104" selection-start-column="50" selection-end-line="104" selection-end-column="50" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
           </folding>
@@ -172,16 +214,38 @@
     <entry file="file://$PROJECT_DIR$/scripts/albacore_basecall.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="465">
-          <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
+          <caret line="31" selection-start-line="31" selection-end-line="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/minimap.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" selection-start-line="18" selection-end-line="18" />
+          <folding>
+            <element signature="e#0#45#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nanopypes/pipes/minimap2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" column="31" lean-forward="true" selection-start-line="25" selection-start-column="31" selection-end-line="25" selection-end-column="31" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/nanopypes/pipes/basecaller.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="115" column="106" selection-start-line="115" selection-start-column="106" selection-end-line="115" selection-end-column="106" />
+        <state relative-caret-position="502">
+          <caret line="113" column="112" selection-start-line="113" selection-start-column="112" selection-end-line="113" selection-end-column="112" />
           <folding>
             <element signature="e#0#24#0" expanded="true" />
+            <element signature="e#4292#4749#0" />
+            <element signature="e#4784#5697#0" />
           </folding>
         </state>
       </provider>

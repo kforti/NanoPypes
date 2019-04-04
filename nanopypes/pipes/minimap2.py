@@ -42,7 +42,8 @@ class MiniMap2(Pipe):
     def create_subprocess(self, fastq):
         samfile = self.save_path.joinpath(fastq.replace('fq.gz', 'sam'))
         if self.command == 'splice':
-            command = ['minimap2', '-ax', 'splice', str(self.reference), str(self.input.joinpath(fastq)), '>', str(self.save_path.joinpath(samfile))]
+            #command = 'minimap2 -ax splice ' + str(self.reference) + ' ' + str(self.input.joinpath(fastq)) + ' > ' + str(self.save_path.joinpath(samfile))
+            command = ['minimap2', '-ax', 'splice', str(self.reference), str(self.input.joinpath(fastq)), '-o', str(self.save_path.joinpath(samfile))]
             print(command)
         def subp():
             result = subprocess.Popen(command)

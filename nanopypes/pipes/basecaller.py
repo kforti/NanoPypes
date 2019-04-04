@@ -4,6 +4,8 @@ import shutil
 import datetime
 import re
 import sys
+from asyncio.futures import CancelledError
+
 
 import dask
 from dask.distributed import fire_and_forget, wait
@@ -109,13 +111,13 @@ class AlbacoreBasecaller(Pipe):
                 except Exception as e:
                     pass
             #print("submitting copy_files")
-            copy_files = self.client.submit(copy_splits, split_paths, this_split_path, priority=-10)
+                    fire_and_forget(self.client.submit(copy_splits, split_paths, this_split_path, priority=-10))
             #print("submitting commands")
-            commands = self.client.submit(get_command, i, batch.name, self.albacore.build_command, self.input_path, None, priority=-10)
+            fire_and_forget(self.client.submit(get_command, i, batch.name, self.albacore.build_command, self.input_path, None, priority=-10))
             #print("submitting basecalls")
-            bc = self.client.submit(basecall, self.function, commands, [copy_files, commands], priority=10)
-            rm_splits = self.client.submit(remove_splits, this_split_path, [bc], priority=-10)
-            fire_and_forget(rm_splits)
+            fire_and_forget(self.client.submit(basecall, self.function, commands, [copy_files, commands], priority=10))
+            fire_and_forget(self.client.submit(remove_splits, this_split_path, [bc], priority=-10))
+
 
     def get_split_paths(self, batch):
         files = os.listdir(str(batch))
