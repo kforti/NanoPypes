@@ -51,7 +51,7 @@ class AlbacoreBasecaller(Pipe):
 
     def basecall(self):
         for batch in self.batch_bunch():
-
+            pass
 
     def execute(self):
         self._prep_save_path()

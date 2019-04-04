@@ -112,7 +112,7 @@ class AlbacoreBasecaller(Pipe):
             #print("submitting commands")
             commands = self.client.submit(get_command, i, batch.name, self.albacore.build_command, self.input_path, None, priority=-10)
             #print("submitting basecalls")
-            bc = self.client.submit(basecall, self.function, commands, [copy_files, commands], priority=10)
+            bc = self.client.submit(basecall, self.function, commands, [copy_files, commands], priority=10, resources={'MEMORY': 10e6})
             rm_splits = self.client.submit(remove_splits, this_split_path, [bc], priority=-10)
             fire_and_forget(rm_splits)
 
