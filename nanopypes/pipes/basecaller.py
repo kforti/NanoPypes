@@ -141,7 +141,7 @@ class AlbacoreBasecaller(Pipe):
                 if len(os.listdir(str(self.input_path.joinpath(batch, 'split_data')))) > 0:
                     print("Removing data: ", batch)
                     save_future = self.client.submit(shutil.rmtree, str(self.save_path.joinpath(batch)))
-                    split_future = self.submit(shutil.rmtree, str(self.input_path.joinpath(batch, 'split_data')))
+                    split_future = self.client.submit(shutil.rmtree, str(self.input_path.joinpath(batch, 'split_data')))
                     all_futures.append(save_future)
                     all_futures.append(split_future)
             else:
