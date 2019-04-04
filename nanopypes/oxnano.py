@@ -30,7 +30,7 @@ class Albacore:
         self.reads_per_fastq = self._config.reads_per_fastq(reads_per_fastq)
         self._barcoding = self._config.barcoding(barcoding)
         self.continue_on = continue_on
-        self._bc_batches = None
+        self._bc_batches = []
 
     @property
     def bc_batches(self):

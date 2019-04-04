@@ -8,7 +8,7 @@ from asyncio.futures import CancelledError
 
 
 import dask
-from dask.distributed import fire_and_forget, wait
+from dask.distributed import fire_and_forget, wait, as_completed, futures_of
 
 from nanopypes.pipes.base import Pipe
 
@@ -66,6 +66,8 @@ class AlbacoreBasecaller(Pipe):
         self.all_basecalls = []
         self.all_data_collapse = []
 
+        self.futures = []
+
     def execute(self):
         for batch_bunch in self.batch_bunches:
             print("processing batch bunch: ", batch_bunch)
@@ -84,9 +86,13 @@ class AlbacoreBasecaller(Pipe):
             # self.client.gather(self.all_basecalls)
             # self.all_basecalls = []
             while True:
+                # print(self.client.call_stack())
                 user_input = input("Continue to next batch?")
                 if user_input == 'yes':
                     break
+                # cf = as_completed(self.futures)
+                # print([i for i in cf])
+                # print(sys.getsizeof(self.futures))
 
             #TODO: remove split_data dir
 
@@ -111,12 +117,16 @@ class AlbacoreBasecaller(Pipe):
                 except Exception as e:
                     pass
             #print("submitting copy_files")
-                    fire_and_forget(self.client.submit(copy_splits, split_paths, this_split_path, priority=-10))
+            copy_files = self.client.submit(copy_splits, split_paths, this_split_path, priority=-10)
+            #self.futures.append(copy_files)
             #print("submitting commands")
-            fire_and_forget(self.client.submit(get_command, i, batch.name, self.albacore.build_command, self.input_path, None, priority=-10))
+            commands = self.client.submit(get_command, i, batch.name, self.albacore.build_command, self.input_path, None, priority=-10)
+            #self.futures.append(commands)
             #print("submitting basecalls")
-            fire_and_forget(self.client.submit(basecall, self.function, commands, [copy_files, commands], priority=10))
+            bc = self.client.submit(basecall, self.function, commands, [copy_files, commands], priority=10)
+            #self.futures.append(bc)
             fire_and_forget(self.client.submit(remove_splits, this_split_path, [bc], priority=-10))
+            del copy_files, commands, bc
 
 
     def get_split_paths(self, batch):
