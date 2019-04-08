@@ -37,14 +37,20 @@ setup(
     entry_points={
         'console_scripts': [
             'albacore_basecaller = nanopypes.cli:albacore_basecaller',
+            'get_config_template = nanopypes.cli:get_config_template',
         ],
     },
     install_requires= [
+        'Click',
         'dask[distributed]',
         'dask-jobqueue',
         'dask[dataframe]',
         'h5py',
         'ont_fast5_api',
+        'bokeh',
+        'conda',
+        'cytoolz',
+        'pexpect'
     ],
     license="GNU General Public License v3",
     long_description=readme + '\n\n' + history,

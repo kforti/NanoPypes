@@ -15,22 +15,26 @@ class Pipeline(collections.abc.Callable):
 
 class Pipe(ABC):
 
-    def build_func(self, func_type, func=None):
-        def subp(command):
-            process = subprocess.check_output(command)
-            return process
-
-        if func_type == "subprocess":
-            return subp
-
-        elif func_type == "custom":
-            if func == None:
-                raise ValueError("You must include a function with this method")
-            return func
+    _requirements = "No requirements have been added to this Pipe"
 
     @abstractmethod
     def execute(self):
         pass
+
+    def install(self):
+        #TODO check that conda is installed
+        raise NotImplementedError
+
+    @property
+    def requirements(self):
+        print(self._requirements)
+
+    def install_conda(self):
+        raise NotImplementedError
+
+    @classmethod
+    def use_bioconda(cls):
+        raise NotImplementedError
 
     def __call__(self):
         return self.execute()

@@ -6,12 +6,13 @@ from nanopypes.pipes.base import Pipe
 
 
 
-
 class MiniMap2(Pipe):
     commands = {'genomic': 'minimap2 -ax map-ont ref.fa ont.fq.gz > aln.sam',
                 'splice': 'minimap2 -ax splice ref.fa rna-reads.fa > aln.sam',
                 'rna': 'minimap2 -ax splice -uf -k14 ref.fa reads.fa > aln.sam',
                 'overlap': 'minimap2 -x ava-ont reads.fa reads.fa > overlaps.paf'}
+
+    _requirements = None
 
     def __init__(self, input_path, reference, client, save_path, command):
         self.client = client
@@ -51,6 +52,3 @@ class MiniMap2(Pipe):
             return
         return subp
 
-
-if __name__ == '__main__':
-    minimapper = MiniMap2()

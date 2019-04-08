@@ -15,6 +15,7 @@ from nanopypes.oxnano import Albacore
 from nanopypes.compute import Cluster
 from nanopypes.objects.basecalled import ParallelBaseCalledData
 from nanopypes.run_pipes import albacore_basecaller
+from nanopypes.pipes.basecaller import AlbacoreBasecaller
 
 
 ########################################################################
@@ -54,7 +55,7 @@ class TestAlbacoreLocal(unittest.TestCase):
                             Path('test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/7'),
                             Path('test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/8'),
                             Path('test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/9')]
-        actual_batches = albacore.batches
+        actual_batches = albacore.batches_for_basecalling
         #print("BATCHES....... ", expected_batches, "\n", actual_batches)
         for batch in expected_batches:
             self.assertTrue(batch in actual_batches)
@@ -343,16 +344,16 @@ class TestBasecallLocal(unittest.TestCase):
     @classmethod
     def setUp(self):
         """Set up test fixtures, if any."""
-        data_input_path = Path('/Users/kevinfortier/Desktop/NanoPypes/NanoPypes/pai-nanopypes/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass')
-        save_path = Path('/Users/kevinfortier/Desktop/NanoPypes/NanoPypes/pai-nanopypes/tests/test_data/basecalled_data/results/local_basecall_test')
-        batches = [data_input_path.joinpath(batch) for batch in os.listdir(str(data_input_path))]
-        for batch in batches:
-            try:
-                shutil.rmtree(str(batch.joinpath('split_data')))
-            except Exception as e:
-                pass
-        shutil.rmtree(str(save_path))
-        save_path.mkdir()
+        # data_input_path = Path('/Users/kevinfortier/Desktop/NanoPypes/NanoPypes/pai-nanopypes/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass')
+        # save_path = Path('/Users/kevinfortier/Desktop/NanoPypes/NanoPypes/pai-nanopypes/tests/test_data/basecalled_data/results/local_basecall_test')
+        # batches = [data_input_path.joinpath(batch) for batch in os.listdir(str(data_input_path))]
+        # for batch in batches:
+        #     try:
+        #         shutil.rmtree(str(batch.joinpath('split_data')))
+        #     except Exception as e:
+        #         pass
+        # shutil.rmtree(str(save_path))
+        # save_path.mkdir()
     def tearDown(self):
         """Tear down test fixtures, if any."""
         pass
@@ -361,11 +362,29 @@ class TestBasecallLocal(unittest.TestCase):
         """Build a cluster object with yaml"""
         config = "test_configs/local_basecall.yml"
 
-        results = albacore_basecaller(config=config,
-                                      data_splits=4,
-                                      batch_bunch=5)
+        config = Configuration(config)
+        compute_configs = config.compute
+        compute = Cluster(compute_configs[0])
+        client = compute.connect()
+        albacore = Albacore(config)
 
+        basecall = AlbacoreBasecaller(albacore=albacore, client=client, num_splits=4,
+                                      batch_bunch_size=5, continue_on=False)
 
+        basecall.basecall()
+
+    def test_001_basecall_albacore(self):
+        config = "test_configs/local_basecall.yml"
+
+        config = Configuration(config)
+        compute_configs = config.compute
+        compute = Cluster(compute_configs[0])
+        client = compute.connect()
+        albacore = Albacore(config)
+
+        basecall = AlbacoreBasecaller(albacore=albacore, client=client, num_splits=4,
+                                      batch_bunch_size=5, continue_on=False)
+        basecall.collapse_data()
     # def test_000_basecall_albacore(self):
     #     """Build a cluster object with yaml"""
     #     config = Configuration("test_configs/local_basecall.yml")

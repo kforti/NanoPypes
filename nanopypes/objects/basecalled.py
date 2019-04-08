@@ -6,6 +6,7 @@ from functools import reduce
 from pathlib import Path
 from abc import ABC, abstractmethod
 import shutil
+
 from ont_fast5_api.fast5_file import Fast5File
 from nanopypes.objects.raw import ReadFile
 from nanopypes.objects.base import NanoPypeObject

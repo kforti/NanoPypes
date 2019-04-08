@@ -19,7 +19,7 @@ class Albacore:
                  reads_per_fastq=None,
                  barcoding=None,
                  continue_on=False,
-                 last_batch=None):
+                 ):
 
         self._config = config.basecall
         self.input = Sample(self._config.input_path(input))
@@ -85,13 +85,16 @@ class Albacore:
         return commands_tupl
 
     @property
-    def batches(self):
+    def all_batches(self):
+        batch_pattern = r'(^)[0-9]+($)'
+        batches = [Path(self.input_path).joinpath(i) for i in os.listdir(str(self.input_path)) if re.match(batch_pattern, str(i))]
+        return batches
+
+    @property
+    def batches_for_basecalling(self):
         batch_pattern = r'(^)[0-9]+($)'
         batches = [Path(self.input_path).joinpath(i) for i in os.listdir(str(self.input_path)) if re.match(batch_pattern, str(i)) and i not in self._bc_batches]
-        # if self.continue_on:
-        #     for batch in os.listdir(str(self.save_path)):
-        #         if self.input_path.joinpath(batch) in batches:
-        #             batches.remove(self.input_path.joinpath(batch))
+
         return batches
 
     @property
@@ -100,7 +103,7 @@ class Albacore:
 
     @property
     def batch_generator(self):
-        for bin in self.batches:
+        for bin in self.batches_for_basecalling:
             yield bin
 
     def build_command(self, input_dir, batch_number):
@@ -148,6 +151,4 @@ class Albacore:
 
 
 if __name__ == "__main__":
-    ox = Albacore(None)
-    ox.bc_batches = ['a', 'b', 'c']
-    print(ox.bc_batches)
+   pass
