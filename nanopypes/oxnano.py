@@ -4,10 +4,7 @@ from pathlib import Path
 import re
 import shutil
 
-from nanopypes.utils import temp_dirs
 from nanopypes.objects.raw import Sample
-from nanopypes.config import BasecallConfig
-
 
 class Albacore:
     """ Conatains the data associated with making the command to run the basecaller.
@@ -21,24 +18,38 @@ class Albacore:
                  output_format=None,
                  reads_per_fastq=None,
                  barcoding=None,
-                 continue_on=False,
-                 last_batch=None):
+                 continue_on=False):
 
         self._config = config.basecall
         self.input = Sample(self._config.input_path(input))
         self.flow_cell = self._config.flowcell(flowcell)
         self.kit = self._config.kit(kit)
         self._save_path = Path(self._config.save_path(save_path))
-        self.output_format = self._config.output_format(output_format)
+        self._output_format = self._config.output_format(output_format)
         self.reads_per_fastq = self._config.reads_per_fastq(reads_per_fastq)
-        self.barcoding = self._config.barcoding(barcoding)
+        self._barcoding = self._config.barcoding(barcoding)
         self.continue_on = continue_on
-        if continue_on:
-            self.prep_data()
+        self._bc_batches = []
+
+    @property
+    def bc_batches(self):
+        return self._bc_batches
+
+    @bc_batches.setter
+    def bc_batches(self, batches):
+        self._bc_batches = batches
 
     @property
     def input_path(self):
         return self.input.path
+
+    @property
+    def output_format(self):
+        return self._output_format
+
+    @property
+    def barcoding(self):
+        return self._barcoding
 
     @property
     def save_path(self):
@@ -72,14 +83,16 @@ class Albacore:
         commands_tupl = (next_bin, commands_list)
         return commands_tupl
 
-    @property
-    def batches(self):
+    def all_batches(self):
         batch_pattern = r'(^)[0-9]+($)'
         batches = [Path(self.input_path).joinpath(i) for i in os.listdir(str(self.input_path)) if re.match(batch_pattern, str(i))]
-        if self.continue_on:
-            for batch in os.listdir(str(self.save_path)):
-                if self.input_path.joinpath(batch) in batches:
-                    batches.remove(self.input_path.joinpath(batch))
+        return batches
+
+    @property
+    def batches_for_basecalling(self):
+        batch_pattern = r'(^)[0-9]+($)'
+        batches = [Path(self.input_path).joinpath(i) for i in os.listdir(str(self.input_path)) if re.match(batch_pattern, str(i)) and i not in self._bc_batches]
+
         return batches
 
     @property
@@ -88,7 +101,7 @@ class Albacore:
 
     @property
     def batch_generator(self):
-        for bin in self.batches:
+        for bin in self.batches_for_basecalling:
             yield bin
 
     def build_command(self, input_dir, batch_number):
@@ -97,13 +110,13 @@ class Albacore:
         command = ["read_fast5_basecaller.py",]
         command.extend(["--flowcell", self.flow_cell])
         command.extend(["--kit", self.kit])
-        command.extend(["--output_format", self.output_format])
+        command.extend(["--output_format", self._output_format])
         command.extend(["--save_path", str(self._save_path) + "/" + batch_number + "/" + temp_dir_num])
         command.extend(["--worker_threads", "1"])
         command.extend(["--input",  input_dir])
-        if self.barcoding:
+        if self._barcoding:
             command.append("--barcoding")
-        if self.output_format == "fastq":
+        if self._output_format == "fastq":
             command.extend(["--reads_per_fastq", str(self.reads_per_fastq)])
         return command
 
@@ -115,28 +128,27 @@ class Albacore:
         return func
 
     def prep_data(self):
+        ## delete directories that have been half
         for batch in os.listdir(str(self.input_path)):
-            files = [file for file in os.listdir(str(self.input_path.joinpath(batch)))]
-            if 'split_data' in files:
+            if 'split_data' in os.listdir(str(self.input_path.joinpath(batch))):
+                splits = os.listdir(str(self.input_path.joinpath('split_data')))
+                if splits == 0:
+                    continue
+
                 try:
                     print("DELETING SPLIT DATA...")
                     shutil.rmtree(str(self.input_path.joinpath(batch, 'split_data')))
                 except FileNotFoundError:
                     pass
                 try:
-                    print("LAST BATCH: ", batch, "Deleting the last batch......")
+
+                    print("LAST BATCH: ", batch, "Deleting the last basecalled batch......")
+
                     shutil.rmtree(str(self.save_path.joinpath(batch)))
                 except Exception as e:
                     pass
 
-    def _find_last_batches(self):
-        for batch in os.listdir(str(self.save_path)):
-            split = os.listdir(str(self.save_path.joinpath(batch)))[0]
-            files = [file for file in os.listdir(str(self.save_path.joinpath(batch, split)))]
-            if 'sequencing_telemetry.js' not in files:
-                return self.save_path.joinpath(batch)
-            else:
-                continue
 
-
+if __name__ == "__main__":
+   pass
 

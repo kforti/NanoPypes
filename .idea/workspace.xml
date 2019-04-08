@@ -1,6 +1,795 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="06fba5a6-e119-4d57-aa65-81370b2766cd" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config_templates/lsf_albacore_template.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nanopypes/pipes/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nanopypes/pipes/base.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nanopypes/pipes/basecaller.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nanopypes/pipes/dask-worker-space/global.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nanopypes/pipes/dask-worker-space/purge.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nanopypes/pipes/minimap2.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nanopypes/pipes/parallel_rsync.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nanopypes/run_pipes.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/0/0/configuration.cfg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/0/0/sequencing_summary.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/0/0/sequencing_telemetry.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/0/0/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/0/1/configuration.cfg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/0/1/sequencing_summary.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/0/1/sequencing_telemetry.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/0/1/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/0/2/configuration.cfg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/0/2/sequencing_summary.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/0/2/sequencing_telemetry.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/0/2/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/0/3/configuration.cfg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/0/3/sequencing_summary.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/0/3/sequencing_telemetry.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/0/3/workspace/calibration_strands/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/0/3/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/1/0/configuration.cfg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/1/0/sequencing_summary.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/1/0/sequencing_telemetry.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/1/0/workspace/calibration_strands/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/1/0/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/1/1/configuration.cfg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/1/1/sequencing_summary.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/1/1/sequencing_telemetry.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/1/1/workspace/calibration_strands/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/1/1/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/1/2/configuration.cfg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/1/2/sequencing_summary.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/1/2/sequencing_telemetry.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/1/2/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/1/3/configuration.cfg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/1/3/sequencing_summary.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/1/3/sequencing_telemetry.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/1/3/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/2/0/configuration.cfg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/2/0/sequencing_summary.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/2/0/sequencing_telemetry.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/2/0/workspace/calibration_strands/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/2/0/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/2/1/configuration.cfg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/2/1/sequencing_summary.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/2/1/sequencing_telemetry.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/2/1/workspace/calibration_strands/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/2/1/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/2/2/configuration.cfg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/2/2/sequencing_summary.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/2/2/sequencing_telemetry.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/2/2/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/2/3/configuration.cfg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/2/3/sequencing_summary.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/2/3/sequencing_telemetry.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/2/3/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/3/0/configuration.cfg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/3/0/sequencing_summary.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/3/0/sequencing_telemetry.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/3/0/workspace/calibration_strands/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/3/0/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/3/1/configuration.cfg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/3/1/sequencing_summary.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/3/1/sequencing_telemetry.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/3/1/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/3/2/configuration.cfg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/3/2/sequencing_summary.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/3/2/sequencing_telemetry.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/3/2/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/3/3/configuration.cfg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/3/3/sequencing_summary.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/3/3/sequencing_telemetry.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/3/3/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/4/0/configuration.cfg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/4/0/sequencing_summary.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/4/0/sequencing_telemetry.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/4/0/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/4/1/configuration.cfg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/4/1/sequencing_summary.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/4/1/sequencing_telemetry.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/4/1/workspace/fail/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/4/1/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/4/2/configuration.cfg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/4/2/sequencing_summary.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/4/2/sequencing_telemetry.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/4/2/workspace/calibration_strands/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/4/2/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/4/3/configuration.cfg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/4/3/sequencing_summary.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/4/3/sequencing_telemetry.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/4/3/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/5/0/configuration.cfg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/5/0/sequencing_summary.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/5/0/sequencing_telemetry.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/5/0/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/5/1/configuration.cfg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/5/1/sequencing_summary.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/5/1/sequencing_telemetry.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/5/1/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/5/2/configuration.cfg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/5/2/sequencing_summary.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/5/2/sequencing_telemetry.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/5/2/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/5/3/configuration.cfg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/5/3/sequencing_summary.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/5/3/sequencing_telemetry.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/5/3/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/6/0/configuration.cfg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/6/0/sequencing_summary.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/6/0/sequencing_telemetry.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/6/0/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/6/1/configuration.cfg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/6/1/sequencing_summary.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/6/1/sequencing_telemetry.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/6/1/workspace/calibration_strands/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/6/1/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/6/2/configuration.cfg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/6/2/sequencing_summary.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/6/2/sequencing_telemetry.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/6/2/workspace/fail/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/6/2/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/6/3/configuration.cfg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/6/3/sequencing_summary.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/6/3/sequencing_telemetry.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/6/3/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/7/0/configuration.cfg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/7/0/sequencing_summary.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/7/0/sequencing_telemetry.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/7/0/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/7/1/configuration.cfg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/7/1/sequencing_summary.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/7/1/sequencing_telemetry.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/7/1/workspace/calibration_strands/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/7/1/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/7/2/configuration.cfg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/7/2/sequencing_summary.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/7/2/sequencing_telemetry.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/7/2/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/7/3/configuration.cfg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/7/3/sequencing_summary.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/7/3/sequencing_telemetry.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/7/3/workspace/fail/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/7/3/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/8/0/configuration.cfg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/8/0/sequencing_summary.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/8/0/sequencing_telemetry.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/8/0/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/8/1/configuration.cfg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/8/1/sequencing_summary.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/8/1/sequencing_telemetry.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/8/1/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/8/2/configuration.cfg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/8/2/sequencing_summary.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/8/2/sequencing_telemetry.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/8/2/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/8/3/configuration.cfg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/8/3/sequencing_summary.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/8/3/sequencing_telemetry.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/8/3/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/9/0/configuration.cfg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/9/0/sequencing_summary.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/9/0/sequencing_telemetry.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/9/0/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/9/1/configuration.cfg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/9/1/sequencing_summary.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/9/1/sequencing_telemetry.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/9/1/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/9/2/configuration.cfg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/9/2/sequencing_summary.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/9/2/sequencing_telemetry.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/9/2/workspace/calibration_strands/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/9/2/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/9/3/configuration.cfg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/9/3/sequencing_summary.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/9/3/sequencing_telemetry.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/9/3/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/test_data/minimap/empty" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nanopypes/cli.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/cli.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nanopypes/compute.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/compute.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nanopypes/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/config.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nanopypes/factories.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nanopypes/objects/basecalled.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/objects/basecalled.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nanopypes/objects/raw.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/objects/raw.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nanopypes/oxnano.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/oxnano.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nanopypes/pipes.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/pipes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nanopypes/tools.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/tools.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nanopypes/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/MiniMap2.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/MiniMap2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/albacore_basecall.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/albacore_basecall.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/albacore_basecall.yml" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/albacore_basecall.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/minimap.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/minimap.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_configs/local_basecall.yml" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_configs/local_basecall.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_configs/local_builds.yml" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_configs/local_builds.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_utils_albacore.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_utils_albacore.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tox.ini" beforeDir="false" afterPath="$PROJECT_DIR$/tox.ini" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file leaf-file-name="run_pipes.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/nanopypes/run_pipes.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="11" column="77" selection-start-line="11" selection-start-column="77" selection-end-line="11" selection-end-column="77" />
+              <folding>
+                <element signature="e#0#37#0" expanded="true" />
+                <element signature="e#413#1073#0" />
+                <element signature="e#1192#1430#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="oxnano.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/nanopypes/oxnano.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="305">
+              <caret line="24" column="20" selection-start-line="24" selection-start-column="20" selection-end-line="24" selection-end-column="20" />
+              <folding>
+                <element signature="e#0#9#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="config.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/nanopypes/config.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1755">
+              <caret line="117" column="15" selection-start-line="117" selection-start-column="15" selection-end-line="117" selection-end-column="15" />
+              <folding>
+                <element signature="e#0#29#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/nanopypes/pipes/albacore_basecaller.py" />
+        <option value="$PROJECT_DIR$/scripts/minimap.py" />
+        <option value="$PROJECT_DIR$/config_templates/lsf_template.yml" />
+        <option value="$PROJECT_DIR$/tox.ini" />
+        <option value="$PROJECT_DIR$/nanopypes/compute.py" />
+        <option value="$PROJECT_DIR$/nanopypes/objects/raw.py" />
+        <option value="$PROJECT_DIR$/nanopypes/objects/basecalled.py" />
+        <option value="$PROJECT_DIR$/nanopypes/pipes/minimap2.py" />
+        <option value="$PROJECT_DIR$/setup.py" />
+        <option value="$PROJECT_DIR$/nanopypes/run_pipes.py" />
+        <option value="$PROJECT_DIR$/nanopypes/cli.py" />
+        <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch_1.py" />
+        <option value="$PROJECT_DIR$/tests/test_utils_albacore.py" />
+        <option value="$PROJECT_DIR$/nanopypes/pipes/basecaller.py" />
+        <option value="$PROJECT_DIR$/nanopypes/pipes/base.py" />
+        <option value="$PROJECT_DIR$/nanopypes/pipes/parallel_rsync.py" />
+        <option value="$PROJECT_DIR$/config_templates/lsf_albacore_template.yml" />
+        <option value="$PROJECT_DIR$/nanopypes/oxnano.py" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="1505" />
+    <option name="y" value="86" />
+    <option name="width" value="1135" />
+    <option name="height" value="901" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="pai-nanopypes" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pai-nanopypes" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="pai-nanopypes" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pai-nanopypes" type="462c0819:PsiDirectoryNode" />
+              <item name="nanopypes" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="pai-nanopypes" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Scratches and Consoles" type="1a2a3e82:ScratchProjectViewPane$MyProjectNode" />
+            </path>
+            <path>
+              <item name="pai-nanopypes" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Scratches and Consoles" type="1a2a3e82:ScratchProjectViewPane$MyProjectNode" />
+              <item name="Scratches" type="d62648e6:ScratchProjectViewPane$MyRootNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
   <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test" />
+      <recent name="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace" />
+      <recent name="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/scripts" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Python.scratch_1">
+    <configuration name="base" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="nanopypes" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/nanopypes/pipes" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/nanopypes/pipes/base.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="basecaller" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="nanopypes" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/nanopypes/pipes" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/nanopypes/pipes/basecaller.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="parallel_rsync" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="nanopypes" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/nanopypes/pipes" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/nanopypes/pipes/parallel_rsync.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="scratch_1" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="nanopypes" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$APPLICATION_CONFIG_DIR$/scratches" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$APPLICATION_CONFIG_DIR$/scratches/scratch_1.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.basecaller" />
+      <item itemvalue="Python.base" />
+      <item itemvalue="Python.parallel_rsync" />
+      <item itemvalue="Python.scratch_1" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.scratch_1" />
+        <item itemvalue="Python.parallel_rsync" />
+        <item itemvalue="Python.base" />
+        <item itemvalue="Python.basecaller" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="06fba5a6-e119-4d57-aa65-81370b2766cd" name="Default" comment="" />
+      <created>1554385176774</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1554385176774</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="1505" y="86" width="1135" height="901" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.34380612" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3292517" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.25870648" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Python Console" weight="0.3292517" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Terminal" weight="0.3292517" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info id="Favorites" side_tool="true" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+    </layout>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/scripts/minimap.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" selection-start-line="18" selection-end-line="18" />
+          <folding>
+            <element signature="e#0#45#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/test_configs/local_basecall.yml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tox.ini">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="18" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/albacore_basecall.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nanopypes/compute.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nanopypes/objects/basecalled.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nanopypes/objects/custom.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nanopypes/objects/raw.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build/lib/nanopypes/albacore.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2091">
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pai_nanopypes.egg-info/dependency_links.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nanopypes.egg-info/dependency_links.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pai_nanopypes.egg-info/entry_points.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nanopypes.egg-info/entry_points.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pai_nanopypes.egg-info/not-zip-safe">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nanopypes.egg-info/not-zip-safe">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nanopypes.egg-info/PKG-INFO">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-657" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pai_nanopypes.egg-info/PKG-INFO">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-625" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pai_nanopypes.egg-info/requires.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nanopypes.egg-info/requires.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pai_nanopypes.egg-info/SOURCES.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3055" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nanopypes.egg-info/top_level.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pai_nanopypes.egg-info/top_level.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nanopypes/old_pipes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1833">
+          <folding>
+            <element signature="e#0#17#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/rsync_parallel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="46" column="36" selection-start-line="46" selection-start-column="36" selection-end-line="46" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nanopypes/cli.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="348">
+          <caret line="73" column="85" selection-start-line="73" selection-start-column="85" selection-end-line="73" selection-end-column="85" />
+          <folding>
+            <element signature="e#64#77#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/setup.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="284">
+          <caret line="45" column="24" selection-start-line="45" selection-start-column="24" selection-end-line="45" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/0/1/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-808" />
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/0/0/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/0/0/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/0/0/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/fail/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/pipeline.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="25" lean-forward="true" selection-start-line="6" selection-start-column="25" selection-end-line="6" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/test_utils_albacore.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="381">
+          <caret line="366" column="18" selection-start-line="366" selection-start-column="18" selection-end-line="366" selection-end-column="18" />
+          <folding>
+            <element signature="e#89#98#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/sequencing_telemetry.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/sequencing_summary.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/configuration.cfg">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nanopypes/pipes/albacore_basecaller.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="859">
+          <caret line="128" column="19" selection-start-line="128" selection-start-column="19" selection-end-line="128" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nanopypes/pipes/base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
+          <folding>
+            <element signature="e#0#17#0" expanded="true" />
+            <element signature="e#280#776#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nanopypes/pipes/minimap2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-300">
+          <caret line="8" column="21" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nanopypes/pipes/parallel_rsync.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-195">
+          <caret line="22" column="22" selection-start-line="22" selection-start-column="22" selection-end-line="22" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch_1.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="62" selection-start-line="24" selection-start-column="62" selection-end-line="24" selection-end-column="62" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nanopypes/pipes/basecaller.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="305">
+          <caret line="278" selection-start-line="278" selection-end-line="278" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+            <element signature="e#699#939#0" />
+            <element signature="e#2044#2097#0" />
+            <element signature="e#2124#2941#0" />
+            <element signature="e#3015#3678#0" />
+            <element signature="e#2663#3996#0" />
+            <element signature="e#5603#6060#0" />
+            <element signature="e#4522#5442#0" />
+            <element signature="e#6310#6552#0" />
+            <element signature="e#7705#8402#0" />
+            <element signature="e#6674#7262#0" />
+            <element signature="e#9764#10014#0" />
+            <element signature="e#7494#7643#0" />
+            <element signature="e#7499#7503#0" />
+            <element signature="e#6619#7096#0" />
+            <element signature="e#7180#7298#0" />
+            <element signature="e#7348#7457#0" />
+            <element signature="e#7509#7611#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config_templates/lsf_albacore_template.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="50" selection-start-line="5" selection-start-column="50" selection-end-line="5" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nanopypes/run_pipes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="77" selection-start-line="11" selection-start-column="77" selection-end-line="11" selection-end-column="77" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+            <element signature="e#413#1073#0" />
+            <element signature="e#1192#1430#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nanopypes/config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1755">
+          <caret line="117" column="15" selection-start-line="117" selection-start-column="15" selection-end-line="117" selection-end-column="15" />
+          <folding>
+            <element signature="e#0#29#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nanopypes/oxnano.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="305">
+          <caret line="24" column="20" selection-start-line="24" selection-start-column="20" selection-end-line="24" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
   </component>
 </project>

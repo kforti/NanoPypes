@@ -1,5 +1,6 @@
 import logging
 import time
+
 from dask_jobqueue import LSFCluster
 from distributed import progress, Client, LocalCluster
 
@@ -66,7 +67,11 @@ class Cluster:
         running_jobs = len(self.cluster.scheduler.workers)
         running_workers = len(self.cluster.running_jobs)
 
+<<<<<<< HEAD
         while len(self.cluster.scheduler.workers) < int(value * 0.50):
+=======
+        while len(self.cluster.scheduler.workers) < int(value * 0.5):
+>>>>>>> version1.0
             if timer == 0 or len(self.cluster.scheduler.workers) != running_jobs or len(self.cluster.running_jobs) != running_workers or pending_jobs != self.cluster.pending_jobs:
                 running_jobs = len(self.cluster.scheduler.workers)
                 running_workers = len(self.cluster.running_jobs)
@@ -82,6 +87,7 @@ class Cluster:
 
         self.workers = value
 
+<<<<<<< HEAD
     def map(self, func, iterable, show_progress=True):
         self.futures = self.client.map(func, iterable)
         if show_progress == True:
@@ -93,6 +99,8 @@ class Cluster:
     def show_progress(self):
         progress(self.futures)
 
+=======
+>>>>>>> version1.0
     def connect(self):
         """ Establish connection to cluster"""
         # assert self.workers != None, "You must assign number of workers"
@@ -111,16 +119,27 @@ class Cluster:
                                       memory=self.memory,
                                       interface='ib0',
                                       death_timeout=self.time_out)
+<<<<<<< HEAD
             print("Your Scheduler's address: "
+=======
+            print("job script: ", self.cluster.job_script())
+            print("\nYour Scheduler's address: "
+>>>>>>> version1.0
                   "", self.cluster.dashboard_link)
         elif self.cluster_type == "local":
             self.cluster = LocalCluster()
             self.workers = self.cluster.workers
+<<<<<<< HEAD
         print("job script: ", self.cluster.job_script())
+=======
+
+>>>>>>> version1.0
         self.client = Client(self.cluster)
         # print("scale_value: ", self.scale_value)
         if self.scale_value:
             self.scale(self.scale_value)
+
+        return self.client
 
     def stop_jobs(self, jobs="all"):
         if jobs == "all":

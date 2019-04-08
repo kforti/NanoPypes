@@ -17,9 +17,9 @@ class Configuration:
         else:
             raise IOError("Incorrect configuration file type")
         try:
-            self._networking = settings["networking"]
+            self._networking = settings["networks"]
             self._basecall = settings["basecall"]
-            self._compute = settings["compute"]
+            self._compute = settings["computes"]
             self._pipes = settings["pipes"]
         except Exception as e:
             print("exception raised")
@@ -94,8 +94,8 @@ class BasecallConfig:
             self._input_path = path
         return self._input_path
 
-    def barcoding(self, bool='none'):
-        if bool != 'none':
+    def barcoding(self, bool=False):
+        if bool:
             self._barcoding = bool
         return self._barcoding
 

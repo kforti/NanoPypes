@@ -14,11 +14,16 @@ from nanopypes.config import Configuration
 from nanopypes.oxnano import Albacore
 from nanopypes.compute import Cluster
 from nanopypes.objects.basecalled import ParallelBaseCalledData
+<<<<<<< HEAD
 from nanopypes.objects.raw import Sample
 from nanopypes.pipes import AlbacoreBasecall
 from nanopypes.utils import remove_splits, collapse_save, split_data
 
 from distributed import Client
+=======
+from nanopypes.run_pipes import albacore_basecaller
+from nanopypes.pipes.basecaller import AlbacoreBasecaller
+>>>>>>> version1.0
 
 
 ########################################################################
@@ -41,7 +46,11 @@ class TestAlbacoreLocal(unittest.TestCase):
         expected_command = ["read_fast5_basecaller.py", "--flowcell", "FLO-MIN106",
                          "--kit", "SQK-LSK109", "--output_format", "fast5",
                          "--save_path", "test_data/basecalled_data/results/local_basecall_test/0/1",
+<<<<<<< HEAD
                          "--worker_threads", "1", "--input", "./test_data/1"]
+=======
+                         "--worker_threads", "1", "--input", "./test_data/1", "--barcoding"]
+>>>>>>> version1.0
         #print(retrieved_command, "\n", expected_command)
         self.assertTrue(retrieved_command == expected_command)
 
@@ -58,7 +67,11 @@ class TestAlbacoreLocal(unittest.TestCase):
                             Path('test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/7'),
                             Path('test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/8'),
                             Path('test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/9')]
+<<<<<<< HEAD
         actual_batches = albacore.batches
+=======
+        actual_batches = albacore.batches_for_basecalling
+>>>>>>> version1.0
         #print("BATCHES....... ", expected_batches, "\n", actual_batches)
         for batch in expected_batches:
             self.assertTrue(batch in actual_batches)
@@ -347,14 +360,28 @@ class TestBasecallLocal(unittest.TestCase):
     @classmethod
     def setUp(self):
         """Set up test fixtures, if any."""
+<<<<<<< HEAD
         pass
 
+=======
+        # data_input_path = Path('/Users/kevinfortier/Desktop/NanoPypes/NanoPypes/pai-nanopypes/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass')
+        # save_path = Path('/Users/kevinfortier/Desktop/NanoPypes/NanoPypes/pai-nanopypes/tests/test_data/basecalled_data/results/local_basecall_test')
+        # batches = [data_input_path.joinpath(batch) for batch in os.listdir(str(data_input_path))]
+        # for batch in batches:
+        #     try:
+        #         shutil.rmtree(str(batch.joinpath('split_data')))
+        #     except Exception as e:
+        #         pass
+        # shutil.rmtree(str(save_path))
+        # save_path.mkdir()
+>>>>>>> version1.0
     def tearDown(self):
         """Tear down test fixtures, if any."""
         pass
 
     def test_000_basecall_albacore(self):
         """Build a cluster object with yaml"""
+<<<<<<< HEAD
         config = Configuration("test_configs/local_basecall.yml")
         compute_configs = config.compute
         compute = Cluster(compute_configs[0])
@@ -371,6 +398,52 @@ class TestBasecallLocal(unittest.TestCase):
         basecaller = AlbacoreBasecall(albacore, compute, data_splits=4)
         basecalled_data = basecaller()
         compute.close()
+=======
+        config = "test_configs/local_basecall.yml"
+
+        config = Configuration(config)
+        compute_configs = config.compute
+        compute = Cluster(compute_configs[0])
+        client = compute.connect()
+        albacore = Albacore(config)
+
+        basecall = AlbacoreBasecaller(albacore=albacore, client=client, num_splits=4,
+                                      batch_bunch_size=5, continue_on=False)
+
+        basecall.basecall()
+
+    def test_001_basecall_albacore(self):
+        config = "test_configs/local_basecall.yml"
+
+        config = Configuration(config)
+        compute_configs = config.compute
+        compute = Cluster(compute_configs[0])
+        client = compute.connect()
+        albacore = Albacore(config)
+
+        basecall = AlbacoreBasecaller(albacore=albacore, client=client, num_splits=4,
+                                      batch_bunch_size=5, continue_on=False)
+        basecall.collapse_data()
+    # def test_000_basecall_albacore(self):
+    #     """Build a cluster object with yaml"""
+    #     config = Configuration("test_configs/local_basecall.yml")
+    #     compute_configs = config.compute
+    #     compute = Cluster(compute_configs[0])
+    #     compute.connect()
+    #     albacore = Albacore(config)
+    #     save_path = albacore.save_path
+    #     input_data = albacore.input_path
+    #     input_reads = []
+    #
+    #     if save_path.exists():
+    #         shutil.rmtree(str(save_path))
+    #     for path, subdirs, files in os.walk(str(input_data)):
+    #         input_reads.extend(files)
+    #
+    #     basecaller = AlbacoreBasecall(albacore, compute, data_splits=4)
+    #     basecalled_data = basecaller()
+    #     compute.close()
+>>>>>>> version1.0
 
     def test_001_check_basecall(self):
         input_reads = []
@@ -378,6 +451,7 @@ class TestBasecallLocal(unittest.TestCase):
         for path, subdirs, files in os.walk('test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass'):
             input_reads.extend(files)
 
+<<<<<<< HEAD
         # basecalled_reads = []
         #
         # for path, subdirs, files in os.walk('test_data/basecalled_data/results/local_basecall_test/workspace'):
@@ -387,6 +461,17 @@ class TestBasecallLocal(unittest.TestCase):
         #     self.assertTrue(read in input_reads)
         # for read in input_reads:
         #     self.assertTrue(read in basecalled_reads)
+=======
+        basecalled_reads = []
+
+        for path, subdirs, files in os.walk('test_data/basecalled_data/results/local_basecall_test/workspace'):
+            basecalled_reads.extend(files)
+
+        for read in basecalled_reads:
+            self.assertTrue(read in input_reads)
+        for read in input_reads:
+            self.assertTrue(read in basecalled_reads)
+>>>>>>> version1.0
         self.assertTrue(check_basecall(bc_path, input_reads))
 
     def test_002_remove_parallel_data(self):
@@ -443,6 +528,7 @@ class TestBasecallRemote(unittest.TestCase):
         basecaller = AlbacoreBasecall(albacore, compute, data_splits=100)
         basecalled_data = basecaller()
         compute.close()
+<<<<<<< HEAD
 
         # self.assertTrue(check_basecall(basecalled_data, input_reads))
 
@@ -454,6 +540,19 @@ class TestBasecallRemote(unittest.TestCase):
 
         self.assertTrue(check_basecall(bc_path, input_reads))
 
+=======
+
+        # self.assertTrue(check_basecall(basecalled_data, input_reads))
+
+    def test_001_check_basecall(self):
+        input_reads = []
+        bc_path = 'test_data/basecalled_data/results/local_basecall_test'
+        for path, subdirs, files in os.walk('test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass'):
+            input_reads.extend(files)
+
+        self.assertTrue(check_basecall(bc_path, input_reads))
+
+>>>>>>> version1.0
     def test_002_remove_parallel_data(self):
         config = Configuration("test_configs/remote_basecall.yml")
         compute_configs = config.compute

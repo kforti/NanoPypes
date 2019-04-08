@@ -1,0 +1,25 @@
+basecall:
+    input_path: /project/  #Where the raw signal data is located (point to the pass directory)
+    save_path: /project/   #Where you want your data saved
+    flowcell: FLO-MIN106   #Oxford Nanopore
+    kit: SQK-LSK109      #Oxford Nanopre
+    output_format: fastq  #options: fastq or fast5
+computes:
+    cluster1:
+        job_time: 04:00
+        mem: 10589934592  #10 GB
+        ncpus: 4     #Number of physical cores per job (for cluster)
+        project: /project/      #Add your project space
+        queue: short    #queue where jobs should be submitted
+        workers: 4      #Number of workers per job
+        cores: 4        #Number of cores per job (for dask)
+        memory: 10 GB    #Memory per job (for dask)
+        scale_value: 150       #Scale to 150 workers/processes (same thing here)
+        cluster_type: LSF
+networks:
+    network1:
+        compute_name:
+        address:
+        password:
+pipes:
+    name: None

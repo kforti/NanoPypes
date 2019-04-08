@@ -6,6 +6,7 @@ from functools import reduce
 from pathlib import Path
 from abc import ABC, abstractmethod
 import shutil
+
 from ont_fast5_api.fast5_file import Fast5File
 from nanopypes.objects.raw import ReadFile
 from nanopypes.objects.base import NanoPypeObject
@@ -60,10 +61,18 @@ class ParallelBaseCalledData():
         self.processed_batches = []
         #Create parallel batch objects
         for batch in os.listdir(str(path)):
+<<<<<<< HEAD
             self.batches.append(ParallelBatch(self.path.joinpath(batch),
                                               telemetry=Telemetry(self.path.joinpath("sequencing_telemetry.js")),
                                               summary=SequencingSummary(self.path.joinpath("sequencing_summary.txt")),
                                               workspace=Workspace(self.path.joinpath("workspace")),
+=======
+            if batch == 'workspace':
+                continue
+            self.batches.append(ParallelBatch(self.path.joinpath(batch),
+                                              telemetry=Telemetry(self.path.joinpath("sequencing_telemetry.js")),
+                                              summary=SequencingSummary(self.path.joinpath("sequencing_summary.txt")),
+>>>>>>> version1.0
                                               pipeline=PipelineLog(self.path.joinpath("pipeline.log")),
                                               configuration=MinIONConfiguration(self.path.joinpath("configuration.cfg"))))
 
@@ -90,8 +99,8 @@ class ParallelBaseCalledData():
                                   config=collapsed_batch.configuration,
                                   summary=collapsed_batch.summary,
                                   telemetry=collapsed_batch.telemetry,
-                                  pipeline=collapsed_batch.pipeline,
-                                  workspace=collapsed_batch.workspace)
+                                  workspace=self.path.joinpath('workspace'),
+                                  pipeline=collapsed_batch.pipeline)
 
     def _batch_digest(self, batch):
         batch.digest_splits()
@@ -99,13 +108,16 @@ class ParallelBaseCalledData():
 
 
 class ParallelBatch():
-    def __init__(self, path, telemetry, summary, pipeline, workspace, configuration):
+    def __init__(self, path, telemetry, summary, pipeline, configuration):
         self.path = Path(path)
         self._splits = [self.path.joinpath(split) for split in os.listdir(str(self.path))]
         self._telemetry = telemetry
         self._summary = summary
         self._pipeline = pipeline
+<<<<<<< HEAD
         self._workspace = workspace
+=======
+>>>>>>> version1.0
         self._configuration = configuration
 
     @property
@@ -129,18 +141,20 @@ class ParallelBatch():
         return self._pipeline
 
     @property
-    def workspace(self):
-        return self._workspace
-
-    @property
     def configuration(self):
         return self._configuration
 
     def combine_data(self):
         self.telemetry.combine()
+<<<<<<< HEAD
         self.summary.combine
         self.pipeline.combine
         self.configuration.combine
+=======
+        self.summary.combine()
+        self.pipeline.combine()
+        self.configuration.combine()
+>>>>>>> version1.0
 
     def digest_splits(self):
         print("digesting splits... \n Batch number: ", self.path.name)
@@ -149,12 +163,18 @@ class ParallelBatch():
             self._pipeline.consume(src=split.joinpath("pipeline.log"))
             self._summary.consume(src=split.joinpath("sequencing_summary.txt"))
             self._telemetry.consume(src=split.joinpath("sequencing_telemetry.js"))
+<<<<<<< HEAD
             # print("consuming.... ", self.telemetry.data)
             self._workspace.consume(src=split.joinpath("workspace"))
 
     def __add__(self, other):
         print("Adding batch.... ")
         workspace = None #workspace is consumed directly to the
+=======
+
+    def __add__(self, other):
+        print("Adding batch.... ")
+>>>>>>> version1.0
         pipeline = self.pipeline + other.pipeline
         summary = self.summary + other.summary
         configuration = self.configuration + other.configuration
@@ -163,7 +183,6 @@ class ParallelBatch():
                              telemetry=telemetry,
                              summary=summary,
                              pipeline=pipeline,
-                             workspace=workspace,
                              configuration=configuration)
 
 
@@ -204,19 +223,9 @@ class BaseCalledReadBarcodes(NanoPypeObject):
         return len(os.listdir(self.path))
 
 
-class AbstractBasecallOutput(ABC):
+class SequencingSummary():
 
-    def __init__(self, dest):
-        self.dest = dest
-
-    @abstractmethod
-    def consume(self):
-        pass
-
-    @abstractmethod
-    def combine(self):
-        pass
-
+<<<<<<< HEAD
     @property
     def path(self):
         return self.dest
@@ -224,6 +233,8 @@ class AbstractBasecallOutput(ABC):
 
 class SequencingSummary(AbstractBasecallOutput):
 
+=======
+>>>>>>> version1.0
     def __init__(self, dest, data=[]):
         self.header = ['filename', 'read_id', 'run_id', 'channel', 'start_time', 'duration', 'num_events', 'passes_filtering', 'template_start', 'num_events_template', 'template_duration', 'num_called_template', 'sequence_length_template', 'mean_qscore_template', 'strand_score_template', 'calibration_strand_genome_template', 'calibration_strand_identity_template', 'calibration_strand_accuracy_template', 'calibration_strand_speed_bps_template', 'barcode_arrangement', 'barcode_score', 'barcode_full_arrangement', 'front_score', 'rear_score', 'front_begin_index', 'front_foundseq_length', 'rear_end_index', 'rear_foundseq_length', 'kit', 'variant']
         self._summary_data = data
@@ -254,14 +265,37 @@ class SequencingSummary(AbstractBasecallOutput):
         return SequencingSummary(dest=self.dest, data=summary_data)
 
 
-class Telemetry(AbstractBasecallOutput):
+class Telemetry():
 
+    def __init__(self, path):
+        self._path = Path(path)
+        self._telemetry = self.get_data(path)
+
+    @property
+    def path(self):
+        return self._path
+
+    @property
+    def data(self):
+        return self.get_data(self.path)
+
+    def get_data(self, path):
+        data = []
+        with open(str(path), 'r') as file:
+            for line in file:
+                data.append(line)
+        file.close()
+        return data
+
+<<<<<<< HEAD
     def __init__(self, dest, data=[]):
         self._telemetry = data
         super().__init__(dest)
         # Initiate the seq_tel json file
         # with open(str(dest), "w") as file:
         #     file.write("[]")
+=======
+>>>>>>> version1.0
 
     @property
     def data(self):
@@ -276,13 +310,24 @@ class Telemetry(AbstractBasecallOutput):
             raise ValueError("You are trying to write empty data")
         with open(str(self.dest), "a") as file:
             json.dump(self._telemetry, file)
+<<<<<<< HEAD
+
+    def __add__(self, other):
+        telemetry_data = self._telemetry + other.data
+        return Telemetry(dest=self.dest, data=telemetry_data)
+=======
+>>>>>>> version1.0
 
     def __add__(self, other):
         telemetry_data = self._telemetry + other.data
         return Telemetry(dest=self.dest, data=telemetry_data)
 
-
+<<<<<<< HEAD
 class MinIONConfiguration(AbstractBasecallOutput):
+=======
+
+class MinIONConfiguration():
+>>>>>>> version1.0
     def __init__(self, dest, data=[]):
         self._config_data = data
         super().__init__(dest)
@@ -307,9 +352,15 @@ class MinIONConfiguration(AbstractBasecallOutput):
     def __add__(self, other):
         config_data = self._config_data + other._config_data
         return MinIONConfiguration(dest=self.dest, data=config_data)
+<<<<<<< HEAD
 
 
 class PipelineLog(AbstractBasecallOutput):
+=======
+
+
+class PipelineLog():
+>>>>>>> version1.0
     def __init__(self, dest, data=[], logs=[]):
         self.pipeline_data = data
         self.pipeline_logs = logs
@@ -336,7 +387,7 @@ class PipelineLog(AbstractBasecallOutput):
         return PipelineLog(dest=self.dest, data=pipe_data, logs=pipe_logs)
 
 
-class Workspace(AbstractBasecallOutput):
+class Workspace():
     def __init__(self, dest):
         super().__init__(dest)
 
@@ -369,3 +420,12 @@ class Workspace(AbstractBasecallOutput):
         for read in os.listdir(str(src)):
             shutil.copy(str(src.joinpath(read)), str(dest.joinpath(read)))
         return 0
+
+
+
+if __name__ == '__main__':
+    pass
+    # telemetry = Telemetry('/Users/kevinfortier/Desktop/NanoPypes/NanoPypes/pai-nanopypes/tests/test_data/basecalled_data/results/local_basecall_test/sequencing_telemetry.js')
+    # tel_data = telemetry.data
+    # print(tel_data[0])
+

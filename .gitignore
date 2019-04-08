@@ -105,3 +105,7 @@ ENV/
 cluster.py
 scripts/rsync_parallel.py
 scripts/minimap.py
+<<<<<<< HEAD
+=======
+tests/test_data/basecalled_data/results/local_basecall_test
+>>>>>>> version1.0

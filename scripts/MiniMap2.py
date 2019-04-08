@@ -23,7 +23,11 @@ class MiniMap2(Pipe):
         def mapper(fastq_path):
             fastq = Path(fastq_path)
             sam_file = self.save_path.joinpath((fastq.name.replace('.fq', '.sam')))
+<<<<<<< HEAD
             command = ['minimap2', '-ax map-ont', str(self.reference), fastq, '>', sam_file]
+=======
+            command = ['minimap2', '-ax splice', str(self.reference), fastq, '>', sam_file]
+>>>>>>> version1.0
             return command
             # process = subprocess.Popen(command)
             # process.wait()
