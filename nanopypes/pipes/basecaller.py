@@ -2,14 +2,9 @@ from pathlib import Path
 import os
 import shutil
 import datetime
-import time
-import re
-import sys
-from asyncio.futures import CancelledError
 
-import dask
 import dask.bag as db
-from dask.distributed import fire_and_forget, wait, as_completed, futures_of
+from dask.distributed import wait, as_completed
 
 from nanopypes.pipes.base import Pipe
 

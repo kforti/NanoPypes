@@ -3,7 +3,7 @@ from pathlib import Path
 import os
 
 import pexpect
-from dask.distributed import LocalCluster, Client, wait
+from dask.distributed import wait
 
 from nanopypes.pipes.base import Pipe
 
