@@ -2,216 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="06fba5a6-e119-4d57-aa65-81370b2766cd" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/nanopypes/pipes/basecaller2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nanopypes/oxnano.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/oxnano.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nanopypes/pipes/basecaller.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/pipes/basecaller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nanopypes/run_pipes.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/run_pipes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_configs/local_basecall.yml" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_configs/local_basecall.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/configuration.cfg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/sequencing_summary.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/sequencing_telemetry.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/calibration_strands/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_140_ch_8_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/calibration_strands/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_175_ch_331_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/calibration_strands/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_177_ch_463_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/calibration_strands/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_25_ch_325_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/calibration_strands/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_314_ch_261_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/calibration_strands/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_322_ch_331_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/calibration_strands/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_328_ch_137_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/calibration_strands/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_392_ch_397_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/calibration_strands/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_433_ch_294_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/calibration_strands/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_462_ch_198_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/calibration_strands/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_61_ch_101_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/calibration_strands/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_61_ch_80_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/fail/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_260_ch_343_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/fail/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_81_ch_447_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/fail/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_99_ch_463_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_102_ch_145_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_108_ch_274_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_10_ch_357_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_10_ch_499_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_113_ch_87_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_114_ch_2_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_115_ch_474_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_117_ch_23_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_118_ch_16_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_123_ch_353_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_125_ch_191_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_12_ch_402_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_12_ch_80_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_135_ch_368_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_147_ch_181_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_149_ch_150_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_14_ch_138_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_14_ch_205_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_158_ch_261_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_169_ch_223_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_16_ch_195_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_16_ch_242_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_179_ch_384_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_183_ch_276_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_185_ch_463_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_186_ch_476_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_18_ch_151_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_199_ch_276_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_19_ch_478_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_200_ch_58_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_207_ch_254_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_207_ch_331_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_20_ch_118_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_20_ch_440_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_210_ch_268_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_212_ch_268_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_226_ch_47_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_230_ch_58_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_239_ch_27_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_23_ch_230_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_23_ch_412_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_243_ch_18_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_243_ch_384_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_245_ch_296_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_249_ch_223_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_24_ch_119_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_24_ch_185_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_24_ch_240_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_253_ch_255_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_255_ch_213_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_257_ch_331_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_257_ch_347_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_25_ch_207_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_25_ch_276_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_260_ch_205_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_260_ch_261_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_261_ch_367_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_263_ch_274_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_267_ch_203_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_26_ch_182_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_273_ch_295_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_286_ch_143_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_286_ch_208_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_287_ch_349_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_288_ch_210_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_288_ch_261_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_294_ch_503_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_298_ch_486_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_29_ch_75_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_305_ch_479_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_30_ch_390_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_312_ch_445_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_316_ch_367_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_317_ch_202_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_317_ch_475_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_321_ch_253_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_323_ch_312_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_334_ch_163_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_335_ch_136_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_337_ch_112_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_341_ch_421_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_347_ch_327_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_348_ch_349_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_348_ch_59_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_34_ch_100_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_350_ch_127_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_350_ch_338_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_353_ch_279_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_354_ch_174_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_355_ch_238_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_357_ch_509_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_360_ch_141_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_364_ch_140_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_386_ch_365_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_38_ch_423_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_38_ch_77_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_393_ch_59_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_39_ch_16_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_400_ch_468_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_403_ch_170_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_404_ch_491_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_407_ch_136_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_40_ch_220_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_40_ch_457_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_413_ch_323_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_415_ch_353_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_417_ch_413_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_41_ch_373_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_41_ch_95_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_422_ch_333_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_426_ch_221_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_428_ch_135_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_429_ch_13_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_438_ch_179_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_444_ch_306_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_445_ch_247_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_445_ch_263_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_447_ch_247_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_44_ch_435_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_454_ch_483_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_460_ch_135_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_460_ch_160_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_460_ch_392_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_466_ch_308_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_468_ch_399_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_469_ch_298_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_469_ch_434_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_476_ch_420_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_477_ch_195_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_478_ch_172_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_482_ch_63_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_488_ch_492_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_491_ch_144_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_491_ch_508_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_499_ch_433_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_49_ch_160_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_4_ch_346_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_504_ch_148_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_509_ch_479_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_520_ch_100_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_527_ch_165_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_528_ch_353_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_52_ch_86_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_53_ch_84_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_550_ch_460_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_561_ch_341_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_568_ch_290_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_581_ch_163_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_58_ch_55_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_591_ch_313_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_598_ch_60_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_612_ch_437_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_64_ch_458_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_64_ch_74_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_674_ch_357_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_686_ch_357_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_68_ch_237_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_69_ch_323_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_6_ch_54_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_714_ch_166_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_71_ch_213_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_71_ch_364_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_74_ch_223_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_74_ch_406_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_76_ch_30_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_787_ch_115_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_79_ch_490_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_82_ch_347_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_83_ch_12_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_847_ch_115_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_852_ch_191_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_85_ch_276_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_85_ch_29_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_85_ch_91_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_86_ch_119_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_86_ch_414_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_8_ch_170_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_8_ch_218_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_91_ch_283_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_94_ch_383_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_97_ch_5_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_98_ch_201_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_99_ch_213_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_99_ch_237_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_9_ch_26_strand.fast5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_utils_albacore.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_utils_albacore.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nanopypes/pipes/basecaller2.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/pipes/basecaller2.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -256,8 +47,8 @@
           <file leaf-file-name="basecaller.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/nanopypes/pipes/basecaller.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="463">
-                  <caret line="286" column="7" lean-forward="true" selection-start-line="284" selection-end-line="290" />
+                <state relative-caret-position="100">
+                  <caret line="165" column="24" lean-forward="true" selection-start-line="165" selection-start-column="4" selection-end-line="185" />
                   <folding>
                     <element signature="e#0#24#0" expanded="true" />
                     <element signature="e#2897#3587#0" />
@@ -277,11 +68,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="basecaller2.py" pinned="false" current-in-tab="false">
+          <file leaf-file-name="basecaller2.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/nanopypes/pipes/basecaller2.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="497">
-                  <caret line="60" column="39" selection-start-line="60" selection-start-column="39" selection-end-line="60" selection-end-column="39" />
+                <state relative-caret-position="532">
+                  <caret line="86" lean-forward="true" selection-start-line="86" selection-end-line="86" />
                   <folding>
                     <element signature="e#0#24#0" expanded="true" />
                   </folding>
@@ -326,12 +117,13 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="run_pipes.py" pinned="false" current-in-tab="true">
+          <file leaf-file-name="run_pipes.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/nanopypes/run_pipes.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="30">
-                  <caret line="2" column="32" selection-start-line="2" selection-start-column="32" selection-end-line="2" selection-end-column="32" />
+                <state relative-caret-position="180">
+                  <caret line="12" column="36" selection-start-line="12" selection-start-column="36" selection-end-line="12" selection-end-column="36" />
                   <folding>
+                    <element signature="e#0#37#0" expanded="true" />
                     <element signature="e#1192#1430#0" />
                   </folding>
                 </state>
@@ -401,8 +193,8 @@
         <option value="$PROJECT_DIR$/tests/test_utils_albacore.py" />
         <option value="$PROJECT_DIR$/tests/test_configs/local_basecall.yml" />
         <option value="$PROJECT_DIR$/nanopypes/pipes/basecaller.py" />
-        <option value="$PROJECT_DIR$/nanopypes/pipes/basecaller2.py" />
         <option value="$PROJECT_DIR$/nanopypes/run_pipes.py" />
+        <option value="$PROJECT_DIR$/nanopypes/pipes/basecaller2.py" />
       </list>
     </option>
   </component>
@@ -595,14 +387,14 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1478" y="23" width="1673" height="964" extended-state="0" />
+    <frame x="1858" y="171" width="1673" height="964" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.035108957" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.035108957" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3292517" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.23990773" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.23990773" />
       <window_info anchor="bottom" id="Version Control" />
       <window_info anchor="bottom" id="Python Console" weight="0.3292517" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -916,10 +708,21 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/nanopypes/run_pipes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="36" selection-start-line="12" selection-start-column="36" selection-end-line="12" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+            <element signature="e#1192#1430#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/nanopypes/pipes/basecaller.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="463">
-          <caret line="286" column="7" lean-forward="true" selection-start-line="284" selection-end-line="290" />
+        <state relative-caret-position="100">
+          <caret line="165" column="24" lean-forward="true" selection-start-line="165" selection-start-column="4" selection-end-line="185" />
           <folding>
             <element signature="e#0#24#0" expanded="true" />
             <element signature="e#2897#3587#0" />
@@ -940,20 +743,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/nanopypes/pipes/basecaller2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="497">
-          <caret line="60" column="39" selection-start-line="60" selection-start-column="39" selection-end-line="60" selection-end-column="39" />
+        <state relative-caret-position="532">
+          <caret line="86" lean-forward="true" selection-start-line="86" selection-end-line="86" />
           <folding>
             <element signature="e#0#24#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/nanopypes/run_pipes.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="32" selection-start-line="2" selection-start-column="32" selection-end-line="2" selection-end-column="32" />
-          <folding>
-            <element signature="e#1192#1430#0" />
           </folding>
         </state>
       </provider>
