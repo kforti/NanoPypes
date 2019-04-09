@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="06fba5a6-e119-4d57-aa65-81370b2766cd" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/nanopypes/cli.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/cli.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nanopypes/run_pipes.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/run_pipes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/albacore_basecall.yml" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/albacore_basecall.yml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -34,6 +33,15 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="albacore_basecall.yml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/scripts/albacore_basecall.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="405">
+              <caret line="27" column="6" selection-start-line="27" selection-start-column="6" selection-end-line="27" selection-end-column="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="basecaller.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/nanopypes/pipes/basecaller.py">
           <provider selected="true" editor-type-id="text-editor">
@@ -59,7 +67,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="cli.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="cli.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/nanopypes/cli.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="178">
@@ -119,12 +127,13 @@
         <option value="$PROJECT_DIR$/scripts/albacore_basecall.py" />
         <option value="$PROJECT_DIR$/nanopypes/run_pipes.py" />
         <option value="$PROJECT_DIR$/nanopypes/cli.py" />
+        <option value="$PROJECT_DIR$/scripts/albacore_basecall.yml" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1528" />
-    <option name="y" value="109" />
+    <option name="x" value="1940" />
+    <option name="y" value="33" />
     <option name="width" value="1673" />
     <option name="height" value="964" />
   </component>
@@ -150,6 +159,11 @@
               <item name="pai-nanopypes" type="462c0819:PsiDirectoryNode" />
               <item name="nanopypes" type="462c0819:PsiDirectoryNode" />
               <item name="pipes" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="pai-nanopypes" type="b2602c69:ProjectViewProjectNode" />
+              <item name="pai-nanopypes" type="462c0819:PsiDirectoryNode" />
+              <item name="scripts" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="pai-nanopypes" type="b2602c69:ProjectViewProjectNode" />
@@ -300,7 +314,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1528" y="109" width="1673" height="964" extended-state="0" />
+    <frame x="1940" y="33" width="1673" height="964" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14043583" />
@@ -330,13 +344,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="11" column="18" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/albacore_basecall.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="29" />
         </state>
       </provider>
     </entry>
@@ -603,13 +610,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/albacore_basecall.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/scripts/minimap.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -660,6 +660,20 @@
           <folding>
             <element signature="e#66#79#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/albacore_basecall.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/albacore_basecall.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="27" column="6" selection-start-line="27" selection-start-column="6" selection-end-line="27" selection-end-column="6" />
         </state>
       </provider>
     </entry>
