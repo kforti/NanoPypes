@@ -24,6 +24,7 @@ def albacore_basecaller(config, data_splits, batch_bunch, continue_on=False):
             basecall = AlbacoreBasecaller(albacore=albacore, client=client, num_splits=data_splits, batch_bunch_size=batch_bunch, continue_on=continue_on)
             basecall()
         except CancelledError:
+            print("There was an error in the basecaller. Restarting Now......")
             continue_on = True
             attempts += 1
 

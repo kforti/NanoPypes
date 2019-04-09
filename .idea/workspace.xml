@@ -2,18 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="06fba5a6-e119-4d57-aa65-81370b2766cd" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nanopypes/compute.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/compute.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nanopypes/objects/basecalled.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/objects/basecalled.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nanopypes/objects/custom.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nanopypes/objects/raw.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/objects/raw.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nanopypes/pipes.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nanopypes/pipes/basecaller.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/pipes/basecaller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nanopypes/pipes/parallel_rsync.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/pipes/parallel_rsync.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nanopypes/tools.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nanopypes/utils.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/albacore_basecall.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/albacore_basecall.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/minimap.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/minimap.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nanopypes/cli.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/cli.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nanopypes/run_pipes.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/run_pipes.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -35,11 +25,61 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="albacore_basecall.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="albacore_basecall.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/scripts/albacore_basecall.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="150">
               <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="basecaller.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/nanopypes/pipes/basecaller.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="569">
+              <caret line="288" lean-forward="true" selection-start-line="288" selection-end-line="288" />
+              <folding>
+                <element signature="e#0#24#0" expanded="true" />
+                <element signature="e#2897#3587#0" />
+                <element signature="e#3632#4884#0" />
+                <element signature="e#4932#5389#0" />
+                <element signature="e#5424#6406#0" />
+                <element signature="e#6451#7016#0" />
+                <element signature="e#7063#7937#0" />
+                <element signature="e#7984#8672#0" />
+                <element signature="e#8721#9324#0" />
+                <element signature="e#9376#9658#0" />
+                <element signature="e#9712#10513#0" />
+                <element signature="e#10571#10745#0" />
+                <element signature="e#10801#10963#0" />
+                <element signature="e#11000#11477#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="cli.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/nanopypes/cli.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="178">
+              <caret line="59" column="16" lean-forward="true" selection-start-line="59" selection-start-column="16" selection-end-line="59" selection-end-column="16" />
+              <folding>
+                <element signature="e#66#79#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="run_pipes.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/nanopypes/run_pipes.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="390">
+              <caret line="26" column="79" lean-forward="true" selection-start-line="26" selection-start-column="79" selection-end-line="26" selection-end-column="79" />
+              <folding>
+                <element signature="e#0#37#0" expanded="true" />
+                <element signature="e#1192#1430#0" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -64,8 +104,6 @@
         <option value="$PROJECT_DIR$/tox.ini" />
         <option value="$PROJECT_DIR$/nanopypes/pipes/minimap2.py" />
         <option value="$PROJECT_DIR$/setup.py" />
-        <option value="$PROJECT_DIR$/nanopypes/run_pipes.py" />
-        <option value="$PROJECT_DIR$/nanopypes/cli.py" />
         <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch_1.py" />
         <option value="$PROJECT_DIR$/tests/test_utils_albacore.py" />
         <option value="$PROJECT_DIR$/nanopypes/pipes/base.py" />
@@ -79,14 +117,16 @@
         <option value="$PROJECT_DIR$/scripts/rsync_parallel.py" />
         <option value="$PROJECT_DIR$/scripts/minimap.py" />
         <option value="$PROJECT_DIR$/scripts/albacore_basecall.py" />
+        <option value="$PROJECT_DIR$/nanopypes/run_pipes.py" />
+        <option value="$PROJECT_DIR$/nanopypes/cli.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1505" />
-    <option name="y" value="86" />
-    <option name="width" value="1135" />
-    <option name="height" value="901" />
+    <option name="x" value="1528" />
+    <option name="y" value="109" />
+    <option name="width" value="1673" />
+    <option name="height" value="964" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -108,7 +148,8 @@
             <path>
               <item name="pai-nanopypes" type="b2602c69:ProjectViewProjectNode" />
               <item name="pai-nanopypes" type="462c0819:PsiDirectoryNode" />
-              <item name="scripts" type="462c0819:PsiDirectoryNode" />
+              <item name="nanopypes" type="462c0819:PsiDirectoryNode" />
+              <item name="pipes" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="pai-nanopypes" type="b2602c69:ProjectViewProjectNode" />
@@ -259,14 +300,14 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1505" y="86" width="1135" height="901" extended-state="0" />
+    <frame x="1528" y="109" width="1673" height="964" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.34380612" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14043583" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3292517" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.25870648" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.23990773" />
       <window_info anchor="bottom" id="Version Control" />
       <window_info anchor="bottom" id="Python Console" weight="0.3292517" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -358,16 +399,6 @@
         <state relative-caret-position="-1833">
           <folding>
             <element signature="e#0#17#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/nanopypes/cli.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="348">
-          <caret line="73" column="85" selection-start-line="73" selection-start-column="85" selection-end-line="73" selection-end-column="85" />
-          <folding>
-            <element signature="e#64#77#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -503,31 +534,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/nanopypes/pipes/basecaller.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-358">
-          <caret line="6" column="47" selection-start-line="6" selection-start-column="47" selection-end-line="6" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/nanopypes/oxnano.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="305">
           <caret line="24" column="20" selection-start-line="24" selection-start-column="20" selection-end-line="24" selection-end-column="20" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/nanopypes/run_pipes.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="77" selection-start-line="11" selection-start-column="77" selection-end-line="11" selection-end-column="77" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-            <element signature="e#413#1073#0" />
-            <element signature="e#1192#1430#0" />
           </folding>
         </state>
       </provider>
@@ -591,6 +603,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/scripts/albacore_basecall.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/scripts/minimap.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -600,10 +619,47 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/albacore_basecall.py">
+    <entry file="file://$PROJECT_DIR$/nanopypes/run_pipes.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="10" />
+        <state relative-caret-position="390">
+          <caret line="26" column="79" lean-forward="true" selection-start-line="26" selection-start-column="79" selection-end-line="26" selection-end-column="79" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+            <element signature="e#1192#1430#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nanopypes/pipes/basecaller.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="569">
+          <caret line="288" lean-forward="true" selection-start-line="288" selection-end-line="288" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+            <element signature="e#2897#3587#0" />
+            <element signature="e#3632#4884#0" />
+            <element signature="e#4932#5389#0" />
+            <element signature="e#5424#6406#0" />
+            <element signature="e#6451#7016#0" />
+            <element signature="e#7063#7937#0" />
+            <element signature="e#7984#8672#0" />
+            <element signature="e#8721#9324#0" />
+            <element signature="e#9376#9658#0" />
+            <element signature="e#9712#10513#0" />
+            <element signature="e#10571#10745#0" />
+            <element signature="e#10801#10963#0" />
+            <element signature="e#11000#11477#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nanopypes/cli.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="59" column="16" lean-forward="true" selection-start-line="59" selection-start-column="16" selection-end-line="59" selection-end-column="16" />
+          <folding>
+            <element signature="e#66#79#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
