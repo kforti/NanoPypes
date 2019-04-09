@@ -1,6 +1,6 @@
 from nanopypes.compute import Cluster
 from nanopypes.oxnano import Albacore
-from nanopypes.pipes.basecaller import AlbacoreBasecaller
+from nanopypes.pipes.basecaller2 import AlbacoreBasecaller
 from nanopypes.pipes.parallel_rsync import ParallelRsync
 from nanopypes.config import Configuration
 

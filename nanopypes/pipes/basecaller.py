@@ -67,30 +67,36 @@ class AlbacoreBasecaller(Pipe):
         self.first_summary = True
 
     def execute(self):
-        self.basecall()
-
-        self.collapse_data()
-
-    def basecall(self):
-        # Perform parallel basecall
-        for batch_bunch in self.bc_batch_bunches:
-            print("processing batch bunch: ", batch_bunch)
-            for batch in batch_bunch:
-                self.build_graphs(batch)
-
-            comp = as_completed(self.futures)
-            tasks = 0
-            for comlpeted_future in comp:
-                try:
-                    self.client.cancel(comlpeted_future)
-                    tasks += 1
-                    if tasks > (self.batch_bunch_size * self.num_splits * .7):
-                        break
-                except StopIteration:
-                    break
+        for batch in self.bc_batches:
+            command = self.albacore.build_command(input_dir=str(batch), batch_number=None,
+                                                   save_path=str(self.save_path.joinpath(batch.name)))
+            bc = self.client.submit(basecall, self.function, command, dependencies=None)
+            self.futures.append(bc)
         wait(self.futures)
-        # TODO: remove split_data dir
-        self.client.map(self.shutil.rmtree, [str(self.input_path.joinpath(batch, 'split_data')) for batch in os.listdir(str(self.input_path))])
+        # self.basecall()
+        #
+        # self.collapse_data()
+
+    # def basecall(self):
+    #     # Perform parallel basecall
+    #     for batch_bunch in self.bc_batch_bunches:
+    #         print("processing batch bunch: ", batch_bunch)
+    #         for batch in batch_bunch:
+    #             self.build_graphs(batch)
+    #
+    #         comp = as_completed(self.futures)
+    #         tasks = 0
+    #         for comlpeted_future in comp:
+    #             try:
+    #                 self.client.cancel(comlpeted_future)
+    #                 tasks += 1
+    #                 if tasks > (self.batch_bunch_size * self.num_splits * .7):
+    #                     break
+    #             except StopIteration:
+    #                 break
+    #     wait(self.futures)
+    #     # TODO: remove split_data dir
+    #     self.client.map(self.shutil.rmtree, [str(self.input_path.joinpath(batch, 'split_data')) for batch in os.listdir(str(self.input_path))])
 
     def collapse_data(self):
         self.get_read_id()
@@ -109,6 +115,11 @@ class AlbacoreBasecaller(Pipe):
             self.write_summary(file_paths['summaries'])
             self.write_telemetry(file_paths['telemetries'])
             self.write_pipeline(file_paths['pipelines'])
+
+    def basecall(self, batch):
+        command = self.albacore.build_coammand(input_dir=batch, batch_number=None, save_path=str(self.save_path.joinpath(batch)))
+        bc = basecall(self.function, command, dependencies=None)
+        return bc
 
     def build_graphs(self, batch):
         spl_data = self.get_split_paths(batch)

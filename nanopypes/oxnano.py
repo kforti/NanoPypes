@@ -104,14 +104,17 @@ class Albacore:
         for bin in self.batches_for_basecalling:
             yield bin
 
-    def build_command(self, input_dir, batch_number):
+    def build_command(self, input_dir, batch_number, save_path=None):
         """ Method for creating the string based command for running the albacore basecaller from the commandline."""
         temp_dir_num = input_dir.split('/')[-1]
         command = ["read_fast5_basecaller.py",]
         command.extend(["--flowcell", self.flow_cell])
         command.extend(["--kit", self.kit])
         command.extend(["--output_format", self._output_format])
-        command.extend(["--save_path", str(self._save_path) + "/" + batch_number + "/" + temp_dir_num])
+        if save_path:
+            command.extend(["--save_path", str(save_path)])
+        else:
+            command.extend(["--save_path", str(self._save_path) + "/" + batch_number + "/" + temp_dir_num])
         command.extend(["--worker_threads", "1"])
         command.extend(["--input",  input_dir])
         if self._barcoding:

@@ -20,11 +20,7 @@ computes:
         memory:
         scale_value:
         cluster_type: local
-<<<<<<< HEAD
-networking:
-=======
 networks:
->>>>>>> version1.0
     network1:
         compute_name:
         address:
