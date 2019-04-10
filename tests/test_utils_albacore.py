@@ -16,7 +16,7 @@ from nanopypes.compute import Cluster
 from nanopypes.objects.basecalled import ParallelBaseCalledData
 
 from nanopypes.run_pipes import albacore_basecaller
-from nanopypes.pipes.basecaller import AlbacoreBasecaller
+from nanopypes.pipes.basecaller2 import AlbacoreBasecaller
 
 
 
@@ -36,7 +36,7 @@ class TestAlbacoreLocal(unittest.TestCase):
         """Test the albacore commands that are generated from passing custom inputs."""
         config = Configuration("test_configs/local_builds.yml")
         albacore = Albacore(config=config)
-        retrieved_command = albacore.build_command('./test_data/1', '0')
+        retrieved_command = albacore.build_basecall_command('./test_data/1', '0')
         expected_command = ["read_fast5_basecaller.py", "--flowcell", "FLO-MIN106",
                          "--kit", "SQK-LSK109", "--output_format", "fast5",
                          "--save_path", "test_data/basecalled_data/results/local_basecall_test/0/1",
@@ -91,7 +91,7 @@ class TestAlbacoreRemote(unittest.TestCase):
         """Test the albacore commands that are generated from passing custom inputs."""
         config = Configuration("test_configs/remote_builds.yml")
         albacore = Albacore(config=config)
-        retrieved_command = albacore.build_command('./test_data/1', '0')
+        retrieved_command = albacore.build_basecall_command('./test_data/1', '0')
         expected_command = ["read_fast5_basecaller.py", "--flowcell", "FLO-MIN106",
                             "--kit", "SQK-LSK109", "--output_format", "fast5",
                             "--save_path", "test_data/basecalled_data/results/0/1",

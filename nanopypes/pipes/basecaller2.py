@@ -56,13 +56,18 @@ class AlbacoreBasecaller(Pipe):
         self.first_summary = True
 
     def execute(self):
-        for batch_bunch in self.bc_batches:
-            for batch in batch_bunch:
-                command = self.albacore.build_command(input_dir=str(batch), batch_number=None,
-                                                       save_path=str(self.save_path.joinpath(batch.name)))
-                bc = self.client.submit(basecall, self.function, command, dependencies=None)
-                self.futures.append(bc)
-            wait(self.futures)
+        batch_counter = 0
+        for batch in self.bc_batches:
+            command = self.albacore.build_basecall_command(input_dir=str(batch), batch_number=None,
+                                                           save_path=str(self.save_path.joinpath(batch.name)))
+            bc = self.client.submit(basecall, self.function, command, dependencies=None)
+            self.futures.append(bc)
+            batch_counter += 1
+            if batch_counter >= self.batch_bunch_size:
+                completed = as_completed(self.futures)
+                for comp in completed:
+                    break
+        wait(self.futures)
 
     def prep_data(self):
         print("Prepping data from previously stopped run")

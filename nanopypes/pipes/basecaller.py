@@ -68,8 +68,8 @@ class AlbacoreBasecaller(Pipe):
 
     def execute(self):
         for batch in self.bc_batches:
-            command = self.albacore.build_command(input_dir=str(batch), batch_number=None,
-                                                   save_path=str(self.save_path.joinpath(batch.name)))
+            command = self.albacore.build_basecall_command(input_dir=str(batch), batch_number=None,
+                                                           save_path=str(self.save_path.joinpath(batch.name)))
             bc = self.client.submit(basecall, self.function, command, dependencies=None)
             self.futures.append(bc)
         wait(self.futures)
@@ -143,7 +143,7 @@ class AlbacoreBasecaller(Pipe):
                     pass
 
             copy_files = self.client.submit(copy_splits, split_paths, this_split_path, priority=-10)
-            commands = self.client.submit(get_command, i, batch.name, self.albacore.build_command, self.input_path, None, priority=-10)
+            commands = self.client.submit(get_command, i, batch.name, self.albacore.build_basecall_command, self.input_path, None, priority=-10)
             bc = self.client.submit(basecall, self.function, commands, [copy_files, commands], priority=10)
             rm_splits = self.client.submit(remove_splits, this_split_path, [bc], priority=0)
             self.futures.append(rm_splits)

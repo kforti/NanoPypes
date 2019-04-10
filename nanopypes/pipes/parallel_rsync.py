@@ -26,7 +26,8 @@ class ParallelRsync(Pipe):
             dest = self.remote
 
         elif self.direction == 'pull':
-            raise NotImplementedError
+            src = self.remote
+            dest = self.local
 
         throttle_max = 5
         throttle = 0

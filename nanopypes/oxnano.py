@@ -78,7 +78,7 @@ class Albacore:
             save_path.mkdir()
 
         for i in tmp_dirs:
-            command = self.build_command(i, str(save_path))
+            command = self.build_basecall_command(i, str(save_path))
             commands_list.append(command)
         commands_tupl = (next_bin, commands_list)
         return commands_tupl
@@ -104,7 +104,7 @@ class Albacore:
         for bin in self.batches_for_basecalling:
             yield bin
 
-    def build_command(self, input_dir, batch_number, save_path=None):
+    def build_basecall_command(self, input_dir, batch_number, save_path=None):
         """ Method for creating the string based command for running the albacore basecaller from the commandline."""
         temp_dir_num = input_dir.split('/')[-1]
         command = ["read_fast5_basecaller.py",]

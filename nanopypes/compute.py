@@ -2,7 +2,7 @@ import logging
 import time
 
 from dask_jobqueue import LSFCluster
-from distributed import progress, Client, LocalCluster
+from distributed import Client, LocalCluster
 
 from nanopypes.config import ComputeConfig
 
@@ -27,9 +27,6 @@ class Cluster:
         self.workers = self.config.workers(workers)
         self.scale_value = self.config.scale_value(scale_value)
         self.time_out = time_out
-
-        if debug:
-            logging.basicConfig(format='%(levelname)s:%(message)s', level=logging.DEBUG)
 
     @property
     def settings(self):
