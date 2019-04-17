@@ -10,90 +10,75 @@ from nanopypes.pipes.base import Pipe
 
 
 
-def batch_generator(batches, batch_size):
-    batches_len = len(batches)
-    batch_counter = 0
-    return_batches = []
-    for i, batch in enumerate(batches):
-        return_batches.append(batch)
-        batch_counter += 1
-        if batch_counter == batch_size or i + 1 == batches_len:
-            yield return_batches
-            return_batches = []
-            batch_counter = 0
+def batch_generator(batches):
+    for batch in batches:
+        yield batch
 
 
 class AlbacoreBasecaller(Pipe):
 
-    def __init__(self, client, albacore, num_splits, batch_bunch_size, continue_on):
+    def __init__(self, client, albacore):
         print("Starting the parallel Albacore Basecaller...\n", datetime.datetime.now())
         self.client = client
-        self.num_splits = num_splits
-        self.batch_bunch_size = batch_bunch_size
+        self.batch_bunch_size = self.client.ncores()
         self.albacore = albacore
 
         # basecaller info
-        self.barcoding = albacore.barcoding
-        self.output_format = albacore.output_format
         self.function = albacore.build_func()
         self.input_path = Path(albacore.input_path)
         self.save_path = Path(albacore.save_path)
 
-        if continue_on:
-            self.albacore.bc_batches = self.prep_data()
-            self.client.restart()
-
-        self.bc_batches = albacore.batches_for_basecalling
-        self.bc_batch_bunches = batch_generator(self.bc_batches, batch_bunch_size)
+        self.bc_batches = batch_generator(albacore.batches_for_basecalling)
         self.all_batches = self.albacore.all_batches
-
-        #graphs
-        self.all_basecalls = []
-        self.all_data_collapse = []
 
         self.futures = []
 
+        # collapse_data
         self.first_summary = True
 
     def execute(self):
         batch_counter = 0
-        for batch in self.bc_batches:
-            command = self.albacore.build_basecall_command(input_dir=str(batch), batch_number=None,
-                                                           save_path=str(self.save_path.joinpath(batch.name)))
-            bc = self.client.submit(basecall, self.function, command, dependencies=None)
-            self.futures.append(bc)
-            batch_counter += 1
-            if batch_counter >= self.batch_bunch_size:
-                completed = as_completed(self.futures)
-                for comp in completed:
+        with open(str(self.save_path.joinpath("nanopypes_basecall.txt")), "a") as file:
+            for batch in self.bc_batches:
+                self.futures.append(self.process_batch(batch))
+                batch_counter += 1
+                if batch_counter == self.batch_bunch_size:
                     break
-        wait(self.futures)
 
-    def prep_data(self):
-        print("Prepping data from previously stopped run")
-        bc_batches = os.listdir(str(self.save_path))
-        final_bc_batches = []
-        all_futures = []
-        for batch in os.listdir(str(self.input_path)):
-            if batch in bc_batches:
-               # print("batch ", batch, " is in bc_batches")
-                if len(os.listdir(str(self.input_path.joinpath(batch, 'split_data')))) > 0:
-                    #print("Removing data: ", batch)
-                    save_future = self.client.submit(shutil.rmtree, str(self.save_path.joinpath(batch)))
-                    split_future = self.client.submit(shutil.rmtree, str(self.input_path.joinpath(batch, 'split_data')))
-                    all_futures.append(save_future)
-                    all_futures.append(split_future)
-            else:
-                #print("Batch: ", batch, " ok!")
-                final_bc_batches.append(batch)
-        wait(all_futures)
-        del all_futures
-        return final_bc_batches
+            completed = as_completed(self.futures)
+            for comp in completed:
+                try:
+                    new_future = self.process_batch(next(self.bc_batches))
+                    completed.add(new_future)
+                except StopIteration:
+                    pass
+                completed_batch_path = comp.result()
+                file.write(completed_batch_path.name)
+                file.write("\n")
+
+            results = self.client.gather(self.futures)
+
+    def process_batch(self, batch):
+        batch_save_path = self.save_path.joinpath(batch.name)
+        command = self.albacore.build_basecall_command(input_dir=batch)
+        bc = self.client.submit(basecall, self.function, command, batch_save_path)
+        return bc
+
+    def check_input_data_status(self):
+        pass
+        #self.client.restart()
+        #self.albacore.bc_batches = os.listdir(str(self.save_path))
+
+#################################
+#Functions for cluster submission
+#################################
 
 
-def basecall(func, command, dependencies):
+def basecall(func, command, batch_save_path):
+    func(command)
     try:
         func(command)
+        return batch_save_path
     except Exception:
         print("there is likely a memory problem")
     return

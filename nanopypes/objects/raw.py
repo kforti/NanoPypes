@@ -2,9 +2,6 @@ import h5py
 import os
 from pathlib import Path
 
-
-from ont_fast5_api.fast5_interface import is_multi_read
-from ont_fast5_api.fast5_read import Fast5Read
 from ont_fast5_api.fast5_file import Fast5File
 from ont_fast5_api.analysis_tools import basecall_1d
 

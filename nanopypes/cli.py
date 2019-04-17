@@ -10,35 +10,23 @@ from nanopypes.run_pipes import ParallelRsync as prsync
 
 
 
-# @click.option('--basecaller', help='Select the basecaller you would like to use')
-# @click.option('--location', help='run the basecaller from local or cluster environment')
-# @click.option('--kit', help='the kit used in the MinION sequencing run')
-# @click.option('--flowcell', help='the flowcell used in the MinION sequencing run')
-# @click.option('--input_path', help='the input path for the Sample/Run containing the Raw MinION sequencing data')
-# @click.option('--save_path', help='the path for results of the basecalling to be saved to')
-# @click.option('--barcoding', help='select whether or not your samples are barcoded')
-# @click.option('--output_format', help='select fast5 or fastq output format')
-# @click.option('--worker_threads', help='number of worker threads selected for the albacore software; different from dask workers')
-# @click.option('--recursive', help='is your data a directory of directories? If yes, select True')
-# @click.option('--job_time', help='the amount of time you expect the overall basecalling to take')
-# @click.option('--mem', help='memory per node')
-# @click.option('--ncpus', help='the number of cpus on the cluster')
-# @click.option('--project', help='the project on the cluster where your input data and/or save data are located')
-# @click.option('--queue', help='the queue to run each job on the cluster')
-# @click.option('--workers', help='the amount of dask workers')
-# @click.option('--cores', help='the number of cores per dask worker')
-# @click.option('--memory', help='the amount of memory per dask worker')
 @click.command()
-@click.option('-s', '--data-splits', 'data_splits', help='the number of splits to divide raw minion sequence batches into. Start with the number of workers you intend to use and optimize from there', required=True, type=int)
-@click.option('-b', '--batch-bunches', 'batch_bunches', help="The number of batches to process at one time.", type=int)
-@click.option('-c', '--continue-on', 'continue_on', help="if True then the basecaller will continue from it's previous start location.", type=bool)
+@click.option('-s', '--save-path', 'save_path', help='The save location for the basecalled data', required=False, type=str)
+@click.option('-i', '--input-path', 'input_path', help="The type of ont kit used.", required=False, type=str)
+@click.option('-k', '--kit', 'kit', help="The type of ont kit used.", required=False, type=str)
+@click.option('-f', '--flowcell', 'flowcell', help="The type of ont flowcell used.", required=False, type=str)
+@click.option('-o', '--output-format', 'output_format', help="fastq or fast5 output format.", required=False, type=str)
 @click.argument('config', required=True)
-def albacore_basecaller(config, data_splits, batch_bunches, continue_on=False):
+def albacore_basecaller(config, kit, flowcell, input_path, save_path, output_format):
     """Console script for running the albacore parallel basecaller."""
+    #run_pipes function albacore_basecaller()
     bc_data = albacore(config=config,
-                       data_splits=data_splits,
-                       batch_bunch=batch_bunches,
-                       continue_on=continue_on)
+                       kit=kit,
+                       flowcell=flowcell,
+                       input_path=input_path,
+                       save_path=save_path,
+                       output_format=output_format
+                       )
     return 0
 
 
@@ -79,3 +67,4 @@ def parallel_rsync(local_path, remote_path, password, rsync_options='-vcr', dire
 def parallel_minimap2(local_path, remote_path, password, rsync_options='-vcr', direction='push',  client='local'):
     prsync(local_path=local_path, remote_path=remote_path, password=password, rsync_options=rsync_options, direction=direction,  client=client)
     return 0
+

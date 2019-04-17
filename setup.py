@@ -40,6 +40,7 @@ setup(
             'prsync = nanopypes.cli:parallel_rsync',
             'nanopypes_minimap2 = nanopypes.cli:parallel_minimap2'
             'get_config_template = nanopypes.cli:get_config_template',
+            'test_cli = nanopypes.cli:test_cli',
         ],
     },
     install_requires= [
