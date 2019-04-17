@@ -45,38 +45,38 @@ class Cluster:
         return len(self.cluster.scheduler.workers)
 
     @property
-    def pending_jobs(self):
+    def num_pending_jobs(self):
         return self.cluster.pending_jobs
 
     @property
-    def running_jobs(self):
+    def num_running_jobs(self):
         return self.cluster.running_jobs
 
     @property
-    def finished_jobs(self):
+    def num_finished_jobs(self):
         return self.cluster.finished_jobs
 
     def scale(self, value):
         """Add workers to cluster connection"""
         self.cluster.scale(value)
         timer = 0
-        pending_jobs = self.cluster.pending_jobs
-        running_jobs = len(self.cluster.scheduler.workers)
-        running_workers = len(self.cluster.running_jobs)
+        # pending_jobs = self.cluster.pending_jobs
+        # running_jobs = len(self.cluster.scheduler.workers)
+        # running_workers = len(self.cluster.running_jobs)
 
-        while len(self.cluster.scheduler.workers) < int(value * 0.5):
-            if timer == 0 or len(self.cluster.scheduler.workers) != running_jobs or len(self.cluster.running_jobs) != running_workers or pending_jobs != self.cluster.pending_jobs:
-                running_jobs = len(self.cluster.scheduler.workers)
-                running_workers = len(self.cluster.running_jobs)
-                print("Client: ", self.client)
-                print("workers: ", len(self.cluster.scheduler.workers))
-                print("expected workers: ", value)
-                print("pending jobs: ", self.cluster.pending_jobs)
-                print("jobs: ", len(self.cluster.running_jobs))
-            if timer > self.time_out:
-                raise ConnectionError("Could not start all workers before time_out")
-            time.sleep(1)
-            timer += 1
+        # while len(self.cluster.scheduler.workers) < int(value * 0.5):
+        #     if timer == 0 or len(self.cluster.scheduler.workers) != running_jobs or len(self.cluster.running_jobs) != running_workers or pending_jobs != self.cluster.pending_jobs:
+        #         running_jobs = len(self.cluster.scheduler.workers)
+        #         running_workers = len(self.cluster.running_jobs)
+        #         print("Client: ", self.client)
+        #         print("workers: ", len(self.cluster.scheduler.workers))
+        #         print("expected workers: ", value)
+        #         print("pending jobs: ", self.cluster.pending_jobs)
+        #         print("jobs: ", len(self.cluster.running_jobs))
+        #     if timer > self.time_out:
+        #         raise ConnectionError("Could not start all workers before time_out")
+        #     time.sleep(1)
+        #     timer += 1
 
         self.workers = value
 

@@ -15,7 +15,6 @@ def albacore_basecaller(config, kit, flowcell, input_path, save_path, output_for
     config = Configuration(config)
     compute_configs = config.compute
     compute = Cluster(compute_configs[0])
-    client = compute.connect()
     albacore = Albacore(config=config,
                        kit=kit,
                        flowcell=flowcell,
@@ -23,7 +22,7 @@ def albacore_basecaller(config, kit, flowcell, input_path, save_path, output_for
                        save_path=save_path,
                        output_format=output_format)
 
-    basecall = AlbacoreBasecaller(albacore=albacore, client=client)
+    basecall = AlbacoreBasecaller(albacore=albacore, compute=compute)
     basecall()
 
     compute.close()
