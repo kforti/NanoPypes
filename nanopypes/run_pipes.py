@@ -23,15 +23,8 @@ def albacore_basecaller(config, kit, flowcell, input_path, save_path, output_for
                        save_path=save_path,
                        output_format=output_format)
 
-    attempts = 0
-    while attempts < 10:
-        try:
-            basecall = AlbacoreBasecaller(albacore=albacore, client=client, batch_bunch_size=batch_bunch, continue_on=continue_on)
-            basecall()
-        except CancelledError:
-            print("There was an error in the basecaller. Restarting Now......")
-            continue_on = True
-            attempts += 1
+    basecall = AlbacoreBasecaller(albacore=albacore, client=client)
+    basecall()
 
     compute.close()
 
