@@ -58,6 +58,7 @@ class Cluster:
 
     def scale(self, value):
         """Add workers to cluster connection"""
+        print("scaling cluster....")
         self.cluster.scale(value)
         timer = 0
         # pending_jobs = self.cluster.pending_jobs
@@ -96,7 +97,7 @@ class Cluster:
                                       R="span[hosts=1]",
                                       cores=self.cores,
                                       memory=self.memory,
-                                      interface='ib0',
+                                      #interface='ib0',
                                       death_timeout=self.time_out)
 
             print("job script: ", self.cluster.job_script())
