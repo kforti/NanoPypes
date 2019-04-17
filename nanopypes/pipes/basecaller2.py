@@ -41,6 +41,7 @@ class AlbacoreBasecaller(Pipe):
         batch_counter = 0
         with open(str(self.save_path.joinpath("nanopypes_basecall.txt")), "a") as file:
             for batch in self.bc_batches:
+                print("processing batch: ", batch.name)
                 self.futures.append(self.process_batch(batch))
                 batch_counter += 1
                 if batch_counter == self.batch_bunch_size:

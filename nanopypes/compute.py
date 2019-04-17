@@ -6,6 +6,9 @@ from distributed import Client, LocalCluster
 
 from nanopypes.config import ComputeConfig
 
+import logging
+
+
 
 class Cluster:
     """ Cluster based task manager for running the basecaller in parallel"""
@@ -27,6 +30,7 @@ class Cluster:
         self.workers = self.config.workers(workers)
         self.scale_value = self.config.scale_value(scale_value)
         self.time_out = time_out
+        logging.basicConfig(format='%(levelname)s:%(message)s', level=logging.DEBUG)
 
     @property
     def settings(self):
@@ -87,7 +91,7 @@ class Cluster:
         # assert self.queue != None, "You must assign a queue to run your workers on"
 
         if self.cluster_type == "LSF":
-            logging.info("connecting to cluster")
+            logging.info("connecting to LSF cluster")
             self.cluster = LSFCluster(queue=self.queue, #Passed to #BSUB -q option.
                                       project=self.project, #Passed to #BSUB -P option.
                                       processes=self.workers,
