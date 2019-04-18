@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="06fba5a6-e119-4d57-aa65-81370b2766cd" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/nanopypes/compute.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/compute.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nanopypes/pipes/basecaller2.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/pipes/basecaller2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nanopypes/run_pipes.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/run_pipes.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -13,9 +13,9 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.7584605">
+    <splitter split-orientation="horizontal" split-proportion="0.53417385">
       <split-first>
-        <splitter split-orientation="horizontal" split-proportion="0.41243434">
+        <splitter split-orientation="horizontal" split-proportion="0.8430884">
           <split-first>
             <leaf>
               <file leaf-file-name="albacore_basecall.yml" pinned="false" current-in-tab="false">
@@ -27,7 +27,7 @@
                   </provider>
                 </entry>
               </file>
-              <file leaf-file-name="compute.py" pinned="false" current-in-tab="true">
+              <file leaf-file-name="compute.py" pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/nanopypes/compute.py">
                   <provider selected="true" editor-type-id="text-editor">
                     <state relative-caret-position="385">
@@ -43,7 +43,7 @@
                 <entry file="file://$PROJECT_DIR$/nanopypes/pipes/basecaller2.py">
                   <provider selected="true" editor-type-id="text-editor">
                     <state relative-caret-position="223">
-                      <caret line="60" column="54" lean-forward="true" selection-start-line="60" selection-start-column="54" selection-end-line="60" selection-end-column="54" />
+                      <caret line="59" column="54" lean-forward="true" selection-start-line="59" selection-start-column="54" selection-end-line="59" selection-end-column="54" />
                       <folding>
                         <element signature="e#0#24#0" expanded="true" />
                       </folding>
@@ -51,11 +51,11 @@
                   </provider>
                 </entry>
               </file>
-              <file leaf-file-name="run_pipes.py" pinned="false" current-in-tab="false">
+              <file leaf-file-name="run_pipes.py" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/nanopypes/run_pipes.py">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="380">
-                      <caret line="27" column="19" lean-forward="true" selection-start-line="27" selection-start-column="19" selection-end-line="27" selection-end-column="19" />
+                    <state relative-caret-position="375">
+                      <caret line="25" column="98" selection-start-line="25" selection-start-column="98" selection-end-line="25" selection-end-column="98" />
                       <folding>
                         <element signature="e#0#37#0" expanded="true" />
                       </folding>
@@ -79,8 +79,8 @@
               <file leaf-file-name="basecaller2.py" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/nanopypes/pipes/basecaller2.py">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="190">
-                      <caret line="28" column="16" lean-forward="true" selection-start-line="28" selection-start-column="16" selection-end-line="28" selection-end-column="16" />
+                    <state relative-caret-position="100">
+                      <caret line="22" column="46" selection-start-line="22" selection-start-column="46" selection-end-line="22" selection-end-column="46" />
                       <folding>
                         <element signature="e#0#24#0" expanded="true" />
                       </folding>
@@ -159,11 +159,11 @@
         <option value="$PROJECT_DIR$/nanopypes/objects/raw.py" />
         <option value="$PROJECT_DIR$/nanopypes/cli.py" />
         <option value="$PROJECT_DIR$/nanopypes/oxnano.py" />
-        <option value="$PROJECT_DIR$/nanopypes/run_pipes.py" />
         <option value="$PROJECT_DIR$/tests/test_utils_albacore.py" />
         <option value="$PROJECT_DIR$/scripts/albacore_basecall.yml" />
-        <option value="$PROJECT_DIR$/nanopypes/pipes/basecaller2.py" />
         <option value="$PROJECT_DIR$/nanopypes/compute.py" />
+        <option value="$PROJECT_DIR$/nanopypes/pipes/basecaller2.py" />
+        <option value="$PROJECT_DIR$/nanopypes/run_pipes.py" />
       </list>
     </option>
   </component>
@@ -659,32 +659,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/nanopypes/run_pipes.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="380">
-          <caret line="27" column="19" lean-forward="true" selection-start-line="27" selection-start-column="19" selection-end-line="27" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/nanopypes/oxnano.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="452">
           <caret line="95" column="52" selection-start-line="95" selection-start-column="22" selection-end-line="95" selection-end-column="54" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/nanopypes/pipes/basecaller2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="60" column="54" lean-forward="true" selection-start-line="60" selection-start-column="54" selection-end-line="60" selection-end-column="54" />
-          <folding>
-            <element signature="e#0#24#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -696,12 +676,32 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/nanopypes/pipes/basecaller2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="223">
+          <caret line="59" column="54" lean-forward="true" selection-start-line="59" selection-start-column="54" selection-end-line="59" selection-end-column="54" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/nanopypes/compute.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="385">
           <caret line="109" column="42" selection-start-line="109" selection-start-column="42" selection-end-line="109" selection-end-column="42" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nanopypes/run_pipes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="25" column="98" selection-start-line="25" selection-start-column="98" selection-end-line="25" selection-end-column="98" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
           </folding>
         </state>
       </provider>
