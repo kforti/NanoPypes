@@ -20,7 +20,7 @@ class AlbacoreBasecaller(Pipe):
     def __init__(self, compute, albacore):
         print("Starting the parallel Albacore Basecaller...\n", datetime.datetime.now())
         self.compute = compute
-        self.client = compute.connect()
+        self.client = self.compute.connect()
         self.batch_bunch_size = compute.expected_workers
         self.albacore = albacore
 
