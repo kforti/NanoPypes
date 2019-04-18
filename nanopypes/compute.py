@@ -33,10 +33,6 @@ class Cluster:
         logging.basicConfig(format='%(levelname)s:%(message)s', level=logging.DEBUG)
 
     @property
-    def settings(self):
-        return self.__dict__
-
-    @property
     def expected_workers(self):
         return self.workers
 
@@ -87,9 +83,6 @@ class Cluster:
 
     def connect(self):
         """ Establish connection to cluster"""
-        # assert self.workers != None, "You must assign number of workers"
-        # assert self.queue != None, "You must assign a queue to run your workers on"
-
         if self.cluster_type == "LSF":
             logging.info("connecting to LSF cluster")
             self.cluster = LSFCluster(queue=self.queue, #Passed to #BSUB -q option.
