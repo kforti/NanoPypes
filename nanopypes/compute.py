@@ -103,11 +103,11 @@ class Cluster:
             self.cluster = LocalCluster()
             self.workers = self.cluster.workers
 
+        self.client = Client(self.cluster)
+
         # print("scale_value: ", self.scale_value)
         if self.scale_value:
             self.scale(self.scale_value)
-
-        self.client = Client(self.cluster)
 
         return self.client
 
