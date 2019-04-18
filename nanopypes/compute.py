@@ -61,23 +61,23 @@ class Cluster:
         print("scaling cluster....")
         self.cluster.scale(value)
         timer = 0
-        # pending_jobs = self.cluster.pending_jobs
-        # running_jobs = len(self.cluster.scheduler.workers)
-        # running_workers = len(self.cluster.running_jobs)
+        pending_jobs = self.cluster.pending_jobs
+        running_jobs = len(self.cluster.scheduler.workers)
+        running_workers = len(self.cluster.running_jobs)
 
-        # while len(self.cluster.scheduler.workers) < int(value * 0.5):
-        #     if timer == 0 or len(self.cluster.scheduler.workers) != running_jobs or len(self.cluster.running_jobs) != running_workers or pending_jobs != self.cluster.pending_jobs:
-        #         running_jobs = len(self.cluster.scheduler.workers)
-        #         running_workers = len(self.cluster.running_jobs)
-        #         print("Client: ", self.client)
-        #         print("workers: ", len(self.cluster.scheduler.workers))
-        #         print("expected workers: ", value)
-        #         print("pending jobs: ", self.cluster.pending_jobs)
-        #         print("jobs: ", len(self.cluster.running_jobs))
-        #     if timer > self.time_out:
-        #         raise ConnectionError("Could not start all workers before time_out")
-        #     time.sleep(1)
-        #     timer += 1
+        while len(self.cluster.scheduler.workers) < int(value * 0.5):
+            if timer == 0 or len(self.cluster.scheduler.workers) != running_jobs or len(self.cluster.running_jobs) != running_workers or pending_jobs != self.cluster.pending_jobs:
+                running_jobs = len(self.cluster.scheduler.workers)
+                running_workers = len(self.cluster.running_jobs)
+                print("Client: ", self.client)
+                print("workers: ", len(self.cluster.scheduler.workers))
+                print("expected workers: ", value)
+                print("pending jobs: ", self.cluster.pending_jobs)
+                print("jobs: ", len(self.cluster.running_jobs))
+            if timer > self.time_out:
+                raise ConnectionError("Could not start all workers before time_out")
+            time.sleep(1)
+            timer += 1
 
         self.workers = value
 
