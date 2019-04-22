@@ -76,9 +76,9 @@ class AlbacoreBasecaller(Pipe):
 
 
 def basecall(func, command, batch_save_path):
-    try:
-        func(command)
-        return batch_save_path
-    except Exception:
-        print("there is likely a memory problem")
-    return
+    
+    func(command)
+    return batch_save_path
+    # except Exception:
+    #     print("there is likely a memory problem")
+    # return
