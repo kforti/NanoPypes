@@ -9,7 +9,6 @@ from nanopypes.config import ComputeConfig
 import logging
 
 
-
 class Cluster:
     """ Cluster based task manager for running the basecaller in parallel"""
     def __init__(self, config=None, queue=None, project=None, job_time=None, cores=None, mem=None,
@@ -96,7 +95,6 @@ class Cluster:
                                       memory=self.memory,
                                       #interface='ib0',
                                       death_timeout=self.time_out)
-
             print("job script: ", self.cluster.job_script())
             print("\nYour Scheduler's address: ", self.cluster.dashboard_link)
         elif self.cluster_type == "local":
@@ -120,3 +118,10 @@ class Cluster:
     def close(self):
         self.client.close()
         self.cluster.close()
+
+
+if __name__ == '__main__':
+    client = Client()
+    client.scheduler.add_worker()
+    print(client.scheduler_info())
+

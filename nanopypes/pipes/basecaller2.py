@@ -76,7 +76,7 @@ class AlbacoreBasecaller(Pipe):
 
 
 def basecall(func, command, batch_save_path):
-    
+
     func(command)
     return batch_save_path
     # except Exception:

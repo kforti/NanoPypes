@@ -93,6 +93,10 @@ class Albacore:
     @classmethod
     def build_func(self):
         def func(command):
-            process = subprocess.check_output(command)
+            try:
+                process = subprocess.run(command, capture_ouput=True)
+            except subprocess.CalledProcessError as e:
+                print("output.......", e.stdout)
+
             return
         return func
