@@ -94,7 +94,8 @@ class Albacore:
     def build_func(self):
         def func(command):
             try:
-                process = subprocess.run(command, check=True, shell=True)
+                print(command)
+                process = subprocess.run(command, check=True)
             except subprocess.CalledProcessError as e:
                 print("output.......", e.stdout)
 

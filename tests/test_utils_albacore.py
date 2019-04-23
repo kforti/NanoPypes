@@ -254,8 +254,8 @@ class TestBasecallLocal(unittest.TestCase):
         compute_configs = config.compute
         compute = Cluster(compute_configs[0])
         albacore = Albacore(config)
-
-        basecall = AlbacoreBasecaller(albacore=albacore, compute=compute)
+        client = compute.connect()
+        basecall = AlbacoreBasecaller(albacore=albacore, client=client, max_batch_size=compute.workers)
 
         basecall()
 
