@@ -62,7 +62,7 @@ class AlbacoreBasecaller(Pipe):
     def process_batch(self, batch):
         batch_save_path = self.save_path.joinpath(batch.name)
         command = self.albacore.build_basecall_command(input_dir=batch)
-        bc = self.client.submit(basecall, self.function, command, batch_save_path)
+        bc = self.client.submit(basecall_func, command)
         return bc
 
     def check_input_data_status(self):
@@ -81,3 +81,9 @@ def basecall(func, command, batch_save_path):
     # except Exception:
     #     print("there is likely a memory problem")
     # return
+
+
+def basecall_func(command):
+    import subprocess
+    process = subprocess.run(command, check=True)
+    return
