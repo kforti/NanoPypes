@@ -24,6 +24,7 @@ class Cluster:
         self.cores = self.config.cores(cores)
         self.memory = self.config.memory(memory)
         self.mem = self.config.mem(mem)
+        self.umass_mem = '10589'
         self.ncpus = self.config.ncpus(ncpus)
         self.cluster_type = self.config.cluster_type(cluster_type)
         self.workers = self.config.workers(workers)
@@ -90,7 +91,7 @@ class Cluster:
                                       walltime=self.walltime, #Passed to #BSUB -W option.
                                       ncpus=self.ncpus, #Passed to #BSUB -n option.
                                       mem=self.mem, #Passed to #BSUB -M option.
-                                      job_extra=['-R "rusage[{}]"'.format(self.mem)],
+                                      job_extra=['-R "rusage[{}]"'.format(self.umass_mem)],
                                       cores=self.cores,
                                       memory=self.memory,
                                       #interface='ib0',
