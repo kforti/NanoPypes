@@ -25,7 +25,7 @@ class Albacore:
         self._save_path = Path(self._config.save_path(save_path))
         self._output_format = self._config.output_format(output_format)
         self.reads_per_fastq = self._config.reads_per_fastq(reads_per_fastq)
-        self._bc_batches = []
+        self._bc_batches = os.listdir(save_path)
 
     @property
     def bc_batches(self):
@@ -101,3 +101,18 @@ class Albacore:
 
             return
         return func
+
+
+if __name__ == '__main__':
+    _script_template = """
+    %(shebang)s
+    %(job_header)s
+    %(env_header)s
+    %(worker_command)s
+    """.lstrip()
+
+    pieces = {'shebang': 'here is the shebang',
+              'job_header': 'this is job header',
+              'env_header': 'env_header',
+              'worker_command': 'worker'}
+    print(_script_template % pieces)

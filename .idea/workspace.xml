@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="06fba5a6-e119-4d57-aa65-81370b2766cd" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nanopypes/compute.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/compute.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nanopypes/oxnano.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/oxnano.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_utils_albacore.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_utils_albacore.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nanopypes/pipes/basecaller2.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/pipes/basecaller2.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -18,8 +18,8 @@
       <file leaf-file-name="compute.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/nanopypes/compute.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="557">
-              <caret line="125" column="34" selection-start-line="125" selection-start-column="34" selection-end-line="125" selection-end-column="34" />
+            <state relative-caret-position="1225">
+              <caret line="136" lean-forward="true" selection-start-line="136" selection-end-line="136" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
@@ -30,8 +30,8 @@
       <file leaf-file-name="oxnano.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/nanopypes/oxnano.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="561">
-              <caret line="97" column="60" selection-start-line="97" selection-start-column="60" selection-end-line="97" selection-end-column="60" />
+            <state relative-caret-position="211">
+              <caret line="27" column="47" selection-start-line="27" selection-start-column="47" selection-end-line="27" selection-end-column="47" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -60,8 +60,8 @@
       <file leaf-file-name="basecaller2.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/nanopypes/pipes/basecaller2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1162">
-              <caret line="78" selection-start-line="78" selection-end-line="78" />
+            <state relative-caret-position="341">
+              <caret line="77" column="45" selection-start-line="77" selection-start-column="45" selection-end-line="77" selection-end-column="45" />
               <folding>
                 <element signature="e#0#24#0" expanded="true" />
               </folding>
@@ -121,9 +121,9 @@
         <option value="$PROJECT_DIR$/nanopypes/run_pipes.py" />
         <option value="$PROJECT_DIR$/scripts/albacore_basecall.yml" />
         <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch_1.py" />
-        <option value="$PROJECT_DIR$/nanopypes/pipes/basecaller2.py" />
-        <option value="$PROJECT_DIR$/nanopypes/compute.py" />
         <option value="$PROJECT_DIR$/tests/test_utils_albacore.py" />
+        <option value="$PROJECT_DIR$/nanopypes/compute.py" />
+        <option value="$PROJECT_DIR$/nanopypes/pipes/basecaller2.py" />
         <option value="$PROJECT_DIR$/nanopypes/oxnano.py" />
       </list>
     </option>
@@ -169,70 +169,6 @@
             </path>
             <path>
               <item name="pai-nanopypes" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pai-nanopypes" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
-              <item name="test_data" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="pai-nanopypes" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pai-nanopypes" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
-              <item name="test_data" type="462c0819:PsiDirectoryNode" />
-              <item name="basecalled_data" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="pai-nanopypes" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pai-nanopypes" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
-              <item name="test_data" type="462c0819:PsiDirectoryNode" />
-              <item name="basecalled_data" type="462c0819:PsiDirectoryNode" />
-              <item name="results" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="pai-nanopypes" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pai-nanopypes" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
-              <item name="test_data" type="462c0819:PsiDirectoryNode" />
-              <item name="basecalled_data" type="462c0819:PsiDirectoryNode" />
-              <item name="results" type="462c0819:PsiDirectoryNode" />
-              <item name="local_basecall_test" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="pai-nanopypes" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pai-nanopypes" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
-              <item name="test_data" type="462c0819:PsiDirectoryNode" />
-              <item name="minion_sample_raw_data" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="pai-nanopypes" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pai-nanopypes" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
-              <item name="test_data" type="462c0819:PsiDirectoryNode" />
-              <item name="minion_sample_raw_data" type="462c0819:PsiDirectoryNode" />
-              <item name="Experiment_01" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="pai-nanopypes" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pai-nanopypes" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
-              <item name="test_data" type="462c0819:PsiDirectoryNode" />
-              <item name="minion_sample_raw_data" type="462c0819:PsiDirectoryNode" />
-              <item name="Experiment_01" type="462c0819:PsiDirectoryNode" />
-              <item name="sample_02_local" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="pai-nanopypes" type="b2602c69:ProjectViewProjectNode" />
-              <item name="pai-nanopypes" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
-              <item name="test_data" type="462c0819:PsiDirectoryNode" />
-              <item name="minion_sample_raw_data" type="462c0819:PsiDirectoryNode" />
-              <item name="Experiment_01" type="462c0819:PsiDirectoryNode" />
-              <item name="sample_02_local" type="462c0819:PsiDirectoryNode" />
-              <item name="fast5" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="pai-nanopypes" type="b2602c69:ProjectViewProjectNode" />
               <item name="Scratches and Consoles" type="1a2a3e82:ScratchProjectViewPane$MyProjectNode" />
             </path>
           </expand>
@@ -268,7 +204,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.compute">
+  <component name="RunManager" selected="Python.oxnano">
     <configuration name="base" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="nanopypes" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -287,24 +223,6 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="basecaller" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="nanopypes" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/nanopypes/pipes" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/nanopypes/pipes/basecaller.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
     <configuration name="compute" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="nanopypes" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -318,6 +236,24 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/nanopypes/compute.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="oxnano" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="nanopypes" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/nanopypes" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/nanopypes/oxnano.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -360,19 +296,19 @@
       <option name="MODULE_MODE" value="false" />
     </configuration>
     <list>
-      <item itemvalue="Python.basecaller" />
       <item itemvalue="Python.base" />
       <item itemvalue="Python.parallel_rsync" />
       <item itemvalue="Python.scratch_1" />
       <item itemvalue="Python.compute" />
+      <item itemvalue="Python.oxnano" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.oxnano" />
         <item itemvalue="Python.compute" />
         <item itemvalue="Python.scratch_1" />
         <item itemvalue="Python.parallel_rsync" />
         <item itemvalue="Python.base" />
-        <item itemvalue="Python.basecaller" />
       </list>
     </recent_temporary>
   </component>
@@ -391,11 +327,12 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1891" y="23" width="1302" height="821" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.4160812" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17954724" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.21546961" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.21546961" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="7" weight="0.25374857" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -592,16 +529,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/nanopypes/compute.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="557">
-          <caret line="125" column="34" selection-start-line="125" selection-start-column="34" selection-end-line="125" selection-end-column="34" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/scripts/albacore_basecall.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
@@ -619,16 +546,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/nanopypes/pipes/basecaller2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1162">
-          <caret line="78" selection-start-line="78" selection-end-line="78" />
-          <folding>
-            <element signature="e#0#24#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/test_utils_albacore.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="621">
@@ -636,10 +553,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/nanopypes/compute.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1225">
+          <caret line="136" lean-forward="true" selection-start-line="136" selection-end-line="136" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nanopypes/pipes/basecaller2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="341">
+          <caret line="77" column="45" selection-start-line="77" selection-start-column="45" selection-end-line="77" selection-end-column="45" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/nanopypes/oxnano.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="561">
-          <caret line="97" column="60" selection-start-line="97" selection-start-column="60" selection-end-line="97" selection-end-column="60" />
+        <state relative-caret-position="211">
+          <caret line="27" column="47" selection-start-line="27" selection-start-column="47" selection-end-line="27" selection-end-column="47" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
