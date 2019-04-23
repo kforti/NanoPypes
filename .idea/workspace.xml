@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="06fba5a6-e119-4d57-aa65-81370b2766cd" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/nanopypes/compute.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/compute.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nanopypes/pipes/basecaller2.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/pipes/basecaller2.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -13,7 +13,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="compute.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="compute.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/nanopypes/compute.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="152">
@@ -55,11 +55,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="basecaller2.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="basecaller2.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/nanopypes/pipes/basecaller2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="431">
-              <caret line="83" lean-forward="true" selection-start-line="83" selection-end-line="83" />
+            <state relative-caret-position="185">
+              <caret line="47" lean-forward="true" selection-start-line="47" selection-end-line="57" selection-end-column="32" />
               <folding>
                 <element signature="e#0#24#0" expanded="true" />
               </folding>
@@ -121,8 +121,8 @@
         <option value="$PROJECT_DIR$/tests/test_utils_albacore.py" />
         <option value="$PROJECT_DIR$/nanopypes/oxnano.py" />
         <option value="$PROJECT_DIR$/scripts/albacore_basecall.yml" />
-        <option value="$PROJECT_DIR$/nanopypes/pipes/basecaller2.py" />
         <option value="$PROJECT_DIR$/nanopypes/compute.py" />
+        <option value="$PROJECT_DIR$/nanopypes/pipes/basecaller2.py" />
       </list>
     </option>
   </component>
@@ -561,22 +561,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/nanopypes/pipes/basecaller2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="431">
-          <caret line="83" lean-forward="true" selection-start-line="83" selection-end-line="83" />
-          <folding>
-            <element signature="e#0#24#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/nanopypes/compute.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="152">
           <caret line="26" column="30" selection-start-line="26" selection-start-column="30" selection-end-line="26" selection-end-column="30" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nanopypes/pipes/basecaller2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="185">
+          <caret line="47" lean-forward="true" selection-start-line="47" selection-end-line="57" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
           </folding>
         </state>
       </provider>

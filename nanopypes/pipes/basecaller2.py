@@ -46,16 +46,16 @@ class AlbacoreBasecaller(Pipe):
                 if batch_counter == self.batch_bunch_size:
                     break
 
-            # completed = as_completed(self.futures)
-            # for comp in completed:
-            #     try:
-            #         new_future = self.process_batch(next(self.bc_batches))
-            #         completed.add(new_future)
-            #     except StopIteration:
-            #         pass
-            #     completed_batch_path = comp.result()
-            #     file.write(completed_batch_path.name)
-            #     file.write("\n")
+            completed = as_completed(self.futures)
+            for comp in completed:
+                try:
+                    new_future = self.process_batch(next(self.bc_batches))
+                    completed.add(new_future)
+                except StopIteration:
+                    pass
+                completed_batch_path = comp.result()
+                file.write(completed_batch_path.name)
+                file.write("\n")
 
             results = self.client.gather(self.futures)
 
