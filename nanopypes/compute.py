@@ -119,18 +119,3 @@ class Cluster:
         self.client.close()
         self.cluster.close()
 
-
-#!/bin/bash
-
-#BSUB -J dask-worker
-#BSUB -q short
-#BSUB -P /project/umw_athma_pai
-#BSUB -n 2
-#BSUB -R "span[hosts=1]"
-#BSUB -M 10590
-#BSUB -W 04:00
-JOB_ID=${LSB_JOBID%.*}
-
-
-
-/share/pkg/python3/3.5.0/bin/python3 -m distributed.cli.dask_worker tcp://10.192.17.30:44127 --nthreads 1 --nprocs 2 --memory-limit 5.00GB --name dask-worker--${JOB_ID}-- --death-timeout 2000
