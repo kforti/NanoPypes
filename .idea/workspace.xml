@@ -28,8 +28,8 @@
       <file leaf-file-name="oxnano.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/nanopypes/oxnano.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="385">
-              <caret line="84" column="59" lean-forward="true" selection-start-line="84" selection-start-column="59" selection-end-line="84" selection-end-column="59" />
+            <state relative-caret-position="546">
+              <caret line="96" column="73" selection-start-line="96" selection-start-column="73" selection-end-line="96" selection-end-column="73" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -85,8 +85,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1730" />
-    <option name="y" value="42" />
+    <option name="x" value="1717" />
+    <option name="y" value="130" />
     <option name="width" value="1302" />
     <option name="height" value="821" />
   </component>
@@ -515,8 +515,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/nanopypes/oxnano.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="385">
-          <caret line="84" column="59" lean-forward="true" selection-start-line="84" selection-start-column="59" selection-end-line="84" selection-end-column="59" />
+        <state relative-caret-position="546">
+          <caret line="96" column="73" selection-start-line="96" selection-start-column="73" selection-end-line="96" selection-end-column="73" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
