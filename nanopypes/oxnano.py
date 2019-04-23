@@ -25,7 +25,7 @@ class Albacore:
         self._save_path = Path(self._config.save_path(save_path))
         self._output_format = self._config.output_format(output_format)
         self.reads_per_fastq = self._config.reads_per_fastq(reads_per_fastq)
-        self._bc_batches = os.listdir(str(save_path))
+        self._bc_batches = os.listdir(str(self._save_path))
 
     @property
     def bc_batches(self):

@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="06fba5a6-e119-4d57-aa65-81370b2766cd" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/nanopypes/oxnano.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/oxnano.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nanopypes/pipes/basecaller2.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/pipes/basecaller2.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -26,11 +25,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="oxnano.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="oxnano.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/nanopypes/oxnano.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-475">
-              <caret line="27" column="52" selection-start-line="27" selection-start-column="52" selection-end-line="27" selection-end-column="52" />
+            <state relative-caret-position="336">
+              <caret line="25" column="49" selection-start-line="25" selection-start-column="49" selection-end-line="25" selection-end-column="49" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -56,11 +55,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="basecaller2.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="basecaller2.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/nanopypes/pipes/basecaller2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="312">
-              <caret line="48" column="12" selection-start-line="48" selection-start-column="14" selection-end-line="57" selection-end-column="34" />
+            <state relative-caret-position="472">
+              <caret line="48" column="52" selection-start-line="48" selection-start-column="52" selection-end-line="48" selection-end-column="52" />
               <folding>
                 <element signature="e#0#24#0" expanded="true" />
               </folding>
@@ -122,8 +121,8 @@
         <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch_1.py" />
         <option value="$PROJECT_DIR$/tests/test_utils_albacore.py" />
         <option value="$PROJECT_DIR$/nanopypes/compute.py" />
-        <option value="$PROJECT_DIR$/nanopypes/oxnano.py" />
         <option value="$PROJECT_DIR$/nanopypes/pipes/basecaller2.py" />
+        <option value="$PROJECT_DIR$/nanopypes/oxnano.py" />
       </list>
     </option>
   </component>
@@ -562,22 +561,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/nanopypes/oxnano.py">
+    <entry file="file://$PROJECT_DIR$/nanopypes/pipes/basecaller2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-475">
-          <caret line="27" column="52" selection-start-line="27" selection-start-column="52" selection-end-line="27" selection-end-column="52" />
+        <state relative-caret-position="472">
+          <caret line="48" column="52" selection-start-line="48" selection-start-column="52" selection-end-line="48" selection-end-column="52" />
           <folding>
-            <element signature="e#0#9#0" expanded="true" />
+            <element signature="e#0#24#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/nanopypes/pipes/basecaller2.py">
+    <entry file="file://$PROJECT_DIR$/nanopypes/oxnano.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="312">
-          <caret line="48" column="12" selection-start-line="48" selection-start-column="14" selection-end-line="57" selection-end-column="34" />
+        <state relative-caret-position="336">
+          <caret line="25" column="49" selection-start-line="25" selection-start-column="49" selection-end-line="25" selection-end-column="49" />
           <folding>
-            <element signature="e#0#24#0" expanded="true" />
+            <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>
