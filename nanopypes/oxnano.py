@@ -97,17 +97,3 @@ class Albacore:
             return
         return func
 
-
-if __name__ == '__main__':
-    _script_template = """
-    %(shebang)s
-    %(job_header)s
-    %(env_header)s
-    %(worker_command)s
-    """.lstrip()
-
-    pieces = {'shebang': 'here is the shebang',
-              'job_header': 'this is job header',
-              'env_header': 'env_header',
-              'worker_command': 'worker'}
-    print(_script_template % pieces)

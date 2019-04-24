@@ -1,5 +1,6 @@
 import logging
 import time
+import math
 
 from dask_jobqueue import LSFCluster
 from distributed import Client, LocalCluster
@@ -24,7 +25,7 @@ class Cluster:
         self.cores = self.config.cores(cores)
         self.memory = self.config.memory(memory)
         self.mem = self.config.mem(mem)
-        self.umass_mem = 'mem=10589'
+        self.umass_mem = int(math.ceil(self.memory / 1048576))
         self.ncpus = self.config.ncpus(ncpus)
         self.cluster_type = self.config.cluster_type(cluster_type)
         self.workers = self.config.workers(workers)

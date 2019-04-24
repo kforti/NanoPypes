@@ -12,13 +12,13 @@ computes:
     cluster1:
         job_time: 04:00
         mem: 10589934592  #2147483648
-        ncpus: 2
+        ncpus: 5
         project: /project/umw_athma_pai
         queue: short
-        workers: 2
-        cores: 2
+        workers: 5
+        cores: 5
         memory: 10 GB
-        scale_value: 20
+        scale_value: 150
         cluster_type: LSF
 networks:
     network1:

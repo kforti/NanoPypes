@@ -13,11 +13,11 @@ class Pipeline(collections.abc.Callable):
             pipe()
 
 
-class Pipe(ABC):
+class Pipe():
 
-    _requirements = "No requirements have been added to this Pipe"
+    def __init__(self, memory, cpus, ):
+        pass
 
-    @abstractmethod
     def execute(self):
         pass
 
@@ -38,3 +38,9 @@ class Pipe(ABC):
 
     def __call__(self):
         return self.execute()
+
+
+if __name__ == '__main__':
+    c = 1048576
+    d = 10589934592
+    print(d/c)
