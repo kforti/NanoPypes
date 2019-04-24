@@ -92,7 +92,7 @@ class Cluster:
                                       walltime=self.walltime, #Passed to #BSUB -W option.
                                       ncpus=self.ncpus, #Passed to #BSUB -n option.
                                       mem=self.mem, #Passed to #BSUB -M option.
-                                      job_extra=['-R "rusage[{}]"'.format(self.umass_mem)],
+                                      job_extra=['-R "rusage[mem={}]"'.format(self.umass_mem)],
                                       cores=self.cores,
                                       memory=self.memory,
                                       #interface='ib0',
