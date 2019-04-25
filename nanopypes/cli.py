@@ -30,7 +30,7 @@ def get_config_template(save_path, cluster_type, basecaller):
 
 
 @click.command()
-@click.options('-c', '--cluster-name', 'cluster_name', required=True, help="The cluster name in the config file- listed directly under computes.")
+@click.option('-c', '--cluster-name', 'cluster_name', required=True, help="The cluster name in the config file- listed directly under computes.")
 @click.argument('config', required=True, help="Config file is required to build a cluster.")
 def build_cluster(config, cluster_name):
     config = Configuration(config)
