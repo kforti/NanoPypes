@@ -33,9 +33,8 @@ class Configuration:
     def basecall(self):
         return BasecallConfig(self._basecall)
 
-    @property
-    def compute(self):
-        compute = [ComputeConfig(self._compute[compute]) for compute in self._compute.keys()]
+    def get_compute(self, compute_name):
+        compute = ComputeConfig(self._compute[compute_name])
         return compute
 
     @property

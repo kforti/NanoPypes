@@ -7,7 +7,22 @@ import click
 
 from nanopypes.run_pipes import albacore_basecaller as albacore
 from nanopypes.run_pipes import ParallelRsync as prsync
+from nanopypes.config import Configuration
+from nanopypes.compute import Cluster
 
+from distributed import LocalCluster, Client
+
+
+
+@click.command()
+@click.argument('config', required=True)
+def build_cluster(config, cluster_name):
+    config = Configuration(config)
+    compute_config = config.get_compute(cluster_name)
+    compute = Cluster(compute_config)
+    scheduler_address = compute.connect()
+    print(scheduler_address)
+    return scheduler_address
 
 
 @click.command()
@@ -46,14 +61,16 @@ def get_config_template(save_path, cluster_type, basecaller):
 
 
 @click.command()
+@click.option('-n', '--nchannels', 'nchannels', help='The number of parallel rsync channels.', required=True, type=int)
 @click.option('-l', '--local-path', 'local_path', help='The path to the data on your local machine.', required=True, type=str)
 @click.option('-r', '--remote-path', 'remote_path', help='The path to where your data should be saved remotely, must include username', required=True, type=str)
-@click.option('-p', '--password', 'password', help='The basecaller you plan to use. ["albacore", "guppy-cpu", "guppy-gpu"]', required=True, type=str)
-@click.option('-d', '--direction', 'direction', help='Default is set to push- pull not yet implemented', required=False, type=str)
-@click.option('-c', '--client', 'client', help='By default the client is set to local cluster', required=False, type=str)
+@click.option('-p', '--password', 'password', help='HPC password', required=True, type=str)
+@click.option('-d', '--direction', 'direction', help='Use "push" for local to remote. Use "pull" for remote to local. Default is set to push.', required=False, type=str)
 @click.option('-o', '--options', 'rsync_options', help='a string containing the rsync options you would like to use, must include the appropriate flag(s). Default options are -vcr', required=False, type=str)
-def parallel_rsync(local_path, remote_path, password, rsync_options='-vcr', direction='push',  client='local'):
-    prsync(local_path=local_path, remote_path=remote_path, password=password, rsync_options=rsync_options, direction=direction,  client=client)
+def parallel_rsync(nchannels, local_path, remote_path, password, rsync_options='-vcr', direction='push'):
+    cluster = LocalCluster()
+    client = Client(cluster)
+    prsync(nchannels=nchannels, local_path=local_path, remote_path=remote_path, password=password, rsync_options=rsync_options, direction=direction,  client=client)
     return 0
 
 
@@ -64,7 +81,7 @@ def parallel_rsync(local_path, remote_path, password, rsync_options='-vcr', dire
 @click.option('-d', '--direction', 'direction', help='Default is set to push- pull not yet implemented', required=False, type=str)
 @click.option('-c', '--client', 'client', help='By default the client is set to local cluster', required=False, type=str)
 @click.option('-o', '--options', 'rsync_options', help='a string containing the rsync options you would like to use, must include the appropriate flag(s). Default options are -vcr', required=False, type=str)
-def parallel_minimap2(local_path, remote_path, password, rsync_options='-vcr', direction='push',  client='local'):
-    prsync(local_path=local_path, remote_path=remote_path, password=password, rsync_options=rsync_options, direction=direction,  client=client)
+@click.argument('config', required=True)
+def parallel_minimap2(config, input_path, reference, save_path, command):
     return 0
 

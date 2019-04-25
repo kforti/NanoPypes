@@ -41,4 +41,6 @@ def parallel_rsync(local_path, remote_path, password, rsync_options='-vcr', dire
 
     return
 
+def parallel_minimap2():
+
 

@@ -47,7 +47,7 @@ class MiniMap2(Pipe):
             command = ['minimap2', '-ax', 'splice', str(self.reference), str(self.input.joinpath(fastq)), '-o', str(self.save_path.joinpath(samfile))]
             print(command)
         def subp():
-            result = subprocess.Popen(command)
+            result = subprocess.run(command)
             result.wait()
             return
         return subp

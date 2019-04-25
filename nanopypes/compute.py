@@ -103,13 +103,13 @@ class Cluster:
             self.cluster = LocalCluster()
             self.workers = self.cluster.workers
 
-        self.client = Client(self.cluster)
+        # self.client = Client(self.cluster)
 
         # print("scale_value: ", self.scale_value)
         if self.scale_value:
             self.scale(self.scale_value)
 
-        return self.client
+        return self.cluster.scheduler_address
 
     def stop_jobs(self, jobs="all"):
         if jobs == "all":
