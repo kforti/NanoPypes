@@ -86,7 +86,7 @@ def parallel_rsync(nchannels, local_path, remote_path, password, rsync_options='
 @click.option('-d', '--direction', 'direction', help='Default is set to push- pull not yet implemented', required=False, type=str)
 @click.option('-c', '--client', 'client', help='By default the client is set to local cluster', required=False, type=str)
 @click.option('-o', '--options', 'rsync_options', help='a string containing the rsync options you would like to use, must include the appropriate flag(s). Default options are -vcr', required=False, type=str)
-@click.argument('scheduler_address', required=True, help="A scheduler address can be obtained with the build_cluster command.")
+@click.argument('scheduler_address', required=True)
 def parallel_minimap2(scheduler_address, input_path, reference, save_path, command):
     return 0
 
