@@ -70,7 +70,7 @@ class Cluster:
             if timer == 0 or len(self.cluster.scheduler.workers) != running_jobs or len(self.cluster.running_jobs) != running_workers or pending_jobs != self.cluster.pending_jobs:
                 running_jobs = len(self.cluster.scheduler.workers)
                 running_workers = len(self.cluster.running_jobs)
-                print("Client: ", self.client)
+                # print("Client: ", self.client)
                 print("workers: ", len(self.cluster.scheduler.workers))
                 print("expected workers: ", value)
                 print("pending jobs: ", self.cluster.pending_jobs)
@@ -97,8 +97,8 @@ class Cluster:
                                       memory=self.memory,
                                       #interface='ib0',
                                       death_timeout=self.time_out)
-            print("job script: ", self.cluster.job_script())
-            print("\nYour Scheduler's address: ", self.cluster.dashboard_link)
+            # print("job script: ", self.cluster.job_script())
+            print("\nYour Scheduler's address: ", self.cluster.scheduler_address)
         elif self.cluster_type == "local":
             self.cluster = LocalCluster()
             self.workers = self.cluster.workers

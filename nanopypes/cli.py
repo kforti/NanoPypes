@@ -37,7 +37,6 @@ def build_cluster(config, cluster_name):
     compute_config = config.get_compute(cluster_name)
     compute = Cluster(compute_config)
     scheduler_address = compute.connect()
-    print(scheduler_address)
     return scheduler_address
 
 
