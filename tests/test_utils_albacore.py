@@ -16,7 +16,7 @@ from nanopypes.compute import Cluster
 from nanopypes.objects.basecalled import ParallelBaseCalledData
 
 from nanopypes.run_pipes import albacore_basecaller
-from nanopypes.pipes.basecaller2 import AlbacoreBasecaller
+from nanopypes.pipes.basecaller import AlbacoreBasecaller
 
 
 
