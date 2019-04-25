@@ -36,7 +36,7 @@ setup(
     description="Package for rapidly building ONT MinIon sequence analysis pipelines",
     entry_points={
         'console_scripts': [
-            'build_cluster = nanopypes.clie:build_cluster' 
+            'build_cluster = nanopypes.cli:build_cluster' 
             'albacore_basecaller = nanopypes.cli:albacore_basecaller',
             'prsync = nanopypes.cli:parallel_rsync',
             'nanopypes_minimap2 = nanopypes.cli:parallel_minimap2'
