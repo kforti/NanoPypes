@@ -31,7 +31,7 @@ def get_config_template(save_path, cluster_type, basecaller):
 
 @click.command()
 @click.option('-c', '--cluster-name', 'cluster_name', required=True, help="The cluster name in the config file- listed directly under computes.")
-@click.argument('config', required=True, help="Config file is required to build a cluster.")
+@click.argument('config', required=True)
 def build_cluster(config, cluster_name):
     config = Configuration(config)
     compute_config = config.get_compute(cluster_name)
@@ -51,7 +51,7 @@ def build_cluster(config, cluster_name):
 @click.option('-k', '--kit', 'kit', help="The type of ont kit used.", required=False, type=str)
 @click.option('-f', '--flowcell', 'flowcell', help="The type of ont flowcell used.", required=False, type=str)
 @click.option('-o', '--output-format', 'output_format', help="fastq or fast5 output format.", required=False, type=str)
-@click.argument('scheduler_address', required=True, help="A scheduler address can be obtained with the build_cluster command.")
+@click.argument('scheduler_address', required=True)
 def albacore_basecaller(scheduler_address, num_workers, kit, flowcell, input_path, save_path, output_format):
     """Console script for running the albacore parallel basecaller."""
     #run_pipes function albacore_basecaller()
