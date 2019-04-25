@@ -19,6 +19,8 @@ from nanopypes.run_pipes import albacore_basecaller
 from nanopypes.pipes.basecaller import AlbacoreBasecaller
 
 
+from distributed import Client, LocalCluster
+
 
 ########################################################################
 ### Test Albacore                                                    ###
@@ -247,17 +249,30 @@ class TestBasecallLocal(unittest.TestCase):
 
     def test_000_basecall_albacore(self):
         """Build a cluster object with yaml"""
+        flowcell = 'FLO-MIN106'
+        input_path = 'test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass'
+        save_path = 'test_data/basecalled_data/results/local_basecall_test'
+        kit = 'SQK-LSK109'
+        output_format = 'fastq'
 
-        config = "test_configs/local_basecall.yml"
 
-        config = Configuration(config)
-        compute_configs = config.compute
-        compute = Cluster(compute_configs[0])
-        albacore = Albacore(config)
-        client = compute.connect()
-        basecall = AlbacoreBasecaller(albacore=albacore, client=client, max_batch_size=compute.workers)
+        # cluster_name = 'cluster1'
+        # config = "test_configs/local_basecall.yml"
+        # config = Configuration(config)
+        # compute_config = config.get_compute(cluster_name)
+        # compute = Cluster(compute_config)
+        # scheduler_address = compute.connect()
+        cluster = LocalCluster()
+        client = Client(cluster)
 
-        basecall()
+        num_workers = 4
+
+        # albacore = Albacore(input_path=input_path, save_path=save_path, kit=kit, flowcell=flowcell, output_format=output_format)
+        # basecall = AlbacoreBasecaller(albacore=albacore, client=client, expected_workers=num_workers)
+
+        # basecall()
+
+        albacore_basecaller(input_path=input_path, save_path=save_path, kit=kit, flowcell=flowcell, expected_workers=num_workers, output_format=output_format, client=client)
 
     def test_001_basecall_albacore(self):
         config = "test_configs/local_basecall.yml"

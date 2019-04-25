@@ -18,10 +18,10 @@ def batch_generator(batches):
 
 class AlbacoreBasecaller(Pipe):
 
-    def __init__(self, client, albacore, max_batch_size):
+    def __init__(self, client, albacore, expected_workers):
         print("Starting the parallel Albacore Basecaller...\n", datetime.datetime.now())
         self.client = client
-        self.batch_bunch_size = max_batch_size
+        self.batch_bunch_size = expected_workers
         self.albacore = albacore
 
         # basecaller info

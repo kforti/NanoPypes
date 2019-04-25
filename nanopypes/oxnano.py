@@ -18,15 +18,15 @@ class Albacore:
                  output_format=None,
                  reads_per_fastq=1000):
 
-        self._config = config.basecall
-        self.input = Sample(self._config.input_path(input_path))
-        self.flow_cell = self._config.flowcell(flowcell)
-        self.kit = self._config.kit(kit)
-        self._save_path = Path(self._config.save_path(save_path))
+        #self._config = config.basecall
+        self.input = Sample(input_path)#self._config.input_path(input_path))
+        self.flow_cell = flowcell#self._config.flowcell(flowcell)
+        self.kit = kit#self._config.kit(kit)
+        self._save_path = Path(save_path)#self._config.save_path(save_path))
         if self._save_path.exists() == False:
             self._save_path.mkdir()
-        self._output_format = self._config.output_format(output_format)
-        self.reads_per_fastq = self._config.reads_per_fastq(reads_per_fastq)
+        self._output_format = output_format#self._config.output_format(output_format)
+        self.reads_per_fastq = reads_per_fastq#self._config.reads_per_fastq(reads_per_fastq)
         self._bc_batches = os.listdir(str(self._save_path))
 
     @property
@@ -49,13 +49,13 @@ class Albacore:
     def save_path(self):
         return self._save_path
 
-    @property
-    def config(self):
-        return self._config
-
-    @config.setter
-    def config(self, conf):
-        self._config = conf
+    # @property
+    # def config(self):
+    #     return self._config
+    #
+    # @config.setter
+    # def config(self, conf):
+    #     self._config = conf
 
     def all_batches(self):
         batch_pattern = r'(^)[0-9]+($)'
