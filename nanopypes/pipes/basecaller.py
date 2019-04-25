@@ -159,13 +159,16 @@ def collapse_pipeline(pipe_paths, save_path):
 
 
 def collapse_workspace(workspace_paths, save_path):
+    counter = 0
     for workspace in workspace_paths:
         for r, d, f in os.walk(str(workspace)):
             dest_root = r.replace(str(workspace), str(save_path))
             for file in f:
+                file_name = str(counter) + "_" + file
                 src = Path(r).joinpath(file)
-                dest = Path(dest_root).joinpath(file)
+                dest = Path(dest_root).joinpath(file_name)
                 shutil.move(str(src), str(dest))
+                counter += 1
 
 def prep_save_location(save_path):
     save_path = Path(save_path)
@@ -178,3 +181,6 @@ def prep_save_location(save_path):
     if save_path.joinpath("workspace", "calibration_strands").exists() == False:
         save_path.joinpath("workspace", "calibration_strands").mkdir()
 
+# if __name__ == '__main__':
+#     path = Path('/Users/kevinfortier/Desktop/NanoPypes/NanoPypes/pai-nanopypes/tests/test_data/basecalled_data/results/local_basecall_test')
+#     collapse_data(path)

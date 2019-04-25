@@ -1,10 +1,10 @@
 from nanopypes.compute import Cluster
 from nanopypes.oxnano import Albacore
-from nanopypes.pipes.basecaller import AlbacoreBasecaller
+from nanopypes.pipes.basecaller import AlbacoreBasecaller, collapse_data
 from nanopypes.pipes.parallel_rsync import ParallelRsync
 from nanopypes.config import Configuration
 
-from asyncio.futures import CancelledError
+from pathlib import Path
 
 from dask.distributed import LocalCluster, Client
 
@@ -25,7 +25,8 @@ def albacore_basecaller(config, kit, flowcell, input_path, save_path, output_for
 
     basecall = AlbacoreBasecaller(albacore=albacore, client=client, max_batch_size=compute.workers)
     basecall()
-
+    save_path = Path(save_path)
+    collapse_data(save_path)
     compute.close()
 
     return
