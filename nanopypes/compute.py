@@ -14,7 +14,7 @@ class Cluster:
     """ Cluster based task manager for running the basecaller in parallel"""
     def __init__(self, config=None, queue=None, project=None, job_time=None, cores=None, mem=None,
                  ncpus=None, memory=None, workers=None, scale_value=None, cluster_type=None,
-                 time_out=2000, debug=False):
+                 time_out=2000, logging=False):
         if config:
             self.config = config
         else:
@@ -32,7 +32,8 @@ class Cluster:
         self.workers = self.config.workers(workers)
         self.scale_value = self.config.scale_value(scale_value)
         self.time_out = time_out
-        logging.basicConfig(format='%(levelname)s:%(message)s', level=logging.DEBUG)
+        if logging:
+            logging.basicConfig(format='%(levelname)s:%(message)s', level=logging.DEBUG)
 
     @property
     def expected_workers(self):

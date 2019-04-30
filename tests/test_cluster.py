@@ -53,7 +53,7 @@ class TestClusterRemote(unittest.TestCase):
         client = Client(scheduler_address)
         expected_workers = cluster.expected_workers
         timer = 0
-        while expected_workers < cluster.connected_workers:
+        while expected_workers > cluster.connected_workers:
             if timer == 100:
                 raise TimeoutError("All workers did not connect within {}s".format(time_out))
             time.sleep(1)
