@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="06fba5a6-e119-4d57-aa65-81370b2766cd" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/tests/test_albacore.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_albacore.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nanopypes/compute.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/compute.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -13,11 +13,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="compute.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="compute.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/nanopypes/compute.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="348">
-              <caret line="28" column="43" selection-start-line="28" selection-start-column="43" selection-end-line="28" selection-end-column="43" />
+            <state relative-caret-position="333">
+              <caret line="27" column="11" selection-start-line="27" selection-start-column="11" selection-end-line="27" selection-end-column="11" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
@@ -34,7 +34,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test_albacore.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="test_albacore.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/test_albacore.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="366">
@@ -170,12 +170,12 @@
         <option value="$PROJECT_DIR$/nanopypes/config.py" />
         <option value="$PROJECT_DIR$/tests/test_configs/remote_basecall.yml" />
         <option value="$PROJECT_DIR$/tests/test_configs/remote_builds.yml" />
-        <option value="$PROJECT_DIR$/nanopypes/compute.py" />
         <option value="$PROJECT_DIR$/tests/test_cluster.py" />
         <option value="$PROJECT_DIR$/tests/test_utils_albacore.py" />
         <option value="$PROJECT_DIR$/tests/test_configs/local_builds.yml" />
         <option value="$PROJECT_DIR$/nanopypes/pipes/basecaller.py" />
         <option value="$PROJECT_DIR$/tests/test_albacore.py" />
+        <option value="$PROJECT_DIR$/nanopypes/compute.py" />
       </list>
     </option>
   </component>
@@ -578,16 +578,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/nanopypes/compute.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="348">
-          <caret line="28" column="43" selection-start-line="28" selection-start-column="43" selection-end-line="28" selection-end-column="43" />
-          <folding>
-            <element signature="e#0#14#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/test_configs/remote_builds.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -651,6 +641,16 @@
           <caret line="156" column="16" selection-start-line="156" selection-start-column="16" selection-end-line="156" selection-end-column="16" />
           <folding>
             <element signature="e#89#98#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nanopypes/compute.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="333">
+          <caret line="27" column="11" selection-start-line="27" selection-start-column="11" selection-end-line="27" selection-end-column="11" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
           </folding>
         </state>
       </provider>

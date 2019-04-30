@@ -25,7 +25,7 @@ class Cluster:
         self.cores = self.config.cores(cores)
         self.memory = self.config.memory(memory)
         self.mem = self.config.mem(mem)
-        if self.umass_mem:
+        if umass_mem:
             self.umass_mem = str(umass_mem)
         self.ncpus = self.config.ncpus(ncpus)
         self.cluster_type = self.config.cluster_type(cluster_type)
