@@ -48,7 +48,7 @@ class TestClusterRemote(unittest.TestCase):
 
         config = Configuration(config="test_configs/remote_builds.yml")
         compute_config = config.get_compute("cluster1")
-        cluster = Cluster(compute_config, logging=True)
+        cluster = Cluster(compute_config, logs=True)
         scheduler_address = cluster.connect()
         client = Client(scheduler_address)
         expected_workers = cluster.expected_workers

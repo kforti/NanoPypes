@@ -14,7 +14,7 @@ class Cluster:
     """ Cluster based task manager for running the basecaller in parallel"""
     def __init__(self, config=None, queue=None, project=None, job_time=None, cores=None, mem=None,
                  ncpus=None, memory=None, workers=None, scale_value=None, cluster_type=None,
-                 time_out=2000, logging=False):
+                 time_out=2000, logs=False):
         if config:
             self.config = config
         else:
