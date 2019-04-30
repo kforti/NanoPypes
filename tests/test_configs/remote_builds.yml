@@ -8,7 +8,7 @@ basecall:
   worker_threads: 1
   recursive: False
   reads_per_fastq: 1000
-compute:
+computes:
     cluster1:
         job_time: 01:00
         mem: 2048

@@ -34,7 +34,6 @@ class Configuration:
         return BasecallConfig(self._basecall)
 
     def get_compute(self, compute_name):
-        print(self._compute[compute_name])
         compute = ComputeConfig(self._compute[compute_name])
         return compute
 
