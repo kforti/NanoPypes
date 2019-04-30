@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="06fba5a6-e119-4d57-aa65-81370b2766cd" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/nanopypes/config.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/config.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_configs/remote_builds.yml" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_configs/remote_builds.yml" afterDir="false" />
-    </list>
+    <list default="true" id="06fba5a6-e119-4d57-aa65-81370b2766cd" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -74,11 +71,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="config.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="config.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/nanopypes/config.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="244">
-              <caret line="35" column="40" selection-start-line="35" selection-start-column="40" selection-end-line="35" selection-end-column="40" />
+            <state relative-caret-position="454">
+              <caret line="49" column="41" lean-forward="true" selection-start-line="49" selection-start-column="41" selection-end-line="49" selection-end-column="41" />
             </state>
           </provider>
         </entry>
@@ -88,7 +85,7 @@
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
-      <file leaf-file-name="remote_builds.yml" pinned="false" current-in-tab="false">
+      <file leaf-file-name="remote_builds.yml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tests/test_configs/remote_builds.yml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="150">
@@ -168,8 +165,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1577" />
-    <option name="y" value="338" />
+    <option name="x" value="1557" />
+    <option name="y" value="166" />
     <option name="width" value="1755" />
     <option name="height" value="842" />
   </component>
@@ -346,7 +343,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1577" y="338" width="1755" height="842" extended-state="0" />
+    <frame x="1557" y="166" width="1755" height="842" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.7145709" visible="true" weight="0.21337947" />
@@ -600,20 +597,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/test_configs/remote_builds.yml">
+    <entry file="file://$PROJECT_DIR$/nanopypes/config.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="8" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
+        <state relative-caret-position="454">
+          <caret line="49" column="41" lean-forward="true" selection-start-line="49" selection-start-column="41" selection-end-line="49" selection-end-column="41" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/test_configs/remote_basecall.yml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/nanopypes/config.py">
+    <entry file="file://$PROJECT_DIR$/tests/test_configs/remote_builds.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="244">
-          <caret line="35" column="40" selection-start-line="35" selection-start-column="40" selection-end-line="35" selection-end-column="40" />
+        <state relative-caret-position="150">
+          <caret line="10" column="8" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
         </state>
       </provider>
     </entry>
