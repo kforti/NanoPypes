@@ -54,10 +54,3 @@ def parallel_minimap2(input_path, reference, save_path, command, scheduler_addre
     mmap()
 
     return
-
-
-if __name__ == '__main__':
-    cluster = LocalCluster()
-    client = Client(cluster)
-    cluster = client.cluster
-    print(len(cluster.workers))

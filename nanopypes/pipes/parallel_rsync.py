@@ -47,9 +47,8 @@ class ParallelRsync(Pipe):
                 all_futures.append(futures)
                 data_counter = 0
 
-
-
         wait(all_futures)
+
 
 def rsync(data, dest, password, options):
 
@@ -67,10 +66,3 @@ def rsync(data, dest, password, options):
     child.close()
 
     return
-#
-# if __name__ == '__main__':
-#     cluster = LocalCluster()
-#     client = Client(cluster)
-#     pr = ParallelRsync(nchannels=4, local_path='/Users/kevinfortier/Desktop/NanoPypes/NanoPypes/pai-nanopypes/tests/test_data/minion_sample_raw_data/Experiment_01/sample_01_remote/fast5/pass',
-#                        remote_path='kf78w@ghpcc06.umassrc.org:/home/kf78w/test', password='k_Ww!xX?yUmass', client=client)
-#     pr()

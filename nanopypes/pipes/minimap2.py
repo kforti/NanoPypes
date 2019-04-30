@@ -7,12 +7,10 @@ from nanopypes.pipes.base import Pipe
 
 
 class MiniMap2(Pipe):
-    commands = {'genomic': 'minimap2 -ax map-ont ref.fa ont.fq.gz > aln.sam',
-                'splice': 'minimap2 -ax splice ref.fa rna-reads.fa > aln.sam',
-                'rna': 'minimap2 -ax splice -uf -k14 ref.fa reads.fa > aln.sam',
-                'overlap': 'minimap2 -x ava-ont reads.fa reads.fa > overlaps.paf'}
-
-    _requirements = None
+    commands = {'genomic': 'minimap2 -ax map-ont %(ref)s %(read)s > %(output)s',
+                'splice': 'minimap2 -ax splice %(ref)s %(read)s > %(output)s',
+                'rna': 'minimap2 -ax splice -uf -k14 %(ref)s %(read)s > %(output)s',
+                'overlap': 'minimap2 -x ava-ont %(ref)s %(read)s > %(output)s'}
 
     def __init__(self, input_path, reference, client, save_path, command):
         self.client = client
@@ -20,9 +18,10 @@ class MiniMap2(Pipe):
         self.save_path = Path(save_path)
         self.input = Path(input_path)
 
+
         if command not in self.commands.keys():
-            raise KeyError("Command not available. Please select one of the follow\n{}".format(self.commands.keys()))
-        self.command = command
+            raise KeyError("Command not available. Please select one of the following\n{}".format(self.commands.keys()))
+        self.command = self.commands[command]
 
         if self.input.is_dir():
             self.input_type = 'dir'
@@ -34,21 +33,29 @@ class MiniMap2(Pipe):
     def execute(self):
         if self.input_type == 'dir':
             for fastq in os.listdir(str(self.input)):
+                fastq = self.input.joinpath(fastq)
                 mmap = self.create_subprocess(fastq)
                 alignments = self.client.submit(mmap)
                 self.all_alignments.append(alignments)
             self.client.gather(self.all_alignments)
-
+        return
 
     def create_subprocess(self, fastq):
-        samfile = self.save_path.joinpath(fastq.replace('fq.gz', 'sam'))
-        if self.command == 'splice':
-            #command = 'minimap2 -ax splice ' + str(self.reference) + ' ' + str(self.input.joinpath(fastq)) + ' > ' + str(self.save_path.joinpath(samfile))
-            command = ['minimap2', '-ax', 'splice', str(self.reference), str(self.input.joinpath(fastq)), '-o', str(self.save_path.joinpath(samfile))]
-            print(command)
+        fastq_extension = "".join(fastq.suffixes)
+        print(fastq_extension)
+        samfile = self.save_path.joinpath(str(fastq).replace(fastq_extension, '.sam'))
+
+        command_args = {'ref': str(self.reference),
+                        'read': str(fastq),
+                        'output': str(samfile)}
+
+        print(command_args)
+        command = self.command % command_args
+        command = command.split()
+        print(command)
+
         def subp():
-            result = subprocess.run(command)
-            result.wait()
+            result = subprocess.run(command, shell=True)
             return
         return subp
 
