@@ -150,9 +150,11 @@ class TestBasecallLSFCluster(unittest.TestCase):
             'test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass')
         save_path = Path(
             'test_data/basecalled_data/results/local_basecall_test')
-
-        shutil.rmtree(str(save_path))
-        save_path.mkdir()
+        try:
+            shutil.rmtree(str(save_path))
+            save_path.mkdir()
+        except Exception as e:
+            pass
 
     def tearDown(self):
         """Tear down test fixtures, if any."""
@@ -171,7 +173,7 @@ class TestBasecallLSFCluster(unittest.TestCase):
         cluster = Cluster(compute_config, umass_mem=2480, logs=True)
         scheduler_address = cluster.connect()
         client = Client(scheduler_address)
-        
+
         num_workers = cluster.expected_workers
 
         albacore_basecaller(input_path=input_path, save_path=save_path, kit=kit, flowcell=flowcell,
