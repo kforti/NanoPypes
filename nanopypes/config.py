@@ -14,6 +14,7 @@ class Configuration:
         if extension == "yml":
             with open(config, "r") as file:
                 settings = load(file)
+            file.close()
         else:
             raise IOError("Incorrect configuration file type")
         try:

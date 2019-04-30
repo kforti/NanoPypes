@@ -20,11 +20,11 @@ computes:
         memory: 2 GB
         scale_value: 10
         cluster_type: LSF
-networking:
+networks:
     network1:
         compute_name:
         address:
         password:
-pipe:
+pipes:
     name: None
 
