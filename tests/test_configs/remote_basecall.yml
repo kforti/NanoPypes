@@ -11,7 +11,7 @@ basecall:
 compute:
     cluster1:
         job_time: 02:00
-        mem: 2048
+        mem: 2480000000
         ncpus: 10
         project: /project/umw_athma_pai
         queue: short
