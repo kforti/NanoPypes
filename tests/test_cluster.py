@@ -49,7 +49,7 @@ class TestClusterRemote(unittest.TestCase):
         config = Configuration(config="test_configs/remote_builds.yml")
         compute_config = config.get_compute("cluster1")
         cluster = Cluster(compute_config)
-        scheduler_address = self.cluster.connect()
+        scheduler_address = cluster.connect()
         client = Client(scheduler_address)
         expected_workers = cluster.expected_workers
         timer = 0
@@ -60,6 +60,7 @@ class TestClusterRemote(unittest.TestCase):
             timer += 1
 
         self.assertTrue(expected_workers == cluster.connected_workers)
+        client.close()
         return
 
 
