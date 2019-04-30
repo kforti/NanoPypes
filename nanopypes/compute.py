@@ -13,7 +13,7 @@ import logging
 class Cluster:
     """ Cluster based task manager for running the basecaller in parallel"""
     def __init__(self, config=None, queue=None, project=None, job_time=None, cores=None, mem=None,
-                 ncpus=None, memory=None, workers=None, scale_value=None, cluster_type=None,
+                 ncpus=None, memory=None, workers=None, scale_value=None, cluster_type=None, umass_mem=None,
                  time_out=2000, logs=False):
         if config:
             self.config = config
@@ -25,8 +25,8 @@ class Cluster:
         self.cores = self.config.cores(cores)
         self.memory = self.config.memory(memory)
         self.mem = self.config.mem(mem)
-        if self.mem:
-            self.umass_mem = int(math.ceil(self.mem / 1048576))
+        if self.umass_mem:
+            self.umass_mem = str(umass_mem)
         self.ncpus = self.config.ncpus(ncpus)
         self.cluster_type = self.config.cluster_type(cluster_type)
         self.workers = self.config.workers(workers)

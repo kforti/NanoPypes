@@ -16,7 +16,7 @@ from nanopypes.compute import Cluster
 from nanopypes.objects.basecalled import ParallelBaseCalledData
 
 from nanopypes.run_pipes import albacore_basecaller
-from nanopypes.pipes.basecaller import AlbacoreBasecaller
+from nanopypes.pipes.basecaller import AlbacoreBasecaller,collapse_data
 
 
 from distributed import Client, LocalCluster
@@ -25,7 +25,7 @@ from distributed import Client, LocalCluster
 ########################################################################
 ### Test Albacore                                                    ###
 ########################################################################
-class TestAlbacoreLocal(unittest.TestCase):
+class TestAlbacore(unittest.TestCase):
     """Tests for the Albacore class."""
 
     def setUp(self):
@@ -36,20 +36,22 @@ class TestAlbacoreLocal(unittest.TestCase):
 
     def test_000_albacore_commands(self):
         """Test the albacore commands that are generated from passing custom inputs."""
-        config = Configuration("test_configs/local_builds.yml")
-        albacore = Albacore(config=config)
-        retrieved_command = albacore.build_basecall_command('./test_data/1', '0')
+        albacore = Albacore(kit="SQK-LSK109", flowcell="FLO-MIN106", input_path="test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass",
+                            save_path="test_data/basecalled_data/results/local_basecall_test", output_format="fastq")
+        retrieved_command = albacore.build_basecall_command(Path('./test_data/1'))
+        print(retrieved_command)
         expected_command = ["read_fast5_basecaller.py", "--flowcell", "FLO-MIN106",
-                         "--kit", "SQK-LSK109", "--output_format", "fast5",
-                         "--save_path", "test_data/basecalled_data/results/local_basecall_test/0/1",
-                         "--worker_threads", "1", "--input", "./test_data/1", "--barcoding"]
+                         "--kit", "SQK-LSK109", "--output_format", "fastq",
+                         "--save_path", "test_data/basecalled_data/results/local_basecall_test/1",
+                         "--worker_threads", "1", "--input", "test_data/1", "--reads_per_fastq", "1000"]
 
         #print(retrieved_command, "\n", expected_command)
         self.assertTrue(retrieved_command == expected_command)
 
     def test_001_albacore_batches(self):
-        config = Configuration("test_configs/local_builds.yml")
-        albacore = Albacore(config=config)
+        albacore = Albacore(kit="SQK-LSK109", flowcell="FLO-MIN106",
+                            input_path="test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass",
+                            save_path="test_data/basecalled_data/results/local_basecall_test", output_format="fastq")
         expected_batches = [Path('test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/0'),
                             Path('test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/1'),
                             Path('test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/2'),
@@ -71,152 +73,14 @@ class TestAlbacoreLocal(unittest.TestCase):
 
     def test_003_albacore_build_func(self):
         """Test the function that is built from albacore."""
-        config = Configuration("test_configs/local_builds.yml")
-        albacore = Albacore(config=config)
+        albacore = Albacore(kit="SQK-LSK109", flowcell="FLO-MIN106",
+                            input_path="test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass",
+                            save_path="test_data/basecalled_data/results/local_basecall_test", output_format="fastq")
 
         func = albacore.build_func()
         res = func(["echo", "hello"])
         albacore_res = func(["read_fast5_basecaller.py", "--help"])
         print(albacore_res)
-
-
-class TestAlbacoreRemote(unittest.TestCase):
-    """Tests for the Albacore class."""
-
-    def setUp(self):
-        """Set up test fixtures, if any."""
-
-    def tearDown(self):
-        """Tear down test fixtures, if any."""
-
-    def test_000_albacore_commands(self):
-        """Test the albacore commands that are generated from passing custom inputs."""
-        config = Configuration("test_configs/remote_builds.yml")
-        albacore = Albacore(config=config)
-        retrieved_command = albacore.build_basecall_command('./test_data/1', '0')
-        expected_command = ["read_fast5_basecaller.py", "--flowcell", "FLO-MIN106",
-                            "--kit", "SQK-LSK109", "--output_format", "fast5",
-                            "--save_path", "test_data/basecalled_data/results/0/1",
-                            "--worker_threads", "1", "--input", "./test_data/1"]
-        # print(retrieved_command, "\n", expected_command)
-        self.assertTrue(retrieved_command == expected_command)
-
-    # def test_001_albacore_commands(self):
-    #     """Test the albacore commands that are generated from passing yaml input."""
-    #     yaml = "test_configs/local_builds.yml"
-    #     albacore = Albacore(input=yaml)
-    #     command = albacore.build_command('./test_data/1', '0')
-    #     print(command)
-    #     self.assertTrue(
-    #         ["read_fast5_basecaller.py", "--flowcell", "FLO-MIN106", "--kit", "SQK-LSK109", "--output_format", "fast5",
-    #          "--save_path", "./test_data/basecalled_data/results/0/1", "--worker_threads", "1", "--input", "./test_data/1"] == command)
-
-    # def test_002_albacore_commands(self):
-    #     """Test the albacore commands that are generated from passing both yaml and custom input."""
-    #     yaml = "test_configs/local_builds.yml"
-    #     albacore = Albacore(input=yaml, save_path="/project/umw_athma_pai/kevin/data", barcoding=False, output_format="fastq")
-    #     command = albacore.build_command('./test_data/1', '0')
-    #
-    #     self.assertTrue(
-    #         ["read_fast5_basecaller.py", "--flowcell", "FLO-MIN106", "--kit", "SQK-LSK109", "--output_format", "fastq",
-    #          "--save_path", "/project/umw_athma_pai/kevin/data/0/1", "--worker_threads", "1", "--input", "./test_data/1",
-    #          "--reads_per_fastq", "1000"] == command)
-
-    def test_003_albacore_build_func(self):
-        """Test the function that is built from albacore."""
-        config = Configuration("test_configs/remote_builds.yml")
-        albacore = Albacore(config=config)
-
-        func = albacore.build_func()
-        res = func(["echo", "hello"])
-        albacore_res = func(["read_fast5_basecaller.py", "--help"])
-        print(albacore_res)
-
-    # def test_command_line_interface(self):
-    #     """Test the CLI."""
-    #     runner = CliRunner()
-    #     result = runner.invoke(parallel_basecaller)
-    #     # assert result.exit_code == 0
-    #     # assert 'pai-nanopypes.cli.parallel_basecaller' in result.output
-    #     help_result = runner.invoke(parallel_basecaller, ['tests/test_data/umms_cluster_basecall.yml'])
-    #     assert help_result.exit_code == 0
-    #     assert '--help  Show this message and exit.' in help_result.output
-
-
-########################################################################
-### Test Albacore Helper Functions                                                 ###
-########################################################################
-
-def build_basecalled_test_data(num_bins=10, reads_per_bin=100):
-    """Function to build basecalle data"""
-    dir_children = ["configuration.cfg",
-                    "pipeline.log",
-                    "sequencing_summary.txt",
-                    "sequencing_telemetry.js",
-                    "workspace",]
-    names = ["pass", "fail", "calibration_strand"]
-
-    for file in os.listdir("test_data/basecall_files"):
-        shutil.move(("/".join(["test_data/basecall_files", file])), ("/".join(["test_data/basecalled_data", file])))
-
-    workspace = Path("test_data/basecalled_data/workspace")
-
-    if not workspace.exists():
-        workspace.mkdir()
-
-    for name in names:
-        path = workspace.joinpath(name)
-        if not path.exists():
-            path.mkdir()
-
-        for i in range(num_bins):
-            dir_name = str(i)
-            dir_path = path.joinpath(dir_name)
-            if not dir_path.exists():
-                dir_path.mkdir()
-
-            for i in range(reads_per_bin):
-                file_name = str(i)
-                file_path = dir_path.joinpath(file_name)
-                if not file_path.exists():
-                    with open(file_path, "w") as f:
-                        f.write("Some data......")
-
-def parallel_basecall_data(bin, directory, save_path):
-
-    basecall_files = {"config": "test_data/basecall_files/configuration.cfg",
-                    "pipe": "test_data/basecall_files/pipeline.log",
-                    "sum": "test_data/basecall_files/sequencing_summary.txt",
-                    "tel": "test_data/basecall_files/sequencing_telemetry.js",
-                      }
-
-    workspace_dirs = ["pass", "fail", "calibration_strands"]
-    directory = Path(directory)
-    if not Path(save_path).exists():
-        Path(save_path).mkdir()
-    path = Path(save_path).joinpath(bin)
-    if not path.exists():
-        path.mkdir()
-    save_path_contents = [i for i in os.listdir(path)]
-    if save_path_contents == []:
-        for file in basecall_files.keys():
-            shutil.copy(basecall_files[file], path)
-    workspace = path.joinpath("workspace")
-    if not workspace.exists():
-        workspace.mkdir()
-    for name in workspace_dirs:
-        read_type = workspace.joinpath(name)
-        if not read_type.exists():
-            read_type.mkdir()
-        read_type_bin = workspace.joinpath(name, "0")
-        if not read_type_bin.exists():
-            read_type_bin.mkdir()
-
-        for read in os.listdir(directory):
-            read_path = directory.joinpath(read)
-            read_save = workspace.joinpath(name, "0", read)
-            shutil.copy(read_path, read_save)
-
 
 ########################################################################
 ### Test Albacore Basecaller                                          ###
@@ -229,17 +93,9 @@ class TestBasecallLocal(unittest.TestCase):
     @classmethod
     def setUp(self):
         """Set up test fixtures, if any."""
+        data_input_path = Path('/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass')
+        save_path = Path('/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/basecalled_data/results/local_basecall_test')
 
-        pass
-
-        data_input_path = Path('/Users/kevinfortier/Desktop/NanoPypes/NanoPypes/pai-nanopypes/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass')
-        save_path = Path('/Users/kevinfortier/Desktop/NanoPypes/NanoPypes/pai-nanopypes/tests/test_data/basecalled_data/results/local_basecall_test')
-        batches = [data_input_path.joinpath(batch) for batch in os.listdir(str(data_input_path))]
-        for batch in batches:
-            try:
-                shutil.rmtree(str(batch.joinpath('split_data')))
-            except Exception as e:
-                pass
         shutil.rmtree(str(save_path))
         save_path.mkdir()
 
@@ -255,149 +111,94 @@ class TestBasecallLocal(unittest.TestCase):
         kit = 'SQK-LSK109'
         output_format = 'fastq'
 
-
-        # cluster_name = 'cluster1'
-        # config = "test_configs/local_basecall.yml"
-        # config = Configuration(config)
-        # compute_config = config.get_compute(cluster_name)
-        # compute = Cluster(compute_config)
-        # scheduler_address = compute.connect()
         cluster = LocalCluster()
         client = Client(cluster)
 
         num_workers = 4
 
-        # albacore = Albacore(input_path=input_path, save_path=save_path, kit=kit, flowcell=flowcell, output_format=output_format)
-        # basecall = AlbacoreBasecaller(albacore=albacore, client=client, expected_workers=num_workers)
-
-        # basecall()
-
         albacore_basecaller(input_path=input_path, save_path=save_path, kit=kit, flowcell=flowcell, expected_workers=num_workers, output_format=output_format, client=client)
 
-    def test_001_basecall_albacore(self):
-        config = "test_configs/local_basecall.yml"
-
-        config = Configuration(config)
-        compute_configs = config.compute
-        compute = Cluster(compute_configs[0])
-        client = compute.connect()
-        albacore = Albacore(config)
-
-        basecall = AlbacoreBasecaller(albacore=albacore, client=client, num_splits=4,
-                                      batch_bunch_size=5, continue_on=False)
-        basecall.collapse_data()
-    # def test_000_basecall_albacore(self):
-    #     """Build a cluster object with yaml"""
-    #     config = Configuration("test_configs/local_basecall.yml")
-    #     compute_configs = config.compute
-    #     compute = Cluster(compute_configs[0])
-    #     compute.connect()
-    #     albacore = Albacore(config)
-    #     save_path = albacore.save_path
-    #     input_data = albacore.input_path
+    # def test_002_check_basecall(self):
     #     input_reads = []
-    #
-    #     if save_path.exists():
-    #         shutil.rmtree(str(save_path))
-    #     for path, subdirs, files in os.walk(str(input_data)):
+    #     bc_path = 'test_data/basecalled_data/results/local_basecall_test'
+    #     for path, subdirs, files in os.walk('test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass'):
     #         input_reads.extend(files)
     #
-    #     basecaller = AlbacoreBasecall(albacore, compute, data_splits=4)
-    #     basecalled_data = basecaller()
-    #     compute.close()
-
-
-    def test_001_check_basecall(self):
-        input_reads = []
-        bc_path = 'test_data/basecalled_data/results/local_basecall_test'
-        for path, subdirs, files in os.walk('test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass'):
-            input_reads.extend(files)
-
-        basecalled_reads = []
-
-        for path, subdirs, files in os.walk('test_data/basecalled_data/results/local_basecall_test/workspace'):
-            basecalled_reads.extend(files)
-
-        for read in basecalled_reads:
-            self.assertTrue(read in input_reads)
-        for read in input_reads:
-            self.assertTrue(read in basecalled_reads)
-
-        self.assertTrue(check_basecall(bc_path, input_reads))
-
-    def test_002_remove_parallel_data(self):
-        config = Configuration("test_configs/local_basecall.yml")
-        compute_configs = config.compute
-        compute = Cluster(compute_configs[0])
-        compute.connect()
-        albacore = Albacore(config)
-        basecaller = AlbacoreBasecall(albacore, compute, data_splits=4)
-        basecaller.remove_parallel_data()
+    #     basecalled_reads = []
+    #
+    #     for path, subdirs, files in os.walk('test_data/basecalled_data/results/local_basecall_test/workspace'):
+    #         basecalled_reads.extend(files)
+    #
+    #     for read in basecalled_reads:
+    #         self.assertTrue(read in input_reads)
+    #     for read in input_reads:
+    #         self.assertTrue(read in basecalled_reads)
+    #
+    #     self.assertTrue(check_basecall(bc_path, input_reads))
 
     def test_003_continue_basecall(self):
-        config = Configuration("test_configs/local_basecall.yml")
-        compute_configs = config.compute
-        compute = Cluster(compute_configs[0])
-        compute.connect()
-        albacore = Albacore(config,
-                            input='test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass',
-                            continue_on=True,
-                            save_path='test_data/basecalled_data/results/continue_basecall_local')
+        pass
 
-        basecaller = AlbacoreBasecall(albacore, compute, data_splits=4)
-        basecalled_data = basecaller()
-        compute.close()
-
-class TestBasecallRemote(unittest.TestCase):
-    """Tests for the Albacore class."""
+class TestBasecallLSFCluster(unittest.TestCase):
+    """Test basecaller on lsf cluster"""
 
     @classmethod
     def setUp(self):
         """Set up test fixtures, if any."""
-        pass
+
+        data_input_path = Path(
+            'test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass')
+        save_path = Path(
+            'test_data/basecalled_data/results/local_basecall_test')
+
+        shutil.rmtree(str(save_path))
+        save_path.mkdir()
 
     def tearDown(self):
         """Tear down test fixtures, if any."""
         pass
 
-
     def test_000_basecall_albacore(self):
         """Build a cluster object with yaml"""
-        config = Configuration("test_configs/remote_basecall.yml")
-        compute_configs = config.compute
-        compute = Cluster(compute_configs[0])
-        compute.connect()
-        albacore = Albacore(config)
-        save_path = albacore.save_path
-        input_data = albacore.input_path
-        input_reads = []
+        flowcell = 'FLO-MIN106'
+        input_path = 'test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass'
+        save_path = 'test_data/basecalled_data/results/local_basecall_test'
+        kit = 'SQK-LSK109'
+        output_format = 'fastq'
 
-        shutil.rmtree(str(save_path))
-        for path, subdirs, files in os.walk(str(input_data)):
-            input_reads.extend(files)
+        config = Configuration(config="test_configs/remote_builds.yml")
+        compute_config = config.get_compute("cluster1")
+        cluster = Cluster(compute_config, umass_mem=2480, logs=True)
+        scheduler_address = cluster.connect()
+        client = Client(scheduler_address)
+        
+        num_workers = cluster.expected_workers
 
-        basecaller = AlbacoreBasecall(albacore, compute, data_splits=100)
-        basecalled_data = basecaller()
-        compute.close()
+        albacore_basecaller(input_path=input_path, save_path=save_path, kit=kit, flowcell=flowcell,
+                            expected_workers=num_workers, output_format=output_format, client=client)
 
-        # self.assertTrue(check_basecall(basecalled_data, input_reads))
+    # def test_002_check_basecall(self):
+    #     input_reads = []
+    #     bc_path = 'test_data/basecalled_data/results/local_basecall_test'
+    #     for path, subdirs, files in os.walk(
+    #         'test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass'):
+    #         input_reads.extend(files)
+    #
+    #     basecalled_reads = []
+    #
+    #     for path, subdirs, files in os.walk('test_data/basecalled_data/results/local_basecall_test/workspace'):
+    #         basecalled_reads.extend(files)
+    #
+    #     for read in basecalled_reads:
+    #         self.assertTrue(read in input_reads)
+    #     for read in input_reads:
+    #         self.assertTrue(read in basecalled_reads)
+    #
+    #     self.assertTrue(check_basecall(bc_path, input_reads))
 
-    def test_001_check_basecall(self):
-        input_reads = []
-        bc_path = 'test_data/basecalled_data/results/local_basecall_test'
-        for path, subdirs, files in os.walk('test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass'):
-            input_reads.extend(files)
+    def test_003_continue_basecall(self):
+        pass
 
-        self.assertTrue(check_basecall(bc_path, input_reads))
-
-    def test_002_remove_parallel_data(self):
-        config = Configuration("test_configs/remote_basecall.yml")
-        compute_configs = config.compute
-        compute = Cluster(compute_configs[0])
-        compute.connect()
-        albacore = Albacore(config)
-        basecaller = AlbacoreBasecall(albacore, compute, data_splits=100)
-        basecaller.remove_parallel_data()
 
 ########################################################################
 ### Helper Functions                                                 ###
@@ -578,5 +379,4 @@ if __name__ == '__main__':
     config_combined = "test_data/basecall_files/configurations/config_17.cfg"
     for config in configs:
         check_configuration_cfg(config, config_combined)
-
 

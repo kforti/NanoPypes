@@ -113,6 +113,11 @@ def collapse_data(save_path):
     collapse_seq_telemetry(seq_tel_paths, save_path.joinpath("sequencing_telemetry.js"))
     collapse_workspace(workspace_paths, save_path.joinpath("workspace"))
 
+    for batch in batches:
+        if re.match(batch_pattern, batch) == None:
+            continue
+        shutil.rmtree(str(save_path.joinpath(batch)))
+
 
 def collapse_config(config_paths, save_path):
     config_data = []
@@ -181,6 +186,4 @@ def prep_save_location(save_path):
     if save_path.joinpath("workspace", "calibration_strands").exists() == False:
         save_path.joinpath("workspace", "calibration_strands").mkdir()
 
-# if __name__ == '__main__':
-#     path = Path('/Users/kevinfortier/Desktop/NanoPypes/NanoPypes/pai-nanopypes/tests/test_data/basecalled_data/results/local_basecall_test')
-#     collapse_data(path)
+
