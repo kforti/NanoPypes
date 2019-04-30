@@ -4,7 +4,7 @@ basecall:
   flowcell: FLO-MIN106
   kit: SQK-LSK109
   barcoding: False
-  output_format: fast5
+  output_format: fastq
   worker_threads: 1
   recursive: False
   reads_per_fastq: 1000
@@ -12,13 +12,13 @@ compute:
     cluster1:
         job_time: 01:00
         mem: 2048
-        ncpus: 10
+        ncpus: 2
         project: /project/umw_athma_pai
         queue: short
-        workers: 10
-        cores: 10
+        workers: 2
+        cores: 2
         memory: 2 GB
-        scale_value: 20
+        scale_value: 10
         cluster_type: LSF
 networking:
     network1:

@@ -46,7 +46,7 @@ class TestClusterRemote(unittest.TestCase):
         """Build a cluster object with yaml"""
         time_out = 100
 
-        config = Configuration(config="test_configs/remote_basecall.yml")
+        config = Configuration(config="test_configs/remote_builds.yml")
         compute_config = config.get_compute("cluster1")
         cluster = Cluster(compute_config)
         scheduler_address = self.cluster.connect()
