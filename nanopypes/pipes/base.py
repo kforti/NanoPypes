@@ -15,7 +15,7 @@ class Pipeline(collections.abc.Callable):
 
 class Pipe():
 
-    def __init__(self, memory, cpus, ):
+    def __init__(self, memory, cpus):
         pass
 
     def execute(self):
