@@ -3,6 +3,7 @@ from nanopypes.pipes.base import Pipe
 from pathlib import Path
 import subprocess
 import os
+import logging
 
 from distributed import wait
 
@@ -83,6 +84,7 @@ class VariantCalling(Pipe):
 
 def run_subprocess(command, dependencies=None):
     process = subprocess.run(command, shell=True)
+    logging.info(("Running command %s" % command), level=logging.DEBUG)
     return process.stdout, process.stderr
 
     #return command

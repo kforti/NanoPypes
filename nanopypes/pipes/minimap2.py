@@ -1,6 +1,7 @@
 import os
 from pathlib import Path
 import subprocess
+import logging
 
 from nanopypes.pipes.base import Pipe
 
@@ -54,6 +55,7 @@ class MiniMap2(Pipe):
         #print(command)
 
         def subp():
+            logging.info(("Running command %s" % command), level=logging.DEBUG)
             result = subprocess.run(command, shell=True)
             return
         return subp
