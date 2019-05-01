@@ -18,7 +18,6 @@ class MiniMap2(Pipe):
         self.save_path = Path(save_path)
         self.input = Path(input_path)
 
-
         if command not in self.commands.keys():
             raise KeyError("Command not available. Please select one of the following\n{}".format(self.commands.keys()))
         self.command = self.commands[command]
@@ -42,20 +41,19 @@ class MiniMap2(Pipe):
 
     def create_subprocess(self, fastq):
         fastq_extension = "".join(fastq.suffixes)
-        print(fastq_extension)
+        #print(fastq_extension)
         samfile = self.save_path.joinpath(str(fastq).replace(fastq_extension, '.sam'))
 
         command_args = {'ref': str(self.reference),
                         'read': str(fastq),
                         'output': str(samfile)}
 
-        print(command_args)
+        #print(command_args)
         command = self.command % command_args
         command = command.split()
-        print(command)
+        #print(command)
 
         def subp():
             result = subprocess.run(command, shell=True)
             return
         return subp
-
