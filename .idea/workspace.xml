@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="06fba5a6-e119-4d57-aa65-81370b2766cd" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nanopypes/pipes/variant_calling.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/pipes/variant_calling.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_minimap2.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_minimap2.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -29,17 +29,17 @@
       <file leaf-file-name="minimap2.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/nanopypes/pipes/minimap2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="130">
+            <state relative-caret-position="402">
               <caret line="39" column="14" selection-start-line="39" selection-start-column="14" selection-end-line="39" selection-end-column="14" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test_minimap2.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="test_minimap2.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tests/test_minimap2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret selection-end-line="32" />
+            <state relative-caret-position="349">
+              <caret line="38" column="24" selection-start-line="38" selection-start-column="24" selection-end-line="38" selection-end-column="24" />
               <folding>
                 <element signature="e#89#98#0" expanded="true" />
               </folding>
@@ -47,11 +47,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="variant_calling.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="variant_calling.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/nanopypes/pipes/variant_calling.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="91" column="5" selection-start-line="91" selection-start-column="5" selection-end-line="91" selection-end-column="5" />
+            <state relative-caret-position="369">
+              <caret line="87" column="19" lean-forward="true" selection-start-line="87" selection-start-column="19" selection-end-line="87" selection-end-column="19" />
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
               </folding>
@@ -75,7 +75,7 @@
         <entry file="file://$PROJECT_DIR$/tests/test_cluster.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="207">
-              <caret line="49" column="19" selection-start-line="48" selection-start-column="8" selection-end-line="52" selection-end-column="42" />
+              <caret line="49" column="35" lean-forward="true" selection-start-line="48" selection-start-column="8" selection-end-line="52" selection-end-column="42" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -154,11 +154,11 @@
         <option value="$PROJECT_DIR$/nanopypes/pipes/basecaller.py" />
         <option value="$PROJECT_DIR$/tests/test_albacore.py" />
         <option value="$PROJECT_DIR$/nanopypes/compute.py" />
-        <option value="$PROJECT_DIR$/tests/test_minimap2.py" />
         <option value="$PROJECT_DIR$/env/.env" />
         <option value="$PROJECT_DIR$/nanopypes/pipes/minimap2.py" />
         <option value="$PROJECT_DIR$/tests/test_variant_calling.py" />
         <option value="$PROJECT_DIR$/nanopypes/pipes/variant_calling.py" />
+        <option value="$PROJECT_DIR$/tests/test_minimap2.py" />
       </list>
     </option>
   </component>
@@ -193,6 +193,11 @@
             <path>
               <item name="NanoPypes" type="b2602c69:ProjectViewProjectNode" />
               <item name="NanoPypes" type="462c0819:PsiDirectoryNode" />
+              <item name="scripts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="NanoPypes" type="b2602c69:ProjectViewProjectNode" />
+              <item name="NanoPypes" type="462c0819:PsiDirectoryNode" />
               <item name="tests" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -207,14 +212,6 @@
               <item name="tests" type="462c0819:PsiDirectoryNode" />
               <item name="test_data" type="462c0819:PsiDirectoryNode" />
               <item name="minimap" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="NanoPypes" type="b2602c69:ProjectViewProjectNode" />
-              <item name="NanoPypes" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
-              <item name="test_data" type="462c0819:PsiDirectoryNode" />
-              <item name="minimap" type="462c0819:PsiDirectoryNode" />
-              <item name="references" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -374,13 +371,13 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1840" y="27" width="1440" height="832" extended-state="0" />
+    <frame x="1800" y="133" width="1440" height="832" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.7145709" visible="true" weight="0.26074702" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.7145709" visible="true" weight="0.26074702" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.2707483" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.2707483" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="7" weight="0.22721088" />
       <window_info id="Structure" order="1" sideWeight="0.28542915" side_tool="true" weight="0.24625145" />
@@ -449,9 +446,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/nanopypes/objects/custom.py" />
     <entry file="file://$PROJECT_DIR$/scripts/rsync_parallel.py" />
-    <entry file="file://$PROJECT_DIR$/scripts/minimap.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/scripts/albacore_basecall.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -595,6 +589,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
           <caret line="27" column="11" selection-start-line="27" selection-start-column="11" selection-end-line="27" selection-end-column="11" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -627,30 +624,37 @@
     <entry file="file://$PROJECT_DIR$/tests/test_data/minimap/sam_files/run20141112_PfCRT_2-2.sam">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/test_minimap2.py">
+    <entry file="file://$PROJECT_DIR$/scripts/minimap.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-line="32" />
-          <folding>
-            <element signature="e#89#98#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="165">
+          <caret line="14" column="6" lean-forward="true" selection-start-line="14" selection-start-column="4" selection-end-line="19" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nanopypes/pipes/minimap2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="402">
+          <caret line="39" column="14" selection-start-line="39" selection-start-column="14" selection-end-line="39" selection-end-column="14" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/test_cluster.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="207">
-          <caret line="49" column="19" selection-start-line="48" selection-start-column="8" selection-end-line="52" selection-end-column="42" />
+          <caret line="49" column="35" lean-forward="true" selection-start-line="48" selection-start-column="8" selection-end-line="52" selection-end-column="42" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/nanopypes/pipes/minimap2.py">
+    <entry file="file://$PROJECT_DIR$/nanopypes/pipes/variant_calling.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="39" column="14" selection-start-line="39" selection-start-column="14" selection-end-line="39" selection-end-column="14" />
+        <state relative-caret-position="369">
+          <caret line="87" column="19" lean-forward="true" selection-start-line="87" selection-start-column="19" selection-end-line="87" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#37#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -664,12 +668,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/nanopypes/pipes/variant_calling.py">
+    <entry file="file://$PROJECT_DIR$/tests/test_minimap2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="91" column="5" selection-start-line="91" selection-start-column="5" selection-end-line="91" selection-end-column="5" />
+        <state relative-caret-position="349">
+          <caret line="38" column="24" selection-start-line="38" selection-start-column="24" selection-end-line="38" selection-end-column="24" />
           <folding>
-            <element signature="e#0#37#0" expanded="true" />
+            <element signature="e#89#98#0" expanded="true" />
           </folding>
         </state>
       </provider>

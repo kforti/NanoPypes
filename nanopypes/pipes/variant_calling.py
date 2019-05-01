@@ -79,11 +79,7 @@ class VariantCalling(Pipe):
             self.futures.append(dependencies)
 
         wait(self.futures)
-        for f in self.futures:
-            for i in f:
-                print(i.result())
-        return
-
+        print(os.listdir(str(self.save_path)))
 
 def run_subprocess(command, dependencies=None):
     process = subprocess.run(command, shell=True)
@@ -91,10 +87,3 @@ def run_subprocess(command, dependencies=None):
 
     #return command
 
-if __name__ == '__main__':
-    from distributed import LocalCluster, Client
-    cluster = LocalCluster()
-    client = Client(cluster)
-    v = VariantCalling(input_path='../../tests/test_data/minimap/sam_files', reference='../../tests/test_data/minimap/references/Plasmodium_falciparum_3D7.fasta',
-                       client=client, save_path='../../tests/test_data/minimap/variant_calling_output', input_type='sam')
-    v()
