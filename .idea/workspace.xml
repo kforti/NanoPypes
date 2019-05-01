@@ -2,30 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="06fba5a6-e119-4d57-aa65-81370b2766cd" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/nanopypes/pipes/variant_calling.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/test_data/minimap/R7.3_fastq/run20141112_PfCRT_2-2.fq.gz" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/test_data/minimap/R7.3_fastq/run20141128_PfCRT_5-6.fq.gz" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/test_data/minimap/R7.3_fastq/run20141202_PfCRT_5-3.fq.gz" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/test_data/minimap/R7.3_fastq/run20141205_PfCRT_5-39.fq.gz" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/test_data/minimap/R7.3_fastq/run20141208_PfCRT_5-41.fq.gz" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/test_data/minimap/R7.3_fastq/run20141224_PfCRT_3D7.fq.gz" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/test_data/minimap/R7.3_fastq/run20141224_PfCRT_K1.fq.gz" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/test_data/minimap/R7.3_fastq/run20150105_PfCRT_Dd2.fq.gz" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/test_data/minimap/R7.3_fastq/run20150106_PfCRT_2-5.fq.gz" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/test_data/minimap/R7.3_fastq/run20150120_PfCRT_5-43.fq.gz" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/test_data/minimap/references/Plasmodium_falciparum_3D7.fasta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/test_data/minimap/sam_files/run20141112_PfCRT_2-2.sam" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/test_data/minimap/sam_files/run20141128_PfCRT_5-6.sam" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/test_data/minimap/sam_files/run20141202_PfCRT_5-3.sam" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/test_data/minimap/sam_files/run20141205_PfCRT_5-39.sam" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/test_data/minimap/sam_files/run20141208_PfCRT_5-41.sam" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/test_data/minimap/sam_files/run20141224_PfCRT_3D7.sam" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/test_data/minimap/sam_files/run20141224_PfCRT_K1.sam" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/test_data/minimap/sam_files/run20150105_PfCRT_Dd2.sam" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/test_minimap2.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/test_variant_calling.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nanopypes/pipes/minimap2.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/pipes/minimap2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nanopypes/pipes/variant_calling.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/pipes/variant_calling.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -69,11 +47,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="variant_calling.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="variant_calling.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/nanopypes/pipes/variant_calling.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="705">
-              <caret line="93" column="4" selection-start-line="93" selection-start-column="4" selection-end-line="94" selection-end-column="41" />
+            <state relative-caret-position="390">
+              <caret line="91" column="5" selection-start-line="91" selection-start-column="5" selection-end-line="91" selection-end-column="5" />
               <folding>
                 <element signature="e#0#37#0" expanded="true" />
               </folding>
@@ -81,11 +59,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test_variant_calling.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="test_variant_calling.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/test_variant_calling.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="439">
-              <caret line="43" column="14" selection-start-line="43" selection-start-column="14" selection-end-line="43" selection-end-column="14" />
+            <state relative-caret-position="310">
+              <caret line="36" column="23" selection-start-line="36" selection-start-column="23" selection-end-line="36" selection-end-column="23" />
               <folding>
                 <element signature="e#89#98#0" expanded="true" />
               </folding>
@@ -179,14 +157,14 @@
         <option value="$PROJECT_DIR$/tests/test_minimap2.py" />
         <option value="$PROJECT_DIR$/env/.env" />
         <option value="$PROJECT_DIR$/nanopypes/pipes/minimap2.py" />
-        <option value="$PROJECT_DIR$/nanopypes/pipes/variant_calling.py" />
         <option value="$PROJECT_DIR$/tests/test_variant_calling.py" />
+        <option value="$PROJECT_DIR$/nanopypes/pipes/variant_calling.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1647" />
-    <option name="y" value="23" />
+    <option name="x" value="1800" />
+    <option name="y" value="133" />
     <option name="width" value="1440" />
     <option name="height" value="832" />
   </component>
@@ -396,13 +374,13 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1647" y="23" width="1440" height="832" extended-state="0" />
+    <frame x="1840" y="27" width="1440" height="832" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.7145709" visible="true" weight="0.26074702" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.7145709" visible="true" weight="0.26074702" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.22857143" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.2707483" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="7" weight="0.22721088" />
       <window_info id="Structure" order="1" sideWeight="0.28542915" side_tool="true" weight="0.24625145" />
@@ -676,22 +654,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/nanopypes/pipes/variant_calling.py">
+    <entry file="file://$PROJECT_DIR$/tests/test_variant_calling.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="705">
-          <caret line="93" column="4" selection-start-line="93" selection-start-column="4" selection-end-line="94" selection-end-column="41" />
+        <state relative-caret-position="310">
+          <caret line="36" column="23" selection-start-line="36" selection-start-column="23" selection-end-line="36" selection-end-column="23" />
           <folding>
-            <element signature="e#0#37#0" expanded="true" />
+            <element signature="e#89#98#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/test_variant_calling.py">
+    <entry file="file://$PROJECT_DIR$/nanopypes/pipes/variant_calling.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="439">
-          <caret line="43" column="14" selection-start-line="43" selection-start-column="14" selection-end-line="43" selection-end-column="14" />
+        <state relative-caret-position="390">
+          <caret line="91" column="5" selection-start-line="91" selection-start-column="5" selection-end-line="91" selection-end-column="5" />
           <folding>
-            <element signature="e#89#98#0" expanded="true" />
+            <element signature="e#0#37#0" expanded="true" />
           </folding>
         </state>
       </provider>

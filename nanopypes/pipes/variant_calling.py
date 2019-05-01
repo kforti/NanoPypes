@@ -28,11 +28,6 @@ class VariantCalling(Pipe):
         self.input = Path(input_path)
         self.input_type = input_type
 
-        if self.input.is_dir():
-            self.input_type = 'dir'
-        elif self.input.is_file():
-            self.input_type = 'file'
-
         self.futures = []
 
     def execute(self):
