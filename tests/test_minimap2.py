@@ -24,6 +24,8 @@ class TestMinimap2PipeRemote(unittest.TestCase):
 
     def setUp(self):
         """Set up test fixtures, if any."""
+        shutil.rmtree('test_data/minimap/minimap_output')
+        os.mkdir('test_data/minimap/minimap_output')
 
     def tearDown(self):
         """Tear down test fixtures, if any."""
@@ -50,6 +52,8 @@ class TestMinimap2PipeLocal(unittest.TestCase):
 
     def setUp(self):
         """Set up test fixtures, if any."""
+        shutil.rmtree('test_data/minimap/minimap_output')
+        os.mkdir('test_data/minimap/minimap_output')
 
     def tearDown(self):
         """Tear down test fixtures, if any."""
