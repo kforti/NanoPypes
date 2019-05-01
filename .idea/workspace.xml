@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="06fba5a6-e119-4d57-aa65-81370b2766cd" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/nanopypes/pipes/minimap2.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/pipes/minimap2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_minimap2.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_minimap2.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -41,8 +40,8 @@
       <file leaf-file-name="minimap2.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/nanopypes/pipes/minimap2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="427">
-              <caret line="61" column="19" lean-forward="true" selection-start-line="61" selection-start-column="19" selection-end-line="61" selection-end-column="19" />
+            <state relative-caret-position="302">
+              <caret line="42" column="39" lean-forward="true" selection-start-line="42" selection-start-column="39" selection-end-line="42" selection-end-column="39" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -62,7 +61,7 @@
       <file leaf-file-name="test_minimap2.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/test_minimap2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
+            <state relative-caret-position="696">
               <caret line="57" column="67" lean-forward="true" selection-start-line="57" selection-start-column="67" selection-end-line="57" selection-end-column="67" />
               <folding>
                 <element signature="e#89#98#0" expanded="true" />
@@ -243,6 +242,14 @@
               <item name="test_data" type="462c0819:PsiDirectoryNode" />
               <item name="minimap" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="NanoPypes" type="b2602c69:ProjectViewProjectNode" />
+              <item name="NanoPypes" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
+              <item name="test_data" type="462c0819:PsiDirectoryNode" />
+              <item name="minimap" type="462c0819:PsiDirectoryNode" />
+              <item name="R7.3_fastq" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -404,10 +411,10 @@
     <frame x="1765" y="128" width="1440" height="832" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.7145709" visible="true" weight="0.26074702" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.7145709" visible="true" weight="0.26074702" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.2707483" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.2707483" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Python Console" order="7" weight="0.22721088" />
       <window_info id="Structure" order="1" sideWeight="0.28542915" side_tool="true" weight="0.24625145" />
@@ -693,7 +700,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/test_minimap2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
+        <state relative-caret-position="696">
           <caret line="57" column="67" lean-forward="true" selection-start-line="57" selection-start-column="67" selection-end-line="57" selection-end-column="67" />
           <folding>
             <element signature="e#89#98#0" expanded="true" />
@@ -703,8 +710,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/nanopypes/pipes/minimap2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="427">
-          <caret line="61" column="19" lean-forward="true" selection-start-line="61" selection-start-column="19" selection-end-line="61" selection-end-column="19" />
+        <state relative-caret-position="302">
+          <caret line="42" column="39" lean-forward="true" selection-start-line="42" selection-start-column="39" selection-end-line="42" selection-end-column="39" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>

@@ -8,10 +8,10 @@ from nanopypes.pipes.base import Pipe
 
 
 class MiniMap2(Pipe):
-    commands = {'genomic': 'minimap2 -ax map-ont %(ref)s %(read)s > %(output)s',
-                'splice': 'minimap2 -ax splice %(ref)s %(read)s > %(output)s',
-                'rna': 'minimap2 -ax splice -uf -k14 %(ref)s %(read)s > %(output)s',
-                'overlap': 'minimap2 -x ava-ont %(ref)s %(read)s > %(output)s'}
+    commands = {'genomic': 'minimap2 -ax map-ont %(ref)s %(read)s -o %(output)s',
+                'splice': 'minimap2 -ax splice %(ref)s %(read)s -o %(output)s',
+                'rna': 'minimap2 -ax splice -uf -k14 %(ref)s %(read)s -o %(output)s',
+                'overlap': 'minimap2 -x ava-ont %(ref)s %(read)s -o %(output)s'}
 
     def __init__(self, input_path, reference, client, save_path, command):
         self.client = client
@@ -43,7 +43,7 @@ class MiniMap2(Pipe):
     def create_subprocess(self, fastq):
         fastq_extension = "".join(fastq.suffixes)
         #print(fastq_extension)
-        samfile = self.save_path.joinpath(str(fastq).replace(fastq_extension, '.sam'))
+        samfile = self.save_path.joinpath(fastq.name.replace(fastq_extension, '.sam'))
 
         command_args = {'ref': str(self.reference),
                         'read': str(fastq),
