@@ -37,7 +37,8 @@ class MiniMap2(Pipe):
                 mmap = self.create_subprocess(fastq)
                 alignments = self.client.submit(mmap)
                 self.all_alignments.append(alignments)
-            self.client.gather(self.all_alignments)
+            results = self.client.gather(self.all_alignments)
+            print(results)
         return
 
     def create_subprocess(self, fastq):
@@ -58,5 +59,5 @@ class MiniMap2(Pipe):
             logging.info(("Running command %s" % command), level=logging.DEBUG)
             print(command)
             result = subprocess.run(command, shell=True)
-            return
+            return command
         return subp
