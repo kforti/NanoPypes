@@ -57,6 +57,6 @@ class MiniMap2(Pipe):
         def subp():
             logging.info(("Running command %s" % command), level=logging.DEBUG)
             print(command)
-            # result = subprocess.run(command, shell=True)
+            result = subprocess.run(command, shell=True)
             return
         return subp
