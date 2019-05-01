@@ -9,7 +9,7 @@ from nanopypes.pipes.base import Pipe
 
 class MiniMap2(Pipe):
     commands = {'genomic': 'minimap2 -ax map-ont %(ref)s %(read)s -o %(output)s',
-                'splice': 'minimap2 -ax splice %(ref)s %(read)s -o %(output)s',
+                'splice': 'minimap2 -ax splice %(ref)s %(read)s > %(output)s',
                 'rna': 'minimap2 -ax splice -uf -k14 %(ref)s %(read)s -o %(output)s',
                 'overlap': 'minimap2 -x ava-ont %(ref)s %(read)s -o %(output)s'}
 
