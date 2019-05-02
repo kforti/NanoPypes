@@ -46,29 +46,18 @@ Parallel basecalling with ONT's Albacore- command line
 
 albacore_basecaller options:
 
--n --cluster-name   The name of the cluster- located directly under computes in the config file. required=True
--s --save-path   An empty save location for the basecalled data- if the directory does not exist it will be created but the parent directory must exist required=True
--i --input-path   The path to a directory that contains batches of raw sequening data- likely titled pass. required=True
--k --kit   The type of ONT kit used in the sequencing run. required=True
--f --flowcell   The type of ONT kit used in the sequencing run. required=True
--o --output-format   fastq or fast5 output format. required=True
-config  yaml config file for building the cluster
+    -n --cluster-name   The name of the cluster- located directly under computes in the config file. required=True
+    -s --save-path   An empty save location for the basecalled data- if the directory does not exist it will be created but the parent directory must exist required=True
+    -i --input-path   The path to a directory that contains batches of raw sequening data- likely titled pass. required=True
+    -k --kit   The type of ONT kit used in the sequencing run. required=True
+    -f --flowcell   The type of ONT kit used in the sequencing run. required=True
+    -o --output-format   fastq or fast5 output format. required=True
+    config  yaml config file for building the cluster
 
-Building the yaml config file.
+Building the yaml config file
 ------------------------------
 Create a .yml file with the following parameters.:
 
-  basecall:
-      input_path:
-      save_path:
-      flowcell: FLO-MIN106
-      kit: SQK-LSK109
-      barcoding: False
-      output_format: fast5
-      worker_threads: 1
-      recursive: False
-      reads_per_fastq: 1000
-      data_splits:
     compute:
         cluster1:
             job_time: 04:00
@@ -81,13 +70,28 @@ Create a .yml file with the following parameters.:
             memory: 2 GB
             scale_value: 200
             cluster_type: LSF
-    networking:
-        network1:
-            compute_name:
-            address:
-            password:
-    pipe:
-        name: None
+
+Move your data with parallel rsync
+------------------------------------
+Be aware of while selecting the number of channels to not overwhelm the data source/destination.:
+
+    default -nchannels == 4
+
+Running parallel_rsync.:
+
+    parallel_rsync --nchannels <default=4> --local-path <path> --remote-path <path> --password <password> --direction <push or pull> --options <rsync options default='-vcr'>
+
+parallel_rsync options:
+
+    -n --nchannels  The number of parallel rsync channels.
+    -l --local-path  The path to the data on your local machine.
+    -r --remote-path  The path to where your data should be saved remotely, must include username.
+    -p --password  Remote location password
+    -d --direction  Use "push" for local to remote. Use "pull" for remote to local. Default is set to push.
+    -o --options  a string containing the rsync options you would like to use, must include the appropriate flag(s). Default options are -vcr
+
+
+
 
 Parallel basecalling with ONT's Albacore- pure python
 -------------------------------------------------------

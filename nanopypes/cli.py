@@ -78,13 +78,13 @@ def albacore_basecaller(config, cluster_name, kit, flowcell, input_path, save_pa
 
 
 @click.command()
-@click.option('-n', '--nchannels', 'nchannels', help='The number of parallel rsync channels.', required=True, type=int)
+@click.option('-n', '--nchannels', 'nchannels', help='The number of parallel rsync channels.', required=False, type=int)
 @click.option('-l', '--local-path', 'local_path', help='The path to the data on your local machine.', required=True, type=str)
 @click.option('-r', '--remote-path', 'remote_path', help='The path to where your data should be saved remotely, must include username', required=True, type=str)
 @click.option('-p', '--password', 'password', help='HPC password', required=True, type=str)
 @click.option('-d', '--direction', 'direction', help='Use "push" for local to remote. Use "pull" for remote to local. Default is set to push.', required=False, type=str)
 @click.option('-o', '--options', 'rsync_options', help='a string containing the rsync options you would like to use, must include the appropriate flag(s). Default options are -vcr', required=False, type=str)
-def parallel_rsync(nchannels, local_path, remote_path, password, rsync_options='-vcr', direction='push'):
+def parallel_rsync(local_path, remote_path, password, nchannels=4, rsync_options='-vcr', direction='push'):
     cluster = LocalCluster()
     client = Client(cluster)
     prsync(nchannels=nchannels, local_path=local_path, remote_path=remote_path, password=password, rsync_options=rsync_options, direction=direction,  client=client)

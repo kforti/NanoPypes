@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="06fba5a6-e119-4d57-aa65-81370b2766cd" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/docs/index.rst" beforeDir="false" afterPath="$PROJECT_DIR$/docs/index.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nanopypes/cli.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/cli.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -12,7 +13,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.78673834">
+    <splitter split-orientation="horizontal" split-proportion="0.61290324">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="compute.py" pinned="false" current-in-tab="false">
@@ -63,8 +64,8 @@
           <file leaf-file-name="index.rst" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/docs/index.rst">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="521">
-                  <caret line="58" column="50" lean-forward="true" selection-start-line="58" selection-start-column="50" selection-end-line="58" selection-end-column="50" />
+                <state relative-caret-position="436">
+                  <caret line="81" column="172" selection-start-line="81" selection-start-column="172" selection-end-line="81" selection-end-column="172" />
                 </state>
               </provider>
             </entry>
@@ -133,8 +134,8 @@
           <file leaf-file-name="cli.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/nanopypes/cli.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="185">
-                  <caret line="52" column="48" selection-start-line="48" selection-end-line="54" selection-end-column="40" />
+                <state relative-caret-position="377">
+                  <caret line="80" column="109" selection-start-line="80" selection-start-column="109" selection-end-line="80" selection-end-column="109" />
                 </state>
               </provider>
             </entry>
@@ -691,8 +692,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/docs/index.rst">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="521">
-          <caret line="58" column="50" lean-forward="true" selection-start-line="58" selection-start-column="50" selection-end-line="58" selection-end-column="50" />
+        <state relative-caret-position="436">
+          <caret line="81" column="172" selection-start-line="81" selection-start-column="172" selection-end-line="81" selection-end-column="172" />
         </state>
       </provider>
     </entry>
