@@ -80,10 +80,12 @@ yaml options::
     -queue  #The queue that the worker jobs should be submitted to ##BSUB -q
     -workers  #The number of workers per job
     -cores: #The number of cores per worker ##cores * workers == ncpus
-    -memory: 2 GB # The amount of memory per worker ##memory *workers == mem
+    -memory:  # The amount of memory per worker ##memory *workers == mem
     -scale_value:  #The total number of workers that you would like in your cluster ## scale_value / workers == total number of jobs to be created
     -cluster_type:  #The type of job scheduler on your HPC cluster ##currently only supports LSF
 
+
+More information about :ref:`cluster_configuration`
 
 Move your data with parallel rsync
 ------------------------------------
