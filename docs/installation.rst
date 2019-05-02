@@ -27,7 +27,7 @@ NanoPypes Source:
 
 
 Install Albacore
-================
+----------------
 
 Albacore must be installed on your system, which requires a license from Oxford Nanopore Technologies. If you’ve purchased a Nanopore sequencing device from ONT then you already have this license.
 
