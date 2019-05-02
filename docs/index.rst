@@ -4,7 +4,8 @@ NanoPypes
 NanoPypes is a python package for managing and analysing ONT sequence data using distributed computing environments.
 
 
-.. py:currentmodule:: cli
+.. autommodule:: cli
+    :members:
 .. autofunction:: albacore_basecaller
 
 Quick-Start
