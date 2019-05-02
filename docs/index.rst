@@ -46,13 +46,13 @@ Parallel basecalling with ONT's Albacore- command line
 
 albacore_basecaller options:
 
--n --cluster-name The name of the cluster- located directly under computes in the config file. required=True
--s --save-path An empty save location for the basecalled data- if the directory does not exist it will be created but the parent directory must exist required=True
--i --input-path The path to a directory that contains batches of raw sequening data- likely titled pass. required=True
--k --kit The type of ONT kit used in the sequencing run. required=True
--f --flowcell The type of ONT kit used in the sequencing run. required=True
--o --output-format fastq or fast5 output format. required=True
-config required=True
+-n --cluster-name   The name of the cluster- located directly under computes in the config file. required=True
+-s --save-path   An empty save location for the basecalled data- if the directory does not exist it will be created but the parent directory must exist required=True
+-i --input-path   The path to a directory that contains batches of raw sequening data- likely titled pass. required=True
+-k --kit   The type of ONT kit used in the sequencing run. required=True
+-f --flowcell   The type of ONT kit used in the sequencing run. required=True
+-o --output-format   fastq or fast5 output format. required=True
+config  yaml config file for building the cluster
 
 Building the yaml config file.
 ------------------------------
