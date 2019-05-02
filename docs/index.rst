@@ -25,6 +25,7 @@ You will need Albacore installed.
 Install From Source
 -------------------
 Source:
+
 .. code-block:: console
 
     $ git clone https://github.com/kforti/NanoPypes
@@ -35,12 +36,14 @@ Source:
 Parallel basecalling with ONT's Albacore- command line
 -------------------------------------------------------
 Run Albacore:
+
 .. code-block:: console
 
     $ albacore_basecaller path/to/yaml/config --kit <name> --flowcell <name> --cluster-name <name>
     --save-path <path> --input-path <path > --output_format <fastq or fast5>
 
 albacore_basecaller options:
+
 .. code-block:: yaml
 
     -n --cluster-name   The name of the cluster- located directly under computes in the config file. required=True
@@ -57,7 +60,8 @@ A yaml file is used to pass cluster configuration information to NanoPypes. Mult
 In the example below, there is one cluster listed and its name is 'cluster1'.
 
 The .yml file should have the following parameters.
-..code-block:: yaml
+
+.. code-block:: yaml
 
     computes:
         cluster1:
@@ -91,6 +95,7 @@ yaml options::
 
 More information about :ref:`cluster_configuration`
 
+
 Move your data with parallel rsync
 ------------------------------------
 Be aware of while selecting the number of channels to not overwhelm the data source/destination.::
@@ -112,28 +117,9 @@ parallel_rsync options::
 
 
 
-
-Parallel basecalling with ONT's Albacore- pure python
--------------------------------------------------------
-Set your configurations and create an instance of Albacore.::
-
-    from nanopypes.tools import basecaller
-
-    basecaller(config="path/to/yaml/config",
-               data_splits=300,
-               basecaller="albacore")
-
-
-Create an instance of Cluster to connect to your compute resources.::
-
-    compute = Cluster(config)
-
-Execute the basecall function.::
-
-    from nanopypes.pipes import AlbacoreBasecaller
-
-    basecaller = AlbacoreBasecaller(albacore, compute, data_splits=300)
-    basecalled_data = basecaller()
+Parallel Read Mapping with Minimap2
+-----------------------------------
+Run Minimap2:
 
 
 .. toctree::
