@@ -24,7 +24,7 @@ You will need Albacore installed.
 :ref:`install_albacore`:
 
 
-Install From Source
+Install from source
 -------------------
 NanoPypes Source:
 
@@ -35,8 +35,8 @@ NanoPypes Source:
     $ python3 setup.py install --user
 
 
-Parallel basecalling with ONT's Albacore- command line
--------------------------------------------------------
+Parallel basecalling with ONT's Albacore
+-----------------------------------------
 Run Albacore (replace all < > with their appropriate value):
 
 .. code-block:: console
