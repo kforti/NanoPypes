@@ -50,20 +50,40 @@ albacore_basecaller options::
 
 Building the yaml config file
 ------------------------------
-Create a .yml file with the following parameters.::
+A yaml file is used to pass cluster configuration information to NanoPypes. Multiple clusters can be described.
+In the example below, there is one cluster listed and its name is 'cluster1'.
 
-    compute:
+The .yml file should have the following parameters.::
+
+    computes:
         cluster1:
             job_time: 04:00
             mem: 2048
+            umassmem: 2048
             ncpus: 10
-            project:
+            project: /path/to/project/space
             queue: short
             workers: 10
             cores: 10
             memory: 2 GB
             scale_value: 200
             cluster_type: LSF
+
+
+yaml options::
+
+    -job_time  #Number of physical cores per job (for cluster) ##BSUB -W
+    -mem  #The amount of memory in bytes required by each job ##BSUM -M
+    -umassmem: #Should be None if not using Umass LSF cluster. Memory described as - rusage[mem=umassmem] ##BSUB -R 'rusage[mem=2048]'
+    -ncpus  #The number of physical cores per job ##BSUB -n
+    -project  #The project space path on the cluster ##BSUB -p
+    -queue  #The queue that the worker jobs should be submitted to ##BSUB -q
+    -workers  #The number of workers per job
+    -cores: #The number of cores per worker ##cores * workers == ncpus
+    -memory: 2 GB # The amount of memory per worker ##memory *workers == mem
+    -scale_value:  #The total number of workers that you would like in your cluster ## scale_value / workers == total number of jobs to be created
+    -cluster_type:  #The type of job scheduler on your HPC cluster ##currently only supports LSF
+
 
 Move your data with parallel rsync
 ------------------------------------
