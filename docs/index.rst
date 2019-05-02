@@ -155,11 +155,8 @@ Parallel minimap2 options::
 
    readme
    installation
-   usage
    modules
-   contributing
    authors
-   history
 
 Indices and tables
 ==================
