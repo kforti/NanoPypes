@@ -110,7 +110,7 @@ Run parallel_rsync (replace all < > with their appropriate value).:
 
 .. code-block:: console
 
-    parallel_rsync --nchannels <default=4> --local-path <path> --remote-path <path> --password <password> --direction <push or pull> --options <rsync options default='-vcr'>
+    $ parallel_rsync --nchannels <default=4> --local-path <path> --remote-path <path> --password <password> --direction <push or pull> --options <rsync options default='-vcr'>
 
 parallel_rsync options::
 

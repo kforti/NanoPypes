@@ -39,8 +39,8 @@
           <file leaf-file-name="index.rst" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/docs/index.rst">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1771">
-                  <caret line="133" column="25" selection-start-line="133" selection-start-column="25" selection-end-line="133" selection-end-column="25" />
+                <state relative-caret-position="-17">
+                  <caret line="112" column="6" selection-start-line="112" selection-start-column="6" selection-end-line="112" selection-end-column="6" />
                 </state>
               </provider>
             </entry>
@@ -84,8 +84,8 @@
           <file leaf-file-name="cli.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/nanopypes/cli.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="114">
-                  <caret line="78" lean-forward="true" selection-start-line="78" selection-end-line="78" />
+                <state relative-caret-position="324">
+                  <caret line="92" lean-forward="true" selection-start-line="92" selection-end-line="92" />
                 </state>
               </provider>
             </entry>
@@ -688,15 +688,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/nanopypes/cli.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="114">
-          <caret line="78" lean-forward="true" selection-start-line="78" selection-end-line="78" />
+        <state relative-caret-position="324">
+          <caret line="92" lean-forward="true" selection-start-line="92" selection-end-line="92" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/docs/index.rst">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1771">
-          <caret line="133" column="25" selection-start-line="133" selection-start-column="25" selection-end-line="133" selection-end-column="25" />
+        <state relative-caret-position="-17">
+          <caret line="112" column="6" selection-start-line="112" selection-start-column="6" selection-end-line="112" selection-end-column="6" />
         </state>
       </provider>
     </entry>
