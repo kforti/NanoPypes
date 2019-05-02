@@ -18,9 +18,9 @@ from distributed import LocalCluster, Client
 @click.command()
 @click.option('-C', '--cluster-type', 'cluster_type', help='The type of cluster you plan to use for your analysis. ["lsf", "local]', required=True, type=str)
 @click.option('-s', '--save-path', 'save_path', help='The number of batches to process at one time.', type=str)
-@click.option('-b', '--basecaller', 'basecaller', help='The basecaller you plan to use. ["albacore", "guppy-cpu", "guppy-gpu"]', type=str)
-def get_config_template(save_path, cluster_type, basecaller):
-    template_name = "{}_{}_template.yml".format(cluster_type, basecaller)
+def get_config_template(save_path, cluster_type):
+    cluster_type = cluster_type.lower()
+    template_name = "{}_albacore_template.yml".format(cluster_type)
     current_dir = os.path.dirname(os.path.abspath(__file__))
 
     template_path = current_dir.replace("/nanopypes", ("/config_templates/" + template_name))

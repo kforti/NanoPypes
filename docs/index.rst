@@ -97,8 +97,17 @@ yaml options::
     -cluster_type:  #The type of job scheduler on your HPC cluster ##currently only supports LSF
 
 
-More information about :ref:`cluster_configuration`
+.. More information about :ref:`cluster_configuration`
 
+NanoPypes comes with a pre-made config file for running albacore on an LSF cluster. You only need to add your project path to the file.
+
+Build a config file:
+
+.. code-block:: console
+
+    $ get_config_template --save-path <path> --cluster-type <name>
+
+A config file for your cluster will be saved to the save_path
 
 Move your data with parallel rsync
 ------------------------------------
