@@ -158,9 +158,3 @@ Parallel minimap2 options::
    index
    installation
 
-
-Indices and tables
-==================
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`

@@ -22,3 +22,10 @@ NanoPypes Source:
     $ cd NanoPypes
     $ python3 setup.py install --user
 
+
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents:
+
+    install_albacore
