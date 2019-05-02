@@ -24,6 +24,7 @@ You will need Albacore installed.
 
 Install From Source
 -------------------
+Source:
 .. code-block:: console
 
     $ git clone https://github.com/kforti/NanoPypes
@@ -33,12 +34,13 @@ Install From Source
 
 Parallel basecalling with ONT's Albacore- command line
 -------------------------------------------------------
+Run Albacore:
 .. code-block:: console
 
     $ albacore_basecaller path/to/yaml/config --kit <name> --flowcell <name> --cluster-name <name>
     --save-path <path> --input-path <path > --output_format <fastq or fast5>
 
-albacore_basecaller options
+albacore_basecaller options:
 .. code-block:: yaml
 
     -n --cluster-name   The name of the cluster- located directly under computes in the config file. required=True
