@@ -42,8 +42,7 @@ Run Albacore (replace all < > with their appropriate value):
 
 .. code-block:: console
 
-    $ albacore_basecaller path/to/yaml/config --kit <name> --flowcell <name> --cluster-name <name>
-    --save-path <path> --input-path <path > --output_format <fastq or fast5>
+    $ albacore_basecaller path/to/yaml/config --kit <name> --flowcell <name> --cluster-name <name> --save-path <path> --input-path <path > --output_format <fastq or fast5>
 
 albacore_basecaller options:
 

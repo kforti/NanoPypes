@@ -10,10 +10,3 @@ computes:
         memory: 10 GB    #Memory per job (for dask)
         scale_value: 250       #Scale to 150 workers/processes (same thing here)
         cluster_type: LSF
-networks:
-    network1:
-        compute_name:
-        address:
-        password:
-pipes:
-    name: None
