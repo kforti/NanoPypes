@@ -155,10 +155,9 @@ Parallel minimap2 options::
    :maxdepth: 2
    :caption: Contents:
 
-   readme
+   index
    installation
-   modules
-   authors
+
 
 Indices and tables
 ==================
