@@ -42,7 +42,7 @@ Run Albacore:
     $ albacore_basecaller path/to/yaml/config --kit <name> --flowcell <name> --cluster-name <name>
     --save-path <path> --input-path <path > --output_format <fastq or fast5>
 
-albacore_basecaller options:
+albacore_basecaller options (replace all < > with their appropriate value):
 
 .. code-block:: yaml
 
@@ -102,11 +102,13 @@ Be aware while selecting the number of channels to not overwhelm the data source
 
     default -nchannels == 4
 
-Running parallel_rsync.::
+Running parallel_rsync.:
+
+.. code-block:: console
 
     parallel_rsync --nchannels <default=4> --local-path <path> --remote-path <path> --password <password> --direction <push or pull> --options <rsync options default='-vcr'>
 
-parallel_rsync options::
+parallel_rsync options (replace all < > with their appropriate value)::
 
     -n --nchannels  The number of parallel rsync channels.
     -l --local-path  The path to the data on your local machine.
@@ -125,9 +127,9 @@ Run Minimap2:
 
     $ parallel_minimap2 <path/to/config> --command <name> --cluster-name <name> --input-path <path> --reference <path> --save-path <path>
 
-Parallel minimap2 options::
+Parallel minimap2 options (replace all < > with their appropriate value)::
 
-    config
+    config  The path to the cluster configuration yaml ##<path/to/config>
     -n --cluster-name  The name of the cluster- located directly under computes in the config file.
     -i --input-path  The path to a directory containing multiple fastq files.
     -s --save-path  The path to where the output should be saved.
