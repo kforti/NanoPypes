@@ -6,29 +6,19 @@
 Installation
 ============
 
-From source
-------------
+Installation Instructions:
+--------------------------
+You will need Albacore installed.
+:ref:`install_albacore`:
 
-The sources for NanoPypes can be downloaded from the `Github repo`_.
 
-You can either clone the public repository:
-
-.. code-block:: console
-
-    $ git clone git://github.com/kforti/nanopypes
-
-Or download the `tarball`_:
+Install From Source
+-------------------
+NanoPypes Source:
 
 .. code-block:: console
 
-    $ curl  -OL https://github.com/kforti/nanopypes/tarball/master
+    $ git clone https://github.com/kforti/NanoPypes
+    $ cd NanoPypes
+    $ python3 setup.py install --user
 
-Once you have a copy of the source, you can install it with:
-
-.. code-block:: console
-
-    $ python setup.py install
-
-
-.. _Github repo: https://github.com/kforti/nanopypes
-.. _tarball: https://github.com/kforti/nanopypes/tarball/master

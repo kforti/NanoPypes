@@ -13,6 +13,8 @@ NanoPypes
 NanoPypes is a python package for managing and analysing ONT sequence data using distributed computing environments.
 
 ***Coming soon***
+
+
 * parallel_variant_calling -> with samtools and bcftools
 * guppy_cpu
 * guppy_gpu
