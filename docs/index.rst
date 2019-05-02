@@ -13,14 +13,11 @@ NanoPypes
 NanoPypes is a python package for managing and analysing ONT sequence data using distributed computing environments.
 
 ***Coming soon***
-parallel_variant_calling -> with samtools and bcftools
-guppy_cpu
-guppy_gpu
-kubernettes cluster support
-Slurm cluster support
-
-Quick-Start
-===========
+- parallel_variant_calling -> with samtools and bcftools
+- guppy_cpu
+- guppy_gpu
+- kubernettes cluster support
+- Slurm cluster support
 
 Installation Instructions:
 --------------------------
@@ -41,14 +38,14 @@ Source:
 
 Parallel basecalling with ONT's Albacore- command line
 -------------------------------------------------------
-Run Albacore:
+Run Albacore (replace all < > with their appropriate value):
 
 .. code-block:: console
 
     $ albacore_basecaller path/to/yaml/config --kit <name> --flowcell <name> --cluster-name <name>
     --save-path <path> --input-path <path > --output_format <fastq or fast5>
 
-albacore_basecaller options (replace all < > with their appropriate value):
+albacore_basecaller options:
 
 .. code-block:: yaml
 
@@ -109,13 +106,13 @@ Be aware while selecting the number of channels to not overwhelm the data source
 
     default -nchannels == 4
 
-Running parallel_rsync.:
+Run parallel_rsync (replace all < > with their appropriate value).:
 
 .. code-block:: console
 
     parallel_rsync --nchannels <default=4> --local-path <path> --remote-path <path> --password <password> --direction <push or pull> --options <rsync options default='-vcr'>
 
-parallel_rsync options (replace all < > with their appropriate value)::
+parallel_rsync options::
 
     -n --nchannels  The number of parallel rsync channels.
     -l --local-path  The path to the data on your local machine.
@@ -128,13 +125,13 @@ parallel_rsync options (replace all < > with their appropriate value)::
 
 Parallel Read Mapping with Minimap2
 -----------------------------------
-Run Minimap2:
+Run Minimap2 (replace all < > with their appropriate value):
 
 .. code-block:: console
 
     $ parallel_minimap2 <path/to/config> --command <name> --cluster-name <name> --input-path <path> --reference <path> --save-path <path>
 
-Parallel minimap2 options (replace all < > with their appropriate value)::
+Parallel minimap2 options::
 
     config  The path to the cluster configuration yaml ##<path/to/config>
     -n --cluster-name  The name of the cluster- located directly under computes in the config file.
