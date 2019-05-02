@@ -24,11 +24,11 @@ Package for rapidly building ONT MinIon sequence analysis pipelines
 
 
 ***Coming soon***
-- parallel_variant_calling -> with samtools and bcftools
-- guppy_cpu
-- guppy_gpu
-- kubernettes cluster support
-- Slurm cluster support
+* parallel_variant_calling -> with samtools and bcftools
+* guppy_cpu
+* guppy_gpu
+* kubernettes cluster support
+* Slurm cluster support
 
 Installation Instructions:
 --------------------------
