@@ -27,7 +27,7 @@ You will need Albacore installed.
 
 Install From Source
 -------------------
-Source:
+NanoPypes Source:
 
 .. code-block:: console
 
