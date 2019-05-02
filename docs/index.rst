@@ -1,3 +1,12 @@
+.. highlight:: shell
+
+.. _quick_start:
+
+===========
+Quick-Start
+===========
+
+
 NanoPypes
 ==========
 
@@ -9,7 +18,8 @@ Quick-Start
 
 Installation Instructions:
 --------------------------
-Install Albacore :ref:`install_albacore`:
+You will need Albacore installed.
+:ref:`install_albacore`:
 
 
 Install From Source
