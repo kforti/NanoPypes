@@ -53,8 +53,10 @@ def get_config_template(save_path, cluster_type, basecaller):
 @click.option('-f', '--flowcell', 'flowcell', help="The type of ont flowcell used.", required=False, type=str)
 @click.option('-o', '--output-format', 'output_format', help="fastq or fast5 output format.", required=False, type=str)
 @click.argument('config', required=True)
-def albacore_basecaller(config, cluster_name, num_workers, kit, flowcell, input_path, save_path, output_format):
-    """Console script for running the albacore parallel basecaller."""
+def albacore_basecaller(config, cluster_name, kit, flowcell, input_path, save_path, output_format):
+    """Console script for running the albacore parallel basecaller.
+    :param cluster_name: The name of the cluster defined in the config yaml.
+    :param kit: The name of the ONT kit used in the sequencing run."""
     #run_pipes function albacore_basecaller()
     config = Configuration(config)
     compute_config = config.get_compute(cluster_name)
