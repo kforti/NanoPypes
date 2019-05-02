@@ -1,5 +1,6 @@
-.. _install_albacore:
 .. highlight:: shell
+
+.. _install_albacore:
 
 ================
 Install Albacore
