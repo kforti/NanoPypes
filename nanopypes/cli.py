@@ -92,13 +92,11 @@ def parallel_rsync(local_path, remote_path, password, nchannels=4, rsync_options
 
 
 @click.command()
-@click.option('-n', '--cluster-name', 'cluster_name', help='The name of the cluster to compute this pipe- directly under computes in the config file.', required=False, type=str)
-@click.option('-d', '--data-path', 'data_path', help='The path to a directory containing multiple fastq files.', required=True, type=str)
-@click.option('-r', '--reference', 'reference', help='The path to your reference file', required=True, type=str)
-@click.option('-p', '--password', 'password', help='The basecaller you plan to use. ["albacore", "guppy-cpu", "guppy-gpu"]', required=True, type=str)
-@click.option('-d', '--direction', 'direction', help='Default is set to push- pull not yet implemented', required=False, type=str)
-@click.option('-c', '--client', 'client', help='By default the client is set to local cluster', required=False, type=str)
-@click.option('-o', '--options', 'rsync_options', help='a string containing the rsync options you would like to use, must include the appropriate flag(s). Default options are -vcr', required=False, type=str)
+@click.option('-n', '--cluster-name', 'cluster_name', help='The name of the cluster- located directly under computes in the config file.', required=True, type=str)
+@click.option('-i', '--input-path', 'data_path', help='The path to a directory containing multiple fastq files.', required=True, type=str)
+@click.option('-s', '--save-path', 'save_path', help='The path to where the output should be saved', required=True, type=str)
+@click.option('-r', '--reference', 'reference', help='The path to your fasta reference file', required=True, type=str)
+@click.option('-c', '--command', 'command', help='The minimap2 command that you would like to use. ["splice", "genomic", "rna", "overlap"]', required=True, type=str)
 @click.argument('config', required=True)
 def parallel_minimap2(config, cluster_name, input_path, reference, save_path, command):
     config = Configuration(config)

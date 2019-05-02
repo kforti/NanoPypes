@@ -98,7 +98,7 @@ More information about :ref:`cluster_configuration`
 
 Move your data with parallel rsync
 ------------------------------------
-Be aware of while selecting the number of channels to not overwhelm the data source/destination.::
+Be aware while selecting the number of channels to not overwhelm the data source/destination.::
 
     default -nchannels == 4
 
@@ -120,6 +120,19 @@ parallel_rsync options::
 Parallel Read Mapping with Minimap2
 -----------------------------------
 Run Minimap2:
+
+.. code-block:: console
+
+    $ parallel_minimap2 <path/to/config> --command <name> --cluster-name <name> --input-path <path> --reference <path> --save-path <path>
+
+Parallel minimap2 options::
+
+    config
+    -n --cluster-name  The name of the cluster- located directly under computes in the config file.
+    -i --input-path  The path to a directory containing multiple fastq files.
+    -s --save-path  The path to where the output should be saved.
+    -r --reference  The path to your fasta reference file.
+    -c --command  The minimap2 command that you would like to use. ["splice", "genomic", "rna", "overlap"]
 
 
 .. toctree::

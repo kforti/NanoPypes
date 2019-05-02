@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="06fba5a6-e119-4d57-aa65-81370b2766cd" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/docs/index.rst" beforeDir="false" afterPath="$PROJECT_DIR$/docs/index.rst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nanopypes/cli.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/cli.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -12,7 +13,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.6810036">
+    <splitter split-orientation="horizontal" split-proportion="0.7018581">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="compute.py" pinned="false" current-in-tab="false">
@@ -39,8 +40,8 @@
           <file leaf-file-name="index.rst" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/docs/index.rst">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="405">
-                  <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
+                <state relative-caret-position="440">
+                  <caret line="136" lean-forward="true" selection-start-line="136" selection-end-line="136" />
                 </state>
               </provider>
             </entry>
@@ -84,8 +85,20 @@
           <file leaf-file-name="cli.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/nanopypes/cli.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="377">
-                  <caret line="80" column="109" selection-start-line="80" selection-start-column="109" selection-end-line="80" selection-end-column="109" />
+                <state relative-caret-position="414">
+                  <caret line="98" column="137" selection-start-line="98" selection-start-column="50" selection-end-line="98" selection-end-column="138" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="minimap2.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/nanopypes/pipes/minimap2.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="91">
+                  <caret line="11" column="65" selection-start-line="11" selection-start-column="65" selection-end-line="11" selection-end-column="65" />
+                  <folding>
+                    <element signature="e#0#9#0" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -153,10 +166,10 @@
         <option value="$PROJECT_DIR$/nanopypes/pipes/base.py" />
         <option value="$PROJECT_DIR$/tests/test_minimap2.py" />
         <option value="$PROJECT_DIR$/nanopypes/pipes/minimap2.py" />
-        <option value="$PROJECT_DIR$/nanopypes/cli.py" />
         <option value="$PROJECT_DIR$/docs/install_albacore.rst" />
         <option value="$PROJECT_DIR$/docs/cluster_configuration.rst" />
         <option value="$PROJECT_DIR$/docs/installation.rst" />
+        <option value="$PROJECT_DIR$/nanopypes/cli.py" />
         <option value="$PROJECT_DIR$/docs/index.rst" />
       </list>
     </option>
@@ -194,6 +207,12 @@
               <item name="NanoPypes" type="b2602c69:ProjectViewProjectNode" />
               <item name="NanoPypes" type="462c0819:PsiDirectoryNode" />
               <item name="nanopypes" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="NanoPypes" type="b2602c69:ProjectViewProjectNode" />
+              <item name="NanoPypes" type="462c0819:PsiDirectoryNode" />
+              <item name="nanopypes" type="462c0819:PsiDirectoryNode" />
+              <item name="pipes" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -591,23 +610,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/nanopypes/pipes/minimap2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="91">
-          <caret line="11" column="65" selection-start-line="11" selection-start-column="65" selection-end-line="11" selection-end-column="65" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/nanopypes/cli.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="377">
-          <caret line="80" column="109" selection-start-line="80" selection-start-column="109" selection-end-line="80" selection-end-column="109" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/docs/conf.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1823" />
@@ -675,10 +677,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/nanopypes/pipes/minimap2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="91">
+          <caret line="11" column="65" selection-start-line="11" selection-start-column="65" selection-end-line="11" selection-end-column="65" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nanopypes/cli.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="98" column="137" selection-start-line="98" selection-start-column="50" selection-end-line="98" selection-end-column="138" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/docs/index.rst">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="27" lean-forward="true" selection-start-line="27" selection-end-line="27" />
+        <state relative-caret-position="440">
+          <caret line="136" lean-forward="true" selection-start-line="136" selection-end-line="136" />
         </state>
       </provider>
     </entry>
