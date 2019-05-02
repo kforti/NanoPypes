@@ -44,7 +44,7 @@ Parallel basecalling with ONT's Albacore- command line
     albacore_basecaller path/to/yaml/config --kit <name> --flowcell <name> --cluster-name <name>
     --save-path <path> --input-path <path > --output_format <fastq or fast5>
 
-albacore_basecaller options:
+albacore_basecaller options::
 
     -n --cluster-name   The name of the cluster- located directly under computes in the config file. required=True
     -s --save-path   An empty save location for the basecalled data- if the directory does not exist it will be created but the parent directory must exist required=True
@@ -56,7 +56,7 @@ albacore_basecaller options:
 
 Building the yaml config file
 ------------------------------
-Create a .yml file with the following parameters.:
+Create a .yml file with the following parameters.::
 
     compute:
         cluster1:
@@ -73,15 +73,15 @@ Create a .yml file with the following parameters.:
 
 Move your data with parallel rsync
 ------------------------------------
-Be aware of while selecting the number of channels to not overwhelm the data source/destination.:
+Be aware of while selecting the number of channels to not overwhelm the data source/destination.::
 
     default -nchannels == 4
 
-Running parallel_rsync.:
+Running parallel_rsync.::
 
     parallel_rsync --nchannels <default=4> --local-path <path> --remote-path <path> --password <password> --direction <push or pull> --options <rsync options default='-vcr'>
 
-parallel_rsync options:
+parallel_rsync options::
 
     -n --nchannels  The number of parallel rsync channels.
     -l --local-path  The path to the data on your local machine.
