@@ -35,7 +35,7 @@ Package for rapidly building ONT MinIon sequence analysis pipelines
 Installation Instructions:
 --------------------------
 You will need Albacore installed.
-:ref:`install_albacore`:
+https://nanopypes.readthedocs.io/en/latest/installation.html:
 
 
 Install From Source
@@ -125,6 +125,6 @@ A config file for your cluster will be saved to the save_path
 
 
 Full Documentation
-
+==================
 
 * Documentation: https://nanopypes.readthedocs.io.
