@@ -26,19 +26,31 @@ It is likely located in::::
     ~/.local/bin/.
 
 
-Install
-------------
+Install From Source
+-------------------
+::
+
+    git clone https://github.com/kforti/NanoPypes
+    cd NanoPypes
+    python3 setup.py install --user
+
 
 Parallel basecalling with ONT's Albacore- command line
 -------------------------------------------------------
-Single command- pass a config and/or individual parameters.::
+::
 
-    nanopypes_albacore_basecaller path/to/yaml/config
+    albacore_basecaller path/to/yaml/config --kit <name> --flowcell <name> --cluster-name <name>
+    --save-path <path> --input-path <path > --output_format <fastq or fast5>
 
-For a full list of parameters.::
+albacore_basecaller options:::
 
-    nanopypes_albacore_basecaller --help
-
+    -n --cluster-name The name of the cluster- located directly under computes in the config file. required=True
+    -s --save-path An empty save location for the basecalled data- if the directory does not exist it will be created but the parent directory must exist required=True
+    -i --input-path The path to a directory that contains batches of raw sequening data- likely titled pass. required=True
+    -k --kit The type of ONT kit used in the sequencing run. required=True
+    -f --flowcell The type of ONT kit used in the sequencing run. required=True
+    -o --output-format fastq or fast5 output format. required=True
+    config required=True
 
 Building the yaml config file.
 ------------------------------

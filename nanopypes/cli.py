@@ -46,12 +46,12 @@ def get_config_template(save_path, cluster_type, basecaller):
 #############################################
 
 @click.command()
-@click.option('-n', '--cluster-name', 'cluster_name', help='The name of the cluster to compute this pipe- directly under computes in the config file.', required=False, type=str)
-@click.option('-s', '--save-path', 'save_path', help='The save location for the basecalled data', required=False, type=str)
-@click.option('-i', '--input-path', 'input_path', help="The type of ont kit used.", required=False, type=str)
-@click.option('-k', '--kit', 'kit', help="The type of ont kit used.", required=False, type=str)
-@click.option('-f', '--flowcell', 'flowcell', help="The type of ont flowcell used.", required=False, type=str)
-@click.option('-o', '--output-format', 'output_format', help="fastq or fast5 output format.", required=False, type=str)
+@click.option('-n', '--cluster-name', 'cluster_name', help='The name of the cluster- located directly under computes in the config file.', required=True, type=str)
+@click.option('-s', '--save-path', 'save_path', help='An empty save location for the basecalled data- if the directory does not exist it will be created but the parent directory must exist', required=True, type=str)
+@click.option('-i', '--input-path', 'input_path', help="The path to a directory that contains batches of raw sequening data- likely titled pass.", required=True, type=str)
+@click.option('-k', '--kit', 'kit', help="The type of ONT kit used in the sequencing run.", required=True, type=str)
+@click.option('-f', '--flowcell', 'flowcell', help="The type of ONT kit used in the sequencing run.", required=True, type=str)
+@click.option('-o', '--output-format', 'output_format', help="fastq or fast5 output format.", required=True, type=str)
 @click.argument('config', required=True)
 def albacore_basecaller(config, cluster_name, kit, flowcell, input_path, save_path, output_format):
     """Console script for running the albacore parallel basecaller.
@@ -60,10 +60,11 @@ def albacore_basecaller(config, cluster_name, kit, flowcell, input_path, save_pa
     #run_pipes function albacore_basecaller()
     config = Configuration(config)
     compute_config = config.get_compute(cluster_name)
-    compute = Cluster(compute_config)
-    scheduler_address = compute.connect()
+    cluster = Cluster(compute_config)
+    scheduler_address = cluster.connect()
 
     client = Client(scheduler_address)
+    num_workers = cluster.expected_workers
 
     bc_data = albacore(kit=kit,
                        flowcell=flowcell,
