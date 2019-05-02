@@ -53,8 +53,8 @@
           <file leaf-file-name="README.rst" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/README.rst">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="342">
-                  <caret line="30" column="2" selection-start-line="30" selection-start-column="2" selection-end-line="30" selection-end-column="2" />
+                <state relative-caret-position="636">
+                  <caret line="128" lean-forward="true" selection-start-line="128" selection-end-line="128" />
                 </state>
               </provider>
             </entry>
@@ -98,8 +98,8 @@
           <file leaf-file-name="cli.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/nanopypes/cli.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="134">
-                  <caret line="22" column="66" selection-start-line="22" selection-start-column="66" selection-end-line="22" selection-end-column="66" />
+                <state relative-caret-position="164">
+                  <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
                 </state>
               </provider>
             </entry>
@@ -688,13 +688,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/nanopypes/cli.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="134">
-          <caret line="22" column="66" selection-start-line="22" selection-start-column="66" selection-end-line="22" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config_templates/lsf_albacore_template.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
@@ -712,10 +705,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/nanopypes/cli.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="164">
+          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/README.rst">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="30" column="2" selection-start-line="30" selection-start-column="2" selection-end-line="30" selection-end-column="2" />
+        <state relative-caret-position="636">
+          <caret line="128" lean-forward="true" selection-start-line="128" selection-end-line="128" />
         </state>
       </provider>
     </entry>

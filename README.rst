@@ -24,6 +24,8 @@ Package for rapidly building ONT MinIon sequence analysis pipelines
 
 
 ***Coming soon***
+
+
 * parallel_variant_calling -> with samtools and bcftools
 * guppy_cpu
 * guppy_gpu
@@ -123,4 +125,6 @@ A config file for your cluster will be saved to the save_path
 
 
 Full Documentation
+
+
 * Documentation: https://nanopypes.readthedocs.io.
