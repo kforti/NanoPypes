@@ -12,6 +12,12 @@ NanoPypes
 
 NanoPypes is a python package for managing and analysing ONT sequence data using distributed computing environments.
 
+***Coming soon***
+parallel_variant_calling -> with samtools and bcftools
+guppy_cpu
+guppy_gpu
+kubernettes cluster support
+Slurm cluster support
 
 Quick-Start
 ===========
@@ -46,13 +52,14 @@ albacore_basecaller options (replace all < > with their appropriate value):
 
 .. code-block:: yaml
 
+    config  The path to the cluster configuration yaml ##<path/to/config>
     -n --cluster-name   The name of the cluster- located directly under computes in the config file. required=True
     -s --save-path   An empty save location for the basecalled data- if the directory does not exist it will be created but the parent directory must exist required=True
     -i --input-path   The path to a directory that contains batches of raw sequening data- likely titled pass. required=True
     -k --kit   The type of ONT kit used in the sequencing run. required=True
     -f --flowcell   The type of ONT kit used in the sequencing run. required=True
     -o --output-format   fastq or fast5 output format. required=True
-    config  yaml config file for building the cluster
+
 
 Building the yaml config file
 ------------------------------
