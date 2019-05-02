@@ -2,23 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="06fba5a6-e119-4d57-aa65-81370b2766cd" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.rst" beforeDir="false" afterPath="$PROJECT_DIR$/README.rst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dask-worker-space/global.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dask-worker-space/purge.lock" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/docs/conf.py" beforeDir="false" afterPath="$PROJECT_DIR$/docs/conf.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/installation.rst" beforeDir="false" afterPath="$PROJECT_DIR$/docs/installation.rst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/usage.rst" beforeDir="false" afterPath="$PROJECT_DIR$/docs/usage.rst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nanopypes/dask-worker-space/global.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nanopypes/dask-worker-space/purge.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/dask-worker-space/global.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/dask-worker-space/purge.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/dask-worker-space/worker-2xdx84om.dirlock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/dask-worker-space/worker-nkg6uhcr.dirlock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/dask-worker-space/worker-puay0bw0.dirlock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/dask-worker-space/worker-ulkgsmf3.dirlock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/dask-worker-space/global.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/dask-worker-space/purge.lock" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -115,8 +99,8 @@
           <file leaf-file-name="conf.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/docs/conf.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1080">
-                  <caret line="86" column="21" selection-start-line="86" selection-start-column="21" selection-end-line="86" selection-end-column="21" />
+                <state relative-caret-position="480">
+                  <caret line="86" column="32" selection-start-line="86" selection-start-column="32" selection-end-line="86" selection-end-column="32" />
                 </state>
               </provider>
             </entry>
@@ -197,7 +181,7 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="2005" />
+    <option name="x" value="2004" />
     <option name="y" value="56" />
     <option name="width" value="1507" />
     <option name="height" value="841" />
@@ -377,7 +361,7 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="2005" y="56" width="1507" height="841" extended-state="0" />
+    <frame x="2004" y="56" width="1507" height="841" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.7145709" visible="true" weight="0.16823688" />
@@ -716,8 +700,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/docs/conf.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1080">
-          <caret line="86" column="21" selection-start-line="86" selection-start-column="21" selection-end-line="86" selection-end-column="21" />
+        <state relative-caret-position="480">
+          <caret line="86" column="32" selection-start-line="86" selection-start-column="32" selection-end-line="86" selection-end-column="32" />
         </state>
       </provider>
     </entry>
