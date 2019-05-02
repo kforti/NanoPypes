@@ -9,6 +9,8 @@ Quick-Start
 
 Installation Instructions:
 --------------------------
+Install Albacore .. _installation:
+
 First, Albacore must be installed on your system, which requires a license from Oxford Nanopore Technologies. If you’ve purchased a Nanopore sequencing device from ONT then you already have this license.\n
 
 To install Albacore on your system, login to the ONT Community Portal and go the the downloads page: https://community.nanoporetech.com/downloads. The Albacore downloads are under Archived Software.\n
