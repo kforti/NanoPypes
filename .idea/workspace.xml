@@ -18,8 +18,8 @@
           <file leaf-file-name="index.rst" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/docs/index.rst">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-746">
-                  <caret line="91" column="40" lean-forward="true" selection-start-line="91" selection-start-column="40" selection-end-line="91" selection-end-column="40" />
+                <state relative-caret-position="-577">
+                  <caret line="91" column="40" selection-start-line="91" selection-start-column="40" selection-end-line="91" selection-end-column="40" />
                 </state>
               </provider>
             </entry>
@@ -57,7 +57,7 @@
             <entry file="file://$PROJECT_DIR$/docs/installation.rst">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="48">
-                  <caret line="8" column="11" lean-forward="true" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="11" />
+                  <caret line="8" column="11" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="11" />
                 </state>
               </provider>
             </entry>
@@ -66,7 +66,7 @@
             <entry file="file://$PROJECT_DIR$/docs/install_albacore.rst">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="60">
-                  <caret line="4" column="16" lean-forward="true" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
+                  <caret line="4" column="16" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
                 </state>
               </provider>
             </entry>
@@ -79,7 +79,7 @@
             <entry file="file://$PROJECT_DIR$/nanopypes/cli.py">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="239">
-                  <caret line="29" column="12" lean-forward="true" selection-start-line="29" selection-start-column="12" selection-end-line="29" selection-end-column="12" />
+                  <caret line="29" column="12" selection-start-line="29" selection-start-column="12" selection-end-line="29" selection-end-column="12" />
                 </state>
               </provider>
             </entry>
@@ -99,8 +99,8 @@
           <file leaf-file-name="conf.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/docs/conf.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="480">
-                  <caret line="86" column="32" selection-start-line="86" selection-start-column="32" selection-end-line="86" selection-end-column="32" />
+                <state relative-caret-position="214">
+                  <caret line="75" column="25" selection-start-line="75" selection-start-column="25" selection-end-line="75" selection-end-column="25" />
                 </state>
               </provider>
             </entry>
@@ -364,14 +364,14 @@
     <frame x="2004" y="56" width="1507" height="841" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.7145709" visible="true" weight="0.16823688" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.7145709" visible="true" weight="0.16823688" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.2707483" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info anchor="bottom" id="Python Console" order="7" visible="true" weight="0.22715054" />
+      <window_info anchor="bottom" id="Python Console" order="7" weight="0.22715054" />
       <window_info id="Structure" order="1" sideWeight="0.28542915" side_tool="true" weight="0.24625145" />
-      <window_info anchor="bottom" id="Terminal" order="7" weight="0.3265306" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.3252688" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -617,7 +617,7 @@
     <entry file="file://$PROJECT_DIR$/nanopypes/cli.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="239">
-          <caret line="29" column="12" lean-forward="true" selection-start-line="29" selection-start-column="12" selection-end-line="29" selection-end-column="12" />
+          <caret line="29" column="12" selection-start-line="29" selection-start-column="12" selection-end-line="29" selection-end-column="12" />
         </state>
       </provider>
     </entry>
@@ -651,14 +651,14 @@
     <entry file="file://$PROJECT_DIR$/docs/installation.rst">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="48">
-          <caret line="8" column="11" lean-forward="true" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="11" />
+          <caret line="8" column="11" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="11" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/docs/install_albacore.rst">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
-          <caret line="4" column="16" lean-forward="true" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
+          <caret line="4" column="16" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
         </state>
       </provider>
     </entry>
@@ -693,15 +693,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/docs/index.rst">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-746">
-          <caret line="91" column="40" lean-forward="true" selection-start-line="91" selection-start-column="40" selection-end-line="91" selection-end-column="40" />
+        <state relative-caret-position="-577">
+          <caret line="91" column="40" selection-start-line="91" selection-start-column="40" selection-end-line="91" selection-end-column="40" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/docs/conf.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="86" column="32" selection-start-line="86" selection-start-column="32" selection-end-line="86" selection-end-column="32" />
+        <state relative-caret-position="214">
+          <caret line="75" column="25" selection-start-line="75" selection-start-column="25" selection-end-line="75" selection-end-column="25" />
         </state>
       </provider>
     </entry>
