@@ -24,21 +24,22 @@ You will need Albacore installed.
 
 Install From Source
 -------------------
-::
+.. code-block:: console
 
-    git clone https://github.com/kforti/NanoPypes
-    cd NanoPypes
-    python3 setup.py install --user
+    $ git clone https://github.com/kforti/NanoPypes
+    $ cd NanoPypes
+    $ python3 setup.py install --user
 
 
 Parallel basecalling with ONT's Albacore- command line
 -------------------------------------------------------
-::
+.. code-block:: console
 
-    albacore_basecaller path/to/yaml/config --kit <name> --flowcell <name> --cluster-name <name>
+    $ albacore_basecaller path/to/yaml/config --kit <name> --flowcell <name> --cluster-name <name>
     --save-path <path> --input-path <path > --output_format <fastq or fast5>
 
-albacore_basecaller options::
+albacore_basecaller options
+.. code-block:: yaml
 
     -n --cluster-name   The name of the cluster- located directly under computes in the config file. required=True
     -s --save-path   An empty save location for the basecalled data- if the directory does not exist it will be created but the parent directory must exist required=True
@@ -53,7 +54,8 @@ Building the yaml config file
 A yaml file is used to pass cluster configuration information to NanoPypes. Multiple clusters can be described.
 In the example below, there is one cluster listed and its name is 'cluster1'.
 
-The .yml file should have the following parameters.::
+The .yml file should have the following parameters.
+..code-block:: yaml
 
     computes:
         cluster1:
