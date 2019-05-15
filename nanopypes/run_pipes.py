@@ -1,6 +1,6 @@
 from nanopypes.compute import Cluster
 from nanopypes.oxnano import Albacore
-from nanopypes.pipes.basecaller import AlbacoreBasecaller, collapse_data
+from nanopypes.pipes.basecaller import AlbacoreBasecaller, GuppyBasecaller, collapse_data
 from nanopypes.pipes.parallel_rsync import ParallelRsync
 from nanopypes.pipes.minimap2 import MiniMap2
 from nanopypes.config import Configuration
@@ -35,6 +35,17 @@ def albacore_basecaller(kit, flowcell, input_path, save_path, output_format, exp
     return
 
 
+def guppy_basecaller(expected_workers, input_path=None, flowcell=None,
+                     kit=None, save_path=None, fast5_out=None, reads_per_fastq=1000,
+                     worker_client=None, pull_link=None, image_path=None,
+                     bind=None, client=None, cpu_threads_per_caller=1):
+    guppy = GuppyBasecaller(client=client, expected_workers=expected_workers, input_path=input_path,
+                            flowcell=flowcell, kit=kit, save_path=save_path, fast5_out=fast5_out,
+                            reads_per_fastq=reads_per_fastq, worker_client=worker_client, pull_link=pull_link,
+                            image_path=image_path, bind=bind)
+    guppy()
+
+
 def parallel_rsync(local_path, remote_path, password, rsync_options='-vcr', direction='push',  client='local'):
     if client == 'local':
         client = Client(LocalCluster())
@@ -43,6 +54,7 @@ def parallel_rsync(local_path, remote_path, password, rsync_options='-vcr', dire
     pr()
 
     return
+
 
 def parallel_minimap2(input_path, reference, save_path, command, scheduler_address=None, client=None):
     if client == None and scheduler_address:

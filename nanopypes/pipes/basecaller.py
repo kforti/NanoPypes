@@ -3,11 +3,13 @@ import os
 import shutil
 import datetime
 import re
+import subprocess
 
 import dask.bag as db
-from dask.distributed import wait, as_completed
+from dask.distributed import as_completed
 
 from nanopypes.pipes.base import Pipe
+from nanopypes.pipes.worker_clients import SingularityClient
 
 
 
@@ -16,22 +18,42 @@ def batch_generator(batches):
         yield batch
 
 
+def b_gen(input_path):
+    batch_pattern = r'(^)[0-9]+($)'
+    alt_batch_pattern = r'(^)batch_[0-9]+($)'
+    batches = [Path(input_path).joinpath(i) for i in os.listdir(str(input_path)) if
+               re.match(batch_pattern, str(i)) or re.match(alt_batch_pattern, str(i))]
+    return batches
+
+
 class AlbacoreBasecaller(Pipe):
 
-    def __init__(self, client, albacore, expected_workers):
+    def __init__(self, client, expected_workers, input_path=None,
+                 flowcell=None, kit=None, save_path=None, output_format=None,
+                 reads_per_fastq=1000):
         print("Starting the parallel Albacore Basecaller...\n", datetime.datetime.now())
+        self.input = Path(input_path)
+        self.flow_cell = flowcell
+        self.kit = kit
+        self.save_path = Path(save_path)
+        if self.save_path.exists() == False:
+            self.save_path.mkdir()
+        self.output_format = output_format
+        self.reads_per_fastq = reads_per_fastq
+        self.num_batches = len(os.listdir(str(self.input)))
+
         self.client = client
         self.batch_bunch_size = expected_workers
-        self.albacore = albacore
-
-        # basecaller info
-        self.function = albacore.build_func()
-        self.input_path = Path(albacore.input_path)
-        self.save_path = Path(albacore.save_path)
-
-        self.bc_batches = batch_generator(albacore.batches_for_basecalling)
-        self.all_batches = self.albacore.all_batches
-
+        # self.albacore = albacore
+        #
+        # # basecaller info
+        # self.function = albacore.build_func()
+        # self.input_path = Path(albacore.input_path)
+        # self.save_path = Path(albacore.save_path)
+        #
+        # self.bc_batches = batch_generator(albacore.batches_for_basecalling)
+        # self.all_batches = self.albacore.all_batches
+        #
         self.futures = []
 
         # collapse_data
@@ -39,36 +61,250 @@ class AlbacoreBasecaller(Pipe):
 
     def execute(self):
         batch_counter = 0
-        with open(str(self.save_path.joinpath("nanopypes_basecall.txt")), "a") as file:
-            for batch in self.bc_batches:
-                self.futures.append(self.process_batch(batch))
-                batch_counter += 1
-                if batch_counter == self.batch_bunch_size:
-                    break
+        batches = self.batches
 
-            completed = as_completed(self.futures)
-            for comp in completed:
-                try:
-                    new_future = self.process_batch(next(self.bc_batches))
-                    completed.add(new_future)
-                except StopIteration:
-                    pass
-                completed_batch_path = comp.result()
-                file.write(completed_batch_path.name)
-                file.write("\n")
+        for i in range(self.batch_bunch_size):
+            batch = next(batches)
+            self.futures.append(self._process_batch(batch))
+            batch_counter += 1
+            if batch_counter == self.batch_bunch_size:
+                break
 
-            results = self.client.gather(self.futures)
+        completed = as_completed(self.futures)
+        for comp in completed:
+            try:
+                new_future = self._process_batch(next(batches))
+                completed.add(new_future)
+            except StopIteration:
+                pass
+            #completed_batch_path = comp.result()
 
-    def process_batch(self, batch):
-        batch_save_path = self.save_path.joinpath(batch.name)
-        command = self.albacore.build_basecall_command(input_dir=batch)
-        bc = self.client.submit(basecall, self.function, command, batch_save_path)
+        results = self.client.gather(self.futures)
+
+    def _process_batch(self, batch):
+        b_save_path = self.save_path.joinpath(batch)
+        command = self.build_basecall_command(batch=batch)
+        func = self.command_function()
+        bc = self.client.submit(func, command)
         return bc
 
-    def check_input_data_status(self):
-        pass
-        #self.client.restart()
-        #self.albacore.bc_batches = os.listdir(str(self.save_path))
+    def build_basecall_command(self, batch):
+        """ Method for creating the string based command for running the albacore basecaller from the commandline."""
+        input_dir = self.input.joinpath(batch)
+        command = ["read_fast5_basecaller.py",]
+        command.extend(["--flowcell", self.flow_cell])
+        command.extend(["--kit", self.kit])
+        command.extend(["--output_format", self.output_format])
+        command.extend(["--save_path", str(self.save_path.joinpath(batch))])
+        command.extend(["--worker_threads", "1"])
+        command.extend(["--input", str(input_dir)])
+
+        if self.output_format == "fastq":
+            command.extend(["--reads_per_fastq_batch", str(self.reads_per_fastq)])
+        return command
+
+    @property
+    def batches(self):
+        """Batch generator"""
+        for batch in os.listdir(str(self.input)):
+            yield batch
+
+    def command_function(self, stdout=None):
+        def func(command):
+            process = subprocess.run(command, check=True)
+            return process
+        return func
+
+
+class GuppyBasecaller(Pipe):
+    """With config file:
+  guppy_basecaller -i <input path> -s <save path> -c <config file> [options]
+With flowcell and kit name:
+  guppy_basecaller -i <input path> -s <save path> --flowcell <flowcell name>
+    --kit <kit name>
+List supported flowcells and kits:
+  guppy_basecaller --print_workflows
+Use server for basecalling:
+  guppy_basecaller -i <input path> -s <save path> -c <config file>
+    --port <server address> [options]
+
+Command line parameters:
+  --print_workflows                 Output available workflows.
+  --flowcell arg                    Flowcell to find a configuration for
+  --kit arg                         Kit to find a configuration for
+  -m [ --model_file ] arg           Path to JSON model file.
+  --chunk_size arg                  Stride intervals per chunk.
+  --chunks_per_runner arg           Maximum chunks per runner.
+  --chunks_per_caller arg           Soft limit on number of chunks in each
+                                    caller's queue. New reads will not be
+                                    queued while this is exceeded.
+  --overlap arg                     Overlap between chunks (in stride
+                                    intervals).
+  --gpu_runners_per_device arg      Number of runners per GPU device.
+  --cpu_threads_per_caller arg      Number of CPU worker threads per
+                                    basecaller.
+  --num_callers arg                 Number of parallel basecallers to create.
+  --stay_penalty arg                Scaling factor to apply to stay probability
+                                    calculation during transducer decode.
+  --qscore_offset arg               Qscore calibration offset.
+  --qscore_scale arg                Qscore calibration scale factor.
+  --temp_weight arg                 Temperature adjustment for weight matrix in
+                                    softmax layer of RNN.
+  --temp_bias arg                   Temperature adjustment for bias vector in
+                                    softmax layer of RNN.
+  --hp_correct arg                  Whether to use homopolymer correction
+                                    during decoding.
+  --builtin_scripts arg             Whether to use GPU kernels that were
+                                    included at compile-time.
+  -x [ --device ] arg               Specify basecalling device: 'auto', or
+                                    'cuda:<device_id>'.
+  -k [ --kernel_path ] arg          Path to GPU kernel files location (only
+                                    needed if builtin_scripts is false).
+  -z [ --quiet ]                    Quiet mode. Nothing will be output to
+                                    STDOUT if this option is set.
+  --trace_categories_logs arg       Enable trace logs - list of strings with
+                                    the desired names.
+  --verbose_logs                    Enable verbose logs.
+  --qscore_filtering                Enable filtering of reads into PASS/FAIL
+                                    folders based on min qscore.
+  --min_qscore arg                  Minimum acceptable qscore for a read to be
+                                    filtered into the PASS folder
+  --disable_pings                   Disable the transmission of telemetry
+                                    pings.
+  --ping_url arg                    URL to send pings to
+  --ping_segment_duration arg       Duration in minutes of each ping segment.
+  --calib_detect                    Enable calibration strand detection and
+                                    filtering.
+  --calib_reference arg             Reference FASTA file containing calibration
+                                    strand.
+  --calib_min_sequence_length arg   Minimum sequence length for reads to be
+                                    considered candidate calibration strands.
+  --calib_max_sequence_length arg   Maximum sequence length for reads to be
+                                    considered candidate calibration strands.
+  --calib_min_coverage arg          Minimum reference coverage to pass
+                                    calibration strand detection.
+  -q [ --records_per_fastq ] arg    Maximum number of records per fastq file, 0
+                                    means use a single file (per worker, per
+                                    run id).
+  --enable_trimming arg             Enable adapter trimming.
+  --trim_threshold arg              Threshold above which data will be trimmed
+                                    (in standard deviations of current level
+                                    distribution).
+  --trim_min_events arg             Adapter trimmer minimum stride intervals
+                                    after stall that must be seen.
+  --max_search_len arg              Maximum number of samples to search through
+                                    for the stall
+  --reverse_sequence arg            Reverse the called sequence (for RNA
+                                    sequencing).
+  --u_substitution arg              Substitute 'U' for 'T' in the called
+                                    sequence (for RNA sequencing).
+  -i [ --input_path ] arg           Path to input fast5 files.
+  -s [ --save_path ] arg            Path to save fastq files.
+  -l [ --read_id_list ] arg         File containing list of read ids to filter
+                                    to
+  -p [ --port ] arg                 Hostname and port for connecting to
+                                    basecall service (ie 'myserver:5555'), or
+                                    port only (ie '5555'), in which case
+                                    localhost is assumed.
+  -r [ --recursive ]                Search for input files recursively.
+  --fast5_out                       Choice of whether to do fast5 output.
+  --override_scaling                Manually provide scaling parameters rather
+                                    than estimating them from each read.
+  --scaling_med arg                 Median current value to use for manual
+                                    scaling.
+  --scaling_mad arg                 Median absolute deviation to use for manual
+                                    scaling.
+  --trim_strategy arg               Trimming strategy to apply ('dna' or 'rna')
+  --dmean_win_size arg              Window size for coarse stall event
+                                    detection
+  --dmean_threshold arg             Threhold for coarse stall event detection
+  --jump_threshold arg              Threshold level for rna stall detection
+  --disable_events                  Disable the transmission of event tables
+                                    when receiving reads back from the basecall
+                                    server.
+  --pt_scaling                      Enable polyT/adapter max detection for read
+                                    scaling.
+  --pt_median_offset arg            Set polyT median offset for setting read
+                                    scaling median (default 2.5)
+  --adapter_pt_range_scale arg      Set polyT/adapter range scale for setting
+                                    read scaling median absolute deviation
+                                    (default 5.2)
+  --pt_required_adapter_drop arg    Set minimum required current drop from
+                                    adapter max to polyT detection. (default
+                                    30.0)
+  --pt_minimum_read_start_index arg Set minimum index for read start sample
+                                    required to attempt polyT scaling. (default
+                                    30)
+  -h [ --help ]                     produce help message
+  -v [ --version ]                  print version number
+  -c [ --config ] arg               Config file to use
+  -d [ --data_path ] arg            Path to use for loading any data files the
+                                    application requires."""
+
+    def __init__(self, client, expected_workers, input_path=None,
+                 flowcell=None, kit=None, save_path=None, fast5_out=None,
+                 reads_per_fastq=1000, worker_client=None, pull_link=None,
+                 image_path=None, bind=None, cpu_threads_per_caller=1):
+        self.expected_workers = expected_workers
+        self.bind = bind
+        self.pull_link = pull_link
+        self.image_path = image_path
+        self.input_path = Path(input_path)
+        self.save_path = save_path
+        self.worker_client = worker_client
+        self.client = client
+        self.command_pattern = self.build_command_pattern(kit=kit, flowcell=flowcell, input_path=input_path, reads_per_fastq=reads_per_fastq, fast5_out=fast5_out)
+        self.num_batches = len(os.listdir(str(self.input_path)))
+        self.cpu_threads = cpu_threads_per_caller
+
+        self.futures = []
+
+    @property
+    def batches(self):
+        for batch in os.listdir(str(self.input_path)):
+            yield Path(self.save_path).joinpath(batch)
+
+    def build_command_pattern(self, kit=None, flowcell=None, input_path=None, reads_per_fastq=None, fast5_out=False, adapter_trimming=False, cpu_threads_per_caller=1):
+
+        #save_path must be formattable
+        save_path = "{save_path}"
+        pattern = "guppy_basecaller --kit {kit} --flowcell {flowcell} --input_path {input_path} --cpu_threads_per_caller {cpu_threads} --save_path {save_path}".format(kit=kit, flowcell=flowcell, input_path=input_path, save_path=save_path, cpu_threads=cpu_threads_per_caller)
+        if reads_per_fastq:
+            pattern += " --reads_per_fastq {reads_per}".format(reads_per=reads_per_fastq)
+        if fast5_out:
+            pattern += " --fast5_out"
+        if adapter_trimming:
+            pattern += " --enable_trimming {}"
+        return pattern
+
+    def execute(self):
+        dispatched = 0
+        dispatch_full = False
+        completed_futures = False
+        for i in range(self.num_batches):
+            try:
+                batch = next(self.batches)
+            except StopIteration:
+                break
+            command = self.command_pattern.format(save_path=batch)
+            future = self.client.submit(singularity_execution, self.worker_client, command.split(" "), self.pull_link, self.image_path, bind=self.bind)
+
+            if dispatch_full != True:
+                self.futures.append(future)
+                dispatched += 1
+                if dispatched == self.expected_workers:
+                    dispatch_full = True
+            elif dispatch_full and completed_futures != True:
+                completed = as_completed(self.futures)
+                completed_futures = True
+            elif dispatch_full:
+                completed.add(future)
+
+            for comp in completed:
+                break
+        for comp in completed:
+            pass
+
 
 #################################
 #Functions for cluster submission
@@ -82,8 +318,17 @@ def basecall(func, command, batch_save_path):
     # return
 
 
+def singularity_execution(singularity_client, cmd, pull_link=None, image_path=None, bind=None):
+    client = SingularityClient()
+    if pull_link:
+        image = client.pull(image_path)
+    else:
+        image = image_path
+    client.execute(image, [cmd], bind=bind)
+
+
 #################################
-#Utility Functions
+# Tooling
 #################################
 
 def collapse_data(save_path):
@@ -177,13 +422,91 @@ def collapse_workspace(workspace_paths, save_path):
 
 def prep_save_location(save_path):
     save_path = Path(save_path)
-    if save_path.joinpath("workspace").exists() == False:
+    if save_path.joinpath("workspace").exists() is False:
         save_path.joinpath("workspace").mkdir()
-    if save_path.joinpath("workspace", "fail").exists() == False:
+    if save_path.joinpath("workspace", "fail").exists() is False:
         save_path.joinpath("workspace", "fail").mkdir()
-    if save_path.joinpath("workspace", "pass").exists() == False:
+    if save_path.joinpath("workspace", "pass").exists() is False:
         save_path.joinpath("workspace", "pass").mkdir()
-    if save_path.joinpath("workspace", "calibration_strands").exists() == False:
+    if save_path.joinpath("workspace", "calibration_strands").exists() is False:
         save_path.joinpath("workspace", "calibration_strands").mkdir()
+
+
+if __name__ == '__main__':
+    guppy = GuppyBasecaller(client=None, guppy=None, expected_workers=100, input_path="/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass", save_path="save/path", kit="SQK-LSK109",
+                            flowcell="FLO-MIN106")
+
+    guppy()
+    # command = "guppy_basecaller --kit SQK-LSK109 --flowcell FLO-MIN106 --input_path /project/umw_athma_pai/kevin/data/minion_ercc_labeled/20190220_1525_ERCC/fast5/pass/0 --save_path {save_path} --reads_per_fastq 1000".format(save_path=".")
+    # print(command)
+
+
+
+
+
+    # import psutil
+    #
+    # from multiprocessing import Pool, Process
+    #
+    # proc = psutil.Process()
+    # with Pool(5) as p:
+    #     children = proc.children()
+    #     mem = 0
+    #     for c in children:
+    #         mem += c.memory_info().rss
+    # print(mem)
+
+    from nanopypes.objects.raw import RawFast5
+
+    # data = '/Users/kevinfortier/distributed-bio-tools/distributed_bio_tools/tests/my_data'
+    # m, t = describe_data(data)
+    # print(m)
+    # print(t)
+    # multi_fast5 = '/Users/kevinfortier/distributed-bio-tools/distributed_bio_tools/tests/batch_0.fast5'
+    # m = MultiFast5File(multi_fast5)
+    # print(m.get_read_ids())
+    # #batch_convert_multi_files_to_single(multi_fast5, '/Users/kevinfortier/distributed-bio-tools/distributed_bio_tools/tests/', threads=1, recursive=False)
+    # c = ["read_fast5_basecaller.py", "--flowcell", "FLO-MIN106",
+    #                      "--kit", "SQK-LSK109", "--output_format", "fastq",
+    #                      "--save_path", "/Users/kevinfortier/distributed-bio-tools/distributed_bio_tools/tests/my_data",
+    #                      "--worker_threads", "1", "--input", "/Users/kevinfortier/distributed-bio-tools/distributed_bio_tools/tests/0", "--reads_per_fastq", "1000"]
+    #
+    # command = ""
+    # for i in c:
+    #     command += i
+    #     command += " "
+    # print(command)
+    # read_id', '69e9e884'
+    # h5 = h5py.File('/Users/kevinfortier/distributed-bio-tools/distributed_bio_tools/tests/0/69e9e884.fast5', 'r+')
+    # # print(h5.keys())
+    # convert_multi_to_single('/Users/kevinfortier/distributed-bio-tools/distributed_bio_tools/tests/batch_0.fast5', '/Users/kevinfortier/distributed-bio-tools/distributed_bio_tools/tests/my_data/multi_to_single_ont', "my_fast5_data")
+    #f5path = '/Users/kevinfortier/distributed-bio-tools/distributed_bio_tools/tests/my_data/multi_to_single_ont/my_fast5_data/568b93db.fast5'
+    #h5 = h5py.File(f5path, 'r+')
+    # del(h5['Raw']['Reads']['Read_1'].attrs['run_id'])
+    # h5.create_group('PreviousReadInfo')
+    # h5['PreviousReadInfo'].attrs.create('previous_read_id', b'0af72d1a-2097-4464-8912-b28875a4ea32')
+    # h5['PreviousReadInfo'].attrs.create('previous_read_number', 247)
+    #r = RawFast5(f5path)
+    #print(r.contents)
+    # my_h5 = h5py.File('/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_12_ch_80_strand.fast5', 'r')
+    # # print(my_h5['Raw']['Reads']['Read_12']['Signal'])
+    # # print(my_h5.keys())
+    # my_r = RawFast5('/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_12_ch_80_strand.fast5')
+    # # print(my_r.contents)
+
+    #####Create multi fast5
+
+    #mf5 = Path('/Users/kevinfortier/distributed-bio-tools/distributed_bio_tools/tests/my_multi_fast5')
+    # files = [str(dir.joinpath(f)) for f in os.listdir(dir)]
+    # create_multi_read_file(files, '/Users/kevinfortier/distributed-bio-tools/distributed_bio_tools/tests/my_multi_fast5')
+
+    # fast5 = RawFast5(mf5)
+    # print(fast5.contents)
+
+    ###Convert multi back to single
+
+    # output_folder = '/Users/kevinfortier/distributed-bio-tools/distributed_bio_tools/tests/my_data'
+    # convert_multi_to_single(str(mf5), output_folder, subfolder='my_fast5_data')
+
 
 

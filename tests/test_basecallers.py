@@ -87,7 +87,7 @@ class TestAlbacore(unittest.TestCase):
 ########################################################################
 
 
-class TestBasecallLocal(unittest.TestCase):
+class TestAlbacoreBasecallLocal(unittest.TestCase):
     """Tests for the Albacore class."""
 
     @classmethod
@@ -139,7 +139,187 @@ class TestBasecallLocal(unittest.TestCase):
     def test_003_continue_basecall(self):
         pass
 
-class TestBasecallLSFCluster(unittest.TestCase):
+class TestAlbacoreBasecallLSFCluster(unittest.TestCase):
+    """Test basecaller on lsf cluster"""
+
+    @classmethod
+    def setUp(self):
+        """Set up test fixtures, if any."""
+
+        data_input_path = Path(
+            'test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass')
+        save_path = Path(
+            'test_data/basecalled_data/results/local_basecall_test')
+        try:
+            shutil.rmtree(str(save_path))
+            save_path.mkdir()
+        except Exception as e:
+            pass
+
+    def tearDown(self):
+        """Tear down test fixtures, if any."""
+        pass
+
+    def test_000_basecall_albacore(self):
+        """Build a cluster object with yaml"""
+        flowcell = 'FLO-MIN106'
+        input_path = 'test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass'
+        save_path = 'test_data/basecalled_data/results/local_basecall_test'
+        kit = 'SQK-LSK109'
+        output_format = 'fastq'
+
+        config = Configuration(config="test_configs/remote_builds.yml")
+        compute_config = config.get_compute("cluster1")
+        cluster = Cluster(compute_config, umass_mem=2480, logs=True)
+        scheduler_address = cluster.connect()
+        client = Client(scheduler_address)
+
+        num_workers = cluster.expected_workers
+
+        albacore_basecaller(input_path=input_path, save_path=save_path, kit=kit, flowcell=flowcell,
+                            expected_workers=num_workers, output_format=output_format, client=client)
+
+    # def test_002_check_basecall(self):
+    #     input_reads = []
+    #     bc_path = 'test_data/basecalled_data/results/local_basecall_test'
+    #     for path, subdirs, files in os.walk(
+    #         'test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass'):
+    #         input_reads.extend(files)
+    #
+    #     basecalled_reads = []
+    #
+    #     for path, subdirs, files in os.walk('test_data/basecalled_data/results/local_basecall_test/workspace'):
+    #         basecalled_reads.extend(files)
+    #
+    #     for read in basecalled_reads:
+    #         self.assertTrue(read in input_reads)
+    #     for read in input_reads:
+    #         self.assertTrue(read in basecalled_reads)
+    #
+    #     self.assertTrue(check_basecall(bc_path, input_reads))
+
+    def test_003_continue_basecall(self):
+        pass
+
+
+########################################################################
+### Test Guppy                                                    ###
+########################################################################
+class TestGuppy(unittest.TestCase):
+    """Tests for the Albacore class."""
+
+    def setUp(self):
+        """Set up test fixtures, if any."""
+
+    def tearDown(self):
+        """Tear down test fixtures, if any."""
+
+    def test_000_albacore_commands(self):
+        """Test the albacore commands that are generated from passing custom inputs."""
+        albacore = Albacore(kit="SQK-LSK109", flowcell="FLO-MIN106", input_path="test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass",
+                            save_path="test_data/basecalled_data/results/local_basecall_test", output_format="fastq")
+        retrieved_command = albacore.build_basecall_command(Path('./test_data/1'))
+        print(retrieved_command)
+        expected_command = ["read_fast5_basecaller.py", "--flowcell", "FLO-MIN106",
+                         "--kit", "SQK-LSK109", "--output_format", "fastq",
+                         "--save_path", "test_data/basecalled_data/results/local_basecall_test/1",
+                         "--worker_threads", "1", "--input", "test_data/1", "--reads_per_fastq", "1000"]
+
+        #print(retrieved_command, "\n", expected_command)
+        self.assertTrue(retrieved_command == expected_command)
+
+    def test_001_albacore_batches(self):
+        albacore = Albacore(kit="SQK-LSK109", flowcell="FLO-MIN106",
+                            input_path="test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass",
+                            save_path="test_data/basecalled_data/results/local_basecall_test", output_format="fastq")
+        expected_batches = [Path('test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/0'),
+                            Path('test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/1'),
+                            Path('test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/2'),
+                            Path('test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/3'),
+                            Path('test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/4'),
+                            Path('test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/5'),
+                            Path('test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/6'),
+                            Path('test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/7'),
+                            Path('test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/8'),
+                            Path('test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/9')]
+
+        actual_batches = albacore.batches_for_basecalling
+
+        #print("BATCHES....... ", expected_batches, "\n", actual_batches)
+        for batch in expected_batches:
+            self.assertTrue(batch in actual_batches)
+        for batch in actual_batches:
+            self.assertTrue(batch in expected_batches)
+
+    def test_003_albacore_build_func(self):
+        """Test the function that is built from albacore."""
+        albacore = Albacore(kit="SQK-LSK109", flowcell="FLO-MIN106",
+                            input_path="test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass",
+                            save_path="test_data/basecalled_data/results/local_basecall_test", output_format="fastq")
+
+        func = albacore.build_func()
+        res = func(["echo", "hello"])
+        albacore_res = func(["read_fast5_basecaller.py", "--help"])
+        print(albacore_res)
+
+########################################################################
+### Test Guppy Basecaller                                          ###
+########################################################################
+
+
+class TestGuppyBasecallLocal(unittest.TestCase):
+    """Tests for the Albacore class."""
+
+    @classmethod
+    def setUp(self):
+        """Set up test fixtures, if any."""
+        data_input_path = Path('/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass')
+        save_path = Path('/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/basecalled_data/results/local_basecall_test')
+
+        shutil.rmtree(str(save_path))
+        save_path.mkdir()
+
+    def tearDown(self):
+        """Tear down test fixtures, if any."""
+        pass
+
+    def test_000_basecall_albacore(self):
+        """Build a cluster object with yaml"""
+        flowcell = 'FLO-MIN106'
+        input_path = 'test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass'
+        save_path = 'test_data/basecalled_data/results/local_basecall_test'
+        kit = 'SQK-LSK109'
+        output_format = 'fastq'
+
+        cluster = LocalCluster()
+        client = Client(cluster)
+
+        num_workers = 4
+
+        albacore_basecaller(input_path=input_path, save_path=save_path, kit=kit, flowcell=flowcell, expected_workers=num_workers, output_format=output_format, client=client)
+
+    # def test_002_check_basecall(self):
+    #     input_reads = []
+    #     bc_path = 'test_data/basecalled_data/results/local_basecall_test'
+    #     for path, subdirs, files in os.walk('test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass'):
+    #         input_reads.extend(files)
+    #
+    #     basecalled_reads = []
+    #
+    #     for path, subdirs, files in os.walk('test_data/basecalled_data/results/local_basecall_test/workspace'):
+    #         basecalled_reads.extend(files)
+    #
+    #     for read in basecalled_reads:
+    #         self.assertTrue(read in input_reads)
+    #     for read in input_reads:
+    #         self.assertTrue(read in basecalled_reads)
+    #
+    #     self.assertTrue(check_basecall(bc_path, input_reads))
+
+    def test_003_continue_basecall(self):
+        pass
+
+class TestGuppyBasecallLSFCluster(unittest.TestCase):
     """Test basecaller on lsf cluster"""
 
     @classmethod

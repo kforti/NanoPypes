@@ -4,5 +4,7 @@
     <content url="file://$MODULE_DIR$" />
     <orderEntry type="jdk" jdkName="Python 3.7 (nanopypes_test) (1)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module" module-name="distributed_bio_tools" />
+    <orderEntry type="module" module-name="cozmo_controller" />
   </component>
 </module>

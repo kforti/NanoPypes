@@ -12,13 +12,24 @@ compute:
     cluster1:
         job_time: 02:00
         mem: 2480000000
-        ncpus: 10
+        ncpus: 20
         project: /project/umw_athma_pai
         queue: short
-        workers: 10
-        cores: 10
+        workers: 20
+        cores: 20
         memory: 2 GB
         scale_value: 40
+        cluster_type: LSF
+    guppy_cpu_cluster:
+        job_time: 05:00
+        mem: 20589934592  #2147483648
+        ncpus: 20
+        project: /project/umw_athma_pai
+        queue: short
+        workers: 5
+        cores: 4
+        memory: 4 GB
+        scale_value: 20
         cluster_type: LSF
 networking:
     network1:

@@ -8,6 +8,7 @@ import click
 from nanopypes.run_pipes import albacore_basecaller as albacore
 from nanopypes.run_pipes import ParallelRsync as prsync
 from nanopypes.run_pipes import parallel_minimap2 as pmmap2
+from nanopypes.run_pipes import guppy_basecaller
 from nanopypes.config import Configuration
 from nanopypes.compute import Cluster
 
@@ -74,6 +75,50 @@ def albacore_basecaller(config, cluster_name, kit, flowcell, input_path, save_pa
                        expected_workers=num_workers,
                        client=client
                        )
+    return 0
+
+
+@click.command()
+@click.option('-n', '--cluster-name', 'cluster_name', help='The name of the cluster- located directly under computes in the config file.', required=True, type=str)
+@click.option('-s', '--save-path', 'save_path', help='An empty save location for the basecalled data- if the directory does not exist it will be created but the parent directory must exist', required=True, type=str)
+@click.option('-i', '--input-path', 'input_path', help="The path to a directory that contains batches of raw sequening data- likely titled pass.", required=True, type=str)
+@click.option('-k', '--kit', 'kit', help="The type of ONT kit used in the sequencing run.", required=True, type=str)
+@click.option('-f', '--flowcell', 'flowcell', help="The type of ONT kit used in the sequencing run.", required=True, type=str)
+@click.option('-p', '--pull-link', 'pull_link', help="The link from which to pull an image from to build in singularity.", required=False, type=str)
+@click.option('--image-path', 'image_path', help="The path to an image stored locally.", required=False, type=str)
+@click.option('-c', '--client', 'worker_client', help="The only client currently supported is singularity. --client singularity", required=False, type=str)
+@click.option('-b', '--bind', 'bind', help="A path that you would like to bind to singulairty.", required=False, type=str)
+@click.option('--cpu_threads_per_caller', 'cpu_threads_per_caller', help="A path that you would like to bind to singulairty.", required=False, type=str)
+@click.option('--fast5_out', 'fast5_out', help="fastq or fast5 output format.", required=False, type=str)
+@click.argument('config', required=True)
+def nanopypes_guppy(config, cluster_name, kit, flowcell, input_path, save_path,
+                    worker_client=None, fast5_out=None, pull_link=None, image_path=None,
+                    bind=None, cpu_threads_per_caller=1):
+    """Console script for running the albacore parallel basecaller.
+    :param cluster_name: The name of the cluster defined in the config yaml.
+    :param kit: The name of the ONT kit used in the sequencing run."""
+    #run_pipes function albacore_basecaller()
+    config = Configuration(config)
+    compute_config = config.get_compute(cluster_name)
+    cluster = Cluster(compute_config)
+    scheduler_address = cluster.connect()
+
+    client = Client(scheduler_address)
+    num_workers = cluster.expected_workers
+
+    bc_data = guppy_basecaller(kit=kit,
+                               flowcell=flowcell,
+                               input_path=input_path,
+                               save_path=save_path,
+                               fast5_out=fast5_out,
+                               expected_workers=num_workers,
+                               pull_link=pull_link,
+                               image_path=image_path,
+                               scheduler_address=scheduler_address,
+                               client=client,
+                               bind=bind,
+                               worker_client=worker_client,
+                               cpu_threads_per_caller=1)
     return 0
 
 

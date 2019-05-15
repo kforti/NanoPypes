@@ -10,7 +10,7 @@ class Albacore:
     """ Conatains the data associated with making the command to run the basecaller.
     Build the command with build_command()
    """
-    def __init__(self, config=None,
+    def __init__(self,
                  input_path=None,
                  flowcell=None,
                  kit=None,

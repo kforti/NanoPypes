@@ -236,3 +236,4 @@ class Config:
         if extension == "yml":
             file = open(config, "r")
             return load(file)
+

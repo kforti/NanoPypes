@@ -3,9 +3,10 @@ import os
 from pathlib import Path
 
 from ont_fast5_api.fast5_file import Fast5File
+from ont_fast5_api.multi_fast5 import MultiFast5File
 from ont_fast5_api.analysis_tools import basecall_1d
 
-from nanopypes.objects.base import NanoPypeObject
+from nanopypes.objects.base import NanoPypeObject, Fast5, MultiFast5
 
 
 class SeqOutput(NanoPypeObject):
@@ -100,23 +101,15 @@ class Sample(NanoPypeObject):
         return {'pass': pass_reads, 'fail': fail_reads}
 
 
-class RawFast5(Fast5File):#(Fast5Read):
+class RawFast5():#(Fast5Read):
 
     def __init__(self, path):#, read_id):
         self.path = path
-        super().__init__(fname=path)
-
-    @property
-    def open(self):
-        return h5py.File(self.path, 'r')
-
-    @property
-    def read_name(self):
-        return self.open.filename
 
     @property
     def contents(self):
-        self.iter_group(self.open)
+        with h5py.File(self.path, 'r') as f:
+            self.iter_group(f)
 
     @property
     def signal(self):
