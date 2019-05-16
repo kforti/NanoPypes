@@ -48,5 +48,5 @@ all_file_name = fastq_runid_{run_id}.{extension}
 basecall_columns = mean,start,stdv,length,model_state,move,p_model_state,weights
 
 [aligner]
-method =
+method = 
 

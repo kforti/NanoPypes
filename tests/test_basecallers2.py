@@ -240,8 +240,8 @@ def test_albacore_binary():
     assert comp_process.stdout == expected_stdout
 
 
-def test_albacore_basecall():
-    save_path = Path('/home/kf78w/bin/NanoPypes/NanoPypes/tests/test_data/basecalled_data/results/local_basecall_test')
+def test_albacore_remote_basecall():
+    save_path = Path('test_data/basecalled_data/results/local_basecall_test')
     if save_path.exists():
         shutil.rmtree(str(save_path))
     save_path.mkdir()
@@ -303,8 +303,8 @@ def test_albacore_basecall():
         #     print(key, value)
 
 
-def test_collapse_data():
-    save_path = Path('/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/basecalled_data/results/local_basecall_test')
+def test_collapse_remote_data():
+    save_path = Path('test_data/basecalled_data/results/local_basecall_test')
     if save_path.exists() is False:
         raise IOError("There is no data to collapse")
     tmp_dir = save_path.parent.joinpath("tmp")#Path("/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/basecalled_data/results/local_basecall_copy")#save_path.parent.joinpath("tmp")
@@ -412,8 +412,8 @@ def file_row_generator(file):
 
 
 if __name__ == '__main__':
-    #test_albcore_build_command()
-    #test_albacore_batches()
+    test_albcore_build_command()
+    test_albacore_batches()
     #test_albacore_binary()
     test_albacore_basecall()
     test_collapse_data()

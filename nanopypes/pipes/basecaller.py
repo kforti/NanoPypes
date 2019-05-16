@@ -7,6 +7,7 @@ import subprocess
 
 import dask.bag as db
 from dask.distributed import as_completed
+from dask.bytes import open_files
 
 from nanopypes.pipes.base import Pipe
 from nanopypes.pipes.worker_clients import SingularityClient
@@ -365,45 +366,85 @@ def collapse_data(save_path):
 
 
 def collapse_config(config_paths, save_path):
-    config_data = []
-    config_bag = db.read_text(config_paths)
-    for row in config_bag.compute():
-        if row not in config_data:
-            config_data.append(row)
+    import numpy as np
+    from collections import deque
+    config_data = {}
+    for config in config_paths:
+        row_counter = 0
+        with open(str(config), "r") as file:
+            for row in file:
+                if row == '\n':
+                    continue
+                if (row, row_counter) in config_data:
+                    config_data[(row, row_counter)] += 1
 
-    with open(str(save_path), 'a') as config:
-        config.writelines(config_data)
-    config.close()
+                else:
+                    config_data[(row, row_counter)] = 1
+                row_counter += 1
+                # elif row in config_data and i not in write_rows:
+                #     write_rows[i] = [row]
+                # else:
+                #     config_data[row] = [i]
+                #     write_rows[i] = [row]
+        file.close()
+    print(config_data)
+    num_configs = int(len(config_paths) * .90)
+    data = {}
+    unsure = []
+
+    for d in config_data.keys():
+        if config_data[d] >= num_configs:
+            data[d[1]] = d[0]
+        else:
+            unsure.append(d[0])
+    print(data)
+    with open(str(save_path), 'a') as outfile:
+        for i in range(len(config_data)):
+            try:
+                outfile.write(data[i])
+            except:
+                pass
+        if len(unsure) > 0:
+            outfile.write("\n\n##################################\nDiscrepencies in configs\n##################################\n")
+            outfile.writelines(unsure)
+
+    return
 
 
 def collapse_seq_summary(sum_paths, save_path):
     header = None
-    seq_sum_bag = db.read_text(sum_paths)
     with open(str(save_path), 'a') as sum_file:
-        for seq in seq_sum_bag.compute():
-            if header == None:
-                header = seq
-            elif seq == header:
-                continue
-            sum_file.write(seq)
+        for ss in sum_paths:
+            with open(ss, "r") as file:
+                if header is None:
+                    sum_file.writelines(file)
+                    header = True
+                else:
+                    for i, row in enumerate(file):
+                        if i == 0:
+                            continue
+                        else:
+                            sum_file.write(row)
+
+            file.close()
     sum_file.close()
     return
 
 
 def collapse_seq_telemetry(tel_paths, save_path):
-    seq_sum_bag = db.read_text(tel_paths)
     with open(str(save_path), 'a') as tel_file:
-        for seq in seq_sum_bag.compute():
-            tel_file.write(seq)
+        for tel in tel_paths:
+            with open(tel, 'r') as infile:
+                tel_file.writelines(infile)
     tel_file.close()
     return
 
 
 def collapse_pipeline(pipe_paths, save_path):
-    pipe_bag = db.read_text(pipe_paths)
     with open(str(save_path), 'a') as pipe_file:
-        for seq in pipe_bag.compute():
-            pipe_file.write(seq)
+        for pipe in pipe_paths:
+            with open(pipe, 'r') as infile:
+                pipe_file.writelines(infile)
     pipe_file.close()
     return
 
@@ -433,30 +474,10 @@ def prep_save_location(save_path):
 
 
 if __name__ == '__main__':
-    guppy = GuppyBasecaller(client=None, guppy=None, expected_workers=100, input_path="/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass", save_path="save/path", kit="SQK-LSK109",
-                            flowcell="FLO-MIN106")
-
-    guppy()
-    # command = "guppy_basecaller --kit SQK-LSK109 --flowcell FLO-MIN106 --input_path /project/umw_athma_pai/kevin/data/minion_ercc_labeled/20190220_1525_ERCC/fast5/pass/0 --save_path {save_path} --reads_per_fastq 1000".format(save_path=".")
-    # print(command)
-
-
-
-
-
-    # import psutil
-    #
-    # from multiprocessing import Pool, Process
-    #
-    # proc = psutil.Process()
-    # with Pool(5) as p:
-    #     children = proc.children()
-    #     mem = 0
-    #     for c in children:
-    #         mem += c.memory_info().rss
-    # print(mem)
-
-    from nanopypes.objects.raw import RawFast5
+    configs = ['/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/basecalled_data/results/local_basecall_copy/9/configuration.cfg', '/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/basecalled_data/results/local_basecall_copy/0/configuration.cfg', '/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/basecalled_data/results/local_basecall_copy/7/configuration.cfg', '/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/basecalled_data/results/local_basecall_copy/6/configuration.cfg', '/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/basecalled_data/results/local_basecall_copy/1/configuration.cfg', '/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/basecalled_data/results/local_basecall_copy/8/configuration.cfg', '/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/basecalled_data/results/local_basecall_copy/4/configuration.cfg', '/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/basecalled_data/results/local_basecall_copy/3/configuration.cfg', '/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/basecalled_data/results/local_basecall_copy/2/configuration.cfg', '/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/basecalled_data/results/local_basecall_copy/5/configuration.cfg']
+    p = Path('my_test')
+    c = Path('/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/basecalled_data/results/local_basecall_copy/0/configuration.cfg')
+    collapse_config(configs, p)
 
     # data = '/Users/kevinfortier/distributed-bio-tools/distributed_bio_tools/tests/my_data'
     # m, t = describe_data(data)
