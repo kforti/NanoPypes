@@ -33,7 +33,7 @@ def test_guppy_basecall():
     fast5_out = False
 
     config = Configuration(config="test_configs/remote_builds.yml")
-    compute_config = config.get_compute("guppy_cpu_cluster")
+    compute_config = config.get_compute("cluster1")
     cluster = Cluster(compute_config, umass_mem=10000, logs=True)
     scheduler_address = cluster.connect()
     client = Client(scheduler_address)
@@ -44,6 +44,7 @@ def test_guppy_basecall():
                             flowcell=flowcell, kit=kit, save_path=save_path, fast5_out=fast5_out,
                             worker_client='singularity', pull_link='docker://genomicpariscentre/guppy',
                             bind='/project/umw_athma_pai/kevin')
+    guppy()
 
 if __name__ == '__main__':
     test_guppy_batches()

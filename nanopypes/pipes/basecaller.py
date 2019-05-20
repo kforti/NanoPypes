@@ -291,16 +291,16 @@ Command line parameters:
                 break
             command = self.command_pattern.format(save_path=batch)
             future = self.client.submit(singularity_execution, self.worker_client, command.split(" "), self.pull_link, self.image_path, bind=self.bind)
+            dispatched += 1
 
-            if dispatch_full != True:
+            if completed_futures is False and dispatch_full is False:
                 self.futures.append(future)
-                dispatched += 1
-                if dispatched == self.expected_workers:
-                    dispatch_full = True
-            elif dispatch_full and completed_futures != True:
+
+            if dispatched == self.expected_workers and completed_futures is False:
                 completed = as_completed(self.futures)
                 completed_futures = True
-            elif dispatch_full:
+                dispatch_full = True
+            elif dispatch_full and completed_futures:
                 completed.add(future)
 
             for comp in completed:
