@@ -12,7 +12,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.56060606">
+    <splitter split-orientation="horizontal" split-proportion="0.2838384">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="basecaller.py" pinned="false" current-in-tab="true">
@@ -122,8 +122,8 @@
           <file leaf-file-name="worker_clients.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/nanopypes/pipes/worker_clients.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="270">
-                  <caret line="18" column="21" selection-start-line="18" selection-start-column="21" selection-end-line="18" selection-end-column="21" />
+                <state relative-caret-position="135">
+                  <caret line="9" column="36" lean-forward="true" selection-start-line="9" selection-start-column="36" selection-end-line="9" selection-end-column="36" />
                 </state>
               </provider>
             </entry>
@@ -769,8 +769,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/nanopypes/pipes/worker_clients.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="21" selection-start-line="18" selection-start-column="21" selection-end-line="18" selection-end-column="21" />
+        <state relative-caret-position="135">
+          <caret line="9" column="36" lean-forward="true" selection-start-line="9" selection-start-column="36" selection-end-line="9" selection-end-column="36" />
         </state>
       </provider>
     </entry>
