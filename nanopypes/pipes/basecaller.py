@@ -328,7 +328,7 @@ def singularity_execution(singularity_client, cmd, pull_link=None, image_path=No
         image = client.pull(image_path)
     else:
         image = image_path
-    client.execute(cmd=[cmd], image=image, bind=bind)
+    client.execute(cmd=cmd, image=image, bind=bind)
 
 
 #################################
