@@ -12,7 +12,7 @@ class SingularityClient(PipeClient):
     def __init__(self):
         self.client = Client
 
-    def execute(self, command, image=None, link=None, pull=False, bind=None):
+    def execute(self, cmd, image=None, link=None, pull=False, bind=None):
         if pull:
             image = self.pull(link)
         stdout = self.client.execute(image, command, bind=bind)

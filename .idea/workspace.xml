@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="06fba5a6-e119-4d57-aa65-81370b2766cd" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/tests/test_guppy.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_guppy.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nanopypes/pipes/worker_clients.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/pipes/worker_clients.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -12,14 +12,14 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.8584429">
+    <splitter split-orientation="horizontal" split-proportion="0.56060606">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="basecaller.py" pinned="false" current-in-tab="false">
+          <file leaf-file-name="basecaller.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/nanopypes/pipes/basecaller.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="862">
-                  <caret line="330" column="42" selection-start-line="330" selection-start-column="42" selection-end-line="330" selection-end-column="42" />
+                <state relative-caret-position="93">
+                  <caret line="307" column="25" lean-forward="true" selection-start-line="307" selection-start-column="25" selection-end-line="307" selection-end-column="25" />
                   <folding>
                     <element signature="e#0#24#0" expanded="true" />
                     <element signature="e#3923#11825#1" />
@@ -30,11 +30,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="test_guppy.py" pinned="false" current-in-tab="true">
+          <file leaf-file-name="test_guppy.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/tests/test_guppy.py">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="408">
-                  <caret line="44" column="69" selection-start-line="44" selection-start-column="69" selection-end-line="44" selection-end-column="69" />
+                  <caret line="44" column="97" selection-start-line="44" selection-start-column="97" selection-end-line="44" selection-end-column="97" />
                 </state>
               </provider>
             </entry>
@@ -122,8 +122,8 @@
           <file leaf-file-name="worker_clients.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/nanopypes/pipes/worker_clients.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="240">
-                  <caret line="16" column="12" selection-start-line="16" selection-start-column="12" selection-end-line="16" selection-end-column="12" />
+                <state relative-caret-position="270">
+                  <caret line="18" column="21" selection-start-line="18" selection-start-column="21" selection-end-line="18" selection-end-column="21" />
                 </state>
               </provider>
             </entry>
@@ -220,14 +220,14 @@
         <option value="$PROJECT_DIR$/tests/test_configs/remote_builds.yml" />
         <option value="$PROJECT_DIR$/nanopypes/compute.py" />
         <option value="$PROJECT_DIR$/nanopypes/pipes/basecaller.py" />
-        <option value="$PROJECT_DIR$/nanopypes/pipes/worker_clients.py" />
         <option value="$PROJECT_DIR$/tests/test_guppy.py" />
+        <option value="$PROJECT_DIR$/nanopypes/pipes/worker_clients.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1632" />
-    <option name="y" value="155" />
+    <option name="x" value="1739" />
+    <option name="y" value="371" />
     <option name="width" value="1440" />
     <option name="height" value="771" />
   </component>
@@ -431,7 +431,7 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1632" y="155" width="1440" height="771" extended-state="0" />
+    <frame x="1739" y="371" width="1440" height="771" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.7145709" visible="true" weight="0.30232558" />
@@ -747,17 +747,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/nanopypes/pipes/worker_clients.py">
+    <entry file="file://$PROJECT_DIR$/tests/test_guppy.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="38" selection-start-line="21" selection-start-column="38" selection-end-line="21" selection-end-column="38" />
+        <state relative-caret-position="408">
+          <caret line="44" column="97" selection-start-line="44" selection-start-column="97" selection-end-line="44" selection-end-column="97" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/nanopypes/pipes/basecaller.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="862">
-          <caret line="330" column="42" selection-start-line="330" selection-start-column="42" selection-end-line="330" selection-end-column="42" />
+        <state relative-caret-position="93">
+          <caret line="307" column="25" lean-forward="true" selection-start-line="307" selection-start-column="25" selection-end-line="307" selection-end-column="25" />
           <folding>
             <element signature="e#0#24#0" expanded="true" />
             <element signature="e#3923#11825#1" />
@@ -767,10 +767,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/test_guppy.py">
+    <entry file="file://$PROJECT_DIR$/nanopypes/pipes/worker_clients.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="44" column="69" selection-start-line="44" selection-start-column="69" selection-end-line="44" selection-end-column="69" />
+        <state relative-caret-position="270">
+          <caret line="18" column="21" selection-start-line="18" selection-start-column="21" selection-end-line="18" selection-end-column="21" />
         </state>
       </provider>
     </entry>
