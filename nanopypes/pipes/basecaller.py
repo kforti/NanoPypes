@@ -303,8 +303,8 @@ Command line parameters:
             elif dispatch_full and completed_futures:
                 completed.add(future)
 
-            for comp in completed:
-                break
+                for comp in completed:
+                    break
         for comp in completed:
             pass
 
