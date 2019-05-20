@@ -290,7 +290,7 @@ Command line parameters:
             except StopIteration:
                 break
             command = self.command_pattern.format(save_path=batch)
-            future = self.client.submit(singularity_execution, self.worker_client, command.split(" "), self.pull_link, self.image_path, bind=self.bind)
+            future = self.client.submit(singularity_execution, self.worker_client, command.split(), self.pull_link, self.image_path, self.bind)
             dispatched += 1
 
             if completed_futures is False and dispatch_full is False:
@@ -328,7 +328,7 @@ def singularity_execution(singularity_client, cmd, pull_link=None, image_path=No
         image = client.pull(image_path)
     else:
         image = image_path
-    client.execute(image, [cmd], bind=bind)
+    client.execute(cmd=[cmd], image=image, bind=bind)
 
 
 #################################
