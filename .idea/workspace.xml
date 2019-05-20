@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="06fba5a6-e119-4d57-aa65-81370b2766cd" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/nanopypes/compute.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/compute.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nanopypes/pipes/worker_clients.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/pipes/worker_clients.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -47,14 +47,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="compute.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="compute.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/nanopypes/compute.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="257">
-              <caret line="96" column="114" selection-start-line="96" selection-start-column="114" selection-end-line="96" selection-end-column="114" />
+            <state relative-caret-position="392">
+              <caret line="105" column="47" lean-forward="true" selection-start-line="105" selection-start-column="47" selection-end-line="105" selection-end-column="47" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="worker_clients.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/nanopypes/pipes/worker_clients.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="315">
+              <caret line="21" column="38" selection-start-line="21" selection-start-column="38" selection-end-line="21" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -179,7 +188,6 @@
         <option value="$PROJECT_DIR$/nanopypes/run_pipes.py" />
         <option value="$USER_HOME$/distributed-bio-tools/distributed_bio_tools/distributed_bio_tools/distributed_bio_tools.py" />
         <option value="$PROJECT_DIR$/nanopypes/config.py" />
-        <option value="$PROJECT_DIR$/nanopypes/pipes/worker_clients.py" />
         <option value="$USER_HOME$/PycharmProjects/data_capture/biocontainers.py" />
         <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch_2.py" />
         <option value="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/0/configuration.cfg" />
@@ -197,6 +205,7 @@
         <option value="$PROJECT_DIR$/tests/test_guppy.py" />
         <option value="$PROJECT_DIR$/tests/test_configs/remote_builds.yml" />
         <option value="$PROJECT_DIR$/nanopypes/compute.py" />
+        <option value="$PROJECT_DIR$/nanopypes/pipes/worker_clients.py" />
       </list>
     </option>
   </component>
@@ -222,53 +231,13 @@
             <path>
               <item name="NanoPypes" type="b2602c69:ProjectViewProjectNode" />
               <item name="NanoPypes" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
+              <item name="nanopypes" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="NanoPypes" type="b2602c69:ProjectViewProjectNode" />
               <item name="NanoPypes" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
-              <item name="test_configs" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="NanoPypes" type="b2602c69:ProjectViewProjectNode" />
-              <item name="NanoPypes" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
-              <item name="test_data" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="NanoPypes" type="b2602c69:ProjectViewProjectNode" />
-              <item name="NanoPypes" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
-              <item name="test_data" type="462c0819:PsiDirectoryNode" />
-              <item name="minion_sample_raw_data" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="NanoPypes" type="b2602c69:ProjectViewProjectNode" />
-              <item name="NanoPypes" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
-              <item name="test_data" type="462c0819:PsiDirectoryNode" />
-              <item name="minion_sample_raw_data" type="462c0819:PsiDirectoryNode" />
-              <item name="Experiment_01" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="NanoPypes" type="b2602c69:ProjectViewProjectNode" />
-              <item name="NanoPypes" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
-              <item name="test_data" type="462c0819:PsiDirectoryNode" />
-              <item name="minion_sample_raw_data" type="462c0819:PsiDirectoryNode" />
-              <item name="Experiment_01" type="462c0819:PsiDirectoryNode" />
-              <item name="sample_02_local" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="NanoPypes" type="b2602c69:ProjectViewProjectNode" />
-              <item name="NanoPypes" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
-              <item name="test_data" type="462c0819:PsiDirectoryNode" />
-              <item name="minion_sample_raw_data" type="462c0819:PsiDirectoryNode" />
-              <item name="Experiment_01" type="462c0819:PsiDirectoryNode" />
-              <item name="sample_02_local" type="462c0819:PsiDirectoryNode" />
-              <item name="fast5" type="462c0819:PsiDirectoryNode" />
+              <item name="nanopypes" type="462c0819:PsiDirectoryNode" />
+              <item name="pipes" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="NanoPypes" type="b2602c69:ProjectViewProjectNode" />
@@ -513,13 +482,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1547">
           <caret line="238" selection-start-line="238" selection-end-line="238" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/nanopypes/pipes/worker_clients.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" selection-start-line="8" selection-end-line="8" />
         </state>
       </provider>
     </entry>
@@ -782,11 +744,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/nanopypes/compute.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="257">
-          <caret line="96" column="114" selection-start-line="96" selection-start-column="114" selection-end-line="96" selection-end-column="114" />
+        <state relative-caret-position="392">
+          <caret line="105" column="47" lean-forward="true" selection-start-line="105" selection-start-column="47" selection-end-line="105" selection-end-column="47" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nanopypes/pipes/worker_clients.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="21" column="38" selection-start-line="21" selection-start-column="38" selection-end-line="21" selection-end-column="38" />
         </state>
       </provider>
     </entry>
