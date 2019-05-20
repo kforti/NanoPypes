@@ -3,6 +3,108 @@
   <component name="ChangeListManager">
     <list default="true" id="06fba5a6-e119-4d57-aa65-81370b2766cd" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/nanopypes/pipes/basecaller.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/pipes/basecaller.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_configs/remote_builds.yml" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_configs/remote_builds.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/2/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_125_ch_191_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/2/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_125_ch_191_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/2/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_149_ch_150_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/2/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_149_ch_150_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/2/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_14_ch_205_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/2/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_14_ch_205_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/2/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_177_ch_463_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/2/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_177_ch_463_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/2/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_257_ch_331_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/2/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_257_ch_331_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/2/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_263_ch_274_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/2/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_263_ch_274_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/2/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_321_ch_253_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/2/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_321_ch_253_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/2/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_337_ch_112_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/2/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_337_ch_112_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/2/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_393_ch_59_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/2/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_393_ch_59_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/2/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_400_ch_468_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/2/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_400_ch_468_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/2/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_413_ch_323_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/2/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_413_ch_323_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/2/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_415_ch_353_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/2/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_415_ch_353_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/2/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_426_ch_221_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/2/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_426_ch_221_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/2/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_444_ch_306_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/2/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_444_ch_306_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/2/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_445_ch_263_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/2/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_445_ch_263_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/2/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_509_ch_479_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/2/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_509_ch_479_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/2/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_52_ch_86_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/2/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_52_ch_86_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/2/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_598_ch_60_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/2/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_598_ch_60_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/2/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_61_ch_101_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/2/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_61_ch_101_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/2/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_98_ch_201_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/2/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_98_ch_201_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/3/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_20_ch_118_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/3/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_20_ch_118_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/3/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_23_ch_412_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/3/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_23_ch_412_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/3/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_253_ch_255_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/3/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_253_ch_255_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/3/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_260_ch_205_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/3/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_260_ch_205_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/3/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_261_ch_367_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/3/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_261_ch_367_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/3/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_305_ch_479_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/3/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_305_ch_479_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/3/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_316_ch_367_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/3/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_316_ch_367_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/3/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_334_ch_163_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/3/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_334_ch_163_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/3/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_355_ch_238_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/3/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_355_ch_238_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/3/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_417_ch_413_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/3/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_417_ch_413_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/3/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_433_ch_294_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/3/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_433_ch_294_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/3/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_468_ch_399_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/3/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_468_ch_399_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/3/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_478_ch_172_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/3/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_478_ch_172_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/3/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_482_ch_63_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/3/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_482_ch_63_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/3/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_491_ch_144_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/3/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_491_ch_144_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/3/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_504_ch_148_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/3/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_504_ch_148_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/3/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_76_ch_30_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/3/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_76_ch_30_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/3/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_85_ch_91_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/3/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_85_ch_91_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/3/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_8_ch_218_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/3/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_8_ch_218_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/3/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_94_ch_383_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/3/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_94_ch_383_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/5/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_108_ch_274_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/5/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_108_ch_274_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/5/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_115_ch_474_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/5/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_115_ch_474_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/5/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_147_ch_181_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/5/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_147_ch_181_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/5/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_185_ch_463_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/5/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_185_ch_463_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/5/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_199_ch_276_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/5/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_199_ch_276_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/5/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_239_ch_27_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/5/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_239_ch_27_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/5/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_243_ch_18_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/5/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_243_ch_18_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/5/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_243_ch_384_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/5/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_243_ch_384_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/5/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_24_ch_119_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/5/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_24_ch_119_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/5/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_298_ch_486_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/5/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_298_ch_486_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/5/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_348_ch_59_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/5/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_348_ch_59_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/5/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_460_ch_135_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/5/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_460_ch_135_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/5/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_460_ch_160_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/5/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_460_ch_160_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/5/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_476_ch_420_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/5/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_476_ch_420_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/5/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_491_ch_508_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/5/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_491_ch_508_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/5/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_49_ch_160_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/5/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_49_ch_160_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/5/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_591_ch_313_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/5/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_591_ch_313_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/5/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_79_ch_490_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/5/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_79_ch_490_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/5/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_86_ch_119_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/5/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_86_ch_119_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/5/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_8_ch_170_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/5/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_8_ch_170_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/7/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_10_ch_357_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/7/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_10_ch_357_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/7/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_19_ch_478_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/7/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_19_ch_478_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/7/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_212_ch_268_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/7/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_212_ch_268_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/7/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_25_ch_207_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/7/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_25_ch_207_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/7/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_25_ch_325_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/7/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_25_ch_325_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/7/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_288_ch_210_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/7/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_288_ch_210_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/7/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_30_ch_390_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/7/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_30_ch_390_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/7/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_350_ch_127_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/7/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_350_ch_127_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/7/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_350_ch_338_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/7/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_350_ch_338_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/7/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_353_ch_279_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/7/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_353_ch_279_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/7/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_364_ch_140_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/7/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_364_ch_140_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/7/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_469_ch_298_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/7/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_469_ch_298_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/7/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_469_ch_434_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/7/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_469_ch_434_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/7/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_520_ch_100_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/7/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_520_ch_100_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/7/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_561_ch_341_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/7/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_561_ch_341_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/7/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_64_ch_74_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/7/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_64_ch_74_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/7/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_686_ch_357_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/7/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_686_ch_357_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/7/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_71_ch_213_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/7/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_71_ch_213_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/7/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_852_ch_191_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/7/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_852_ch_191_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/7/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_99_ch_463_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/7/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_99_ch_463_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/8/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_102_ch_145_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/8/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_102_ch_145_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/8/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_114_ch_2_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/8/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_114_ch_2_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/8/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_12_ch_402_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/8/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_12_ch_402_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/8/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_16_ch_195_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/8/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_16_ch_195_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/8/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_20_ch_440_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/8/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_20_ch_440_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/8/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_24_ch_185_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/8/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_24_ch_185_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/8/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_257_ch_347_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/8/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_257_ch_347_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/8/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_286_ch_143_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/8/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_286_ch_143_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/8/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_357_ch_509_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/8/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_357_ch_509_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/8/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_360_ch_141_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/8/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_360_ch_141_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/8/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_38_ch_77_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/8/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_38_ch_77_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/8/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_41_ch_95_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/8/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_41_ch_95_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/8/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_4_ch_346_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/8/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_4_ch_346_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/8/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_528_ch_353_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/8/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_528_ch_353_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/8/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_581_ch_163_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/8/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_581_ch_163_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/8/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_58_ch_55_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/8/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_58_ch_55_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/8/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_612_ch_437_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/8/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_612_ch_437_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/8/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_64_ch_458_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/8/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_64_ch_458_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/8/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_71_ch_364_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/8/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_71_ch_364_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/tmp/8/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_85_ch_276_strand.fast5" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/8/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_85_ch_276_strand.fast5" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_guppy.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_guppy.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -13,11 +115,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="basecaller.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="basecaller.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/nanopypes/pipes/basecaller.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="322">
-              <caret line="305" column="16" selection-start-line="305" selection-start-column="16" selection-end-line="306" selection-end-column="25" />
+            <state relative-caret-position="313">
+              <caret line="302" column="33" selection-start-line="302" selection-start-column="33" selection-end-line="302" selection-end-column="33" />
               <folding>
                 <element signature="e#0#24#0" expanded="true" />
                 <element signature="e#3923#11825#1" />
@@ -29,11 +131,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test_guppy.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="test_guppy.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tests/test_guppy.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="333">
-              <caret line="39" lean-forward="true" selection-start-line="39" selection-end-line="39" />
+            <state relative-caret-position="378">
+              <caret line="42" column="71" selection-start-line="42" selection-start-column="71" selection-end-line="42" selection-end-column="71" />
             </state>
           </provider>
         </entry>
@@ -41,8 +143,8 @@
       <file leaf-file-name="remote_builds.yml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/test_configs/remote_builds.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="14" column="17" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
+            <state relative-caret-position="270">
+              <caret line="18" column="17" lean-forward="true" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -51,7 +153,7 @@
         <entry file="file://$PROJECT_DIR$/nanopypes/compute.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="302">
-              <caret line="99" column="55" lean-forward="true" selection-start-line="99" selection-start-column="55" selection-end-line="99" selection-end-column="55" />
+              <caret line="99" column="55" selection-start-line="99" selection-start-column="55" selection-end-line="99" selection-end-column="55" />
               <folding>
                 <element signature="e#0#14#0" expanded="true" />
               </folding>
@@ -63,7 +165,7 @@
         <entry file="file://$USER_HOME$/PycharmProjects/code_snippets/test_paths.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-717">
-              <caret line="93" column="38" lean-forward="true" selection-start-line="93" selection-start-column="38" selection-end-line="93" selection-end-column="38" />
+              <caret line="93" column="38" selection-start-line="93" selection-start-column="38" selection-end-line="93" selection-end-column="38" />
               <folding>
                 <element signature="e#0#29#0" expanded="true" />
               </folding>
@@ -75,7 +177,7 @@
         <entry file="file://$USER_HOME$/PycharmProjects/code_snippets/write_job.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="74">
-              <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+              <caret line="6" selection-start-line="6" selection-end-line="6" />
             </state>
           </provider>
         </entry>
@@ -84,7 +186,7 @@
         <entry file="file://$USER_HOME$/PycharmProjects/code_snippets/test_job_scripts/albacore_test1.sh">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="135">
-              <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+              <caret line="9" selection-start-line="9" selection-end-line="9" />
             </state>
           </provider>
         </entry>
@@ -93,7 +195,7 @@
         <entry file="file://$USER_HOME$/PycharmProjects/code_snippets/pandas_scratch.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="284">
-              <caret line="61" column="33" lean-forward="true" selection-start-line="61" selection-start-column="33" selection-end-line="61" selection-end-column="33" />
+              <caret line="61" column="33" selection-start-line="61" selection-start-column="33" selection-end-line="61" selection-end-column="33" />
             </state>
           </provider>
         </entry>
@@ -194,9 +296,9 @@
         <option value="$USER_HOME$/PycharmProjects/code_snippets/pandas_scratch.py" />
         <option value="$USER_HOME$/PycharmProjects/code_snippets/test_paths.py" />
         <option value="$USER_HOME$/PycharmProjects/code_snippets/write_job.py" />
+        <option value="$PROJECT_DIR$/nanopypes/pipes/basecaller.py" />
         <option value="$PROJECT_DIR$/tests/test_configs/remote_builds.yml" />
         <option value="$PROJECT_DIR$/tests/test_guppy.py" />
-        <option value="$PROJECT_DIR$/nanopypes/pipes/basecaller.py" />
       </list>
     </option>
   </component>
@@ -272,6 +374,17 @@
             </path>
             <path>
               <item name="NanoPypes" type="b2602c69:ProjectViewProjectNode" />
+              <item name="NanoPypes" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
+              <item name="test_data" type="462c0819:PsiDirectoryNode" />
+              <item name="minion_sample_raw_data" type="462c0819:PsiDirectoryNode" />
+              <item name="Experiment_01" type="462c0819:PsiDirectoryNode" />
+              <item name="sample_02_local" type="462c0819:PsiDirectoryNode" />
+              <item name="fast5" type="462c0819:PsiDirectoryNode" />
+              <item name="pass" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="NanoPypes" type="b2602c69:ProjectViewProjectNode" />
               <item name="Scratches and Consoles" type="1a2a3e82:ScratchProjectViewPane$MyProjectNode" />
             </path>
             <path>
@@ -293,6 +406,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass" />
       <recent name="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test" />
       <recent name="$USER_HOME$/distributed-bio-tools/distributed_bio_tools/tests" />
       <recent name="$USER_HOME$/distributed-bio-tools/distributed_bio_tools/tests/my_data" />
@@ -448,7 +562,7 @@
     <frame x="1645" y="23" width="1440" height="771" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.7145709" visible="true" weight="0.14940098" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.7145709" visible="true" weight="0.30232558" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.13204747" />
@@ -502,6 +616,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="400">
           <caret line="120" column="55" selection-start-line="120" selection-start-column="55" selection-end-line="120" selection-end-column="55" />
+          <folding>
+            <element signature="e#64#77#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -545,6 +662,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="65">
           <caret line="171" column="11" selection-start-line="170" selection-start-column="8" selection-end-line="175" />
+          <folding>
+            <element signature="e#89#98#0" expanded="true" />
+            <element signature="e#4641#6664#0" />
+            <element signature="e#9273#12828#0" />
+            <element signature="e#13102#15125#0" />
+            <element signature="e#15185#17472#0" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -713,28 +837,28 @@
     <entry file="file://$USER_HOME$/PycharmProjects/code_snippets/pandas_scratch.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="284">
-          <caret line="61" column="33" lean-forward="true" selection-start-line="61" selection-start-column="33" selection-end-line="61" selection-end-column="33" />
+          <caret line="61" column="33" selection-start-line="61" selection-start-column="33" selection-end-line="61" selection-end-column="33" />
         </state>
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/PycharmProjects/code_snippets/test_job_scripts/albacore_test1.sh">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
-          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
         </state>
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/PycharmProjects/code_snippets/write_job.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="74">
-          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
         </state>
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/PycharmProjects/code_snippets/test_paths.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-717">
-          <caret line="93" column="38" lean-forward="true" selection-start-line="93" selection-start-column="38" selection-end-line="93" selection-end-column="38" />
+          <caret line="93" column="38" selection-start-line="93" selection-start-column="38" selection-end-line="93" selection-end-column="38" />
           <folding>
             <element signature="e#0#29#0" expanded="true" />
           </folding>
@@ -744,31 +868,17 @@
     <entry file="file://$PROJECT_DIR$/nanopypes/compute.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="302">
-          <caret line="99" column="55" lean-forward="true" selection-start-line="99" selection-start-column="55" selection-end-line="99" selection-end-column="55" />
+          <caret line="99" column="55" selection-start-line="99" selection-start-column="55" selection-end-line="99" selection-end-column="55" />
           <folding>
             <element signature="e#0#14#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/test_configs/remote_builds.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="17" selection-start-line="14" selection-start-column="17" selection-end-line="14" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/test_guppy.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="333">
-          <caret line="39" lean-forward="true" selection-start-line="39" selection-end-line="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/nanopypes/pipes/basecaller.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="322">
-          <caret line="305" column="16" selection-start-line="305" selection-start-column="16" selection-end-line="306" selection-end-column="25" />
+        <state relative-caret-position="313">
+          <caret line="302" column="33" selection-start-line="302" selection-start-column="33" selection-end-line="302" selection-end-column="33" />
           <folding>
             <element signature="e#0#24#0" expanded="true" />
             <element signature="e#3923#11825#1" />
@@ -776,6 +886,20 @@
             <element signature="e#12761#12862#0" />
             <element signature="e#13041#13657#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/test_configs/remote_builds.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="17" lean-forward="true" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/test_guppy.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="42" column="71" selection-start-line="42" selection-start-column="71" selection-end-line="42" selection-end-column="71" />
         </state>
       </provider>
     </entry>

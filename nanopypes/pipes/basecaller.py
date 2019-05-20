@@ -302,6 +302,7 @@ Command line parameters:
                 dispatch_full = True
             elif dispatch_full and completed_futures:
                 completed.add(future)
+                dispatched -= 1
 
                 for comp in completed:
                     break

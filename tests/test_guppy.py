@@ -40,7 +40,7 @@ def test_guppy_basecall():
 
     num_workers = cluster.expected_workers
 
-    guppy = GuppyBasecaller(client=client, expected_workers=10, input_path=input_path,
+    guppy = GuppyBasecaller(client=client, expected_workers=num_workers, input_path=input_path,
                             flowcell=flowcell, kit=kit, save_path=save_path, fast5_out=fast5_out,
                             worker_client='singularity', pull_link='docker://genomicpariscentre/guppy',
                             bind='/project/umw_athma_pai/kevin')

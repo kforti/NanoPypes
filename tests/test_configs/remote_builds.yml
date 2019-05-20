@@ -15,7 +15,7 @@ computes:
         ncpus: 10
         project: /project/umw_athma_pai
         queue: short
-        workers: 10
+        workers: 2
         cores: 10
         memory: 10 GB
         scale_value: 10
