@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="06fba5a6-e119-4d57-aa65-81370b2766cd" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/nanopypes/pipes/basecaller.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/pipes/basecaller.py" afterDir="false" />
-    </list>
+    <list default="true" id="06fba5a6-e119-4d57-aa65-81370b2766cd" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -122,8 +120,8 @@
           <file leaf-file-name="worker_clients.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/nanopypes/pipes/worker_clients.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="315">
-                  <caret line="21" column="38" selection-start-line="21" selection-start-column="38" selection-end-line="21" selection-end-column="38" />
+                <state relative-caret-position="450">
+                  <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
                 </state>
               </provider>
             </entry>
@@ -226,8 +224,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1645" />
-    <option name="y" value="23" />
+    <option name="x" value="1632" />
+    <option name="y" value="155" />
     <option name="width" value="1440" />
     <option name="height" value="771" />
   </component>
@@ -747,13 +745,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/nanopypes/pipes/worker_clients.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="38" selection-start-line="21" selection-start-column="38" selection-end-line="21" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/test_guppy.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
@@ -771,6 +762,13 @@
             <element signature="e#12761#12862#0" />
             <element signature="e#13041#13657#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nanopypes/pipes/worker_clients.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
         </state>
       </provider>
     </entry>
