@@ -412,9 +412,19 @@ def file_row_generator(file):
 
 
 if __name__ == '__main__':
-    test_albcore_build_command()
-    test_albacore_batches()
-    #test_albacore_binary()
-    test_albacore_basecall()
-    test_collapse_data()
+    # test_albcore_build_command()
+    # test_albacore_batches()
+    # #test_albacore_binary()
+    # test_albacore_basecall()
+    # test_collapse_data()
+    cmd = ""
+    l = ["read_fast5_basecaller.py", "--flowcell", "FLO-MIN106",
+                        "--kit", "SQK-LSK109", "--output_format", "fastq",
+                        "--save_path", '/project/umw_athma_pai/kevin/data/Albacore_tests/without_nanopypes',
+                        "--worker_threads", "1", "--input", '/project/umw_athma_pai/kevin/data/minion_ercc_labeled/20190220_1525_ERCC/fast5/pass/albacore_test',
+                          "--reads_per_fastq_batch", "1000"]
+    for i in l:
+        cmd += i
+        cmd += " "
+    print(cmd)
 

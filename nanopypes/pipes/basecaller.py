@@ -62,10 +62,13 @@ class AlbacoreBasecaller(Pipe):
 
     def execute(self):
         batch_counter = 0
-        batches = self.batches
+        batches = self.batches()
 
         for i in range(self.batch_bunch_size):
-            batch = next(batches)
+            try:
+                batch = next(batches)
+            except StopIteration:
+                break
             self.futures.append(self._process_batch(batch))
             batch_counter += 1
             if batch_counter == self.batch_bunch_size:
@@ -104,7 +107,6 @@ class AlbacoreBasecaller(Pipe):
             command.extend(["--reads_per_fastq_batch", str(self.reads_per_fastq)])
         return command
 
-    @property
     def batches(self):
         """Batch generator"""
         for batch in os.listdir(str(self.input)):

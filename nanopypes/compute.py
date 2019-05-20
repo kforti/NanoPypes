@@ -86,7 +86,7 @@ class Cluster:
 
     def connect(self):
         """ Establish connection to cluster"""
-        if self.cluster_type == "LSF":
+        if self.cluster_type.upper() == "LSF":
             logging.info("connecting to LSF cluster")
             self.cluster = LSFCluster(queue=self.queue, #Passed to #BSUB -q option.
                                       project=self.project, #Passed to #BSUB -P option.

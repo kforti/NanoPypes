@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$USER_HOME$/PycharmProjects/cozmo_controller/.idea/cozmo_controller.iml" filepath="$USER_HOME$/PycharmProjects/cozmo_controller/.idea/cozmo_controller.iml" />
+      <module fileurl="file://$USER_HOME$/PycharmProjects/code_snippets/.idea/code_snippets.iml" filepath="$USER_HOME$/PycharmProjects/code_snippets/.idea/code_snippets.iml" />
       <module fileurl="file://$USER_HOME$/PycharmProjects/data_capture/.idea/data_capture.iml" filepath="$USER_HOME$/PycharmProjects/data_capture/.idea/data_capture.iml" />
-      <module fileurl="file://$USER_HOME$/distributed-bio-tools/distributed_bio_tools/.idea/distributed_bio_tools.iml" filepath="$USER_HOME$/distributed-bio-tools/distributed_bio_tools/.idea/distributed_bio_tools.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/nanopypes.iml" filepath="$PROJECT_DIR$/.idea/nanopypes.iml" />
     </modules>
   </component>
