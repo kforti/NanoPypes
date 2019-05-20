@@ -42,7 +42,7 @@ def test_guppy_basecall():
 
     guppy = GuppyBasecaller(client=client, expected_workers=num_workers, input_path=input_path,
                             flowcell=flowcell, kit=kit, save_path=save_path, fast5_out=fast5_out,
-                            worker_client='singularity', pull_link='docker://genomicpariscentre/guppy',
+                            worker_client='singularity', image_path='genomicpariscentre-guppy.sif',
                             bind='/project/umw_athma_pai/kevin')
     guppy()
 
