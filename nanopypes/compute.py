@@ -87,7 +87,7 @@ class NanopypesCluster:
         cluster = LSFCluster(queue=self.queue,  # Passed to #BSUB -q option.
                                   project=self.project,  # Passed to #BSUB -P option.
                                   processes=self.workers_per_job,
-                                  walltime=self.walltime,  # Passed to #BSUB -W option.
+                                  walltime=self.job_time,  # Passed to #BSUB -W option.
                                   ncpus=ncpus,  # Passed to #BSUB -n option.
                                   mem=mem_bytes,  # Passed to #BSUB -M option.
                                   job_extra=['-R "rusage[mem={}]"'.format(self.worker_memory), '-o dask_worker.out',
