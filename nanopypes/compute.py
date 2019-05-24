@@ -40,7 +40,6 @@ class NanopypesCluster:
     def from_dict(cls, config_dict):
         instance = cls.__new__(cls)
         instance.__dict__.update(config_dict)
-        instance.__init__()
         return instance
 
     @property
@@ -66,7 +65,8 @@ class NanopypesCluster:
 
         elif self.cluster_type == 'slurm':
             cluster = self._build_slurm()
-        return cluster
+        self.cluster = cluster
+        return
 
     def start_cluster(self):
         minimum_workers = self.min_num_workers or int(0.5 * self.num_workers)

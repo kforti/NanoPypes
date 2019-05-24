@@ -30,7 +30,7 @@
           <file leaf-file-name="test_cluster.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/tests/test_cluster.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="31">
+                <state relative-caret-position="195">
                   <caret line="13" column="288" selection-start-line="13" selection-start-column="288" selection-end-line="13" selection-end-column="288" />
                   <folding>
                     <element signature="e#0#15#0" expanded="true" />
@@ -44,11 +44,20 @@
           <file leaf-file-name="compute.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/nanopypes/compute.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="58">
-                  <caret line="42" column="26" selection-start-line="42" selection-start-column="26" selection-end-line="42" selection-end-column="26" />
+                <state relative-caret-position="391">
+                  <caret line="68" column="14" selection-start-line="68" selection-start-column="14" selection-end-line="68" selection-end-column="14" />
                   <folding>
                     <element signature="e#0#36#0" expanded="true" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="new.py" pinned="false" current-in-tab="false">
+            <entry file="file://$USER_HOME$/PycharmProjects/code_snippets/new.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="225">
+                  <caret line="15" selection-start-line="15" selection-end-line="15" />
                 </state>
               </provider>
             </entry>
@@ -72,8 +81,8 @@
           <file leaf-file-name="local_builds.yml" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/tests/test_configs/local_builds.yml">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="270">
-                  <caret line="18" column="14" selection-start-line="18" selection-start-column="14" selection-end-line="18" selection-end-column="14" />
+                <state relative-caret-position="345">
+                  <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
                 </state>
               </provider>
             </entry>
@@ -154,7 +163,6 @@
         <option value="$USER_HOME$/PycharmProjects/code_snippets/data.py" />
         <option value="$PROJECT_DIR$/profiling/profile_runs.py" />
         <option value="$PROJECT_DIR$/tests/test_guppy.py" />
-        <option value="$USER_HOME$/PycharmProjects/code_snippets/new.py" />
         <option value="$PROJECT_DIR$/profiling/profile_params" />
         <option value="$PROJECT_DIR$/profiling/profile_runs2.py" />
         <option value="$PROJECT_DIR$/profiling/write_job.py" />
@@ -171,6 +179,7 @@
         <option value="$PROJECT_DIR$/nanopypes/pipes/basecaller.py" />
         <option value="$PROJECT_DIR$/tests/test_configs/local_builds.yml" />
         <option value="$PROJECT_DIR$/tests/test_cluster.py" />
+        <option value="$USER_HOME$/PycharmProjects/code_snippets/new.py" />
         <option value="$PROJECT_DIR$/nanopypes/compute.py" />
       </list>
     </option>
@@ -260,7 +269,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.test_cluster">
+  <component name="RunManager" selected="Python.bio-pipes">
     <configuration name="bio-pipes" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="code_snippets" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -360,10 +369,10 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.bio-pipes" />
         <item itemvalue="Python.test_cluster" />
         <item itemvalue="Python.test_basecallers2" />
         <item itemvalue="Python.write_job" />
-        <item itemvalue="Python.bio-pipes" />
         <item itemvalue="Python.test_guppy" />
       </list>
     </recent_temporary>
@@ -514,13 +523,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
           <caret line="1" column="72" selection-start-line="1" selection-start-column="72" selection-end-line="1" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/PycharmProjects/code_snippets/new.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="21" selection-start-line="24" selection-start-column="21" selection-end-line="24" selection-end-column="21" />
         </state>
       </provider>
     </entry>
@@ -809,14 +811,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/test_configs/local_builds.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="14" selection-start-line="18" selection-start-column="14" selection-end-line="18" selection-end-column="14" />
+        <state relative-caret-position="345">
+          <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/test_cluster.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="31">
+        <state relative-caret-position="195">
           <caret line="13" column="288" selection-start-line="13" selection-start-column="288" selection-end-line="13" selection-end-column="288" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
@@ -826,10 +828,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/PycharmProjects/code_snippets/new.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/nanopypes/compute.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="58">
-          <caret line="42" column="26" selection-start-line="42" selection-start-column="26" selection-end-line="42" selection-end-column="26" />
+        <state relative-caret-position="391">
+          <caret line="68" column="14" selection-start-line="68" selection-start-column="14" selection-end-line="68" selection-end-column="14" />
           <folding>
             <element signature="e#0#36#0" expanded="true" />
           </folding>
