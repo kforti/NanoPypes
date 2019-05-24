@@ -57,7 +57,7 @@ class NanopypesCluster:
 
     @property
     def cluster(self):
-        return self.cluster
+        return self._cluster
 
     def build_cluster(self, cluster_type=None):
         if self.cluster_type == 'lsf':
