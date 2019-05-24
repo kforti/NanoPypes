@@ -1,4 +1,4 @@
-from nanopypes.pipes.base import Pipe
+from .pipes.base import Pipe
 
 from pathlib import Path
 import subprocess

@@ -1,10 +1,6 @@
-import subprocess
-
-from abc import ABC, abstractmethod
-import collections.abc
 
 
-class Pipeline(collections.abc.Callable):
+class Pipeline:
     def __init__(self, pipes):
         self.pipes = pipes
 
@@ -15,32 +11,19 @@ class Pipeline(collections.abc.Callable):
 
 class Pipe():
 
-    def __init__(self, memory, cpus):
+    def __init__(self):
         pass
 
     def execute(self):
         pass
 
-    def install(self):
-        #TODO check that conda is installed
-        raise NotImplementedError
-
-    @property
-    def requirements(self):
-        print(self._requirements)
-
-    def install_conda(self):
-        raise NotImplementedError
-
     @classmethod
-    def use_bioconda(cls):
-        raise NotImplementedError
+    def from_dict(cls, dict):
+        instance = cls.__new__(cls)
+        instance.__dict__.update(dict)
+        return instance
 
     def __call__(self):
         return self.execute()
 
 
-if __name__ == '__main__':
-    c = 1048576
-    d = 10589934592
-    print(d/c)

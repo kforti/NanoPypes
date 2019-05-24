@@ -9,22 +9,17 @@ basecall:
   reads_per_fastq: 1000
 compute:
     cluster1:
+        cluster_type: lsf
         job_time: 01:00
-        mem: 2048
-        ncpus: 10
         project: /project/umw_athma_pai
         queue: short
-        workers: 10
-        cores: 10
-        memory: 2 GB
-        scale_value: 20
-        cluster_type: LSF
-networking:
-    network1:
-        compute_name:
-        address:
-        password:
-pipe:
-    name: None
+        workers_per_job: 10
+        min_num_workers:
+        num_workers: 10
+        worker_cores: 10
+        worker_memory: 2048
+        time_out:
+        job_extra:
+        env_extra:
 
 

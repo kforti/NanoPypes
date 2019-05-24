@@ -5,16 +5,9 @@ import os
 
 import click
 
-from nanopypes.run_pipes import albacore_basecaller as albacore
-from nanopypes.run_pipes import ParallelRsync as prsync
-from nanopypes.run_pipes import parallel_minimap2 as pmmap2
-from nanopypes.run_pipes import guppy_basecaller
-from nanopypes.config import Configuration
-from nanopypes.compute import Cluster
-
 from distributed import LocalCluster, Client
 
-
+from .compute import NanoPypesCluster
 
 @click.command()
 @click.option('-C', '--cluster-type', 'cluster_type', help='The type of cluster you plan to use for your analysis. ["lsf", "local]', required=True, type=str)
@@ -30,17 +23,6 @@ def get_config_template(save_path, cluster_type):
     print("saved template to " + save_path)
     return 0
 
-
-# @click.command()
-# @click.option('-c', '--cluster-name', 'cluster_name', required=True, help="The cluster name in the config file- listed directly under computes.")
-# @click.argument('config', required=True)
-# def build_cluster(config, cluster_name):
-#     config = Configuration(config)
-#     compute_config = config.get_compute(cluster_name)
-#     compute = Cluster(compute_config)
-#     scheduler_address = compute.connect()
-#     return scheduler_address
-#
 
 #############################################
 ## Run Pipes
@@ -58,10 +40,9 @@ def albacore_basecaller(config, cluster_name, kit, flowcell, input_path, save_pa
     """Console script for running the albacore parallel basecaller.
     :param cluster_name: The name of the cluster defined in the config yaml.
     :param kit: The name of the ONT kit used in the sequencing run."""
-    #run_pipes function albacore_basecaller()
-    config = Configuration(config)
+
     compute_config = config.get_compute(cluster_name)
-    cluster = Cluster(compute_config)
+    cluster = Cluster()
     scheduler_address = cluster.connect()
 
     client = Client(scheduler_address)

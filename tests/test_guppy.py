@@ -1,10 +1,8 @@
 from pathlib import Path
 
-import pytest
-
 from nanopypes.pipes.basecaller import GuppyBasecaller
-from nanopypes.compute import Cluster
-from nanopypes.config import Configuration
+from compute import Cluster
+from config import Configuration
 
 from distributed import Client
 
@@ -22,7 +20,7 @@ def test_guppy_batches():
     for batch in guppy.batches:
         cmd = guppy.build_command_pattern(kit, flowcell, batch, reads_per_fastq=100, fast5_out=False,
                                     adapter_trimming=False)
-        cmd = cmd.format(save_path=Path(save_path).joinpath(batch.name))
+        cmd = cmd.format(save_path=Path(save_path).joinpath(batch.name), input_path=Path(input_path).joinpath(batch.name))
         print(cmd)
 
 def test_guppy_basecall():
@@ -47,7 +45,7 @@ def test_guppy_basecall():
     guppy()
 
 if __name__ == '__main__':
-    test_guppy_batches()
+    #test_guppy_batches()
     test_guppy_basecall()
 
 

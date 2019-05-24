@@ -29,8 +29,8 @@ def b_gen(input_path):
 
 class AlbacoreBasecaller(Pipe):
 
-    def __init__(self, client, expected_workers, input_path=None,
-                 flowcell=None, kit=None, save_path=None, output_format=None,
+    def __init__(self, client, expected_workers, input_path,
+                 flowcell, kit, save_path, output_format='fastq',
                  reads_per_fastq=1000):
         print("Starting the parallel Albacore Basecaller...\n", datetime.datetime.now())
         self.input = Path(input_path)
@@ -45,16 +45,7 @@ class AlbacoreBasecaller(Pipe):
 
         self.client = client
         self.batch_bunch_size = expected_workers
-        # self.albacore = albacore
-        #
-        # # basecaller info
-        # self.function = albacore.build_func()
-        # self.input_path = Path(albacore.input_path)
-        # self.save_path = Path(albacore.save_path)
-        #
-        # self.bc_batches = batch_generator(albacore.batches_for_basecalling)
-        # self.all_batches = self.albacore.all_batches
-        #
+
         self.futures = []
 
         # collapse_data
@@ -90,6 +81,7 @@ class AlbacoreBasecaller(Pipe):
         command = self.build_basecall_command(batch=batch)
         func = self.command_function()
         bc = self.client.submit(func, command)
+
         return bc
 
     def build_basecall_command(self, batch):
@@ -271,7 +263,9 @@ Command line parameters:
 
         #save_path must be formattable
         save_path = "{save_path}"
-        pattern = "guppy_basecaller --kit {kit} --flowcell {flowcell} --input_path {input_path} --cpu_threads_per_caller {cpu_threads} --save_path {save_path}".format(kit=kit, flowcell=flowcell, input_path=input_path, save_path=save_path, cpu_threads=cpu_threads_per_caller)
+        input_path = "{input_path}"
+
+        pattern = "guppy_basecaller --kit {kit} --flowcell {flowcell} --input_path {input_path} --cpu_threads_per_caller {cpu_threads} --save_path {save_path}".format(kit=kit, flowcell=flowcell, cpu_threads=cpu_threads_per_caller, save_path=save_path, input_path=input_path)
         if reads_per_fastq:
             pattern += " --reads_per_fastq {reads_per}".format(reads_per=reads_per_fastq)
         if fast5_out:
@@ -289,8 +283,8 @@ Command line parameters:
                 batch = next(self.batches)
             except StopIteration:
                 break
-            command = self.command_pattern.format(save_path=batch)
-            future = self.client.submit(singularity_execution, self.worker_client, command.split(), self.pull_link, self.image_path, self.bind)
+            command = self.command_pattern.format(save_path=batch, input_path=self.input_path.joinpath(batch.name))
+            future = self.client.submit(singularity_execution, self.worker_client, command.split(" "), self.pull_link, self.image_path, self.bind)
             dispatched += 1
 
             if completed_futures is False and dispatch_full is False:
@@ -464,6 +458,7 @@ def collapse_workspace(workspace_paths, save_path):
                 shutil.move(str(src), str(dest))
                 counter += 1
 
+
 def prep_save_location(save_path):
     save_path = Path(save_path)
     if save_path.joinpath("workspace").exists() is False:
@@ -481,56 +476,6 @@ if __name__ == '__main__':
     p = Path('my_test')
     c = Path('/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/basecalled_data/results/local_basecall_copy/0/configuration.cfg')
     collapse_config(configs, p)
-
-    # data = '/Users/kevinfortier/distributed-bio-tools/distributed_bio_tools/tests/my_data'
-    # m, t = describe_data(data)
-    # print(m)
-    # print(t)
-    # multi_fast5 = '/Users/kevinfortier/distributed-bio-tools/distributed_bio_tools/tests/batch_0.fast5'
-    # m = MultiFast5File(multi_fast5)
-    # print(m.get_read_ids())
-    # #batch_convert_multi_files_to_single(multi_fast5, '/Users/kevinfortier/distributed-bio-tools/distributed_bio_tools/tests/', threads=1, recursive=False)
-    # c = ["read_fast5_basecaller.py", "--flowcell", "FLO-MIN106",
-    #                      "--kit", "SQK-LSK109", "--output_format", "fastq",
-    #                      "--save_path", "/Users/kevinfortier/distributed-bio-tools/distributed_bio_tools/tests/my_data",
-    #                      "--worker_threads", "1", "--input", "/Users/kevinfortier/distributed-bio-tools/distributed_bio_tools/tests/0", "--reads_per_fastq", "1000"]
-    #
-    # command = ""
-    # for i in c:
-    #     command += i
-    #     command += " "
-    # print(command)
-    # read_id', '69e9e884'
-    # h5 = h5py.File('/Users/kevinfortier/distributed-bio-tools/distributed_bio_tools/tests/0/69e9e884.fast5', 'r+')
-    # # print(h5.keys())
-    # convert_multi_to_single('/Users/kevinfortier/distributed-bio-tools/distributed_bio_tools/tests/batch_0.fast5', '/Users/kevinfortier/distributed-bio-tools/distributed_bio_tools/tests/my_data/multi_to_single_ont', "my_fast5_data")
-    #f5path = '/Users/kevinfortier/distributed-bio-tools/distributed_bio_tools/tests/my_data/multi_to_single_ont/my_fast5_data/568b93db.fast5'
-    #h5 = h5py.File(f5path, 'r+')
-    # del(h5['Raw']['Reads']['Read_1'].attrs['run_id'])
-    # h5.create_group('PreviousReadInfo')
-    # h5['PreviousReadInfo'].attrs.create('previous_read_id', b'0af72d1a-2097-4464-8912-b28875a4ea32')
-    # h5['PreviousReadInfo'].attrs.create('previous_read_number', 247)
-    #r = RawFast5(f5path)
-    #print(r.contents)
-    # my_h5 = h5py.File('/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_12_ch_80_strand.fast5', 'r')
-    # # print(my_h5['Raw']['Reads']['Read_12']['Signal'])
-    # # print(my_h5.keys())
-    # my_r = RawFast5('/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/0/imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_12_ch_80_strand.fast5')
-    # # print(my_r.contents)
-
-    #####Create multi fast5
-
-    #mf5 = Path('/Users/kevinfortier/distributed-bio-tools/distributed_bio_tools/tests/my_multi_fast5')
-    # files = [str(dir.joinpath(f)) for f in os.listdir(dir)]
-    # create_multi_read_file(files, '/Users/kevinfortier/distributed-bio-tools/distributed_bio_tools/tests/my_multi_fast5')
-
-    # fast5 = RawFast5(mf5)
-    # print(fast5.contents)
-
-    ###Convert multi back to single
-
-    # output_folder = '/Users/kevinfortier/distributed-bio-tools/distributed_bio_tools/tests/my_data'
-    # convert_multi_to_single(str(mf5), output_folder, subfolder='my_fast5_data')
 
 
 

@@ -5,5 +5,7 @@
     <orderEntry type="jdk" jdkName="Python 3.7 (nanopypes_test) (1)" jdkType="Python SDK" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="code_snippets" />
+    <orderEntry type="module" module-name="omics-ai" />
+    <orderEntry type="module" module-name="distributed_bio_tools" />
   </component>
 </module>

@@ -6,8 +6,8 @@ import shutil
 
 from nanopypes.pipes.basecaller import AlbacoreBasecaller, GuppyBasecaller
 from nanopypes.pipes.basecaller import collapse_data
-from nanopypes.config import Configuration
-from nanopypes.compute import Cluster
+from config import Configuration
+from compute import Cluster
 
 from distributed import LocalCluster, Client
 
@@ -99,7 +99,7 @@ def test_albacore_batches():
     albacore = AlbacoreBasecaller(client=None, expected_workers=None, input_path=input_path,
                                   flowcell=flowcell, kit=kit, save_path=save_path, output_format="",
                                   reads_per_fastq=1000)
-    for i, batch in enumerate(albacore.batches):
+    for i, batch in enumerate(albacore.batches()):
         if batch in expected_batches:
             expected_batches.remove(batch)
         else:
@@ -412,19 +412,9 @@ def file_row_generator(file):
 
 
 if __name__ == '__main__':
-    # test_albcore_build_command()
-    # test_albacore_batches()
-    # #test_albacore_binary()
-    # test_albacore_basecall()
-    # test_collapse_data()
-    cmd = ""
-    l = ["read_fast5_basecaller.py", "--flowcell", "FLO-MIN106",
-                        "--kit", "SQK-LSK109", "--output_format", "fastq",
-                        "--save_path", '/project/umw_athma_pai/kevin/data/Albacore_tests/without_nanopypes',
-                        "--worker_threads", "1", "--input", '/project/umw_athma_pai/kevin/data/minion_ercc_labeled/20190220_1525_ERCC/fast5/pass/albacore_test',
-                          "--reads_per_fastq_batch", "1000"]
-    for i in l:
-        cmd += i
-        cmd += " "
-    print(cmd)
+    test_albcore_build_command()
+    test_albacore_batches()
+    #test_albacore_binary()
+    test_albacore_basecall()
+    test_collapse_data()
 
