@@ -13,7 +13,7 @@ class NanopypesCluster:
                  time_out=2000, job_extra=None, env_extra=None, cluster=None, logging=False):
         self.workers = num_workers
         self.cluster_type = cluster_type.lower()
-        self.cluster = cluster or self.build_cluster() # Must be explicitly built first, or a cluster object can be passed
+        self._cluster = cluster or self.build_cluster() # Must be explicitly built first, or a cluster object can be passed
         self.queue = queue
         self.num_workers = num_workers
         self.worker_memory = worker_memory
@@ -65,7 +65,7 @@ class NanopypesCluster:
 
         elif self.cluster_type == 'slurm':
             cluster = self._build_slurm()
-        self.cluster = cluster
+        self._cluster = cluster
         return
 
     def start_cluster(self):
