@@ -82,7 +82,7 @@ class NanopypesCluster:
         return client
 
     def _build_lsf(self):
-        ncpus = self.workers_per_job * self.worker_cores
+        ncpus = int((self.num_workers / self.workers_per_job)) * self.worker_cores
         mem_bytes = self.worker_memory * self.workers_per_job * 1024**2
         dask_memory = str(self.worker_memory / 1024) + 'GB'
         cluster = LSFCluster(queue=self.queue,  # Passed to #BSUB -q option.
