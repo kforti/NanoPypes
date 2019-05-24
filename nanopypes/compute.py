@@ -75,7 +75,7 @@ class NanopypesCluster:
         except:
             self.build_cluster()
         minimum_workers = self.min_num_workers or int(0.5 * self.num_workers)
-        self.cluster.adapt(minimum=minimum_workers, maximum=self.num_workers)
+        self.cluster.scale(self.num_workers)
         client = Client(self.cluster)
         self.clients.append(client)
 
