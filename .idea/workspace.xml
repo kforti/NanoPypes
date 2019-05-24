@@ -2,129 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="06fba5a6-e119-4d57-aa65-81370b2766cd" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/nanopypes.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/nanopypes.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nanopypes/cli.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/cli.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nanopypes/compute.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/compute.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nanopypes/config.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nanopypes/oxnano.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nanopypes/pipes/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/pipes/base.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nanopypes/pipes/basecaller.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/pipes/basecaller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nanopypes/pipes/my_file" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nanopypes/pipes/my_test" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nanopypes/pipes/variant_calling.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/pipes/variant_calling.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nanopypes/run_pipes.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/MiniMap2.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/albacore_basecall.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/minimap.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/dask-worker-space/global.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/dask-worker-space/purge.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_basecallers.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_basecallers2.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_basecallers2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_cluster.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_cluster.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_configs/local_builds.yml" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_configs/local_builds.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/tmp/0/configuration.cfg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/tmp/0/sequencing_summary.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/tmp/0/sequencing_telemetry.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/tmp/0/workspace/calibration_strands/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/tmp/0/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/tmp/1/configuration.cfg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/tmp/1/sequencing_summary.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/tmp/1/sequencing_telemetry.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/tmp/1/workspace/calibration_strands/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/tmp/1/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/tmp/2/configuration.cfg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/tmp/2/sequencing_summary.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/tmp/2/sequencing_telemetry.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/tmp/2/workspace/calibration_strands/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/tmp/2/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/tmp/3/configuration.cfg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/tmp/3/sequencing_summary.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/tmp/3/sequencing_telemetry.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/tmp/3/workspace/calibration_strands/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/tmp/3/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/tmp/4/configuration.cfg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/tmp/4/sequencing_summary.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/tmp/4/sequencing_telemetry.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/tmp/4/workspace/calibration_strands/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/tmp/4/workspace/fail/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/tmp/4/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/tmp/5/configuration.cfg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/tmp/5/sequencing_summary.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/tmp/5/sequencing_telemetry.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/tmp/5/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/tmp/6/configuration.cfg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/tmp/6/sequencing_summary.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/tmp/6/sequencing_telemetry.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/tmp/6/workspace/calibration_strands/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/tmp/6/workspace/fail/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/tmp/6/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/tmp/7/configuration.cfg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/tmp/7/sequencing_summary.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/tmp/7/sequencing_telemetry.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/tmp/7/workspace/calibration_strands/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/tmp/7/workspace/fail/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/tmp/7/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/tmp/8/configuration.cfg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/tmp/8/sequencing_summary.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/tmp/8/sequencing_telemetry.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/tmp/8/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/tmp/9/configuration.cfg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/tmp/9/sequencing_summary.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/tmp/9/sequencing_telemetry.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/tmp/9/workspace/calibration_strands/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/tmp/9/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/minimap/R7.3_fastq/run20141112_PfCRT_2-2.fq.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/minimap/R7.3_fastq/run20141128_PfCRT_5-6.fq.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/minimap/R7.3_fastq/run20141202_PfCRT_5-3.fq.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/minimap/R7.3_fastq/run20141205_PfCRT_5-39.fq.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/minimap/R7.3_fastq/run20141208_PfCRT_5-41.fq.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/minimap/R7.3_fastq/run20141224_PfCRT_3D7.fq.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/minimap/R7.3_fastq/run20141224_PfCRT_K1.fq.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/minimap/R7.3_fastq/run20150105_PfCRT_Dd2.fq.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/minimap/R7.3_fastq/run20150106_PfCRT_2-5.fq.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/minimap/R7.3_fastq/run20150120_PfCRT_5-43.fq.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/minimap/references/Plasmodium_falciparum_3D7.fasta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/minimap/sam_files/run20141112_PfCRT_2-2.sam" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/minimap/sam_files/run20141128_PfCRT_5-6.sam" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/minimap/sam_files/run20141202_PfCRT_5-3.sam" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/minimap/sam_files/run20141205_PfCRT_5-39.sam" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/minimap/sam_files/run20141208_PfCRT_5-41.sam" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/minimap/sam_files/run20141224_PfCRT_3D7.sam" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/minimap/sam_files/run20141224_PfCRT_K1.sam" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/minimap/sam_files/run20150105_PfCRT_Dd2.sam" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/minimap/variant_calling_output/run20141112_PfCRT_2-2.bcf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/minimap/variant_calling_output/run20141112_PfCRT_2-2.sam" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/minimap/variant_calling_output/run20141112_PfCRT_2-2.vcf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/minimap/variant_calling_output/run20141128_PfCRT_5-6.bcf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/minimap/variant_calling_output/run20141128_PfCRT_5-6.sam" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/minimap/variant_calling_output/run20141128_PfCRT_5-6.vcf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/minimap/variant_calling_output/run20141202_PfCRT_5-3.bcf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/minimap/variant_calling_output/run20141202_PfCRT_5-3.sam" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/minimap/variant_calling_output/run20141202_PfCRT_5-3.vcf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/minimap/variant_calling_output/run20141205_PfCRT_5-39.bcf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/minimap/variant_calling_output/run20141205_PfCRT_5-39.sam" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/minimap/variant_calling_output/run20141205_PfCRT_5-39.vcf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/minimap/variant_calling_output/run20141208_PfCRT_5-41.bcf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/minimap/variant_calling_output/run20141208_PfCRT_5-41.sam" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/minimap/variant_calling_output/run20141208_PfCRT_5-41.vcf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/minimap/variant_calling_output/run20141224_PfCRT_3D7.bcf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/minimap/variant_calling_output/run20141224_PfCRT_3D7.sam" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/minimap/variant_calling_output/run20141224_PfCRT_3D7.vcf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/minimap/variant_calling_output/run20141224_PfCRT_K1.bcf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/minimap/variant_calling_output/run20141224_PfCRT_K1.sam" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/minimap/variant_calling_output/run20141224_PfCRT_K1.vcf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/minimap/variant_calling_output/run20150105_PfCRT_Dd2.bcf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/minimap/variant_calling_output/run20150105_PfCRT_Dd2.sam" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/minimap/variant_calling_output/run20150105_PfCRT_Dd2.vcf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_guppy.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_guppy.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_minimap2.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_objects.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_script.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_variant_calling.py" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -166,8 +44,8 @@
           <file leaf-file-name="compute.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/nanopypes/compute.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="421">
-                  <caret line="101" column="24" lean-forward="true" selection-start-line="101" selection-start-column="24" selection-end-line="101" selection-end-column="24" />
+                <state relative-caret-position="58">
+                  <caret line="42" column="26" selection-start-line="42" selection-start-column="26" selection-end-line="42" selection-end-column="26" />
                   <folding>
                     <element signature="e#0#36#0" expanded="true" />
                   </folding>
@@ -510,6 +388,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1842" y="179" width="1367" height="932" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.7145709" visible="true" weight="0.15973254" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -949,8 +828,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/nanopypes/compute.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="421">
-          <caret line="101" column="24" lean-forward="true" selection-start-line="101" selection-start-column="24" selection-end-line="101" selection-end-column="24" />
+        <state relative-caret-position="58">
+          <caret line="42" column="26" selection-start-line="42" selection-start-column="26" selection-end-line="42" selection-end-column="26" />
           <folding>
             <element signature="e#0#36#0" expanded="true" />
           </folding>
