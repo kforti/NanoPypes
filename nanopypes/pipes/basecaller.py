@@ -29,40 +29,57 @@ def b_gen(input_path):
 
 class AlbacoreBasecaller(Pipe):
 
-    def __init__(self, client, expected_workers, input_path,
+    def __init__(self, cluster, num_workers, input_path,
                  flowcell, kit, save_path, output_format='fastq',
                  reads_per_fastq=1000):
         print("Starting the parallel Albacore Basecaller...\n", datetime.datetime.now())
-        self.input = Path(input_path)
-        self.flow_cell = flowcell
+        self.input_path = Path(input_path)
+        self.flowcell = flowcell
         self.kit = kit
         self.save_path = Path(save_path)
         if self.save_path.exists() == False:
             self.save_path.mkdir()
         self.output_format = output_format
         self.reads_per_fastq = reads_per_fastq
-        self.num_batches = len(os.listdir(str(self.input)))
+        self.num_batches = len(os.listdir(str(self.input_path)))
 
-        self.client = client
-        self.batch_bunch_size = expected_workers
+        self.cluster = cluster
+        self.start_cluster()
 
         self.futures = []
 
-        # collapse_data
-        self.first_summary = True
+    @classmethod
+    def from_dict(cls, config_dict):
+        config_dict["input_path"] = Path(config_dict["input_path"])
+        save_path = config_dict["save_path"] = Path(config_dict["save_path"])
+        config_dict["futures"] = []
+        instance = cls.__new__(cls)
+        instance.__dict__.update(config_dict)
+        if save_path.exists() is False:
+            save_path.mkdir()
+        instance.start_cluster()
+        return instance
+
+    def start_cluster(self):
+        self.client = self.cluster.start_cluster()
+        self.num_workers = self.cluster.expected_workers
+
+    @property
+    def cluster_data(self):
+        return self.cluster.__dict__
 
     def execute(self):
         batch_counter = 0
         batches = self.batches()
 
-        for i in range(self.batch_bunch_size):
+        for i in range(self.num_workers):
             try:
                 batch = next(batches)
             except StopIteration:
                 break
             self.futures.append(self._process_batch(batch))
             batch_counter += 1
-            if batch_counter == self.batch_bunch_size:
+            if batch_counter == self.num_workers:
                 break
 
         completed = as_completed(self.futures)
@@ -86,9 +103,9 @@ class AlbacoreBasecaller(Pipe):
 
     def build_basecall_command(self, batch):
         """ Method for creating the string based command for running the albacore basecaller from the commandline."""
-        input_dir = self.input.joinpath(batch)
+        input_dir = self.input_path.joinpath(batch)
         command = ["read_fast5_basecaller.py",]
-        command.extend(["--flowcell", self.flow_cell])
+        command.extend(["--flowcell", self.flowcell])
         command.extend(["--kit", self.kit])
         command.extend(["--output_format", self.output_format])
         command.extend(["--save_path", str(self.save_path.joinpath(batch))])
@@ -101,7 +118,7 @@ class AlbacoreBasecaller(Pipe):
 
     def batches(self):
         """Batch generator"""
-        for batch in os.listdir(str(self.input)):
+        for batch in os.listdir(str(self.input_path)):
             yield batch
 
     def command_function(self, stdout=None):

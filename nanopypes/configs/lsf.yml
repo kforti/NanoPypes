@@ -1,0 +1,25 @@
+albacore_basecaller:
+  input_path: /Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass
+  save_path: /Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/basecalled_data/results/local_basecall_test
+  flowcell: FLO-MIN106
+  kit: SQK-LSK109
+  output_format: fast5
+  worker_threads: 1
+  recursive: False
+  reads_per_fastq: 1000
+compute:
+    cluster1:
+        cluster_type: local
+        job_time: 01:00
+        project: /project/umw_athma_pai
+        queue: short
+        workers_per_job: 10
+        min_num_workers:
+        num_workers: 10
+        worker_cores: 10
+        worker_memory: 2048
+        time_out:
+        job_extra:
+        env_extra:
+
+

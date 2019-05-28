@@ -9,10 +9,10 @@ import shutil
 
 from ont_fast5_api.fast5_file import Fast5File
 from nanopypes.objects.raw import ReadFile
-from nanopypes.objects.base import NanoPypeObject
+from nanopypes.objects.base import DataObject
 
 
-class BaseCalledData(NanoPypeObject):
+class BaseCalledData(DataObject):
     """Data that is returned after basecalling
         Contains:
             Configuration
@@ -167,14 +167,14 @@ class BasecalledRead(ReadFile):
     pass
 
 
-class _ReadTypes(NanoPypeObject):
+class _ReadTypes(DataObject):
     """Read type (calibration_strand, pass, fail) present after basecalling.
     parent => worksapce
     Directory of barcodes or directory of fast5/fastq files"""
     pass
 
 
-class BaseCalledReadBarcodes(NanoPypeObject):
+class BaseCalledReadBarcodes(DataObject):
     """Directory of barcodes
     parent => ReadType (directory labeled either calibration_strand, pass, or fail)"""
     def __init__(self, path):

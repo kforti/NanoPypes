@@ -13,7 +13,7 @@ from distributed import Client
 def test_cluster_from_dict():
     expected_cluster = {'cluster_type': 'lsf', 'job_time': '01:00', 'project': '/project/umw_athma_pai', 'queue': 'short', 'workers_per_job': 10, 'min_num_workers': None, 'num_workers': 10, 'worker_cores': 10, 'worker_memory': 2048, 'time_out': None, 'job_extra': None, 'env_extra': None}
 
-    cluster_config_path = 'test_configs/local_builds.yml'
+    cluster_config_path = 'test_configs/lsf.yml'
     with open(cluster_config_path, 'r') as file:
         config = yaml.safe_load(file)["compute"]["cluster1"]
         #print(config)

@@ -1,17 +1,22 @@
+from typing import Any, Callable, I
+
 from dask_jobqueue import LSFCluster
-from distributed import Client
+from distributed import Client, LocalCluster, worker_client, fire_and_forget
+
+from prefect.engine.executors import DaskExecutor
+
 
 
 def get_config_file(config_type):
-    """config_types {'lsf': 'config_templates/lsf'}"""
+    """config_types {'lsf': 'configs/lsf'}"""
     raise NotImplementedError
+
 
 class NanopypesCluster:
     """ Cluster based task manager for running the basecaller in parallel"""
     def __init__(self, num_workers=None, worker_memory=None, worker_cores=None, cluster_type=None,
                  queue=None, workers_per_job=None, job_time=None, project=None, min_num_workers=None,
                  time_out=2000, job_extra=None, env_extra=None, cluster=None, logging=False):
-        self.workers = num_workers
         self.cluster_type = cluster_type.lower()
         self._cluster = cluster or self.build_cluster() # Must be explicitly built first, or a cluster object can be passed
         self.queue = queue
@@ -45,7 +50,7 @@ class NanopypesCluster:
 
     @property
     def expected_workers(self):
-        return self.workers
+        return self.num_workers
 
     @property
     def connected_workers(self):
@@ -66,6 +71,10 @@ class NanopypesCluster:
 
         elif self.cluster_type == 'slurm':
             cluster = self._build_slurm()
+
+        elif self.cluster_type == 'local':
+            cluster = LocalCluster()
+            self.num_workers = len(cluster.scheduler.workers)
         self._cluster = cluster
         return
 
@@ -109,6 +118,32 @@ class NanopypesCluster:
         self.cluster.close()
 
 
+class NanopypesExecutor(DaskExecutor):
+    def __init__(self, npcluster,):
+        self.npcluster = npcluster
+        super.__init__(address=self.npcluster.cluster.scheduler)
 
+    def map(self, fn: Callable, maxsize: int, *args: Any):
+        """
+        Submit a function to be mapped over its iterable arguments.
+        Args:
+            - fn (Callable): function that is being submitted for execution
+            - *args (Any): arguments that the function will be mapped over
+        Returns:
+            - List[Future]: a list of Future-like objects that represent each computation of
+                fn(*a), where a = zip(*args)[i]
+        """
+        if not args:
+            return []
 
+        if self.is_started and hasattr(self, "client"):
+            futures = self.client.map(fn, *args, pure=False, maxsize=maxsize)
+        elif self.is_started:
+            with worker_client(separate_thread=True) as client:
+                futures = client.map(fn, *args, pure=False)
+                return client.gather(futures)
+        else:
+            raise ValueError("This executor has not been started.")
 
+        fire_and_forget(futures)
+        return futures

@@ -2,12 +2,27 @@
 """Console script for pai-nanopypes."""
 import shutil
 import os
+import yaml
+from pathlib import Path
 
 import click
 
 from distributed import LocalCluster, Client
 
-from .compute import NanoPypesCluster
+from .compute import NanopypesCluster
+from .pipes.basecaller import AlbacoreBasecaller
+
+
+
+def update_config(config_data, user_args):
+    for var, arg in user_args.items():
+        if var in config_data and arg:
+            config_data[var] = arg
+    return config_data
+
+
+
+
 
 @click.command()
 @click.option('-C', '--cluster-type', 'cluster_type', help='The type of cluster you plan to use for your analysis. ["lsf", "local]', required=True, type=str)
@@ -17,7 +32,7 @@ def get_config_template(save_path, cluster_type):
     template_name = "{}_albacore_template.yml".format(cluster_type)
     current_dir = os.path.dirname(os.path.abspath(__file__))
 
-    template_path = current_dir.replace("/nanopypes", ("/config_templates/" + template_name))
+    template_path = current_dir.replace("/nanopypes", ("/configs/" + template_name))
 
     shutil.copy(template_path, save_path)
     print("saved template to " + save_path)
@@ -29,33 +44,60 @@ def get_config_template(save_path, cluster_type):
 #############################################
 
 @click.command()
-@click.option('-n', '--cluster-name', 'cluster_name', help='The name of the cluster- located directly under computes in the config file.', required=True, type=str)
-@click.option('-s', '--save-path', 'save_path', help='An empty save location for the basecalled data- if the directory does not exist it will be created but the parent directory must exist', required=True, type=str)
-@click.option('-i', '--input-path', 'input_path', help="The path to a directory that contains batches of raw sequening data- likely titled pass.", required=True, type=str)
-@click.option('-k', '--kit', 'kit', help="The type of ONT kit used in the sequencing run.", required=True, type=str)
-@click.option('-f', '--flowcell', 'flowcell', help="The type of ONT kit used in the sequencing run.", required=True, type=str)
-@click.option('-o', '--output-format', 'output_format', help="fastq or fast5 output format.", required=True, type=str)
-@click.argument('config', required=True)
-def albacore_basecaller(config, cluster_name, kit, flowcell, input_path, save_path, output_format):
+@click.option('-n', '--cluster-name', 'cluster_name', help='The name of the cluster- located directly under computes in the config file.', required=False, type=str, default='cluster1')
+@click.option('-s', '--save-path', 'save_path', help='An empty save location for the basecalled data- if the directory does not exist it will be created but the parent directory must exist', required=False, type=str)
+@click.option('-i', '--input-path', 'input_path', help="The path to a directory that contains batches of raw sequening data- likely titled pass.", required=False, type=str)
+@click.option('-k', '--kit', 'kit', help="The type of ONT kit used in the sequencing run.", required=False, type=str)
+@click.option('-f', '--flowcell', 'flowcell', help="The type of ONT kit used in the sequencing run.", required=False, type=str)
+@click.option('-o', '--output-format', 'output_format', help="fastq or fast5 output format.", required=False, type=str)
+@click.argument('config_path', required=False, default='configs/lsf.yml')
+def albacore_basecaller(kit, flowcell, input_path, save_path, output_format, config_path, cluster_name):
     """Console script for running the albacore parallel basecaller.
     :param cluster_name: The name of the cluster defined in the config yaml.
     :param kit: The name of the ONT kit used in the sequencing run."""
+    # get the arguments passed by the user
+    user_args = locals()
 
-    compute_config = config.get_compute(cluster_name)
-    cluster = Cluster()
-    scheduler_address = cluster.connect()
+    albacore_config = None
+    current_path = os.path.abspath(__package__)
+    config_path = Path(current_path).joinpath(config_path)
 
-    client = Client(scheduler_address)
+    try:
+        with open(str(config_path), 'r') as file:
+            config = yaml.safe_load(file)
+            compute_config = config["compute"][cluster_name]
+            if "albacore_basecaller" in config:
+                albacore_config = config["albacore_basecaller"]
+    except Exception as e:
+        raise IOError("Could not read config data from the provided config path")
+
+    cluster = NanopypesCluster.from_dict(compute_config)
+    cluster.build_cluster()
+
+    client = cluster.start_cluster()
     num_workers = cluster.expected_workers
+    print(num_workers)
+    print()
+    print()
 
-    bc_data = albacore(kit=kit,
-                       flowcell=flowcell,
-                       input_path=input_path,
-                       save_path=save_path,
-                       output_format=output_format,
-                       expected_workers=num_workers,
-                       client=client
-                       )
+
+    if albacore_config:
+        albacore_config = update_config(albacore_config, user_args)
+        albacore_config['client'] = client
+        albacore_config['num_workers'] = num_workers
+        albacore = AlbacoreBasecaller.from_dict(albacore_config)
+    else:
+        albacore = AlbacoreBasecaller(kit=kit,
+                          flowcell=flowcell,
+                          input_path=input_path,
+                          save_path=save_path,
+                          output_format=output_format,
+                          expected_workers=num_workers,
+                          client=client
+                          )
+
+
+    albacore()
     return 0
 
 

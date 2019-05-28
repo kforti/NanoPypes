@@ -12,7 +12,7 @@ from nanopypes.pipes.base import Pipe
 
 class ParallelRsync(Pipe):
 
-    def __init__(self, nchannels, local_path, remote_path, password, rsync_options='-vcr', direction='push',  client='local'):
+    def __init__(self, nchannels, local_path, remote_path, password, rsync_options='-avr', direction='push',  client='local'):
 
         self.client = client
         self.local = Path(local_path)

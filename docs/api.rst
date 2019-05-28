@@ -1,5 +1,13 @@
-from nanopypes.oxnano import *
+API
+===
 
-config = Configuration("path/to/yaml/config")
-compute_configs = config.compute
-albacore = Albacore(compute_configs[compute_index])
+.. py:currentmodule:: nanopypes
+
+.. autosummary::
+    NanopypesCluster
+    NanopypesCluster.from_dict
+    NanopypesCluster.build_cluster()
+    NanopypesCluster.start_cluster()
+
+.. autoclass:: NanopypesCluster
+    :members:

@@ -18,9 +18,9 @@ class Pipe():
         pass
 
     @classmethod
-    def from_dict(cls, dict):
+    def from_dict(cls, config_dict):
         instance = cls.__new__(cls)
-        instance.__dict__.update(dict)
+        instance.__dict__.update(config_dict)
         return instance
 
     def __call__(self):

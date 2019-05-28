@@ -6,10 +6,10 @@ from ont_fast5_api.fast5_file import Fast5File
 from ont_fast5_api.multi_fast5 import MultiFast5File
 from ont_fast5_api.analysis_tools import basecall_1d
 
-from nanopypes.objects.base import NanoPypeObject, Fast5, MultiFast5
+from nanopypes.objects.base import DataObject, Fast5, MultiFast5
 
 
-class SeqOutput(NanoPypeObject):
+class SeqOutput(DataObject):
     """ Data type for managing and manipulating Raw Fast5 MinIon sequencing data"""
 
     #pass_reads and fail_reads might need to be updated to get read batches
@@ -45,7 +45,7 @@ class SeqOutput(NanoPypeObject):
         return Sample(sample_path)
 
 
-class Experiment(NanoPypeObject):
+class Experiment(DataObject):
 
     def __init__(self, path):
         super().__init__(path)
@@ -58,7 +58,7 @@ class Experiment(NanoPypeObject):
         return Sample(self.path.joinpath(name))
 
 
-class Sample(NanoPypeObject):
+class Sample(DataObject):
 
     def __init__(self, path):
         super().__init__(path)
