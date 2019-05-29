@@ -100,7 +100,7 @@ class ProfileRun:
         for key, value in comp_data.items():
             if self._is_jsonable(value) is False:
                 comp_data.pop(key)
-                
+
         save_path = Path(self.output).joinpath("profile_runs.js")
         with open(str(save_path), 'a') as file:
             json.dump(comp_data, file)
