@@ -97,12 +97,20 @@ class ProfileRun:
         comp_data["input_path"] = str(comp_data["input_path"])
         comp_data["save_path"] = str(comp_data["save_path"])
 
-        comp_data.pop("client")
-        comp_data["cluster"].pop('_cluster')
-        comp_data["cluster"].pop("clients")
+        for key, value in comp_data.items():
+            if self._is_jsonable(value) is False:
+                comp_data.pop(key)
+                
         save_path = Path(self.output).joinpath("profile_runs.js")
         with open(str(save_path), 'a') as file:
             json.dump(comp_data, file)
+
+    def _is_jsonable(self, value):
+        try:
+            json.dumps(value)
+            return True
+        except:
+            return False
 
 
 
