@@ -5,7 +5,7 @@ profile_runs:
             component_handler: nanopypes_albacore
             compute_type: hpc_dask
             compute:
-                cluster_type: local
+                cluster_type: lsf
                 job_time: 01:00
                 project: /project/umw_athma_pai
                 queue: short
