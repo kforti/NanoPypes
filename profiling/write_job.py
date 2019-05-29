@@ -93,7 +93,7 @@ class HPCJobComponent(HPCJob):
         return
 
     def __call__(self):
-        self.job_submission(self.script_path)
+        self.job_submission(self.save_path)
 
 
 
