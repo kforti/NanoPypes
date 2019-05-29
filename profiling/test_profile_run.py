@@ -16,7 +16,7 @@ def test_write_job_script():
 
 def test_profile_run():
     pr = ProfileRun("test_run1", config_path='test_profile_params')
-    pr()
+    pr.run()
 
 
 
