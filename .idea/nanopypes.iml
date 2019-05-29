@@ -9,5 +9,6 @@
     <orderEntry type="module" module-name="distributed_bio_tools" />
     <orderEntry type="module" module-name="dask-kubernetes" />
     <orderEntry type="module" module-name="profiling" />
+    <orderEntry type="module" module-name="prefect" />
   </component>
 </module>

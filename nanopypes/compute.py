@@ -1,4 +1,4 @@
-from typing import Any, Callable, I
+from typing import Any, Callable
 
 from dask_jobqueue import LSFCluster
 from distributed import Client, LocalCluster, worker_client, fire_and_forget
@@ -122,6 +122,7 @@ class NanopypesExecutor(DaskExecutor):
     def __init__(self, npcluster,):
         self.npcluster = npcluster
         super.__init__(address=self.npcluster.cluster.scheduler)
+        self.queue_handler = {}
 
     def map(self, fn: Callable, maxsize: int, *args: Any):
         """

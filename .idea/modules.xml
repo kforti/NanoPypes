@@ -8,7 +8,8 @@
       <module fileurl="file://$PROJECT_DIR$/../../distributed_bio_tools/.idea/distributed_bio_tools.iml" filepath="$PROJECT_DIR$/../../distributed_bio_tools/.idea/distributed_bio_tools.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/nanopypes.iml" filepath="$PROJECT_DIR$/.idea/nanopypes.iml" />
       <module fileurl="file://$USER_HOME$/PycharmProjects/omics-ai/.idea/omics-ai.iml" filepath="$USER_HOME$/PycharmProjects/omics-ai/.idea/omics-ai.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../profiling/.idea/profiling.iml" filepath="$PROJECT_DIR$/../profiling/.idea/profiling.iml" />
+      <module fileurl="file://$USER_HOME$/prefect/prefect/.idea/prefect.iml" filepath="$USER_HOME$/prefect/prefect/.idea/prefect.iml" />
+      <module fileurl="file://$PROJECT_DIR$/profiling/.idea/profiling.iml" filepath="$PROJECT_DIR$/profiling/.idea/profiling.iml" />
     </modules>
   </component>
 </project>

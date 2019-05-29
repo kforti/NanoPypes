@@ -1,0 +1,2 @@
+test_#    test_name test_type   job_memory   job_ncpus   cores    mem workers cluster_type    umass_mem   job_time
+1    'test1'    'nanopypes'   '10 GB'    5   5   10589934592 5   'LSF' 10240'    '03:00'
