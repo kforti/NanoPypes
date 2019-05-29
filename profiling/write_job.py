@@ -1,5 +1,7 @@
 from pathlib import Path
 
+import nanopypes
+
 local_save_path = Path("/Users/kevinfortier/PycharmProjects/code_snippets/test_job_scripts")
 save_path = Path('/project/umw_athma_pai/kevin/data/Albacore_tests/')
 
@@ -63,9 +65,8 @@ class HPCJob:
 
         self._job_script = job_script
 
-    def write_job_script(self):
-        save_path = Path(self.save_path).joinpath(self.script_name)
-        with open(str(save_path), 'w') as file:
+    def write_job_script(self, path):
+        with open(str(path), 'w') as file:
             for line in self._job_script:
                 file.write(line)
                 file.write("\n")

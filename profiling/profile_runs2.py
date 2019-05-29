@@ -17,6 +17,7 @@ class HPCJobComponent(HPCJob):
                  job_name=None, shell=None, out=None, err=None, save_path=None):
         super().__init__(script_name, cores, mem, queue, walltime, commands, job_name, shell, out, err, save_path)
 
+
     def job_submission(self, script_path):
         cmd = "bsub < {script_path}".format(script_path=script_path)
         process = subprocess.run(cmd, shell=True, check=True)
@@ -81,10 +82,14 @@ class ProfileRun:
                 job_config = component_config["job_script"]
                 command = build_basecall_command(alb_conf)
                 job_config["commands"] = [command]
+
                 hpc_component = HPCJobComponent.from_dict(job_config)
+                path = "job_scripts/" + job_config["script_name"]
+                hpc_component.write_job_script(path)
+
                 self.component_handler[component] = hpc_component
                 #print(job_script.__dict__)
-                job_script.write_job_script()
+
 
     def run(self, component=None):
         if component:
