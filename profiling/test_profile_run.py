@@ -14,7 +14,12 @@ def test_write_job_script():
 
     assert job_script_path.exists()
 
+def test_profile_run():
+    pr = ProfileRun("test_run1", config_path='test_profile_params')
+    pr()
+
 
 
 if __name__ == '__main__':
     test_write_job_script()
+    test_profile_run()
