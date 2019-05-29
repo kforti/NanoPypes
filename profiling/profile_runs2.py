@@ -101,7 +101,7 @@ class ProfileRun:
         comp_data["cluster"].pop('_cluster')
         comp_data["cluster"].pop("clients")
         save_path = Path(self.output).joinpath("profile_runs.js")
-        with open(save_path, 'a') as file:
+        with open(str(save_path), 'a') as file:
             json.dump(comp_data, file)
 
 
