@@ -1,11 +1,11 @@
 from pathlib import Path
+import subprocess
 
 import nanopypes
 
-local_save_path = Path("/Users/kevinfortier/PycharmProjects/code_snippets/test_job_scripts")
-save_path = Path('/project/umw_athma_pai/kevin/data/Albacore_tests/')
+#local_save_path = Path("/Users/kevinfortier/PycharmProjects/code_snippets/test_job_scripts")
+#save_path = Path('/project/umw_athma_pai/kevin/data/Albacore_tests/')
 
-'my_fastq.fastq.gz'
 
 
 
@@ -22,7 +22,7 @@ class HPCJob:
         self.shell = shell
         self.out = out
         self.err = err
-        self.save_path = Path(save_path).joinpath(self.script_name)
+        self.save_path = save_path
         self.create_job_script()
 
     @classmethod
@@ -65,12 +65,37 @@ class HPCJob:
 
         self._job_script = job_script
 
-    def write_job_script(self, path):
+    def write_job_script(self, path=None):
+        if path is None and self.save_path:
+            path = Path(self.save_path).joinpath(self.script_name)
+        elif path:
+            pass
+        elif path is None and self.save_path is None:
+            raise IOError("No script save path provided")
+
         with open(str(path), 'w') as file:
             for line in self._job_script:
                 file.write(line)
                 file.write("\n")
         file.close()
+
+
+class HPCJobComponent(HPCJob):
+    def __init__(self, script_name, cores, mem, queue, walltime, commands,
+                 job_name=None, shell=None, out=None, err=None, save_path=None, script_path=None):
+        super().__init__(script_name, cores, mem, queue, walltime, commands, job_name, shell, out, err, save_path)
+
+
+
+    def job_submission(self, script_path):
+        cmd = "bsub < {script_path}".format(script_path=script_path)
+        process = subprocess.run(cmd, shell=True, check=True)
+        return
+
+    def __call__(self):
+        self.job_submission(self.script_path)
+
+
 
 if __name__ == '__main__':
     import yaml

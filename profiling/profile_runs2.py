@@ -1,5 +1,4 @@
 import yaml
-import subprocess
 import json
 import datetime
 from pathlib import Path
@@ -7,24 +6,10 @@ from pathlib import Path
 from nanopypes.pipes.basecaller import AlbacoreBasecaller
 from nanopypes.compute import NanopypesCluster
 
-from write_job import HPCJob
-
-from distributed import Client
+from write_job import HPCJobComponent
 
 
-class HPCJobComponent(HPCJob):
-    def __init__(self, script_name, cores, mem, queue, walltime, commands,
-                 job_name=None, shell=None, out=None, err=None, save_path=None):
-        super().__init__(script_name, cores, mem, queue, walltime, commands, job_name, shell, out, err, save_path)
 
-
-    def job_submission(self, script_path):
-        cmd = "bsub < {script_path}".format(script_path=script_path)
-        process = subprocess.run(cmd, shell=True, check=True)
-        return
-
-    def __call__(self, script_path):
-        self.job_submission(script_path)
 
 
 def build_basecall_command(config, recursive=True):
@@ -67,6 +52,7 @@ class ProfileRun:
     def build_components(self):
         for component in self.component_configs:
             component_config = self.component_configs[component]
+
             if component_config["component_type"] == "pipe":
                 cluster = NanopypesCluster.from_dict(component_config["compute"])
                 cluster.build_cluster()
@@ -75,21 +61,19 @@ class ProfileRun:
                 pipe = self.pipe_handler[component_config["component_handler"]]
                 pipe = pipe.from_dict(component_config["pipe"])
                 self.component_handler[component] = pipe
-                #print(pipe.__dict__)
 
             elif component_config["component_type"] == "hpc_job":
                 alb_conf = component_config["albacore"]
-                job_config = component_config["job_script"]
                 command = build_basecall_command(alb_conf)
-                job_config["commands"] = [command]
 
+                job_config = component_config["job_script"]
+                job_config["commands"] = [command]
                 hpc_component = HPCJobComponent.from_dict(job_config)
-                path = "job_scripts/" + job_config["script_name"]
-                hpc_component.write_job_script(path)
+                #path = "job_scripts/" + job_config["script_name"]
+                hpc_component.write_job_script()
 
                 self.component_handler[component] = hpc_component
                 #print(job_script.__dict__)
-
 
     def run(self, component=None):
         if component:
@@ -112,7 +96,7 @@ class ProfileRun:
         comp_data["time"] = t
         comp_data["input_path"] = str(comp_data["input_path"])
         comp_data["save_path"] = str(comp_data["save_path"])
-        print(comp_data)
+
         comp_data.pop("client")
         comp_data["cluster"].pop('_cluster')
         comp_data["cluster"].pop("clients")
