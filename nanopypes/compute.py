@@ -1,8 +1,5 @@
-
 from dask_jobqueue import LSFCluster
-from distributed import Client, LocalCluster, worker_client, fire_and_forget
-
-
+from distributed import Client, LocalCluster
 
 
 
@@ -11,15 +8,15 @@ def get_config_file(config_type):
     raise NotImplementedError
 
 
-class NanopypesCluster:
+class NanopypesClusterManager:
     """ Cluster based task manager for running the basecaller in parallel"""
     def __init__(self, num_workers=None, worker_memory=None, worker_cores=None, cluster_type=None,
                  queue=None, workers_per_job=None, job_time=None, project=None, min_num_workers=None,
-                 time_out=2000, job_extra=None, env_extra=None, cluster=None, logging=False):
-        self.cluster_type = cluster_type.lower()
+                 time_out=2000, job_extra=None, env_extra=None, cluster=None, logging=False, interaface=None):
+        self.cluster_type = cluster_type
         self._cluster = cluster or self.build_cluster() # Must be explicitly built first, or a cluster object can be passed
         self.queue = queue
-        self.num_workers = num_workers
+        self.num_workers = num_workers or len(cluster.workers) or 0
         self.worker_memory = worker_memory
         self.worker_cores = worker_cores
         self.workers_per_job = workers_per_job
@@ -28,6 +25,7 @@ class NanopypesCluster:
         self.min_num_workers = min_num_workers
         self.time_out = time_out
         self.env_extra = env_extra
+        self.interface = None
         self.clients = []
 
         if logging:
@@ -49,6 +47,7 @@ class NanopypesCluster:
 
     @property
     def expected_workers(self):
+        num = max(self.num_workers, len(self.cluster.workers))
         return self.num_workers
 
     @property
@@ -65,13 +64,13 @@ class NanopypesCluster:
         return self._cluster
 
     def build_cluster(self, cluster_type=None):
-        if self.cluster_type == 'lsf':
+        if self.cluster_type.lower() == 'lsf':
             cluster = self._build_lsf()
 
-        elif self.cluster_type == 'slurm':
+        elif self.cluster_typelower() == 'slurm':
             cluster = self._build_slurm()
 
-        elif self.cluster_type == 'local':
+        elif self.cluster_typelower() == 'local':
             cluster = LocalCluster()
             self.num_workers = len(cluster.scheduler.workers)
         self._cluster = cluster
@@ -82,6 +81,7 @@ class NanopypesCluster:
             self.cluster
         except:
             self.build_cluster()
+
         minimum_workers = self.min_num_workers or int(0.5 * self.num_workers)
         self.cluster.scale(self.num_workers)
         client = Client(self.cluster)
@@ -93,19 +93,16 @@ class NanopypesCluster:
         ncpus = int((self.num_workers / self.workers_per_job)) * self.worker_cores
         mem_bytes = self.worker_memory * self.workers_per_job * 1024**2
         dask_memory = str(int(self.worker_memory / 1024)) + 'GB'
-        cluster = LSFCluster(queue=self.queue,  # Passed to #BSUB -q option.
-                                  project=self.project,  # Passed to #BSUB -P option.
-                                  processes=self.workers_per_job,
-                                  walltime=self.job_time,  # Passed to #BSUB -W option.
-                                  ncpus=ncpus,  # Passed to #BSUB -n option.
-                                  mem=mem_bytes,  # Passed to #BSUB -M option.
-                                  job_extra=['-R "rusage[mem={}]"'.format(self.worker_memory), '-o dask_worker.out',
+        cluster = LSFCluster(queue=self.queue, # Passed to #BSUB -q option.
+                             project=self.project, # Passed to #BSUB -P option.
+                             processes=self.workers_per_job,
+                             walltime=self.job_time,# Passed to #BSUB -W option.
+                             job_extra=['-R "rusage[mem={}]"'.format(self.worker_memory), '-o dask_worker.out',
                                              '-e dask_worker.err'],
-                                  cores=ncpus,
-                                  memory=dask_memory,
-                                  # interface='ib0',
-                                  death_timeout=self.time_out,
-                                  env_extra=self.env_extra)
+                             cores=ncpus,
+                             memory=dask_memory,
+                             death_timeout=self.time_out,
+                             env_extra=self.env_extra)
         return cluster
 
     def _build_slurm(self):

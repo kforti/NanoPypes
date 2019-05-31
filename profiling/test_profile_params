@@ -9,14 +9,11 @@ profile_runs:
                 job_time: 01:00
                 project: /project/umw_athma_pai
                 queue: short
-                workers_per_job: 10
+                workers_per_job: 5
                 min_num_workers:
-                num_workers: 10
-                worker_cores: 10
+                num_workers: 5
+                worker_cores: 1
                 worker_memory: 2048
-                time_out:
-                job_extra:
-                env_extra:
             job_memory: 10240
             job_ncpus: 5
             job_time: '1:00'

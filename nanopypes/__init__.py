@@ -7,4 +7,8 @@ __email__ = 'kevin.r.fortier@gmail.com'
 __version__ = '0.1.0'
 
 import logging
+
+from nanopypes.compute import NanopypesClusterManager
+
+
 logging.getLogger(__name__).addHandler(logging.NullHandler())

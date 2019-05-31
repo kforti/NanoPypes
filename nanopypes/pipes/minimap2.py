@@ -7,7 +7,7 @@ from nanopypes.pipes.base import Pipe
 
 
 
-class MiniMap2(Pipe):
+class MiniMap(Pipe):
     commands = {'genomic': 'minimap2 -ax map-ont %(ref)s %(read)s -o %(output)s',
                 'splice': 'minimap2 -ax splice %(ref)s %(read)s > %(output)s',
                 'rna': 'minimap2 -ax splice -uf -k14 %(ref)s %(read)s -o %(output)s',
@@ -61,3 +61,4 @@ class MiniMap2(Pipe):
             result = subprocess.run(command, shell=True)
             return command
         return subp
+

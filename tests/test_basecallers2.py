@@ -4,8 +4,8 @@ import os
 import csv
 import shutil
 
-from nanopypes.pipes.basecaller import AlbacoreBasecaller, GuppyBasecaller
-from nanopypes.pipes.basecaller import collapse_data
+from nanopypes.pipes.basecaller import AlbacoreBasecaller, GuppyBasecaller, collapse_data
+from nanopypes import NanopypesClusterManager
 from config import Configuration
 from compute import Cluster
 
@@ -74,7 +74,7 @@ def test_albcore_build_command():
                           "--worker_threads", "1", "--input", 'test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/9',
                           "--reads_per_fastq_batch", "1000"]]
 
-    albacore = AlbacoreBasecaller(client=None, expected_workers=None,
+    albacore = AlbacoreBasecaller(cluster=None,
                                   input_path="test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/",
                                   flowcell=flowcell, kit=kit, save_path=save_path, output_format=output_format,
                                   reads_per_fastq=1000)
@@ -96,7 +96,7 @@ def test_albacore_batches():
     input_path  = "test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/"
     expected_batches = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 
-    albacore = AlbacoreBasecaller(client=None, expected_workers=None, input_path=input_path,
+    albacore = AlbacoreBasecaller(cluster=None, input_path=input_path,
                                   flowcell=flowcell, kit=kit, save_path=save_path, output_format="",
                                   reads_per_fastq=1000)
     for i, batch in enumerate(albacore.batches()):
@@ -132,12 +132,9 @@ def test_albacore_basecall():
     input_path = Path('test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass')
     kit = 'SQK-LSK109'
     output_format = 'fastq'
+    cluster = NanopypesClusterManager(cluster=LocalCluster())
 
-    cluster = LocalCluster()
-    client = Client(cluster)
-    num_workers = 4
-
-    albacore = AlbacoreBasecaller(client=client, expected_workers=num_workers, input_path=input_path,
+    albacore = AlbacoreBasecaller(cluster=cluster, input_path=input_path,
                                   flowcell=flowcell, kit=kit, save_path=save_path, output_format=output_format,
                                   reads_per_fastq=1000)
     albacore()

@@ -85,8 +85,6 @@ class HPCJobComponent(HPCJob):
                  job_name=None, shell=None, out=None, err=None, save_path=None, script_path=None):
         super().__init__(script_name, cores, mem, queue, walltime, commands, job_name, shell, out, err, save_path)
 
-
-
     def job_submission(self, script_path):
         cmd = "bsub < {script_path}".format(script_path=script_path)
         process = subprocess.run(cmd, shell=True, check=True)
@@ -99,26 +97,5 @@ class HPCJobComponent(HPCJob):
 
 
 if __name__ == '__main__':
-    import yaml
-    with open('/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/profiling/profile_params', 'r') as yml:
-        config = yaml.safe_load(yml)
-    print(config)
-    config = config["profile_runs"]["profile_run1"]["component2"]["job_script"]
-    commands = ["echo hello world"]
-    config["commands"] = commands
-    my_job = HPCJob.from_dict(config)
-    my_job.create_job_script()
-    print(my_job.job_script)
-
-    # names = []
-    # fname = "albacore_test{num}.sh"
-    # for i in range(6):
-    #     names.append(fname.format(num=str(i+1)))
-    # cores_list = [5, 10, 20, 30, 40, 50]
-    # mem_list = [i*2048 for i in cores_list]
-    # threads_list = cores_list
-    # save_paths = [save_path.joinpath(i) for i in names]
-    # local_save_paths = [local_save_path.joinpath(i) for i in names]
-    # for i in range(6):
-    #     write_job(names[i], cores_list[i], mem_list[i], threads_list[i], save_paths[i], local_save_paths[i])
-    #     print(names[i], "\n", cores_list[i], "\n", mem_list[i], "\n", threads_list[i], "\n", save_paths[i])
+    job = HPCJob()
+    job.write_job_script()

@@ -5,9 +5,9 @@ import datetime
 import re
 import subprocess
 
-import dask.bag as db
-from dask.distributed import as_completed
-from dask.bytes import open_files
+
+from distributed import as_completed, Client
+
 
 from nanopypes.pipes.base import Pipe
 from nanopypes.pipes.worker_clients import SingularityClient
@@ -29,7 +29,7 @@ def b_gen(input_path):
 
 class AlbacoreBasecaller(Pipe):
 
-    def __init__(self, cluster, num_workers, input_path,
+    def __init__(self, cluster, input_path,
                  flowcell, kit, save_path, output_format='fastq',
                  reads_per_fastq=1000):
         print("Starting the parallel Albacore Basecaller...\n", datetime.datetime.now())
@@ -44,7 +44,6 @@ class AlbacoreBasecaller(Pipe):
         self.num_batches = len(os.listdir(str(self.input_path)))
 
         self.cluster = cluster
-        self.start_cluster()
 
         self.futures = []
 
@@ -60,46 +59,44 @@ class AlbacoreBasecaller(Pipe):
         instance.start_cluster()
         return instance
 
-    def start_cluster(self):
-        self.client = self.cluster.start_cluster()
-        self.num_workers = self.cluster.expected_workers
-
     @property
     def cluster_data(self):
         return self.cluster.__dict__
 
     def execute(self):
+        num_workers = self.cluster.expected_workers
         batch_counter = 0
         batches = self.batches()
+        client = Client(self.cluster.cluster)
 
-        for i in range(self.num_workers):
+        for i in range(num_workers):
             try:
                 batch = next(batches)
             except StopIteration:
                 break
-            self.futures.append(self._process_batch(batch))
+
+            b_save_path = self.save_path.joinpath(batch)
+            command = self.build_basecall_command(batch=batch)
+            fn = self.command_function()
+            bc = client.submit(fn, command)
+            self.futures.append(bc)
+
             batch_counter += 1
-            if batch_counter == self.num_workers:
+            if batch_counter == num_workers:
                 break
 
         completed = as_completed(self.futures)
         for comp in completed:
             try:
-                new_future = self._process_batch(next(batches))
+                batch = next(batches)
+                b_save_path = self.save_path.joinpath(batch)
+                command = self.build_basecall_command(batch=batch)
+                fn = self.command_function()
+                new_future = client.submit(fn, command)
                 completed.add(new_future)
             except StopIteration:
                 pass
             #completed_batch_path = comp.result()
-
-        results = self.client.gather(self.futures)
-
-    def _process_batch(self, batch):
-        b_save_path = self.save_path.joinpath(batch)
-        command = self.build_basecall_command(batch=batch)
-        func = self.command_function()
-        bc = self.client.submit(func, command)
-
-        return bc
 
     def build_basecall_command(self, batch):
         """ Method for creating the string based command for running the albacore basecaller from the commandline."""
@@ -129,129 +126,131 @@ class AlbacoreBasecaller(Pipe):
 
 
 class GuppyBasecaller(Pipe):
-    """With config file:
-  guppy_basecaller -i <input path> -s <save path> -c <config file> [options]
-With flowcell and kit name:
-  guppy_basecaller -i <input path> -s <save path> --flowcell <flowcell name>
-    --kit <kit name>
-List supported flowcells and kits:
-  guppy_basecaller --print_workflows
-Use server for basecalling:
-  guppy_basecaller -i <input path> -s <save path> -c <config file>
-    --port <server address> [options]
+    """
+        With config file:
+          guppy_basecaller -i <input path> -s <save path> -c <config file> [options]
+        With flowcell and kit name:
+          guppy_basecaller -i <input path> -s <save path> --flowcell <flowcell name>
+            --kit <kit name>
+        List supported flowcells and kits:
+          guppy_basecaller --print_workflows
+        Use server for basecalling:
+          guppy_basecaller -i <input path> -s <save path> -c <config file>
+            --port <server address> [options]
 
-Command line parameters:
-  --print_workflows                 Output available workflows.
-  --flowcell arg                    Flowcell to find a configuration for
-  --kit arg                         Kit to find a configuration for
-  -m [ --model_file ] arg           Path to JSON model file.
-  --chunk_size arg                  Stride intervals per chunk.
-  --chunks_per_runner arg           Maximum chunks per runner.
-  --chunks_per_caller arg           Soft limit on number of chunks in each
-                                    caller's queue. New reads will not be
-                                    queued while this is exceeded.
-  --overlap arg                     Overlap between chunks (in stride
-                                    intervals).
-  --gpu_runners_per_device arg      Number of runners per GPU device.
-  --cpu_threads_per_caller arg      Number of CPU worker threads per
-                                    basecaller.
-  --num_callers arg                 Number of parallel basecallers to create.
-  --stay_penalty arg                Scaling factor to apply to stay probability
-                                    calculation during transducer decode.
-  --qscore_offset arg               Qscore calibration offset.
-  --qscore_scale arg                Qscore calibration scale factor.
-  --temp_weight arg                 Temperature adjustment for weight matrix in
-                                    softmax layer of RNN.
-  --temp_bias arg                   Temperature adjustment for bias vector in
-                                    softmax layer of RNN.
-  --hp_correct arg                  Whether to use homopolymer correction
-                                    during decoding.
-  --builtin_scripts arg             Whether to use GPU kernels that were
-                                    included at compile-time.
-  -x [ --device ] arg               Specify basecalling device: 'auto', or
-                                    'cuda:<device_id>'.
-  -k [ --kernel_path ] arg          Path to GPU kernel files location (only
-                                    needed if builtin_scripts is false).
-  -z [ --quiet ]                    Quiet mode. Nothing will be output to
-                                    STDOUT if this option is set.
-  --trace_categories_logs arg       Enable trace logs - list of strings with
-                                    the desired names.
-  --verbose_logs                    Enable verbose logs.
-  --qscore_filtering                Enable filtering of reads into PASS/FAIL
-                                    folders based on min qscore.
-  --min_qscore arg                  Minimum acceptable qscore for a read to be
-                                    filtered into the PASS folder
-  --disable_pings                   Disable the transmission of telemetry
-                                    pings.
-  --ping_url arg                    URL to send pings to
-  --ping_segment_duration arg       Duration in minutes of each ping segment.
-  --calib_detect                    Enable calibration strand detection and
-                                    filtering.
-  --calib_reference arg             Reference FASTA file containing calibration
-                                    strand.
-  --calib_min_sequence_length arg   Minimum sequence length for reads to be
-                                    considered candidate calibration strands.
-  --calib_max_sequence_length arg   Maximum sequence length for reads to be
-                                    considered candidate calibration strands.
-  --calib_min_coverage arg          Minimum reference coverage to pass
-                                    calibration strand detection.
-  -q [ --records_per_fastq ] arg    Maximum number of records per fastq file, 0
-                                    means use a single file (per worker, per
-                                    run id).
-  --enable_trimming arg             Enable adapter trimming.
-  --trim_threshold arg              Threshold above which data will be trimmed
-                                    (in standard deviations of current level
-                                    distribution).
-  --trim_min_events arg             Adapter trimmer minimum stride intervals
-                                    after stall that must be seen.
-  --max_search_len arg              Maximum number of samples to search through
-                                    for the stall
-  --reverse_sequence arg            Reverse the called sequence (for RNA
-                                    sequencing).
-  --u_substitution arg              Substitute 'U' for 'T' in the called
-                                    sequence (for RNA sequencing).
-  -i [ --input_path ] arg           Path to input fast5 files.
-  -s [ --save_path ] arg            Path to save fastq files.
-  -l [ --read_id_list ] arg         File containing list of read ids to filter
-                                    to
-  -p [ --port ] arg                 Hostname and port for connecting to
-                                    basecall service (ie 'myserver:5555'), or
-                                    port only (ie '5555'), in which case
-                                    localhost is assumed.
-  -r [ --recursive ]                Search for input files recursively.
-  --fast5_out                       Choice of whether to do fast5 output.
-  --override_scaling                Manually provide scaling parameters rather
-                                    than estimating them from each read.
-  --scaling_med arg                 Median current value to use for manual
-                                    scaling.
-  --scaling_mad arg                 Median absolute deviation to use for manual
-                                    scaling.
-  --trim_strategy arg               Trimming strategy to apply ('dna' or 'rna')
-  --dmean_win_size arg              Window size for coarse stall event
-                                    detection
-  --dmean_threshold arg             Threhold for coarse stall event detection
-  --jump_threshold arg              Threshold level for rna stall detection
-  --disable_events                  Disable the transmission of event tables
-                                    when receiving reads back from the basecall
-                                    server.
-  --pt_scaling                      Enable polyT/adapter max detection for read
-                                    scaling.
-  --pt_median_offset arg            Set polyT median offset for setting read
-                                    scaling median (default 2.5)
-  --adapter_pt_range_scale arg      Set polyT/adapter range scale for setting
-                                    read scaling median absolute deviation
-                                    (default 5.2)
-  --pt_required_adapter_drop arg    Set minimum required current drop from
-                                    adapter max to polyT detection. (default
-                                    30.0)
-  --pt_minimum_read_start_index arg Set minimum index for read start sample
-                                    required to attempt polyT scaling. (default
-                                    30)
-  -h [ --help ]                     produce help message
-  -v [ --version ]                  print version number
-  -c [ --config ] arg               Config file to use
-  -d [ --data_path ] arg            Path to use for loading any data files the
-                                    application requires."""
+        Command line parameters:
+          --print_workflows                 Output available workflows.
+          --flowcell arg                    Flowcell to find a configuration for
+          --kit arg                         Kit to find a configuration for
+          -m [ --model_file ] arg           Path to JSON model file.
+          --chunk_size arg                  Stride intervals per chunk.
+          --chunks_per_runner arg           Maximum chunks per runner.
+          --chunks_per_caller arg           Soft limit on number of chunks in each
+                                            caller's queue. New reads will not be
+                                            queued while this is exceeded.
+          --overlap arg                     Overlap between chunks (in stride
+                                            intervals).
+          --gpu_runners_per_device arg      Number of runners per GPU device.
+          --cpu_threads_per_caller arg      Number of CPU worker threads per
+                                            basecaller.
+          --num_callers arg                 Number of parallel basecallers to create.
+          --stay_penalty arg                Scaling factor to apply to stay probability
+                                            calculation during transducer decode.
+          --qscore_offset arg               Qscore calibration offset.
+          --qscore_scale arg                Qscore calibration scale factor.
+          --temp_weight arg                 Temperature adjustment for weight matrix in
+                                            softmax layer of RNN.
+          --temp_bias arg                   Temperature adjustment for bias vector in
+                                            softmax layer of RNN.
+          --hp_correct arg                  Whether to use homopolymer correction
+                                            during decoding.
+          --builtin_scripts arg             Whether to use GPU kernels that were
+                                            included at compile-time.
+          -x [ --device ] arg               Specify basecalling device: 'auto', or
+                                            'cuda:<device_id>'.
+          -k [ --kernel_path ] arg          Path to GPU kernel files location (only
+                                            needed if builtin_scripts is false).
+          -z [ --quiet ]                    Quiet mode. Nothing will be output to
+                                            STDOUT if this option is set.
+          --trace_categories_logs arg       Enable trace logs - list of strings with
+                                            the desired names.
+          --verbose_logs                    Enable verbose logs.
+          --qscore_filtering                Enable filtering of reads into PASS/FAIL
+                                            folders based on min qscore.
+          --min_qscore arg                  Minimum acceptable qscore for a read to be
+                                            filtered into the PASS folder
+          --disable_pings                   Disable the transmission of telemetry
+                                            pings.
+          --ping_url arg                    URL to send pings to
+          --ping_segment_duration arg       Duration in minutes of each ping segment.
+          --calib_detect                    Enable calibration strand detection and
+                                            filtering.
+          --calib_reference arg             Reference FASTA file containing calibration
+                                            strand.
+          --calib_min_sequence_length arg   Minimum sequence length for reads to be
+                                            considered candidate calibration strands.
+          --calib_max_sequence_length arg   Maximum sequence length for reads to be
+                                            considered candidate calibration strands.
+          --calib_min_coverage arg          Minimum reference coverage to pass
+                                            calibration strand detection.
+          -q [ --records_per_fastq ] arg    Maximum number of records per fastq file, 0
+                                            means use a single file (per worker, per
+                                            run id).
+          --enable_trimming arg             Enable adapter trimming.
+          --trim_threshold arg              Threshold above which data will be trimmed
+                                            (in standard deviations of current level
+                                            distribution).
+          --trim_min_events arg             Adapter trimmer minimum stride intervals
+                                            after stall that must be seen.
+          --max_search_len arg              Maximum number of samples to search through
+                                            for the stall
+          --reverse_sequence arg            Reverse the called sequence (for RNA
+                                            sequencing).
+          --u_substitution arg              Substitute 'U' for 'T' in the called
+                                            sequence (for RNA sequencing).
+          -i [ --input_path ] arg           Path to input fast5 files.
+          -s [ --save_path ] arg            Path to save fastq files.
+          -l [ --read_id_list ] arg         File containing list of read ids to filter
+                                            to
+          -p [ --port ] arg                 Hostname and port for connecting to
+                                            basecall service (ie 'myserver:5555'), or
+                                            port only (ie '5555'), in which case
+                                            localhost is assumed.
+          -r [ --recursive ]                Search for input files recursively.
+          --fast5_out                       Choice of whether to do fast5 output.
+          --override_scaling                Manually provide scaling parameters rather
+                                            than estimating them from each read.
+          --scaling_med arg                 Median current value to use for manual
+                                            scaling.
+          --scaling_mad arg                 Median absolute deviation to use for manual
+                                            scaling.
+          --trim_strategy arg               Trimming strategy to apply ('dna' or 'rna')
+          --dmean_win_size arg              Window size for coarse stall event
+                                            detection
+          --dmean_threshold arg             Threhold for coarse stall event detection
+          --jump_threshold arg              Threshold level for rna stall detection
+          --disable_events                  Disable the transmission of event tables
+                                            when receiving reads back from the basecall
+                                            server.
+          --pt_scaling                      Enable polyT/adapter max detection for read
+                                            scaling.
+          --pt_median_offset arg            Set polyT median offset for setting read
+                                            scaling median (default 2.5)
+          --adapter_pt_range_scale arg      Set polyT/adapter range scale for setting
+                                            read scaling median absolute deviation
+                                            (default 5.2)
+          --pt_required_adapter_drop arg    Set minimum required current drop from
+                                            adapter max to polyT detection. (default
+                                            30.0)
+          --pt_minimum_read_start_index arg Set minimum index for read start sample
+                                            required to attempt polyT scaling. (default
+                                            30)
+          -h [ --help ]                     produce help message
+          -v [ --version ]                  print version number
+          -c [ --config ] arg               Config file to use
+          -d [ --data_path ] arg            Path to use for loading any data files the
+                                            application requires.
+        """
 
     def __init__(self, client, expected_workers, input_path=None,
                  flowcell=None, kit=None, save_path=None, fast5_out=None,

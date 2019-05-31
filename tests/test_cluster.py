@@ -2,7 +2,7 @@ import unittest
 import time
 import yaml
 
-from nanopypes.compute import NanopypesCluster
+from nanopypes.compute import NanopypesClusterManager
 from config import Configuration
 
 from distributed import Client
@@ -17,7 +17,7 @@ def test_cluster_from_dict():
     with open(cluster_config_path, 'r') as file:
         config = yaml.safe_load(file)["compute"]["cluster1"]
         #print(config)
-    cluster = NanopypesCluster.from_dict(config)
+    cluster = NanopypesClusterManager.from_dict(config)
     assert cluster == expected_cluster
 
 
