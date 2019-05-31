@@ -100,9 +100,7 @@ class NanopypesClusterManager:
                              job_extra=['-R "rusage[mem={}]"'.format(self.worker_memory), '-o dask_worker.out',
                                              '-e dask_worker.err'],
                              cores=ncpus,
-                             memory=dask_memory,
-                             death_timeout=self.time_out,
-                             env_extra=self.env_extra)
+                             memory=dask_memory)
         return cluster
 
     def _build_slurm(self):
