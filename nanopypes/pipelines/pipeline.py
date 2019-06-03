@@ -63,7 +63,7 @@ class Pipeline:
 
     def get_task(self):
         self._build_data_flow()
-        for i in data
+        #for i in data
 
 
 

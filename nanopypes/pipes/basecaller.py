@@ -56,7 +56,6 @@ class AlbacoreBasecaller(Pipe):
         instance.__dict__.update(config_dict)
         if save_path.exists() is False:
             save_path.mkdir()
-        instance.start_cluster()
         return instance
 
     @property

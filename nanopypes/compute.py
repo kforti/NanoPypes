@@ -78,7 +78,7 @@ class NanopypesClusterManager:
 
     def start_cluster(self):
         try:
-            self.cluster
+            assert self.cluster is not None
         except:
             self.build_cluster()
 
