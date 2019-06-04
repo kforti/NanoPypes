@@ -104,7 +104,6 @@ class NanopypesClusterManager:
                                              '-e dask_worker.err'],
                              cores=ncpus,
                              memory=dask_memory)
-        cluster.
         return cluster
 
     def _build_slurm(self):
