@@ -84,7 +84,7 @@ class ProfileRun:
     def _execute_component(self, comp_handle):
         comp_data = comp_handle.__dict__
         try:
-            comp_data["cluster"] = comp_handle.cluster_data
+            comp_data["cluster"] = NanopypesClusterManager.from_dict(comp_handle.cluster_data)
         except:
             pass
         start_time = datetime.datetime.now()
