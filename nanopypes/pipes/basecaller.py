@@ -66,7 +66,7 @@ class AlbacoreBasecaller(Pipe):
         num_workers = self.cluster.expected_workers
         batch_counter = 0
         batches = self.batches()
-        client = Client(self.cluster.cluster)
+        client = self.cluster.start_cluster()
 
         for i in range(num_workers):
             try:
