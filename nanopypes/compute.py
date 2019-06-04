@@ -50,7 +50,7 @@ class NanopypesClusterManager:
         try:
             num = max(self.num_workers, len(self.cluster.workers))
         except AttributeError:
-            num = max(self.num_workers, len(self.cluster.worker_processes))
+            num = max(self.num_workers, self.cluster.worker_processes)
         return num
 
     @property
