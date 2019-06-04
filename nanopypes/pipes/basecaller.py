@@ -96,6 +96,7 @@ class AlbacoreBasecaller(Pipe):
             except StopIteration:
                 pass
             #completed_batch_path = comp.result()
+        client.gather(self.futures)
 
     def build_basecall_command(self, batch):
         """ Method for creating the string based command for running the albacore basecaller from the commandline."""

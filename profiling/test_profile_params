@@ -14,6 +14,7 @@ profile_runs:
                 num_workers: 5
                 worker_cores: 1
                 worker_memory: 2048
+                logging: True
             job_memory: 10240
             job_ncpus: 5
             job_time: '1:00'
@@ -53,8 +54,8 @@ profile_runs:
                 cores: 5
                 walltime: '1:00'
                 queue: short
-                out: profile1.out
-                err: profile1.err
+                out: profile1_comp2.out
+                err: profile1_comp2.err
             threads: 5
             number_batches: 5
 
