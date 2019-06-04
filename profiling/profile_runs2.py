@@ -83,6 +83,7 @@ class ProfileRun:
 
     def _execute_component(self, comp_handle):
         comp_data = comp_handle.__dict__
+        print(comp_data)
         try:
             comp_data["cluster"] = NanopypesClusterManager.from_dict(comp_handle.cluster_data)
         except:
