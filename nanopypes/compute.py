@@ -47,8 +47,11 @@ class NanopypesClusterManager:
 
     @property
     def expected_workers(self):
-        num = max(self.num_workers, len(self.cluster.workers))
-        return self.num_workers
+        try:
+            num = max(self.num_workers, len(self.cluster.workers))
+        except AttributeError:
+            num = max(self.num_workers, len(self.cluster.worker_processes))
+        return num
 
     @property
     def connected_workers(self):
@@ -101,6 +104,7 @@ class NanopypesClusterManager:
                                              '-e dask_worker.err'],
                              cores=ncpus,
                              memory=dask_memory)
+        cluster.
         return cluster
 
     def _build_slurm(self):
