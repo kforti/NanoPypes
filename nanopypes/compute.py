@@ -1,7 +1,7 @@
 from dask_jobqueue import LSFCluster
 from distributed import Client, LocalCluster
 
-
+import logging
 
 def get_config_file(config_type):
     """config_types {'lsf': 'configs/lsf'}"""
@@ -12,7 +12,7 @@ class NanopypesClusterManager:
     """ Cluster based task manager for running the basecaller in parallel"""
     def __init__(self, num_workers=None, worker_memory=None, worker_cores=None, cluster_type=None,
                  queue=None, workers_per_job=None, job_time=None, project=None, min_num_workers=None,
-                 time_out=2000, job_extra=None, env_extra=None, cluster=None, logging=False, interaface=None):
+                 time_out=2000, job_extra=None, env_extra=None, cluster=None, debug=False, interaface=None):
         self.cluster_type = cluster_type
         self.queue = queue
         self.num_workers = num_workers or len(cluster.workers) or 0
@@ -27,7 +27,7 @@ class NanopypesClusterManager:
         self.interface = None
         self.clients = []
 
-        if logging:
+        if debug:
             logging.basicConfig(format='%(levelname)s:%(message)s', level=logging.DEBUG)
             if self.cluster_type == 'lsf':
                 if job_extra:
