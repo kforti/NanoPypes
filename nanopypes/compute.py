@@ -14,7 +14,6 @@ class NanopypesClusterManager:
                  queue=None, workers_per_job=None, job_time=None, project=None, min_num_workers=None,
                  time_out=2000, job_extra=None, env_extra=None, cluster=None, logging=False, interaface=None):
         self.cluster_type = cluster_type
-        self._cluster = cluster or self.build_cluster() # Must be explicitly built first, or a cluster object can be passed
         self.queue = queue
         self.num_workers = num_workers or len(cluster.workers) or 0
         self.worker_memory = worker_memory
@@ -37,6 +36,8 @@ class NanopypesClusterManager:
                 else:
                     job_extra = ["-o dask_lsf_cluster.err", "-o dask_lsf_cluster.out"]
         self.job_extra = job_extra
+
+        self._cluster = cluster or self.build_cluster() # Must be explicitly built first, or a cluster object can be passed
 
     @classmethod
     def from_dict(cls, config_dict):

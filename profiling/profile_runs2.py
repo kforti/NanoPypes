@@ -95,7 +95,7 @@ class ProfileRun:
         end_time = datetime.datetime.now()
         t = (str(start_time), str(end_time), str(end_time-start_time))
         comp_data["time"] = t
-        
+
         try:
             comp_data["input_path"] = str(comp_data["input_path"])
         except:
@@ -126,4 +126,14 @@ class ProfileRun:
 if __name__ == '__main__':
     pr = ProfileRun("run1")
     pr.run()
+
+    (cluster_type='lsf',
+    job_time='01:00',
+    project='/ project / umw_athma_pai',
+    queue='short',
+    workers_per_job=5,
+    num_workers=5,
+    worker_cores=1,
+    worker_memory=2048,
+    logging=True)
 
