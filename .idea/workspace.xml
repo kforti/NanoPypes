@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="06fba5a6-e119-4d57-aa65-81370b2766cd" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/nanopypes/compute.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/compute.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/profiling/profile_runs2.py" beforeDir="false" afterPath="$PROJECT_DIR$/profiling/profile_runs2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/profiling/test_profile_params" beforeDir="false" afterPath="$PROJECT_DIR$/profiling/test_profile_params" afterDir="false" />
       <change beforePath="$USER_HOME$/dask-kubernetes/dask_kubernetes/config.py" beforeDir="false" afterPath="$USER_HOME$/dask-kubernetes/dask_kubernetes/config.py" afterDir="false" />
       <change beforePath="$USER_HOME$/prefect/prefect/src/prefect/tasks/shell.py" beforeDir="false" afterPath="$USER_HOME$/prefect/prefect/src/prefect/tasks/shell.py" afterDir="false" />
     </list>
@@ -60,8 +62,8 @@
       <file leaf-file-name="profile_runs2.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/profiling/profile_runs2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="606">
-              <caret line="137" column="17" lean-forward="true" selection-start-line="137" selection-start-column="17" selection-end-line="137" selection-end-column="17" />
+            <state relative-caret-position="848">
+              <caret line="121" selection-start-line="121" selection-end-line="121" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -93,8 +95,8 @@
       <file leaf-file-name="compute.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/nanopypes/compute.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" column="14" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="14" />
+            <state relative-caret-position="174">
+              <caret line="98" column="72" selection-start-line="98" selection-start-column="72" selection-end-line="98" selection-end-column="72" />
               <folding>
                 <element signature="e#0#36#0" expanded="true" />
               </folding>
@@ -203,10 +205,10 @@
         <option value="$USER_HOME$/PycharmProjects/code_snippets/dask_kube.py" />
         <option value="$USER_HOME$/PycharmProjects/code_snippets/dask_server.py" />
         <option value="$USER_HOME$/PycharmProjects/code_snippets/process_sam.py" />
-        <option value="$PROJECT_DIR$/profiling/test_profile_params" />
         <option value="$PROJECT_DIR$/profiling/test_profile_run.py" />
         <option value="$PROJECT_DIR$/nanopypes/pipes/basecaller.py" />
         <option value="$USER_HOME$/PycharmProjects/code_snippets/push_code.py" />
+        <option value="$PROJECT_DIR$/profiling/test_profile_params" />
         <option value="$PROJECT_DIR$/profiling/profile_runs2.py" />
         <option value="$PROJECT_DIR$/nanopypes/compute.py" />
       </list>
@@ -865,6 +867,16 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/profiling/profile_runs2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="848">
+          <caret line="121" selection-start-line="121" selection-end-line="121" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/profiling/test_profile_params">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="535">
@@ -872,20 +884,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/profiling/profile_runs2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="606">
-          <caret line="137" column="17" lean-forward="true" selection-start-line="137" selection-start-column="17" selection-end-line="137" selection-end-column="17" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/nanopypes/compute.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="14" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="14" />
+        <state relative-caret-position="174">
+          <caret line="98" column="72" selection-start-line="98" selection-start-column="72" selection-end-line="98" selection-end-column="72" />
           <folding>
             <element signature="e#0#36#0" expanded="true" />
           </folding>

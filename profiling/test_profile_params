@@ -14,7 +14,7 @@ profile_runs:
                 num_workers: 5
                 worker_cores: 1
                 worker_memory: 2048
-                logging: True
+                debug: True
             job_memory: 10240
             job_ncpus: 5
             job_time: '1:00'
