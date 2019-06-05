@@ -76,25 +76,34 @@ class ProfileRun:
     def run(self, component=None):
         if component:
             comp = self.component_handler[component]
+            print("executing comp...", comp.__dict__)
             self._execute_component(comp)
         else:
             for comp in self.component_handler.values():
+                print("executing comp...", comp.__dict__)
                 self._execute_component(comp)
 
     def _execute_component(self, comp_handle):
         comp_data = comp_handle.__dict__
         print(comp_data)
-        try:
-            comp_data["cluster"] = NanopypesClusterManager.from_dict(comp_handle.cluster_data)
-        except:
-            pass
+        # try:
+        #     comp_data["cluster"] = NanopypesClusterManager.from_dict(comp_handle.cluster_data)
+        # except:
+        #     pass
         start_time = datetime.datetime.now()
         comp_handle()
         end_time = datetime.datetime.now()
         t = (str(start_time), str(end_time), str(end_time-start_time))
         comp_data["time"] = t
-        comp_data["input_path"] = str(comp_data["input_path"])
-        comp_data["save_path"] = str(comp_data["save_path"])
+        
+        try:
+            comp_data["input_path"] = str(comp_data["input_path"])
+        except:
+            pass
+        try:
+            comp_data["save_path"] = str(comp_data["save_path"])
+        except:
+            pass
 
         for key, value in comp_data.items():
             if self._is_jsonable(value) is False:
