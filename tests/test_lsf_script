@@ -1,0 +1,14 @@
+#!/bin/bash
+#BSUB -J test_job
+#BSUB -n 8
+#BSUB -R "rusage[mem=2048]"
+#BSUB -W 01:30
+#BSUB -q short
+#BSUB -R "span[hosts=1]"
+#BSUB -L bash
+#BSUB -o test_job.out
+#BSUB -e test_job.err
+
+
+echo hello world
+ls

@@ -8,7 +8,7 @@ def get_config_file(config_type):
     raise NotImplementedError
 
 
-class NanopypesClusterManager:
+class ClusterManager:
     """ Cluster based task manager for running the basecaller in parallel"""
     def __init__(self, num_workers=None, worker_memory=None, worker_cores=None, cluster_type=None,
                  queue=None, workers_per_job=None, job_time=None, project=None, min_num_workers=None,
@@ -56,8 +56,8 @@ class NanopypesClusterManager:
 
     @property
     def connected_workers(self):
-        c_workers = len(self.cluster.scheduler.workers)
-        return c_workers
+        workers = len(self.cluster.scheduler.workers)
+        return workers
 
     @property
     def cluster_clients(self):
@@ -88,6 +88,9 @@ class NanopypesClusterManager:
 
         minimum_workers = self.min_num_workers or int(0.5 * self.num_workers)
         self.cluster.scale(self.num_workers)
+
+    @property
+    def client(self):
         client = Client(self.cluster)
         self.clients.append(client)
 

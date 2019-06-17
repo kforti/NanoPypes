@@ -9,7 +9,7 @@ import click
 
 from distributed import LocalCluster, Client
 
-from .compute import NanopypesClusterManager
+from .compute import ClusterManager
 from .pipes.basecaller import AlbacoreBasecaller
 
 
@@ -71,7 +71,7 @@ def albacore_basecaller(kit, flowcell, input_path, save_path, output_format, con
     except Exception as e:
         raise IOError("Could not read config data from the provided config path")
 
-    cluster = NanopypesClusterManager.from_dict(compute_config)
+    cluster = ClusterManager.from_dict(compute_config)
     cluster.build_cluster()
 
     client = cluster.start_cluster()

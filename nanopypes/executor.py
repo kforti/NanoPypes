@@ -1,31 +1,69 @@
-from nanopypes.utilities import defaults_from_attrs
+from distributed import as_completed
 
 
-class NanoPypesExecutor:
-    def __init__(self, cluster_manager=None, task=None, data=None, command_template=None):
+
+
+
+class Executor:
+    def __init__(self, cluster_manager=None, pipeline=None, command_template=None):
         self.cluster_manager = cluster_manager
-        self.task = task
-        self.data = data
+        self.pipeline = pipeline
         self.command_template = command_template
-        self.client = None
+        self.client = cluster_manager.client
 
-    @defaults_from_attrs
-    def execute_eager_strategy(self, cluster_manager=None, pipeline=None,
-                                 template_builder=None, expected_workers=None):
-        avail_workers = expected_workers or cluster_manager.expected_workers
-        if avail_workers == 0:
-            raise AttributeError("You must provide expected workers"
-                                 ", either through the cluster_manager or expected_workers")
+        self.dispatched_tasks = 0
+        self.completed_tasks = None
+        self.futures = []
 
-        dispatched_commands = 0
+    @property
+    def cluster_full(self):
+        if self.cluster_manager.connected_workers == self.dispatched_tasks:
+            return True
+        return False
 
+    def execute(self):
+        """"""
+        pass
+    def terminate(self):
+        """"""
+        pass
+
+
+class EagerExecutor(Executor):
+    """"""
+    def execute(self):
+        for task in self.pipeline:
+            future = self.client.submit(task.run())
+            self.dispatched_tasks += 1
+
+            if self.cluster_full is False and self.completed_tasks is None:
+                self.futures.append(future)
+
+            if self.cluster_full and self.completed_tasks:
+                next(self.completed_tasks)
+                self.completed_tasks.add(future)
+                self.dispatched_tasks -= 1
+
+            elif self.cluster_full and self.completed_tasks is None:
+                self.completed_tasks = as_completed(self.futures)
+
+        self.terminate()
+
+    def terminate(self):
+        self.client.gather(self.completed_tasks)
 
 
 
 if __name__ == '__main__':
-    import re
-    d = "hello {world}"
-    dl = d.split()
+    from nanopypes import ClusterManager, Pipeline, CommandBuilder
+
+    COMMAND_TEMPLATE = ""
+
+    pipeline = Pipeline
+
+    cluster_manager = ClusterManager
+
+
 
 
 

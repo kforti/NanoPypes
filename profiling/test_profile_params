@@ -56,6 +56,7 @@ profile_runs:
                 queue: short
                 out: profile1_comp2.out
                 err: profile1_comp2.err
+                bsub_extra: ["-K"]
             threads: 5
             number_batches: 5
 

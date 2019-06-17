@@ -5,7 +5,7 @@ import csv
 import shutil
 
 from nanopypes.pipes.basecaller import AlbacoreBasecaller, GuppyBasecaller, collapse_data
-from nanopypes import NanopypesClusterManager
+from nanopypes import ClusterManager
 from config import Configuration
 from compute import Cluster
 
@@ -132,7 +132,7 @@ def test_albacore_basecall():
     input_path = Path('test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass')
     kit = 'SQK-LSK109'
     output_format = 'fastq'
-    cluster = NanopypesClusterManager(cluster=LocalCluster())
+    cluster = ClusterManager(cluster=LocalCluster())
 
     albacore = AlbacoreBasecaller(cluster=cluster, input_path=input_path,
                                   flowcell=flowcell, kit=kit, save_path=save_path, output_format=output_format,

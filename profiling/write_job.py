@@ -1,12 +1,10 @@
 from pathlib import Path
 import subprocess
 
-import nanopypes
+from nanopypes.tasks import LSFJob
 
 #local_save_path = Path("/Users/kevinfortier/PycharmProjects/code_snippets/test_job_scripts")
 #save_path = Path('/project/umw_athma_pai/kevin/data/Albacore_tests/')
-
-
 
 
 class HPCJob:
@@ -80,10 +78,10 @@ class HPCJob:
         file.close()
 
 
-class HPCJobComponent(HPCJob):
+class HPCJobComponent(LSFJob):
     def __init__(self, script_name, cores, mem, queue, walltime, commands,
-                 job_name=None, shell=None, out=None, err=None, save_path=None, script_path=None):
-        super().__init__(script_name, cores, mem, queue, walltime, commands, job_name, shell, out, err, save_path)
+                 job_name=None, shell=None, out=None, err=None, save_path=None, **kwargs):
+        super().__init__(script_name, cores, mem, queue, walltime, commands, job_name, shell, out, err, save_path, kwargs)
 
     def job_submission(self, script_path):
         cmd = "bsub < {script_path}".format(script_path=script_path)

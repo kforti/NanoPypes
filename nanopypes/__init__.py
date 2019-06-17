@@ -8,7 +8,9 @@ __version__ = '0.1.0'
 
 import logging
 
-from nanopypes.compute import NanopypesClusterManager
+from .compute import ClusterManager
+from .pipelines.pipeline import Pipeline
+from .utilities import CommandBuilder
 
 
 logging.getLogger(__name__).addHandler(logging.NullHandler())

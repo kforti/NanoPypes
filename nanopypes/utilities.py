@@ -87,6 +87,14 @@ class CommandBuilder:
         self._template = template
 
 
+#####################
+# Exceptions
+#####################
+
+class SubprocessError(Exception):
+    pass
+
+
 if __name__ == '__main__':
     command_template = CommandBuilder('minimap2 -ax map-ont {ref} {read} -o {output}')
     command = command_template.build(**{'read':'my_read'})

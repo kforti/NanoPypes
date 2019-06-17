@@ -6,11 +6,22 @@ class Pipeline:
     and dependencies associated with those tasks. The object should first
     be instantiated and attributes added through the add_* methods.
     """
-    def __init__(self):
-        self._tasks = {}
-        self._data = {}
-        self._dependencies = defaultdict(set)
-        self._task_flows = []
+    def __init__(self, tasks=None, data=None,
+                 dependencies=None, task_order=None,
+                 dag_dict=None):
+        self._tasks = tasks or {}
+        self._data = data or {}
+        self._dependencies = dependencies or defaultdict(set)
+        self._task_order = task_order or []
+
+        if dag_dict:
+            self._build_pipeline(dag_dict)
+
+    def _build_from_dict(self, dag):
+        for task, task_dict in dag.items():
+            self.add_task(task, task_dict['task_handle'])
+            self.add_dependencies(task, task_dict['dependencies'])
+            self.add_data(task, task_dict['data'])
 
     def add_task(self, task_name, task, *args):
         """
@@ -21,7 +32,8 @@ class Pipeline:
             - task (Task): 'Task' object
             - *args (list): a list of tuples containing (task name, Task object)
         """
-        task_dict = {'task_handle': task}
+        task_dict = {'task_handle': task,
+                     'yielded': False}
         self._tasks[task_name] = task_dict
 
     def add_data(self, task_name, data, *args):
@@ -61,15 +73,48 @@ class Pipeline:
     def dependencies(self):
         return self._dependencies
 
-    def get_task(self):
-        self._build_data_flow()
-        #for i in data
+    def _build_data_graph(self):
+        connections = []
+        for task, dependencies in self.dependencies.items():
+            for i in dependencies:
+                connections.append((task, i))
+
+    def __iter__(self):
+        for task in self._tasks:
+            if self._tasks[task]['yielded'] == True:
+                continue
+            elif task not in self._dependencies:
+                yield task
+                self._tasks[task]['yielded'] = True
+            else:
+                for dependency in self._dependencies[task]:
+                    if self._tasks[dependency]['yielded'] == False:
+                        break
+                yield task
+                self._tasks[task]['yielded'] = True
+
+def command_factory(command_builder, data, builder_key=None):
+    if builder_key:
+        return builder_key()
+    commands = []
+    for i in data:
+        command_builder
+
+class PipelineFactory:
+    def __init__(self, pipeline):
+        self.pipeline = pipeline
+
+    def create_tasks(self, task, task_dependencies, task_kwrgs):
+        for kwrgs in task_kwrgs:
+            self.pipeline.add_task(task(kwrgs))
+
 
 
 
 if __name__ == '__main__':
+    dag = {'task1': {'data':[]}}
     p = Pipeline()
-    p.add_data('task1', 'data')
-    p.add_task('task1', 'task1')
-    p.add_dependencies('task1', ['task2'], ('task2', ['task3']))
-    p.dependencies
+
+    print(p.dependencies)
+    for task in p:
+        print(task)

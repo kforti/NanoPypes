@@ -3,7 +3,7 @@ import os
 import tempfile
 
 
-from nanopypes.utilities import defaults_from_attrs
+from nanopypes.utilities import defaults_from_attrs, SubprocessError
 from nanopypes.tasks import Task
 
 
@@ -38,17 +38,10 @@ class ShellTask(Task):
                 msg = "Command failed with exit code {0}: {1}".format(
                     exc.returncode, exc.output
                 )
-                print("err")  #TODO add logging
+                raise SubprocessError(msg)
         return out
 
 
-if __name__ == '__main__':
-    st = ShellTask(command="print('hello world')", helper_script=print('this is a python script'), shell='python3')
-    out = st.run()
-    print(out)
 
-    import inspect
-    source_DF = inspect.getsource(ShellTask)
-    print(source_DF[:200])
 
 

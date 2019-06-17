@@ -38,4 +38,4 @@ def remove_contents(path):
 
 if __name__ == '__main__':
     test_write_job_script()
-    test_profile_run()
+    #test_profile_run()

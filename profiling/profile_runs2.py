@@ -4,7 +4,7 @@ import datetime
 from pathlib import Path
 
 from nanopypes.pipes.basecaller import AlbacoreBasecaller
-from nanopypes.compute import NanopypesClusterManager
+from nanopypes.compute import ClusterManager
 
 from write_job import HPCJobComponent
 
@@ -54,7 +54,7 @@ class ProfileRun:
             component_config = self.component_configs[component]
 
             if component_config["component_type"] == "pipe":
-                cluster = NanopypesClusterManager.from_dict(component_config["compute"])
+                cluster = ClusterManager.from_dict(component_config["compute"])
                 cluster.build_cluster()
                 component_config["pipe"]["cluster"] = cluster
 
