@@ -139,40 +139,67 @@ def test_albacore_basecall():
                                   reads_per_fastq=1000)
     albacore()
 
-    input_reads = {}
-    for batch in os.listdir(str(save_path)):
-        if batch[0] == ".":
-            continue
-        for read in os.listdir(str(input_path.joinpath(batch))):
-            input_reads[read] = 0
+    collapsed_reads = {}
+    for dir_name, subdirs, files in os.walk(str(save_path.joinpath("workspace"))):
+        if Path(dir_name).parent.name == "workspace":
+            collapsed_reads[Path(dir_name).name] = {}
+        for file in files:
+            if ".fastq" in Path(file).suffixes:
+                fq = str(Path(dir_name).joinpath(file))
+                with open(fq, 'r') as file:
+                    for read in fastq_read_generator(file):
+                        read_name = read["header"].split()[0][1:]
+                        read_len = len(read["sequence"])
+                        collapsed_reads[Path(dir_name).name][(read_name, read_len)] = 0
+    # print(collapsed_reads)
+    for dir_name, subdirs, files in os.walk(str(tmp_dir)):
+        for file in files:
+            if ".fastq" in Path(file).suffixes:
+                fq = str(Path(dir_name).joinpath(file))
+                with open(fq, 'r') as file:
+                    for read in fastq_read_generator(file):
+                        read_name = read["header"].split()[0][1:]
+                        read_len = len(read["sequence"])
+                        assert collapsed_reads[Path(dir_name).name][(read_name, read_len)] == 0
+                        collapsed_reads[Path(dir_name).name][(read_name, read_len)] = 1
 
-        path = save_path.joinpath(batch)
-        seq_sum = str(path.joinpath("sequencing_summary.txt"))
-        with open(seq_sum, 'r') as f:
-            seq_sum_data = {}
-            csv_reader = csv.reader(f, delimiter="\t")
-            for i, row in enumerate(csv_reader):
-                # print(row)
-                seq_sum_data[row[1]] = row[0]
-
-        f.close()
-
-        for dir_name, subdirs, files in os.walk(str(path.joinpath("workspace"))):
-            # print(dir_name)
-            for file in files:
-                # print(file)
-                if ".fastq" in Path(file).suffixes:
-                    fq = str(Path(dir_name).joinpath(file))
-                    with open(fq, 'r') as file:
-                        for read in fastq_read_generator(file):
-                            # print(read["header"].split(" ")[0][1:])
-                            raw_name = seq_sum_data[read["header"].split()[0][1:]]
-                            assert input_reads[raw_name] == 0
-                            input_reads[raw_name] = 1
-
-    for key, value in input_reads.items():
-        # try:
-        assert value == 1
+    for key in collapsed_reads:
+        for key, value in collapsed_reads[key].items():
+            assert value == 1
+    # input_reads = {}
+    # for batch in os.listdir(str(input_path)):
+    #
+    #     if batch[0] == ".":
+    #         continue
+    #     for read in os.listdir(str(input_path.joinpath(batch))):
+    #         input_reads[read] = 0
+    #
+    # seq_sum = str(save_path.joinpath("sequencing_summary.txt"))
+    # with open(seq_sum, 'r') as f:
+    #     seq_sum_data = {}
+    #     csv_reader = csv.reader(f, delimiter="\t")
+    #     for i, row in enumerate(csv_reader):
+    #         # print(row)
+    #         seq_sum_data[row[1]] = row[0]
+    #
+    # f.close()
+    #
+    # for dir_name, subdirs, files in os.walk(str(save_path.joinpath("workspace"))):
+    #     # print(dir_name)
+    #     for file in files:
+    #         # print(file)
+    #         if ".fastq" in Path(file).suffixes:
+    #             fq = str(Path(dir_name).joinpath(file))
+    #             with open(fq, 'r') as file:
+    #                 for read in fastq_read_generator(file):
+    #                     # print(read["header"].split(" ")[0][1:])
+    #                     raw_name = seq_sum_data[read["header"].split()[0][1:]]
+    #                     assert input_reads[raw_name] == 0
+    #                     input_reads[raw_name] = 1
+    # print(input_reads)
+    # for key, value in input_reads.items():
+    #     # try:
+    #     assert value == 1
         # except AssertionError:
         #     print("error")
         #     print(key, value)
@@ -413,5 +440,5 @@ if __name__ == '__main__':
     test_albacore_batches()
     #test_albacore_binary()
     test_albacore_basecall()
-    test_collapse_data()
+    #test_collapse_data()
 

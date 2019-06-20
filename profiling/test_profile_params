@@ -1,64 +1,57 @@
-profile_runs:
-    test_run1:
-        component1:
-            component_type: pipe
-            component_handler: nanopypes_albacore
-            compute_type: hpc_dask
-            compute:
-                cluster_type: lsf
-                job_time: 01:00
-                project: /project/umw_athma_pai
-                queue: short
-                workers_per_job: 5
-                min_num_workers:
-                num_workers: 5
-                worker_cores: 1
-                worker_memory: 2048
-                debug: True
-            job_memory: 10240
-            job_ncpus: 5
-            job_time: '1:00'
-            cores: 5
-            mem: 2048
-            num_workers: 5
+run1:
+    component1:
+        component_id: component1
+        component_type: pipe
+        pipe_handler: nanopypes_albacore
+        compute_type: hpc_dask
+        compute:
             cluster_type: lsf
-            pipe:
-                input_path: ../tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass
-                save_path: ../tests/test_data/basecalled_data/results/profile_test/comp1
-                flowcell: FLO-MIN106
-                kit: SQK-LSK109
-                output_format: fastq
-                worker_threads: 1
-                recursive: False
-                reads_per_fastq: 1000
-            component_id:
-            number_reads:
-            number_batches: 5
-            reads_batch:
-        component2:
-            component_type: hpc_job
-            component_handler: albacore_bash
-            albacore:
-                input_path: ../tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass
-                save_path: ../tests/test_data/basecalled_data/results/profile_test/comp2
-                flowcell: FLO-MIN106
-                kit: SQK-LSK109
-                output_format: fastq
-                threads: 5
-                recursive: False
-                reads_per_fastq: 1000
-            job_script:
-                save_path: test_job_scripts
-                script_name: test_run1.sh
-                mem: 10240
-                cores: 5
-                walltime: '1:00'
-                queue: short
-                out: profile1_comp2.out
-                err: profile1_comp2.err
-                bsub_extra: ["-K"]
+            job_time: 01:00
+            project: /project/umw_athma_pai
+            queue: short
+            workers_per_job: 5
+            min_num_workers:
+            num_workers: 5
+            worker_cores: 1
+            worker_memory: 2048
+            debug: True
+        pipe:
+            input_path: ../tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass
+            save_path: ../tests/test_data/profile_tests/comp1
+            flowcell: FLO-MIN106
+            kit: SQK-LSK109
+            output_format: fastq
+            worker_threads: 1
+            recursive: False
+            reads_per_fastq: 1000
+        number_reads:
+        number_batches: 5
+        reads_batch:
+    component2:
+        component_id: component2
+        component_type: hpc_job
+        component_handler: albacore_bash
+        command:
+            input_path: ../tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass
+            save_path: ../tests/test_data/profile_tests/comp2
+            flowcell: FLO-MIN106
+            kit: SQK-LSK109
+            output_format: fastq
             threads: 5
-            number_batches: 5
+            recursive: False
+            reads_per_fastq: 1000
+        job_script:
+            save_path: test_job_scripts
+            script_name: test_run1.sh
+            mem: 10240
+            cores: 5
+            walltime: '1:00'
+            queue: short
+            out: log_files/profile1_comp2.out
+            err: log_files/profile1_comp2.err
+            bsub_extra: ["-K"]
+        threads: 5
+        number_batches: 5
 
 #    run2:
 #        component1:

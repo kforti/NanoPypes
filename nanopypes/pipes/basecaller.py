@@ -97,6 +97,7 @@ class AlbacoreBasecaller(Pipe):
                 pass
             #completed_batch_path = comp.result()
         client.gather(self.futures)
+        collapse_data(self.save_path)
 
     def build_basecall_command(self, batch):
         """ Method for creating the string based command for running the albacore basecaller from the commandline."""
@@ -318,6 +319,7 @@ class GuppyBasecaller(Pipe):
                     break
         for comp in completed:
             pass
+        collapse_data(self.save_path)
 
 
 #################################

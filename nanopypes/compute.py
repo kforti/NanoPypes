@@ -71,10 +71,10 @@ class ClusterManager:
         if self.cluster_type.lower() == 'lsf':
             cluster = self._build_lsf()
 
-        elif self.cluster_typelower() == 'slurm':
+        elif self.cluster_type.lower() == 'slurm':
             cluster = self._build_slurm()
 
-        elif self.cluster_typelower() == 'local':
+        elif self.cluster_type.lower() == 'local':
             cluster = LocalCluster()
             self.num_workers = len(cluster.scheduler.workers)
         self._cluster = cluster
@@ -88,6 +88,7 @@ class ClusterManager:
 
         minimum_workers = self.min_num_workers or int(0.5 * self.num_workers)
         self.cluster.scale(self.num_workers)
+        return self.client
 
     @property
     def client(self):
@@ -117,35 +118,3 @@ class ClusterManager:
         for client in self.clients:
             client.close()
         self.cluster.close()
-#
-#
-# class NanopypesExecutor(DaskExecutor):
-#     def __init__(self, npcluster,):
-#         self.npcluster = npcluster
-#         super.__init__(address=self.npcluster.cluster.scheduler)
-#         self.queue_handler = {}
-#
-#     def map(self, fn: Callable, maxsize: int, *args: Any):
-#         """
-#         Submit a function to be mapped over its iterable arguments.
-#         Args:
-#             - fn (Callable): function that is being submitted for execution
-#             - *args (Any): arguments that the function will be mapped over
-#         Returns:
-#             - List[Future]: a list of Future-like objects that represent each computation of
-#                 fn(*a), where a = zip(*args)[i]
-#         """
-#         if not args:
-#             return []
-#
-#         if self.is_started and hasattr(self, "client"):
-#             futures = self.client.map(fn, *args, pure=False, maxsize=maxsize)
-#         elif self.is_started:
-#             with worker_client(separate_thread=True) as client:
-#                 futures = client.map(fn, *args, pure=False)
-#                 return client.gather(futures)
-#         else:
-#             raise ValueError("This executor has not been started.")
-#
-#         fire_and_forget(futures)
-#         return futures

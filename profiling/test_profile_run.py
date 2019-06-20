@@ -2,7 +2,7 @@ from pathlib import Path
 import os
 import shutil
 
-from profile_runs2 import ProfileRun
+from profile_runs import ProfileRun
 
 
 
@@ -15,14 +15,14 @@ def test_write_job_script():
 
     assert job_script_path.exists()
 
-def test_profile_run():
+def test_albacore_pipe_run():
     pr = ProfileRun("test_run1", config_path='test_profile_params')
     pr.run()
 
 
 def check_save_locations():
-    comp1 = "/home/kf78w/bin/NanoPypes/tests/test_data/basecalled_data/results/profile_test/comp1"
-    comp2 = "/home/kf78w/bin/NanoPypes/tests/test_data/basecalled_data/results/profile_test/comp2"
+    comp1 = "../tests/test_data/basecalled_data/results/profile_test/comp1"
+    comp2 = "../tests/test_data/basecalled_data/results/profile_test/comp2"
     comp1_contents = os.listdir(comp1)
     comp2_contents = os.listdir(comp2)
     if len(comp1_contents) > 0:
@@ -30,12 +30,22 @@ def check_save_locations():
     if len(comp2_contents) > 0:
         remove_contents(comp2)
 
+    profile_run_data = "profile_run_data"
+    if os.listdir(profile_run_data) > 1:
+        remove_contents(profile_run_data)
+
 def remove_contents(path):
     shutil.rmtree(path)
     os.mkdir(path)
     return
 
 
+def test_profile_run():
+    check_save_locations()
+    config = "/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/profiling/test_profile_params"
+    pr = ProfileRun(name="run1", config_path=config)
+    pr.run()
+
 if __name__ == '__main__':
-    test_write_job_script()
-    #test_profile_run()
+    #test_write_job_script()
+    test_profile_run()

@@ -47,16 +47,16 @@ class LSFJob:
         else:
             self._create_job_script()
 
-    @defaults_from_attrs('job_script_path')
-    def run(self, script_path=None, *dependencies):
-        command = "bsub < {script_path}".format(script_path=script_path)
+    @defaults_from_attrs('save_path')
+    def run(self, save_path=None, shell='bash', *dependencies):
+        command = "bsub < {save_path}".format(script_path=save_path)
         current_env = os.environ.copy()
         with tempfile.NamedTemporaryFile(prefix="nanopypes-") as tmp:
             tmp.write(command.encode())
             tmp.flush()
             try:
                 out = subprocess.check_output(
-                    [self.shell, tmp.name], stderr=subprocess.STDOUT, env=current_env
+                    [shell, tmp.name], stderr=subprocess.STDOUT, env=current_env
                 )
             except subprocess.CalledProcessError as exc:
                 msg = "Command failed with exit code {0}: {1}".format(
