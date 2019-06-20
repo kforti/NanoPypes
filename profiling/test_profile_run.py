@@ -42,7 +42,7 @@ def remove_contents(path):
 
 def test_profile_run():
     check_save_locations()
-    config = "/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/profiling/test_profile_params"
+    config = "test_profile_params"
     pr = ProfileRun(name="run1", config_path=config)
     pr.run()
 
