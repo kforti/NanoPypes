@@ -31,7 +31,7 @@ def check_save_locations():
         remove_contents(comp2)
 
     profile_run_data = "profile_run_data"
-    if os.listdir(profile_run_data) > 1:
+    if len(os.listdir(profile_run_data)) > 1:
         remove_contents(profile_run_data)
 
 def remove_contents(path):
