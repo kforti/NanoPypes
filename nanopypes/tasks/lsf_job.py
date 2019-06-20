@@ -39,7 +39,6 @@ class LSFJob:
         self.err = err
         self.save_path = save_path
         self.bsub_extra = bsub_extra
-        self.script_path = Path(self.save_path).joinpath(self.script_name)
 
         if exists and self.save_path is None:
             raise IOError("If the script exists you must also provide the script_path")
@@ -48,9 +47,11 @@ class LSFJob:
         else:
             self._create_job_script()
 
-    @defaults_from_attrs('script_path')
-    def run(self, script_path=None, shell='bash', *dependencies):
-        command = "bsub < {script_path}".format(script_path=str(script_path))
+    @defaults_from_attrs('save_path', 'script_name')
+    def run(self, save_path=None, script_name=None, shell='bash', *dependencies):
+        import os
+        script_path =os.path.join(save_path, script_name)
+        command = "bsub < {script_path}".format(script_path=script_path)
         current_env = os.environ.copy()
         with tempfile.NamedTemporaryFile(prefix="nanopypes-") as tmp:
             tmp.write(command.encode())
