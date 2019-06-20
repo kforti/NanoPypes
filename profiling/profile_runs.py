@@ -94,7 +94,7 @@ class PipeComponentRun(ComponentRun):
         return pipe_data_copy
 
 
-class LSFComponentRun:
+class LSFComponentRun(ComponentRun):
     def __init__(self, job_dict, command_dict):
         self.job_dict = job_dict
         self.command_dict = command_dict
