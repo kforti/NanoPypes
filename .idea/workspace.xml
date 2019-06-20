@@ -2,18 +2,56 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="06fba5a6-e119-4d57-aa65-81370b2766cd" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.travis.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.travis.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nanopypes/compute.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/compute.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nanopypes/pipelines/pipeline.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/pipelines/pipeline.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nanopypes/pipes/basecaller.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/pipes/basecaller.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nanopypes/tasks/lsf_job.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/tasks/lsf_job.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiling/profile_runs2.py" beforeDir="false" afterPath="$PROJECT_DIR$/profiling/profile_runs.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiling/test_job_scripts/test_run1.sh" beforeDir="false" afterPath="$PROJECT_DIR$/profiling/test_job_scripts/test_run1.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiling/test_profile_params" beforeDir="false" afterPath="$PROJECT_DIR$/profiling/test_profile_params" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiling/test_profile_run.py" beforeDir="false" afterPath="$PROJECT_DIR$/profiling/test_profile_run.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiling/write_job.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_basecallers2.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_basecallers2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/profile_tests/comp1/0/configuration.cfg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/profile_tests/comp1/0/sequencing_summary.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/profile_tests/comp1/0/sequencing_telemetry.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/profile_tests/comp1/0/workspace/calibration_strands/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/profile_tests/comp1/0/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/profile_tests/comp1/1/configuration.cfg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/profile_tests/comp1/1/sequencing_summary.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/profile_tests/comp1/1/sequencing_telemetry.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/profile_tests/comp1/2/configuration.cfg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/profile_tests/comp1/2/sequencing_summary.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/profile_tests/comp1/2/sequencing_telemetry.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/profile_tests/comp1/2/workspace/calibration_strands/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/profile_tests/comp1/2/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/profile_tests/comp1/3/configuration.cfg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/profile_tests/comp1/3/sequencing_summary.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/profile_tests/comp1/3/sequencing_telemetry.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/profile_tests/comp1/3/workspace/calibration_strands/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/profile_tests/comp1/3/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/profile_tests/comp1/4/configuration.cfg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/profile_tests/comp1/4/sequencing_summary.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/profile_tests/comp1/4/sequencing_telemetry.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/profile_tests/comp1/4/workspace/calibration_strands/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/profile_tests/comp1/4/workspace/fail/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/profile_tests/comp1/4/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/profile_tests/comp1/5/configuration.cfg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/profile_tests/comp1/5/sequencing_summary.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/profile_tests/comp1/5/sequencing_telemetry.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/profile_tests/comp1/5/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/profile_tests/comp1/6/configuration.cfg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/profile_tests/comp1/6/sequencing_summary.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/profile_tests/comp1/6/sequencing_telemetry.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/profile_tests/comp1/6/workspace/calibration_strands/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/profile_tests/comp1/6/workspace/fail/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/profile_tests/comp1/6/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/profile_tests/comp1/7/configuration.cfg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/profile_tests/comp1/7/sequencing_summary.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/profile_tests/comp1/7/sequencing_telemetry.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/profile_tests/comp1/7/workspace/calibration_strands/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/profile_tests/comp1/7/workspace/fail/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/profile_tests/comp1/7/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/profile_tests/comp1/8/configuration.cfg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/profile_tests/comp1/8/sequencing_summary.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/profile_tests/comp1/8/sequencing_telemetry.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/profile_tests/comp1/8/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/profile_tests/comp1/9/configuration.cfg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/profile_tests/comp1/9/sequencing_summary.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/profile_tests/comp1/9/sequencing_telemetry.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/profile_tests/comp1/9/workspace/calibration_strands/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/profile_tests/comp1/9/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" />
       <change beforePath="$USER_HOME$/dask-kubernetes/dask_kubernetes/config.py" beforeDir="false" afterPath="$USER_HOME$/dask-kubernetes/dask_kubernetes/config.py" afterDir="false" />
       <change beforePath="$USER_HOME$/prefect/prefect/src/prefect/tasks/shell.py" beforeDir="false" afterPath="$USER_HOME$/prefect/prefect/src/prefect/tasks/shell.py" afterDir="false" />
     </list>
@@ -35,10 +73,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test_profile_run.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="test_profile_run.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/profiling/test_profile_run.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="735">
+            <state relative-caret-position="707">
               <caret line="49" column="5" selection-start-line="49" selection-start-column="5" selection-end-line="49" selection-end-column="5" />
               <folding>
                 <element signature="e#0#24#0" expanded="true" />
@@ -50,8 +88,8 @@
       <file leaf-file-name="profile_runs.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/profiling/profile_runs.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="513">
-              <caret line="178" column="5" selection-start-line="178" selection-start-column="4" selection-end-line="180" selection-end-column="12" />
+            <state relative-caret-position="-734">
+              <caret line="12" column="47" selection-start-line="12" selection-start-column="46" selection-end-line="12" selection-end-column="47" />
               <folding>
                 <element signature="e#0#11#0" expanded="true" />
               </folding>
@@ -77,6 +115,18 @@
               <caret line="498" column="38" selection-start-line="498" selection-start-column="22" selection-end-line="498" selection-end-column="38" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="lsf_job.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/nanopypes/tasks/lsf_job.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="552">
+              <caret line="108" column="12" selection-start-line="108" selection-start-column="12" selection-end-line="108" selection-end-column="12" />
+              <folding>
+                <element signature="e#0#15#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -117,6 +167,7 @@
       <find>404097</find>
       <find>save</find>
       <find>job_script_path</find>
+      <find>-K</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -175,7 +226,6 @@
         <option value="$USER_HOME$/PycharmProjects/code_snippets/process_sam.py" />
         <option value="$USER_HOME$/PycharmProjects/code_snippets/new.py" />
         <option value="$PROJECT_DIR$/profiling/profile_runs.py" />
-        <option value="$PROJECT_DIR$/nanopypes/tasks/lsf_job.py" />
         <option value="$PROJECT_DIR$/nanopypes/pipes/basecaller.py" />
         <option value="$PROJECT_DIR$/nanopypes/compute.py" />
         <option value="$PROJECT_DIR$/profiling/profile_run_data/profile_runs.js" />
@@ -184,6 +234,7 @@
         <option value="$PROJECT_DIR$/tests/test_basecallers2.py" />
         <option value="$USER_HOME$/PycharmProjects/code_snippets/parker_process_sam.p.py" />
         <option value="$PROJECT_DIR$/profiling/test_profile_run.py" />
+        <option value="$PROJECT_DIR$/nanopypes/tasks/lsf_job.py" />
       </list>
     </option>
   </component>
@@ -214,13 +265,13 @@
             <path>
               <item name="NanoPypes" type="b2602c69:ProjectViewProjectNode" />
               <item name="NanoPypes" type="462c0819:PsiDirectoryNode" />
-              <item name="profiling" type="462c0819:PsiDirectoryNode" />
+              <item name="nanopypes" type="462c0819:PsiDirectoryNode" />
+              <item name="tasks" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="NanoPypes" type="b2602c69:ProjectViewProjectNode" />
               <item name="NanoPypes" type="462c0819:PsiDirectoryNode" />
               <item name="profiling" type="462c0819:PsiDirectoryNode" />
-              <item name="test_job_scripts" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -389,7 +440,7 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1477" y="23" width="1661" height="971" extended-state="0" />
+    <frame x="1484" y="199" width="1661" height="971" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.7145709" visible="true" weight="0.20060976" />
@@ -725,16 +776,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/nanopypes/tasks/lsf_job.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-479">
-          <caret line="61" column="37" lean-forward="true" selection-start-line="61" selection-start-column="37" selection-end-line="61" selection-end-column="37" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/pipeline.log">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-3266" />
@@ -792,22 +833,32 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/profiling/test_profile_run.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="707">
+          <caret line="49" column="5" selection-start-line="49" selection-start-column="5" selection-end-line="49" selection-end-column="5" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/profiling/profile_runs.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="513">
-          <caret line="178" column="5" selection-start-line="178" selection-start-column="4" selection-end-line="180" selection-end-column="12" />
+        <state relative-caret-position="-734">
+          <caret line="12" column="47" selection-start-line="12" selection-start-column="46" selection-end-line="12" selection-end-column="47" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/profiling/test_profile_run.py">
+    <entry file="file://$PROJECT_DIR$/nanopypes/tasks/lsf_job.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="735">
-          <caret line="49" column="5" selection-start-line="49" selection-start-column="5" selection-end-line="49" selection-end-column="5" />
+        <state relative-caret-position="552">
+          <caret line="108" column="12" selection-start-line="108" selection-start-column="12" selection-end-line="108" selection-end-column="12" />
           <folding>
-            <element signature="e#0#24#0" expanded="true" />
+            <element signature="e#0#15#0" expanded="true" />
           </folding>
         </state>
       </provider>

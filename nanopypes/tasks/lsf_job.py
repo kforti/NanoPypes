@@ -107,7 +107,6 @@ class LSFJob:
             pass
 
         try:
-            print(self.bsub_extra)
             for extra in self.bsub_extra:
                 job_script.append('#BSUB {}'.format(extra))
         except Exception:
