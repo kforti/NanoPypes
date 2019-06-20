@@ -49,7 +49,7 @@ class LSFJob:
 
     @defaults_from_attrs('save_path')
     def run(self, save_path=None, shell='bash', *dependencies):
-        command = "bsub < {save_path}".format(script_path=save_path)
+        command = "bsub < {save_path}".format(save_path=save_path)
         current_env = os.environ.copy()
         with tempfile.NamedTemporaryFile(prefix="nanopypes-") as tmp:
             tmp.write(command.encode())
