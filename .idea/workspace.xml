@@ -2,7 +2,60 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="06fba5a6-e119-4d57-aa65-81370b2766cd" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/profiling/profile_runs.py" beforeDir="false" afterPath="$PROJECT_DIR$/profiling/profile_runs.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/profiling/profile_script.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/profiling/profile_params" beforeDir="false" afterPath="$PROJECT_DIR$/profiling/profile_params" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/dask-worker-space/worker-1rsfia_5.dirlock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/dask-worker-space/worker-6xr1sbyx.dirlock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/dask-worker-space/worker-_u6n3h4w.dirlock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/dask-worker-space/worker-dn6dt1g_.dirlock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/0/configuration.cfg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/0/sequencing_summary.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/0/sequencing_telemetry.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/0/workspace/calibration_strands/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/0/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/1/configuration.cfg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/1/sequencing_summary.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/1/sequencing_telemetry.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/2/configuration.cfg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/2/sequencing_summary.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/2/sequencing_telemetry.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/2/workspace/calibration_strands/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/2/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/3/configuration.cfg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/3/sequencing_summary.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/3/sequencing_telemetry.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/3/workspace/calibration_strands/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/3/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/4/configuration.cfg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/4/sequencing_summary.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/4/workspace/calibration_strands/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/4/workspace/fail/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/4/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/5/configuration.cfg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/5/sequencing_summary.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/5/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/6/configuration.cfg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/6/sequencing_summary.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/6/sequencing_telemetry.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/6/workspace/calibration_strands/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/6/workspace/fail/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/6/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/7/configuration.cfg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/7/sequencing_summary.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/7/sequencing_telemetry.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/7/workspace/calibration_strands/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/7/workspace/fail/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/7/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/8/configuration.cfg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/8/sequencing_summary.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/8/sequencing_telemetry.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/8/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/9/configuration.cfg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/9/sequencing_summary.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/9/sequencing_telemetry.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/9/workspace/calibration_strands/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/9/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" />
       <change beforePath="$USER_HOME$/dask-kubernetes/dask_kubernetes/config.py" beforeDir="false" afterPath="$USER_HOME$/dask-kubernetes/dask_kubernetes/config.py" afterDir="false" />
       <change beforePath="$USER_HOME$/prefect/prefect/src/prefect/tasks/shell.py" beforeDir="false" afterPath="$USER_HOME$/prefect/prefect/src/prefect/tasks/shell.py" afterDir="false" />
     </list>
@@ -14,81 +67,125 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="test_profile_params" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/profiling/test_profile_params">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="833">
-              <caret line="70" column="22" selection-start-line="70" selection-start-column="22" selection-end-line="70" selection-end-column="22" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="test_profile_run.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/profiling/test_profile_run.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="497">
-              <caret line="46" column="12" lean-forward="true" selection-start-line="46" selection-start-column="12" selection-end-line="46" selection-end-column="12" />
-              <folding>
-                <element signature="e#0#24#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="push_code.py" pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/PycharmProjects/code_snippets/push_code.py">
-          <provider selected="true" editor-type-id="text-editor" />
-        </entry>
-      </file>
-      <file leaf-file-name="profile_runs.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/profiling/profile_runs.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="538">
-              <caret line="96" column="34" selection-start-line="96" selection-start-column="34" selection-end-line="96" selection-end-column="34" />
-              <folding>
-                <element signature="e#0#11#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pandas_scratch.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/profiling/pandas_scratch.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-426">
-              <folding>
-                <element signature="e#0#19#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="parker_process_sam.p.py" pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/PycharmProjects/code_snippets/parker_process_sam.p.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="347">
-              <caret line="492" column="26" lean-forward="true" selection-start-line="492" selection-start-column="26" selection-end-line="492" selection-end-column="26" />
-              <folding>
-                <element signature="e#0#9#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="lsf_job.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/nanopypes/tasks/lsf_job.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="729">
-              <caret line="70" column="29" lean-forward="true" selection-start-line="70" selection-start-column="29" selection-end-line="70" selection-end-column="29" />
-              <folding>
-                <element signature="e#0#15#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.83302754">
+      <split-first>
+        <leaf>
+          <file leaf-file-name="test_profile_params" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/profiling/test_profile_params">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="833">
+                  <caret line="70" column="22" selection-start-line="70" selection-start-column="22" selection-end-line="70" selection-end-column="22" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="profile_script.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/profiling/profile_script.py">
+              <provider selected="true" editor-type-id="text-editor" />
+            </entry>
+          </file>
+          <file leaf-file-name="profile_params" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/profiling/profile_params">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="113">
+                  <caret line="19" column="88" selection-start-line="19" selection-start-column="88" selection-end-line="19" selection-end-column="88" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="paths.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/profiling/paths.py">
+              <provider selected="true" editor-type-id="text-editor" />
+            </entry>
+          </file>
+          <file leaf-file-name="test_profile_run.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/profiling/test_profile_run.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="497">
+                  <caret line="46" column="12" selection-start-line="46" selection-start-column="12" selection-end-line="46" selection-end-column="12" />
+                  <folding>
+                    <element signature="e#0#24#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="test_basecallers2.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/tests/test_basecallers2.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="339">
+                  <caret line="441" column="28" selection-start-line="441" selection-start-column="28" selection-end-line="441" selection-end-column="28" />
+                  <folding>
+                    <element signature="e#0#24#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="push_code.py" pinned="false" current-in-tab="false">
+            <entry file="file://$USER_HOME$/PycharmProjects/code_snippets/push_code.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="45">
+                  <caret line="3" column="19" selection-start-line="3" selection-start-column="19" selection-end-line="3" selection-end-column="19" />
+                  <folding>
+                    <element signature="e#0#17#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="profile_runs.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/profiling/profile_runs.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="538">
+                  <caret line="96" column="34" selection-start-line="96" selection-start-column="34" selection-end-line="96" selection-end-column="34" />
+                  <folding>
+                    <element signature="e#0#11#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="pandas_scratch.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/profiling/pandas_scratch.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="368">
+                  <caret line="61" column="33" lean-forward="true" selection-start-line="61" selection-start-column="33" selection-end-line="61" selection-end-column="33" />
+                  <folding>
+                    <element signature="e#0#19#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="lsf_job.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/nanopypes/tasks/lsf_job.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="729">
+                  <caret line="70" column="29" selection-start-line="70" selection-start-column="29" selection-end-line="70" selection-end-column="29" />
+                  <folding>
+                    <element signature="e#0#15#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file leaf-file-name="test_profile_params" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/profiling/test_profile_params">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="195">
+                  <caret line="13" column="19" lean-forward="true" selection-start-line="11" selection-start-column="12" selection-end-line="16" selection-end-column="23" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -140,8 +237,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/nanopypes/pipes/base.py" />
-        <option value="$PROJECT_DIR$/nanopypes/configs/lsf.yml" />
         <option value="$PROJECT_DIR$/profiling/__init__.py" />
         <option value="$USER_HOME$/dask-kubernetes/dask_kubernetes/config.py" />
         <option value="$PROJECT_DIR$/docs/api.rst" />
@@ -173,7 +268,6 @@
         <option value="$PROJECT_DIR$/tests/test_tasks.py" />
         <option value="$PROJECT_DIR$/nanopypes/executor.py" />
         <option value="$PROJECT_DIR$/profiling/profile_runs2.py" />
-        <option value="$PROJECT_DIR$/profiling/profile_params" />
         <option value="$PROJECT_DIR$/profiling/write_job.py" />
         <option value="$PROJECT_DIR$/nanopypes/objects/base.py" />
         <option value="$PROJECT_DIR$/nanopypes/pipelines/pipeline.py" />
@@ -188,17 +282,20 @@
         <option value="$PROJECT_DIR$/tests/test_basecallers2.py" />
         <option value="$USER_HOME$/PycharmProjects/code_snippets/parker_process_sam.p.py" />
         <option value="$PROJECT_DIR$/profiling/test_profile_run.py" />
-        <option value="$USER_HOME$/PycharmProjects/code_snippets/push_code.py" />
         <option value="$PROJECT_DIR$/nanopypes/tasks/lsf_job.py" />
         <option value="$PROJECT_DIR$/profiling/profile_runs.py" />
+        <option value="$USER_HOME$/PycharmProjects/code_snippets/push_code.py" />
+        <option value="$PROJECT_DIR$/profiling/pandas_scratch.py" />
+        <option value="$PROJECT_DIR$/profiling/profile_script.py" />
+        <option value="$PROJECT_DIR$/profiling/profile_params" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1905" />
-    <option name="y" value="75" />
-    <option name="width" value="1440" />
-    <option name="height" value="836" />
+    <option name="x" value="1743" />
+    <option name="y" value="38" />
+    <option name="width" value="1625" />
+    <option name="height" value="834" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -216,28 +313,28 @@
             <path>
               <item name="NanoPypes" type="b2602c69:ProjectViewProjectNode" />
               <item name="NanoPypes" type="462c0819:PsiDirectoryNode" />
-              <item name="nanopypes" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="NanoPypes" type="b2602c69:ProjectViewProjectNode" />
-              <item name="NanoPypes" type="462c0819:PsiDirectoryNode" />
-              <item name="nanopypes" type="462c0819:PsiDirectoryNode" />
-              <item name="tasks" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="NanoPypes" type="b2602c69:ProjectViewProjectNode" />
-              <item name="NanoPypes" type="462c0819:PsiDirectoryNode" />
               <item name="profiling" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="NanoPypes" type="b2602c69:ProjectViewProjectNode" />
-              <item name="code_snippets" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <expand>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="profiling" type="cbb8eebc:String" user="profiling" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="profiling" type="cbb8eebc:String" user="profiling" />
+              <item name="profiling" type="cbb8eebc:String" user="profiling" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -273,7 +370,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.parker_process_sam.p">
+  <component name="RunManager" selected="Python.pandas_scratch">
     <configuration name="new" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="code_snippets" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -373,9 +470,9 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.parker_process_sam.p" />
-        <item itemvalue="Python.test_basecallers2" />
         <item itemvalue="Python.pandas_scratch" />
+        <item itemvalue="Python.test_basecallers2" />
+        <item itemvalue="Python.parker_process_sam.p" />
         <item itemvalue="Python.profile_runs" />
         <item itemvalue="Python.new" />
       </list>
@@ -400,18 +497,18 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1905" y="75" width="1440" height="836" extended-state="0" />
+    <frame x="1743" y="38" width="1625" height="834" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.7145709" visible="true" weight="0.23185341" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.7726316" visible="true" weight="0.20511222" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" visible="true" weight="0.113667116" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.10224439" side_tool="true" visible="true" weight="0.35549524" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.31922197" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.35583523" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.8977556" visible="true" weight="0.35549524" />
       <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info anchor="bottom" id="Python Console" order="7" weight="0.29850745" />
-      <window_info id="Structure" order="1" sideWeight="0.28542915" side_tool="true" weight="0.24625145" />
-      <window_info anchor="bottom" id="Terminal" order="8" weight="0.18306637" />
+      <window_info anchor="bottom" id="Python Console" order="7" sideWeight="0.49964765" weight="0.2976996" />
+      <window_info id="Structure" order="1" sideWeight="0.22736841" side_tool="true" visible="true" weight="0.20511222" />
+      <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49964765" weight="0.1826793" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3993135" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -460,16 +557,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/PycharmProjects/code_snippets/sam_cigar.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="97">
-          <caret line="184" column="25" lean-forward="true" selection-start-line="182" selection-start-column="49" selection-end-line="184" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#12#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/PycharmProjects/code_snippets/tut1.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -573,11 +660,6 @@
     <entry file="file://$PROJECT_DIR$/profiling/app.log">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/profiling/paths.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1630" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/profiling/profile_runs.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2640">
@@ -608,13 +690,6 @@
           <folding>
             <element signature="e#0#24#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/profiling/profile_params">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="557">
-          <caret line="60" column="19" selection-start-line="60" selection-start-column="16" selection-end-line="60" selection-end-column="34" />
         </state>
       </provider>
     </entry>
@@ -757,38 +832,12 @@
     <entry file="file://$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/nanopypes_basecall.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/test_basecallers2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1046">
-          <caret line="140" selection-start-line="140" selection-end-line="140" />
-          <folding>
-            <element signature="e#0#24#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/PycharmProjects/code_snippets/parker_process_sam.p.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="347">
-          <caret line="492" column="26" lean-forward="true" selection-start-line="492" selection-start-column="26" selection-end-line="492" selection-end-column="26" />
+          <caret line="492" column="26" selection-start-line="492" selection-start-column="26" selection-end-line="492" selection-end-column="26" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/profiling/test_profile_params">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="833">
-          <caret line="70" column="22" selection-start-line="70" selection-start-column="22" selection-end-line="70" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/profiling/pandas_scratch.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-426">
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -796,25 +845,12 @@
     <entry file="file://$PROJECT_DIR$/nanopypes/tasks/lsf_job.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="729">
-          <caret line="70" column="29" lean-forward="true" selection-start-line="70" selection-start-column="29" selection-end-line="70" selection-end-column="29" />
+          <caret line="70" column="29" selection-start-line="70" selection-start-column="29" selection-end-line="70" selection-end-column="29" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/profiling/test_profile_run.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="497">
-          <caret line="46" column="12" lean-forward="true" selection-start-line="46" selection-start-column="12" selection-end-line="46" selection-end-column="12" />
-          <folding>
-            <element signature="e#0#24#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/PycharmProjects/code_snippets/push_code.py">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/profiling/profile_runs.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -823,6 +859,66 @@
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/profiling/test_profile_run.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="497">
+          <caret line="46" column="12" selection-start-line="46" selection-start-column="12" selection-end-line="46" selection-end-column="12" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/PycharmProjects/code_snippets/push_code.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" column="19" selection-start-line="3" selection-start-column="19" selection-end-line="3" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#17#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/test_basecallers2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="339">
+          <caret line="441" column="28" selection-start-line="441" selection-start-column="28" selection-end-line="441" selection-end-column="28" />
+          <folding>
+            <element signature="e#0#24#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/profiling/pandas_scratch.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="368">
+          <caret line="61" column="33" lean-forward="true" selection-start-line="61" selection-start-column="33" selection-end-line="61" selection-end-column="33" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/profiling/profile_script.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/profiling/test_profile_params">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="833">
+          <caret line="70" column="22" selection-start-line="70" selection-start-column="22" selection-end-line="70" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/profiling/paths.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/profiling/profile_params">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="113">
+          <caret line="19" column="88" selection-start-line="19" selection-start-column="88" selection-end-line="19" selection-end-column="88" />
         </state>
       </provider>
     </entry>
