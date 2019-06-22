@@ -7,7 +7,7 @@ from profile_runs import ProfileRun
 
 def move_files(paths, save):
     for p in paths:
-        if p.exists():
+        if Path(p).exists():
             shutil.move(str(p), str(save))
 
 if __name__ == '__main__':
