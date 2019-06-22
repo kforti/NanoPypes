@@ -16,7 +16,7 @@ if __name__ == '__main__':
     if new_dir.exists() is False:
         new_dir.mkdir()
 
-    runs = ["run1"]
+    runs = ["run2"]
 
     for key, value in PATHS.items():
         if key not in runs:
@@ -24,7 +24,7 @@ if __name__ == '__main__':
         move_files(value, new_dir)
         config = "profile_params"
         pr = ProfileRun(name=key, config_path=config)
-        pr.run("component2")
+        pr.run()
 
 
 
