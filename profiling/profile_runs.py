@@ -133,7 +133,7 @@ class ProfileRun:
             config_data = yaml.safe_load(config)
 
         try:
-            run_params = config_data[self.name]
+            run_params = config_data["profile_runs"][self.name]
         except:
             raise IOError("Profile run name not in profile params config")
         return run_params

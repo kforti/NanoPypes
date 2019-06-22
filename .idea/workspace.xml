@@ -2,26 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="06fba5a6-e119-4d57-aa65-81370b2766cd" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nanopypes/compute.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/compute.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nanopypes/pipes/basecaller.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/pipes/basecaller.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiling/paths.py" beforeDir="false" afterPath="$PROJECT_DIR$/profiling/paths.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiling/profile_params" beforeDir="false" afterPath="$PROJECT_DIR$/profiling/profile_params" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiling/profile_runs.py" beforeDir="false" afterPath="$PROJECT_DIR$/profiling/profile_runs.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiling/profile_script.py" beforeDir="false" afterPath="$PROJECT_DIR$/profiling/profile_script.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/push_code.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/push_code.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_basecallers2.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_basecallers2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/sequencing_summary.txt" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/sequencing_summary.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/sequencing_telemetry.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/sequencing_telemetry.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/calibration_strands/13_fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/calibration_strands/15_fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/calibration_strands/15_fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/calibration_strands/17_fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/calibration_strands/17_fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/fail/11_fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/10_fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/10_fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/12_fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/12_fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/14_fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/14_fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/16_fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/16_fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/18_fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/workspace/pass/18_fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
       <change beforePath="$USER_HOME$/dask-kubernetes/dask_kubernetes/config.py" beforeDir="false" afterPath="$USER_HOME$/dask-kubernetes/dask_kubernetes/config.py" afterDir="false" />
       <change beforePath="$USER_HOME$/prefect/prefect/src/prefect/tasks/shell.py" beforeDir="false" afterPath="$USER_HOME$/prefect/prefect/src/prefect/tasks/shell.py" afterDir="false" />
     </list>
@@ -45,10 +25,10 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="profile_params" pinned="false" current-in-tab="false">
+          <file leaf-file-name="profile_params" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/profiling/profile_params">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="212">
+                <state relative-caret-position="450">
                   <caret line="30" column="108" lean-forward="true" selection-start-line="30" selection-start-column="108" selection-end-line="30" selection-end-column="108" />
                 </state>
               </provider>
@@ -69,8 +49,8 @@
           <file leaf-file-name="profile_script.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/profiling/profile_script.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="75">
-                  <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+                <state relative-caret-position="135">
+                  <caret line="9" column="22" lean-forward="true" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
                   <folding>
                     <element signature="e#0#23#0" expanded="true" />
                   </folding>
@@ -90,11 +70,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="push_code.py" pinned="false" current-in-tab="true">
+          <file leaf-file-name="push_code.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/scripts/push_code.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="54">
-                  <caret line="20" column="34" selection-start-line="20" selection-start-column="34" selection-end-line="20" selection-end-column="34" />
+                <state relative-caret-position="189">
+                  <caret line="29" column="34" lean-forward="true" selection-start-line="29" selection-start-column="34" selection-end-line="29" selection-end-column="34" />
                   <folding>
                     <element signature="e#0#17#0" expanded="true" />
                   </folding>
@@ -254,11 +234,11 @@
         <option value="$PROJECT_DIR$/nanopypes/pipes/basecaller.py" />
         <option value="$PROJECT_DIR$/tests/test_basecallers2.py" />
         <option value="$PROJECT_DIR$/profiling/paths.py" />
-        <option value="$PROJECT_DIR$/profiling/profile_script.py" />
         <option value="$PROJECT_DIR$/profiling/profile_runs.py" />
         <option value="$PROJECT_DIR$/nanopypes/compute.py" />
         <option value="$PROJECT_DIR$/profiling/profile_params" />
         <option value="$PROJECT_DIR$/scripts/push_code.py" />
+        <option value="$PROJECT_DIR$/profiling/profile_script.py" />
       </list>
     </option>
   </component>
@@ -890,30 +870,30 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/profiling/profile_params">
+    <entry file="file://$PROJECT_DIR$/scripts/push_code.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
-          <caret line="30" column="108" lean-forward="true" selection-start-line="30" selection-start-column="108" selection-end-line="30" selection-end-column="108" />
+        <state relative-caret-position="189">
+          <caret line="29" column="34" lean-forward="true" selection-start-line="29" selection-start-column="34" selection-end-line="29" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#17#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/profiling/profile_script.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+        <state relative-caret-position="135">
+          <caret line="9" column="22" lean-forward="true" selection-start-line="9" selection-start-column="22" selection-end-line="9" selection-end-column="22" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/scripts/push_code.py">
+    <entry file="file://$PROJECT_DIR$/profiling/profile_params">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="20" column="34" selection-start-line="20" selection-start-column="34" selection-end-line="20" selection-end-column="34" />
-          <folding>
-            <element signature="e#0#17#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="450">
+          <caret line="30" column="108" lean-forward="true" selection-start-line="30" selection-start-column="108" selection-end-line="30" selection-end-column="108" />
         </state>
       </provider>
     </entry>
