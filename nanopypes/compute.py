@@ -33,8 +33,9 @@ class ClusterManager:
                 if job_extra:
                     job_extra.append("-o dask_lsf_cluster.err")
                     job_extra.append("-o dask_lsf_cluster.out")
+                    job_extra.append('-R "rusage[mem={}]"'.format(self.worker_memory))
                 else:
-                    job_extra = ["-o dask_lsf_cluster.err", "-o dask_lsf_cluster.out"]
+                    job_extra = ['-R "rusage[mem={}]"'.format(self.worker_memory), "-o dask_lsf_cluster.err", "-o dask_lsf_cluster.out"]
         self.job_extra = job_extra
 
         self._cluster = cluster or self.build_cluster() # Must be explicitly built first, or a cluster object can be passed
@@ -105,8 +106,7 @@ class ClusterManager:
                              project=self.project, # Passed to #BSUB -P option.
                              processes=self.workers_per_job,
                              walltime=self.job_time,# Passed to #BSUB -W option.
-                             job_extra=['-R "rusage[mem={}]"'.format(self.worker_memory), '-o dask_worker.out',
-                                             '-e dask_worker.err'],
+                             job_extra=self.job_extra,
                              cores=ncpus,
                              memory=dask_memory)
         return cluster

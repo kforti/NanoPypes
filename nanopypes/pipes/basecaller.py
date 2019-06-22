@@ -71,6 +71,7 @@ class AlbacoreBasecaller(Pipe):
         for i in range(num_workers):
             try:
                 batch = next(batches)
+                print("Processing Batch...", batch)
             except StopIteration:
                 break
 
@@ -88,6 +89,7 @@ class AlbacoreBasecaller(Pipe):
         for comp in completed:
             try:
                 batch = next(batches)
+                print("Processing Batch...", batch)
                 b_save_path = self.save_path.joinpath(batch)
                 command = self.build_basecall_command(batch=batch)
                 fn = self.command_function()
@@ -432,7 +434,7 @@ def collapse_seq_summary(sum_paths, save_path):
         for ss in sum_paths:
             with open(ss, "r") as file:
                 if header is None:
-                    sum_file.writelines(file)
+                    sum_file.writelines(file.readlines())
                     header = True
                 else:
                     for i, row in enumerate(file):

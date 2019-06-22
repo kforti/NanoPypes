@@ -152,16 +152,16 @@ def test_albacore_basecall():
                         read_len = len(read["sequence"])
                         collapsed_reads[Path(dir_name).name][(read_name, read_len)] = 0
     # print(collapsed_reads)
-    for dir_name, subdirs, files in os.walk(str(tmp_dir)):
-        for file in files:
+    for batch in os.listdir(str(input_path)):
+        for file in os.listdir(str(input_path.joinpath(batch))):
             if ".fastq" in Path(file).suffixes:
-                fq = str(Path(dir_name).joinpath(file))
-                with open(fq, 'r') as file:
-                    for read in fastq_read_generator(file):
+                fq = str(input_path.joinpath(batch, file))
+                with open(fq, 'r') as f:
+                    for read in fastq_read_generator(f):
                         read_name = read["header"].split()[0][1:]
                         read_len = len(read["sequence"])
-                        assert collapsed_reads[Path(dir_name).name][(read_name, read_len)] == 0
-                        collapsed_reads[Path(dir_name).name][(read_name, read_len)] = 1
+                        assert collapsed_reads[batch][(read_name, read_len)] == 0
+                        collapsed_reads[batch][(read_name, read_len)] = 1
 
     for key in collapsed_reads:
         for key, value in collapsed_reads[key].items():
@@ -391,10 +391,6 @@ def test_guppy_basecaller():
                  flowcell=None, kit=None, save_path=None, fast5_out=None,
                  reads_per_fastq=1000, worker_client=None, pull_link=None,
                  image_path=None, bind=None, cpu_threads_per_caller=1)
-
-
-
-
 
 
 

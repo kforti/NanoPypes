@@ -160,15 +160,15 @@ class ProfileRun:
         if component:
             comp = self.component_handler[component]
             print("executing comp...", comp.__dict__)
-            self._execute_component(comp)
+            self._execute_component(component, comp)
         else:
             for comp in self.component_handler.values():
                 print("executing comp...", comp.__dict__)
-                self._execute_component(comp)
+                self._execute_component(component, comp)
 
-    def _execute_component(self, comp_handle):
+    def _execute_component(self, comp_name, comp_handle):
         profile_data = comp_handle.run()
-        save_path = Path(self.output).joinpath("profile_runs.js")
+        save_path = Path(self.output).joinpath("{}_{}_profile_runs.js".format(self.name, comp_name))
 
         with open(str(save_path), 'a') as file:
             json.dump(profile_data, file)
