@@ -28,17 +28,22 @@ class ClusterManager:
         self.clients = []
 
         if debug:
-            logging.basicConfig(format='%(levelname)s:%(message)s', level=logging.DEBUG)
-            if self.cluster_type == 'lsf':
-                if job_extra:
-                    job_extra.append("-o dask_lsf_cluster.err")
-                    job_extra.append("-o dask_lsf_cluster.out")
-                    job_extra.append('-R "rusage[mem={}]"'.format(self.worker_memory))
-                else:
-                    job_extra = ['-R "rusage[mem={}]"'.format(self.worker_memory), "-o dask_lsf_cluster.err", "-o dask_lsf_cluster.out"]
-        self.job_extra = job_extra
+            self.job_extra = self._set_debug(job_extra)
+        else:
+            self.job_extra = job_extra
 
         self._cluster = cluster or self.build_cluster() # Must be explicitly built first, or a cluster object can be passed
+
+    def _set_debug(self, job_extra):
+        logging.basicConfig(format='%(levelname)s:%(message)s', level=logging.DEBUG)
+        if self.cluster_type == 'lsf':
+            if job_extra:
+                job_extra.append("-o dask_lsf_cluster.err")
+                job_extra.append("-o dask_lsf_cluster.out")
+                job_extra.append('-R "rusage[mem={}]"'.format(self.worker_memory))
+            else:
+                job_extra = ['-R "rusage[mem={}]"'.format(self.worker_memory), "-o dask_lsf_cluster.err", "-o dask_lsf_cluster.out"]
+        return job_extra
 
     @classmethod
     def from_dict(cls, config_dict):
