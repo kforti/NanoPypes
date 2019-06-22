@@ -4,6 +4,7 @@ import numpy as np
 import re
 
 
+
 with open('/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/basecalled_data/results/local_basecall_test/pipeline.log', 'r') as file:
     pipeline = file.readlines()
 
@@ -60,3 +61,5 @@ print(min(df.submitted))
 print(max(df.submitted))
 print((max(df.submitted)-min(df.submitted)))
 print(df["time_per_read"].mean())
+for i in df.keys():
+    print(i)

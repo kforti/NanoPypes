@@ -24,7 +24,7 @@ if __name__ == '__main__':
         move_files(value, new_dir)
         config = "profile_params"
         pr = ProfileRun(name=key, config_path=config)
-        pr.run("component1")
+        pr.run("component2")
 
 
 
