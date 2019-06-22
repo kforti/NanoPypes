@@ -1,7 +1,7 @@
 profile_runs:
     run1:
         component1:
-            component_id: nanopypes_albacore
+            component_id: component1
             component_type: pipe
             component_handler: nanopypes_albacore
             compute:
@@ -25,9 +25,10 @@ profile_runs:
                 recursive: False
                 reads_per_fastq: 1000
         component2:
+            component_id: component2
             component_type: hpc_job
             component_handler: albacore_bash
-            albacore:
+            command:
                 input_path: ../tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass
                 save_path: ../tests/test_data/basecalled_data/results/profile_test/run1_comp2
                 flowcell: FLO-MIN106
@@ -49,7 +50,7 @@ profile_runs:
 profile_runs:
     run2:
         component1:
-            component_id: nanopypes_albacore
+            component_id: component1
             component_type: pipe
             component_handler: nanopypes_albacore
             compute:
@@ -73,9 +74,9 @@ profile_runs:
                 recursive: False
                 reads_per_fastq: 1000
         component2:
-            component_type: hpc_job
+            component_id: component2
             component_handler: albacore_bash
-            albacore:
+            command:
                 input_path: ../tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass
                 save_path: ../tests/test_data/basecalled_data/results/profile_test/run2_comp2
                 flowcell: FLO-MIN106
