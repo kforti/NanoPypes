@@ -10,6 +10,7 @@ profile_runs:
                 project: /project/umw_athma_pai
                 queue: short
                 workers_per_job: 5
+                min_num_workers:
                 num_workers: 5
                 worker_cores: 1
                 worker_memory: 2048
@@ -59,6 +60,7 @@ profile_runs:
                 queue: short
                 workers_per_job: 10
                 num_workers: 10
+                min_num_workers:
                 worker_cores: 1
                 worker_memory: 2048
                 debug: True
