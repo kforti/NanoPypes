@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="06fba5a6-e119-4d57-aa65-81370b2766cd" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/profiling/profile_params" beforeDir="false" afterPath="$PROJECT_DIR$/profiling/profile_params" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiling/profile_script.py" beforeDir="false" afterPath="$PROJECT_DIR$/profiling/profile_script.py" afterDir="false" />
       <change beforePath="$USER_HOME$/dask-kubernetes/dask_kubernetes/config.py" beforeDir="false" afterPath="$USER_HOME$/dask-kubernetes/dask_kubernetes/config.py" afterDir="false" />
       <change beforePath="$USER_HOME$/prefect/prefect/src/prefect/tasks/shell.py" beforeDir="false" afterPath="$USER_HOME$/prefect/prefect/src/prefect/tasks/shell.py" afterDir="false" />
     </list>
@@ -27,11 +26,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="profile_params" pinned="false" current-in-tab="false">
+          <file leaf-file-name="profile_params" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/profiling/profile_params">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-156">
-                  <caret line="66" column="28" selection-start-line="66" selection-start-column="28" selection-end-line="66" selection-end-column="28" />
+                <state relative-caret-position="324">
+                  <caret line="66" column="49" selection-start-line="66" selection-start-column="49" selection-end-line="66" selection-end-column="49" />
                 </state>
               </provider>
             </entry>
@@ -39,8 +38,8 @@
           <file leaf-file-name="profile_runs.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/profiling/profile_runs.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-102">
-                  <caret line="129" lean-forward="true" selection-start-line="129" selection-end-line="129" />
+                <state relative-caret-position="259">
+                  <caret line="135" column="25" selection-start-line="135" selection-start-column="25" selection-end-line="135" selection-end-column="52" />
                   <folding>
                     <element signature="e#0#11#0" expanded="true" />
                   </folding>
@@ -48,11 +47,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="profile_script.py" pinned="false" current-in-tab="true">
+          <file leaf-file-name="profile_script.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/profiling/profile_script.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="390">
-                  <caret line="26" column="26" selection-start-line="26" selection-start-column="26" selection-end-line="26" selection-end-column="26" />
+                <state relative-caret-position="165">
+                  <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
                   <folding>
                     <element signature="e#0#23#0" expanded="true" />
                   </folding>
@@ -117,8 +116,11 @@
           <file leaf-file-name="compute.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/nanopypes/compute.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="449">
-                  <caret line="108" column="53" selection-start-line="108" selection-start-column="53" selection-end-line="108" selection-end-column="53" />
+                <state relative-caret-position="866">
+                  <caret line="106" column="60" lean-forward="true" selection-start-line="106" selection-start-column="60" selection-end-line="106" selection-end-column="60" />
+                  <folding>
+                    <element signature="e#0#36#0" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -239,14 +241,14 @@
         <option value="$PROJECT_DIR$/nanopypes/compute.py" />
         <option value="$PROJECT_DIR$/scripts/push_code.py" />
         <option value="$PROJECT_DIR$/profiling/profile_runs.py" />
-        <option value="$PROJECT_DIR$/profiling/profile_params" />
         <option value="$PROJECT_DIR$/profiling/profile_script.py" />
+        <option value="$PROJECT_DIR$/profiling/profile_params" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1967" />
-    <option name="y" value="163" />
+    <option name="x" value="2011" />
+    <option name="y" value="88" />
     <option name="width" value="1625" />
     <option name="height" value="834" />
   </component>
@@ -476,17 +478,17 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1967" y="163" width="1625" height="834" extended-state="0" />
+    <frame x="2011" y="88" width="1625" height="834" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.77310926" visible="true" weight="0.28241897" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.77310926" visible="true" weight="0.12468828" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.10349127" side_tool="true" visible="true" weight="0.3541384" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.31922197" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.89650875" visible="true" weight="0.3541384" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.89650875" visible="true" weight="0.3541384" />
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Python Console" order="7" sideWeight="0.49750623" weight="0.2971506" />
-      <window_info id="Structure" order="1" sideWeight="0.22689076" side_tool="true" visible="true" weight="0.28241897" />
+      <window_info id="Structure" order="1" sideWeight="0.22689076" side_tool="true" visible="true" weight="0.12468828" />
       <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49964765" weight="0.1826793" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3993135" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -828,13 +830,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/nanopypes/compute.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="449">
-          <caret line="108" column="53" selection-start-line="108" selection-start-column="53" selection-end-line="108" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/nanopypes/tasks/lsf_job.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-366">
@@ -872,30 +867,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/profiling/profile_params">
+    <entry file="file://$PROJECT_DIR$/profiling/profile_script.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-156">
-          <caret line="66" column="28" selection-start-line="66" selection-start-column="28" selection-end-line="66" selection-end-column="28" />
+        <state relative-caret-position="165">
+          <caret line="11" lean-forward="true" selection-start-line="11" selection-end-line="11" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/profiling/profile_runs.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-102">
-          <caret line="129" lean-forward="true" selection-start-line="129" selection-end-line="129" />
+        <state relative-caret-position="259">
+          <caret line="135" column="25" selection-start-line="135" selection-start-column="25" selection-end-line="135" selection-end-column="52" />
           <folding>
             <element signature="e#0#11#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/profiling/profile_script.py">
+    <entry file="file://$PROJECT_DIR$/nanopypes/compute.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" column="26" selection-start-line="26" selection-start-column="26" selection-end-line="26" selection-end-column="26" />
+        <state relative-caret-position="866">
+          <caret line="106" column="60" lean-forward="true" selection-start-line="106" selection-start-column="60" selection-end-line="106" selection-end-column="60" />
           <folding>
-            <element signature="e#0#23#0" expanded="true" />
+            <element signature="e#0#36#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/profiling/profile_params">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="66" column="49" selection-start-line="66" selection-start-column="49" selection-end-line="66" selection-end-column="49" />
         </state>
       </provider>
     </entry>

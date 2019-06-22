@@ -15,7 +15,7 @@ profile_runs:
                 worker_cores: 1
                 worker_memory: 2048
                 debug: True
-                job_extra: '-R "span[hosts=1]"'
+                job_extra: ['-R "span[hosts=1]"']
             pipe:
                 input_path: ../tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass
                 save_path: ../tests/test_data/basecalled_data/results/profile_test/run1_comp1
@@ -64,7 +64,7 @@ profile_runs:
                 worker_cores: 1
                 worker_memory: 2048
                 debug: True
-                job_extra: '-R "span[hosts=1]"'
+                job_extra: ['-R "span[hosts=1]"']
             pipe:
                 input_path: ../tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass
                 save_path: ../tests/test_data/basecalled_data/results/profile_test/run2_comp1
