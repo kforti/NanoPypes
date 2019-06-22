@@ -1,0 +1,11 @@
+Click
+dask[distributed]
+dask-jobqueue
+dask[dataframe]
+h5py
+ont_fast5_api
+bokeh
+conda
+cytoolz
+pexpect
+spython
