@@ -25,3 +25,16 @@ if __name__ == '__main__':
         config = "profile_params"
         pr = ProfileRun(name=key, config_path=config)
         pr.run("component1")
+
+
+
+    # replace_with = "/project/umw_athma_pai/raw/minion/"
+    # replace = "/project/umw_athma_pai/kevin/data/minion_ercc_labeled/"
+    # path_dict = {}
+    # for key, value in PATHS.items():
+    #     paths = []
+    #     for path in value:
+    #         paths.append(str(path).replace(replace, replace_with))
+    #     path_dict[key] = paths
+    # print(path_dict)
+
