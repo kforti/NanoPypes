@@ -14,7 +14,7 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.3831451">
+    <splitter split-orientation="horizontal" split-proportion="0.4300608">
       <split-first>
         <leaf>
           <file leaf-file-name="paths.py" pinned="false" current-in-tab="false">
@@ -29,8 +29,8 @@
           <file leaf-file-name="profile_params" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/profiling/profile_params">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="474">
-                  <caret line="75" column="19" selection-start-line="75" selection-start-column="19" selection-end-line="75" selection-end-column="19" />
+                <state relative-caret-position="720">
+                  <caret line="48" column="34" selection-start-line="48" selection-start-column="34" selection-end-line="48" selection-end-column="34" />
                 </state>
               </provider>
             </entry>
@@ -129,8 +129,8 @@
           <file leaf-file-name="test_profile_params" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/profiling/test_profile_params">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-222">
-                  <caret line="13" column="19" selection-start-line="11" selection-start-column="12" selection-end-line="16" selection-end-column="23" />
+                <state relative-caret-position="600">
+                  <caret line="49" column="16" selection-start-line="49" selection-start-column="12" selection-end-line="50" selection-end-column="45" />
                 </state>
               </provider>
             </entry>
@@ -244,8 +244,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1709" />
-    <option name="y" value="189" />
+    <option name="x" value="1851" />
+    <option name="y" value="161" />
     <option name="width" value="1625" />
     <option name="height" value="834" />
   </component>
@@ -475,7 +475,7 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1709" y="189" width="1625" height="834" extended-state="0" />
+    <frame x="1851" y="161" width="1625" height="834" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.77310926" visible="true" weight="0.28241897" />
@@ -886,15 +886,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/profiling/test_profile_params">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-222">
-          <caret line="13" column="19" selection-start-line="11" selection-start-column="12" selection-end-line="16" selection-end-column="23" />
+        <state relative-caret-position="600">
+          <caret line="49" column="16" selection-start-line="49" selection-start-column="12" selection-end-line="50" selection-end-column="45" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/profiling/profile_params">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="474">
-          <caret line="75" column="19" selection-start-line="75" selection-start-column="19" selection-end-line="75" selection-end-column="19" />
+        <state relative-caret-position="720">
+          <caret line="48" column="34" selection-start-line="48" selection-start-column="34" selection-end-line="48" selection-end-column="34" />
         </state>
       </provider>
     </entry>

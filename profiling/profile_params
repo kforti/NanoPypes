@@ -44,10 +44,9 @@ profile_runs:
                 cores: 5
                 walltime: '04:00'
                 queue: short
-                out: profile1.out
-                err: profile1.err
+                out: log_files/profile1_comp2.out
+                err: log_files/profile1_comp2.err
                 bsub_extra: ["-K"]
-profile_runs:
     run2:
         component1:
             component_id: component1
@@ -88,11 +87,11 @@ profile_runs:
                 reads_per_fastq: 1000
             job_script:
                 save_path: job_scripts
-                script_name: profile_run1.sh
+                script_name: profile_run2.sh
                 mem: 20480
                 cores: 10
                 walltime: '04:00'
                 queue: short
-                out: profile1.out
-                err: profile1.err
+                out: log_files/profile1_comp2.out
+                err: log_files/profile1_comp2.err
                 bsub_extra: ["-K"]
