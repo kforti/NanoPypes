@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="06fba5a6-e119-4d57-aa65-81370b2766cd" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.travis.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.travis.yml" afterDir="false" />
       <change beforePath="$USER_HOME$/dask-kubernetes/dask_kubernetes/config.py" beforeDir="false" afterPath="$USER_HOME$/dask-kubernetes/dask_kubernetes/config.py" afterDir="false" />
       <change beforePath="$USER_HOME$/prefect/prefect/src/prefect/tasks/shell.py" beforeDir="false" afterPath="$USER_HOME$/prefect/prefect/src/prefect/tasks/shell.py" afterDir="false" />
     </list>
@@ -28,10 +29,9 @@
           <file leaf-file-name="profile_params" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/profiling/profile_params">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="795">
-                  <caret line="288" column="34" lean-forward="true" selection-start-line="288" selection-start-column="34" selection-end-line="288" selection-end-column="34" />
+                <state relative-caret-position="65">
+                  <caret line="79" column="108" selection-start-line="79" selection-start-column="108" selection-end-line="79" selection-end-column="108" />
                   <folding>
-                    <element signature="e#18#1927#0" />
                     <element signature="e#3746#5601#0" />
                     <element signature="e#5606#7469#0" />
                     <element signature="e#7474#9329#0" />
@@ -44,8 +44,8 @@
           <file leaf-file-name="profile_runs.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/profiling/profile_runs.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="230">
-                  <caret line="133" selection-start-line="133" selection-end-line="133" />
+                <state relative-caret-position="128">
+                  <caret line="172" column="36" selection-start-line="172" selection-start-column="36" selection-end-line="172" selection-end-column="36" />
                   <folding>
                     <element signature="e#0#11#0" expanded="true" />
                   </folding>
@@ -68,8 +68,8 @@
           <file leaf-file-name=".travis.yml" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/.travis.yml">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="130">
-                  <caret line="10" column="22" lean-forward="true" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
+                <state relative-caret-position="60">
+                  <caret line="4" column="7" lean-forward="true" selection-start-line="4" selection-start-column="7" selection-end-line="4" selection-end-column="7" />
                 </state>
               </provider>
             </entry>
@@ -232,7 +232,6 @@
         <option value="$USER_HOME$/PycharmProjects/code_snippets/new.py" />
         <option value="$PROJECT_DIR$/profiling/profile_run_data/profile_runs.js" />
         <option value="$PROJECT_DIR$/profiling/test_profile_params" />
-        <option value="$PROJECT_DIR$/.travis.yml" />
         <option value="$USER_HOME$/PycharmProjects/code_snippets/parker_process_sam.p.py" />
         <option value="$PROJECT_DIR$/profiling/test_profile_run.py" />
         <option value="$PROJECT_DIR$/nanopypes/tasks/lsf_job.py" />
@@ -242,13 +241,14 @@
         <option value="$PROJECT_DIR$/nanopypes/pipes/basecaller.py" />
         <option value="$PROJECT_DIR$/tests/test_basecallers2.py" />
         <option value="$PROJECT_DIR$/scripts/push_code.py" />
-        <option value="$PROJECT_DIR$/profiling/profile_runs.py" />
         <option value="$PROJECT_DIR$/nanopypes/compute.py" />
         <option value="$USER_HOME$/PycharmProjects/code_snippets/scratch.py" />
         <option value="$PROJECT_DIR$/profiling/paths.py" />
         <option value="$PROJECT_DIR$/profiling/pandas_scratch.py" />
-        <option value="$PROJECT_DIR$/profiling/profile_params" />
         <option value="$PROJECT_DIR$/profiling/profile_script.py" />
+        <option value="$PROJECT_DIR$/profiling/profile_runs.py" />
+        <option value="$PROJECT_DIR$/profiling/profile_params" />
+        <option value="$PROJECT_DIR$/.travis.yml" />
       </list>
     </option>
   </component>
@@ -834,16 +834,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/profiling/profile_runs.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="230">
-          <caret line="133" selection-start-line="133" selection-end-line="133" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/profiling/paths.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="346">
@@ -868,20 +858,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/profiling/profile_params">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="795">
-          <caret line="288" column="34" lean-forward="true" selection-start-line="288" selection-start-column="34" selection-end-line="288" selection-end-column="34" />
-          <folding>
-            <element signature="e#18#1927#0" />
-            <element signature="e#3746#5601#0" />
-            <element signature="e#5606#7469#0" />
-            <element signature="e#7474#9329#0" />
-            <element signature="e#9334#11197#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/profiling/profile_script.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="159">
@@ -892,10 +868,33 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/profiling/profile_runs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="172" column="36" selection-start-line="172" selection-start-column="36" selection-end-line="172" selection-end-column="36" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/profiling/profile_params">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="65">
+          <caret line="79" column="108" selection-start-line="79" selection-start-column="108" selection-end-line="79" selection-end-column="108" />
+          <folding>
+            <element signature="e#3746#5601#0" />
+            <element signature="e#5606#7469#0" />
+            <element signature="e#7474#9329#0" />
+            <element signature="e#9334#11197#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/.travis.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="10" column="22" lean-forward="true" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
+        <state relative-caret-position="60">
+          <caret line="4" column="7" lean-forward="true" selection-start-line="4" selection-start-column="7" selection-end-line="4" selection-end-column="7" />
         </state>
       </provider>
     </entry>
