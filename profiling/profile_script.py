@@ -16,7 +16,11 @@ if __name__ == '__main__':
     if new_dir.exists() is False:
         new_dir.mkdir()
 
+    runs = ["run1", "run2"]
+
     for key, value in PATHS.items():
+        if key not in runs:
+            continue
         move_files(value, new_dir)
         config = "profile_params"
         pr = ProfileRun(name=key, config_path=config)
