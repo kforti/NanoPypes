@@ -48,8 +48,7 @@ class ClusterManager:
     @classmethod
     def from_dict(cls, config_dict):
         instance = cls.__new__(cls)
-        instance.__dict__.update(config_dict)
-        setattr(instance, 'clients', [])
+        instance(config_dict)
         return instance
 
     @property
