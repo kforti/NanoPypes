@@ -3,7 +3,7 @@ profile_runs:
         component1:
             component_id: component1
             component_type: pipe
-            component_handler: nanopypes_albacore
+            pipe_handler: nanopypes_albacore
             compute:
                 cluster_type: lsf
                 job_time: 04:00
@@ -52,7 +52,7 @@ profile_runs:
         component1:
             component_id: component1
             component_type: pipe
-            component_handler: nanopypes_albacore
+            pipe_handler: nanopypes_albacore
             compute:
                 cluster_type: lsf
                 job_time: 04:00
