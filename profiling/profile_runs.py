@@ -170,7 +170,7 @@ class ProfileRun:
         profile_data = comp_handle.run()
         save_path = Path(self.output).joinpath("{}_{}_profile_runs.js".format(self.name, comp_name))
 
-        with open(str(save_path), 'a') as file:
+        with open(str(save_path), 'w') as file:
             json.dump(profile_data, file)
 
 
