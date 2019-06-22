@@ -47,8 +47,7 @@ class ClusterManager:
 
     @classmethod
     def from_dict(cls, config_dict):
-        instance = cls.__new__(cls)
-        instance(**config_dict)
+        instance = cls(**config_dict)
         return instance
 
     @property
