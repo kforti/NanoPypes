@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="06fba5a6-e119-4d57-aa65-81370b2766cd" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/nanopypes/compute.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/compute.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/profiling/profile_params" beforeDir="false" afterPath="$PROJECT_DIR$/profiling/profile_params" afterDir="false" />
       <change beforePath="$USER_HOME$/dask-kubernetes/dask_kubernetes/config.py" beforeDir="false" afterPath="$USER_HOME$/dask-kubernetes/dask_kubernetes/config.py" afterDir="false" />
       <change beforePath="$USER_HOME$/prefect/prefect/src/prefect/tasks/shell.py" beforeDir="false" afterPath="$USER_HOME$/prefect/prefect/src/prefect/tasks/shell.py" afterDir="false" />
@@ -30,8 +29,8 @@
           <file leaf-file-name="profile_params" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/profiling/profile_params">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="309">
-                  <caret line="65" column="27" selection-start-line="65" selection-start-column="27" selection-end-line="65" selection-end-column="27" />
+                <state relative-caret-position="105">
+                  <caret line="7" column="24" lean-forward="true" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
                 </state>
               </provider>
             </entry>
@@ -117,7 +116,7 @@
           <file leaf-file-name="compute.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/nanopypes/compute.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-21">
+                <state relative-caret-position="96">
                   <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
                   <folding>
                     <element signature="e#0#36#0" expanded="true" />
@@ -242,8 +241,8 @@
         <option value="$PROJECT_DIR$/scripts/push_code.py" />
         <option value="$PROJECT_DIR$/profiling/profile_runs.py" />
         <option value="$PROJECT_DIR$/profiling/profile_script.py" />
-        <option value="$PROJECT_DIR$/profiling/profile_params" />
         <option value="$PROJECT_DIR$/nanopypes/compute.py" />
+        <option value="$PROJECT_DIR$/profiling/profile_params" />
       </list>
     </option>
   </component>
@@ -890,14 +889,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/profiling/profile_params">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="309">
-          <caret line="65" column="27" selection-start-line="65" selection-start-column="27" selection-end-line="65" selection-end-column="27" />
+        <state relative-caret-position="105">
+          <caret line="7" column="24" lean-forward="true" selection-start-line="7" selection-start-column="24" selection-end-line="7" selection-end-column="24" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/nanopypes/compute.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-21">
+        <state relative-caret-position="96">
           <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
           <folding>
             <element signature="e#0#36#0" expanded="true" />
