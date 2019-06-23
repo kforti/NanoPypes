@@ -32,7 +32,7 @@ class ClusterManager:
         else:
             self.job_extra = job_extra
 
-        self._cluster = cluster or self.build_cluster() # Must be explicitly built first, or a cluster object can be passed
+        self._cluster = cluster #or self.build_cluster() # Must be explicitly built first, or a cluster object can be passed
 
     def _set_debug(self, job_extra):
         logging.basicConfig(format='%(levelname)s:%(message)s', level=logging.DEBUG)

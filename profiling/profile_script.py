@@ -16,7 +16,7 @@ if __name__ == '__main__':
     if new_dir.exists() is False:
         new_dir.mkdir()
 
-    runs = ["run2"]
+    runs = ["run1", "run2"]
 
     for key, value in PATHS.items():
         if key not in runs:

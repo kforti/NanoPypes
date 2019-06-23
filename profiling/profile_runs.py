@@ -162,9 +162,9 @@ class ProfileRun:
             print("executing comp...", comp.__dict__)
             self._execute_component(component, comp)
         else:
-            for comp in self.component_handler.values():
+            for id, comp in self.component_handler.items():
                 print("executing comp...", comp.__dict__)
-                self._execute_component(component, comp)
+                self._execute_component(id, comp)
 
     def _execute_component(self, comp_name, comp_handle):
         profile_data = comp_handle.run()
