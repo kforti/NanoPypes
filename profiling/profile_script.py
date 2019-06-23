@@ -18,12 +18,10 @@ if __name__ == '__main__':
 
     runs = ["run1", "run2"]
 
-    for key, value in PATHS.items():
-        if key not in runs:
-            continue
-        move_files(value, new_dir)
+    for run in runs:
+        move_files(PATHS[run], new_dir)
         config = "profile_params"
-        pr = ProfileRun(name=key, config_path=config)
+        pr = ProfileRun(name=run, config_path=config)
         pr.run()
 
 
