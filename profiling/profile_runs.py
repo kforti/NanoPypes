@@ -167,7 +167,7 @@ class ProfileRun:
                 self._execute_component(id, comp)
 
     def _execute_component(self, comp_name, comp_handle):
-        profile_data = comp_handle.run()
+        profile_data = {}#comp_handle.run()
         save_path = Path(self.output).joinpath("{}_{}_profile_runs.js".format(self.name, comp_name))
 
         with open(str(save_path), 'w') as file:

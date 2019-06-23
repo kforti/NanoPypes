@@ -15,7 +15,7 @@ class ClusterManager:
                  time_out=2000, job_extra=None, env_extra=None, cluster=None, debug=False, interaface=None):
         self.cluster_type = cluster_type
         self.queue = queue
-        self.num_workers = num_workers or len(cluster.workers) or 0
+        self.num_workers = num_workers
         self.worker_memory = worker_memory
         self.worker_cores = worker_cores
         self.workers_per_job = workers_per_job
