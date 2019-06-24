@@ -24,7 +24,7 @@ class ClusterManager:
         self.min_num_workers = min_num_workers
         self.time_out = time_out
         self.env_extra = env_extra
-        self.job_memory = str((self.worker_memory * self.workers_per_job))
+        self.core_memory = str(int(self.worker_memory / self.worker_cores))
         self.interface = None
         self.clients = []
 
@@ -41,9 +41,9 @@ class ClusterManager:
             if job_extra:
                 job_extra.append("-o dask_lsf_cluster.err")
                 job_extra.append("-o dask_lsf_cluster.out")
-                job_extra.append('-R "rusage[mem={}]"'.format(self.job_memory))
+                job_extra.append('-R rusage[mem={}]'.format(self.core_memory))
             else:
-                job_extra = ['-R "rusage[mem={}]"'.format(self.job_memory), "-o dask_lsf_cluster.err", "-o dask_lsf_cluster.out"]
+                job_extra = ['-R rusage[mem={}]'.format(self.core_memory), "-o dask_lsf_cluster.err", "-o dask_lsf_cluster.out"]
         return job_extra
 
     @classmethod
