@@ -1,14 +1,15 @@
 from paths import PATHS
-from pathlib import PosixPath, Path
+from pathlib import Path
 import shutil
 import argparse
+import os
 
 from profile_runs import ProfileRun
 
 
 def move_files(paths, save):
     for p in paths:
-        if Path(p).exists():
+        if p.exists():
             shutil.move(str(p), str(save))
 
 if __name__ == '__main__':
@@ -26,22 +27,17 @@ if __name__ == '__main__':
     print("run: ", run)
     print("components: ", comps)
     print("num_batches: ", num_batches)
-    import os
+
     new_dir = input_data_path.joinpath("albacore_profile_{}".format(run))
     batches = [input_data_path.joinpath(batch) for batch in os.listdir(str(input_data_path))[0:num_batches]]
     print(len(batches), batches)
 
+    if new_dir.exists() is False:
+        new_dir.mkdir()
 
-    # new_dir = Path(input_data_path).joinpath("albacore_profile")
-    # if new_dir.exists() is False:
-    #     new_dir.mkdir()
-    #
-    # runs = ["run2"]
-    #
-    # for run in runs:
-    #     move_files(PATHS[run], new_dir)
-    #     config = "profile_params"
-    #     pr = ProfileRun(name=run, config_path=config)
-    #     pr.run()
+    move_files(batches, new_dir)
+    config = "profile_params"
+    pr = ProfileRun(name=run, config_path=config)
+    pr.run(component=comps)
 
 
