@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="06fba5a6-e119-4d57-aa65-81370b2766cd" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/nanopypes/compute.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/compute.py" afterDir="false" />
       <change beforePath="$USER_HOME$/dask-kubernetes/dask_kubernetes/config.py" beforeDir="false" afterPath="$USER_HOME$/dask-kubernetes/dask_kubernetes/config.py" afterDir="false" />
       <change beforePath="$USER_HOME$/prefect/prefect/src/prefect/tasks/shell.py" beforeDir="false" afterPath="$USER_HOME$/prefect/prefect/src/prefect/tasks/shell.py" afterDir="false" />
     </list>
@@ -19,8 +20,8 @@
           <file leaf-file-name="compute.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/nanopypes/compute.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="105">
-                  <caret line="17" column="38" selection-start-line="17" selection-start-column="38" selection-end-line="17" selection-end-column="38" />
+                <state relative-caret-position="473">
+                  <caret line="39" column="38" lean-forward="true" selection-start-line="39" selection-start-column="38" selection-end-line="39" selection-end-column="38" />
                   <folding>
                     <element signature="e#0#36#0" expanded="true" />
                   </folding>
@@ -28,11 +29,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="profile_params" pinned="false" current-in-tab="false">
+          <file leaf-file-name="profile_params" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/profiling/profile_params">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="450">
-                  <caret line="80" column="31" lean-forward="true" selection-start-line="80" selection-start-column="27" selection-end-line="80" selection-end-column="93" />
+                <state relative-caret-position="654">
+                  <caret line="66" column="106" selection-start-line="66" selection-start-column="28" selection-end-line="66" selection-end-column="108" />
                   <folding>
                     <element signature="e#3746#5601#0" />
                     <element signature="e#5606#7469#0" />
@@ -55,11 +56,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="profile_script.py" pinned="false" current-in-tab="true">
+          <file leaf-file-name="profile_script.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/profiling/profile_script.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="131">
-                  <caret line="18" column="20" selection-start-line="18" selection-start-column="20" selection-end-line="18" selection-end-column="20" />
+                <state relative-caret-position="221">
+                  <caret line="24" column="16" selection-start-line="24" selection-start-column="16" selection-end-line="24" selection-end-column="16" />
                   <folding>
                     <element signature="e#0#23#0" expanded="true" />
                   </folding>
@@ -91,8 +92,8 @@
           <file leaf-file-name="process_sam_oop2.py" pinned="false" current-in-tab="false">
             <entry file="file://$USER_HOME$/PycharmProjects/code_snippets/process_sam_oop2.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-380">
-                  <caret line="524" selection-start-line="524" selection-end-line="524" />
+                <state relative-caret-position="138">
+                  <caret line="144" selection-start-line="144" selection-end-line="144" />
                   <folding>
                     <element signature="e#0#12#0" expanded="true" />
                   </folding>
@@ -243,17 +244,17 @@
         <option value="$PROJECT_DIR$/tests/test_travis.py" />
         <option value="$PROJECT_DIR$/.travis.yml" />
         <option value="$USER_HOME$/PycharmProjects/code_snippets/compute.py" />
-        <option value="$PROJECT_DIR$/profiling/profile_script.py" />
         <option value="$PROJECT_DIR$/scripts/push_code.py" />
-        <option value="$PROJECT_DIR$/nanopypes/compute.py" />
-        <option value="$USER_HOME$/PycharmProjects/code_snippets/process_sam_oop2.py" />
         <option value="$PROJECT_DIR$/profiling/profile_runs.py" />
+        <option value="$PROJECT_DIR$/profiling/profile_script.py" />
+        <option value="$USER_HOME$/PycharmProjects/code_snippets/process_sam_oop2.py" />
+        <option value="$PROJECT_DIR$/nanopypes/compute.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1844" />
-    <option name="y" value="110" />
+    <option name="x" value="1454" />
+    <option name="y" value="160" />
     <option name="width" value="1625" />
     <option name="height" value="834" />
   </component>
@@ -274,12 +275,6 @@
               <item name="NanoPypes" type="b2602c69:ProjectViewProjectNode" />
               <item name="NanoPypes" type="462c0819:PsiDirectoryNode" />
               <item name="nanopypes" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="NanoPypes" type="b2602c69:ProjectViewProjectNode" />
-              <item name="NanoPypes" type="462c0819:PsiDirectoryNode" />
-              <item name="nanopypes" type="462c0819:PsiDirectoryNode" />
-              <item name="pipes" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="NanoPypes" type="b2602c69:ProjectViewProjectNode" />
@@ -482,14 +477,14 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1844" y="111" width="1625" height="834" extended-state="0" />
+    <frame x="1454" y="160" width="1625" height="834" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.77310926" visible="true" weight="0.2531172" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.77310926" visible="true" weight="0.2531172" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.10349127" side_tool="true" visible="true" weight="0.3541384" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.31922197" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.89650875" visible="true" weight="0.3541384" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.89650875" visible="true" weight="0.3541384" />
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Python Console" order="7" sideWeight="0.49750623" weight="0.2971506" />
       <window_info id="Structure" order="1" sideWeight="0.22689076" side_tool="true" visible="true" weight="0.2531172" />
@@ -852,16 +847,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/PycharmProjects/code_snippets/process_sam_oop2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-380">
-          <caret line="524" selection-start-line="524" selection-end-line="524" />
-          <folding>
-            <element signature="e#0#12#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/profiling/profile_runs.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="344">
@@ -882,10 +867,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/profiling/profile_script.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="24" column="16" selection-start-line="24" selection-start-column="16" selection-end-line="24" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/PycharmProjects/code_snippets/process_sam_oop2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="144" selection-start-line="144" selection-end-line="144" />
+          <folding>
+            <element signature="e#0#12#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/nanopypes/compute.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="17" column="38" selection-start-line="17" selection-start-column="38" selection-end-line="17" selection-end-column="38" />
+        <state relative-caret-position="473">
+          <caret line="39" column="38" lean-forward="true" selection-start-line="39" selection-start-column="38" selection-end-line="39" selection-end-column="38" />
           <folding>
             <element signature="e#0#36#0" expanded="true" />
           </folding>
@@ -894,23 +899,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/profiling/profile_params">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="80" column="31" lean-forward="true" selection-start-line="80" selection-start-column="27" selection-end-line="80" selection-end-column="93" />
+        <state relative-caret-position="654">
+          <caret line="66" column="106" selection-start-line="66" selection-start-column="28" selection-end-line="66" selection-end-column="108" />
           <folding>
             <element signature="e#3746#5601#0" />
             <element signature="e#5606#7469#0" />
             <element signature="e#7474#9329#0" />
             <element signature="e#9334#11197#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/profiling/profile_script.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="131">
-          <caret line="18" column="20" selection-start-line="18" selection-start-column="20" selection-end-line="18" selection-end-column="20" />
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
           </folding>
         </state>
       </provider>
