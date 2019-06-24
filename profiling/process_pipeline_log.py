@@ -29,13 +29,13 @@ def get_batches(pipeline_data):
             read = re.findall(read_pat, submit[0])
             read = read[0].replace('"', '')
             if read not in data:
-                data[read] = {}
+                data[read] = {'submitted': None, 'finished': None}
             data[read]['submitted'] = time
         elif finished:
             read = re.findall(read_pat, finished[0])
             read = read[0].replace('"', '')
             if read not in data:
-                data[read] = {}
+                data[read] = {'submitted': None, 'finished': None}
             data[read]['finished'] = time
     return batches
 
