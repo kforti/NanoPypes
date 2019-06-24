@@ -17,7 +17,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Profile Run.')
     parser.add_argument("--run")
     parser.add_argument("--components", nargs='+', default=None)
-    parser.add_argument("--num_batches")
+    parser.add_argument("--num_batches", type=int)
     args = parser.parse_args()
     run = args.run
     comps = args.components
