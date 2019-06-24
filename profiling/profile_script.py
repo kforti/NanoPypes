@@ -16,7 +16,7 @@ if __name__ == '__main__':
     if new_dir.exists() is False:
         new_dir.mkdir()
 
-    runs = ["run1", "run2"]
+    runs = ["run2"]
 
     for run in runs:
         move_files(PATHS[run], new_dir)
