@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="06fba5a6-e119-4d57-aa65-81370b2766cd" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/profiling/process_pipeline_log.py" beforeDir="false" afterPath="$PROJECT_DIR$/profiling/process_pipeline_log.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/profiling/profile_params" beforeDir="false" afterPath="$PROJECT_DIR$/profiling/profile_params" afterDir="false" />
       <change beforePath="$USER_HOME$/dask-kubernetes/dask_kubernetes/config.py" beforeDir="false" afterPath="$USER_HOME$/dask-kubernetes/dask_kubernetes/config.py" afterDir="false" />
       <change beforePath="$USER_HOME$/prefect/prefect/src/prefect/tasks/shell.py" beforeDir="false" afterPath="$USER_HOME$/prefect/prefect/src/prefect/tasks/shell.py" afterDir="false" />
     </list>
@@ -14,157 +15,130 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.7749783">
+    <splitter split-orientation="horizontal" split-proportion="0.8221154">
       <split-first>
-        <splitter split-orientation="horizontal" split-proportion="0.83928573">
-          <split-first>
-            <leaf>
-              <file leaf-file-name="compute.py" pinned="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/nanopypes/compute.py">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="-965">
-                      <caret line="38" column="74" selection-start-line="38" selection-start-column="74" selection-end-line="38" selection-end-column="74" />
-                      <folding>
-                        <element signature="e#0#36#0" expanded="true" />
-                      </folding>
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-              <file leaf-file-name="pandas_scratch.py" pinned="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/profiling/pandas_scratch.py">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="812">
-                      <caret line="64" column="12" lean-forward="true" selection-start-line="64" selection-start-column="12" selection-end-line="64" selection-end-column="12" />
-                      <folding>
-                        <element signature="e#0#19#0" expanded="true" />
-                      </folding>
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-              <file leaf-file-name="process_pipeline_log.py" pinned="false" current-in-tab="true">
-                <entry file="file://$PROJECT_DIR$/profiling/process_pipeline_log.py">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="376">
-                      <caret line="37" column="66" selection-start-line="37" selection-start-column="66" selection-end-line="37" selection-end-column="66" />
-                      <folding>
-                        <element signature="e#0#15#0" expanded="true" />
-                      </folding>
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-              <file leaf-file-name="profile_params" pinned="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/profiling/profile_params">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="285">
-                      <caret line="19" column="93" selection-start-line="19" selection-start-column="27" selection-end-line="19" selection-end-column="93" />
-                      <folding>
-                        <element signature="e#5606#7469#0" />
-                        <element signature="e#7474#9329#0" />
-                        <element signature="e#9334#11197#0" />
-                      </folding>
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-              <file leaf-file-name="profile_runs.py" pinned="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/profiling/profile_runs.py">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="2535">
-                      <caret line="169" column="23" selection-start-line="169" selection-start-column="23" selection-end-line="169" selection-end-column="23" />
-                      <folding>
-                        <element signature="e#0#11#0" expanded="true" />
-                      </folding>
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-              <file leaf-file-name="profile_script.py" pinned="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/profiling/profile_script.py">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="315">
-                      <caret line="21" column="4" selection-start-line="21" selection-start-column="4" selection-end-line="22" selection-end-column="18" />
-                      <folding>
-                        <element signature="e#0#23#0" expanded="true" />
-                      </folding>
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-              <file leaf-file-name="push_code.py" pinned="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/scripts/push_code.py">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="210">
-                      <caret line="14" column="8" selection-start-line="12" selection-end-line="18" selection-end-column="15" />
-                      <folding>
-                        <element signature="e#0#17#0" expanded="true" />
-                      </folding>
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-              <file leaf-file-name=".travis.yml" pinned="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/.travis.yml">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="55">
-                      <caret line="6" column="7" selection-start-line="6" selection-start-column="7" selection-end-line="6" selection-end-column="7" />
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-              <file leaf-file-name="process_sam_oop2.py" pinned="false" current-in-tab="false">
-                <entry file="file://$USER_HOME$/PycharmProjects/code_snippets/process_sam_oop2.py">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="138">
-                      <caret line="144" selection-start-line="144" selection-end-line="144" />
-                      <folding>
-                        <element signature="e#0#12#0" expanded="true" />
-                      </folding>
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-              <file leaf-file-name="basecaller.py" pinned="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/nanopypes/pipes/basecaller.py">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="2895">
-                      <caret line="436" column="55" selection-start-line="436" selection-start-column="55" selection-end-line="436" selection-end-column="55" />
-                      <folding>
-                        <element signature="e#4277#16202#0" />
-                      </folding>
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-            </leaf>
-          </split-first>
-          <split-second>
-            <leaf>
-              <file leaf-file-name="pandas_scratch.py" pinned="false" current-in-tab="true">
-                <entry file="file://$PROJECT_DIR$/profiling/pandas_scratch.py">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="160">
-                      <caret line="54" selection-start-line="54" selection-end-line="64" selection-end-column="12" />
-                      <folding>
-                        <element signature="e#0#19#0" expanded="true" />
-                      </folding>
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-            </leaf>
-          </split-second>
-        </splitter>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file leaf-file-name="compute.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/nanopypes/compute.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="525">
+                  <caret line="38" column="74" selection-start-line="38" selection-start-column="74" selection-end-line="38" selection-end-column="74" />
+                  <folding>
+                    <element signature="e#0#36#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="pandas_scratch.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/profiling/pandas_scratch.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="915">
+                  <caret line="64" column="12" selection-start-line="64" selection-start-column="12" selection-end-line="64" selection-end-column="12" />
+                  <folding>
+                    <element signature="e#0#19#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="process_pipeline_log.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/profiling/process_pipeline_log.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="376">
+                  <caret line="37" column="66" selection-start-line="37" selection-start-column="66" selection-end-line="37" selection-end-column="66" />
+                  <folding>
+                    <element signature="e#0#15#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="profile_params" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/profiling/profile_params">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="651">
+                  <caret line="190" column="34" selection-start-line="190" selection-start-column="34" selection-end-line="190" selection-end-column="34" />
+                  <folding>
+                    <element signature="e#18#1840#0" />
+                    <element signature="e#1845#3704#0" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="profile_runs.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/profiling/profile_runs.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="1041">
+                  <caret line="169" column="23" selection-start-line="169" selection-start-column="23" selection-end-line="169" selection-end-column="23" />
+                  <folding>
+                    <element signature="e#0#11#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="profile_script.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/profiling/profile_script.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="225">
+                  <caret line="15" column="28" selection-start-line="15" selection-start-column="28" selection-end-line="15" selection-end-column="91" />
+                  <folding>
+                    <element signature="e#0#23#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="push_code.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/scripts/push_code.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="120">
+                  <caret line="14" column="8" selection-start-line="12" selection-end-line="18" selection-end-column="15" />
+                  <folding>
+                    <element signature="e#0#17#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="process_sam_oop2.py" pinned="false" current-in-tab="false">
+            <entry file="file://$USER_HOME$/PycharmProjects/code_snippets/process_sam_oop2.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="2130">
+                  <caret line="144" selection-start-line="144" selection-end-line="144" />
+                  <folding>
+                    <element signature="e#0#12#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="basecaller.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/nanopypes/pipes/basecaller.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="3465">
+                  <caret line="436" column="55" selection-start-line="436" selection-start-column="55" selection-end-line="436" selection-end-column="55" />
+                  <folding>
+                    <element signature="e#4277#16202#0" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
       </split-first>
       <split-second>
-        <leaf>
-          <file leaf-file-name="test_profile_params" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/profiling/test_profile_params">
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file leaf-file-name="pandas_scratch.py" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/profiling/pandas_scratch.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="30">
-                  <caret line="2" column="18" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
+                <state relative-caret-position="421">
+                  <caret line="54" selection-start-line="54" selection-end-line="64" selection-end-column="12" />
+                  <folding>
+                    <element signature="e#0#19#0" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -271,15 +245,15 @@
         <option value="$PROJECT_DIR$/profiling/profile_runs.py" />
         <option value="$USER_HOME$/PycharmProjects/code_snippets/process_sam_oop2.py" />
         <option value="$PROJECT_DIR$/profiling/profile_script.py" />
-        <option value="$PROJECT_DIR$/profiling/profile_params" />
         <option value="$PROJECT_DIR$/nanopypes/compute.py" />
         <option value="$PROJECT_DIR$/profiling/process_pipeline_log.py" />
+        <option value="$PROJECT_DIR$/profiling/profile_params" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="1561" />
-    <option name="y" value="130" />
+    <option name="y" value="129" />
     <option name="width" value="1440" />
     <option name="height" value="834" />
   </component>
@@ -500,14 +474,13 @@
     <frame x="1561" y="130" width="1440" height="834" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.77310926" visible="true" weight="0.2410148" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.77204883" visible="true" weight="0.2410148" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.10359408" side_tool="true" weight="0.3541384" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.31922197" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.89640594" visible="true" weight="0.3541384" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.89640594" weight="0.3541384" />
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Python Console" order="7" sideWeight="0.49750623" weight="0.2971506" />
-      <window_info id="Structure" order="1" sideWeight="0.22689076" side_tool="true" visible="true" weight="0.2410148" />
+      <window_info id="Structure" order="1" sideWeight="0.22795115" side_tool="true" visible="true" weight="0.2410148" />
       <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49964765" weight="0.1826793" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3993135" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -517,25 +490,26 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.31922197" />
     </layout>
     <layout-to-restore>
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.2208238" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.7145709" visible="true" weight="0.24573171" />
       <window_info id="Structure" order="1" sideWeight="0.28542915" side_tool="true" weight="0.24625145" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Python Console" order="7" weight="0.24068768" />
-      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.2208238" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.31922197" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3993135" />
       <window_info anchor="bottom" id="Terminal" order="8" weight="0.18317503" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Version Control" order="9" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.31922197" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Python Console" order="7" weight="0.24068768" />
     </layout-to-restore>
   </component>
   <component name="UnknownFeatures">
@@ -564,9 +538,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/profiling/app.log">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/profiling/app.log" />
     <entry file="file://$PROJECT_DIR$/profiling/profile_runs.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2640">
@@ -574,39 +546,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/profiling/test_params">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/profiling/test1_albacore_job">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/profiling/test_params" />
+    <entry file="file://$PROJECT_DIR$/profiling/test1_albacore_job" />
     <entry file="file://$PROJECT_DIR$/nanopypes/tasks/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
           <caret line="3" column="42" selection-start-line="3" selection-start-column="42" selection-end-line="3" selection-end-column="42" />
-          <folding>
-            <element signature="e#0#37#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/profiling/write_job.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="12" lean-forward="true" selection-start-line="10" selection-start-column="4" selection-end-line="13" selection-end-column="14" />
-          <folding>
-            <element signature="e#0#24#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/profiling/write_job.py" />
     <entry file="file://$PROJECT_DIR$/nanopypes/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
           <caret line="12" column="37" selection-start-line="12" selection-start-column="37" selection-end-line="12" selection-end-column="37" />
-          <folding>
-            <element signature="e#161#175#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -614,9 +567,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="12" column="20" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="29" />
-          <folding>
-            <element signature="e#0#17#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -631,9 +581,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
           <caret line="84" column="30" lean-forward="true" selection-start-line="84" selection-start-column="30" selection-end-line="84" selection-end-column="30" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -644,23 +591,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="326">
           <caret line="158" lean-forward="true" selection-start-line="158" selection-end-line="158" />
-          <folding>
-            <element signature="e#0#24#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/test_data/profile_tests/comp1/2/pipeline.log">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/test_data/profile_tests/comp1/2/pipeline.log" />
     <entry file="file://$PROJECT_DIR$/nanopypes/utilities.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-66">
           <caret line="6" column="36" selection-start-line="6" selection-start-column="36" selection-end-line="6" selection-end-column="36" />
-          <folding>
-            <element signature="e#0#27#0" expanded="true" />
-            <element signature="e#109#1891#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -676,13 +614,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/profiling/profile_run_data/profile_runs.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="3" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/profiling/profile_run_data/profile_runs.js" />
     <entry file="file://$PROJECT_DIR$/nanopypes/executor.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="67">
@@ -705,9 +637,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="347">
           <caret line="492" column="26" selection-start-line="492" selection-start-column="26" selection-end-line="492" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -740,13 +669,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/pipeline.log">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-7683">
-          <caret line="7" column="48" selection-start-line="7" selection-start-column="48" selection-end-line="7" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/nanopypes/tasks/lsf_job.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-366">
@@ -761,9 +683,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="690">
           <caret line="46" column="12" selection-start-line="46" selection-start-column="12" selection-end-line="46" selection-end-column="12" />
-          <folding>
-            <element signature="e#0#24#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -835,7 +754,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/nanopypes/pipes/basecaller.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2895">
+        <state relative-caret-position="3465">
           <caret line="436" column="55" selection-start-line="436" selection-start-column="55" selection-end-line="436" selection-end-column="55" />
           <folding>
             <element signature="e#4277#16202#0" />
@@ -845,7 +764,7 @@
     </entry>
     <entry file="file://$USER_HOME$/PycharmProjects/code_snippets/process_sam_oop2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
+        <state relative-caret-position="2130">
           <caret line="144" selection-start-line="144" selection-end-line="144" />
           <folding>
             <element signature="e#0#12#0" expanded="true" />
@@ -862,7 +781,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/scripts/push_code.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
+        <state relative-caret-position="120">
           <caret line="14" column="8" selection-start-line="12" selection-end-line="18" selection-end-column="15" />
           <folding>
             <element signature="e#0#17#0" expanded="true" />
@@ -870,19 +789,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/profiling/profile_runs.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2535">
-          <caret line="169" column="23" selection-start-line="169" selection-start-column="23" selection-end-line="169" selection-end-column="23" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/nanopypes/compute.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-965">
+        <state relative-caret-position="525">
           <caret line="38" column="74" selection-start-line="38" selection-start-column="74" selection-end-line="38" selection-end-column="74" />
           <folding>
             <element signature="e#0#36#0" expanded="true" />
@@ -890,35 +799,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/profiling/profile_script.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="4" selection-start-line="21" selection-start-column="4" selection-end-line="22" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/profiling/profile_params">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="285">
-          <caret line="19" column="93" selection-start-line="19" selection-start-column="27" selection-end-line="19" selection-end-column="93" />
-          <folding>
-            <element signature="e#5606#7469#0" />
-            <element signature="e#7474#9329#0" />
-            <element signature="e#9334#11197#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/profiling/pandas_scratch.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="812">
-          <caret line="64" column="12" lean-forward="true" selection-start-line="64" selection-start-column="12" selection-end-line="64" selection-end-column="12" />
+        <state relative-caret-position="915">
+          <caret line="64" column="12" selection-start-line="64" selection-start-column="12" selection-end-line="64" selection-end-column="12" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/pipeline.log">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="7" column="48" selection-start-line="7" selection-start-column="48" selection-end-line="7" selection-end-column="48" />
         </state>
       </provider>
     </entry>
@@ -928,6 +822,37 @@
           <caret line="37" column="66" selection-start-line="37" selection-start-column="66" selection-end-line="37" selection-end-column="66" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/profiling/profile_runs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1041">
+          <caret line="169" column="23" selection-start-line="169" selection-start-column="23" selection-end-line="169" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#11#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/profiling/profile_script.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="28" selection-start-line="15" selection-start-column="28" selection-end-line="15" selection-end-column="91" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/profiling/profile_params">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="651">
+          <caret line="190" column="34" selection-start-line="190" selection-start-column="34" selection-end-line="190" selection-end-column="34" />
+          <folding>
+            <element signature="e#18#1840#0" />
+            <element signature="e#1845#3704#0" />
           </folding>
         </state>
       </provider>
