@@ -104,7 +104,7 @@ profile_runs:
                 job_time: 04:00
                 project: /project/umw_athma_pai
                 queue: short
-                workers_per_job: 20
+                workers_per_job: 5
                 min_num_workers:
                 num_workers: 20
                 worker_cores: 1
