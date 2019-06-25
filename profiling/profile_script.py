@@ -31,7 +31,7 @@ if __name__ == '__main__':
     new_dir = input_data_path.joinpath("albacore_profile_{}".format(run))
     if new_dir.exists() is False:
         new_dir.mkdir()
-        batches = [input_data_path.joinpath(batch) for batch in os.listdir(str(input_data_path))[0:num_batches]]
+    batches = [input_data_path.joinpath(batch) for batch in os.listdir(str(input_data_path))[0:num_batches]]
     print(len(batches), batches)
 
 
