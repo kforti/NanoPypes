@@ -38,6 +38,6 @@ if __name__ == '__main__':
     move_files(batches, new_dir)
     config = "profile_params"
     pr = ProfileRun(name=run, config_path=config)
-    pr.run(component=comps)
+    pr.run()
 
 

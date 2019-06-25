@@ -119,10 +119,11 @@ class LSFComponentRun(ComponentRun):
 
 class ProfileRun:
 
-    def __init__(self, name, config_path='profile_params', output_path="profile_run_data"):
+    def __init__(self, name, component=None, config_path='profile_params', output_path="profile_run_data"):
         self.name = name
         self.component_configs = self.load_config(config_path)
         self.output = output_path
+        self.component = component
 
         self.component_handler = {}
 
@@ -140,6 +141,8 @@ class ProfileRun:
 
     def build_components(self):
         for component in self.component_configs:
+            if self.component and component != self.component:
+                continue
             component_config = self.component_configs[component]
 
             if component_config["component_type"] == "pipe":
