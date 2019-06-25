@@ -1,6 +1,7 @@
 import argparse
 import re
 import time
+from pathlib import Path
 
 import pandas as pd
 
@@ -79,5 +80,4 @@ if __name__ == '__main__':
         print(max(df.submitted))
         print((max(df.submitted)-min(df.submitted)))
         print(df["time_per_read"].mean())
-        for i in df.keys():
-            print(i)
+        df.to_csv(str(Path(p).parent.name))
