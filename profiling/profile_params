@@ -159,7 +159,7 @@ profile_runs:
                 worker_memory: 2048
                 debug: True
             pipe:
-                input_path: ../tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/albacore_profile_run4
+                input_path: /project/umw_athma_pai/raw/minion/20190220_1525_ERCC/fast5/pass/albacore_profile_run4
                 save_path: ../tests/test_data/basecalled_data/results/profile_test/run4_comp1
                 flowcell: FLO-MIN106
                 kit: SQK-LSK109
