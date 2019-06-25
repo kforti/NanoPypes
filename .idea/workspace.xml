@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="06fba5a6-e119-4d57-aa65-81370b2766cd" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/profiling/profile_runs.py" beforeDir="false" afterPath="$PROJECT_DIR$/profiling/profile_runs.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiling/profile_script.py" beforeDir="false" afterPath="$PROJECT_DIR$/profiling/profile_script.py" afterDir="false" />
       <change beforePath="$USER_HOME$/dask-kubernetes/dask_kubernetes/config.py" beforeDir="false" afterPath="$USER_HOME$/dask-kubernetes/dask_kubernetes/config.py" afterDir="false" />
       <change beforePath="$USER_HOME$/prefect/prefect/src/prefect/tasks/shell.py" beforeDir="false" afterPath="$USER_HOME$/prefect/prefect/src/prefect/tasks/shell.py" afterDir="false" />
     </list>
@@ -264,7 +262,7 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1845" />
+    <option name="x" value="1813" />
     <option name="y" value="23" />
     <option name="width" value="1440" />
     <option name="height" value="834" />
@@ -489,7 +487,7 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1489" y="95" width="1440" height="834" extended-state="0" />
+    <frame x="1813" y="23" width="1440" height="834" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.77204883" visible="true" weight="0.2410148" />
