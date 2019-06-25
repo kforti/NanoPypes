@@ -135,7 +135,7 @@ profile_runs:
             job_script:
                 save_path: job_scripts
                 script_name: profile_run3.sh
-                mem: 40960
+                mem: 2048
                 cores: 20
                 walltime: '04:00'
                 queue: short
