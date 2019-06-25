@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="06fba5a6-e119-4d57-aa65-81370b2766cd" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/profiling/profile_params" beforeDir="false" afterPath="$PROJECT_DIR$/profiling/profile_params" afterDir="false" />
       <change beforePath="$USER_HOME$/dask-kubernetes/dask_kubernetes/config.py" beforeDir="false" afterPath="$USER_HOME$/dask-kubernetes/dask_kubernetes/config.py" afterDir="false" />
       <change beforePath="$USER_HOME$/prefect/prefect/src/prefect/tasks/shell.py" beforeDir="false" afterPath="$USER_HOME$/prefect/prefect/src/prefect/tasks/shell.py" afterDir="false" />
     </list>
@@ -56,10 +55,9 @@
           <file leaf-file-name="profile_params" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/profiling/profile_params">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="195">
-                  <caret line="106" column="34" selection-start-line="106" selection-start-column="34" selection-end-line="106" selection-end-column="34" />
+                <state relative-caret-position="1050">
+                  <caret line="117" column="36" lean-forward="true" selection-start-line="117" selection-start-column="36" selection-end-line="117" selection-end-column="36" />
                   <folding>
-                    <element signature="e#18#1840#0" />
                     <element signature="e#1845#3704#0" />
                   </folding>
                 </state>
@@ -260,8 +258,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1715" />
-    <option name="y" value="272" />
+    <option name="x" value="1539" />
+    <option name="y" value="357" />
     <option name="width" value="1440" />
     <option name="height" value="834" />
   </component>
@@ -485,7 +483,7 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1715" y="272" width="1440" height="834" extended-state="0" />
+    <frame x="1539" y="357" width="1440" height="834" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.77204883" visible="true" weight="0.2410148" />
@@ -859,10 +857,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/profiling/profile_params">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="106" column="34" selection-start-line="106" selection-start-column="34" selection-end-line="106" selection-end-column="34" />
+        <state relative-caret-position="1050">
+          <caret line="117" column="36" lean-forward="true" selection-start-line="117" selection-start-column="36" selection-end-line="117" selection-end-column="36" />
           <folding>
-            <element signature="e#18#1840#0" />
             <element signature="e#1845#3704#0" />
           </folding>
         </state>
