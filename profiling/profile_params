@@ -197,7 +197,7 @@ profile_runs:
             pipe_handler: nanopypes_albacore
             compute:
                 cluster_type: lsf
-                job_time: 06:00
+                job_time: 08:00
                 project: /project/umw_athma_pai
                 queue: long
                 workers_per_job: 10
@@ -233,7 +233,7 @@ profile_runs:
                 script_name: profile_run1.sh
                 mem: 2048
                 cores: 10
-                walltime: '06:00'
+                walltime: '08:00'
                 queue: long
                 out: log_files/profile5_comp2.out
                 err: log_files/profile5_comp2.err
