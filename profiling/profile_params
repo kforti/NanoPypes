@@ -172,21 +172,21 @@ profile_runs:
             component_type: hpc_job
             component_handler: albacore_bash
             command:
-                input_path: ../tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass
+                input_path: /project/umw_athma_pai/raw/minion/20190220_1525_ERCC/fast5/pass/albacore_profile_run4
                 save_path: ../tests/test_data/basecalled_data/results/profile_test/run4_comp2
                 flowcell: FLO-MIN106
                 kit: SQK-LSK109
                 output_format: fastq
-                threads: 20
+                threads: 10
                 recursive: False
                 reads_per_fastq: 1000
             job_script:
                 save_path: job_scripts
                 script_name: profile_run4.sh
-                mem: 20480
-                cores: 20
-                walltime: '08:00'
-                queue: long
+                mem: 2048
+                cores: 10
+                walltime: '04:00'
+                queue: short
                 out: log_files/run4_comp2.out
                 err: log_files/run4_comp2.err
                 bsub_extra: ["-K"]

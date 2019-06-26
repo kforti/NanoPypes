@@ -64,12 +64,11 @@
           <file leaf-file-name="profile_params" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/profiling/profile_params">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="275">
-                  <caret line="161" column="28" selection-start-line="161" selection-start-column="28" selection-end-line="161" selection-end-column="132" />
+                <state relative-caret-position="143">
+                  <caret line="156" column="32" lean-forward="true" selection-start-line="156" selection-start-column="32" selection-end-line="156" selection-end-column="32" />
                   <folding>
                     <element signature="e#18#1840#0" />
                     <element signature="e#1845#3704#0" />
-                    <element signature="e#3709#5568#0" />
                   </folding>
                 </state>
               </provider>
@@ -142,7 +141,7 @@
           <file leaf-file-name="pandas_scratch.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/profiling/pandas_scratch.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="210">
+                <state relative-caret-position="421">
                   <caret line="54" selection-start-line="54" selection-end-line="64" selection-end-column="12" />
                   <folding>
                     <element signature="e#0#19#0" expanded="true" />
@@ -260,10 +259,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1532" />
-    <option name="y" value="71" />
+    <option name="x" value="1715" />
+    <option name="y" value="246" />
     <option name="width" value="1440" />
-    <option name="height" value="830" />
+    <option name="height" value="834" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -485,16 +484,16 @@
     </history-entry>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1532" y="71" width="1440" height="830" extended-state="0" />
+    <frame x="1715" y="272" width="1440" height="834" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.7714844" visible="true" weight="0.2410148" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.77204883" visible="true" weight="0.2410148" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.10359408" side_tool="true" weight="0.3541384" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.89640594" visible="true" weight="0.30150068" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.89640594" weight="0.30150068" />
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Python Console" order="7" sideWeight="0.49750623" weight="0.16010855" />
-      <window_info id="Structure" order="1" sideWeight="0.22851562" side_tool="true" visible="true" weight="0.2410148" />
+      <window_info id="Structure" order="1" sideWeight="0.22795115" side_tool="true" visible="true" weight="0.2410148" />
       <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49964765" weight="0.1826793" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3993135" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -862,12 +861,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/profiling/profile_params">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="161" column="28" selection-start-line="161" selection-start-column="28" selection-end-line="161" selection-end-column="132" />
+        <state relative-caret-position="143">
+          <caret line="156" column="32" lean-forward="true" selection-start-line="156" selection-start-column="32" selection-end-line="156" selection-end-column="32" />
           <folding>
             <element signature="e#18#1840#0" />
             <element signature="e#1845#3704#0" />
-            <element signature="e#3709#5568#0" />
           </folding>
         </state>
       </provider>
