@@ -197,9 +197,9 @@ profile_runs:
             pipe_handler: nanopypes_albacore
             compute:
                 cluster_type: lsf
-                job_time: 04:00
+                job_time: 06:00
                 project: /project/umw_athma_pai
-                queue: short
+                queue: long
                 workers_per_job: 10
                 min_num_workers:
                 num_workers: 10
@@ -207,7 +207,7 @@ profile_runs:
                 worker_memory: 2048
                 debug: True
             pipe:
-                input_path: /project/umw_athma_pai/raw/minion/20190220_1525_ERCC/fast5/pass/albacore_profile_run4
+                input_path: /project/umw_athma_pai/raw/minion/20190220_1525_ERCC/fast5/pass/albacore_profile_run5
                 save_path: ../tests/test_data/basecalled_data/results/profile_test/run5_comp1
                 flowcell: FLO-MIN106
                 kit: SQK-LSK109
@@ -220,7 +220,7 @@ profile_runs:
             component_type: hpc_job
             component_handler: albacore_bash
             command:
-                input_path: /project/umw_athma_pai/raw/minion/20190220_1525_ERCC/fast5/pass/albacore_profile_run4
+                input_path: /project/umw_athma_pai/raw/minion/20190220_1525_ERCC/fast5/pass/albacore_profile_run5
                 save_path: ../tests/test_data/basecalled_data/results/profile_test/run5_comp2
                 flowcell: FLO-MIN106
                 kit: SQK-LSK109
@@ -233,8 +233,8 @@ profile_runs:
                 script_name: profile_run1.sh
                 mem: 2048
                 cores: 10
-                walltime: '04:00'
-                queue: short
+                walltime: '06:00'
+                queue: long
                 out: log_files/profile5_comp2.out
                 err: log_files/profile5_comp2.err
                 bsub_extra: ["-K"]
