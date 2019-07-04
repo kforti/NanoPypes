@@ -1,4 +1,4 @@
-
+from nanopypes.tasks import SingularityTask, LSFJob, ShellTask
 
 class Pipeline:
     def __init__(self, pipes):
@@ -10,9 +10,11 @@ class Pipeline:
 
 
 class Pipe():
+    task_handler = {'singularity': SingularityTask,
+                    'shell': ShellTask}
 
     def __init__(self):
-        pass
+        self._expected_data = None
 
     def execute(self):
         pass
@@ -25,5 +27,9 @@ class Pipe():
 
     def __call__(self):
         return self.execute()
+
+    @property
+    def expected_data(self):
+        pass
 
 

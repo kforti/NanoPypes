@@ -65,27 +65,35 @@ class CommandBuilder:
         - template (string): a string template with variables wrapped in brackets {}.
             (Example template: 'minimap2 -ax map-ont {ref} {read} -o {output}')
     """
-    def __init__(self, template=None):
-        self._template = template
+    def __init__(self, commands, template_config):
+        self.commands = commands
+        self.template_config = template_config
 
-    @defaults_from_attrs("template")
-    def build(self, **kwargs):
-        if self._template is None:
-            raise AttributeError("You must provide a command template")
+        self.templates = {}
+        for command in self.commands:
+            self.generate_templates(command)
 
+
+    def build_command(self, command, **kwargs):
         var_dict = defaultdict(str, kwargs)
+        print("here: ", var_dict)
+        print(command)
+        print(self.templates[command])
+        built_command = self.templates[command].format_map(var_dict)
+        return built_command
 
-        command = self._template.format_map(var_dict)
-        return command
+    def generate_templates(self, command):
+        config = self.template_config[command]
+        template = ""
+        command_order = config.pop('command_order')
+        for cmd in command_order:
+            template += (cmd + " ")
+            template += (config.pop(cmd) + " ")
 
-    @property
-    def template(self):
-        return self._template
+        for key, value in config.items():
+            template += (key + " " + value + " ")
 
-    @template.setter
-    def template(self, template):
-        self._template = template
-
+        self.templates[command] = template
 
 #####################
 # Exceptions
@@ -94,8 +102,14 @@ class CommandBuilder:
 class SubprocessError(Exception):
     pass
 
+class InValidTaskError(KeyError):
+    pass
+
 
 if __name__ == '__main__':
-    command_template = CommandBuilder('minimap2 -ax map-ont {ref} {read} -o {output}')
-    command = command_template.build(**{'read':'my_read'})
+    # command_template = CommandBuilder('minimap2 -ax map-ont {ref} {read} -o {output}')
+    # command = command_template.build(**{'read':'my_read'})
+    command = "hi" + "\r" + "stranger"
     print(command)
+
+

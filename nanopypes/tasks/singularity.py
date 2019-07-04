@@ -1,7 +1,7 @@
 from spython.main import Client
 
-from nanopypes.tasks import Task
-from nanopypes.utilities import defaults_from_attrs
+from prefect import Task
+from prefect.utilities.tasks import defaults_from_attrs
 
 
 class SingularityTask(Task):

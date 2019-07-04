@@ -40,7 +40,7 @@ class EagerExecutor(Executor):
                 self.futures.append(future)
 
             if self.cluster_full and self.completed_tasks:
-                next(self.completed_tasks)
+                completed_future = next(self.completed_tasks)
                 self.completed_tasks.add(future)
                 self.dispatched_tasks -= 1
 

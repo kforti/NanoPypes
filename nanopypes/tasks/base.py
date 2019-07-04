@@ -1,13 +1,10 @@
-
+from prefect import Task
 
 
 class Task():
 
     def __init__(self, name=None):
         self.name = name
-
-    def run(self):
-        pass
 
     @classmethod
     def from_dict(cls, config_dict):

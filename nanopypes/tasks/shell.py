@@ -2,6 +2,7 @@ import subprocess
 import os
 import tempfile
 
+from dagster import lambda_solid
 
 from nanopypes.utilities import defaults_from_attrs, SubprocessError
 from nanopypes.tasks import Task

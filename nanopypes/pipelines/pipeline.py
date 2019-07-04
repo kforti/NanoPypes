@@ -84,14 +84,16 @@ class Pipeline:
                 if self._tasks[task]['yielded']:
                     continue
                 elif task not in self._dependencies:
-                    yield task
+                    yield self._tasks[task]['task_handle']
                     self._tasks[task]['yielded'] = True
+                    tasks_yielded += 1
                 else:
                     for dependency in self._dependencies[task]:
                         if self._tasks[dependency]['yielded'] is False:
                             break
-                    yield task
+                    yield self._tasks[task]['task_handle']
                     self._tasks[task]['yielded'] = True
+                    tasks_yielded += 1
 
 def command_factory(command_builder, data, builder_key=None):
     if builder_key:
@@ -123,10 +125,16 @@ def albacore_basecaller(pipeline, compute, data, command_template, save_path, de
 
 
 if __name__ == '__main__':
-    from nanopypes.objects.base import NanoporeSequenceData
-    templ = "read_fast5_basecaller.py --flowcell some_flowcell --kit somekit --output_format fastq --save_path {save_path} --worker_threads 5 --input {input} --reads_per_fastq_batch 1000"
-    data = NanoporeSequenceData(path="/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass")
-    save_path = "/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/basecalled_data/results/local_basecall_test"
-    albacore_basecaller(compute=None, data=data, command_template=templ, save_path=save_path)
-
+    # from nanopypes.objects.base import NanoporeSequenceData
+    # templ = "read_fast5_basecaller.py --flowcell some_flowcell --kit somekit --output_format fastq --save_path {save_path} --worker_threads 5 --input {input} --reads_per_fastq_batch 1000"
+    # data = NanoporeSequenceData(path="/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass")
+    # save_path = "/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/basecalled_data/results/local_basecall_test"
+    # albacore_basecaller(compute=None, data=data, command_template=templ, save_path=save_path)
+    pipeline = Pipeline()
+    pipeline.add_task('basecaller1', 'singularity')
+    pipeline.add_task('minimap1', 'singularity')
+    pipeline.add_task('qc1', 'shell')
+    pipeline.add_dependencies('minimap1', {'basecaller1', 'qc1'})
+    pipeline.add_dependencies('qc1', {'basecaller1'})
+    print([i for i in pipeline])
 
