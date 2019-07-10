@@ -1,5 +1,6 @@
-from dask_jobqueue import LSFCluster
+from dask_jobqueue import LSFCluster, SLURMCluster
 from distributed import Client, LocalCluster
+from dask_kubernetes import KubeCluster
 
 import logging
 
@@ -10,7 +11,7 @@ def get_config_file(config_type):
 
 class ClusterManager:
     """ Cluster based task manager for running the basecaller in parallel"""
-    def __init__(self, num_workers=None, worker_memory=None, worker_cores=None, cluster_type=None,
+    def __init__(self, num_workers=0, worker_memory=None, worker_cores=None, cluster_type=None,
                  queue=None, workers_per_job=None, job_time=None, project=None, min_num_workers=None,
                  time_out=2000, job_extra=None, env_extra=None, cluster=None, debug=False, interaface=None):
         self.cluster_type = cluster_type
@@ -24,7 +25,10 @@ class ClusterManager:
         self.min_num_workers = min_num_workers
         self.time_out = time_out
         self.env_extra = env_extra
-        self.core_memory = str(int(self.worker_memory / self.worker_cores))
+        try:
+            self.core_memory = str(int(self.worker_memory / self.worker_cores))
+        except:
+            pass
         self.interface = None
         self.clients = []
 
@@ -116,7 +120,25 @@ class ClusterManager:
         return cluster
 
     def _build_slurm(self):
-        pass
+        ncpus = self.workers_per_job * self.worker_cores
+        mem_bytes = self.worker_memory * self.workers_per_job * 1024 ** 2
+        dask_memory = str(int((self.worker_memory * self.workers_per_job)/ 1024)) + 'GB'
+        cluster = SLURMCluster(queue=self.queue,
+                               project=self.project,
+                               walltime=self.job_time,
+                               job_cpu=ncpus,
+                               job_mem=mem_bytes,
+                               job_extra=self.job_extra,
+                               processes=self.workers_per_job,
+                               memory=dask_memory)
+        return cluster
+
+    def _build_kubernetes(self):
+        ncpus = self.workers_per_job * self.worker_cores
+        mem_bytes = self.worker_memory * self.workers_per_job * 1024 ** 2
+        dask_memory = str(int((self.worker_memory * self.workers_per_job) / 1024)) + 'GB'
+        cluster = KubeCluster(n_workers=self.num_workers,
+                              )
 
     def close(self):
         for client in self.clients:

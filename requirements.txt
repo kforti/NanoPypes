@@ -9,3 +9,5 @@ conda
 cytoolz
 pexpect
 spython
+prefect
+pandas

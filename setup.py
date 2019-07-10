@@ -37,9 +37,9 @@ setup(
             'build_cluster = nanopypes.cli:build_cluster',
             'albacore_basecaller = nanopypes.cli:albacore_basecaller',
             'prsync = nanopypes.cli:parallel_rsync',
-            'nanopypes_minimap2 = nanopypes.cli:parallel_minimap2'
+            'nanopypes-app = nanopypes.cli:start_app',
             'get_config_template = nanopypes.cli:get_config_template',
-            'test_cli = nanopypes.cli:test_cli',
+            'run_pipeline = nanopypes.cli:run_pipeline',
         ],
     },
     install_requires= [
@@ -53,13 +53,15 @@ setup(
         'conda',
         'cytoolz',
         'pexpect',
-        'spython'
+        'spython',
+        'prefect',
+        'pandas'
     ],
     license="GNU General Public License v3",
     long_description=readme + '\n\n' + history,
     include_package_data=True,
-    keywords='pai-nanopypes',
-    name='pai-nanopypes',
+    keywords='nanopypes',
+    name='nanopypes',
     packages=find_packages(include=['nanopypes']),
     setup_requires=setup_requirements,
     test_suite='tests',

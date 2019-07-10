@@ -23,7 +23,7 @@ class Pipeline:
 
     def add_task(self, task_name, task, *args):
         """
-        Adds a task or a list of tasks to the pipeline.
+        Adds a task or a list of tasks to the pipeline.yml.
 
         Args:
             - task_name (string): a name to refer to this task by.
@@ -36,7 +36,7 @@ class Pipeline:
 
     # def add_data(self, task_name, data, *args):
     #     """
-    #     Adds Data object or a list of Data object to the pipeline.
+    #     Adds Data object or a list of Data object to the pipeline.yml.
     #     Task name is also supplied in order to connect the data to a
     #     specific task.
     #
@@ -49,7 +49,7 @@ class Pipeline:
 
     def add_dependencies(self, task_name=None, dependencies=None, *args):
         """
-        Adds Data object or a list of Data object to the pipeline.
+        Adds Data object or a list of Data object to the pipeline.yml.
         Task name is also supplied in order to connect the data to a
         specific task.
 

@@ -1,59 +1,49 @@
 albacore:
-    task: shell
+    task_config:
+        task_type: shell
     data_type: single_read_fast5
-    data_input_path: "USER_INPUT"
-    data_save_path: "../pipeline_run/{pipeline_id}/albacore"
+    input_path: "{input_path}"
+    save_path: "../pipeline_run/{pipeline_id}/albacore"
     commands:
-        basecall:
-            read_fast5_basecaller.py: ""
-            --input: "{input}"
-            --save_path: "{save_path}"
-            --flowcell: FLO-MIN106
-            --kit: SQK-LSK109
-            --output_format: fastq
-            --worker_threads: "1"
-            --reads_per_fastq: "1000"
-            command_order: ["read_fast5_basecaller.py"]
+        basecall: "read_fast5_basecaller.py --input {input} --save_path {save_path} --flowcell {flowcell} --kit {kit} --output_format fastq --worker_threads 1 --reads_per_fastq 1000"
+    user_input: ['flowcell', 'kit']
 minimap2:
-    task: shell
+    task_config:
+        task_type: shell
     data_type: fastq
-    data_input_path: ""
-    references: ""
-    data_save_path: "../pipeline_run/{pipeline_id}/minimap2"
+    input_path: "{{NANOPYPES_VARIABLE}}" # possibly user defined as well
+    references: /Users/kevinfortier/PycharmProjects/code_snippets/ercc_ref_20190220_1525.fa #"{{USER_INPUT}}" # For reference per barcode {"{{USER_INPUT}}": "{{USER_INPUT}}"}
+    save_path: "../pipeline_run/5/minimap2"
     commands:
-        splice-map:
-            minimap2: "-ax splice {reference} {read}"
-            -o: "{save_path}"
-            command_order: ["minimap2"]
+        splice-map: "minimap2 -ax splice {reference} {read} -o {save_path}"
 samtools:
-    task: shell
+    task_config:
+        task_type: shell
     data_type: sam_bam
-    data_input_path: ""
-    data_save_path: "../pipeline_run/{pipeline_id}/samtools"
+    input_path: "{{NANOPYPES_VARIABLE}}" # possibly user defined as well
+    save_path: "../pipeline_run/{pipeline_id}/samtools"
     commands:
-        sam_to_bam:
-            samtools: "view -b -S -o {bam} {sam}"
-        sort_bam:
-            samtools: "sort {bam} -o {sorted_bam}"
-        index_bam:
-            samtools: "index {sorted_bam} {bam_index}"
+        sam_to_bam: "samtools view -b -S -o {bam} {sam}"
+        sort_bam: "samtools sort {bam} -o {sorted_bam}"
+        index_bam: "samtools index {sorted_bam} {bam_index}"
 bcftools:
-    task: shell
+    task_config:
+        task_type: shell
     data_type: bcf_vcf
-    references: ""
-    data_input_path: ""
-    data_save_path:  "../pipeline_run/{pipeline_id}/bcftools"
+    references: "{{USER_INPUT}}" # For reference per barcode {"{{USER_INPUT}}": "{{USER_INPUT}}"}
+    input_path: "{{NANOPYPES_VARIABLE}}" # possibly user defined as well
+    save_path:  "../pipeline_run/{pipeline_id}/bcftools"
     commands:
-        pileup:
-            bcftools: "mpileup -Ob -f {reference} {sorted_bam}"
-            -o: "{bcf}"
-            command_order: ["bcftools"]
-        variant_call:
-            bcftools: "call -c -v {bcf}"
-            -o: "{vcf}"
-            command_order: ["bcftools"]
+        pileup: "bcftools mpileup -Ob -f {reference} {sorted_bam} -o {bcf}"
+        variant_call: "bcftools call -c -v {bcf} -o {vcf}"
 porechop:
-    task: shell
+    task_config:
+        task_type: shell
     data_type: fastq
+    input_path: "{{NANOPYPES_VARIABLE}}" # possibly user defined as well
+    save_path: "../pipeline_run/{pipeline_id}/demultiplexed_reads"
+    commands:
+        demultiplex: "porechop -i {input_dir} -b {save_dir}"
+
 
 

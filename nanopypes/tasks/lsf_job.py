@@ -3,7 +3,8 @@ import subprocess
 import os
 from pathlib import Path
 
-from nanopypes.utilities import defaults_from_attrs, SubprocessError
+from nanopypes.utilities import SubprocessError
+from prefect.utilities.tasks import defaults_from_attrs
 
 
 class LSFJob:

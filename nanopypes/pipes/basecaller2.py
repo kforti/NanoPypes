@@ -1,49 +1,35 @@
 import os
 
 from nanopypes.pipes.base import Pipe
-from nanopypes.utilities import InValidTaskError, CommandBuilder
 
 
 class AlbacoreBasecaller(Pipe):
 
-    def __init__(self, input_paths, save_path, pipe_config, commands, pipeline, dependencies):
-        self.input_paths = input_paths
-        self.save_path = save_path
-        self.pipe_config = pipe_config
-        self.commands = commands
-        self.pipeline = pipeline
-
-        self.task_type = pipe_config["task"]
-        self.task = self.task_handler[self.task_type]
-
-        self.command_builder = CommandBuilder(self.commands, self.pipe_config["commands"])
-
-        self.save_paths = []
-        self._generate_save_paths()
-        self._expected_data = []
-
-    @property
-    def expected_data(self):
-        return self.save_paths
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.task_id = "albacore"
 
     def create_tasks(self):
         command_id = self.commands[0]
-        all_tasks = []
+        self._all_commands[command_id] = []
+
         for i in range(len(self.input_paths)):
             command = self.command_builder.build_command(command_id,
                                                          input=self.input_paths[i],
                                                          save_path=self.save_paths[i])
-            if self.task_type == 'shell':
-                task = self.task(command, slug=(command_id + os.path.basename(self.input_paths[i])))
-                all_tasks.append(task)
+            self._all_commands[command_id].append(command)
+            task_id = self.task_id + "_" + os.path.basename(self.input_paths[i])
+            task = self.task(command, slug=task_id, name=self.task_id, **self.task_config)
+            if self.dependencies:
+                task.set_upstream(self.dependencies[i], flow=self.pipeline)
+            else:
+                self.pipeline.add_task(task)
 
-        with self.pipeline as flow:
-            for i in range(len(all_tasks)):
-                result = all_tasks[i]()
-                self._expected_data.append((result, self.save_paths[i]))
+            self.all_tasks.append(task)
+
+        return self.pipeline
 
     def _generate_save_paths(self):
-        import os
         for path in self.input_paths:
             self.save_paths.append(os.path.join(self.save_path, os.path.basename(path)))
 
@@ -56,7 +42,7 @@ if __name__ == '__main__':
 
     cluster = LocalCluster()
 
-    pipeline = Flow("pipeline")
+    pipeline = Flow("pipeline.yml")
     executor = DaskExecutor(address=cluster.scheduler_address)
 
     input_paths = ["/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/0",
@@ -71,11 +57,17 @@ if __name__ == '__main__':
     print(config)
     # c = "read_fast5_basecaller.py  --input {input} --save_path {save_path} --flowcell FLO-MIN106 --kit SQK-LSK109 --output_format fastq --worker_threads 1 --reads_per_fastq 1000 "
     # print(c.format_map({'input': 'here is input', 'save_path': 'here is save path'}))
-    albacore = AlbacoreBasecaller(input_paths, save_path, config["albacore"], commands, pipeline)
+    albacore = AlbacoreBasecaller(input_paths=input_paths,
+                                  save_path=save_path,
+                                  command_config=config["albacore"],
+                                  commands=commands,
+                                  pipeline=pipeline,
+                                  task_config=config["albacore"]["task_config"])
     albacore.create_tasks()
-    p = albacore.pipeline
-    print(p.tasks)
-    p.run(executor=executor)
+    print(albacore.expected_data)
+    # p = albacore.pipeline.yml
+    #print(p.tasks)
+    # p.run(executor=executor)
 
 
 
