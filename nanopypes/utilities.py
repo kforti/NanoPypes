@@ -14,32 +14,19 @@ class CommandBuilder:
         - template (string): a string template with variables wrapped in brackets {}.
             (Example template: 'minimap2 -ax map-ont {ref} {read} -o {output}')
     """
-    def __init__(self, commands, template_config):
-        self.commands = commands
-        self.template_config = template_config
+    def __init__(self, template):
+        self.template = template
 
         self.templates = {}
-        for command in self.commands:
-            self.generate_templates(command)
+        # for command in self.commands:
+        #     self.generate_templates(command)
 
 
-    def build_command(self, command, **kwargs):
-        var_dict = defaultdict(str, kwargs)
-        built_command = self.templates[command].format_map(var_dict)
-        return built_command
-
-    def generate_templates(self, command):
-        template = self.template_config[command]
-        # template = ""
-        # command_order = config.pop('command_order')
-        # for cmd in command_order:
-        #     template += (cmd + " ")
-        #     template += (config.pop(cmd) + " ")
-        #
-        # for key, value in config.items():
-        #     template += (key + " " + value + " ")
-
-        self.templates[command] = template
+    def build_command(self, data):
+        print(self.template)
+        print(data)
+        command = self.template.format_map(data)
+        return command
 
 
 class SafeDict(dict):
@@ -48,22 +35,22 @@ class SafeDict(dict):
 
 
 class Configuration:
-    def __init__(self, pipeline_path, user_input):
-        self.pipeline_config = self._get_yaml_config(pipeline_path)
+    def __init__(self, pipeline_path, user_input=None):
+        pipeline_data = self._get_yaml_config(pipeline_path)
+        self._pipeline_config = pipeline_data
         self._pipe_configs = {}
-        self._pipeline_id = self.pipeline_config.pop("pipeline_id")
-        self._pipeline_order = self.pipeline_config.pop("pipeline_order")
+        self._pipeline_id = pipeline_data.pop("pipeline_id")
+        self._pipeline_order = pipeline_data.pop("pipeline_order")
         self._get_pipe_configs()
 
-        self._compute_config_path = self.pipeline_config.pop("compute_config_path")
-        self._compute_id = self.pipeline_config.pop("compute_id")
+        self._compute_config_path = pipeline_data.pop("compute_config_path")
+        self._compute_id = pipeline_data.pop("compute_id")
         compute_config = self._get_yaml_config(self._compute_config_path)
         self._compute_config = compute_config.pop(self._compute_id)
 
-        self.user_input = user_input
+        self.user_input = user_input or {}
         self._check_user_input()
         self._update_pipe_configs()
-        print(self._pipe_configs)
 
     @property
     def compute_config(self):
@@ -72,6 +59,10 @@ class Configuration:
     @property
     def pipe_configs(self):
         return self._pipe_configs
+
+    @property
+    def pipeline_config(self):
+        return self._pipeline_config
 
     @property
     def pipeline_order(self):
@@ -88,9 +79,10 @@ class Configuration:
     def _update_pipe_configs(self):
         user_input = SafeDict(self.user_input)
         for pipe, cmd in self._pipeline_order:
-            print(pipe, cmd)
+            #print(pipe, cmd)
             command = self.pipe_configs[pipe]["commands"][cmd].format_map(user_input)
-            print("Command: ", command)
+            self.pipe_configs[pipe]["commands"][cmd] = command
+            #print("Command: ", command)
 
     def _get_yaml_config(self, path):
         with open(path, 'r') as config:
@@ -103,7 +95,7 @@ class Configuration:
         path = os.path.dirname(os.path.abspath(__file__))
         path = os.path.join(path, "configs", "pipes.yml")
         all_pipe_configs = self._get_yaml_config(path)
-        for pipe, values in self.pipeline_config["pipe_configs"].items():
+        for pipe, values in self._pipeline_config["pipe_configs"].items():
             try:
                 all_pipe_configs[pipe].update(values)
             except KeyError:
@@ -122,13 +114,12 @@ class Configuration:
                 expected_user_input.extend(user_input)
             except KeyError:
                 pass
+
         for i in expected_user_input:
-            try:
-                print(i, self.user_input[i])
-            except KeyError:
-                new_value = input("You forgot a Pipeline Parameter...\nPlease enter a vlue for {}: ".format(i))
+            if i not in self.user_input:
+                new_value = input("You forgot a Pipeline Parameter...\nPlease enter a value for {}: ".format(i))
                 self.user_input[i] = new_value
-        print(self.user_input)
+        #print(self.user_input)
 
         #self._search_dict(self._pipe_configs)
 
@@ -156,12 +147,8 @@ class InValidTaskError(KeyError):
 
 
 if __name__ == '__main__':
-    import os
-    import sys
-
-    path = os.path.dirname(sys.modules['__main__'].__file__)
-    print(path)
-    # path = "configs/pipeline.yml"
+    pass
+    # path = "configs/local_pipeline.yml"
     # config = Configuration(path)
     # print(config.compute_config)
     # print(config.pipe_configs)

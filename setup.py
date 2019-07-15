@@ -47,6 +47,7 @@ setup(
         'dask[distributed]',
         'dask-jobqueue',
         'dask[dataframe]',
+        'dask-kubernetes',
         'h5py',
         'ont_fast5_api',
         'bokeh',

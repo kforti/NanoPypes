@@ -24,6 +24,7 @@ class AlbacoreBasecaller(Pipe):
                 task.set_upstream(self.dependencies[i], flow=self.pipeline)
             else:
                 self.pipeline.add_task(task)
+            print(vars(task))
 
             self.all_tasks.append(task)
 
@@ -42,7 +43,7 @@ if __name__ == '__main__':
 
     cluster = LocalCluster()
 
-    pipeline = Flow("pipeline.yml")
+    pipeline = Flow("local_pipeline.yml")
     executor = DaskExecutor(address=cluster.scheduler_address)
 
     input_paths = ["/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/0",
@@ -65,7 +66,7 @@ if __name__ == '__main__':
                                   task_config=config["albacore"]["task_config"])
     albacore.create_tasks()
     print(albacore.expected_data)
-    # p = albacore.pipeline.yml
+    # p = albacore.local_pipeline.yml
     #print(p.tasks)
     # p.run(executor=executor)
 

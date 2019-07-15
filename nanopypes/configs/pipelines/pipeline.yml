@@ -1,14 +1,12 @@
 pipeline_id: demulti_mapper
-pipeline_order: [["albacore", "basecall"], ["porechop", "demultiplex"], ["minimap2", "splice-map"]]
-input_path: "/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/"
-save_path: "/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/basecalled_data/results/local_basecall_copy"
+pipeline_order: [["albacore", "basecall"], ["minimap2", "splice-map"]]
 pipe_configs:
     albacore:
         task_config:
             task_type: shell
         data_type: single_read_fast5
-        input_path: "{input_path}"
-        save_path: "../pipeline_run/{pipeline_id}/albacore"
+        input_path: "/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/"
+        save_path: "/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/basecalled_data/results/local_basecall_copy"
         commands:
             basecall: "read_fast5_basecaller.py --input {input} --save_path {save_path} --flowcell {flowcell} --kit {kit} --output_format fastq --worker_threads 1 --reads_per_fastq 1000"
         user_input: ['flowcell', 'kit']
@@ -16,11 +14,11 @@ pipe_configs:
         task_config:
             task_type: shell
         data_type: fastq
-        input_path: "{{NANOPYPES_VARIABLE}}" # possibly user defined as well
+        input_path: "/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/basecalled_data/results/local_basecall_copy"
         references: "{references}" #"{{USER_INPUT}}" # For reference per barcode {"{{USER_INPUT}}": "{{USER_INPUT}}"}
         save_path: "../pipeline_run/5/minimap2"
         commands:
             splice-map: "minimap2 -ax splice {reference} {read} -o {save_path}"
-        user_input: ['references']
+        user_input: ['reference']
 compute_config_path: /Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/nanopypes/configs/compute.yml
-compute_id: umass_ghpcc_lsf
+compute_id: local

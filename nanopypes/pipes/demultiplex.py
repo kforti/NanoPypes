@@ -30,7 +30,8 @@ class Porechop(Pipe):
         return self.pipeline
 
     def _generate_save_paths(self):
-        for path in self.input_paths:
+        for i, path in enumerate(self.input_paths):
+            self.input_paths[i] = os.path.join(path, "workspace", "path")
             self.save_paths.append(os.path.join(self.save_path, os.path.basename(path)))
 
 

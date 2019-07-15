@@ -23,7 +23,7 @@ class Pipeline:
 
     def add_task(self, task_name, task, *args):
         """
-        Adds a task or a list of tasks to the pipeline.yml.
+        Adds a task or a list of tasks to the local_pipeline.yml.
 
         Args:
             - task_name (string): a name to refer to this task by.
@@ -36,7 +36,7 @@ class Pipeline:
 
     # def add_data(self, task_name, data, *args):
     #     """
-    #     Adds Data object or a list of Data object to the pipeline.yml.
+    #     Adds Data object or a list of Data object to the local_pipeline.yml.
     #     Task name is also supplied in order to connect the data to a
     #     specific task.
     #
@@ -49,7 +49,7 @@ class Pipeline:
 
     def add_dependencies(self, task_name=None, dependencies=None, *args):
         """
-        Adds Data object or a list of Data object to the pipeline.yml.
+        Adds Data object or a list of Data object to the local_pipeline.yml.
         Task name is also supplied in order to connect the data to a
         specific task.
 
@@ -125,7 +125,7 @@ def albacore_basecaller(pipeline, compute, data, command_template, save_path, de
 
 
 if __name__ == '__main__':
-    # from nanopypes.objects.base import NanoporeSequenceData
+    # from nanopypes.distributed_data.base import NanoporeSequenceData
     # templ = "read_fast5_basecaller.py --flowcell some_flowcell --kit somekit --output_format fastq --save_path {save_path} --worker_threads 5 --input {input} --reads_per_fastq_batch 1000"
     # data = NanoporeSequenceData(path="/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass")
     # save_path = "/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/basecalled_data/results/local_basecall_test"

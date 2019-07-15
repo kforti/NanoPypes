@@ -7,7 +7,8 @@ from prefect.engine.executors.dask import DaskExecutor
 from nanopypes.pipes.basecaller2 import AlbacoreBasecaller
 from nanopypes.pipes.long_read_mappers import MiniMap2
 from nanopypes.pipes.demultiplex import Porechop
-from nanopypes.objects.base import NanoporeSequenceData
+from nanopypes.distributed_data.base import NanoporeSequenceData
+from nanopypes.tasks.base import GetFastqs
 
 class PipelineData:
     data_handlers = {}
@@ -52,11 +53,12 @@ class PipelineBuilder:
         self.input = NanoporeSequenceData(path=input_path, batch_size=self.num_batches)
         self._pipeline = Flow(name="variant_caller")
         self.pipe_configs = pipe_configs
+        self.pipeline_order = pipeline_order
 
         # if self.barcode_references and self.reference is None:
         #     self.demultiplex = True
         # else:
-        self.demultiplex = True
+        self.demultiplex = ('porechop' in self.pipeline_order)
 
         self._all_commands = {}
 
@@ -69,12 +71,25 @@ class PipelineBuilder:
         return self._pipeline
 
     def run(self):
-        self.pipeline.run(self.executor)
+        self.pipeline.run(executor=self.executor)
 
     def build_pipeline(self):
         bc_save_paths, bc_dependencies = self.add_basecaller([i for i in self.input])
         if self.demultiplex:
             bc_save_paths, bc_dependencies = self.add_demultiplexer(bc_save_paths, bc_dependencies)
+        elif self.demultiplex is False:
+            fastq_save_paths = []
+            for i, path in enumerate(bc_save_paths):
+                task = GetFastqs(path)
+                if bc_dependencies:
+                    task.set_upstream(bc_dependencies[i], flow=self._pipeline)
+                else:
+                    self._pipeline.add_task(task)
+                fastq_save_paths.append(task)
+            bc_save_paths = fastq_save_paths
+
+
+
         mapped_save_paths, mapped_dependencies = self.add_mapper(bc_save_paths, bc_dependencies)
         #vprep_save_paths, vprep_dependencies = self.add_variant_call_prep(mapped_save_paths, mapped_dependencies)
         #variant_save_paths, variant_dependencies = self.add_variant_call(vprep_save_paths, vprep_dependencies)

@@ -365,13 +365,13 @@ def collapse_data(save_path):
         batch_path = save_path.joinpath(batch)
         seq_sum_paths.append(str(batch_path.joinpath("sequencing_summary.txt")))
         seq_tel_paths.append(str(batch_path.joinpath("sequencing_telemetry.js")))
-        pipeline_paths.append(str(batch_path.joinpath("pipeline.yml.log")))
+        pipeline_paths.append(str(batch_path.joinpath("local_pipeline.yml.log")))
         config_paths.append(str(batch_path.joinpath("configuration.cfg")))
         workspace_paths.append(str(batch_path.joinpath("workspace")))
 
     collapse_config(config_paths, save_path.joinpath("configuration.cfg"))
     collapse_seq_summary(seq_sum_paths, save_path.joinpath("sequencing_summary.txt"))
-    collapse_pipeline(pipeline_paths, save_path.joinpath("pipeline.yml.log"))
+    collapse_pipeline(pipeline_paths, save_path.joinpath("local_pipeline.yml.log"))
     collapse_seq_telemetry(seq_tel_paths, save_path.joinpath("sequencing_telemetry.js"))
     collapse_workspace(workspace_paths, save_path.joinpath("workspace"))
 
