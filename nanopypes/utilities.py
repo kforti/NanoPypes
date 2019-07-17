@@ -123,7 +123,6 @@ class Configuration:
 
         #self._search_dict(self._pipe_configs)
 
-
     def _search_dict(self, dictionary):
         for key, value in dictionary.items():
             if isinstance(value, dict):

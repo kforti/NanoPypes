@@ -2,7 +2,7 @@ import yaml
 
 from nanopypes.utilities import Configuration
 from nanopypes.compute import ClusterManager
-from nanopypes.distributed_data.pipeline_data import PipelineData
+from nanopypes.distributed_data.pipeline_data import PipelineBuilder
 from nanopypes.pipelines.pipeline_builder import PipelineBuilder
 
 from prefect.engine.executors.dask import DaskExecutor
@@ -16,8 +16,8 @@ def build_config(path, user_input={}):
 def build_pipeline(config):
     #config = Configuration(config)
     cm = ClusterManager.from_dict(config.compute_config)
-    pd = PipelineData(input_path="/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/",
-                      cluster_manager=cm, pipe_specs=config.pipe_configs)
+    pd = PipelineBuilder(input_path="/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/",
+                         cluster_manager=cm, pipe_specs=config.pipe_configs)
     pb = PipelineBuilder(pipeline_name="demultiplex",
                          pipeline_order=config.pipeline_order,
                          pipeline_data=pd)

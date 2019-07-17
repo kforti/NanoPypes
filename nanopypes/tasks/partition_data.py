@@ -7,7 +7,7 @@ from prefect import Task
 from prefect.utilities.tasks import defaults_from_attrs
 
 
-class FileData(Task):
+class FileData():
 
     def __init__(self, save_path, dependencies,
                  inputs=None, demultiplex=False, merge=False, partitions=None, **kwargs):

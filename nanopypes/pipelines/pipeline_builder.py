@@ -5,7 +5,7 @@ class PipelineBuilder:
 
     def __init__(self, pipeline_data, pipeline_order, pipeline_name):
         self.pipeline_order = pipeline_order
-        self._pipeline = Flow(name=pipeline_name)
+
         self.pipeline_data = pipeline_data
 
     @property

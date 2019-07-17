@@ -13,9 +13,10 @@ class SingularityTask(Task):
 
     @defaults_from_attrs('command', 'image_path', 'pull', 'bind')
     def run(self, command=None, image_path=None, pull=False, bind=None):
+        client = Client()
         if pull:
             image = self.pull(image_path)
-        stdout = self.client.execute(image, command, bind=bind)
+        stdout = client.execute(image, command, bind=bind)
         return stdout
 
     def _pull(self, link):
