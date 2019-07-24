@@ -4,9 +4,6 @@ from dask_kubernetes import KubeCluster
 
 import logging
 
-def get_config_file(config_type):
-    """config_types {'lsf': 'configs/lsf'}"""
-    raise NotImplementedError
 
 
 class ClusterManager:

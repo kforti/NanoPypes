@@ -21,7 +21,6 @@ class CommandBuilder:
         # for command in self.commands:
         #     self.generate_templates(command)
 
-
     def build_command(self, data):
         print(self.template)
         print(data)
@@ -80,8 +79,8 @@ class Configuration:
         user_input = SafeDict(self.user_input)
         for pipe, cmd in self._pipeline_order:
             #print(pipe, cmd)
-            command = self.pipe_configs[pipe]["commands"][cmd].format_map(user_input)
-            self.pipe_configs[pipe]["commands"][cmd] = command
+            command = self.pipe_configs[pipe]["commands"][cmd]['template'].format_map(user_input)
+            self.pipe_configs[pipe]["commands"][cmd]['template'] = command
             #print("Command: ", command)
 
     def _get_yaml_config(self, path):
@@ -146,10 +145,9 @@ class InValidTaskError(KeyError):
 
 
 if __name__ == '__main__':
-    pass
-    # path = "configs/local_pipeline.yml"
-    # config = Configuration(path)
-    # print(config.compute_config)
-    # print(config.pipe_configs)
-    # print(config.pipeline_order)
+    path = "configs/pipelines/pipeline.yml"
+    config = Configuration(path)
+    print(config.compute_config)
+    print(config.pipe_configs)
+    print(config.pipeline_order)
 

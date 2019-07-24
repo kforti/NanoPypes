@@ -1,26 +1,34 @@
 albacore:
     task_kwargs: {}
     task_type: shell
-    data_type: single_read_fast5
+    data_type: ont_sequence
     input_path: "{input_path}"
     save_path: "../pipeline_run/{pipeline_id}/albacore"
     commands:
-        basecall: "read_fast5_basecaller.py --input {input} --save_path {save_path} --flowcell {flowcell} --kit {kit} --output_format fastq --worker_threads 1 --reads_per_fastq 1000"
+        basecall:
+            template: "read_fast5_basecaller.py --input {input} --save_path {save_path} --flowcell {flowcell} --kit {kit} --output_format fastq --worker_threads 1 --reads_per_fastq 1000"
+            user_input: ['reference']
+            input_type: ['string_list_files']
+            save_type: ['file']
+            partitions: 5
+            split_merge: 'one_to_many'
     user_input: ['flowcell', 'kit']
 minimap2:
     task_kwargs: {}
     task_type: shell
-    data_type: fastq
+    data_type: ont_basecalled
     input_path: "{{NANOPYPES_VARIABLE}}" # possibly user defined as well
     references: /Users/kevinfortier/PycharmProjects/code_snippets/ercc_ref_20190220_1525.fa #"{{USER_INPUT}}" # For reference per barcode {"{{USER_INPUT}}": "{{USER_INPUT}}"}
     save_path: "../pipeline_run/5/minimap2"
+    image_path: ""
     commands:
         splice-map:
             template: "minimap2 -ax splice {reference} {read} -o {save_path}"
             user_input: ['reference']
             input_type: ['string_list_files']
             save_type: ['file']
-            partition: {'split/merge': 'one_to_one', 'method': '', 'partitions': None}
+            partitions: None
+            'split_merge': 'one_to_one'
 samtools:
     task_kwargs: {}
     task_type: shell
@@ -55,7 +63,8 @@ porechop:
             user_input: []
             input_type: ['directory', 'ont_fastq_seq_data']
             save_type: ['directory', 'dir_file_by_name']
-            partition: {'split': 'per_batch', 'merge': 'batches'}
+            partitions: 0
+            'split': 'per_batch'
 
 
 

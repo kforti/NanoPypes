@@ -1,7 +1,7 @@
-from nanopypes.tasks import SingularityTask, BatchShellTask
+from nanopypes.tasks import PullImage, BatchSingularityExecute, BatchShellTask
 
 from prefect import Task
-from prefect.tasks.shell import ShellTask
+
 
 class PrintCommands(Task):
     def __init__(self, **kwargs):
@@ -12,14 +12,11 @@ class PrintCommands(Task):
 
 
 class Pipe():
-    task_handler = {'singularity': SingularityTask,
+    task_handler = {'singularity': BatchSingularityExecute,
                     'shell': BatchShellTask,
                     'print_commands': PrintCommands}
 
-    def __init__(self, commands, pipeline, task_id, task_type, dependencies=None, **task_kwargs):
-        self.commands = commands
-        self.pipeline = pipeline
-        self.dependencies = dependencies
+    def __init__(self, task_id, task_type, **task_kwargs):
         self.task_type = task_type
         self.task = self.task_handler[self.task_type]
         self.task_id = task_id
@@ -28,20 +25,13 @@ class Pipe():
         self.all_tasks = []
 
     def create_tasks(self, num_batches):
-        with self.pipeline as flow:
-            for i in range(num_batches):
-                task_id = self.task_id + "_batch_{}".format(str(i))
-                cmds = self.commands[i]
-                task = self.task(slug=task_id, name=task_id, **self.task_kwargs)
-                results = task(cmds)
-                # if self.dependencies:
-                #     task.set_upstream(self.dependencies[i], flow=self.pipeline)
-                # elif self.dependencies is None:
-                #     self.pipeline.add_task(task)
+        for i in range(num_batches):
+            task_id = self.task_id + "_batch_{}".format(str(i))
+            task = self.task(slug=task_id, name=task_id, **self.task_kwargs)
 
-                self.all_tasks.append(task)
+            self.all_tasks.append(task)
 
-        return self.pipeline, self.all_tasks
+        return self.all_tasks
 
 def my_func(input, save_path, **kwargs):
     print(input)

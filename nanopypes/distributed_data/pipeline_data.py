@@ -1,14 +1,9 @@
-import math
-import os
-from pathlib import Path
-from multiprocessing import Pool, cpu_count
-import shutil
-
-from prefect import Flow, Task, task
+from prefect import task, Task, Flow
+from prefect.utilities.tasks import defaults_from_attrs
 
 from nanopypes.utilities import CommandBuilder
 from nanopypes.pipes.base2 import Pipe
-from nanopypes.tasks.partition_data import DataPartitioner, ONTFastqSequenceData
+from nanopypes.distributed_data.partition_data import DataPartitioner, ONTFastqSequenceData
 
 
 @task
@@ -20,190 +15,166 @@ def get_inputs(results):
     return all_inputs
 
 
-@task
-def get_commands(command_data, template):
-    print("COMMAND DATA: ", command_data)
-    cb = CommandBuilder(template)
-    all_commands = []
-    for batch in command_data:
-        batch_data = []
-        for data in batch:
+
+class BuildCommands(Task):
+
+    def __init__(self, command_data=None, template=None, **kwargs):
+        super().__init__(**kwargs)
+        self.command_data = command_data
+        self.template = template
+
+    @defaults_from_attrs('command_data', 'template')
+    def run(self, command_data=None, template=None):
+        print("COMMAND DATA: ", command_data)
+        cb = CommandBuilder(template)
+        all_commands = []
+        # for batch in command_data:
+        #     batch_data = []
+        for data in command_data:
             #print(data)
             cmd = cb.build_command(data)
-            batch_data.append(cmd)
-        all_commands.append(batch_data)
-    return all_commands
+            #batch_data.append(cmd)
+            all_commands.append(cmd)
+        #all_commands.append(batch_data)
+        return all_commands
 
 
 class PipelineBuilder:
 
-
-    def __init__(self, input_path, pipeline_order, pipeline_name, num_batches, pipe_specs):
+    def __init__(self, inputs, pipeline_order,
+                 pipeline_name, num_batches, pipe_specs):
         self.pipe_specs = pipe_specs
         self.num_batches = num_batches
         self.pipeline_order = pipeline_order
+        self.inputs = inputs
 
-        self.inputs = [input_path]
+        self._pipeline = Flow(name=pipeline_name)
         self.tool = None
         self.command = None
         self.save_path = None
         self.data_type = None
         self.partition_strategy = None
         self.command_template = None
-        self.save_batches = []
-        self._pipeline = Flow(name=pipeline_name)
         self.data_provenance = []
-
-
 
     @property
     def pipeline(self):
         return self._pipeline
 
     def build_pipeline(self):
+        transform_order = [(self.partition_tasks), (self.command_tasks), (self.pipe_tasks)]
+        inputs = self.inputs
+
+        for transform in self.data_provenance:
+            self._build_transform(transform)
+
+    def _build_transform(self, transform, curr_pipe_results=None):
+        inputs = []
+        partition_results, command_results, pipe_results, curr_dependencies, next_inputs = [], [], [], [], []
+        print("partition_tasks ", transform['partition_tasks'])
+        print(transform['num_partitions'])
+        for i, task in enumerate(transform['partition_tasks']):
+            result = task(inputs[i])
+            if transform['num_partitions'] > 0:
+                for i in range(transform['num_partitions']):
+                    partition_results.append(result['command_data'][i])
+                    next_inputs.append(result['saves'][i])
+            else:
+                partition_results.append(result['command_data'])
+                next_inputs.append(result['saves'])
+        print(transform['command_tasks'])
+        for i, task in enumerate(transform['command_tasks']):
+            result = task(partition_results[i])
+            command_results.append(result)
+        for i, task in enumerate(transform['pipe_tasks']):
+            if curr_pipe_results:
+                result = task(command_results[i])
+                result.set_upstream(curr_pipe_results[i])
+            else:
+                result = task(command_results[i])
+            pipe_results.append(result)
+
+        curr_pipe_results = pipe_results
+        inputs = next_inputs
+        print(inputs)
+
+
+    def build_tasks(self):
         for tool, command in self.pipeline_order:
             print(tool, command)
-            self.pipeline_data.load_transform(tool, command)
-            self._pipeline = self.pipeline_data.partition_data(self._pipeline)
-            #self._pipeline = self.pipeline_data.build_commands(self._pipeline)
-            #self._pipeline = self.pipeline_data.pipe_data(self._pipeline)
+            self._load_transform(tool, command)
+            self._partition_data()
+            self._build_commands()
+            self._pipe_data()
+            self._create_transform_ticket()
 
-        #self._pipeline = self.pipeline_data.merge_data(self._pipeline, merge=True)
-
-    def load_transform(self, tool, command):
+    def _load_transform(self, tool, command):
         if tool not in self.pipe_specs or command not in self.pipe_specs[tool]["commands"]:
             raise Exception("The tool and command you entered does not match the pipe_spec")
         self.tool = tool
         self.command = command
         self.save_path = self.pipe_specs[tool]["save_path"]
         self.data_type = self.pipe_specs[tool]['data_type']
-        self.partition_strategy = self.pipe_specs['tool']['commands'][command]['partition']
-        self.command_template = self.pipe_specs['tool']['commands'][command]['template']
-        # self.transform_ticket['input_data']['data_type'] = self.data_type
-        # self.transform_ticket.update(transform={'tool': tool, 'command': command})
-        # self.transform_ticket.update(save_data={'save_path': save_path, 'data_type': None})
+        partitions = self.pipe_specs[tool]['commands'][command]['partitions']
+        self.partitions = partitions
+        self.partition_strategy = self.pipe_specs[tool]['commands'][command]['split_merge']
+        self.command_template = self.pipe_specs[tool]['commands'][command]['template']
+
+        self.command_tasks = []
+        self.pipe_tasks = []
+        self.partition_tasks = []
+        self.save_batches = []
 
         return
 
-    def partition_data(self, merge=False):
+    def _partition_data(self):
         """ Split/merge data"""
 
-        # if self.tool is None or self.command is None:
-        #     raise Exception("Load a valid transform before partitioning data")
-
-        # This is a task
-        demultiplex = False
-        partitions = 4
-        if self.tool == 'minimap' and self.data_provenance[-1]['transform']['tool'] == 'porechop':
-            demultiplex = True
-
         task_id = 'data_partition_{}'.format(self.data_type)
-        data_partitioner = DataPartitioner(inputs=self.inputs,
+        data_partitioner = DataPartitioner(num_batches=self.num_batches,
                                            save_path=self.save_path,
                                            data_type=self.data_type,
-                                           pipeline=self._pipeline,
-                                           dependencies=self.current_dependencies,
+                                           partitions=self.partitions,
                                            partition_strategy=self.partition_strategy,
                                            name=task_id,
-                                           demultiplex=demultiplex,
-                                           merge=merge,
                                            slug=task_id)
 
-        data_partitioner.partition_data()
-        if self.data_provenance != []:
-            results.set_upstream(self.data_provenance[-1]['pipe_tasks'])
+        self.partition_tasks = data_partitioner.partition_data()
 
-        self.inputs = results[2]
-        self.transform_ticket['partition']['command_data'] = results[0]
-        self.transform_ticket['partition']['inputs'] = results[1]
-        self.transform_ticket['partition']['saves'] = results[2]
-        self.current_dependencies = results
-        batches = []
-        for i in range(partitions):
-            batches.append(self.inputs[i])
+        if self.partitions != 0:
+            self.num_batches = self.partitions
 
-        return pipeline
-
-    def build_commands(self, pipeline):
+    def _build_commands(self):
         """ Create a task that will build a list of commands from partitioned data. Assumes that the data has already been partitioned."""
 
-        template = self.pipe_specs[self.tool]["commands"][self.command]
-        command_data = self.transform_ticket['partition']['command_data']
-        with pipeline as flow:
-            #for i in range(self.num_batches):
-            commands = get_commands(command_data,
-                                    template)
-        self.current_dependencies = commands
-        self.transform_ticket['commands'] = commands
+        template = self.pipe_specs[self.tool]["commands"][self.command]['template']
+        print('num_batches ', self.num_batches)
+        for i in range(self.num_batches):
+            commands = BuildCommands(template=template)
+            self.command_tasks.append(commands)
 
-        return pipeline
+    def _pipe_data(self):
 
-    def pipe_data(self, pipeline):
-
-        pipe = Pipe(commands=self.transform_ticket['commands'],
-                    task_id=self.tool,
+        pipe = Pipe(task_id=self.tool,
                     task_type=self.pipe_specs[self.tool]['task_type'],
-                    dependencies=self.current_dependencies,
-                    pipeline=pipeline,
                     **self.pipe_specs[self.tool]['task_kwargs'])
-        pipeline, pipe_tasks = pipe.create_tasks(self.num_batches)
-        self.current_dependencies = pipe_tasks
-        self.transform_ticket['pipe_tasks'] = pipe_tasks
-        self.data_provenance.append(self.transform_ticket)
-        return pipeline
+        self.pipe_tasks = pipe.create_tasks(self.num_batches)
 
-    def merge_data(self, pipeline):
+    def merge_data(self):
         """ Merges the final output data in the last step of the pipeline."""
-        return pipeline
+        return
 
     def _create_transform_ticket(self):
-        transform_ticket = dict(input_data={'input_path': None, 'data_type': None},
-                                             partition={'command_data': None,
-                                                        'inputs': None,
-                                                        'saves': None},
-                                             transform={'tool': None,
-                                                        'command': None},
-                                             save_data={'save_path': None,
-                                                        'data_type': None},
-                                             commands=None,
-                                             pipe_tasks=None)
+        transform_ticket = dict(input_data={'inputs': self.inputs, 'data_type': self.data_type},
+                                partition_tasks=self.partition_tasks,
+                                transform={'tool': self.tool,
+                                           'command': self.command},
+                                save_data={'save_path': self.save_path,
+                                           'data_type': None},
+                                command_tasks=self.command_tasks,
+                                pipe_tasks=self.pipe_tasks,
+                                num_partitions=self.partitions)
         self.data_provenance.append(transform_ticket)
-
-
-class DataPartitioner:
-    data_handler = {'ont_raw_signal': ONTSequenceData,
-                    'ont_fastq_seq': ONTFastqSequenceData}
-    def __init__(self, save_path, inputs, data_type, pipeline,
-                 partition_strategy=None, dependencies=None,
-                 merge=False, **task_kwargs):
-        self.input_batches = inputs
-        self.save_path = save_path
-        self.partition_strategy = partition_strategy
-        self.dependencies = dependencies
-        self.merge = merge
-        self.task_kwargs = task_kwargs
-        self.data_task = self.data_handler[data_type]
-        self.pipeline = pipeline
-
-    def partition_data(self):
-        if self.partition_strategy['split'] == 'one_to_one':
-            pass
-        elif self.partition_strategy['split'] == 'one_to_many':
-            pass
-        elif self.partition_strategy['split'] == 'many_to_one':
-            pass
-
-    def _one_to_one(self, fn):
-        inputs = []
-        saves = []
-        with self.pipeline as flow:
-            for batch in self.input_batches:
-                partition_task = self.data_task(save_path=self.save_path,
-                                                dependencies=self.dependencies,
-                                                inputs=batch,
-                                                merge=self.merge,
-                                                **self.task_kwargs)
-                result = partition_task()
 
 
 

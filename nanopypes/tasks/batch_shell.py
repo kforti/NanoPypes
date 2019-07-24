@@ -66,6 +66,7 @@ class BatchShellTask(prefect.Task):
             - prefect.engine.signals.FAIL: if command has an exit code other
                 than 0
         """
+        print("COMMANDS IN SHELLTASK: ", commands)
         if commands is None or commands == []:
             raise TypeError("run() missing required argument: 'command'")
 
@@ -87,6 +88,8 @@ class BatchShellTask(prefect.Task):
                     msg = "Command failed with exit code {0}: {1}".format(
                         exc.returncode, exc.output
                     )
+                    print(msg)
                     raise prefect.engine.signals.FAIL(msg) from None  # type: ignore
             all_outs.append(out)
+            print("OUT: ", all_outs)
         return all_outs
