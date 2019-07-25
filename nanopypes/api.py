@@ -16,6 +16,7 @@ def build_pipeline(config, inputs):
     num_batches = len(inputs)
     #config = Configuration(config)
     cm = ClusterManager.from_dict(config.compute_config)
+    cm.start_cluster()
     pb = PipelineBuilder(inputs,
                          pipe_specs=config.pipe_configs,
                          pipeline_name="demultiplex",
