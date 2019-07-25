@@ -23,7 +23,7 @@ def build_pipeline(config):
                          pipeline_data=pd)
     pb.build_pipeline()
     pipeline = pb.pipeline
-    executor = None#DaskExecutor(cm.cluster.scheduler_address)
+    executor = DaskExecutor(cm.cluster.scheduler_address)
 
     return pb, executor
 
