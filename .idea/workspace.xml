@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="06fba5a6-e119-4d57-aa65-81370b2766cd" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/nanopypes/tasks/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/tasks/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nanopypes/configs/pipelines/remote_pipeline.yml" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/configs/pipelines/remote_pipeline.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_configurations.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_configurations.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data_partition.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data_partition.py" afterDir="false" />
       <change beforePath="$USER_HOME$/dask-kubernetes/dask_kubernetes/config.py" beforeDir="false" afterPath="$USER_HOME$/dask-kubernetes/dask_kubernetes/config.py" afterDir="false" />
       <change beforePath="$USER_HOME$/prefect/prefect/src/prefect/tasks/shell.py" beforeDir="false" afterPath="$USER_HOME$/prefect/prefect/src/prefect/tasks/shell.py" afterDir="false" />
     </list>
@@ -17,14 +19,14 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.8568443">
+    <splitter split-orientation="horizontal" split-proportion="0.85431653">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="test_data_partition.py" pinned="false" current-in-tab="false">
+          <file leaf-file-name="test_data_partition.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/tests/test_data_partition.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="864">
-                  <caret line="288" column="33" lean-forward="true" selection-start-line="288" selection-start-column="33" selection-end-line="288" selection-end-column="33" />
+                <state relative-caret-position="225">
+                  <caret line="269" column="34" selection-start-line="269" selection-start-column="34" selection-end-line="269" selection-end-column="34" />
                   <folding>
                     <element signature="e#0#202#0" expanded="true" />
                   </folding>
@@ -44,8 +46,8 @@
           <file leaf-file-name="remote_pipeline.yml" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/nanopypes/configs/pipelines/remote_pipeline.yml">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-6">
-                  <caret line="17" column="13" lean-forward="true" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+                <state relative-caret-position="610">
+                  <caret line="66" column="23" selection-start-line="66" selection-start-column="23" selection-end-line="66" selection-end-column="23" />
                 </state>
               </provider>
             </entry>
@@ -53,7 +55,7 @@
           <file leaf-file-name="pipeline.yml" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/nanopypes/configs/pipelines/pipeline.yml">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="240">
+                <state relative-caret-position="-247">
                   <caret line="16" column="41" selection-start-line="16" selection-start-column="41" selection-end-line="16" selection-end-column="41" />
                 </state>
               </provider>
@@ -71,11 +73,35 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="__init__.py" pinned="false" current-in-tab="true">
+          <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/nanopypes/tasks/__init__.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state>
-                  <caret column="74" selection-start-column="74" selection-end-column="74" />
+                <state relative-caret-position="45">
+                  <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+                  <folding>
+                    <element signature="e#0#72#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="test_configurations.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/tests/test_configurations.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="179">
+                  <caret line="26" column="34" selection-start-line="26" selection-start-column="34" selection-end-line="26" selection-end-column="34" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="compute.py" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/nanopypes/compute.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="-771">
+                  <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+                  <folding>
+                    <element signature="e#0#50#0" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -239,7 +265,6 @@
         <option value="$USER_HOME$/PycharmProjects/code_snippets/dask_kube.py" />
         <option value="$PROJECT_DIR$/setup.py" />
         <option value="$PROJECT_DIR$/nanopypes/pipes/basecaller2.py" />
-        <option value="$PROJECT_DIR$/tests/test_configurations.py" />
         <option value="$PROJECT_DIR$/nanopypes/pipes/demultiplex.py" />
         <option value="$PROJECT_DIR$/nanopypes/pipes/base.py" />
         <option value="$PROJECT_DIR$/nanopypes/pipes/long_read_mappers.py" />
@@ -265,19 +290,20 @@
         <option value="$PROJECT_DIR$/nanopypes/pipes/base2.py" />
         <option value="$USER_HOME$/PycharmProjects/code_snippets/new.py" />
         <option value="$PROJECT_DIR$/nanopypes/distributed_data/pipeline_data.py" />
-        <option value="$PROJECT_DIR$/tests/test_data_partition.py" />
         <option value="$PROJECT_DIR$/nanopypes/configs/compute.yml" />
-        <option value="$PROJECT_DIR$/nanopypes/configs/pipelines/remote_pipeline.yml" />
         <option value="$PROJECT_DIR$/nanopypes/configs/pipes.yml" />
         <option value="$PROJECT_DIR$/nanopypes/configs/pipelines/pipeline.yml" />
         <option value="$PROJECT_DIR$/nanopypes/tasks/__init__.py" />
+        <option value="$PROJECT_DIR$/nanopypes/configs/pipelines/remote_pipeline.yml" />
+        <option value="$PROJECT_DIR$/tests/test_configurations.py" />
+        <option value="$PROJECT_DIR$/tests/test_data_partition.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="2340" />
-    <option name="y" value="27" />
-    <option name="width" value="972" />
+    <option name="x" value="1823" />
+    <option name="y" value="231" />
+    <option name="width" value="1264" />
     <option name="height" value="972" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -326,27 +352,6 @@
               <item name="NanoPypes" type="b2602c69:ProjectViewProjectNode" />
               <item name="NanoPypes" type="462c0819:PsiDirectoryNode" />
               <item name="tests" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="NanoPypes" type="b2602c69:ProjectViewProjectNode" />
-              <item name="NanoPypes" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
-              <item name="test_data" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="NanoPypes" type="b2602c69:ProjectViewProjectNode" />
-              <item name="NanoPypes" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
-              <item name="test_data" type="462c0819:PsiDirectoryNode" />
-              <item name="basecalled_data" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="NanoPypes" type="b2602c69:ProjectViewProjectNode" />
-              <item name="NanoPypes" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
-              <item name="test_data" type="462c0819:PsiDirectoryNode" />
-              <item name="basecalled_data" type="462c0819:PsiDirectoryNode" />
-              <item name="results" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="NanoPypes" type="b2602c69:ProjectViewProjectNode" />
@@ -408,7 +413,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.new">
+  <component name="RunManager" selected="Python.test_configurations">
     <configuration name="new" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="code_snippets" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -427,24 +432,6 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
     </configuration>
-    <configuration name="partition_data" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="nanopypes" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/nanopypes/tasks" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/nanopypes/distributed_data/partition_data.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-    </configuration>
     <configuration name="singularity" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="nanopypes" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -458,6 +445,24 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/nanopypes/tasks/singularity.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+    </configuration>
+    <configuration name="test_configurations" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="nanopypes" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/test_configurations.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -581,19 +586,19 @@
       <option name="_new_targetType" value="&quot;PATH&quot;" />
     </configuration>
     <list>
-      <item itemvalue="Python.partition_data" />
       <item itemvalue="Python.test_data_partition" />
       <item itemvalue="Python.utilities" />
       <item itemvalue="Python.singularity" />
       <item itemvalue="Python.new" />
+      <item itemvalue="Python.test_configurations" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.test_configurations" />
         <item itemvalue="Python.new" />
         <item itemvalue="Python.singularity" />
         <item itemvalue="Python.test_data_partition" />
         <item itemvalue="Python.utilities" />
-        <item itemvalue="Python.partition_data" />
       </list>
     </recent_temporary>
   </component>
@@ -625,16 +630,16 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="2340" y="27" width="972" height="972" extended-state="0" />
+    <frame x="1823" y="231" width="1264" height="972" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.76806086" visible="true" weight="0.40694007" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.76806086" visible="true" weight="0.23250201" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32954547" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.10359408" side_tool="true" weight="0.3541384" />
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Python Console" order="7" sideWeight="0.49750623" weight="0.27741084" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.89640594" weight="0.3035294" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.89640594" visible="true" weight="0.5942857" />
       <window_info id="Structure" order="1" sideWeight="0.23193917" side_tool="true" weight="0.20850767" />
       <window_info anchor="bottom" id="Terminal" order="8" sideWeight="0.49964765" weight="0.18097754" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -709,13 +714,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/nanopypes/pipes/base.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="9" lean-forward="true" selection-end-line="68" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/nanopypes/server/nanopypes_server.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="619">
@@ -931,16 +929,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/nanopypes/compute.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-12">
-          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
-          <folding>
-            <element signature="e#0#50#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/nanopypes/api.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="589">
@@ -999,10 +987,44 @@
         <state relative-caret-position="-52" />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/nanopypes/tasks/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="45">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+          <folding>
+            <element signature="e#0#72#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/nanopypes/configs/pipelines/pipeline.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
+        <state relative-caret-position="-247">
           <caret line="16" column="41" selection-start-line="16" selection-start-column="41" selection-end-line="16" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nanopypes/compute.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-771">
+          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/test_configurations.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="179">
+          <caret line="26" column="34" selection-start-line="26" selection-start-column="34" selection-end-line="26" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nanopypes/configs/pipelines/remote_pipeline.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="610">
+          <caret line="66" column="23" selection-start-line="66" selection-start-column="23" selection-end-line="66" selection-end-column="23" />
         </state>
       </provider>
     </entry>
@@ -1013,27 +1035,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/nanopypes/configs/pipelines/remote_pipeline.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-6">
-          <caret line="17" column="13" lean-forward="true" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/test_data_partition.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="864">
-          <caret line="288" column="33" lean-forward="true" selection-start-line="288" selection-start-column="33" selection-end-line="288" selection-end-column="33" />
+        <state relative-caret-position="225">
+          <caret line="269" column="34" selection-start-line="269" selection-start-column="34" selection-end-line="269" selection-end-column="34" />
           <folding>
             <element signature="e#0#202#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/nanopypes/tasks/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="74" selection-start-column="74" selection-end-column="74" />
         </state>
       </provider>
     </entry>

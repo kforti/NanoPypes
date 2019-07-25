@@ -267,6 +267,7 @@ def test_pipeline_builder_remote():
                   'reference': '/project/umw_athma_pai/genomes/ercc/ERCC92.fa'}
     config = Configuration(path, user_input)
     cluster_manager = ClusterManager.from_dict(config.compute_config)
+    cluster_manager.build_cluster()
     executor = DaskExecutor(cluster_manager.cluster.scheduler_address)
 
     inputs = ["/nl/umw_athma_pai/kevin/test_ercc"]

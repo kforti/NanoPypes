@@ -64,5 +64,5 @@ pipe_configs:
 #        commands:
 #            splice-map: "minimap2 -ax splice {reference} {read} -o {save_path}"
 #        user_input: ['reference']
-compute_config_path: /home/kf78w/bin/NanoPypes/nanopypes/configs/compute.yml
+compute_config_path: ../nanopypes/configs/compute.yml
 compute_id: umass_ghpcc_lsf
