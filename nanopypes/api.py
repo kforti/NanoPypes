@@ -21,6 +21,7 @@ def build_pipeline(config, inputs):
                          pipeline_name="demultiplex",
                          pipeline_order=config.pipeline_order,
                          num_batches=num_batches)
+    pb.build_tasks()
     pb.build_pipeline()
     pipeline = pb.pipeline
     executor = DaskExecutor(cm.cluster.scheduler_address)
