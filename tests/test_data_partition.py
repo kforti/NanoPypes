@@ -295,7 +295,8 @@ if __name__ == '__main__':
     #test_basecall_mapping_data_partition()
     #test_basecall_demultiplex_mapping_data_partition()
     #test_data_partitioner()
-    test_pipeline_builder_remote()
+    test_pipeline_builder()
+    #test_pipeline_builder_remote()
     #from prefect import Flow, task
     #
     # @task

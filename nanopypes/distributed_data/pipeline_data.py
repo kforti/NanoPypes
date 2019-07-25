@@ -63,40 +63,40 @@ class PipelineBuilder:
 
     def build_pipeline(self):
         transform_order = [(self.partition_tasks), (self.command_tasks), (self.pipe_tasks)]
-        inputs = self.inputs
 
         for transform in self.data_provenance:
             self._build_transform(transform)
 
     def _build_transform(self, transform, curr_pipe_results=None):
-        inputs = []
+        # inputs = self.inputs
         partition_results, command_results, pipe_results, curr_dependencies, next_inputs = [], [], [], [], []
         print("partition_tasks ", transform['partition_tasks'])
         print(transform['num_partitions'])
-        for i, task in enumerate(transform['partition_tasks']):
-            result = task(inputs[i])
-            if transform['num_partitions'] > 0:
-                for i in range(transform['num_partitions']):
-                    partition_results.append(result['command_data'][i])
-                    next_inputs.append(result['saves'][i])
-            else:
-                partition_results.append(result['command_data'])
-                next_inputs.append(result['saves'])
-        print(transform['command_tasks'])
-        for i, task in enumerate(transform['command_tasks']):
-            result = task(partition_results[i])
-            command_results.append(result)
-        for i, task in enumerate(transform['pipe_tasks']):
-            if curr_pipe_results:
-                result = task(command_results[i])
-                result.set_upstream(curr_pipe_results[i])
-            else:
-                result = task(command_results[i])
-            pipe_results.append(result)
+        with self.pipeline as flow:
+            for i, task in enumerate(transform['partition_tasks']):
+                result = task(self.inputs[i])
+                if transform['num_partitions'] > 0:
+                    for i in range(transform['num_partitions']):
+                        partition_results.append(result['command_data'][i])
+                        next_inputs.append(result['saves'][i])
+                else:
+                    partition_results.append(result['command_data'])
+                    next_inputs.append(result['saves'])
+            print(transform['command_tasks'])
+            for i, task in enumerate(transform['command_tasks']):
+                result = task(partition_results[i])
+                command_results.append(result)
+            for i, task in enumerate(transform['pipe_tasks']):
+                if curr_pipe_results:
+                    result = task(command_results[i])
+                    result.set_upstream(curr_pipe_results[i])
+                else:
+                    result = task(command_results[i])
+                pipe_results.append(result)
 
-        curr_pipe_results = pipe_results
-        inputs = next_inputs
-        print(inputs)
+            curr_pipe_results = pipe_results
+            self.inputs = next_inputs
+            print("inputs: ", self.inputs)
 
 
     def build_tasks(self):
