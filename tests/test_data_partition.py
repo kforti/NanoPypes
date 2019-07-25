@@ -272,7 +272,7 @@ def test_pipeline_builder_remote():
     cluster_manager.start_cluster()
     executor = DaskExecutor(cluster_manager.cluster.scheduler_address)
 
-    inputs = ["/nl/umw_athma_pai/kevin/test_ercc"]
+    inputs = ["/nl/umw_athma_pai/kevin/test_ercc/inputs"]
     pipe_specs = config.pipe_configs
     print(pipe_specs)
     time.sleep(60)

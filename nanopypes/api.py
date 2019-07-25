@@ -15,8 +15,6 @@ def build_config(path, user_input={}):
 def build_pipeline(config, inputs):
     num_batches = len(inputs)
     #config = Configuration(config)
-    cm = ClusterManager.from_dict(config.compute_config)
-    cm.start_cluster()
     pb = PipelineBuilder(inputs,
                          pipe_specs=config.pipe_configs,
                          pipeline_name="demultiplex",
@@ -25,10 +23,14 @@ def build_pipeline(config, inputs):
     pb.build_tasks()
     pb.build_pipeline()
     pipeline = pb.pipeline
-    executor = DaskExecutor(cm.cluster.scheduler_address)
+    #executor = DaskExecutor(cm.cluster.scheduler_address)
 
-    return pb, executor
+    return pb
 
+def build_cluster(config):
+    cm = ClusterManager.from_dict(config.compute_config)
+    client = cm.start_cluster()
+    return cm, client
 
 def run_pipeline(pipeline_builder):
     pipeline_builder.run()
