@@ -284,7 +284,7 @@ def test_pipeline_builder_remote():
     pb.build_tasks()
     print('provenance', pb.data_provenance)
     pb.build_pipeline()
-    #pb.pipeline.visualize()
+    print(vars(pb.pipeline))
     pb.pipeline.run(executor=executor)
 
 
