@@ -13,14 +13,15 @@ def build_config(path, user_input={}):
     return config
 
 
-def build_pipeline(config):
+def build_pipeline(config, inputs):
+    num_batches = len(inputs)
     #config = Configuration(config)
     cm = ClusterManager.from_dict(config.compute_config)
-    pd = PipelineBuilder(input_path="/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/",
-                         cluster_manager=cm, pipe_specs=config.pipe_configs)
-    pb = PipelineBuilder(pipeline_name="demultiplex",
+    pd = PipelineBuilder(inputs,
+                         pipe_specs=config.pipe_configs,
+                         pipeline_name="demultiplex",
                          pipeline_order=config.pipeline_order,
-                         pipeline_data=pd)
+                         num_batches=num_batches)
     pb.build_pipeline()
     pipeline = pb.pipeline
     executor = DaskExecutor(cm.cluster.scheduler_address)
