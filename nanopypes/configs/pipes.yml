@@ -65,6 +65,21 @@ porechop:
             save_type: ['directory', 'dir_file_by_name']
             partitions: 0
             'split': 'per_batch'
+nanoplot:
+    task_kwargs: {}
+    task_type: shell
+    data_type: fastq
+    input_path: "{{NANOPYPES_VARIABLE}}" # possibly user defined as well
+    save_path: "../pipeline_run/{pipeline_id}/demultiplexed_reads"
+    commands:
+        demultiplex:
+            template: "NanoPlot -i {input} -o {save}"
+            user_input: []
+            input_type: ['directory', 'ont_fastq_seq_data']
+            save_type: ['directory', 'dir_file_by_name']
+            partitions: 0
+            'split': 'per_batch'
+
 
 
 

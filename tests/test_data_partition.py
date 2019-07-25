@@ -253,6 +253,36 @@ def test_pipeline_builder():
     pb.pipeline.run()
 
 
+def test_pipeline_builder_remote():
+    from nanopypes.distributed_data.pipeline_data import PipelineBuilder
+    from nanopypes.utilities import Configuration
+    from nanopypes.compute import ClusterManager
+
+    from prefect.engine.executors.dask import DaskExecutor
+
+
+    path = "../nanopypes/configs/pipelines/remote_pipeline.yml"
+    user_input = {'flowcell': 'FLO-MIN106',
+                  'kit': 'SQK-LSK109',
+                  'reference': '/project/umw_athma_pai/genomes/ercc/ERCC92.fa'}
+    config = Configuration(path, user_input)
+    cluster_manager = ClusterManager.from_dict(config.compute_config)
+    executor = DaskExecutor(cluster_manager.cluster.scheduler_address)
+
+    inputs = ["/nl/umw_athma_pai/kevin/test_ercc"]
+    pipe_specs = config.pipe_configs
+    print(pipe_specs)
+    pb = PipelineBuilder(inputs=inputs,
+                         pipeline_order=config.pipeline_order,
+                         pipeline_name="test-pipeline",
+                         num_batches=1,
+                         pipe_specs=pipe_specs)
+    pb.build_tasks()
+    print('provenance', pb.data_provenance)
+    pb.build_pipeline()
+    pb.pipeline.visualize()
+    pb.pipeline.run(executor=executor)
+
 
 if __name__ == '__main__':
     #test_partition_seq_data()
@@ -264,7 +294,7 @@ if __name__ == '__main__':
     #test_basecall_mapping_data_partition()
     #test_basecall_demultiplex_mapping_data_partition()
     #test_data_partitioner()
-    test_pipeline_builder()
+    test_pipeline_builder_remote()
     #from prefect import Flow, task
     #
     # @task
