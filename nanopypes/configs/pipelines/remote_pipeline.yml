@@ -30,7 +30,7 @@ pipe_configs:
                 input_type: ['fastq']
                 save_type: ['file']
                 partitions: 0
-                split_merge: 'merge_by_barcode'
+                split_merge: 'one_to_one'
     porechop:
         task_kwargs: {}
         task_type: shell
