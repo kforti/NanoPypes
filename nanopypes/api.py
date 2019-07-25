@@ -3,7 +3,6 @@ import yaml
 from nanopypes.utilities import Configuration
 from nanopypes.compute import ClusterManager
 from nanopypes.distributed_data.pipeline_data import PipelineBuilder
-from nanopypes.pipelines.pipeline_builder import PipelineBuilder
 
 from prefect.engine.executors.dask import DaskExecutor
 
