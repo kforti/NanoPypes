@@ -18,7 +18,7 @@ pipe_configs:
     minimap2:
         task_kwargs: {}
         task_type: shell
-        data_type: ont_demultiplexed
+        data_type: ont_basecalled
         input_path: "{{NANOPYPES_VARIABLE}}" # possibly user defined as well
         references: /project/umw_athma_pai/genomes/ercc/ERCC92.fa #"{{USER_INPUT}}" # For reference per barcode {"{{USER_INPUT}}": "{{USER_INPUT}}"}
         save_path: "/nl/umw_athma_pai/kevin/test_ercc/map"
