@@ -257,6 +257,7 @@ def test_pipeline_builder_remote():
     from nanopypes.distributed_data.pipeline_data import PipelineBuilder
     from nanopypes.utilities import Configuration
     from nanopypes.compute import ClusterManager
+    import time
 
     from prefect.engine.executors.dask import DaskExecutor
 
@@ -274,6 +275,7 @@ def test_pipeline_builder_remote():
     inputs = ["/nl/umw_athma_pai/kevin/test_ercc"]
     pipe_specs = config.pipe_configs
     print(pipe_specs)
+    time.sleep(60)
     pb = PipelineBuilder(inputs=inputs,
                          pipeline_order=config.pipeline_order,
                          pipeline_name="test-pipeline",
