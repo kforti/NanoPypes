@@ -9,7 +9,7 @@ import dotenv
 
 
 dotenv.load_dotenv("env/.env")
-PASSWORD = os.environ['PASSWORD']
+PASSWORD = os.environ['LSF_PASSWORD']
 
 #parser = argparse.ArgumentParser(description='Push code to cluster.')
 #parser.add_argument("-m")

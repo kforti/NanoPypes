@@ -5,11 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="06fba5a6-e119-4d57-aa65-81370b2766cd" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/scripts/remote_tests_lsf.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/env/.env" beforeDir="false" afterPath="$PROJECT_DIR$/env/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/push_code.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/push_code.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_cluster.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_cluster.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_travis.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_travis.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/remote_tests_lsf.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/remote_tests_lsf.py" afterDir="false" />
       <change beforePath="$USER_HOME$/dask-kubernetes/dask_kubernetes/config.py" beforeDir="false" afterPath="$USER_HOME$/dask-kubernetes/dask_kubernetes/config.py" afterDir="false" />
       <change beforePath="$USER_HOME$/prefect/prefect/src/prefect/tasks/shell.py" beforeDir="false" afterPath="$USER_HOME$/prefect/prefect/src/prefect/tasks/shell.py" afterDir="false" />
     </list>
@@ -51,11 +47,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="remote_tests_lsf.py" pinned="false" current-in-tab="true">
+          <file leaf-file-name="remote_tests_lsf.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/scripts/remote_tests_lsf.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="375">
-                  <caret line="25" column="14" selection-start-line="25" selection-start-column="14" selection-end-line="25" selection-end-column="14" />
+                <state relative-caret-position="165">
+                  <caret line="11" column="27" selection-start-line="11" selection-start-column="27" selection-end-line="11" selection-end-column="27" />
                   <folding>
                     <element signature="e#0#17#0" expanded="true" />
                   </folding>
@@ -72,11 +68,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="test_cluster.py" pinned="false" current-in-tab="false">
+          <file leaf-file-name="test_cluster.py" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/tests/test_cluster.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="379">
-                  <caret line="117" column="28" selection-start-line="117" selection-start-column="28" selection-end-line="117" selection-end-column="28" />
+                <state relative-caret-position="-603">
+                  <caret line="37" column="10" selection-start-line="37" selection-start-column="10" selection-end-line="37" selection-end-column="10" />
                   <folding>
                     <element signature="e#0#15#0" expanded="true" />
                   </folding>
@@ -315,8 +311,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1850" />
-    <option name="y" value="104" />
+    <option name="x" value="1830" />
+    <option name="y" value="76" />
     <option name="width" value="1264" />
     <option name="height" value="972" />
   </component>
@@ -626,7 +622,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1850" y="104" width="1264" height="972" extended-state="0" />
+    <frame x="1830" y="76" width="1264" height="972" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.76806086" visible="true" weight="0.19388576" />
@@ -1025,16 +1021,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tests/test_cluster.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="379">
-          <caret line="117" column="28" selection-start-line="117" selection-start-column="28" selection-end-line="117" selection-end-column="28" />
-          <folding>
-            <element signature="e#0#15#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/test_travis.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -1044,10 +1030,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/scripts/remote_tests_lsf.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="14" selection-start-line="25" selection-start-column="14" selection-end-line="25" selection-end-column="14" />
+        <state relative-caret-position="165">
+          <caret line="11" column="27" selection-start-line="11" selection-start-column="27" selection-end-line="11" selection-end-column="27" />
           <folding>
             <element signature="e#0#17#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/test_cluster.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-603">
+          <caret line="37" column="10" selection-start-line="37" selection-start-column="10" selection-end-line="37" selection-end-column="10" />
+          <folding>
+            <element signature="e#0#15#0" expanded="true" />
           </folding>
         </state>
       </provider>

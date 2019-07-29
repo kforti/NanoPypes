@@ -3,7 +3,6 @@ import time
 import yaml
 
 from nanopypes.compute import ClusterManager
-from config import Configuration
 
 from distributed import Client
 import time
