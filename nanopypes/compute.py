@@ -33,7 +33,7 @@ class ClusterManager:
         if debug:
             self.job_extra = self._set_debug(job_extra)
         else:
-            self.job_extra = job_extra
+            self.job_extra = job_extra or ['-R rusage[mem={}]'.format(self.core_memory)]
 
         self._cluster = cluster #or self.build_cluster() # Must be explicitly built first, or a cluster object can be passed
 
