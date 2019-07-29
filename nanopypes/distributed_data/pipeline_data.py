@@ -88,7 +88,7 @@ class PipelineBuilder:
                 result = task(partition_results[i])
                 command_results.append(result)
             for i, task in enumerate(transform['pipe_tasks']):
-                if self._pipe_results:
+                if self.pipe_results:
                     result = task(command_results[i])
                     result.set_upstream(self.pipe_results[i])
                 else:

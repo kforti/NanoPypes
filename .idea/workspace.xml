@@ -324,8 +324,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1855" />
-    <option name="y" value="132" />
+    <option name="x" value="1750" />
+    <option name="y" value="23" />
     <option name="width" value="1446" />
     <option name="height" value="984" />
   </component>
@@ -413,7 +413,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.new">
+  <component name="RunManager" selected="Python.test_data_partition">
     <configuration name="dask_kube" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="code_snippets" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -594,9 +594,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.test_data_partition" />
         <item itemvalue="Python.new" />
         <item itemvalue="Python.dask_kube" />
-        <item itemvalue="Python.test_data_partition" />
         <item itemvalue="Python.test_configurations" />
         <item itemvalue="Python.singularity" />
       </list>
