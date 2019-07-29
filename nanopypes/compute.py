@@ -25,6 +25,7 @@ class ClusterManager:
         try:
             self.core_memory = str(int(self.worker_memory / self.worker_cores))
         except:
+            "There was an error in assigning memory per core..."
             pass
         self.interface = None
         self.clients = []
