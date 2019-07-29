@@ -18,7 +18,7 @@ pipe_configs:
     minimap2:
         task_kwargs: {}
         task_type: shell
-        data_type: ont_demultiplexed
+        data_type: ont_basecalled
         input_path: "{{NANOPYPES_VARIABLE}}" # possibly user defined as well
         references: /Users/kevinfortier/PycharmProjects/code_snippets/ercc_ref_20190220_1525.fa #"{{USER_INPUT}}" # For reference per barcode {"{{USER_INPUT}}": "{{USER_INPUT}}"}
         save_path: "/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/mapped_reads"
@@ -30,7 +30,7 @@ pipe_configs:
                 input_type: ['fastq']
                 save_type: ['file']
                 partitions: 0
-                split_merge: 'merge_by_barcode'
+                split_merge: 'one_to_one'
     porechop:
         task_kwargs: {}
         task_type: shell
