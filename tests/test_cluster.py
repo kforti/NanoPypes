@@ -115,3 +115,4 @@ class TestClusterRemote(unittest.TestCase):
 ##########################################################################
 if __name__ == '__main__':
     test_cluster_from_dict()
+    test_lsf_cluster_build()

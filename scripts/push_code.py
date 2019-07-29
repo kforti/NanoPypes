@@ -7,7 +7,7 @@ import pexpect
 import dotenv
 
 dotenv.load_dotenv("env/.env")
-PASSWORD = os.environ['PASSWORD']
+PASSWORD = os.environ['LSF_PASSWORD']
 SSH_PASSWORD = os.environ['SSH_PASSWORD']
 
 
