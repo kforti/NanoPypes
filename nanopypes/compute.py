@@ -88,7 +88,7 @@ class ClusterManager:
 
     def start_cluster(self):
         try:
-            assert self.cluster is not None
+            assert self.cluster
         except:
             self.build_cluster()
 

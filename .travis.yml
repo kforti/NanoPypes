@@ -1,28 +1,19 @@
-# Config file for automatic testing at travis-ci.org
-
 language: python
 python:
-  - 3.7
-  - 3.6
-  - 3.5
-
-# Command to install dependencies, e.g. pip install -r requirements.txt --use-mirrors
-#install: pip install .
-
-# Command to run tests, e.g. python setup.py test
-script: python tests/test_travis.py
-
-# Assuming you have installed the travis-ci CLI tool, after you
-# create the Github repo and add it to Travis, run the
-# following command to finish PyPI deployment setup:
-# $ travis encrypt --add deploy.password
+- 3.5
 deploy:
   provider: pypi
   distributions: sdist bdist_wheel
   user: kforti
   password:
-    secure: PLEASE_REPLACE_ME
+    secure: F+3FkL9kioG0SmkU6R5CVlF05cfAgUJL6PgwRFPzkob1ZfPaUKbCV/AuGov5TSThelV/HCA96VU81Qc7O4nu1OKOWiEzOrLfQwS6qdmuofXvp7M2nYwDS9HJ/hDoQpHzj6wbK5aBu9+a/pkmuE9voPv3tNBfENbBdqcPD7VtwPNphkOjE+43oEm+MLXUCPNt1nA5eyJkWuXBMGOndC0ApkyUXghXbuSX6XcM5zSw6YCwUJ90S8ZkSFWt6AszySIClwAebftFQITnMGq6VEzYJQNiUqQT+3dQXnifAL/FDsq6hlKIwYrUt8dRmwPwc6CBmLGuSn4J4gh8y15yAlwogRdJiM9tgauwp+E1j8tIYO/LvcXjWNZ6orTL3ooYswqHlEppL+bu3/hVOOMEPlrirPk0dpHjW4dDIXp76m+1s7WHJx7k1sJfeZBwhlo35xnEwxRlrWX1BgR3rUOhF6Mno+k8vSUVgRO/4sCwj83Mby9pHGE5LI4WDLkw+rsqbl9n68mp56Zgo91qbsiDbiJEz0LtHn6gEUTSMuctLZiZkq2j9n0fWS89IojfUyTx7BE0ccDdc2ZLvyBwy6iJIkikF9Qr6CENXXfH8FDBliJaEkeMKiuScswNc/HlkyvuvzXNZq+ZhXrujidPSApC5tBtwCvtjo6gM7gHqx0tUgyy1Rs=
   on:
     tags: true
     repo: kforti/pai-nanopypes
-    python: 3.6
+    python: 3.5
+env:
+  global:
+    secure: OtT9Xt9clYLWIUUSXa0vwkbvmIFYYxFUQr40pCVOlSSLlDrMS4cjOilJTMP3l8263DBaESR+BKK8hZ4xEpkesyBnugertdBHYfeqkHhKY3lgMIfIpwaUZS0hwZAubsWJaea7rMNkx+Je1x9Om5lqAzHMVqyIMYjrjdNjaW/wjFYoaF4DLh3auDTx8skGsjvT36ianC8ocAfnxPXGEtOV8WQrfFrkaxXRVrwtaZbMPwgpao7wKfBKyjRVIntPFqpzkhehpMLFTbBIWJQeLmtbpZOKd3PHJ8dY+9LEoRRz2lNEApM2L4BGjCF8wshdDOsZZtAyd+s5zl3O0m4smuIccQ4s/RyEnl+C18Jv0qHa8UuWskq+oZsc8KZ2R7ggO5K0oYip7EBUsLRFIonP0p2vdX6zYhVgrGQRIQGQ/9ENH60ujV8qMayJazaZnHKI2wU0Yxsty+RkEI5mtt6BAV08nQaAiZ402ZNq+FNBUEBiduFVV9o/QNTwnSrrVBRnPWkKNQK3pRJ+3qyNcXhgCO+zFTMvvDav/rzGoGzLGPHpEK5ZBMKtpguenkhWx+gZasTcGkdG9fCkmIaiYn6tHnTMnTAREVDbx0ClPzDyMAFrcDkK+l4t8Q0OoaiYbUJIIECT2tvmLKB2ZWMetu79qjknf6PiEVOGZd53HKUNTGRyf0Y=
+script:
+- export LSF_PASSWORD=$LSF_PASSOWRD
+- python tests/test_travis.py

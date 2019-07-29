@@ -6,7 +6,7 @@ from nanopypes.compute import ClusterManager
 from config import Configuration
 
 from distributed import Client
-
+import time
 
 
 
@@ -19,6 +19,28 @@ def test_cluster_from_dict():
         #print(config)
     cluster = ClusterManager.from_dict(config)
     assert cluster == expected_cluster
+
+
+def test_lsf_cluster_build():
+    expected_job_script = '#!/bin/bash\n\n#BSUB -J dask-worker\n#BSUB -q short\n#BSUB -n 12\n#BSUB -R "span[hosts=1]"\n#BSUB -M 8000\n#BSUB -W 4:00\nJOB_ID=${LSB_JOBID%.*}\n\n\n\n/share/pkg/python3/3.5.0/bin/python3 -m distributed.cli.dask_worker tcp://10.192.23.85:41273 --nthreads 3 --nprocs 4 --memory-limit 2.00GB --name dask-worker--${JOB_ID}-- --death-timeout 60\n'
+    cm = ClusterManager(num_workers=8, worker_memory=2048, worker_cores=3, cluster_type='lsf', queue='short',
+                        workers_per_job=4, job_time='4:00')
+    client = cm.start_cluster()
+    assert cm.cluster.job_script() == expected_job_script
+    start = time.perf_counter()
+
+    while True:
+        try:
+            assert cm.cluster.worker_cores == 12
+            break
+        except AssertionError:
+            pass
+        if (time.perf_counter() - start) > 150.0:
+            raise TimeoutError
+        time.sleep(10)
+
+
+
 
 
 
