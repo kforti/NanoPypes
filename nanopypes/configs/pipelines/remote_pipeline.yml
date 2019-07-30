@@ -25,7 +25,7 @@ pipe_configs:
         image_path: ""
         commands:
             splice-map:
-                template: "minimap2 -ax splice {reference} {input} -o {save}"
+                template: "minimap2 -ax splice {reference} {input} > {save}"
                 user_input: ['reference']
                 input_type: ['fastq']
                 save_type: ['file']
