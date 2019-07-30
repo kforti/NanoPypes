@@ -5,37 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="06fba5a6-e119-4d57-aa65-81370b2766cd" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nanopypes/distributed_data/pipeline_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/distributed_data/pipeline_data.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/0/sequencing_telemetry.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/0/sequencing_telemetry.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/0/workspace/calibration_strands/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/0/workspace/calibration_strands/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/0/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/0/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/1/sequencing_summary.txt" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/1/sequencing_summary.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/1/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/1/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/2/sequencing_summary.txt" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/2/sequencing_summary.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/2/sequencing_telemetry.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/2/sequencing_telemetry.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/2/workspace/calibration_strands/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/2/workspace/calibration_strands/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/2/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/2/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/3/sequencing_telemetry.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/3/sequencing_telemetry.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/3/workspace/calibration_strands/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/3/workspace/calibration_strands/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/3/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/3/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/4/sequencing_telemetry.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/4/sequencing_telemetry.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/4/workspace/calibration_strands/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/4/workspace/calibration_strands/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/4/workspace/fail/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/4/workspace/fail/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/4/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/4/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/5/sequencing_telemetry.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/5/sequencing_telemetry.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/5/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/5/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/6/sequencing_telemetry.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/6/sequencing_telemetry.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/6/workspace/calibration_strands/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/6/workspace/calibration_strands/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/6/workspace/fail/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/6/workspace/fail/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/6/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/6/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/7/sequencing_telemetry.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/7/sequencing_telemetry.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/7/workspace/calibration_strands/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/7/workspace/calibration_strands/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/7/workspace/fail/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/7/workspace/fail/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/7/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/7/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/9/sequencing_telemetry.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/9/sequencing_telemetry.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/9/workspace/calibration_strands/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/9/workspace/calibration_strands/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/9/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/9/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nanopypes/configs/pipelines/pipeline.yml" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/configs/pipelines/pipeline.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/mapped_reads/nanopypes_batch_0/ont_batch_0.sam" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/mapped_reads/nanopypes_batch_0/ont_batch_9.sam" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/mapped_reads/nanopypes_batch_1/ont_batch_6.sam" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/mapped_reads/nanopypes_batch_1/ont_batch_7.sam" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/mapped_reads/nanopypes_batch_2/ont_batch_1.sam" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/mapped_reads/nanopypes_batch_2/ont_batch_8.sam" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/mapped_reads/nanopypes_batch_3/ont_batch_3.sam" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/mapped_reads/nanopypes_batch_3/ont_batch_4.sam" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/mapped_reads/nanopypes_batch_4/ont_batch_2.sam" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/mapped_reads/nanopypes_batch_4/ont_batch_5.sam" beforeDir="false" />
       <change beforePath="$USER_HOME$/dask-kubernetes/dask_kubernetes/config.py" beforeDir="false" afterPath="$USER_HOME$/dask-kubernetes/dask_kubernetes/config.py" afterDir="false" />
       <change beforePath="$USER_HOME$/prefect/prefect/src/prefect/tasks/shell.py" beforeDir="false" afterPath="$USER_HOME$/prefect/prefect/src/prefect/tasks/shell.py" afterDir="false" />
     </list>
@@ -47,10 +27,10 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.2574048">
+    <splitter split-orientation="horizontal" split-proportion="0.78197426">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="test_data_partition.py" pinned="false" current-in-tab="true">
+          <file leaf-file-name="test_data_partition.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/tests/test_data_partition.py">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="208">
@@ -71,11 +51,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="pipeline.yml" pinned="false" current-in-tab="false">
+          <file leaf-file-name="pipeline.yml" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/nanopypes/configs/pipelines/pipeline.yml">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="112">
-                  <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+                <state relative-caret-position="382">
+                  <caret line="27" column="68" selection-start-line="27" selection-start-column="68" selection-end-line="27" selection-end-column="68" />
                 </state>
               </provider>
             </entry>
@@ -161,11 +141,11 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="pipeline_data.py" pinned="false" current-in-tab="true">
+          <file leaf-file-name="pipeline_data.py" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/nanopypes/distributed_data/pipeline_data.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="122">
-                  <caret line="80" column="61" selection-start-line="80" selection-start-column="61" selection-end-line="80" selection-end-column="61" />
+                <state relative-caret-position="137">
+                  <caret line="81" lean-forward="true" selection-start-line="81" selection-end-line="81" />
                   <folding>
                     <element signature="e#0#36#0" expanded="true" />
                   </folding>
@@ -235,6 +215,15 @@
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="195">
                   <caret line="13" column="49" selection-start-line="13" selection-start-column="49" selection-end-line="13" selection-end-column="49" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="compute.yml" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/nanopypes/configs/compute.yml">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="195">
+                  <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
                 </state>
               </provider>
             </entry>
@@ -345,16 +334,16 @@
         <option value="$PROJECT_DIR$/tests/test_cluster.py" />
         <option value="$USER_HOME$/PycharmProjects/code_snippets/new.py" />
         <option value="$PROJECT_DIR$/tests/test_data_partition.py" />
-        <option value="$PROJECT_DIR$/nanopypes/configs/pipelines/pipeline.yml" />
         <option value="$PROJECT_DIR$/nanopypes/configs/pipelines/remote_pipeline.yml" />
         <option value="$PROJECT_DIR$/nanopypes/distributed_data/partition_data.py" />
         <option value="$PROJECT_DIR$/nanopypes/distributed_data/pipeline_data.py" />
+        <option value="$PROJECT_DIR$/nanopypes/configs/pipelines/pipeline.yml" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1696" />
-    <option name="y" value="83" />
+    <option name="x" value="1514" />
+    <option name="y" value="271" />
     <option name="width" value="1714" />
     <option name="height" value="984" />
   </component>
@@ -415,21 +404,6 @@
               <item name="NanoPypes" type="462c0819:PsiDirectoryNode" />
               <item name="tests" type="462c0819:PsiDirectoryNode" />
               <item name="test_data" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="NanoPypes" type="b2602c69:ProjectViewProjectNode" />
-              <item name="NanoPypes" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
-              <item name="test_data" type="462c0819:PsiDirectoryNode" />
-              <item name="mapped_reads" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="NanoPypes" type="b2602c69:ProjectViewProjectNode" />
-              <item name="NanoPypes" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
-              <item name="test_data" type="462c0819:PsiDirectoryNode" />
-              <item name="mapped_reads" type="462c0819:PsiDirectoryNode" />
-              <item name="nanopypes_batch_4" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -704,9 +678,10 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1629" y="23" width="1714" height="984" extended-state="0" />
+    <frame x="1650" y="42" width="1714" height="984" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.76806086" visible="true" weight="0.16243355" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.76806086" visible="true" weight="0.13290018" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32954547" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.10359408" side_tool="true" weight="0.3541384" />
@@ -917,13 +892,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/nanopypes/configs/compute.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/nanopypes/pipelines/pipeline_builder.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="83">
@@ -1083,13 +1051,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/nanopypes/configs/pipelines/pipeline.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="9" column="17" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/test_data/mapped_reads/nanopypes_batch_4/ont_batch_2.sam">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-109" />
@@ -1102,13 +1063,6 @@
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/nanopypes/configs/pipelines/remote_pipeline.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="49" selection-start-line="13" selection-start-column="49" selection-end-line="13" selection-end-column="49" />
         </state>
       </provider>
     </entry>
@@ -1134,11 +1088,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/nanopypes/distributed_data/pipeline_data.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="122">
-          <caret line="80" column="61" selection-start-line="80" selection-start-column="61" selection-end-line="80" selection-end-column="61" />
+        <state relative-caret-position="137">
+          <caret line="81" lean-forward="true" selection-start-line="81" selection-end-line="81" />
           <folding>
             <element signature="e#0#36#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nanopypes/configs/pipelines/remote_pipeline.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="49" selection-start-line="13" selection-start-column="49" selection-end-line="13" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nanopypes/configs/compute.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nanopypes/configs/pipelines/pipeline.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="382">
+          <caret line="27" column="68" selection-start-line="27" selection-start-column="68" selection-end-line="27" selection-end-column="68" />
         </state>
       </provider>
     </entry>
