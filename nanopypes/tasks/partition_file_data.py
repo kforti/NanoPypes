@@ -17,7 +17,7 @@ class BatchPartition(Task):
         inputs = []
         saves = []
         command_data = []
-
+        print("BATCH NUM: ", batch_num, " BATCH CONTENTS: ", batch)
         results = input_fn(batch, batch_num, **fn_kwargs)
         # command_data.append({'input': input_result, 'save': save_result})
         # inputs.append(input_result)
