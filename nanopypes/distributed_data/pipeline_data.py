@@ -68,6 +68,7 @@ class PipelineBuilder:
         for transform in self.data_provenance:
             self._build_transform(transform)
 
+
     def _build_transform(self, transform):
         # inputs = self.inputs
         partition_results, command_results, pipe_results, curr_dependencies, next_inputs = [], [], [], [], []
@@ -76,6 +77,9 @@ class PipelineBuilder:
         with self.pipeline as flow:
             for i, task in enumerate(transform['partition_tasks']):
                 result = task(self.inputs[i])
+                if self.pipe_results:
+                    result.set_upstream(self.pipe_results[i])
+
                 if transform['num_partitions'] > 0:
                     for i in range(transform['num_partitions']):
                         partition_results.append(result['command_data'][i])
@@ -90,7 +94,7 @@ class PipelineBuilder:
             for i, task in enumerate(transform['pipe_tasks']):
                 if self.pipe_results:
                     result = task(command_results[i])
-                    result.set_upstream(self.pipe_results[i])
+                    #result.set_upstream(self.pipe_results[i])
                 else:
                     result = task(command_results[i])
                 pipe_results.append(result)
