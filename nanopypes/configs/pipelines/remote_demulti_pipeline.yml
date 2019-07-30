@@ -1,0 +1,68 @@
+pipeline_id: demulti_mapper
+pipeline_order: [["albacore", "basecall"], ["porechop", "demultiplex"], ["minimap2", "splice-map"]]
+pipe_configs:
+    albacore:
+        task_kwargs: {}
+        task_type: shell
+        data_type: ont_sequence
+        input_path: "{input_path}"
+        save_path: "/nl/umw_athma_pai/kevin/test_ercc/basecall"
+        commands:
+            basecall:
+                template: "read_fast5_basecaller.py --input {input} --save_path {save} --flowcell {flowcell} --kit {kit} --output_format fastq --worker_threads 3 --reads_per_fastq 1000"
+                user_input: ['reference']
+                input_type: ['string_list_files']
+                save_type: ['file']
+                partitions: 5
+                split_merge: 'one_to_many'
+    minimap2:
+        task_kwargs: {}
+        task_type: shell
+        data_type: ont_demultiplexed
+        input_path: "{{NANOPYPES_VARIABLE}}" # possibly user defined as well
+        references: /project/umw_athma_pai/genomes/ercc/ERCC92.fa #"{{USER_INPUT}}" # For reference per barcode {"{{USER_INPUT}}": "{{USER_INPUT}}"}
+        save_path: "/nl/umw_athma_pai/kevin/test_ercc/map"
+        image_path: ""
+        commands:
+            splice-map:
+                template: "minimap2 -ax splice {reference} {input} > {save}"
+                user_input: ['reference']
+                input_type: ['fastq']
+                save_type: ['file']
+                partitions: 0
+                split_merge: 'merge_by_barcode'
+    porechop:
+        task_kwargs: {}
+        task_type: shell
+        data_type: ont_basecalled
+        input_path: "{{NANOPYPES_VARIABLE}}" # possibly user defined as well
+        save_path: "/nl/umw_athma_pai/kevin/test_ercc/demultiplex"
+        commands:
+            demultiplex:
+                template: "porechop -i {input} -b {save}"
+                user_input: []
+                input_type: ['directory', 'ont_fastq_seq_data']
+                save_type: ['directory', 'dir_file_by_name']
+                partitions: 0
+                split_merge: 'one_to_one'
+#    albacore:
+#        task_config:
+#            task_type: shell
+#        data_type: single_read_fast5
+#        input_path: "/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/"
+#        save_path: "/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/basecalled_data/results/local_basecall_copy"
+#        commands:
+#            basecall: "read_fast5_basecaller.py --input {input} --save_path {save_path} --flowcell {flowcell} --kit {kit} --output_format fastq --worker_threads 1 --reads_per_fastq 1000"
+#        user_input: ['flowcell', 'kit']
+#    minimap2:
+#        task_config:
+#            task_type: shell
+#        data_type: fastq
+#        input_path: "/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/basecalled_data/results/local_basecall_copy"
+#        references: "{references}" #"{{USER_INPUT}}" # For reference per barcode {"{{USER_INPUT}}": "{{USER_INPUT}}"}
+#        save_path: "../pipeline_run/5/minimap2"
+#        commands:
+#            splice-map: "minimap2 -ax splice {reference} {read} -o {save_path}"
+#        user_input: ['reference']
+compute_config_path: ../nanopypes/configs/compute.yml
+compute_id: umass_ghpcc_lsf
