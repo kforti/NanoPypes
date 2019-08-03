@@ -12,7 +12,8 @@ albacore:
             save_type: ['file']
             partitions: 5
             split_merge: 'one_to_many'
-    user_input: ['flowcell', 'kit']
+            merge: False
+            user_input: ['flowcell', 'kit']
 minimap2:
     task_kwargs: {}
     task_type: shell
@@ -29,17 +30,28 @@ minimap2:
             save_type: ['file']
             partitions: None
             'split_merge': 'one_to_one'
+            merge: False
 samtools:
     task_kwargs: {}
     task_type: shell
-    data_type: sam_bam
+    data_type: mapped_reads
     input_path: "{{NANOPYPES_VARIABLE}}" # possibly user defined as well
     save_path: "../pipeline_run/{pipeline_id}/samtools"
     commands:
         sam_to_bam:
-            template: "samtools view -b -S -o {bam} {sam}"
-        sort_bam: "samtools sort {bam} -o {sorted_bam}"
-        index_bam: "samtools index {sorted_bam} {bam_index}"
+            template: "echo {save} {input}" #samtools view -b -S -o
+            partitions: 0
+            split_merge: 'one_to_one'
+            merge: False
+        sort_bam:
+            template: "samtools sort {input} -o {save}"
+        index_bam:
+            template: "samtools index {input} {save}"
+        merge_bams:
+            template: "echo {save} {input}" #samtools merge
+            partitions: 1
+            split_merge: 'merge_by_name'
+            merge: True
 bcftools:
     task_kwargs: {}
     task_type: shell
@@ -65,6 +77,7 @@ porechop:
             save_type: ['directory', 'dir_file_by_name']
             partitions: 0
             'split': 'per_batch'
+            merge: False
 nanoplot:
     task_kwargs: {}
     task_type: shell

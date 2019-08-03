@@ -1,5 +1,5 @@
 pipeline_id: demulti_mapper
-pipeline_order: [["albacore", "basecall"], ["porechop", "demultiplex"], ["minimap2", "splice-map"]]
+pipeline_order: [["albacore", "basecall"], ["porechop", "demultiplex"], ["minimap2", "splice-map"], ["samtools", "sam_to_bam"], ["samtools", "merge_bams"]]
 pipe_configs:
     albacore:
         task_kwargs: {}
@@ -15,6 +15,7 @@ pipe_configs:
                 save_type: ['file']
                 partitions: 5
                 split_merge: 'one_to_many'
+                merge: False
     minimap2:
         task_kwargs: {}
         task_type: shell
@@ -31,6 +32,7 @@ pipe_configs:
                 save_type: ['file']
                 partitions: 0
                 split_merge: 'merge_by_barcode'
+                merge: False
     porechop:
         task_kwargs: {}
         task_type: shell
@@ -45,6 +47,7 @@ pipe_configs:
                 save_type: ['directory', 'dir_file_by_name']
                 partitions: 0
                 split_merge: 'one_to_one'
+                merge: False
 #    albacore:
 #        task_config:
 #            task_type: shell

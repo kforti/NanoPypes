@@ -76,9 +76,15 @@ class PipelineBuilder:
         print(transform['num_partitions'])
         with self.pipeline as flow:
             for i, task in enumerate(transform['partition_tasks']):
-                result = task(self.inputs[i])
-                if self.pipe_results:
-                    result.set_upstream(self.pipe_results[i])
+                if transform['merge']:
+                    result = task(self.inputs)
+                    if self.pipe_results:
+                        result.set_upstream(self.pipe_results)
+                else:
+                    result = task(self.inputs[i])
+
+                    if self.pipe_results:
+                        result.set_upstream(self.pipe_results[i])
 
                 if transform['num_partitions'] > 0:
                     for i in range(transform['num_partitions']):
@@ -124,6 +130,7 @@ class PipelineBuilder:
         self.partitions = partitions
         self.partition_strategy = self.pipe_specs[tool]['commands'][command]['split_merge']
         self.command_template = self.pipe_specs[tool]['commands'][command]['template']
+        self.merge = self.pipe_specs[tool]['commands'][command]['merge']
 
         self.command_tasks = []
         self.pipe_tasks = []
@@ -134,6 +141,8 @@ class PipelineBuilder:
 
     def _partition_data(self):
         """ Split/merge data"""
+        if self.partitions != 0 and self.partitions < self.num_batches:
+            self.num_batches = self.partitions
 
         task_id = 'data_partition_{}'.format(self.data_type)
         data_partitioner = DataPartitioner(num_batches=self.num_batches,
@@ -142,7 +151,8 @@ class PipelineBuilder:
                                            partitions=self.partitions,
                                            partition_strategy=self.partition_strategy,
                                            name=task_id,
-                                           slug=task_id)
+                                           slug=task_id,
+                                           )
 
         self.partition_tasks = data_partitioner.partition_data()
 
@@ -178,7 +188,8 @@ class PipelineBuilder:
                                            'data_type': None},
                                 command_tasks=self.command_tasks,
                                 pipe_tasks=self.pipe_tasks,
-                                num_partitions=self.partitions)
+                                num_partitions=self.partitions,
+                                merge=self.merge)
         self.data_provenance.append(transform_ticket)
 
 

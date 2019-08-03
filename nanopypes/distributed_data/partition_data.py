@@ -20,15 +20,19 @@ class DataPartitioner:
         self.partition_tasks = []
 
         self.data_handler = {'ont_sequence': {'one_to_many': partition_ont_seq_data},
-                        'ont_basecalled': {'many_to_one': merge_basecalled_data,
-                                             'one_to_one': partition_basecalled_data},
-                        'ont_demultiplexed': {'merge_by_barcode': partition_demultiplexed_data,
-                                      'many_to_one': None}}
+                             'ont_basecalled': {'many_to_one': merge_basecalled_data,
+                                                'one_to_one': partition_basecalled_data},
+                             'ont_demultiplexed': {'merge_by_barcode': partition_demultiplexed_data,
+                                                   'many_to_one': None},
+                             'mapped_reads': {'merge_by_name': merge_bams,
+                                              'one_to_one': sam_to_bam}
+                             }
         self.kwargs_handler = {'ont_sequence': {'one_to_many': {'partitions': self.partitions, 'save_path': self.save_path},
                                          'many_to_one': {}},
                                'ont_basecalled': {'many_to_one': {},
                                                   'one_to_one': {'save_path': self.save_path, 'strategy': self.split_merge, 'input_type': 'main_dir'}},
-                        'ont_mapped_reads': None,
+                        'mapped_reads': {'merge_by_name': {'save_path': self.save_path},
+                                              'one_to_one': {}},
                         'fastq': {'one_to_one': {}},
                                'ont_demultiplexed': {'merge_by_barcode': {'save_path': self.save_path},
                                              'many_to_one': None}
@@ -413,6 +417,50 @@ def merge_mapped_reads(batches, save_path):
             shutil.move(file, file_save_path)
 
 
+#############################################################
+### Mapped Reads Functions                                ###
+#############################################################
+
+def sam_to_bam(batch, batch_num, **fn_kwargs):
+    command_data = []
+    input_paths = batch
+    save_paths = []
+    for file in batch:
+        path = Path(file)
+        bam_name = path.name.replace(".sam", ".bam")
+        bam_path = str(path.parent.joinpath(bam_name))
+        save_paths.append(bam_path)
+        command_data.append({'input': file, 'save': bam_path})
+    return command_data, input_paths, save_paths
+
+def merge_bams(batches, batch_num, save_path):
+    barcodes = _find_barcodes(batches)
+    input_paths = []
+    save_paths = []
+    command_data = []
+
+    for bcode, paths in barcodes.items():
+        print("PATHS: ", paths)
+        bcode_inputs = " ".join(paths)
+        input_paths.append([bcode_inputs])
+        bcode_save_path = os.path.join(save_path, bcode)
+        save_paths.append([bcode_save_path])
+        command_data.append([{'input': bcode_inputs, 'save': bcode_save_path}])
+    return command_data, input_paths, save_paths
+
+
+
+def _find_barcodes(batches):
+    bam_barcodes = {}
+    for batch in batches:
+        for file in batch:
+            file_name = os.path.basename(file)
+            if file_name in bam_barcodes:
+                bam_barcodes[file_name].append(file)
+            else:
+                bam_barcodes[file_name] = [file]
+    return bam_barcodes
+
 
 class FileData():
 
@@ -640,7 +688,8 @@ class ONTSequenceData(FileData):
 #
 
 if __name__ == '__main__':
-    pass
+    l = ['hello', 'my', 'name', 'is', 'nothing']
+    print(" ".join(l))
 
 
 
