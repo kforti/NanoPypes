@@ -434,6 +434,10 @@ def sam_to_bam(batch, batch_num, **fn_kwargs):
     return command_data, input_paths, save_paths
 
 def merge_bams(batches, batch_num, save_path):
+    save_path = os.path.join(save_path, 'merged_bams')
+    if os.path.exists(save_path) is False:
+        os.mkdir(save_path)
+
     barcodes = _find_barcodes(batches)
     input_paths = []
     save_paths = []

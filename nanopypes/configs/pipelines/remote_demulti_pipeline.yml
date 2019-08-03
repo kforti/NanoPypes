@@ -48,6 +48,27 @@ pipe_configs:
                 partitions: 0
                 split_merge: 'one_to_one'
                 merge: False
+    samtools:
+        task_kwargs: {}
+        task_type: shell
+        data_type: mapped_reads
+        input_path: "{{NANOPYPES_VARIABLE}}" # possibly user defined as well
+        save_path: "/nl/umw_athma_pai/kevin/test_ercc/bams"
+        commands:
+            sam_to_bam:
+                template: "samtools view -b -S -o {save} {input}" #
+                partitions: 0
+                split_merge: 'one_to_one'
+                merge: False
+            sort_bam:
+                template: "samtools sort {input} -o {save}"
+            index_bam:
+                template: "samtools index {input} {save}"
+            merge_bams:
+                template: "samtools merge {save} {input}" #
+                partitions: 1
+                split_merge: 'merge_by_name'
+                merge: True
 #    albacore:
 #        task_config:
 #            task_type: shell
