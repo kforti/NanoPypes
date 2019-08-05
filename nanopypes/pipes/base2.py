@@ -27,7 +27,7 @@ class Pipe():
     def create_tasks(self, num_batches):
         for i in range(num_batches):
             task_id = self.task_id + "_batch_{}".format(str(i))
-            task = self.task(slug=task_id, name=task_id, **self.task_kwargs)
+            task = self.task(slug=task_id, name=task_id, max_retries=3, **self.task_kwargs)
 
             self.all_tasks.append(task)
 
