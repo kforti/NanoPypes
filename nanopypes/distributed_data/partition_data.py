@@ -439,17 +439,22 @@ def merge_bams(batches, batch_num, save_path):
         os.mkdir(save_path)
 
     barcodes = _find_barcodes(batches)
-    input_paths = []
-    save_paths = []
-    command_data = []
+    batch_inputs = []
+    batch_saves = []
+    batch_command_data = []
 
     for bcode, paths in barcodes.items():
         print("PATHS: ", paths)
         bcode_inputs = " ".join(paths)
-        input_paths.append([bcode_inputs])
+        batch_inputs.append(bcode_inputs)
         bcode_save_path = os.path.join(save_path, bcode)
-        save_paths.append([bcode_save_path])
-        command_data.append([{'input': bcode_inputs, 'save': bcode_save_path}])
+        batch_saves.append(bcode_save_path)
+        batch_command_data.append({'input': bcode_inputs, 'save': bcode_save_path})
+
+    command_data = list(batch_command_data)
+    input_paths = list(batch_inputs)
+    save_paths = list(batch_saves)
+
     return command_data, input_paths, save_paths
 
 
@@ -692,8 +697,16 @@ class ONTSequenceData(FileData):
 #
 
 if __name__ == '__main__':
-    l = ['hello', 'my', 'name', 'is', 'nothing']
-    print(" ".join(l))
+    batches = [['/nl/umw_athma_pai/kevin/test_ercc/map/batch_1/BC01.bam', '/nl/umw_athma_pai/kevin/test_ercc/map/batch_1/BC04.bam', '/nl/umw_athma_pai/kevin/test_ercc/map/batch_1/BC02.bam', '/nl/umw_athma_pai/kevin/test_ercc/map/batch_1/BC03.bam', '/nl/umw_athma_pai/kevin/test_ercc/map/batch_1/none.bam'],
+               ['/nl/umw_athma_pai/kevin/test_ercc/map/batch_0/BC01.bam',
+                '/nl/umw_athma_pai/kevin/test_ercc/map/batch_0/BC04.bam',
+                '/nl/umw_athma_pai/kevin/test_ercc/map/batch_0/BC02.bam',
+                '/nl/umw_athma_pai/kevin/test_ercc/map/batch_0/BC03.bam',
+                '/nl/umw_athma_pai/kevin/test_ercc/map/batch_0/none.bam']]
+    save_path = '/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests'
+
+    data = merge_bams(batches, 0, save_path)
+    print(data)
 
 
 

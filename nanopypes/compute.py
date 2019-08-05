@@ -95,6 +95,7 @@ class ClusterManager:
 
         minimum_workers = self.min_num_workers or int(0.5 * self.num_workers)
         self.cluster.scale(self.num_workers)
+        self.cluster.scheduler
         return self.client
 
     @property
@@ -142,3 +143,7 @@ class ClusterManager:
         for client in self.clients:
             client.close()
         self.cluster.close()
+
+if __name__ == '__main__':
+    cluster = LocalCluster()
+    print(cluster.scheduler.workers)
