@@ -85,7 +85,7 @@ class ClusterManager:
             cluster = LocalCluster()
             self.num_workers = len(cluster.scheduler.workers)
         self._cluster = cluster
-        self._cluster.adapt(minimum_cores=self.num_workers*self.worker_cores)
+        self._cluster.adapt(minimum=self.num_workers)
         return
 
     def start_cluster(self):

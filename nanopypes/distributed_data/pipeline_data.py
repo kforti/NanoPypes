@@ -6,6 +6,19 @@ from nanopypes.pipes.base2 import Pipe
 from nanopypes.distributed_data.partition_data import DataPartitioner, ONTFastqSequenceData
 
 
+
+def run_pipeline(pipeline, **kwargs):
+    """
+
+    :param pipeline:
+    :param kwargs:
+    :return:
+    """
+    state = pipeline.run(**kwargs)
+    if state.is_failed():
+
+
+
 @task
 def get_inputs(results):
     print("RESULTS: ", results)

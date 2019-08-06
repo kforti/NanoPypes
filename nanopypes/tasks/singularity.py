@@ -27,13 +27,19 @@ class BatchSingularityExecute(Task):
     def run(self, commands=None, image_path=None, bind_paths=None):
         Client.load(image_path)
         all_outs = []
+        all_error_messages = []
+        failure = False
         for i, c in enumerate(commands):
             if isinstance(c, str):
                 command = c.split()
             else: command = c
 
-            stdout = Client.execute(image_path, command, bind=bind_paths)
-            all_outs.append(stdout)
+            stdout = Client.execute(image_path, command, bind=bind_paths, return_result=True)
+            if stdout['return_code'] !=0:
+                all_error_messages.append(stdout['message'])
+                failure = True
+            elif stdout['return_code'] == 0:
+                all_outs.append(stdout['message'])
         return all_outs
 
 
