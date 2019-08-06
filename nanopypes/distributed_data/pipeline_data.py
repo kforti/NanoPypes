@@ -16,7 +16,7 @@ def run_pipeline(pipeline, **kwargs):
     """
     state = pipeline.run(**kwargs)
     if state.is_failed():
-
+        pass
 
 
 @task
