@@ -1,10 +1,21 @@
-umass_ghpcc_lsf:
+umass_ghpcc_lsf_test:
     cluster_type: lsf
     job_time: 04:00
     project: /project/umw_athma_pai
     queue: short
     workers_per_job: 2
     num_workers: 20
+    min_num_workers:
+    worker_cores: 2
+    worker_memory: 4096
+    debug: True
+umass_ghpcc_lsf:
+    cluster_type: lsf
+    job_time: 04:00
+    project: /project/umw_athma_pai
+    queue: short
+    workers_per_job: 4
+    num_workers: 200
     min_num_workers:
     worker_cores: 2
     worker_memory: 4096
