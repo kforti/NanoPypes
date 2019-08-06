@@ -1,5 +1,5 @@
 pipeline_id: demulti_mapper
-pipeline_order: [["albacore", "basecall"], ["porechop", "demultiplex"], ["minimap2", "splice-map"], ["samtools", "sam_to_bam"], ["samtools", "merge_bams"]] #
+pipeline_order: [["albacore", "basecall"], ["minimap2", "splice-map"], ["samtools", "sam_to_bam"], ["samtools", "merge_bams"]] #
 pipe_configs:
     albacore:
         task_kwargs: {}
