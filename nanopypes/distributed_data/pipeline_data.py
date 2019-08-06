@@ -169,8 +169,8 @@ class PipelineBuilder:
             self.command_tasks.append(commands)
 
     def _pipe_data(self):
-
-        pipe = Pipe(task_id=self.tool,
+        task_id = "_".join([self.tool, self.command])
+        pipe = Pipe(task_id=task_id,
                     task_type=self.pipe_specs[self.tool]['task_type'],
                     **self.pipe_specs[self.tool]['task_kwargs'])
         self.pipe_tasks = pipe.create_tasks(self.num_batches)

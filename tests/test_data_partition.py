@@ -285,7 +285,7 @@ def test_pipeline_builder_remote():
     print('provenance', pb.data_provenance)
     pb.build_pipeline()
     print(vars(pb.pipeline))
-    pb.pipeline.run(executor=executor)
+    state = pb.pipeline.run(executor=executor)
 
 
 if __name__ == '__main__':

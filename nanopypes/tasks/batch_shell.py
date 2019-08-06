@@ -73,6 +73,8 @@ class BatchShellTask(prefect.Task):
         current_env = os.environ.copy()
         current_env.update(env or {})
         all_outs = []
+        failure = False
+        all_messages = []
         for command in commands:
             with tempfile.NamedTemporaryFile(prefix="prefect-") as tmp:
                 if self.helper_script:
@@ -84,12 +86,17 @@ class BatchShellTask(prefect.Task):
                     out = subprocess.check_output(
                         [self.shell, tmp.name], stderr=subprocess.STDOUT, env=current_env
                     )
+                    all_outs.append(out)
                 except subprocess.CalledProcessError as exc:
-                    msg = "Command failed with exit code {0}: {1}".format(
-                        exc.returncode, exc.output
+                    msg = "Command {command} failed with exit code {0}: {1}".format(
+                        exc.returncode, exc.output, command=command
                     )
-                    print(msg)
-                    raise prefect.engine.signals.FAIL(msg) from None  # type: ignore
-            all_outs.append(out)
+                    all_messages.append(msg)
+                    failure = True
+
+
             print("OUT: ", all_outs)
+
+        if failure:
+            raise prefect.engine.signals.FAIL(msg) from None  # type: ignore
         return all_outs
