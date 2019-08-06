@@ -15,6 +15,7 @@ pipe_configs:
                 save_type: ['file']
                 partitions: 5
                 split_merge: 'one_to_many'
+                merge: False
     minimap2:
         task_kwargs: {}
         task_type: shell

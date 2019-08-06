@@ -31,9 +31,9 @@ class DataPartitioner:
                                          'many_to_one': {}},
                                'ont_basecalled': {'many_to_one': {},
                                                   'one_to_one': {'save_path': self.save_path, 'strategy': self.split_merge, 'input_type': 'fastq'}},
-                        'mapped_reads': {'merge_by_name': {'save_path': self.save_path},
+                               'mapped_reads': {'merge_by_name': {'save_path': self.save_path},
                                               'one_to_one': {}},
-                        'fastq': {'one_to_one': {}},
+                               'fastq': {'one_to_one': {}},
                                'ont_demultiplexed': {'merge_by_barcode': {'save_path': self.save_path},
                                              'many_to_one': None}
                                }
