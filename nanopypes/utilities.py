@@ -46,6 +46,7 @@ class Configuration:
         self._compute_id = pipeline_data.pop("compute_id")
         compute_config = self._get_yaml_config(self._compute_config_path)
         self._compute_config = compute_config.pop(self._compute_id)
+        self._compute_config["cluster_id"] = self._compute_id
 
         self.user_input = user_input or {}
         self._check_user_input()

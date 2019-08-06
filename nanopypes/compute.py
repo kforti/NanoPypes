@@ -8,9 +8,10 @@ import logging
 
 class ClusterManager:
     """ Cluster based task manager for running the basecaller in parallel"""
-    def __init__(self, num_workers=0, worker_memory=None, worker_cores=None, cluster_type=None,
+    def __init__(self, cluster_id=None, num_workers=0, worker_memory=None, worker_cores=None, cluster_type=None,
                  queue=None, workers_per_job=None, job_time=None, project=None, min_num_workers=None,
                  time_out=2000, job_extra=None, env_extra=None, cluster=None, debug=False, interaface=None):
+        self.cluster_id = cluster_id or cluster_type
         self.cluster_type = cluster_type
         self.queue = queue
         self.num_workers = num_workers
@@ -41,8 +42,8 @@ class ClusterManager:
         logging.basicConfig(format='%(levelname)s:%(message)s', level=logging.DEBUG)
         if self.cluster_type == 'lsf':
             if job_extra:
-                job_extra.append("-o dask_lsf_cluster.err")
-                job_extra.append("-o dask_lsf_cluster.out")
+                job_extra.append("-o nanopypes_dask_{}.err".format(self.cluster_id))
+                job_extra.append("-o nanopypes_dask_{}.out".format(self.cluster_id))
                 job_extra.append('-R rusage[mem={}]'.format(self.core_memory))
             else:
                 job_extra = ['-R rusage[mem={}]'.format(self.core_memory), "-o dask_lsf_cluster.err", "-o dask_lsf_cluster.out"]
