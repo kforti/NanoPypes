@@ -5,41 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="06fba5a6-e119-4d57-aa65-81370b2766cd" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nanopypes/distributed_data/pipeline_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/distributed_data/pipeline_data.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nanopypes/tasks/batch_shell.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/tasks/batch_shell.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/0/sequencing_telemetry.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/0/sequencing_telemetry.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/0/workspace/calibration_strands/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/0/workspace/calibration_strands/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/0/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/0/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/1/sequencing_telemetry.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/1/sequencing_telemetry.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/1/workspace/calibration_strands/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/1/workspace/calibration_strands/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/1/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/1/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/2/sequencing_telemetry.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/2/sequencing_telemetry.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/2/workspace/calibration_strands/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/2/workspace/calibration_strands/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/2/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/2/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/3/sequencing_telemetry.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/3/sequencing_telemetry.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/3/workspace/calibration_strands/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/3/workspace/calibration_strands/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/3/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/3/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/4/sequencing_telemetry.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/4/sequencing_telemetry.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/4/workspace/calibration_strands/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/4/workspace/calibration_strands/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/4/workspace/fail/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/4/workspace/fail/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/4/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/4/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/5/sequencing_telemetry.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/5/sequencing_telemetry.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/5/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/5/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/6/sequencing_telemetry.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/6/sequencing_telemetry.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/6/workspace/calibration_strands/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/6/workspace/calibration_strands/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/6/workspace/fail/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/6/workspace/fail/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/6/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/6/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/7/sequencing_telemetry.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/7/sequencing_telemetry.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/7/workspace/calibration_strands/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/7/workspace/calibration_strands/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/7/workspace/fail/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/7/workspace/fail/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/7/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/7/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/8/sequencing_telemetry.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/8/sequencing_telemetry.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/8/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/8/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/9/sequencing_telemetry.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/9/sequencing_telemetry.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/9/workspace/calibration_strands/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/9/workspace/calibration_strands/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/9/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/9/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data_partition.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data_partition.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nanopypes/compute.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/compute.py" afterDir="false" />
       <change beforePath="$USER_HOME$/dask-kubernetes/dask_kubernetes/config.py" beforeDir="false" afterPath="$USER_HOME$/dask-kubernetes/dask_kubernetes/config.py" afterDir="false" />
       <change beforePath="$USER_HOME$/prefect/prefect/src/prefect/tasks/shell.py" beforeDir="false" afterPath="$USER_HOME$/prefect/prefect/src/prefect/tasks/shell.py" afterDir="false" />
     </list>
@@ -77,7 +43,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="batch_shell.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="batch_shell.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/nanopypes/tasks/batch_shell.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="378">
@@ -94,6 +60,18 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="165">
               <caret line="11" column="6" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="compute.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/nanopypes/compute.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1208">
+              <caret line="87" column="76" selection-start-line="87" selection-start-column="76" selection-end-line="87" selection-end-column="76" />
+              <folding>
+                <element signature="e#0#50#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -196,7 +174,6 @@
         <option value="$PROJECT_DIR$/nanopypes/configs/pipes.yml" />
         <option value="$PROJECT_DIR$/nanopypes/configs/pipelines/pipeline.yml" />
         <option value="$PROJECT_DIR$/nanopypes/configs/pipelines/remote_demulti_pipeline.yml" />
-        <option value="$PROJECT_DIR$/nanopypes/compute.py" />
         <option value="$PROJECT_DIR$/nanopypes/configs/pipelines/test_pipeline_remote.yml" />
         <option value="$PROJECT_DIR$/nanopypes/distributed_data/partition_data.py" />
         <option value="$USER_HOME$/PycharmProjects/code_snippets/dask_kube.py" />
@@ -206,6 +183,7 @@
         <option value="$PROJECT_DIR$/tests/test_data_partition.py" />
         <option value="$PROJECT_DIR$/nanopypes/distributed_data/pipeline_data.py" />
         <option value="$PROJECT_DIR$/nanopypes/tasks/batch_shell.py" />
+        <option value="$PROJECT_DIR$/nanopypes/compute.py" />
       </list>
     </option>
   </component>
@@ -530,11 +508,11 @@
     <frame x="1808" y="144" width="1425" height="848" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.76806086" visible="true" weight="0.22435898" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.76806086" visible="true" weight="0.22435898" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32954547" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.10359408" side_tool="true" weight="0.3541384" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.89640594" visible="true" weight="0.32356858" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.89640594" visible="true" weight="0.32356858" />
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Python Console" order="7" sideWeight="0.49750623" weight="0.27741084" />
       <window_info id="Structure" order="1" sideWeight="0.23193917" side_tool="true" weight="0.20850767" />
@@ -838,16 +816,6 @@
         <state relative-caret-position="-466" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/nanopypes/compute.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="661">
-          <caret line="129" column="56" selection-start-line="129" selection-start-column="56" selection-end-line="129" selection-end-column="56" />
-          <folding>
-            <element signature="e#0#50#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/nanopypes/configs/pipelines/remote_pipeline.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="675">
@@ -940,6 +908,16 @@
           <caret line="88" column="40" selection-start-line="88" selection-start-column="40" selection-end-line="88" selection-end-column="40" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nanopypes/compute.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1208">
+          <caret line="87" column="76" selection-start-line="87" selection-start-column="76" selection-end-line="87" selection-end-column="76" />
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
           </folding>
         </state>
       </provider>
