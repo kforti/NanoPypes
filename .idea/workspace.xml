@@ -5,9 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="06fba5a6-e119-4d57-aa65-81370b2766cd" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/nanopypes/configs/compute.yml" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/configs/compute.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nanopypes/configs/pipelines/remote_pipeline.yml" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/configs/pipelines/remote_pipeline.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/push_code.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/push_code.py" afterDir="false" />
       <change beforePath="$USER_HOME$/dask-kubernetes/dask_kubernetes/config.py" beforeDir="false" afterPath="$USER_HOME$/dask-kubernetes/dask_kubernetes/config.py" afterDir="false" />
       <change beforePath="$USER_HOME$/prefect/prefect/src/prefect/tasks/shell.py" beforeDir="false" afterPath="$USER_HOME$/prefect/prefect/src/prefect/tasks/shell.py" afterDir="false" />
     </list>
@@ -44,7 +42,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="compute.yml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="compute.yml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/nanopypes/configs/compute.yml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="300">
@@ -62,11 +60,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="remote_pipeline.yml" pinned="false" current-in-tab="false">
+      <file leaf-file-name="remote_pipeline.yml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/nanopypes/configs/pipelines/remote_pipeline.yml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="225">
-              <caret line="15" column="32" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="32" />
+              <caret line="15" column="31" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
             </state>
           </provider>
         </entry>
@@ -198,8 +196,8 @@
         <option value="$PROJECT_DIR$/nanopypes/utilities.py" />
         <option value="$PROJECT_DIR$/nanopypes/distributed_data/partition_data.py" />
         <option value="$PROJECT_DIR$/scripts/push_code.py" />
-        <option value="$PROJECT_DIR$/nanopypes/configs/pipelines/remote_pipeline.yml" />
         <option value="$PROJECT_DIR$/nanopypes/configs/compute.yml" />
+        <option value="$PROJECT_DIR$/nanopypes/configs/pipelines/remote_pipeline.yml" />
       </list>
     </option>
   </component>
@@ -989,17 +987,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/nanopypes/configs/pipelines/remote_pipeline.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="32" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/nanopypes/configs/compute.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
           <caret line="20" column="23" selection-start-line="20" selection-start-column="23" selection-end-line="20" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nanopypes/configs/pipelines/remote_pipeline.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="31" selection-start-line="15" selection-start-column="31" selection-end-line="15" selection-end-column="31" />
         </state>
       </provider>
     </entry>

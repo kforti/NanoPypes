@@ -13,7 +13,7 @@ pipe_configs:
                 user_input: ['reference']
                 input_type: ['string_list_files']
                 save_type: ['file']
-                partitions: 1136
+                partitions: 250
                 split_merge: 'one_to_many'
                 merge: False
     minimap2:
