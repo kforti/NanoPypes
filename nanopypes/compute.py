@@ -109,7 +109,7 @@ class ClusterManager:
             self.build_cluster()
         self._cluster.adapt(minimum=self.num_workers, maximum=self.num_workers)
         minimum_workers = self.min_num_workers or int(0.5 * self.num_workers)
-        self.cluster.scale(self.num_workers)
+        #self.cluster.scale(self.num_workers)
         self.cluster.scheduler
         return self.client
 
