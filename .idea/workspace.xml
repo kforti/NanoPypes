@@ -5,18 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="06fba5a6-e119-4d57-aa65-81370b2766cd" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/nanopypes/api.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/api.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nanopypes/cli.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/cli.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nanopypes/compute.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/compute.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nanopypes/configs/compute.yml" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/configs/compute.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nanopypes/configs/pipelines/remote_pipeline.yml" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/configs/pipelines/remote_pipeline.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nanopypes/distributed_data/partition_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/distributed_data/partition_data.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nanopypes/distributed_data/pipeline_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/distributed_data/pipeline_data.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nanopypes/pipelines/pipeline_builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/pipelines/pipeline_builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nanopypes/tasks/batch_shell.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/tasks/batch_shell.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nanopypes/utilities.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/utilities.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_configurations.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_configurations.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data_partition.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data_partition.py" afterDir="false" />
       <change beforePath="$USER_HOME$/dask-kubernetes/dask_kubernetes/config.py" beforeDir="false" afterPath="$USER_HOME$/dask-kubernetes/dask_kubernetes/config.py" afterDir="false" />
       <change beforePath="$USER_HOME$/prefect/prefect/src/prefect/tasks/shell.py" beforeDir="false" afterPath="$USER_HOME$/prefect/prefect/src/prefect/tasks/shell.py" afterDir="false" />
     </list>
@@ -95,8 +84,8 @@
       <file leaf-file-name="compute.yml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/nanopypes/configs/compute.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="5" column="22" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
+            <state relative-caret-position="240">
+              <caret line="16" column="22" lean-forward="true" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -104,8 +93,11 @@
       <file leaf-file-name="compute.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/nanopypes/compute.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-587">
-              <caret line="4" column="52" selection-start-line="4" selection-start-column="52" selection-end-line="4" selection-end-column="52" />
+            <state relative-caret-position="149">
+              <caret line="60" column="20" selection-start-line="60" selection-start-column="20" selection-end-line="60" selection-end-column="20" />
+              <folding>
+                <element signature="e#0#50#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -222,7 +214,7 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1602" />
+    <option name="x" value="1782" />
     <option name="y" value="23" />
     <option name="width" value="1663" />
     <option name="height" value="848" />
@@ -346,20 +338,20 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.test_data_partition">
-    <configuration name="dask_kube" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="code_snippets" />
+  <component name="RunManager" selected="Python.compute">
+    <configuration name="compute" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="nanopypes" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$USER_HOME$/PycharmProjects/code_snippets" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/nanopypes" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$USER_HOME$/PycharmProjects/code_snippets/dask_kube.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/nanopypes/compute.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -521,17 +513,17 @@
     <list>
       <item itemvalue="Python.test_data_partition" />
       <item itemvalue="Python.new" />
-      <item itemvalue="Python.dask_kube" />
       <item itemvalue="Python.pipeline_builder" />
       <item itemvalue="Python.utilities" />
+      <item itemvalue="Python.compute" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.compute" />
         <item itemvalue="Python.test_data_partition" />
         <item itemvalue="Python.utilities" />
         <item itemvalue="Python.new" />
         <item itemvalue="Python.pipeline_builder" />
-        <item itemvalue="Python.dask_kube" />
       </list>
     </recent_temporary>
   </component>
@@ -563,7 +555,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1602" y="23" width="1663" height="848" extended-state="0" />
+    <frame x="1782" y="23" width="1663" height="848" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.76806086" visible="true" weight="0.18514007" />
@@ -950,13 +942,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/nanopypes/configs/compute.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="22" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/nanopypes/distributed_data/partition_data.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-247">
@@ -984,10 +969,20 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/nanopypes/configs/compute.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="22" lean-forward="true" selection-start-line="16" selection-start-column="22" selection-end-line="16" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/nanopypes/compute.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-587">
-          <caret line="4" column="52" selection-start-line="4" selection-start-column="52" selection-end-line="4" selection-end-column="52" />
+        <state relative-caret-position="149">
+          <caret line="60" column="20" selection-start-line="60" selection-start-column="20" selection-end-line="60" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -57,7 +57,10 @@ class ClusterManager:
         return instance
 
     @classmethod
-    def from_config_file(cls, id, path="/configs/compute.yml", **kwargs):
+    def from_config_file(cls, id, path="configs/compute.yml", **kwargs):
+        if path == "configs/compute.yml":
+            path = os.path.join(os.path.dirname(__file__), path)
+
         cc = ComputeConfiguartion(id, path, **kwargs)
         config = cc.config
         instance = cls(**config)
@@ -156,5 +159,13 @@ class ClusterManager:
         self.cluster.close()
 
 if __name__ == '__main__':
-    cluster = LocalCluster()
-    print(cluster.scheduler.workers)
+    # cluster = LocalCluster()
+    # print(cluster.scheduler.workers)
+    import os
+
+    path = "configs/compute.yml"
+    dir_name = os.path.dirname(__file__)
+    print(dir_name)
+    path = os.path.join(dir_name, path)
+    print(path)
+
