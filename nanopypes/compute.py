@@ -2,6 +2,8 @@ from dask_jobqueue import LSFCluster, SLURMCluster
 from distributed import Client, LocalCluster
 from dask_kubernetes import KubeCluster
 
+from nanopypes.utilities import ComputeConfiguartion
+
 import logging
 
 
@@ -52,6 +54,13 @@ class ClusterManager:
     @classmethod
     def from_dict(cls, config_dict):
         instance = cls(**config_dict)
+        return instance
+
+    @classmethod
+    def from_config_file(cls, id, path="/configs/compute.yml", **kwargs):
+        cc = ComputeConfiguartion(id, path, **kwargs)
+        config = cc.config
+        instance = cls(**config)
         return instance
 
     @property

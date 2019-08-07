@@ -11,7 +11,7 @@ from distributed import LocalCluster, Client
 
 from .compute import ClusterManager
 from .pipes.basecaller import AlbacoreBasecaller
-from nanopypes.utilities import Configuration
+from nanopypes.utilities import PipelineConfiguration
 from nanopypes.api import build_pipeline
 
 @click.command(context_settings=dict(
@@ -35,7 +35,7 @@ def run_pipeline(verbose, name, pipeline_args):
 
     path = os.path.dirname(os.path.abspath(__file__))
     path = os.path.join(path, "configs", "pipelines", (name+".yml"))
-    config = Configuration(path, keys)
+    config = PipelineConfiguration(path, keys)
     pipeline_builder = build_pipeline(config)
     pipeline_builder.run()
 

@@ -8,14 +8,14 @@ from nanopypes.pipes.base2 import Pipe
 
 class PipelineBuilder:
 
-    def __init__(self, inputs, pipeline_order,
-                 pipeline_name, num_batches, pipe_specs):
+    def __init__(self, inputs, pipeline_order, pipeline_name, pipe_specs):
         self.pipe_specs = pipe_specs
-        self.num_batches = num_batches
+        self.num_batches = len(inputs)
         self.pipeline_order = pipeline_order
         self.inputs = inputs
 
         self._pipeline = Flow(name=pipeline_name)
+
         self.tool = None
         self.command = None
         self.save_path = None
@@ -82,7 +82,6 @@ class PipelineBuilder:
             print(tool, command)
             self._load_transform(tool, command)
             self._partition_data()
-            self._build_commands()
             self._pipe_data()
             self._create_transform_ticket()
 
@@ -93,8 +92,8 @@ class PipelineBuilder:
         self.command = command
         self.save_path = self.pipe_specs[tool]["save_path"]
         self.data_type = self.pipe_specs[tool]['data_type']
-        partitions = self.pipe_specs[tool]['commands'][command]['partitions']
-        self.partitions = partitions
+        batch_size = self.pipe_specs[tool]['commands'][command]['batch_size']
+        self.batch_size = batch_size
         self.partition_strategy = self.pipe_specs[tool]['commands'][command]['split_merge']
         self.command_template = self.pipe_specs[tool]['commands'][command]['template']
         self.merge = self.pipe_specs[tool]['commands'][command]['merge']
@@ -107,20 +106,20 @@ class PipelineBuilder:
 
     def _partition_data(self):
         """ Split/merge data"""
-        if self.partitions != 0 and self.partitions < self.num_batches:
-            self.num_batches = self.partitions
+        # if self.partitions != 0 and self.partitions < self.num_batches:
+        #     self.num_batches = self.partitions
 
         task_id = 'data_partition_{}'.format(self.data_type)
         data_partitioner = DataPartitioner(num_batches=self.num_batches,
                                            save_path=self.save_path,
                                            data_type=self.data_type,
-                                           partitions=self.partitions,
+                                           batch_size=self.batch_size,
                                            partition_strategy=self.partition_strategy,
                                            name=task_id,
                                            slug=task_id,
                                            )
 
-        self.partition_tasks = data_partitioner.partition_data()
+        self.partition_tasks, num_batches = data_partitioner.partition_data()
 
         if self.partitions != 0:
             self.num_batches = self.partitions
@@ -158,3 +157,26 @@ class PipelineBuilder:
                                 merge=self.merge)
         self.data_provenance.append(transform_ticket)
 
+if __name__ == '__main__':
+    from nanopypes.utilities import PipelineConfiguration
+
+    path = "../configs/pipelines/pipeline.yml"
+    user_input = {'flowcell': 'FLO-MIN106',
+                  'kit': 'SQK-LSK109',
+                  'reference': '/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/lambda_reference.fasta'}
+    config = PipelineConfiguration(path, user_input)
+
+    inputs = [
+        "/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass"]
+    pipe_specs = config.pipe_configs
+    print(pipe_specs)
+    pb = PipelineBuilder(inputs=inputs,
+                         pipeline_order=config.pipeline_order,
+                         pipeline_name="test-pipeline",
+                         num_batches=1,
+                         pipe_specs=pipe_specs)
+    pb.build_tasks()
+    print('provenance', pb.data_provenance)
+    pb.build_pipeline()
+    pb.pipeline.visualize()
+    pb.pipeline.run()

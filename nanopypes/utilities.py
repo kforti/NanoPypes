@@ -33,20 +33,40 @@ class SafeDict(dict):
         return '{' + key + '}'
 
 
-class Configuration:
-    def __init__(self, pipeline_path, user_input=None):
+class ComputeConfiguartion:
+    def __init__(self, id, compute_path="/configs/compute.yml", **kwargs):
+        self.compute_id = id
+        self.config_data = self._get_yaml_config(compute_path)[self.compute_id]
+        self.update_config(cluster_id=self.compute_id, **kwargs)
+
+    @property
+    def config(self):
+        return self.config_data
+
+    def update_config(self, **kwargs):
+        self.config_data.update(kwargs)
+
+    def _get_yaml_config(self, path):
+        with open(path, 'r') as config:
+            data = yaml.safe_load(config)
+        return data
+
+
+class PipelineConfiguration:
+    def __init__(self, pipeline_path=None, user_input=None, compute_kwargs={}):
+
         pipeline_data = self._get_yaml_config(pipeline_path)
         self._pipeline_config = pipeline_data
         self._pipe_configs = {}
+
         self._pipeline_id = pipeline_data.pop("pipeline_id")
         self._pipeline_order = pipeline_data.pop("pipeline_order")
         self._get_pipe_configs()
 
         self._compute_config_path = pipeline_data.pop("compute_config_path")
         self._compute_id = pipeline_data.pop("compute_id")
-        compute_config = self._get_yaml_config(self._compute_config_path)
-        self._compute_config = compute_config.pop(self._compute_id)
-        self._compute_config["cluster_id"] = self._compute_id
+        compute_config = ComputeConfiguartion(self._compute_id, self._compute_config_path, **compute_kwargs)
+        self._compute_config = compute_config.config
 
         self.user_input = user_input or {}
         self._check_user_input()
@@ -146,9 +166,8 @@ class InValidTaskError(KeyError):
 
 
 if __name__ == '__main__':
-    path = "configs/pipelines/pipeline.yml"
-    config = Configuration(path)
-    print(config.compute_config)
-    print(config.pipe_configs)
-    print(config.pipeline_order)
+    d = {'a':1}
+    c = {'b':2}
+    c.update(d)
+    print(c)
 

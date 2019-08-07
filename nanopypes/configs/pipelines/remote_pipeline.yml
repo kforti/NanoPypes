@@ -9,7 +9,7 @@ pipe_configs:
         save_path: "/nl/umw_athma_pai/kevin/test_ercc_basecall/basecall"
         commands:
             basecall:
-                template: "read_fast5_basecaller.py --input {input} --save_path {save} --flowcell {flowcell} --kit {kit} --output_format fastq --worker_threads 3 --reads_per_fastq 1000"
+                template: "read_fast5_basecaller.py --input {input} --save_path {save} --flowcell {flowcell} --kit {kit} --output_format fastq --worker_threads 4 --reads_per_fastq 1000"
                 user_input: ['reference']
                 input_type: ['string_list_files']
                 save_type: ['file']

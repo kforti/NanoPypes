@@ -229,14 +229,14 @@ def test_data_partitioner():
 
 def test_pipeline_builder():
     from nanopypes.distributed_data.pipeline_data import PipelineBuilder
-    from nanopypes.utilities import Configuration
+    from nanopypes.utilities import PipelineConfiguration
 
 
     path = "../nanopypes/configs/pipelines/pipeline.yml"
     user_input = {'flowcell': 'FLO-MIN106',
                   'kit': 'SQK-LSK109',
                   'reference': '/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/lambda_reference.fasta'}
-    config = Configuration(path, user_input)
+    config = PipelineConfiguration(path, user_input)
 
     inputs = ["/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass"]
     pipe_specs = config.pipe_configs
@@ -255,7 +255,7 @@ def test_pipeline_builder():
 
 def test_pipeline_builder_remote():
     from nanopypes.distributed_data.pipeline_data import PipelineBuilder
-    from nanopypes.utilities import Configuration
+    from nanopypes.utilities import PipelineConfiguration
     from nanopypes.compute import ClusterManager
     import time
 
@@ -266,7 +266,7 @@ def test_pipeline_builder_remote():
     user_input = {'flowcell': 'FLO-MIN106',
                   'kit': 'SQK-LSK109',
                   'reference': '/project/umw_athma_pai/genomes/ercc/ERCC92.fa'}
-    config = Configuration(path, user_input)
+    config = PipelineConfiguration(path, user_input)
     cluster_manager = ClusterManager.from_dict(config.compute_config)
     cluster_manager.build_cluster()
     cluster_manager.start_cluster()

@@ -10,10 +10,9 @@ from nanopypes.tasks.partition_file_data import BatchPartition
 
 class DataPartitioner:
 
-    def __init__(self, num_batches, save_path, data_type, partitions, partition_strategy, **task_kwargs):
+    def __init__(self, num_batches, save_path, data_type, partition_strategy, **task_kwargs):
         self.data_type = data_type
         self.save_path = save_path
-        self.partitions = partitions
         self.split_merge = partition_strategy
         self.num_batches = num_batches
 

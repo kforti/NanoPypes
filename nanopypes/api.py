@@ -1,18 +1,15 @@
 import yaml
 
-from nanopypes.utilities import Configuration
+from nanopypes.utilities import PipelineConfiguration
 from nanopypes.compute import ClusterManager
 from nanopypes.distributed_data.pipeline_data import PipelineBuilder
 
 from prefect.engine.executors.dask import DaskExecutor
 
 
-def build_config(path, user_input={}):
-    config = Configuration(path, user_input)
-    return config
 
-
-def build_pipeline(config, inputs):
+def build_pipeline(inputs, path, user_input={}):
+    config = PipelineConfiguration(path, user_input)
     num_batches = len(inputs)
     #config = Configuration(config)
     pb = PipelineBuilder(inputs,
@@ -25,15 +22,19 @@ def build_pipeline(config, inputs):
     pipeline = pb.pipeline
     #executor = DaskExecutor(cm.cluster.scheduler_address)
 
-    return pb
+    return pb, config
 
 def build_cluster(config):
     cm = ClusterManager.from_dict(config.compute_config)
     client = cm.start_cluster()
     return cm, client
 
-def run_pipeline(pipeline_builder):
-    pipeline_builder.run()
+def run_pipeline(pipeline):
+    state = pipeline.run()
+    serialized_pipeline = pipeline.serialize()
+
+    if state.is_fail():
+        pass
 
 
 if __name__ == '__main__':

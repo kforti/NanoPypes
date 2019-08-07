@@ -82,6 +82,7 @@ class PipelineBuilder:
             self._build_transform(transform)
 
 
+
     def _build_transform(self, transform):
         # inputs = self.inputs
         partition_results, command_results, pipe_results, curr_dependencies, next_inputs = [], [], [], [], []

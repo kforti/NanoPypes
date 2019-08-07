@@ -6,6 +6,8 @@ from typing import Any, List
 import prefect
 from prefect.utilities.tasks import defaults_from_attrs
 
+from nanopypes.utilities import CommandBuilder
+
 
 class BatchShellTask(prefect.Task):
     """
@@ -36,20 +38,22 @@ class BatchShellTask(prefect.Task):
 
     def __init__(
         self,
-        commands: list = None,
+        command_data: list = None,
         env: dict = None,
+        template: str = None,
         helper_script: str = None,
         shell: str = "bash",
         **kwargs: Any
     ):
-        self.commands = commands
+        self.command_data = command_data
         self.env = env
+        self.template = template
         self.helper_script = helper_script
         self.shell = shell
         super().__init__(**kwargs)
 
-    @defaults_from_attrs("commands", "env")
-    def run(self, commands: list = None, env: dict = None) -> bytes:
+    @defaults_from_attrs("command_data", "env", "template")
+    def run(self, command_data: list = None, env: dict = None, template: str = None) -> bytes:
         """
         Run the shell command.
         Args:
@@ -66,8 +70,8 @@ class BatchShellTask(prefect.Task):
             - prefect.engine.signals.FAIL: if command has an exit code other
                 than 0
         """
-        print("COMMANDS IN SHELLTASK: ", commands)
-        if commands is None or commands == []:
+        print("COMMANDS IN SHELLTASK: ", command_data)
+        if command_data is None or command_data == []:
             raise TypeError("run() missing required argument: 'command'")
 
         current_env = os.environ.copy()
@@ -75,7 +79,14 @@ class BatchShellTask(prefect.Task):
         all_outs = []
         failure = False
         all_error_messages = []
-        for command in commands:
+        all_commands = []
+
+        cb = CommandBuilder(template)
+
+        for data in command_data:
+            command = cb.build_command(data)
+            all_commands.append(command)
+
             with tempfile.NamedTemporaryFile(prefix="prefect-") as tmp:
                 if self.helper_script:
                     tmp.write(self.helper_script.encode())
