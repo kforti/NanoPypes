@@ -5,6 +5,7 @@ from dask_kubernetes import KubeCluster
 from nanopypes.utilities import ComputeConfiguartion
 
 import logging
+import os
 
 
 
