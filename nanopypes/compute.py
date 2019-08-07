@@ -107,11 +107,20 @@ class ClusterManager:
             assert self.cluster
         except:
             self.build_cluster()
-        self._cluster.adapt(minimum=self.num_workers, maximum=self.num_workers)
+        #self._cluster.adapt(minimum=self.num_workers, maximum=self.num_workers)
         minimum_workers = self.min_num_workers or int(0.5 * self.num_workers)
-        #self.cluster.scale(self.num_workers)
+        self.cluster.scale(self.num_workers)
+
         self.cluster.scheduler
         return self.client
+
+    def scale(self, workers=None):
+        workers = workers or self.num_workers
+        self.cluster.scale()
+        while self.cluster.scheduler.workers < workers:
+            pass
+
+
 
     @property
     def client(self):

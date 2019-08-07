@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="06fba5a6-e119-4d57-aa65-81370b2766cd" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/nanopypes/compute.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/compute.py" afterDir="false" />
       <change beforePath="$USER_HOME$/dask-kubernetes/dask_kubernetes/config.py" beforeDir="false" afterPath="$USER_HOME$/dask-kubernetes/dask_kubernetes/config.py" afterDir="false" />
       <change beforePath="$USER_HOME$/prefect/prefect/src/prefect/tasks/shell.py" beforeDir="false" afterPath="$USER_HOME$/prefect/prefect/src/prefect/tasks/shell.py" afterDir="false" />
     </list>
@@ -56,35 +57,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="batch_shell.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/nanopypes/tasks/batch_shell.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="97">
-              <caret line="88" selection-start-line="88" selection-end-line="88" />
-              <folding>
-                <element signature="e#0#9#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="new.py" pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/PycharmProjects/code_snippets/new.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="7" selection-start-line="7" selection-end-line="7" />
-              <folding>
-                <element signature="e#0#9#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="compute.yml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/nanopypes/configs/compute.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="25" column="35" lean-forward="true" selection-start-line="25" selection-start-column="35" selection-end-line="25" selection-end-column="35" />
+            <state relative-caret-position="360">
+              <caret line="28" column="20" lean-forward="true" selection-start-line="28" selection-start-column="20" selection-end-line="28" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -92,13 +69,28 @@
       <file leaf-file-name="compute.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/nanopypes/compute.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="172">
-              <caret line="103" lean-forward="true" selection-start-line="103" selection-end-line="103" />
+            <state relative-caret-position="79">
+              <caret line="111" column="43" selection-start-line="111" selection-start-column="43" selection-end-line="111" selection-end-column="43" />
               <folding>
                 <element signature="e#0#50#0" expanded="true" />
               </folding>
             </state>
           </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="sequencing_summary.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/7/sequencing_summary.txt">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="sequencing_summary.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/1/sequencing_summary.txt">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="sequencing_summary.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/0/sequencing_summary.txt">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
     </leaf>
@@ -314,8 +306,74 @@
               <item name="test_data" type="462c0819:PsiDirectoryNode" />
               <item name="basecalled_data" type="462c0819:PsiDirectoryNode" />
               <item name="results" type="462c0819:PsiDirectoryNode" />
-              <item name="local_basecall_copy" type="462c0819:PsiDirectoryNode" />
-              <item name="0" type="462c0819:PsiDirectoryNode" />
+              <item name="local_basecall_copy_2" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="NanoPypes" type="b2602c69:ProjectViewProjectNode" />
+              <item name="NanoPypes" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
+              <item name="test_data" type="462c0819:PsiDirectoryNode" />
+              <item name="basecalled_data" type="462c0819:PsiDirectoryNode" />
+              <item name="results" type="462c0819:PsiDirectoryNode" />
+              <item name="local_basecall_copy_2" type="462c0819:PsiDirectoryNode" />
+              <item name="1" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="NanoPypes" type="b2602c69:ProjectViewProjectNode" />
+              <item name="NanoPypes" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
+              <item name="test_data" type="462c0819:PsiDirectoryNode" />
+              <item name="basecalled_data" type="462c0819:PsiDirectoryNode" />
+              <item name="results" type="462c0819:PsiDirectoryNode" />
+              <item name="local_basecall_copy_2" type="462c0819:PsiDirectoryNode" />
+              <item name="1" type="462c0819:PsiDirectoryNode" />
+              <item name="workspace" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="NanoPypes" type="b2602c69:ProjectViewProjectNode" />
+              <item name="NanoPypes" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
+              <item name="test_data" type="462c0819:PsiDirectoryNode" />
+              <item name="basecalled_data" type="462c0819:PsiDirectoryNode" />
+              <item name="results" type="462c0819:PsiDirectoryNode" />
+              <item name="local_basecall_copy_2" type="462c0819:PsiDirectoryNode" />
+              <item name="1" type="462c0819:PsiDirectoryNode" />
+              <item name="workspace" type="462c0819:PsiDirectoryNode" />
+              <item name="pass" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="NanoPypes" type="b2602c69:ProjectViewProjectNode" />
+              <item name="NanoPypes" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
+              <item name="test_data" type="462c0819:PsiDirectoryNode" />
+              <item name="minion_sample_raw_data" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="NanoPypes" type="b2602c69:ProjectViewProjectNode" />
+              <item name="NanoPypes" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
+              <item name="test_data" type="462c0819:PsiDirectoryNode" />
+              <item name="minion_sample_raw_data" type="462c0819:PsiDirectoryNode" />
+              <item name="Experiment_01" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="NanoPypes" type="b2602c69:ProjectViewProjectNode" />
+              <item name="NanoPypes" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
+              <item name="test_data" type="462c0819:PsiDirectoryNode" />
+              <item name="minion_sample_raw_data" type="462c0819:PsiDirectoryNode" />
+              <item name="Experiment_01" type="462c0819:PsiDirectoryNode" />
+              <item name="sample_02_local" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="NanoPypes" type="b2602c69:ProjectViewProjectNode" />
+              <item name="NanoPypes" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
+              <item name="test_data" type="462c0819:PsiDirectoryNode" />
+              <item name="minion_sample_raw_data" type="462c0819:PsiDirectoryNode" />
+              <item name="Experiment_01" type="462c0819:PsiDirectoryNode" />
+              <item name="sample_02_local" type="462c0819:PsiDirectoryNode" />
+              <item name="fast5" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="NanoPypes" type="b2602c69:ProjectViewProjectNode" />
@@ -597,7 +655,7 @@
     <frame x="1541" y="30" width="1663" height="848" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.76806086" visible="true" weight="0.18514007" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.76806086" visible="true" weight="0.26918393" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32954547" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.10359408" side_tool="true" weight="0.3541384" />
@@ -678,47 +736,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/tests/test_data/basecalled_data/results/8/sequencing_telemetry.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="281">
-          <caret column="3666" selection-start-column="3664" selection-end-column="3666" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/test_data/basecalled_data/results/8/sequencing_summary.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/test_data/basecalled_data/results/8/configuration.cfg">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="389">
-          <caret line="32" column="26" lean-forward="true" selection-start-line="32" selection-start-column="26" selection-end-line="32" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/test_data/basecalled_data/results/8/pipeline.log">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-52" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/nanopypes/tasks/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" selection-start-line="3" selection-end-line="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/nanopypes/pipelines/pipeline.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-399" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/test_configurations.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="321">
-          <caret line="26" column="34" selection-start-line="26" selection-start-column="34" selection-end-line="26" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/PycharmProjects/code_snippets/parker_process_sam.p.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-905" />
@@ -997,16 +1014,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/nanopypes/configs/compute.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="35" lean-forward="true" selection-start-line="25" selection-start-column="35" selection-end-line="25" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/0/sequencing_summary.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/0/sequencing_telemetry.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -1017,10 +1024,51 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/nanopypes/configs/compute.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="28" column="20" lean-forward="true" selection-start-line="28" selection-start-column="20" selection-end-line="28" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/0/workspace/pass/another_file.fastq">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/0/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-5611">
+          <caret line="30" selection-start-line="30" selection-end-line="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/0/workspace/calibration_strands/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/0/sequencing_summary.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/7/sequencing_summary.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/1/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3432">
+          <caret line="139" column="625" lean-forward="true" selection-start-line="139" selection-start-column="625" selection-end-line="139" selection-end-column="625" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy_2/1/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-32266" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/1/sequencing_summary.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/nanopypes/compute.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
-          <caret line="103" lean-forward="true" selection-start-line="103" selection-end-line="103" />
+        <state relative-caret-position="79">
+          <caret line="111" column="43" selection-start-line="111" selection-start-column="43" selection-end-line="111" selection-end-column="43" />
           <folding>
             <element signature="e#0#50#0" expanded="true" />
           </folding>
