@@ -99,7 +99,7 @@ class ClusterManager:
             cluster = LocalCluster()
             self.num_workers = len(cluster.scheduler.workers)
         self._cluster = cluster
-        self._cluster.adapt(minimum=self.num_workers, maximum=self.num_workers)
+
         return
 
     def start_cluster(self):
@@ -107,7 +107,7 @@ class ClusterManager:
             assert self.cluster
         except:
             self.build_cluster()
-
+        self._cluster.adapt(minimum=self.num_workers, maximum=self.num_workers)
         minimum_workers = self.min_num_workers or int(0.5 * self.num_workers)
         self.cluster.scale(self.num_workers)
         self.cluster.scheduler
