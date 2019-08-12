@@ -5,23 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="06fba5a6-e119-4d57-aa65-81370b2766cd" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/tests/test_data/mapped_reads/nanopypes_batch_1/ont_batch_6.bam" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/test_data/mapped_reads/nanopypes_batch_1/ont_batch_7.bam" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/test_data/mapped_reads/nanopypes_batch_2/ont_batch_1.bam" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/test_data/mapped_reads/nanopypes_batch_2/ont_batch_8.bam" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/test_data/mapped_reads/nanopypes_batch_3/ont_batch_3.bam" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/test_data/mapped_reads/nanopypes_batch_3/ont_batch_4.bam" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/test_data/mapped_reads/nanopypes_batch_4/ont_batch_2.bam" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/test_data/mapped_reads/nanopypes_batch_4/ont_batch_5.bam" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nanopypes/configs/compute.yml" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/configs/compute.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/nanopypes/configs/pipelines/pipeline.yml" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/configs/pipelines/pipeline.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nanopypes/configs/pipes.yml" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/configs/pipes.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nanopypes/distributed_data/partition_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/distributed_data/partition_data.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nanopypes/pipelines/pipeline_builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/pipelines/pipeline_builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nanopypes/pipes/base2.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/pipes/base2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nanopypes/tasks/batch_shell.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/tasks/batch_shell.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nanopypes/tasks/partition_file_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/tasks/partition_file_data.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiling/pandas_scratch.py" beforeDir="false" afterPath="$PROJECT_DIR$/profiling/pandas_scratch.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nanopypes/configs/pipelines/remote_pipeline.yml" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/configs/pipelines/remote_pipeline.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/0/pipeline.log" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/0/pipeline.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/0/sequencing_telemetry.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/0/sequencing_telemetry.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/0/workspace/calibration_strands/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/0/workspace/calibration_strands/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
@@ -63,26 +50,14 @@
       <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/9/sequencing_telemetry.js" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/9/sequencing_telemetry.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/9/workspace/calibration_strands/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/9/workspace/calibration_strands/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/9/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_test/9/workspace/pass/fastq_runid_557afda1f1ddd31678d0c6378228345cc1b6bfa5_0.fastq" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/mapped_reads/batch_0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/mapped_reads/batch_1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/mapped_reads/batch_2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/mapped_reads/batch_3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/mapped_reads/batch_4" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/mapped_reads/batch_5" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/mapped_reads/batch_6" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/mapped_reads/batch_7" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/mapped_reads/batch_8" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/mapped_reads/batch_9" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/mapped_reads/nanopypes_batch_0/ont_batch_0.sam" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/mapped_reads/nanopypes_batch_0/ont_batch_9.sam" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/mapped_reads/nanopypes_batch_1/ont_batch_6.sam" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/mapped_reads/nanopypes_batch_1/ont_batch_7.sam" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/mapped_reads/nanopypes_batch_2/ont_batch_1.sam" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/mapped_reads/nanopypes_batch_2/ont_batch_8.sam" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/mapped_reads/nanopypes_batch_3/ont_batch_3.sam" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/mapped_reads/nanopypes_batch_3/ont_batch_4.sam" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/mapped_reads/nanopypes_batch_4/ont_batch_2.sam" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_data/mapped_reads/nanopypes_batch_4/ont_batch_5.sam" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/mapped_reads/nanopypes_batch_1/ont_batch_6.sam" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/mapped_reads/nanopypes_batch_1/ont_batch_6.sam" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/mapped_reads/nanopypes_batch_1/ont_batch_7.sam" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/mapped_reads/nanopypes_batch_1/ont_batch_7.sam" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/mapped_reads/nanopypes_batch_2/ont_batch_1.sam" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/mapped_reads/nanopypes_batch_2/ont_batch_1.sam" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/mapped_reads/nanopypes_batch_2/ont_batch_8.sam" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/mapped_reads/nanopypes_batch_2/ont_batch_8.sam" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/mapped_reads/nanopypes_batch_3/ont_batch_3.sam" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/mapped_reads/nanopypes_batch_3/ont_batch_3.sam" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/mapped_reads/nanopypes_batch_3/ont_batch_4.sam" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/mapped_reads/nanopypes_batch_3/ont_batch_4.sam" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/mapped_reads/nanopypes_batch_4/ont_batch_2.sam" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/mapped_reads/nanopypes_batch_4/ont_batch_2.sam" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data/mapped_reads/nanopypes_batch_4/ont_batch_5.sam" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data/mapped_reads/nanopypes_batch_4/ont_batch_5.sam" afterDir="false" />
       <change beforePath="$USER_HOME$/dask-kubernetes/dask_kubernetes/config.py" beforeDir="false" afterPath="$USER_HOME$/dask-kubernetes/dask_kubernetes/config.py" afterDir="false" />
       <change beforePath="$USER_HOME$/prefect/prefect/src/prefect/tasks/shell.py" beforeDir="false" afterPath="$USER_HOME$/prefect/prefect/src/prefect/tasks/shell.py" afterDir="false" />
     </list>
@@ -110,13 +85,13 @@
       <file leaf-file-name="pipeline.yml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/nanopypes/configs/pipelines/pipeline.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
-              <caret line="1" column="69" selection-start-line="1" selection-start-column="69" selection-end-line="1" selection-end-column="69" />
+            <state relative-caret-position="195">
+              <caret line="13" column="49" lean-forward="true" selection-start-line="13" selection-start-column="49" selection-end-line="13" selection-end-column="49" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pipeline_builder.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="pipeline_builder.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/nanopypes/pipelines/pipeline_builder.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="192">
@@ -124,6 +99,15 @@
               <folding>
                 <element signature="e#0#24#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="remote_pipeline.yml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/nanopypes/configs/pipelines/remote_pipeline.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="91">
+              <caret line="8" column="20" selection-start-line="8" selection-start-column="20" selection-end-line="8" selection-end-column="64" />
             </state>
           </provider>
         </entry>
@@ -136,6 +120,15 @@
               <folding>
                 <element signature="e#0#36#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="compute.yml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/nanopypes/configs/compute.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="420">
+              <caret line="28" column="20" selection-start-line="28" selection-start-column="20" selection-end-line="28" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -251,16 +244,13 @@
         <option value="$PROJECT_DIR$/nanopypes/tasks/singularity.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/scripts/push_code.py" />
-        <option value="$PROJECT_DIR$/nanopypes/configs/pipelines/remote_pipeline.yml" />
         <option value="$PROJECT_DIR$/nanopypes/distributed_data/pipeline_data.py" />
         <option value="$PROJECT_DIR$/nanopypes/api.py" />
         <option value="$USER_HOME$/PycharmProjects/code_snippets/new.py" />
-        <option value="$PROJECT_DIR$/nanopypes/configs/compute.yml" />
         <option value="$PROJECT_DIR$/nanopypes/utilities.py" />
         <option value="$PROJECT_DIR$/nanopypes/compute.py" />
         <option value="$PROJECT_DIR$/profiling/pandas_scratch.py" />
         <option value="$PROJECT_DIR$/nanopypes/pipes/base2.py" />
-        <option value="$PROJECT_DIR$/nanopypes/configs/pipelines/pipeline.yml" />
         <option value="$USER_HOME$/PycharmProjects/code_snippets/dask_kube.py" />
         <option value="$PROJECT_DIR$/nanopypes/tasks/partition_file_data.py" />
         <option value="$USER_HOME$/PycharmProjects/code_snippets/conv_net.py" />
@@ -269,12 +259,15 @@
         <option value="$PROJECT_DIR$/nanopypes/distributed_data/partition_data.py" />
         <option value="$PROJECT_DIR$/nanopypes/tasks/batch_shell.py" />
         <option value="$PROJECT_DIR$/nanopypes/pipelines/pipeline_builder.py" />
+        <option value="$PROJECT_DIR$/nanopypes/configs/compute.yml" />
+        <option value="$PROJECT_DIR$/nanopypes/configs/pipelines/remote_pipeline.yml" />
+        <option value="$PROJECT_DIR$/nanopypes/configs/pipelines/pipeline.yml" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1571" />
-    <option name="y" value="68" />
+    <option name="x" value="1420" />
+    <option name="y" value="58" />
     <option name="width" value="1468" />
     <option name="height" value="919" />
   </component>
@@ -301,6 +294,13 @@
               <item name="NanoPypes" type="462c0819:PsiDirectoryNode" />
               <item name="nanopypes" type="462c0819:PsiDirectoryNode" />
               <item name="configs" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="NanoPypes" type="b2602c69:ProjectViewProjectNode" />
+              <item name="NanoPypes" type="462c0819:PsiDirectoryNode" />
+              <item name="nanopypes" type="462c0819:PsiDirectoryNode" />
+              <item name="configs" type="462c0819:PsiDirectoryNode" />
+              <item name="pipelines" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="NanoPypes" type="b2602c69:ProjectViewProjectNode" />
@@ -609,7 +609,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="1571" y="68" width="1468" height="919" extended-state="0" />
+    <frame x="1420" y="58" width="1468" height="919" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.76806086" visible="true" weight="0.25708362" />
@@ -732,13 +732,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/nanopypes/configs/pipelines/remote_pipeline.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="163">
-          <caret line="11" column="161" selection-start-line="11" selection-start-column="161" selection-end-line="11" selection-end-column="161" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/nanopypes/distributed_data/pipeline_data.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="193">
@@ -808,13 +801,6 @@
           <folding>
             <element signature="e#0#50#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/nanopypes/configs/compute.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="23" lean-forward="true" selection-start-line="9" selection-start-column="23" selection-end-line="9" selection-end-column="23" />
         </state>
       </provider>
     </entry>
@@ -967,13 +953,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/nanopypes/configs/pipelines/pipeline.yml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="69" selection-start-line="1" selection-start-column="69" selection-end-line="1" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/nanopypes/configs/pipes.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="91">
@@ -1011,6 +990,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/nanopypes/configs/compute.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="28" column="20" selection-start-line="28" selection-start-column="20" selection-end-line="28" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/nanopypes/pipelines/pipeline_builder.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="192">
@@ -1018,6 +1004,20 @@
           <folding>
             <element signature="e#0#24#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nanopypes/configs/pipelines/pipeline.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="195">
+          <caret line="13" column="49" lean-forward="true" selection-start-line="13" selection-start-column="49" selection-end-line="13" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nanopypes/configs/pipelines/remote_pipeline.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="91">
+          <caret line="8" column="20" selection-start-line="8" selection-start-column="20" selection-end-line="8" selection-end-column="64" />
         </state>
       </provider>
     </entry>
