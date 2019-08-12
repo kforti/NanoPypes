@@ -5,13 +5,14 @@ import re
 
 
 
-with open('/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/basecalled_data/results/local_basecall_test/pipeline.log', 'r') as file:
+with open('/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/basecalled_data/results/local_basecall_test/0/pipeline.log', 'r') as file:
     pipeline = file.readlines()
 
 time_pat = r'[0-9\-:,]+\s[0-9\-:,]+'
 sub_pat = r'Submitting file \".+\"'
 fin_pat = r'Finished\sprocessing\sfile\s\".+\"'
 read_pat = r'\".+\"'
+read_num_pat = r'read_[0-9]+_ch_[0-9]+'
 done_pat = r'\sDone.$'
 times = []
 data = {} #read_name: {'submit': time,
@@ -31,6 +32,8 @@ for p in pipeline:
     elif submit:
         read = re.findall(read_pat, submit[0])
         read = read[0].replace('"', '')
+        read_num = re.findall(read_num_pat, read)
+        print(read_num)
         if read not in data:
             data[read] = {}
         data[read]['submitted'] = time

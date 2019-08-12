@@ -39,21 +39,27 @@ class BatchShellTask(prefect.Task):
     def __init__(
         self,
         command_data: list = None,
+        batch_num: int = None,
         env: dict = None,
         template: str = None,
         helper_script: str = None,
         shell: str = "bash",
+        index: int = None,
+        is_initial: bool = False,
         **kwargs: Any
     ):
         self.command_data = command_data
+        self.batch_num = batch_num
+        self.is_initial = is_initial
         self.env = env
+        self.index = index
         self.template = template
         self.helper_script = helper_script
         self.shell = shell
         super().__init__(**kwargs)
 
-    @defaults_from_attrs("command_data", "env", "template")
-    def run(self, command_data: list = None, env: dict = None, template: str = None) -> bytes:
+    @defaults_from_attrs("command_data", "env", "template", "batch_num", "is_initial")
+    def run(self, command_data: list = None, batch_num: int = None, env: dict = None, template: str = None, is_initial: bool = False) -> bytes:
         """
         Run the shell command.
         Args:
@@ -70,7 +76,7 @@ class BatchShellTask(prefect.Task):
             - prefect.engine.signals.FAIL: if command has an exit code other
                 than 0
         """
-        print("COMMANDS IN SHELLTASK: ", command_data)
+        print("COMMAND_DATA IN SHELLTASK: ", command_data)
         if command_data is None or command_data == []:
             raise TypeError("run() missing required argument: 'command'")
 
@@ -82,10 +88,15 @@ class BatchShellTask(prefect.Task):
         all_commands = []
 
         cb = CommandBuilder(template)
+        if is_initial is True:
+            command_data = command_data["command_data"][batch_num]
+        else:
+            command_data = command_data["command_data"]
 
-        for data in command_data:
+        for data in command_data:#[batch_num]:
             command = cb.build_command(data)
             all_commands.append(command)
+            print("COMMAND: ", command)
 
             with tempfile.NamedTemporaryFile(prefix="prefect-") as tmp:
                 if self.helper_script:

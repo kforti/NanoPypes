@@ -4,21 +4,29 @@ from prefect.utilities.tasks import defaults_from_attrs
 
 class BatchPartition(Task):
 
-    def __init__(self, batch=None, batch_num=None, input_fn=None, fn_kwargs=None, dependencies=None, **kwargs):
+    def __init__(self, batches=None, batch_num=None, input_fn=None, fn_kwargs=None, dependencies=None, partition_num=None, **kwargs):
         super().__init__(**kwargs)
-        self.batch = batch
+        self.batches = batches
+        self.partition_num = partition_num
         self.input_fn = input_fn
         self.fn_kwargs = fn_kwargs
         self.dependencies = dependencies
         self.batch_num = batch_num
 
-    @defaults_from_attrs('batch', 'input_fn', 'fn_kwargs', 'dependencies', 'batch_num')
-    def run(self, batch=None, batch_num=None, input_fn=None, fn_kwargs=None, dependencies=None):
+    @defaults_from_attrs('batches', 'input_fn', 'fn_kwargs', 'dependencies', 'batch_num', 'partition_num')
+    def run(self, batches=None, batch_num=None, partition_num=None, input_fn=None, fn_kwargs=None, dependencies=None):
         inputs = []
         saves = []
         command_data = []
-        print("BATCH NUM: ", batch_num, " BATCH CONTENTS: ", batch)
-        results = input_fn(batch, batch_num, **fn_kwargs)
+        print("BATCH NUM: ", batch_num, " BATCH CONTENTS: ", batches)
+
+        if partition_num:
+            batches = batches["saves"][partition_num]
+        elif batch_num:
+            batches = batches["saves"]
+
+
+        results = input_fn(batches, batch_num, **fn_kwargs)
         # command_data.append({'input': input_result, 'save': save_result})
         # inputs.append(input_result)
         # saves.append(save_result)

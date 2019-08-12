@@ -11,6 +11,7 @@ albacore:
             input_type: ['string_list_files']
             save_type: ['file']
             partitions: 5
+            batch_size: 2
             split_merge: 'one_to_many'
             merge: False
             user_input: ['flowcell', 'kit']
@@ -29,6 +30,7 @@ minimap2:
             input_type: ['string_list_files']
             save_type: ['file']
             partitions: None
+            batch_size: 2
             'split_merge': 'one_to_one'
             merge: False
 samtools:
@@ -36,11 +38,12 @@ samtools:
     task_type: shell
     data_type: mapped_reads
     input_path: "{{NANOPYPES_VARIABLE}}" # possibly user defined as well
-    save_path: "../pipeline_run/{pipeline_id}/samtools"
+    save_path: "/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/mapped_reads"
     commands:
         sam_to_bam:
             template: "echo {save} {input}" #samtools view -b -S -o
             partitions: 0
+            batch_size: 2
             split_merge: 'one_to_one'
             merge: False
         sort_bam:
@@ -50,6 +53,7 @@ samtools:
         merge_bams:
             template: "echo {save} {input}" #samtools merge
             partitions: 1
+            batch_size: 2
             split_merge: 'merge_by_name'
             merge: True
 bcftools:
@@ -76,6 +80,7 @@ porechop:
             input_type: ['directory', 'ont_fastq_seq_data']
             save_type: ['directory', 'dir_file_by_name']
             partitions: 0
+            batch_size: 2
             'split': 'per_batch'
             merge: False
 nanoplot:

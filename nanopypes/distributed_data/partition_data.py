@@ -10,11 +10,20 @@ from nanopypes.tasks.partition_file_data import BatchPartition
 
 class DataPartitioner:
 
-    def __init__(self, num_batches, save_path, data_type, partition_strategy, **task_kwargs):
-        self.data_type = data_type
+    def __init__(self, num_batches, save_path, next_tool, next_cmd, prev_tool=None, prev_cmd=None, partitions=None, **task_kwargs):
         self.save_path = save_path
-        self.split_merge = partition_strategy
         self.num_batches = num_batches
+        self.partitions = partitions
+        self.next_tool = next_tool
+        self.prev_tool = prev_tool
+        self.next_cmd = next_cmd
+        self.prev_cmd = prev_cmd
+
+        self.next_tool_cmd = "_".join([self.next_tool, self.next_cmd])
+        if self.prev_tool and self.prev_cmd:
+            self.prev_tool_cmd = "_".join([self.prev_tool, self.prev_cmd])
+        else:
+            self.prev_tool_cmd = "no_prev"
 
         self.partition_tasks = []
 
@@ -26,27 +35,89 @@ class DataPartitioner:
                              'mapped_reads': {'merge_by_name': merge_bams,
                                               'one_to_one': sam_to_bam}
                              }
-        self.kwargs_handler = {'ont_sequence': {'one_to_many': {'partitions': self.partitions, 'save_path': self.save_path},
-                                         'many_to_one': {}},
-                               'ont_basecalled': {'many_to_one': {},
-                                                  'one_to_one': {'save_path': self.save_path, 'strategy': self.split_merge, 'input_type': 'fastq'}},
-                               'mapped_reads': {'merge_by_name': {'save_path': self.save_path},
-                                              'one_to_one': {}},
-                               'fastq': {'one_to_one': {}},
-                               'ont_demultiplexed': {'merge_by_barcode': {'save_path': self.save_path},
-                                             'many_to_one': None}
-                               }
+
+        self.kwargs_handler = {
+            "albacore_basecall":
+                {
+                    "no_prev": {'partitions': self.partitions, 'save_path': self.save_path},
+                    "merge": {}
+                },
+            "minimap2_splice-map":
+                {
+                    "no_prev": {},
+                    "albacore_basecall": {'save_path': self.save_path, 'next_tool_cmd': self.next_tool_cmd},#'strategy': self.split_merge, 'input_type': 'fastq'},
+                    "porechop_demultiplex": {'save_path': self.save_path},
+                },
+            "porechop_demultiplex":
+                {
+                    "no_prev": {},
+                    "albacore_basecall": {'save_path': self.save_path, 'next_tool_cmd': self.next_tool_cmd}#'strategy': self.split_merge, 'input_type': 'main_dir'}
+                },
+            "samtools_sam_to_bam":
+                {
+                    "no_prev": {},
+                    "minimap2_splice-map": {}
+                },
+            "samtools_merge_bams":
+                {
+                    "no_prev": {},
+                    "samtools_sam_to_bam": {'save_path': self.save_path}
+                },
+
+            }
+
+        self.func_handler = {
+            "albacore_basecall":
+                {
+                    "no_prev": partition_ont_seq_data,
+                    "merge": {}
+                },
+            "minimap2_splice-map":
+                {
+                    "no_prev": {},
+                    "albacore_basecall": partition_basecalled_data,
+                    "porechop_demultiplex": partition_demultiplexed_data,
+                },
+            "porechop_demultiplex":
+                {
+                    "no_prev": {},
+                    "albacore_basecall": partition_basecalled_data
+                },
+            "samtools_sam_to_bam":
+                {
+                    "no_prev": {},
+                    "minimap2_splice-map": sam_to_bam
+                },
+            "samtools_merge_bams":
+                {
+                    "no_prev": {},
+                    "samtools_sam_to_bam": merge_bams
+                },
+
+
+        }
+        # self.kwargs_handler = {'ont_sequence': {'one_to_many': {'partitions': self.partitions, 'save_path': self.save_path},
+        #                                  'many_to_one': {}},
+        #                        'ont_basecalled': {'many_to_one': {},
+        #                                           'one_to_one': {'save_path': self.save_path, 'strategy': self.split_merge, 'input_type': 'fastq'}},
+        #                        'mapped_reads': {'merge_by_name': {'save_path': self.save_path},
+        #                                       'one_to_one': {}},
+        #                        'fastq': {'one_to_one': {}},
+        #                        'ont_demultiplexed': {'merge_by_barcode': {'save_path': self.save_path},
+        #                                      'many_to_one': None}
+        #                        }
 
     def partition_data(self):
-        print('data_type', self.data_type)
-        print('split_merge', self.split_merge)
-        fn = self.data_handler[self.data_type][self.split_merge]
-        fn_kwargs = self.kwargs_handler[self.data_type][self.split_merge]
+        #print('split_merge', self.split_merge)
+
+        fn = self.func_handler[self.next_tool_cmd][self.prev_tool_cmd]
+        fn_kwargs = self.kwargs_handler[self.next_tool_cmd][self.prev_tool_cmd]
 
         for i in range(self.num_batches):
             #fn_kwargs['batch_num'] = i
             partition_task = BatchPartition(input_fn=fn, batch_num=i, fn_kwargs=fn_kwargs)
             self.partition_tasks.append(partition_task)
+        print(self.partitions)
 
         return self.partition_tasks
         # for i, batch in enumerate(self.inputs):
@@ -71,7 +142,7 @@ class DataPartitioner:
 ### ONT Sequence Functions                                ###
 #############################################################
 
-def partition_ont_seq_data(directory, batch_num, partitions, save_path, **kwargs):
+def partition_ont_seq_data(batch, batch_num, save_path, partitions=None, batch_size=None, **kwargs):
     """
     Function for splitting data one to many- meaning that batches are created within the function call.
     :param directory: The directory contained within the nanopypes batch
@@ -79,8 +150,14 @@ def partition_ont_seq_data(directory, batch_num, partitions, save_path, **kwargs
     :param save_path: The location of the save directories
     :return: a tuple containing alist of the batches' command_data, a list of input batches and a list of save batches
     """
+    if len(batch) != 1:
+        raise NotADirectoryError("Your batch must contain the path to a single directory")
+    directory = batch[0]
     structure, children = get_structure(directory)
-    batch_size = math.ceil(len(children) / partitions)
+    if batch_size is None and partitions:
+        batch_size = math.ceil(len(children) / partitions)
+    elif partitions is None and batch_size:
+        partitions = math.ceil(len(children) / batch_size)
     batches = [children[i:i + batch_size] for i in range(0, len(children), batch_size)]
     if structure == 'dir_dirs':
         results = get_dir_batches(batches, save_path)
@@ -142,7 +219,7 @@ def get_dir_batches(batches, save_path):
             batch_commands.append({'input': directory, 'save': dir_save_path})
         save_batch_paths.append(batch_saves)
         commands.append(batch_commands)
-    #print("SAVES: ", save_batch_paths)
+    print("SAVES: ", save_batch_paths)
 
     return commands, batches, save_batch_paths
 
@@ -151,13 +228,19 @@ def get_dir_batches(batches, save_path):
 ### ONT Basecalled Functions                              ###
 #############################################################
 
-def partition_basecalled_data(batch, batch_num, save_path, strategy='one_to_one', input_type='fastq'):
-    if strategy == 'one_to_one':
-        if input_type == 'fastq':
-            results = _get_fastqs(batch, batch_num, save_path)
-        elif input_type == 'main_dir':
-            results = _get_main_dirs(batch, save_path)
-        #print(results)
+def partition_basecalled_data(batch, batch_num, save_path, next_tool_cmd, strategy='one_to_one', input_type='fastq'):
+    if next_tool_cmd == 'porechop_demultiplex':
+        results = _get_main_dirs(batch, save_path)
+    elif next_tool_cmd == 'minimap2_splice-map':
+        results = _get_fastqs(batch, batch_num, save_path)
+
+
+    # if strategy == 'one_to_one':
+    #     if input_type == 'fastq':
+    #         results = _get_fastqs(batch, batch_num, save_path)
+    #     elif input_type == 'main_dir':
+    #         results = _get_main_dirs(batch, save_path)
+    #     #print(results)
     return results
 
 def _get_fastqs(batch, batch_num, save_path, as_string=True):
@@ -165,6 +248,7 @@ def _get_fastqs(batch, batch_num, save_path, as_string=True):
         batch_command_data = []
         save_paths = []
         batch_path = os.path.join(save_path, "nanopypes_batch_{}".format(str(batch_num)))
+        print("batch_path: ", batch_path)
         if os.path.exists(batch_path) is False:
             os.mkdir(batch_path)
         for i, directory in enumerate(batch):
@@ -433,6 +517,7 @@ def sam_to_bam(batch, batch_num, **fn_kwargs):
     return command_data, input_paths, save_paths
 
 def merge_bams(batches, batch_num, save_path):
+    print("merge_batches: ", batches)
     save_path = os.path.join(save_path, 'merged_bams')
     if os.path.exists(save_path) is False:
         os.mkdir(save_path)
@@ -461,7 +546,7 @@ def merge_bams(batches, batch_num, save_path):
 def _find_barcodes(batches):
     bam_barcodes = {}
     for batch in batches:
-        for file in batch:
+        for file in batch["saves"]:
             file_name = os.path.basename(file)
             if file_name in bam_barcodes:
                 bam_barcodes[file_name].append(file)

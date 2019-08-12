@@ -14,6 +14,7 @@ pipe_configs:
                 input_type: ['string_list_files']
                 save_type: ['file']
                 partitions: 5
+                batch_size: 2
                 split_merge: 'one_to_many'
                 merge: False
     minimap2:
@@ -31,6 +32,7 @@ pipe_configs:
                 input_type: ['fastq']
                 save_type: ['file']
                 partitions: 0
+                batch_size: 2
                 split_merge: 'one_to_one'
                 merge: False
     porechop:
@@ -45,7 +47,8 @@ pipe_configs:
                 user_input: []
                 input_type: ['directory', 'ont_fastq_seq_data']
                 save_type: ['directory', 'dir_file_by_name']
-                partitions: 0
+                partitions: 5
+                batch_size: 2
                 split_merge: 'one_to_one'
                 merge: False
 #    albacore:
