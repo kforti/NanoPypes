@@ -19,7 +19,7 @@ def test_pipeline_builder_remote(config_path, input_path):
     inputs = [input_path]
     pipe_specs = config.pipe_configs
     print(pipe_specs)
-    time.sleep(30)
+
     pb = PipelineBuilder(inputs=inputs,
                          pipeline_order=config.pipeline_order,
                          pipeline_name="test-pipeline",
@@ -32,6 +32,7 @@ def test_pipeline_builder_remote(config_path, input_path):
     cluster_manager = ClusterManager.from_dict(config.compute_config)
     cluster_manager.build_cluster()
     cluster_manager.start_cluster()
+    time.sleep(30)
     executor = DaskExecutor(cluster_manager.cluster.scheduler_address)
     pb.pipeline.run(executor=executor)
 
