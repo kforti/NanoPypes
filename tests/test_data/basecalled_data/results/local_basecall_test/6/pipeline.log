@@ -1,55 +1,55 @@
-2019-08-12 15:57:30,544 ONT Albacore Sequencing Pipeline Software (version 2.3.3)
-2019-08-12 15:57:30,544 Debug level is 0
-2019-08-12 15:57:30,555 Selected config file /Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/albacore/data_versioned/r94_450bps_linear.cfg to match flowcell FLO-MIN106 and kit SQK-LSK109
-2019-08-12 15:57:30,556 No reference given for module aligner
-2019-08-12 15:57:30,556 Using config file: layout_raw_basecall_1d.jsn
-2019-08-12 15:57:30,558 20 files found in input folder
-2019-08-12 15:57:30,558 include calibration strand detection: True
-2019-08-12 15:57:30,559 include alignment: False
-2019-08-12 15:57:30,559 include barcoding: False
-2019-08-12 15:57:30,559 telemetry enabled: True
-2019-08-12 15:57:30,565 No option 'pipeline.min_qscore_1dsq' in the config, so using the default of 0.0
-2019-08-12 15:57:31,082 Submitting file "imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_118_ch_16_strand.fast5".
-2019-08-12 15:57:33,756 Submitting file "imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_140_ch_8_strand.fast5".
-2019-08-12 15:57:33,783 Finished processing file "imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_118_ch_16_strand.fast5".
-2019-08-12 15:57:35,200 Submitting file "imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_158_ch_261_strand.fast5".
-2019-08-12 15:57:35,221 Finished processing file "imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_140_ch_8_strand.fast5".
-2019-08-12 15:57:36,714 Submitting file "imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_169_ch_223_strand.fast5".
-2019-08-12 15:57:36,738 Finished processing file "imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_158_ch_261_strand.fast5".
-2019-08-12 15:57:38,855 Submitting file "imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_200_ch_58_strand.fast5".
-2019-08-12 15:57:38,882 Finished processing file "imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_169_ch_223_strand.fast5".
-2019-08-12 15:57:39,779 Submitting file "imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_24_ch_240_strand.fast5".
-2019-08-12 15:57:39,799 Finished processing file "imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_200_ch_58_strand.fast5".
-2019-08-12 15:57:39,973 Submitting file "imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_255_ch_213_strand.fast5".
-2019-08-12 15:57:39,990 Finished processing file "imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_24_ch_240_strand.fast5".
-2019-08-12 15:57:44,377 Submitting file "imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_260_ch_261_strand.fast5".
-2019-08-12 15:57:44,425 Finished processing file "imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_255_ch_213_strand.fast5".
-2019-08-12 15:57:46,162 Submitting file "imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_260_ch_343_strand.fast5".
-2019-08-12 15:57:46,191 Finished processing file "imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_260_ch_261_strand.fast5".
-2019-08-12 15:57:47,622 Submitting file "imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_267_ch_203_strand.fast5".
-2019-08-12 15:57:47,657 Finished processing file "imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_260_ch_343_strand.fast5".
-2019-08-12 15:57:49,320 Submitting file "imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_287_ch_349_strand.fast5".
-2019-08-12 15:57:49,342 Finished processing file "imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_267_ch_203_strand.fast5".
-2019-08-12 15:57:49,587 Submitting file "imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_29_ch_75_strand.fast5".
-2019-08-12 15:57:49,604 Finished processing file "imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_287_ch_349_strand.fast5".
-2019-08-12 15:57:49,742 Submitting file "imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_322_ch_331_strand.fast5".
-2019-08-12 15:57:49,769 Finished processing file "imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_29_ch_75_strand.fast5".
-2019-08-12 15:57:50,899 Submitting file "imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_477_ch_195_strand.fast5".
-2019-08-12 15:57:50,938 Finished processing file "imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_322_ch_331_strand.fast5".
-2019-08-12 15:57:55,981 Submitting file "imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_527_ch_165_strand.fast5".
-2019-08-12 15:57:56,019 Finished processing file "imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_477_ch_195_strand.fast5".
-2019-08-12 15:57:56,836 Submitting file "imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_568_ch_290_strand.fast5".
-2019-08-12 15:57:56,854 Finished processing file "imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_527_ch_165_strand.fast5".
-2019-08-12 15:57:56,983 Submitting file "imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_69_ch_323_strand.fast5".
-2019-08-12 15:57:57,001 Finished processing file "imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_568_ch_290_strand.fast5".
-2019-08-12 15:57:57,734 Submitting file "imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_714_ch_166_strand.fast5".
-2019-08-12 15:57:57,753 Finished processing file "imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_69_ch_323_strand.fast5".
-2019-08-12 15:57:58,026 Submitting file "imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_74_ch_406_strand.fast5".
-2019-08-12 15:57:58,042 Finished processing file "imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_714_ch_166_strand.fast5".
-2019-08-12 15:57:59,428 Submitting file "imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_86_ch_414_strand.fast5".
-2019-08-12 15:57:59,451 Finished processing file "imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_74_ch_406_strand.fast5".
-2019-08-12 15:57:59,971 Finished processing file "imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_86_ch_414_strand.fast5".
-2019-08-12 15:57:59,997 Done.
-2019-08-12 15:57:59,997 Writing telemetry
-2019-08-12 15:57:59,999 Summary telemetry written to /Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/basecalled_data/results/local_basecall_test/6/sequencing_telemetry.js
-2019-08-12 15:57:59,999 Pinging telemetry to https://ping.oxfordnanoportal.com/basecall
+2019-08-13 12:10:21,162 ONT Albacore Sequencing Pipeline Software (version 2.3.3)
+2019-08-13 12:10:21,162 Debug level is 0
+2019-08-13 12:10:21,175 Selected config file /Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/albacore/data_versioned/r94_450bps_linear.cfg to match flowcell FLO-MIN106 and kit SQK-LSK109
+2019-08-13 12:10:21,177 No reference given for module aligner
+2019-08-13 12:10:21,177 Using config file: layout_raw_basecall_1d.jsn
+2019-08-13 12:10:21,180 20 files found in input folder
+2019-08-13 12:10:21,180 include calibration strand detection: True
+2019-08-13 12:10:21,180 include alignment: False
+2019-08-13 12:10:21,180 include barcoding: False
+2019-08-13 12:10:21,180 telemetry enabled: True
+2019-08-13 12:10:21,201 No option 'pipeline.min_qscore_1dsq' in the config, so using the default of 0.0
+2019-08-13 12:10:21,731 Submitting file "imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_118_ch_16_strand.fast5".
+2019-08-13 12:10:24,143 Submitting file "imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_140_ch_8_strand.fast5".
+2019-08-13 12:10:24,214 Finished processing file "imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_118_ch_16_strand.fast5".
+2019-08-13 12:10:25,679 Submitting file "imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_158_ch_261_strand.fast5".
+2019-08-13 12:10:25,766 Finished processing file "imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_140_ch_8_strand.fast5".
+2019-08-13 12:10:27,360 Submitting file "imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_169_ch_223_strand.fast5".
+2019-08-13 12:10:27,391 Finished processing file "imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_158_ch_261_strand.fast5".
+2019-08-13 12:10:29,519 Submitting file "imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_200_ch_58_strand.fast5".
+2019-08-13 12:10:29,550 Finished processing file "imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_169_ch_223_strand.fast5".
+2019-08-13 12:10:30,429 Submitting file "imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_24_ch_240_strand.fast5".
+2019-08-13 12:10:30,456 Finished processing file "imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_200_ch_58_strand.fast5".
+2019-08-13 12:10:30,645 Submitting file "imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_255_ch_213_strand.fast5".
+2019-08-13 12:10:30,677 Finished processing file "imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_24_ch_240_strand.fast5".
+2019-08-13 12:10:34,968 Submitting file "imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_260_ch_261_strand.fast5".
+2019-08-13 12:10:35,030 Finished processing file "imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_255_ch_213_strand.fast5".
+2019-08-13 12:10:36,717 Submitting file "imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_260_ch_343_strand.fast5".
+2019-08-13 12:10:36,746 Finished processing file "imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_260_ch_261_strand.fast5".
+2019-08-13 12:10:38,292 Submitting file "imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_267_ch_203_strand.fast5".
+2019-08-13 12:10:38,381 Finished processing file "imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_260_ch_343_strand.fast5".
+2019-08-13 12:10:39,741 Submitting file "imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_287_ch_349_strand.fast5".
+2019-08-13 12:10:39,772 Finished processing file "imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_267_ch_203_strand.fast5".
+2019-08-13 12:10:40,029 Submitting file "imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_29_ch_75_strand.fast5".
+2019-08-13 12:10:40,050 Finished processing file "imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_287_ch_349_strand.fast5".
+2019-08-13 12:10:40,199 Submitting file "imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_322_ch_331_strand.fast5".
+2019-08-13 12:10:40,229 Finished processing file "imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_29_ch_75_strand.fast5".
+2019-08-13 12:10:41,502 Submitting file "imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_477_ch_195_strand.fast5".
+2019-08-13 12:10:41,542 Finished processing file "imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_322_ch_331_strand.fast5".
+2019-08-13 12:10:47,050 Submitting file "imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_527_ch_165_strand.fast5".
+2019-08-13 12:10:47,100 Finished processing file "imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_477_ch_195_strand.fast5".
+2019-08-13 12:10:47,871 Submitting file "imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_568_ch_290_strand.fast5".
+2019-08-13 12:10:47,896 Finished processing file "imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_527_ch_165_strand.fast5".
+2019-08-13 12:10:48,024 Submitting file "imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_69_ch_323_strand.fast5".
+2019-08-13 12:10:48,049 Finished processing file "imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_568_ch_290_strand.fast5".
+2019-08-13 12:10:48,772 Submitting file "imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_714_ch_166_strand.fast5".
+2019-08-13 12:10:48,797 Finished processing file "imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_69_ch_323_strand.fast5".
+2019-08-13 12:10:49,080 Submitting file "imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_74_ch_406_strand.fast5".
+2019-08-13 12:10:49,103 Finished processing file "imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_714_ch_166_strand.fast5".
+2019-08-13 12:10:50,589 Submitting file "imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_86_ch_414_strand.fast5".
+2019-08-13 12:10:50,617 Finished processing file "imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_74_ch_406_strand.fast5".
+2019-08-13 12:10:51,052 Finished processing file "imac_ad_umassmed_edu_20181108_FAK30311_MN27234_sequencing_run_test_61366_read_86_ch_414_strand.fast5".
+2019-08-13 12:10:51,065 Done.
+2019-08-13 12:10:51,065 Writing telemetry
+2019-08-13 12:10:51,079 Summary telemetry written to /Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/basecalled_data/results/local_basecall_test/6/sequencing_telemetry.js
+2019-08-13 12:10:51,079 Pinging telemetry to https://ping.oxfordnanoportal.com/basecall

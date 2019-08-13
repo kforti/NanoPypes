@@ -266,7 +266,7 @@ if __name__ == '__main__':
     inputs = [["/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass"]]
     pipe_specs = config.pipe_configs
     print(pipe_specs)
-    pb = PipelineBuilder2(inputs=inputs,
+    pb = PipelineBuilder(inputs=inputs,
                          pipeline_order=config.pipeline_order,
                          pipeline_name="test-pipeline",
                          pipe_specs=pipe_specs,

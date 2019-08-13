@@ -26,7 +26,7 @@ umass_ghpcc_lsf:
     project: /project/umw_athma_pai
     queue: short
     workers_per_job: 3
-    num_workers: 20
+    num_workers: 125
     min_num_workers:
     worker_cores: 4
     worker_memory: 8192

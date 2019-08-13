@@ -16,7 +16,7 @@ def test_pipeline_builder_remote(config_path, input_path):
     config = PipelineConfiguration(config_path, user_input)
 
 
-    inputs = [input_path]
+    inputs = [[input_path]]
     pipe_specs = config.pipe_configs
     print(pipe_specs)
 
