@@ -29,7 +29,7 @@ umass_ghpcc_lsf:
     num_workers: 125
     min_num_workers:
     worker_cores: 4
-    worker_memory: 4096
+    worker_memory: 8192
     debug: True
 local:
     cluster_type: local

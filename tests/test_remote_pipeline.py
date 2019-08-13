@@ -22,7 +22,7 @@ def test_pipeline_builder_remote(config_path, input_path):
     inputs = [input_path]
     pipe_specs = config.pipe_configs
     print(pipe_specs)
-    time.sleep(60)
+    time.sleep(30)
     pb = PipelineBuilder(inputs=inputs,
                          pipeline_order=config.pipeline_order,
                          pipeline_name="test-pipeline",
