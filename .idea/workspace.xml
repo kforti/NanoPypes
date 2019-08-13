@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="06fba5a6-e119-4d57-aa65-81370b2766cd" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/nanopypes/compute.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/compute.py" afterDir="false" />
       <change beforePath="$USER_HOME$/dask-kubernetes/dask_kubernetes/config.py" beforeDir="false" afterPath="$USER_HOME$/dask-kubernetes/dask_kubernetes/config.py" afterDir="false" />
       <change beforePath="$USER_HOME$/prefect/prefect/src/prefect/tasks/shell.py" beforeDir="false" afterPath="$USER_HOME$/prefect/prefect/src/prefect/tasks/shell.py" afterDir="false" />
     </list>
@@ -83,8 +84,8 @@
       <file leaf-file-name="compute.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/nanopypes/compute.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="114" column="52" selection-start-line="114" selection-start-column="52" selection-end-line="114" selection-end-column="52" />
+            <state relative-caret-position="63">
+              <caret line="8" column="11" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="11" />
               <folding>
                 <element signature="e#0#50#0" expanded="true" />
               </folding>
@@ -344,7 +345,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.pipeline_builder">
+  <component name="RunManager" selected="Python.compute">
     <configuration name="compute" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="nanopypes" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -525,11 +526,11 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.compute" />
         <item itemvalue="Python.pipeline_builder" />
         <item itemvalue="Python.per_read_variant_caller" />
         <item itemvalue="Python.dask_kube" />
         <item itemvalue="Python.pandas_scratch" />
-        <item itemvalue="Python.compute" />
       </list>
     </recent_temporary>
   </component>
@@ -562,6 +563,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-3" y="26" width="1440" height="828" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.76806086" visible="true" weight="0.30514446" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32954547" />
@@ -964,8 +966,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/nanopypes/compute.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="114" column="52" selection-start-line="114" selection-start-column="52" selection-end-line="114" selection-end-column="52" />
+        <state relative-caret-position="63">
+          <caret line="8" column="11" selection-start-line="8" selection-start-column="11" selection-end-line="8" selection-end-column="11" />
           <folding>
             <element signature="e#0#50#0" expanded="true" />
           </folding>

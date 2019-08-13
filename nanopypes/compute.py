@@ -6,6 +6,7 @@ from nanopypes.utilities import ComputeConfiguartion
 
 import logging
 import os
+import time
 
 
 
@@ -111,7 +112,9 @@ class ClusterManager:
         minimum_workers = self.min_num_workers or int(0.5 * self.num_workers)
         self._cluster.scale(self.num_workers)
         print("NUM_WORKERS: ", self.num_workers)
-        input("Is cluster ready? ")
+        print("sleeping")
+
+        time.sleep(180)
         self._cluster.adapt(minimum=self.num_workers, maximum=self.num_workers)
 
         #self.cluster.scheduler
@@ -168,15 +171,4 @@ class ClusterManager:
         for client in self.clients:
             client.close()
         self.cluster.close()
-
-if __name__ == '__main__':
-    # cluster = LocalCluster()
-    # print(cluster.scheduler.workers)
-    import os
-
-    path = "configs/compute.yml"
-    dir_name = os.path.dirname(__file__)
-    print(dir_name)
-    path = os.path.join(dir_name, path)
-    print(path)
 
