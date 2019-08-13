@@ -23,7 +23,7 @@ def test_pipeline_builder_remote(config_path, input_path):
     pipe_specs = config.pipe_configs
     print(pipe_specs)
     time.sleep(60)
-    pb = PipelineBuilder2(inputs=inputs,
+    pb = PipelineBuilder(inputs=inputs,
                          pipeline_order=config.pipeline_order,
                          pipeline_name="test-pipeline",
                          partitions=250,
