@@ -14,10 +14,7 @@ def test_pipeline_builder_remote(config_path, input_path):
                   'kit': 'SQK-LSK109',
                   'reference': '/project/umw_athma_pai/genomes/ercc/ERCC92.fa'}
     config = PipelineConfiguration(config_path, user_input)
-    cluster_manager = ClusterManager.from_dict(config.compute_config)
-    cluster_manager.build_cluster()
-    cluster_manager.start_cluster()
-    executor = DaskExecutor(cluster_manager.cluster.scheduler_address)
+
 
     inputs = [input_path]
     pipe_specs = config.pipe_configs
@@ -31,6 +28,11 @@ def test_pipeline_builder_remote(config_path, input_path):
     pb.build_tasks()
     pb.build_pipeline()
     print(vars(pb.pipeline))
+
+    cluster_manager = ClusterManager.from_dict(config.compute_config)
+    cluster_manager.build_cluster()
+    cluster_manager.start_cluster()
+    executor = DaskExecutor(cluster_manager.cluster.scheduler_address)
     pb.pipeline.run(executor=executor)
 
 
