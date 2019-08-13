@@ -29,7 +29,6 @@ def test_pipeline_builder_remote(config_path, input_path):
                          partitions=250,
                          pipe_specs=pipe_specs)
     pb.build_tasks()
-    print('provenance', pb.data_provenance)
     pb.build_pipeline()
     print(vars(pb.pipeline))
     pb.pipeline.run(executor=executor)
