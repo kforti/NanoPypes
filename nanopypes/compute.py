@@ -114,7 +114,7 @@ class ClusterManager:
         print("NUM_WORKERS: ", self.num_workers)
         print("sleeping")
 
-        time.sleep(60)
+        #time.sleep(60)
         #self._cluster.adapt(minimum=self.num_workers, maximum=self.num_workers)
 
         #self.cluster.scheduler
