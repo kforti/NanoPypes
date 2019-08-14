@@ -38,6 +38,7 @@ def test_pipeline_builder_remote(config_path, input_path):
     time.sleep(30)
     executor = DaskExecutor(cluster_manager.cluster.scheduler_address, debug=True)
     time.sleep(30)
+    input("cancel?")
     #pb.pipeline.run(executor=executor)
 
 
