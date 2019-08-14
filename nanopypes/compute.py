@@ -155,6 +155,7 @@ class ClusterManager:
                                project=self.project,
                                walltime=self.job_time,
                                job_cpu=ncpus,
+                               cores=ncpus,
                                job_mem=mem_bytes,
                                job_extra=self.job_extra,
                                processes=self.workers_per_job,
