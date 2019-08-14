@@ -31,7 +31,7 @@ umass_ghpcc_lsf:
     worker_cores: 1
     worker_memory: 8192
     debug: True
-umass_ghpcc_lsf_short:
+umass_c3ddb_slurm:
     cluster_type: slurm
     job_time: 04:00
     project:
