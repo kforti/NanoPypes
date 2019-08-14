@@ -55,6 +55,6 @@ if __name__ == '__main__':
     args = parser.parse_args()
     config_path = args.config_path
     input_path = args.input_path
-    set_envs()
+    #set_envs()
     test_pipeline_builder_remote(config_path, input_path)
 
