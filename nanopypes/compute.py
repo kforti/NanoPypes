@@ -1,6 +1,6 @@
 from dask_jobqueue import LSFCluster, SLURMCluster
 from distributed import Client, LocalCluster
-from dask_kubernetes import KubeCluster
+#from dask_kubernetes import KubeCluster
 
 from nanopypes.utilities import ComputeConfiguartion
 
@@ -111,6 +111,7 @@ class ClusterManager:
         #
         minimum_workers = self.min_num_workers or int(0.5 * self.num_workers)
         self._cluster.scale(self.num_workers)
+        self.client.wait_for_workers(self.num_workers//2)
         print("NUM_WORKERS: ", self.num_workers)
         print("sleeping")
         #time.sleep(60)
