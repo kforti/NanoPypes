@@ -5,8 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="06fba5a6-e119-4d57-aa65-81370b2766cd" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/nanopypes/configs/compute.yml" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/configs/compute.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nanopypes/configs/pipelines/remote_pipeline.yml" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/configs/pipelines/remote_pipeline.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nanopypes/compute.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/compute.py" afterDir="false" />
       <change beforePath="$USER_HOME$/dask-kubernetes/dask_kubernetes/config.py" beforeDir="false" afterPath="$USER_HOME$/dask-kubernetes/dask_kubernetes/config.py" afterDir="false" />
       <change beforePath="$USER_HOME$/prefect/prefect/src/prefect/tasks/shell.py" beforeDir="false" afterPath="$USER_HOME$/prefect/prefect/src/prefect/tasks/shell.py" afterDir="false" />
     </list>
@@ -58,7 +57,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="remote_pipeline.yml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="remote_pipeline.yml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/nanopypes/configs/pipelines/remote_pipeline.yml">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="214">
@@ -97,11 +96,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="compute.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="compute.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/nanopypes/compute.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-382">
-              <caret line="113" column="56" selection-start-line="113" selection-start-column="56" selection-end-line="113" selection-end-column="56" />
+            <state relative-caret-position="80">
+              <caret line="117" column="8" selection-start-line="117" selection-start-column="8" selection-end-line="117" selection-end-column="8" />
               <folding>
                 <element signature="e#0#50#0" expanded="true" />
               </folding>
@@ -215,13 +214,13 @@
         <option value="$PROJECT_DIR$/nanopypes/configs/pipelines/pipeline.yml" />
         <option value="$PROJECT_DIR$/nanopypes/pipelines/pipeline_builder.py" />
         <option value="$PROJECT_DIR$/profiling/log_parser.py" />
-        <option value="$PROJECT_DIR$/nanopypes/compute.py" />
         <option value="$PROJECT_DIR$/env/.env" />
         <option value="$PROJECT_DIR$/requirements.txt" />
         <option value="$PROJECT_DIR$/tests/test_remote_pipeline.py" />
         <option value="$PROJECT_DIR$/scripts/push_code.py" />
         <option value="$PROJECT_DIR$/nanopypes/configs/compute.yml" />
         <option value="$PROJECT_DIR$/nanopypes/configs/pipelines/remote_pipeline.yml" />
+        <option value="$PROJECT_DIR$/nanopypes/compute.py" />
       </list>
     </option>
   </component>
@@ -957,16 +956,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/nanopypes/compute.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-382">
-          <caret line="113" column="56" selection-start-line="113" selection-start-column="56" selection-end-line="113" selection-end-column="56" />
-          <folding>
-            <element signature="e#0#50#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/nanopypes/configs/compute.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="48">
@@ -978,6 +967,16 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="214">
           <caret line="69" column="29" selection-start-line="69" selection-start-column="29" selection-end-line="69" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/nanopypes/compute.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="80">
+          <caret line="117" column="8" selection-start-line="117" selection-start-column="8" selection-end-line="117" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
