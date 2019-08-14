@@ -1,7 +1,7 @@
 Click
-dask[distributed]
+dask[distributed] >= 2
 dask-jobqueue
-dask[dataframe]
+dask[dataframe] >= 2
 h5py
 ont_fast5_api
 bokeh
@@ -9,5 +9,5 @@ conda
 cytoolz
 pexpect
 spython
-prefect
+prefect >= 0.6.1
 pandas

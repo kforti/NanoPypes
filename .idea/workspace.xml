@@ -5,9 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="06fba5a6-e119-4d57-aa65-81370b2766cd" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nanopypes/configs/compute.yml" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/configs/compute.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/push_code.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/push_code.py" afterDir="false" />
       <change beforePath="$USER_HOME$/dask-kubernetes/dask_kubernetes/config.py" beforeDir="false" afterPath="$USER_HOME$/dask-kubernetes/dask_kubernetes/config.py" afterDir="false" />
       <change beforePath="$USER_HOME$/prefect/prefect/src/prefect/tasks/shell.py" beforeDir="false" afterPath="$USER_HOME$/prefect/prefect/src/prefect/tasks/shell.py" afterDir="false" />
     </list>
@@ -68,18 +65,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="log_parser.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/profiling/log_parser.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="162" column="3" selection-start-line="162" selection-start-column="3" selection-end-line="169" />
-              <folding>
-                <element signature="e#0#9#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="compute.yml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/nanopypes/configs/compute.yml">
           <provider selected="true" editor-type-id="text-editor">
@@ -89,7 +74,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="push_code.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="push_code.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/scripts/push_code.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="52">
@@ -99,6 +84,11 @@
               </folding>
             </state>
           </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="requirements.txt" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/requirements.txt">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file leaf-file-name="compute.py" pinned="false" current-in-tab="false">
@@ -252,17 +242,6 @@
               <item name="NanoPypes" type="b2602c69:ProjectViewProjectNode" />
               <item name="NanoPypes" type="462c0819:PsiDirectoryNode" />
               <item name="env" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="NanoPypes" type="b2602c69:ProjectViewProjectNode" />
-              <item name="NanoPypes" type="462c0819:PsiDirectoryNode" />
-              <item name="nanopypes" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="NanoPypes" type="b2602c69:ProjectViewProjectNode" />
-              <item name="NanoPypes" type="462c0819:PsiDirectoryNode" />
-              <item name="nanopypes" type="462c0819:PsiDirectoryNode" />
-              <item name="pipes" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="NanoPypes" type="b2602c69:ProjectViewProjectNode" />
@@ -549,12 +528,12 @@
     <frame x="1556" y="173" width="1468" height="919" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.76806086" visible="true" weight="0.2992398" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.76806086" visible="true" weight="0.2992398" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32954547" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.10359408" side_tool="true" weight="0.3541384" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.56082726" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.89640594" visible="true" weight="0.42335767" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.89640594" visible="true" weight="0.42335767" />
       <window_info anchor="bottom" id="Version Control" order="9" />
       <window_info anchor="bottom" id="Python Console" order="7" sideWeight="0.49750623" weight="0.27741084" />
       <window_info id="Structure" order="1" sideWeight="0.23193917" side_tool="true" weight="0.20850767" />
@@ -630,9 +609,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/0/sequencing_telemetry.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/test_data/basecalled_data/results/local_basecall_copy/0/pipeline.log">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
@@ -935,6 +911,9 @@
           </folding>
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/requirements.txt">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
 </project>
