@@ -42,7 +42,10 @@ child.sendline("cd bin/NanoPypes")
 time.sleep(5)
 cmd = "git pull origin {}".format(branch)
 child.sendline(cmd)
-c = child.expect("'/home/kf78w/.ssh/id_rsa':")
+if cluster == 'lsf':
+    c = child.expect("'/home/kf78w/.ssh/id_rsa':")
+elif cluster == 'slurm':
+    c = child.expect("'/home/fortierk2/.ssh/id_rsa':")
 time.sleep(2)
 child.sendline(SSH_PASSWORD)
 c = child.expect("From github.com:kforti/NanoPypes")
