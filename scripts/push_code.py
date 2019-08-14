@@ -31,7 +31,7 @@ if cluster == "lsf":
     child.sendline(LSF_PASSWORD)
     child.expect("git 2.9.5 is located under")
 elif cluster == 'slurm':
-    child = pexpect.spawn("ssh -F ~/c3ddb-cluster/linux/config c3ddb01.mit.edu")
+    child = pexpect.spawn("ssh -F /Users/kevinfortier/c3ddb-cluster/linux/config c3ddb01.mit.edu")
     r = child.expect("Enter passphrase for key '/Users/kevinfortier/c3ddb-cluster/linux/c3ddb-key':")
     child.sendline(SLURM_PASSWORD)
     child.expect(" from c3ddb01.cm.cluster")
