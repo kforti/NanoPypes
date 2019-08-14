@@ -7,6 +7,7 @@ from nanopypes.utilities import ComputeConfiguartion
 import logging
 import os
 import time
+from multiprocessing import Process
 
 
 
@@ -104,19 +105,17 @@ class ClusterManager:
         return
 
     def start_cluster(self):
-        try:
-            assert self.cluster
-        except:
+        if self.cluster is None:
+
             self.build_cluster()
         #
         minimum_workers = self.min_num_workers or int(0.5 * self.num_workers)
         self._cluster.scale(self.num_workers)
         print("NUM_WORKERS: ", self.num_workers)
         print("sleeping")
-
         #time.sleep(60)
         #self._cluster.adapt(minimum=self.num_workers, maximum=self.num_workers)
-
+        #self.client.restart()
         #self.cluster.scheduler
         return self.client
 
@@ -144,6 +143,7 @@ class ClusterManager:
                              job_extra=self.job_extra,
                              cores=ncpus,
                              memory=dask_memory)
+
         return cluster
 
     def _build_slurm(self):

@@ -6,6 +6,8 @@ import argparse
 import os
 
 from prefect.engine.executors.dask import DaskExecutor
+from distributed.scheduler import Scheduler
+
 
 
 
@@ -28,14 +30,15 @@ def test_pipeline_builder_remote(config_path, input_path):
     pb.build_tasks()
     pb.build_pipeline()
     print(vars(pb.pipeline))
-
+    print(config.compute_config)
     cluster_manager = ClusterManager.from_dict(config.compute_config)
     cluster_manager.build_cluster()
     cluster_manager.start_cluster()
+
     time.sleep(30)
     executor = DaskExecutor(cluster_manager.cluster.scheduler_address, debug=True)
     time.sleep(30)
-    pb.pipeline.run(executor=executor)
+    #pb.pipeline.run(executor=executor)
 
 
 def set_envs():
