@@ -1,74 +1,47 @@
 pipeline_id: demulti_mapper
-pipeline_order: [["albacore", "basecall"]]#, ["minimap2", "splice-map"], ["samtools", "sam_to_bam"], ["samtools", "merge_bams"]] #
+pipeline_tools: [["albacore", "basecall"], ["minimap2", "splice-map"], ["samtools", "sam_to_bam"], ["samtools", "merge_bams"]]
+pipeline_order:
+    matrix_0:
+        input_data:
+            path: ""
+            type: ont_sequence
+        partition_transform:
+            batch_size: 2
+            partitions: 5
+        data_transform_order: [["albacore", "basecall"], ["minimap2", "splice-map"], ["samtools", "sam_to_bam"]]
+        merge_transforms:
+            2: ["samtools", "merge_bams"]
+#    matrix_1:
+#        input_data:
+#            matrix_transform: ["matrix_0", ["albacore", "basecall"]]
+#        data_transform_order: [["albacore", "basecall"], ["nanoplot", "nanoplot"]]
+#        merge_transforms:
+#            0: []
 pipe_configs:
     albacore:
         task_kwargs: {}
         task_type: shell
-        data_type: ont_sequence
-        input_path: "{input_path}"
-        save_path: "/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/basecalled_data/results/local_basecall_test"
+        image_path: ""
         commands:
             basecall:
                 template: "read_fast5_basecaller.py --input {input} --save_path {save} --flowcell {flowcell} --kit {kit} --output_format fastq --worker_threads 1 --reads_per_fastq 1000"
                 user_input: ['reference']
-                input_type: ['string_list_files']
-                save_type: ['file']
-                partitions:
-                batch_size: 2
-                split_merge: 'one_to_many'
-                merge: False
+                save_path: "/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/basecalled_data/results/local_basecall_test"
     minimap2:
         task_kwargs: {}
         task_type: shell
-        data_type: ont_basecalled
-        input_path: "{{NANOPYPES_VARIABLE}}" # possibly user defined as well
-        references: /Users/kevinfortier/PycharmProjects/code_snippets/ercc_ref_20190220_1525.fa #"{{USER_INPUT}}" # For reference per barcode {"{{USER_INPUT}}": "{{USER_INPUT}}"}
-        save_path: "/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/mapped_reads"
         image_path: ""
         commands:
             splice-map:
                 template: "minimap2 -ax splice {reference} {input} > {save}"
                 user_input: ['reference']
-                input_type: ['fastq']
-                save_type: ['file']
-                partitions: 0
-                batch_size: 2
-                split_merge: 'one_to_one'
-                merge: False
+                save_path: "/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/mapped_reads"
     porechop:
         task_kwargs: {}
         task_type: shell
-        data_type: ont_basecalled
-        input_path: "{{NANOPYPES_VARIABLE}}" # possibly user defined as well
-        save_path: "/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/demultiplexed_data"
+        image_path: ""
         commands:
             demultiplex:
                 template: "porechop -i {input} -b {save}"
                 user_input: []
-                input_type: ['directory', 'ont_fastq_seq_data']
-                save_type: ['directory', 'dir_file_by_name']
-                partitions: 5
-                batch_size: 2
-                split_merge: 'one_to_one'
-                merge: False
-#    albacore:
-#        task_config:
-#            task_type: shell
-#        data_type: single_read_fast5
-#        input_path: "/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/"
-#        save_path: "/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/basecalled_data/results/local_basecall_copy"
-#        commands:
-#            basecall: "read_fast5_basecaller.py --input {input} --save_path {save_path} --flowcell {flowcell} --kit {kit} --output_format fastq --worker_threads 1 --reads_per_fastq 1000"
-#        user_input: ['flowcell', 'kit']
-#    minimap2:
-#        task_config:
-#            task_type: shell
-#        data_type: fastq
-#        input_path: "/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/basecalled_data/results/local_basecall_copy"
-#        references: "{references}" #"{{USER_INPUT}}" # For reference per barcode {"{{USER_INPUT}}": "{{USER_INPUT}}"}
-#        save_path: "../pipeline_run/5/minimap2"
-#        commands:
-#            splice-map: "minimap2 -ax splice {reference} {read} -o {save_path}"
-#        user_input: ['reference']
-compute_config_path: /Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/nanopypes/configs/compute.yml
-compute_id: local
+                save_path: "/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/demultiplexed_data"

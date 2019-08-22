@@ -4,7 +4,7 @@ import os
 import csv
 import shutil
 
-from nanopypes.pipes.basecaller import AlbacoreBasecaller, GuppyBasecaller, collapse_data
+from nanopypes.core.basecaller import AlbacoreBasecaller, GuppyBasecaller, collapse_data
 from nanopypes import ClusterManager
 from config import Configuration
 from compute import Cluster
@@ -26,56 +26,56 @@ def test_albcore_build_command():
     expected_commands = [["read_fast5_basecaller.py", "--flowcell", "FLO-MIN106",
                         "--kit", "SQK-LSK109", "--output_format", "fastq",
                         "--save_path", "test_data/basecalled_data/results/local_basecall_test/0",
-                        "--worker_threads", "1", "--input", 'test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/0',
+                        "--worker_threads", "1", "--input", 'test_data/minion_sample_raw_data/Experiment_01/sample_02_local/single_read_fast5/pass/0',
                           "--reads_per_fastq_batch", "1000"],
                          ["read_fast5_basecaller.py", "--flowcell", "FLO-MIN106",
                           "--kit", "SQK-LSK109", "--output_format", "fastq",
                           "--save_path", "test_data/basecalled_data/results/local_basecall_test/1",
-                          "--worker_threads", "1", "--input", 'test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/1',
+                          "--worker_threads", "1", "--input", 'test_data/minion_sample_raw_data/Experiment_01/sample_02_local/single_read_fast5/pass/1',
                           "--reads_per_fastq_batch", "1000"],
                          ["read_fast5_basecaller.py", "--flowcell", "FLO-MIN106",
                           "--kit", "SQK-LSK109", "--output_format", "fastq",
                           "--save_path", "test_data/basecalled_data/results/local_basecall_test/2",
-                          "--worker_threads", "1", "--input", 'test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/2',
+                          "--worker_threads", "1", "--input", 'test_data/minion_sample_raw_data/Experiment_01/sample_02_local/single_read_fast5/pass/2',
                           "--reads_per_fastq_batch", "1000"],
                          ["read_fast5_basecaller.py", "--flowcell", "FLO-MIN106",
                           "--kit", "SQK-LSK109", "--output_format", "fastq",
                           "--save_path", "test_data/basecalled_data/results/local_basecall_test/3",
-                          "--worker_threads", "1", "--input", 'test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/3',
+                          "--worker_threads", "1", "--input", 'test_data/minion_sample_raw_data/Experiment_01/sample_02_local/single_read_fast5/pass/3',
                           "--reads_per_fastq_batch", "1000"],
                          ["read_fast5_basecaller.py", "--flowcell", "FLO-MIN106",
                           "--kit", "SQK-LSK109", "--output_format", "fastq",
                           "--save_path", "test_data/basecalled_data/results/local_basecall_test/4",
-                          "--worker_threads", "1", "--input", 'test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/4',
+                          "--worker_threads", "1", "--input", 'test_data/minion_sample_raw_data/Experiment_01/sample_02_local/single_read_fast5/pass/4',
                           "--reads_per_fastq_batch", "1000"],
                          ["read_fast5_basecaller.py", "--flowcell", "FLO-MIN106",
                           "--kit", "SQK-LSK109", "--output_format", "fastq",
                           "--save_path", "test_data/basecalled_data/results/local_basecall_test/5",
-                          "--worker_threads", "1", "--input", 'test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/5',
+                          "--worker_threads", "1", "--input", 'test_data/minion_sample_raw_data/Experiment_01/sample_02_local/single_read_fast5/pass/5',
                           "--reads_per_fastq_batch", "1000"],
                          ["read_fast5_basecaller.py", "--flowcell", "FLO-MIN106",
                           "--kit", "SQK-LSK109", "--output_format", "fastq",
                           "--save_path", "test_data/basecalled_data/results/local_basecall_test/6",
-                          "--worker_threads", "1", "--input", 'test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/6',
+                          "--worker_threads", "1", "--input", 'test_data/minion_sample_raw_data/Experiment_01/sample_02_local/single_read_fast5/pass/6',
                           "--reads_per_fastq_batch", "1000"],
                          ["read_fast5_basecaller.py", "--flowcell", "FLO-MIN106",
                           "--kit", "SQK-LSK109", "--output_format", "fastq",
                           "--save_path", "test_data/basecalled_data/results/local_basecall_test/7",
-                          "--worker_threads", "1", "--input", 'test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/7',
+                          "--worker_threads", "1", "--input", 'test_data/minion_sample_raw_data/Experiment_01/sample_02_local/single_read_fast5/pass/7',
                           "--reads_per_fastq_batch", "1000"],
                          ["read_fast5_basecaller.py", "--flowcell", "FLO-MIN106",
                           "--kit", "SQK-LSK109", "--output_format", "fastq",
                           "--save_path", "test_data/basecalled_data/results/local_basecall_test/8",
-                          "--worker_threads", "1", "--input", 'test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/8',
+                          "--worker_threads", "1", "--input", 'test_data/minion_sample_raw_data/Experiment_01/sample_02_local/single_read_fast5/pass/8',
                           "--reads_per_fastq_batch", "1000"],
                          ["read_fast5_basecaller.py", "--flowcell", "FLO-MIN106",
                           "--kit", "SQK-LSK109", "--output_format", "fastq",
                           "--save_path", "test_data/basecalled_data/results/local_basecall_test/9",
-                          "--worker_threads", "1", "--input", 'test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/9',
+                          "--worker_threads", "1", "--input", 'test_data/minion_sample_raw_data/Experiment_01/sample_02_local/single_read_fast5/pass/9',
                           "--reads_per_fastq_batch", "1000"]]
 
     albacore = AlbacoreBasecaller(cluster=None,
-                                  input_path="test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/",
+                                  input_path="test_data/minion_sample_raw_data/Experiment_01/sample_02_local/single_read_fast5/pass/",
                                   flowcell=flowcell, kit=kit, save_path=save_path, output_format=output_format,
                                   reads_per_fastq=1000)
 
@@ -93,7 +93,7 @@ def test_albacore_batches():
     save_path = 'test_data/basecalled_data/results/local_basecall_test'
     kit = 'SQK-LSK109'
     flowcell = 'FLO-MIN106'
-    input_path  = "test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/"
+    input_path  = "test_data/minion_sample_raw_data/Experiment_01/sample_02_local/single_read_fast5/pass/"
     expected_batches = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
 
     albacore = AlbacoreBasecaller(cluster=None, input_path=input_path,
@@ -111,8 +111,8 @@ def test_albacore_binary():
     save_path = 'test_data/basecalled_data/results/local_basecall_test'
     kit = 'SQK-LSK109'
     flowcell = 'FLO-MIN106'
-    input_path = "test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/"
-    expected_stdout = b'usage: read_fast5_basecaller.py [-h] [-l] [-v] [-i INPUT] -t WORKER_THREADS -s\n                                SAVE_PATH [--resume [X]] [-f FLOWCELL]\n                                [-k KIT] [--barcoding] [-c CONFIG]\n                                [-d DATA_PATH] [-b] [-r]\n                                [-n FILES_PER_BATCH_FOLDER] [-o OUTPUT_FORMAT]\n                                [-q READS_PER_FASTQ_BATCH]\n                                [--disable_filtering] [--disable_pings]\n\nONT Albacore Sequencing Pipeline Software\n\noptional arguments:\n  -h, --help            show this help message and exit\n  -l, --list_workflows  List standard flowcell / kit combinations.\n  -v, --version         Print the software version.\n  -i INPUT, --input INPUT\n                        Folder containing read fast5 files (if not present,\n                        will expect file names on stdin).\n  -t WORKER_THREADS, --worker_threads WORKER_THREADS\n                        Number of worker threads to use.\n  -s SAVE_PATH, --save_path SAVE_PATH\n                        Path to save output.\n  --resume [X]          Resume previous run for the given save path. Optional\n                        parameter X is for debugging purposes only.\n  -f FLOWCELL, --flowcell FLOWCELL\n                        Flowcell used during the sequencing run.\n  -k KIT, --kit KIT     Kit used during the sequencing run.\n  --barcoding           Search for barcodes to demultiplex sequencing data.\n  -c CONFIG, --config CONFIG\n                        Optional configuration file to use.\n  -d DATA_PATH, --data_path DATA_PATH\n                        Optional path to model files.\n  -b, --debug           Output additional debug information to the log.\n  -r, --recursive       Recurse through subfolders for input data files.\n  -n FILES_PER_BATCH_FOLDER, --files_per_batch_folder FILES_PER_BATCH_FOLDER\n                        Maximum number of files in each batch subfolder. Set\n                        to 0 to disable batch subfolders.\n  -o OUTPUT_FORMAT, --output_format OUTPUT_FORMAT\n                        desired output format, can be fastq,fast5 or only one\n                        of these.\n  -q READS_PER_FASTQ_BATCH, --reads_per_fastq_batch READS_PER_FASTQ_BATCH\n                        number of reads per FastQ batch file. Set to 1 to\n                        receive one reads per file and file names which\n                        include the read ID. Set to 0 to have all reads per\n                        run ID written to one file.\n  --disable_filtering   Disable filtering into pass/fail folders\n  --disable_pings       Do not send summary information about the run\n'
+    input_path = "test_data/minion_sample_raw_data/Experiment_01/sample_02_local/single_read_fast5/pass/"
+    expected_stdout = b'usage: read_fast5_basecaller.py [-h] [-l] [-v] [-i INPUT] -t WORKER_THREADS -s\n                                SAVE_PATH [--resume [X]] [-f FLOWCELL]\n                                [-k KIT] [--barcoding] [-c CONFIG]\n                                [-d DATA_PATH] [-b] [-r]\n                                [-n FILES_PER_BATCH_FOLDER] [-o OUTPUT_FORMAT]\n                                [-q READS_PER_FASTQ_BATCH]\n                                [--disable_filtering] [--disable_pings]\n\nONT Albacore Sequencing Pipeline Software\n\noptional arguments:\n  -h, --help            show this help message and exit\n  -l, --list_workflows  List standard flowcell / kit combinations.\n  -v, --version         Print the software version.\n  -i INPUT, --input INPUT\n                        Folder containing read single_read_fast5 files (if not present,\n                        will expect file names on stdin).\n  -t WORKER_THREADS, --worker_threads WORKER_THREADS\n                        Number of worker threads to use.\n  -s SAVE_PATH, --save_path SAVE_PATH\n                        Path to save output.\n  --resume [X]          Resume previous run for the given save path. Optional\n                        parameter X is for debugging purposes only.\n  -f FLOWCELL, --flowcell FLOWCELL\n                        Flowcell used during the sequencing run.\n  -k KIT, --kit KIT     Kit used during the sequencing run.\n  --barcoding           Search for barcodes to demultiplex sequencing data.\n  -c CONFIG, --config CONFIG\n                        Optional configuration file to use.\n  -d DATA_PATH, --data_path DATA_PATH\n                        Optional path to model files.\n  -b, --debug           Output additional debug information to the log.\n  -r, --recursive       Recurse through subfolders for input data files.\n  -n FILES_PER_BATCH_FOLDER, --files_per_batch_folder FILES_PER_BATCH_FOLDER\n                        Maximum number of files in each batch subfolder. Set\n                        to 0 to disable batch subfolders.\n  -o OUTPUT_FORMAT, --output_format OUTPUT_FORMAT\n                        desired output format, can be fastq,single_read_fast5 or only one\n                        of these.\n  -q READS_PER_FASTQ_BATCH, --reads_per_fastq_batch READS_PER_FASTQ_BATCH\n                        number of reads per FastQ batch file. Set to 1 to\n                        receive one reads per file and file names which\n                        include the read ID. Set to 0 to have all reads per\n                        run ID written to one file.\n  --disable_filtering   Disable filtering into pass/fail folders\n  --disable_pings       Do not send summary information about the run\n'
 
     albacore = AlbacoreBasecaller(client=None, expected_workers=None, input_path=input_path,
                                   flowcell=flowcell, kit=kit, save_path=save_path, output_format="",
@@ -129,7 +129,7 @@ def test_albacore_basecall():
     save_path.mkdir()
 
     flowcell = 'FLO-MIN106'
-    input_path = Path('test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass')
+    input_path = Path('test_data/minion_sample_raw_data/Experiment_01/sample_02_local/single_read_fast5/pass')
     kit = 'SQK-LSK109'
     output_format = 'fastq'
     cluster = ClusterManager(cluster=LocalCluster())
@@ -253,8 +253,8 @@ def test_albacore_binary():
     save_path = 'test_data/basecalled_data/results/local_basecall_test'
     kit = 'SQK-LSK109'
     flowcell = 'FLO-MIN106'
-    input_path = "test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/"
-    expected_stdout = b'usage: read_fast5_basecaller.py [-h] [-l] [-v] [-i INPUT] -t WORKER_THREADS -s\n                                SAVE_PATH [--resume [X]] [-f FLOWCELL]\n                                [-k KIT] [--barcoding] [-c CONFIG]\n                                [-d DATA_PATH] [-b] [-r]\n                                [-n FILES_PER_BATCH_FOLDER] [-o OUTPUT_FORMAT]\n                                [-q READS_PER_FASTQ_BATCH]\n                                [--disable_filtering] [--disable_pings]\n\nONT Albacore Sequencing Pipeline Software\n\noptional arguments:\n  -h, --help            show this help message and exit\n  -l, --list_workflows  List standard flowcell / kit combinations.\n  -v, --version         Print the software version.\n  -i INPUT, --input INPUT\n                        Folder containing read fast5 files (if not present,\n                        will expect file names on stdin).\n  -t WORKER_THREADS, --worker_threads WORKER_THREADS\n                        Number of worker threads to use.\n  -s SAVE_PATH, --save_path SAVE_PATH\n                        Path to save output.\n  --resume [X]          Resume previous run for the given save path. Optional\n                        parameter X is for debugging purposes only.\n  -f FLOWCELL, --flowcell FLOWCELL\n                        Flowcell used during the sequencing run.\n  -k KIT, --kit KIT     Kit used during the sequencing run.\n  --barcoding           Search for barcodes to demultiplex sequencing data.\n  -c CONFIG, --config CONFIG\n                        Optional configuration file to use.\n  -d DATA_PATH, --data_path DATA_PATH\n                        Optional path to model files.\n  -b, --debug           Output additional debug information to the log.\n  -r, --recursive       Recurse through subfolders for input data files.\n  -n FILES_PER_BATCH_FOLDER, --files_per_batch_folder FILES_PER_BATCH_FOLDER\n                        Maximum number of files in each batch subfolder. Set\n                        to 0 to disable batch subfolders.\n  -o OUTPUT_FORMAT, --output_format OUTPUT_FORMAT\n                        desired output format, can be fastq,fast5 or only one\n                        of these.\n  -q READS_PER_FASTQ_BATCH, --reads_per_fastq_batch READS_PER_FASTQ_BATCH\n                        number of reads per FastQ batch file. Set to 1 to\n                        receive one reads per file and file names which\n                        include the read ID. Set to 0 to have all reads per\n                        run ID written to one file.\n  --disable_filtering   Disable filtering into pass/fail folders\n  --disable_pings       Do not send summary information about the run\n'
+    input_path = "test_data/minion_sample_raw_data/Experiment_01/sample_02_local/single_read_fast5/pass/"
+    expected_stdout = b'usage: read_fast5_basecaller.py [-h] [-l] [-v] [-i INPUT] -t WORKER_THREADS -s\n                                SAVE_PATH [--resume [X]] [-f FLOWCELL]\n                                [-k KIT] [--barcoding] [-c CONFIG]\n                                [-d DATA_PATH] [-b] [-r]\n                                [-n FILES_PER_BATCH_FOLDER] [-o OUTPUT_FORMAT]\n                                [-q READS_PER_FASTQ_BATCH]\n                                [--disable_filtering] [--disable_pings]\n\nONT Albacore Sequencing Pipeline Software\n\noptional arguments:\n  -h, --help            show this help message and exit\n  -l, --list_workflows  List standard flowcell / kit combinations.\n  -v, --version         Print the software version.\n  -i INPUT, --input INPUT\n                        Folder containing read single_read_fast5 files (if not present,\n                        will expect file names on stdin).\n  -t WORKER_THREADS, --worker_threads WORKER_THREADS\n                        Number of worker threads to use.\n  -s SAVE_PATH, --save_path SAVE_PATH\n                        Path to save output.\n  --resume [X]          Resume previous run for the given save path. Optional\n                        parameter X is for debugging purposes only.\n  -f FLOWCELL, --flowcell FLOWCELL\n                        Flowcell used during the sequencing run.\n  -k KIT, --kit KIT     Kit used during the sequencing run.\n  --barcoding           Search for barcodes to demultiplex sequencing data.\n  -c CONFIG, --config CONFIG\n                        Optional configuration file to use.\n  -d DATA_PATH, --data_path DATA_PATH\n                        Optional path to model files.\n  -b, --debug           Output additional debug information to the log.\n  -r, --recursive       Recurse through subfolders for input data files.\n  -n FILES_PER_BATCH_FOLDER, --files_per_batch_folder FILES_PER_BATCH_FOLDER\n                        Maximum number of files in each batch subfolder. Set\n                        to 0 to disable batch subfolders.\n  -o OUTPUT_FORMAT, --output_format OUTPUT_FORMAT\n                        desired output format, can be fastq,single_read_fast5 or only one\n                        of these.\n  -q READS_PER_FASTQ_BATCH, --reads_per_fastq_batch READS_PER_FASTQ_BATCH\n                        number of reads per FastQ batch file. Set to 1 to\n                        receive one reads per file and file names which\n                        include the read ID. Set to 0 to have all reads per\n                        run ID written to one file.\n  --disable_filtering   Disable filtering into pass/fail folders\n  --disable_pings       Do not send summary information about the run\n'
 
     albacore = AlbacoreBasecaller(client=None, expected_workers=None, input_path=input_path,
                                   flowcell=flowcell, kit=kit, save_path=save_path, output_format="",
@@ -271,7 +271,7 @@ def test_albacore_remote_basecall():
     save_path.mkdir()
 
     flowcell = 'FLO-MIN106'
-    input_path = Path('test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass')
+    input_path = Path('test_data/minion_sample_raw_data/Experiment_01/sample_02_local/single_read_fast5/pass')
     kit = 'SQK-LSK109'
     output_format = 'fastq'
 

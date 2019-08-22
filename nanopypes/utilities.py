@@ -1,5 +1,3 @@
-from functools import wraps
-from collections import defaultdict
 import yaml
 import re
 
@@ -18,12 +16,9 @@ class CommandBuilder:
         self.template = template
 
         self.templates = {}
-        # for command in self.commands:
-        #     self.generate_templates(command)
 
     def build_command(self, data):
-        print(self.template)
-        print(data)
+        print("data in command builder: ", data)
         command = self.template.format_map(data)
         return command
 
@@ -53,7 +48,7 @@ class ComputeConfiguartion:
 
 
 class PipelineConfiguration:
-    def __init__(self, pipeline_path=None, user_input=None, compute_kwargs={}):
+    def __init__(self, pipeline_path=None, compute_config_path=None, compute_id=None, user_input=None, compute_kwargs={}):
 
         pipeline_data = self._get_yaml_config(pipeline_path)
         self._pipeline_config = pipeline_data
@@ -61,10 +56,11 @@ class PipelineConfiguration:
 
         self._pipeline_id = pipeline_data.pop("pipeline_id")
         self._pipeline_order = pipeline_data.pop("pipeline_order")
+        self._pipeline_tools = pipeline_data.pop("pipeline_tools")
         self._get_pipe_configs()
 
-        self._compute_config_path = pipeline_data.pop("compute_config_path")
-        self._compute_id = pipeline_data.pop("compute_id")
+        self._compute_config_path = compute_config_path
+        self._compute_id = compute_id
         compute_config = ComputeConfiguartion(self._compute_id, self._compute_config_path, **compute_kwargs)
         self._compute_config = compute_config.config
 
@@ -98,7 +94,7 @@ class PipelineConfiguration:
 
     def _update_pipe_configs(self):
         user_input = SafeDict(self.user_input)
-        for pipe, cmd in self._pipeline_order:
+        for pipe, cmd in self._pipeline_tools:
             #print(pipe, cmd)
             command = self.pipe_configs[pipe]["commands"][cmd]['template'].format_map(user_input)
             self.pipe_configs[pipe]["commands"][cmd]['template'] = command
@@ -121,8 +117,9 @@ class PipelineConfiguration:
             except KeyError:
                 all_pipe_configs[pipe] = values
 
-        for pipe, command in self._pipeline_order:
-            self._pipe_configs[pipe] = all_pipe_configs[pipe]
+        for tool, command in self._pipeline_tools:
+            self._pipe_configs[tool] = all_pipe_configs[tool]
+        print(self._pipe_configs)
 
         return self._pipe_configs
 
@@ -153,7 +150,6 @@ class PipelineConfiguration:
                     raise Exception("Check your config values: ", key)
 
 
-
 #####################
 # Exceptions
 #####################
@@ -165,9 +161,4 @@ class InValidTaskError(KeyError):
     pass
 
 
-if __name__ == '__main__':
-    d = {'a':1}
-    c = {'b':2}
-    c.update(d)
-    print(c)
 

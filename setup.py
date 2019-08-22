@@ -31,7 +31,7 @@ setup(
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
     ],
-    description="Package for rapidly building ONT MinIon sequence analysis pipes.yml",
+    description="Package for rapidly building ONT MinIon sequence analysis core.yml",
     entry_points={
         'console_scripts': [
             'build_cluster = nanopypes.cli:build_cluster',

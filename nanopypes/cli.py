@@ -2,26 +2,23 @@
 """Console script for pai-nanopypes."""
 import shutil
 import os
-import yaml
-from pathlib import Path
 
 import click
 
-from distributed import LocalCluster, Client
-
-from .compute import ClusterManager
-from .pipes.basecaller import AlbacoreBasecaller
 from nanopypes.utilities import PipelineConfiguration
 from nanopypes.api import build_pipeline
 
 @click.command(context_settings=dict(
     ignore_unknown_options=True,
 ))
-@click.option('-v', '--verbose', is_flag=True, help='Enables verbose mode')
-@click.option('-n', '--name')
-@click.argument('pipeline_args', nargs=-1, type=click.UNPROCESSED)
-def run_pipeline(verbose, name, pipeline_args):
-    """A fake wrapper around Python's timeit."""
+@click.option('-i', '--input_path', help='Path to the input data')
+@click.option('-pn', '--pipeline_name', help='Name of the pipeline- Will be used to find the correct config file if no config path is given')
+@click.option('-pc', '--pipeline_config', help="Path to a pipeline config file", required=False)
+@click.option('-cc', '--compute_config', help="Path to a compute config file", required=False)
+@click.option('-cn', '--compute_name', help="Path to a compute config file", required=False)
+@click.argument('pipeline_args', help="Arguments that are required by the pipeline that is being run.", nargs=-1, type=click.UNPROCESSED)
+def run_pipeline(input_path, pipeline_name, pipeline_config, compute_config, pipeline_args):
+    """An interface for running Nanopypes pipelines."""
     key, value = None, None
     keys = {}
     for i in pipeline_args:
@@ -32,12 +29,16 @@ def run_pipeline(verbose, name, pipeline_args):
             value = i
         keys[key] = value
         key, value = None, None
-
-    path = os.path.dirname(os.path.abspath(__file__))
-    path = os.path.join(path, "configs", "pipelines", (name+".yml"))
-    config = PipelineConfiguration(path, keys)
-    pipeline_builder = build_pipeline(config)
-    pipeline_builder.run()
+    if pipeline_config is None:
+        path = os.path.dirname(os.path.abspath(__file__))
+        path = os.path.join(path, "configs", "pipelines", (pipeline_name + ".yml"))
+    else:
+        path = pipeline_config
+    print("path: ", path)
+    print("keys: ", keys)
+    # config = PipelineConfiguration(path, keys)
+    # pipeline_builder = build_pipeline(inputs, config)
+    # pipeline_builder.run()
 
 
 @click.command()

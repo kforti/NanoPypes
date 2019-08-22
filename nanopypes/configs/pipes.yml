@@ -1,102 +1,60 @@
 albacore:
     task_kwargs: {}
     task_type: shell
-    data_type: ont_sequence
-    input_path: "{input_path}"
-    save_path: "../pipeline_run/{pipeline_id}/albacore"
+    image_path: ""
     commands:
         basecall:
             template: "read_fast5_basecaller.py --input {input} --save_path {save_path} --flowcell {flowcell} --kit {kit} --output_format fastq --worker_threads 1 --reads_per_fastq 1000"
-            user_input: ['reference']
-            input_type: ['string_list_files']
-            save_type: ['file']
-            partitions: 5
-            batch_size: 2
-            split_merge: 'one_to_many'
-            merge: False
             user_input: ['flowcell', 'kit']
+            meta:
+                data_type: []
 minimap2:
     task_kwargs: {}
     task_type: shell
-    data_type: ont_basecalled
-    input_path: "{{NANOPYPES_VARIABLE}}" # possibly user defined as well
-    references: /Users/kevinfortier/PycharmProjects/code_snippets/ercc_ref_20190220_1525.fa #"{{USER_INPUT}}" # For reference per barcode {"{{USER_INPUT}}": "{{USER_INPUT}}"}
-    save_path: "../pipeline_run/5/minimap2"
     image_path: ""
     commands:
         splice-map:
             template: "minimap2 -ax splice {reference} {read} -o {save_path}"
             user_input: ['reference']
-            input_type: ['string_list_files']
-            save_type: ['file']
-            partitions: None
-            batch_size: 2
-            'split_merge': 'one_to_one'
-            merge: False
 samtools:
     task_kwargs: {}
     task_type: shell
-    data_type: mapped_reads
-    input_path: "{{NANOPYPES_VARIABLE}}" # possibly user defined as well
-    save_path: "/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/mapped_reads"
+    image_path: ""
     commands:
         sam_to_bam:
             template: "echo {save} {input}" #samtools view -b -S -o
-            partitions: 0
-            batch_size: 2
-            split_merge: 'one_to_one'
-            merge: False
         sort_bam:
             template: "samtools sort {input} -o {save}"
         index_bam:
             template: "samtools index {input} {save}"
         merge_bams:
             template: "echo {save} {input}" #samtools merge
-            partitions: 1
-            batch_size: 2
-            split_merge: 'merge_by_name'
-            merge: True
 bcftools:
     task_kwargs: {}
     task_type: shell
-    data_type: bcf_vcf
-    references: "{{USER_INPUT}}" # For reference per barcode {"{{USER_INPUT}}": "{{USER_INPUT}}"}
-    input_path: "{{NANOPYPES_VARIABLE}}" # possibly user defined as well
-    save_path:  "../pipeline_run/{pipeline_id}/bcftools"
+    image_path: ""
     commands:
-        pileup: "bcftools mpileup -Ob -f {reference} {sorted_bam} -o {bcf}"
-        variant_call: "bcftools call -c -v {bcf} -o {vcf}"
-    user_input: ['reference']
+        pileup:
+            template: "bcftools mpileup -Ob -f {reference} {sorted_bam} -o {bcf}"
+            user_input: ['reference']
+        variant_call:
+            template: "bcftools call -c -v {bcf} -o {vcf}"
 porechop:
     task_kwargs: {}
     task_type: shell
-    data_type: fastq
-    input_path: "{{NANOPYPES_VARIABLE}}" # possibly user defined as well
-    save_path: "../pipeline_run/{pipeline_id}/demultiplexed_reads"
+    image_path: ""
     commands:
         demultiplex:
             template: "porechop -i {input} -b {save}"
             user_input: []
-            input_type: ['directory', 'ont_fastq_seq_data']
-            save_type: ['directory', 'dir_file_by_name']
-            partitions: 0
-            batch_size: 2
-            'split': 'per_batch'
-            merge: False
 nanoplot:
     task_kwargs: {}
     task_type: shell
-    data_type: fastq
-    input_path: "{{NANOPYPES_VARIABLE}}" # possibly user defined as well
-    save_path: "../pipeline_run/{pipeline_id}/demultiplexed_reads"
+    image_path: ""
     commands:
         demultiplex:
             template: "NanoPlot -i {input} -o {save}"
             user_input: []
-            input_type: ['directory', 'ont_fastq_seq_data']
-            save_type: ['directory', 'dir_file_by_name']
-            partitions: 0
-            'split': 'per_batch'
 
 
 

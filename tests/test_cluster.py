@@ -1,9 +1,7 @@
-import unittest
 import yaml
 
-from nanopypes.compute import ClusterManager
+from nanopypes.core.compute import ClusterManager
 
-from distributed import Client
 import time
 
 

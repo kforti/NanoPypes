@@ -27,7 +27,7 @@ def get_compute():
     data = get_config_data('compute')
     return data
 
-@app.route('/pipes-config')
+@app.route('/core-config')
 def get_pipes():
     data = get_config_data('pipe')
     return data
@@ -45,7 +45,7 @@ def get_config_data(id):
     path = os.path.dirname(os.path.abspath(__package__))
     config_type_handler = {'compute': os.path.join(path, "nanopypes", "configs", "compute.yml"),
                            'pipeline': os.path.join(path, "nanopypes", "configs", "pipelines", "local_pipeline.yml"),
-                           'pipe': os.path.join(path, "nanopypes", "configs", "pipes.yml")}
+                           'pipe': os.path.join(path, "nanopypes", "configs", "core.yml")}
     config_path = config_type_handler[id]
     import yaml
     with open(config_path, 'r') as file:

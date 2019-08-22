@@ -1,5 +1,5 @@
 basecall:
-  input_path: test_data/minion_sample_raw_data/fast5/pass
+  input_path: test_data/minion_sample_raw_data/single_read_fast5/pass
   save_path: test_data/basecalled_data/results
   flowcell: FLO-MIN106
   kit: SQK-LSK109

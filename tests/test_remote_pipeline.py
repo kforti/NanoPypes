@@ -1,14 +1,11 @@
-from nanopypes.pipelines.pipeline_builder import PipelineBuilder
+from nanopypes.core.pipeline_builder import PipelineBuilder
 from nanopypes.utilities import PipelineConfiguration
-from nanopypes.compute import ClusterManager
+from nanopypes.core.compute import ClusterManager
 import time
 import argparse
 import os
 
 from prefect.engine.executors.dask import DaskExecutor
-from distributed.scheduler import Scheduler
-
-
 
 
 def test_pipeline_builder_remote(config_path, input_path):

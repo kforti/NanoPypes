@@ -73,7 +73,7 @@ pipe_configs:
 #        task_config:
 #            task_type: shell
 #        data_type: single_read_fast5
-#        input_path: "/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass/"
+#        input_path: "/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/single_read_fast5/pass/"
 #        save_path: "/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/basecalled_data/results/local_basecall_copy"
 #        commands:
 #            basecall: "read_fast5_basecaller.py --input {input} --save_path {save_path} --flowcell {flowcell} --kit {kit} --output_format fastq --worker_threads 1 --reads_per_fastq 1000"

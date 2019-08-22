@@ -18,7 +18,7 @@ def test_pipeline_config():
     print(config.pipeline_config)
 
 def test_remote_compute_config():
-    from nanopypes.compute import ClusterManager
+    from nanopypes.core.compute import ClusterManager
     user_input = {'flowcell': 'ghkgk', 'kit': 'lknkl', 'reference': 'jhkjhkjhj'}
     config = PipelineConfiguration("../nanopypes/configs/pipelines/remote_pipeline.yml", user_input)
     print(config.compute_config)

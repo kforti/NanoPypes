@@ -1,0 +1,16 @@
+2019-08-21 10:50:15,767 ONT Albacore Sequencing Pipeline Software (version 2.3.3)
+2019-08-21 10:50:15,768 Debug level is 0
+2019-08-21 10:50:15,775 Selected config file /Library/Frameworks/Python.framework/Versions/3.6/lib/python3.6/site-packages/albacore/data_versioned/r94_450bps_linear.cfg to match flowcell FLO-MIN106 and kit SQK-LSK109
+2019-08-21 10:50:15,776 No reference given for module aligner
+2019-08-21 10:50:15,776 Using config file: layout_raw_basecall_1d.jsn
+2019-08-21 10:50:15,776 No read files found in input folder.
+2019-08-21 10:50:15,776 Done.
+2019-08-21 10:50:15,776 include calibration strand detection: True
+2019-08-21 10:50:15,776 include alignment: False
+2019-08-21 10:50:15,776 include barcoding: False
+2019-08-21 10:50:15,776 telemetry enabled: True
+2019-08-21 10:50:15,780 No option 'pipeline.min_qscore_1dsq' in the config, so using the default of 0.0
+2019-08-21 10:50:16,103 Done.
+2019-08-21 10:50:16,103 Writing telemetry
+2019-08-21 10:50:16,104 Summary telemetry written to /Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/single_read_fast5/pass/9/sequencing_telemetry.js
+2019-08-21 10:50:16,104 Pinging telemetry to https://ping.oxfordnanoportal.com/basecall

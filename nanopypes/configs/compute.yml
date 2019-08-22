@@ -20,7 +20,7 @@ umass_ghpcc_lsf_long:
     worker_cores: 2
     worker_memory: 4096
     debug: True
-umass_ghpcc_lsf:
+umass_ghpcc_lsf_basecall:
     cluster_type: lsf
     job_time: 04:00
     project: /project/umw_athma_pai

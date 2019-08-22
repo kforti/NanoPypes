@@ -1,10 +1,10 @@
 basecall:
-  input_path: test_data/minion_sample_raw_data/Experiment_01/sample_01_remote/fast5/pass
+  input_path: test_data/minion_sample_raw_data/Experiment_01/sample_01_remote/single_read_fast5/pass
   save_path: /project/umw_athma_pai/kevin/data/minion_ercc_labeled/basecalled_data_test
   flowcell: FLO-MIN106
   kit: SQK-LSK109
   barcoding: False
-  output_format: fast5
+  output_format: single_read_fast5
   worker_threads: 1
   recursive: False
   reads_per_fastq: 1000

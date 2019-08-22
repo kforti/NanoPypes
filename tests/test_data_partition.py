@@ -1,4 +1,4 @@
-from nanopypes.distributed_data.partition_data import merge_mapped_reads, merge_demultiplexed_data, partition_demultiplexed_data, partition_basecalled_data, partition_ont_seq_data, merge_basecalled_data
+from nanopypes.distributed_data.partition_data import merge_demultiplexed_data, partition_demultiplexed_data, partition_basecalled_data, partition_ont_seq_data, merge_basecalled_data
 
 import os
 from pathlib import Path
@@ -8,7 +8,6 @@ from pathlib import Path
 def _create_demultiplexed_data():
     path = "/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/demultiplexed_data"
     barcodes = 6
-    from pathlib import Path
     for i in range(10):
         batch_path = os.path.join(path, "batch_{}".format(str(i)))
         try:
@@ -28,7 +27,7 @@ def _create_demultiplexed_data():
 #############################################################
 
 def test_partition_seq_data():
-    path = "/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass"
+    path = "/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/single_read_fast5/pass"
     partitions = 5
     results = partition_ont_seq_data(path, partitions, "/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/basecalled_data/results/local_basecall_copy")
     print(results[0])
@@ -116,7 +115,7 @@ def test_mapped_reads_merge():
 
 
 def test_basecall_mapping_data_partition():
-    path = "/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass"
+    path = "/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/single_read_fast5/pass"
     partitions = 5
     results = partition_ont_seq_data(path, partitions,
                                      "/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/basecalled_data/results/local_basecall_copy")
@@ -135,7 +134,7 @@ def test_basecall_mapping_data_partition():
     print(save_batches)
 
 def test_basecall_demultiplex_mapping_data_partition():
-    path = "/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass"
+    path = "/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/single_read_fast5/pass"
     partitions = 5
     results = partition_ont_seq_data(path, partitions,
                                      "/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/basecalled_data/results/local_basecall_copy")
@@ -170,26 +169,26 @@ def test_basecall_demultiplex_mapping_data_partition():
 
 
 def test_data_partitioner():
-    from nanopypes.distributed_data.partition_data import DataPartitioner
+    from nanopypes.distributed_data.partition_data import DataHandler
 
     from prefect import Flow
 
 
     results = []
-    inputs = ["/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass"]
+    inputs = ["/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/single_read_fast5/pass"]
     pipeline = Flow('test-pipeline')
     save_path = "/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/basecalled_data/results/local_basecall_copy"
     partition_strategy = {'split/merge': 'one_to_many', 'method': '', 'partitions': 5}
 
-    dp = DataPartitioner(inputs=inputs,
-                         num_batches=1,
-                         save_path=save_path,
-                         data_type='ont_sequence',
-                         pipeline=pipeline,
-                         dependencies=None,
-                         partition_strategy=partition_strategy,
-                         name='test-task',
-                         demultiplex=False)
+    dp = DataHandler(inputs=inputs,
+                     num_batches=1,
+                     save_path=save_path,
+                     data_type='ont_sequence',
+                     pipeline=pipeline,
+                     dependencies=None,
+                     partition_strategy=partition_strategy,
+                     name='test-task',
+                     demultiplex=False)
     tasks1 = dp.partition_data()
     # with pipeline as flow:
     #     for t in tasks:
@@ -203,15 +202,15 @@ def test_data_partitioner():
     # with pipeline as flow:
     #     for i in range(5):
     #         inputs.append(tasks1[0]['saves'][i])
-    dp = DataPartitioner(num_batches=5,
-        #inputs=inputs,
-                         save_path=save_path,
-                         data_type='ont_basecalled',
-                         pipeline=pipeline,
-                         dependencies=results,
-                         partition_strategy=partition_strategy,
-                         name='test-task',
-                         demultiplex=False)
+    dp = DataHandler(num_batches=5,
+                     #inputs=inputs,
+                     save_path=save_path,
+                     data_type='ont_basecalled',
+                     pipeline=pipeline,
+                     dependencies=results,
+                     partition_strategy=partition_strategy,
+                     name='test-task',
+                     demultiplex=False)
     tasks = dp.partition_data()
 
     print(tasks)
@@ -227,6 +226,40 @@ def test_data_partitioner():
     # print(vars(pipeline))
     pipeline.run()
 
+def test_pipeline_builder2():
+    from nanopypes.utilities import PipelineConfiguration
+    from nanopypes.core.pipeline_builder import PipelineBuilder
+    from distributed import LocalCluster
+    from prefect.engine.executors.dask import DaskExecutor
+
+    #cluster = LocalCluster()
+    #executor = DaskExecutor(cluster.scheduler_address)
+
+    pipeline_path = "../nanopypes/configs/pipelines/pipeline.yml"
+    compute_path = "/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/nanopypes/configs/compute.yml"
+    compute_id = 'local'
+    user_input = {'flowcell': 'FLO-MIN106',
+                  'kit': 'SQK-LSK109',
+                  'reference': '/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/lambda_reference.fasta'}
+    config = PipelineConfiguration(pipeline_path=pipeline_path, compute_config_path=compute_path, compute_id=compute_id, user_input=user_input)
+
+    inputs = "/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/single_read_fast5/pass"
+    save_path = "/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data"
+    pipe_specs = config.pipe_configs
+    print(pipe_specs)
+    print("pipeline_order:", config.pipeline_order)
+    pb = PipelineBuilder(inputs=inputs,
+                         save_path=save_path,
+                         pipeline_order=config.pipeline_order,
+                         pipeline_name="test-pipeline",
+                         pipe_specs=pipe_specs,
+                         batch_size=2)
+    pb.build_tasks()
+    # print('provenance', pb.data_provenance)
+    pb.build_pipeline()
+    pb.pipeline.visualize()
+    pb.pipeline.run()#executor=executor)
+
 def test_pipeline_builder():
     from nanopypes.distributed_data.pipeline_data import PipelineBuilder
     from nanopypes.utilities import PipelineConfiguration
@@ -238,7 +271,7 @@ def test_pipeline_builder():
                   'reference': '/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/lambda_reference.fasta'}
     config = PipelineConfiguration(path, user_input)
 
-    inputs = ["/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass"]
+    inputs = ["/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/single_read_fast5/pass"]
     pipe_specs = config.pipe_configs
     print(pipe_specs)
     pb = PipelineBuilder(inputs=inputs,
@@ -256,7 +289,7 @@ def test_pipeline_builder():
 def test_pipeline_builder_remote():
     from nanopypes.distributed_data.pipeline_data import PipelineBuilder
     from nanopypes.utilities import PipelineConfiguration
-    from nanopypes.compute import ClusterManager
+    from nanopypes.core.compute import ClusterManager
     import time
 
     from prefect.engine.executors.dask import DaskExecutor
@@ -298,7 +331,14 @@ if __name__ == '__main__':
     #test_basecall_mapping_data_partition()
     #test_basecall_demultiplex_mapping_data_partition()
     #test_data_partitioner()
-    test_pipeline_builder()
+
+
+
+    test_pipeline_builder2()
+
+
+
+
     #test_pipeline_builder_remote()
     #from prefect import Flow, task
     #

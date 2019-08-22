@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from nanopypes.pipes.basecaller import GuppyBasecaller
+from nanopypes.core.basecaller import GuppyBasecaller
 from compute import Cluster
 from config import Configuration
 
@@ -8,7 +8,7 @@ from distributed import Client
 
 def test_guppy_batches():
     flowcell = 'FLO-MIN106'
-    input_path = 'test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass'
+    input_path = 'test_data/minion_sample_raw_data/Experiment_01/sample_02_local/single_read_fast5/pass'
     save_path = 'test_data/basecalled_data/results/local_basecall_test'
     kit = 'SQK-LSK109'
     fast5_out = False
@@ -25,7 +25,7 @@ def test_guppy_batches():
 
 def test_guppy_basecall():
     flowcell = 'FLO-MIN106'
-    input_path = 'test_data/minion_sample_raw_data/Experiment_01/sample_02_local/fast5/pass'
+    input_path = 'test_data/minion_sample_raw_data/Experiment_01/sample_02_local/single_read_fast5/pass'
     save_path = 'test_data/basecalled_data/results/local_basecall_test'
     kit = 'SQK-LSK109'
     fast5_out = False
