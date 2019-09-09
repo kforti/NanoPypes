@@ -89,7 +89,8 @@ class ShellTransformTask(prefect.Task):
         for cd in command_data:  # [batch_num]:
             command = cb.build_command(cd)
             #all_commands.append(command)
-            logger.debug("Beginning to run ShellTransformTask with command {} on batch number {}".format(command, batch_num))
+            print("COMMAND: ", command)
+            logger.info("Beginning to run ShellTransformTask with command '{}' on batch number {}".format(command, batch_num))
 
             with tempfile.NamedTemporaryFile(prefix="prefect-") as tmp:
                 if self.helper_script:
@@ -98,16 +99,16 @@ class ShellTransformTask(prefect.Task):
                 tmp.write(command.encode())
                 tmp.flush()
                 try:
-                    logger.debug(
-                        "Beginning to run ShellTransformTask with command {} on batch number {}".format(command, batch_num))
+                    logger.info(
+                        "Beginning to run ShellTransformTask with command '{}' on batch number {}".format(command, batch_num))
                     out = subprocess.check_output(
                         [self.shell, tmp.name], stderr=subprocess.STDOUT, env=current_env
                     )
-                    logger.debug(
-                        "Finished run ShellTransformTask with command {} on batch number {}".format(command, batch_num))
+                    logger.info(
+                        "Finished run ShellTransformTask with command '{}' on batch number {}".format(command, batch_num))
                     #all_outs.append(out)
                 except subprocess.CalledProcessError as exc:
-                    error_msg = "Command {command} failed with exit code {0}: {1}".format(
+                    error_msg = "Command '{command}' failed with exit code {0}: {1}".format(
                         exc.returncode, exc.output, command=command
                     )
                     #all_error_messages.append(error_msg)
@@ -124,10 +125,12 @@ class ShellTransformTask(prefect.Task):
         return transform_data #{'inputs': input_data, 'saves': results[2], 'command_data': results[0]}
 
     def _extract_data(self, extract_fn, input_data, save_path):
-        save_path = os.path.join(save_path, self.task_name)
-        if os.path.exists(save_path) is False:
-            os.mkdir(save_path)
-        command_data = extract_fn(input_data, save_path, self.task_name)
+
+        # save_path = os.path.join(save_path, self.name)
+        #
+        # if os.path.exists(save_path) is False:
+        #     os.mkdir(save_path)
+        command_data = extract_fn(input_data, save_path, self.name)
         return command_data
 
 

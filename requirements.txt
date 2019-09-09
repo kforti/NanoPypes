@@ -1,4 +1,5 @@
 Click
+dask >= 2
 dask[distributed] >= 2
 dask-jobqueue
 dask[dataframe] >= 2

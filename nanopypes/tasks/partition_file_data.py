@@ -15,23 +15,21 @@ class PartitionFileData(Task):
 
     @defaults_from_attrs('inputs', 'structure', 'partition_fn', 'fn_kwargs', 'batch_size')
     def run(self, inputs=None, structure=None, partition_fn=None, batch_size=None, fn_kwargs={}):
-
         results = partition_fn(input_path=inputs, structure=structure, batch_size=batch_size, **fn_kwargs)
-
         return results
 
 
 class MergeFileData(Task):
-    def __init__(self, inputs=None, merge_fn=None, save_path=None, fn_kwargs={}, **kwargs):
+    def __init__(self, inputs=None, merge_fn=None, save_path=None, **kwargs):
         super().__init__(**kwargs)
         self.merge_fn = merge_fn
-        self.fn_kwargs = fn_kwargs
         self.save_path = save_path
 
         self.inputs = inputs
-    @defaults_from_attrs('inputs', 'save_path', 'merge_fn', 'fn_kwargs')
-    def run(self, inputs=None, save_path=None, merge_fn=None,  fn_kwargs={}):
-        results = merge_fn(inputs=inputs, save_path=save_path, **fn_kwargs)
+    @defaults_from_attrs('inputs', 'save_path', 'merge_fn')
+    def run(self, inputs=None, save_path=None, merge_fn=None):
+        results = merge_fn(batches=inputs, save_path=save_path)
+        print("MERGE RESULTS: ", results)
 
         return results
 

@@ -21,6 +21,8 @@ def run_pipeline(input_path, pipeline_name, pipeline_config, compute_config, pip
     """An interface for running Nanopypes pipelines."""
     key, value = None, None
     keys = {}
+
+    # odd pipeline_args are keys, evens are values
     for i in pipeline_args:
         if key is None:
             key = i.replace('-', '')

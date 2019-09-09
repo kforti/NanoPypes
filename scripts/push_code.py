@@ -115,9 +115,10 @@ def get_test_data_paths():
 
 
 if __name__ == '__main__':
-    pass
+    msg, branch, cluster = parse_args()
     # clean_test_data()
     # msg, branch, cluster = parse_args()
-    # git_local(msg, branch)
+    git_local(msg, branch)
+    git_remote(branch, cluster)
 
 

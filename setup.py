@@ -44,6 +44,7 @@ setup(
     },
     install_requires= [
         'Click',
+        'dask[bag]',
         'dask[distributed]',
         'dask-jobqueue',
         'dask[dataframe]',

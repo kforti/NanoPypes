@@ -28,7 +28,6 @@ def partition_ont_seq_data(input_path, structure, batch_size):
     :param save_path: The location of the save directories
     :return: a tuple containing alist of the batches' command_data, a list of input batches and a list of save batches
     """
-
     #batches = [inputs[i:i + batch_size] for i in range(0, len(inputs), batch_size)]
     if structure == 'dir_dirs':
         results = get_dir_batches(input_path, batch_size)
@@ -107,20 +106,55 @@ def get_dir_batches(input_path, batch_size):
 #############################################################
 
 def extract_partitioned_directories(input_data, save_path, task_name):
+    """
+    :param input_data:
+    :param save_path:
+    :param task_name:
+    :return:
+    """
+    print(input_data["saves"])
     input_paths = input_data["saves"]
     command_data = []
     save_paths = []
     for path in input_paths:
-        save_path = os.path.join(save_path, os.path.basename(path))
-        command_data.append({'input': path, 'save': save_path})
-        save_paths.append(save_path)
-    inputs = input_data["inputs"][task_name]
-    return {"inputs": inputs, "saves": save_paths, "command_date": command_data}
+        save = os.path.join(save_path, os.path.basename(path))
+        command_data.append({'input': path, 'save': save})
+        save_paths.append(save)
+    input_data["inputs"][task_name] = input_paths
+    inputs = input_data["inputs"]
+    return {"inputs": inputs, "saves": save_paths, "command_data": command_data}
 
 
 #############################################################
 ### ONT Basecalled Functions                              ###
 #############################################################
+
+def extract_ont_fastqs(input_data, save_path, task_name):
+    """
+     Extracts all fastq paths from nanopore basecalling as one string of paths
+    :param input_data: the data passed from the previous task
+    :param save_path:
+    :param task_name:
+    :return:
+
+    """
+    input_paths = input_data["saves"]
+    command_data = []
+    save_paths = []
+    # inputs = []
+    for i, directory in enumerate(input_paths):
+        pass_path = os.path.join(directory, "workspace", "pass")
+        # print("PASS PATH: ", pass_path)
+        fastqs = " ".join([os.path.join(pass_path, fastq) for fastq in os.listdir(pass_path)])
+        sam = os.path.join(save_path, "{}.sam".format(task_name))
+        command_data.append({'input': fastqs, 'save': sam})
+        save_paths.append(sam)
+        # inputs.append(fastqs)
+    # Choosing to include the original input_paths rather than the extracted fastq paths
+    input_data["inputs"][task_name] = input_paths
+    inputs = input_data["inputs"]
+    return {"inputs": inputs, "saves": save_paths, "command_data": command_data}
+
 
 def partition_basecalled_data(batch, batch_num, save_path, next_tool_cmd, strategy='one_to_one', input_type='fastq'):
     if next_tool_cmd == 'porechop_demultiplex':
@@ -278,7 +312,6 @@ def collapse_seq_summary(sum_paths, save_path):
                             continue
                         else:
                             sum_file.write(row)
-
             file.close()
     sum_file.close()
     return
@@ -331,7 +364,41 @@ def prep_save_location(save_path):
 ### ONT Demultiplexed Functions                                   ###
 #############################################################
 
+def porechop_demultiplexed_data(input_data, save_path, task_name):
+    """
+    Get fastqs from directory and group by name (barcode) after Porechop
+    :param batch:
+    :param batch_num:
+    :param save_path:
+    :return:
+    """
+    batch = input_data["saves"]
+    barcodes = _get_barcodes(batch)
+    command_data = []
+    input_data["inputs"][task_name] = batch
+    inputs = input_data["inputs"]
+    batch_saves = []
+
+    #batch_save_path = os.path.join(save_path, task_name)
+    # if os.path.exists(batch_save_path) is False:
+    #     os.mkdir(batch_save_path)
+    for bcode, paths in barcodes.items():
+        fastqs = ""
+        for p in paths:
+            fastqs += (p + " ")
+        save_file = os.path.join(save_path, (bcode + ".sam"))
+        command_data.append({'input': fastqs, 'save': save_file})
+        batch_saves.append(save_file)
+    return {"inputs": inputs, "saves": batch_saves, "command_data": command_data}
+
 def partition_demultiplexed_data(batch, batch_num, save_path):
+    """
+    Get fastqs from directory and group by name (barcode) after Porechop
+    :param batch:
+    :param batch_num:
+    :param save_path:
+    :return:
+    """
     barcodes = _get_barcodes(batch)
     command_data = []
     batch_inputs = batch
@@ -339,8 +406,8 @@ def partition_demultiplexed_data(batch, batch_num, save_path):
 
     batch_name = "batch_{}".format(str(batch_num))
     batch_save_path = os.path.join(save_path, batch_name)
-    if os.path.exists(batch_save_path) is False:
-        os.mkdir(batch_save_path)
+    # if os.path.exists(batch_save_path) is False:
+    #     os.mkdir(batch_save_path)
     for bcode, paths in barcodes.items():
         fastqs = ""
         for p in paths:
@@ -398,42 +465,65 @@ def merge_mapped_reads(batches, save_path):
 ### Mapped Reads Functions                                ###
 #############################################################
 
-def sam_to_bam(batch, batch_num, **fn_kwargs):
+def sam_to_bam(input_data, save_path, task_name):
+    """
+    Extract sams from directory after mapping and create bam paths
+    :param batch:
+    :param batch_num:
+    :param fn_kwargs:
+    :return:
+    """
     command_data = []
-    input_paths = batch
+    input_paths = input_data["saves"]
     save_paths = []
-    for file in batch:
-        path = Path(file)
-        bam_name = path.name.replace(".sam", ".bam")
-        bam_path = str(path.parent.joinpath(bam_name))
+    for file in input_paths:
+        bam_name = os.path.basename(file).replace(".sam", ".bam")
+        bam_path = os.path.join(save_path, bam_name)
         save_paths.append(bam_path)
         command_data.append({'input': file, 'save': bam_path})
-    return command_data, input_paths, save_paths
+    input_data["inputs"][task_name] = input_paths
+    inputs = input_data["inputs"]
+    return {"inputs": inputs, "saves": save_paths, "command_data": command_data}
 
-def merge_bams(batches, batch_num, save_path):
+
+# def sam_to_bam(batch, batch_num, **fn_kwargs):
+#     command_data = []
+#     input_paths = batch
+#     save_paths = []
+#     for file in batch:
+#         path = Path(file)
+#         bam_name = path.name.replace(".sam", ".bam")
+#         bam_path = str(path.parent.joinpath(bam_name))
+#         save_paths.append(bam_path)
+#         command_data.append({'input': file, 'save': bam_path})
+#     return command_data, input_paths, save_paths
+
+def merge_bams(batches, save_path, task_name):
     print("merge_batches: ", batches)
-    save_path = os.path.join(save_path, 'merged_bams')
-    if os.path.exists(save_path) is False:
-        os.mkdir(save_path)
+    #save_path = os.path.join(save_path, 'merged_bams')
+    # if os.path.exists(save_path) is False:
+    #     os.mkdir(save_path)
 
-    barcodes = _find_barcodes(batches)
+    #barcodes = _find_barcodes(batches)
     batch_inputs = []
     batch_saves = []
     batch_command_data = []
 
-    for bcode, paths in barcodes.items():
-        print("PATHS: ", paths)
-        bcode_inputs = " ".join(paths)
-        batch_inputs.append(bcode_inputs)
-        bcode_save_path = os.path.join(save_path, bcode)
-        batch_saves.append(bcode_save_path)
-        batch_command_data.append({'input': bcode_inputs, 'save': bcode_save_path})
-
-    command_data = list(batch_command_data)
-    input_paths = list(batch_inputs)
-    save_paths = list(batch_saves)
-
-    return command_data, input_paths, save_paths
+    # for bcode, paths in barcodes.items():
+    #     print("PATHS: ", paths)
+    #     bcode_inputs = " ".join(paths)
+    #     batch_inputs.append(bcode_inputs)
+    #     bcode_save_path = os.path.join(save_path, bcode)
+    #     batch_saves.append(bcode_save_path)
+    #     batch_command_data.append({'input': bcode_inputs, 'save': bcode_save_path})
+    for batch in batches:
+        for path in batch["saves"]:
+            batch_inputs.append(path)
+    save_file_name = "{}.bam".format(task_name)
+    save = os.path.join(save_path, save_file_name)
+    command_data = {"input": " ".join(batch_inputs), "save": save}
+    inputs = {"merge_data": batches}
+    return {"inputs": inputs, "saves": [save], "command_data": [command_data]}
 
 
 

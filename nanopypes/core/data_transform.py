@@ -2,6 +2,7 @@ from nanopypes.tasks import PullImage, BatchSingularityExecute
 from nanopypes.tasks.transform_task import ShellTransformTask
 
 from datetime import timedelta
+import os
 
 from prefect import Task
 
@@ -13,27 +14,56 @@ class PrintCommands(Task):
     def run(self, commands):
         print("SLUG: ", self.slug, "\nCOMMANDS: ", commands, "\n\n")
 
-
-class DataTransform():
+class Transform():
     task_handler = {'singularity': BatchSingularityExecute,
                     'shell': ShellTransformTask,
                     'print_commands': PrintCommands}
 
-    def __init__(self, task_id, task_type, template, extract_fn, extract_kwargs, **task_kwargs):
+    def __init__(self, task_id, save_path, task_type, template, **task_kwargs):
         self.task_type = task_type
+        self.save_path = save_path
         self.task = self.task_handler[self.task_type]
         self.task_id = task_id
-        self.extract_fn = extract_fn
-        self.extract_kwargs = extract_kwargs
         self.template = template
         self.task_kwargs = task_kwargs
 
         self.all_tasks = []
 
+class MergeTransform(Transform):
+
+    def __init__(self, merge_fn, **kwargs):
+        super().__init__(**kwargs)
+        self.merge_fn = merge_fn
+
+        self.all_tasks = []
+
+    def create_tasks(self):
+        save_path = os.path.join(self.save_path, self.task_id)
+        if os.path.exists(save_path) is False:
+            os.mkdir(save_path)
+        task = self.task(template=self.template, save_path=save_path, extract_fn=self.merge_fn,
+                         slug=self.task_id, name=self.task_id, max_retries=3, retry_delay=timedelta(seconds=1),
+                         **self.task_kwargs)
+        return task
+
+class DataTransform(Transform):
+
+    def __init__(self, extract_fn, **kwargs):
+        super().__init__(**kwargs)
+        self.extract_fn = extract_fn
+
+        self.all_tasks = []
+
     def create_tasks(self, num_batches, is_initial):
+        save_path = os.path.join(self.save_path, self.task_id)
+        if os.path.exists(save_path) is False:
+            os.mkdir(save_path)
         for i in range(num_batches):
             task_id = self.task_id + "_batch_{}".format(str(i))
-            task = self.task(template=self.template, batch_num=i, extract_fn=self.extract_fn, fn_kwargs=self.extract_kwargs, slug=task_id, name=task_id, max_retries=3, retry_delay=timedelta(seconds=1), is_initial=is_initial, **self.task_kwargs)
+            batch_save_path = os.path.join(save_path, "batch_{}".format(str(i)))
+            if os.path.exists(batch_save_path) is False:
+                os.mkdir(batch_save_path)
+            task = self.task(template=self.template, save_path=batch_save_path, batch_num=i, extract_fn=self.extract_fn, slug=task_id, name=task_id, max_retries=3, retry_delay=timedelta(seconds=1), is_initial=is_initial, **self.task_kwargs)
 
             self.all_tasks.append(task)
 

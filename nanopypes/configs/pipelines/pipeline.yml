@@ -4,7 +4,7 @@ pipeline_order:
     matrix_0:
         input_data:
             path: ""
-            type: ont_sequence
+            type: "ont_directories_single_read_fast5"
         partition_transform:
             batch_size: 2
             partitions: 5
@@ -24,7 +24,7 @@ pipe_configs:
         image_path: ""
         commands:
             basecall:
-                template: "read_fast5_basecaller.py --input {input} --save_path {save} --flowcell {flowcell} --kit {kit} --output_format fastq --worker_threads 1 --reads_per_fastq 1000"
+                template: "read_fast5_basecaller.py --input {input} --save_path {save} --flowcell {flowcell} --kit {kit} --output_format fastq --worker_threads 1 --reads_per_fastq 1000" #"echo {input} {save} {flowcell} {kit}"
                 user_input: ['reference']
                 save_path: "/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/basecalled_data/results/local_basecall_test"
     minimap2:
@@ -33,7 +33,7 @@ pipe_configs:
         image_path: ""
         commands:
             splice-map:
-                template: "minimap2 -ax splice {reference} {input} > {save}"
+                template:  "minimap2 -ax splice {reference} {input} > {save}" #"echo minimap2 -ax splice {reference} {input} {save}"
                 user_input: ['reference']
                 save_path: "/Users/kevinfortier/Desktop/NanoPypes_Prod/NanoPypes/tests/test_data/mapped_reads"
     porechop:

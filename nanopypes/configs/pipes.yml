@@ -22,13 +22,13 @@ samtools:
     image_path: ""
     commands:
         sam_to_bam:
-            template: "echo {save} {input}" #samtools view -b -S -o
+            template: "samtools view -b -S {input} -o {save}" #"echo {save} {input}"
         sort_bam:
             template: "samtools sort {input} -o {save}"
         index_bam:
             template: "samtools index {input} {save}"
         merge_bams:
-            template: "echo {save} {input}" #samtools merge
+            template: "samtools merge {save} {input}" #"echo {save} {input}"
 bcftools:
     task_kwargs: {}
     task_type: shell

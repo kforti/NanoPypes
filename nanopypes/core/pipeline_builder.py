@@ -1,8 +1,9 @@
 from prefect import Flow
 
 from nanopypes.distributed_data.partition_data import *
-from nanopypes.core.data_transform import DataTransform
+from nanopypes.core.data_transform import DataTransform, MergeTransform
 from nanopypes.tasks.partition_file_data import PartitionFileData, MergeFileData
+from ..distributed_data.key_value_stores import extract_functions_handler, function_keys, merge_functions_handler, partition_handler
 
 import math
 import os
@@ -14,9 +15,9 @@ def determine_partition_strategy(directory, partitions=None, batch_size=None):
         batch_size = math.ceil(len(children) / partitions)
     elif partitions is None and batch_size:
         partitions = math.ceil(len(children) / batch_size)
-    #print("children: ", len(children))
-    #print(partitions)
-    #print(batch_size)
+    print("children: ", len(children))
+    print(partitions)
+    print(batch_size)
     return batch_size, partitions
 
 
@@ -41,71 +42,10 @@ class PipelineBuilder:
         self.num_matrices = 0
         self.prev_transform_id = None
 
-        self.partition_strategy_handler = {"ont_sequence": ont_partition_strategy}
+        self.partition_strategy_handler = {'ont_directories_single_read_fast5': ont_partition_strategy}
 
-        self.kwargs_handler = {
-            "albacore_basecall":
-                {
-                    "no_prev": {'partitions': self.num_partitions, 'batch_size': self.batch_size,
-                                'save_path': self.save_path},
-                    "partition": {},
-                    "merge": {}
-                },
-            "minimap2_splice-map":
-                {
-                    "no_prev": {},
-                    "albacore_basecall": {'save_path': self.save_path, 'next_tool_cmd': self.next_tool_cmd},
-                    # 'strategy': self.split_merge, 'input_type': 'fastq'},
-                    "porechop_demultiplex": {'save_path': self.save_path},
-                },
-            "porechop_demultiplex":
-                {
-                    "no_prev": {},
-                    "albacore_basecall": {'save_path': self.save_path, 'next_tool_cmd': self.next_tool_cmd}
-                    # 'strategy': self.split_merge, 'input_type': 'main_dir'}
-                },
-            "samtools_sam_to_bam":
-                {
-                    "no_prev": {},
-                    "minimap2_splice-map": {}
-                },
-            "samtools_merge_bams":
-                {
-                    "no_prev": {},
-                    "samtools_sam_to_bam": {'save_path': self.save_path}
-                },
-
-        }
-
-        self.func_handler = {
-            "albacore_basecall":
-                {
-                    "no_prev": extract_partitioned_directories(),
-                    "partition": partition_ont_seq_data,
-                    "merge": {}
-                },
-            "minimap2_splice-map":
-                {
-                    "no_prev": {},
-                    "albacore_basecall": partition_basecalled_data,
-                    "porechop_demultiplex": partition_demultiplexed_data,
-                },
-            "porechop_demultiplex":
-                {
-                    "no_prev": {},
-                    "albacore_basecall": partition_basecalled_data
-                },
-            "samtools_sam_to_bam":
-                {
-                    "no_prev": {},
-                    "minimap2_splice-map": sam_to_bam
-                },
-            "samtools_merge_bams":
-                {
-                    "no_prev": {},
-                    "samtools_sam_to_bam": merge_bams
-                },
-        }
+        self.func_keys = function_keys
+        self.extract_funcs = extract_functions_handler
 
     @property
     def pipeline(self):
@@ -126,7 +66,7 @@ class PipelineBuilder:
             matrix = self.pipeline_order[matrix_id]
             self.pipeline_order[matrix_id]["transform_tasks"] = []
 
-            matrix = self.build_transform_matrix(matrix, is_initial)
+            matrix = self._build_transform_matrix(matrix, is_initial)
             matrix = self._build_merge_transforms(matrix)
             matrix["num_batches"] = self.num_batches
 
@@ -135,6 +75,7 @@ class PipelineBuilder:
     def _build_merge_transforms(self, matrix):
         merge_transforms = matrix["merge_transforms"]
         for index, merge_tool_cmd in merge_transforms.items():
+            self._load_transform(merge_tool_cmd[0], merge_tool_cmd[1], matrix)
             from_tool, from_cmd = matrix["data_transform_order"][index]
             merge_task = self._create_merge_task(from_tool, from_cmd, merge_tool=merge_tool_cmd[0],
                                                  merge_cmd=merge_tool_cmd[1])
@@ -142,12 +83,14 @@ class PipelineBuilder:
                 matrix["merge_tasks"] = {}
             transform_id = "{}_{}".format(merge_tool_cmd[0], merge_tool_cmd[1])
             matrix["merge_tasks"][transform_id] = merge_task
+        return matrix
 
     def _build_transform_matrix(self, matrix, is_initial):
         for tool, cmd in matrix["data_transform_order"]:
             self._load_transform(tool, cmd, matrix)
             if "partition_transform" in matrix and is_initial is True:
-                partition_task = self._create_partition_task()
+                data_type = matrix["input_data"]["type"]
+                partition_task = self._create_partition_task(data_type)
                 matrix["partition_task"] = partition_task
 
             transform_tasks = self._create_transform_tasks(is_initial)
@@ -158,19 +101,26 @@ class PipelineBuilder:
     def _create_merge_task(self, from_tool, from_cmd, merge_tool=None, merge_cmd=None):
         from_tool_cmd = "{}_{}".format(from_tool, from_cmd)
         merge_tool_cmd = "{}_{}".format(merge_tool, merge_cmd)
-        save_path = os.path.join(self.save_path, merge_tool)
-        if os.path.exists(save_path) is False:
-            os.mkdir(save_path)
+        # save_path = os.path.join(self.save_path, merge_tool_cmd)
+        # if os.path.exists(save_path) is False:
+        #     os.mkdir(save_path)
 
-        merge_key = function_keys[]
+        merge_key = self.func_keys[merge_tool_cmd][from_tool_cmd]
+        merge_fn = merge_functions_handler[merge_key]
 
-        merge_fn = self.func_handler[merge_tool_cmd][from_tool_cmd]
-        merge_kwargs = self.kwargs_handler[merge_tool_cmd][from_tool_cmd]
-
-        merge_task = MergeFileData(merge_fn=merge_fn, fn_kwargs=merge_kwargs, save_path=save_path)
+        #merge_task = MergeFileData(merge_fn=merge_fn, save_path=save_path)
+        mt = MergeTransform(task_id=merge_tool_cmd,
+                           merge_fn=merge_fn,
+                           save_path=self.save_path,
+                           template=self.command_template,
+                           task_type=self.task_type,
+                           **self.task_kwargs
+                           )
+        merge_task = mt.create_tasks()
         return merge_task
 
-    def _create_partition_task(self):
+    def _create_partition_task(self, data_type):
+        from ..distributed_data.key_value_stores import partition_handler
         partition_task_id = 'data_partition_{}'.format(self.transform_id)
 
         partition_strategy_fn = self.partition_strategy_handler[self.input_type]
@@ -178,11 +128,11 @@ class PipelineBuilder:
         self.num_batches = partitions
 
         if self.prev_tool is None and self.prev_command is None:
-            prev_transform_id = "no_prev"
+            prev_transform_id = "partition"
         else:
             prev_transform_id = "{}_{}".format(self.prev_tool, self.prev_command)
 
-        partition_fn = self.func_handler[self.transform_id][prev_transform_id]
+        partition_fn = partition_handler[data_type]#self.func_handler[self.transform_id][prev_transform_id]
 
         partition_task = PartitionFileData(inputs=self.inputs,
                                            batch_size=batch_size,
@@ -192,16 +142,17 @@ class PipelineBuilder:
                                            slug=partition_task_id)
         return partition_task
 
+
     def _create_transform_tasks(self, is_initial):
         if self.prev_transform_id is None:
-            prev_id = 'no_prev'
+            prev_id = 'partition'
         else:
             prev_id = self.prev_transform_id
-        extract_fn = self.func_handler[self.transform_id][prev_id]
-        extract_kwargs = self.kwargs_handler[self.transform_id][prev_id]
+        fn_key = self.func_keys[self.transform_id][prev_id]
+        extract_fn = self.extract_funcs[fn_key]
         dt = DataTransform(task_id=self.transform_id,
                            extract_fn=extract_fn,
-                           extract_kwargs=extract_kwargs,
+                           save_path=self.save_path,
                            template=self.command_template,
                            task_type=self.task_type,
                            **self.task_kwargs
@@ -244,7 +195,7 @@ class PipelineBuilder:
 
     def _get_merge_result(self, merge_task, transform_results):
         with self._pipeline as flow:
-            merge_result = merge_task(inputs=transform_results)
+            merge_result = merge_task(data=transform_results)
         return merge_result
 
     def _get_partition_result(self, partition_task):
@@ -302,9 +253,3 @@ class PipelineBuilder:
         matrix["data_transforms"][self.transform_id] = transform_info
 
         return
-
-if __name__ == '__main__':
-    y = {1: 'a'}
-    t = y[2] = []
-    print(t)
-    print(y)
