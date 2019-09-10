@@ -108,6 +108,7 @@ class ClusterManager:
     def start_cluster(self):
         if self.cluster is None:
             self.build_cluster()
+            js = self.cluster.job_script()
         minimum_workers = self.min_num_workers or int(0.5 * self.num_workers)
 
         self._cluster.scale(self.num_workers)

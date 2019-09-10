@@ -90,7 +90,7 @@ class ShellTransformTask(prefect.Task):
             command = cb.build_command(cd)
             #all_commands.append(command)
             print("COMMAND: ", command)
-            logger.info("Beginning to run ShellTransformTask with command '{}' on batch number {}".format(command, batch_num))
+            #logger.info("Beginning to run ShellTransformTask with command '{}' on batch number {}".format(command, batch_num))
 
             with tempfile.NamedTemporaryFile(prefix="prefect-") as tmp:
                 if self.helper_script:

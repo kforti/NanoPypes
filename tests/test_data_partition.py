@@ -257,6 +257,7 @@ def test_pipeline_builder2():
     # print('provenance', pb.data_provenance)
     pb.build_pipeline()
     pb.pipeline.visualize()
+    pipeline = pb.pipeline
     pb.pipeline.run(executor=executor)
 
 def test_pipeline_builder():
