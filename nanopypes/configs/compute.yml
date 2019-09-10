@@ -3,10 +3,10 @@ umass_ghpcc_lsf_short:
     job_time: 04:00
     project: /project/umw_athma_pai
     queue: short
-    workers_per_job: 4
-    num_workers: 4
+    workers_per_job: 2
+    num_workers: 100
     min_num_workers:
-    worker_cores: 2
+    worker_cores: 5
     worker_memory: 4096
     debug: True
 umass_ghpcc_lsf_long:

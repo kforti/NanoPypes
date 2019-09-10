@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="06fba5a6-e119-4d57-aa65-81370b2766cd" name="Default" comment="" />
+    <list default="true" id="06fba5a6-e119-4d57-aa65-81370b2766cd" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nanopypes/configs/compute.yml" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/configs/compute.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nanopypes/configs/pipelines/albacore_ercc.yml" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/configs/pipelines/albacore_ercc.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/profiling/profile.py" beforeDir="false" afterPath="$PROJECT_DIR$/profiling/profile.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/profiling/test_job_scripts/albacore_test1.sh" beforeDir="false" afterPath="$PROJECT_DIR$/profiling/test_job_scripts/albacore_test1.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/dask-worker-space/worker-3ijqxs3i.dirlock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/dask-worker-space/worker-j7t1ww0x.dirlock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/dask-worker-space/worker-qod244xe.dirlock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/dask-worker-space/worker-y965lyqh.dirlock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_data_partition.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data_partition.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -235,7 +235,7 @@ def test_pipeline_builder2():
     cluster = LocalCluster()
     executor = DaskExecutor(cluster.scheduler_address)
 
-    pipeline_path = "../nanopypes/configs/pipelines/pipeline.yml"
+    pipeline_path = "../nanopypes/configs/pipelines/albacore_ercc.yml"
     compute_path = "/home/kevin/my_projects/NanoPypes/nanopypes/configs/compute.yml"
     compute_id = 'local'
     user_input = {'flowcell': 'FLO-MIN106',
@@ -252,8 +252,7 @@ def test_pipeline_builder2():
                          save_path=save_path,
                          pipeline_order=config.pipeline_order,
                          pipeline_name="test-pipeline",
-                         pipe_specs=pipe_specs,
-                         batch_size=2)
+                         pipe_specs=pipe_specs)
     pb.build_tasks()
     # print('provenance', pb.data_provenance)
     pb.build_pipeline()
