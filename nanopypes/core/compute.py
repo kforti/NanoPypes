@@ -15,7 +15,7 @@ class ClusterManager:
     """ Cluster based task manager for running the basecaller in parallel"""
     def __init__(self, cluster_id=None, num_workers=0, worker_memory=None, worker_cores=None, cluster_type=None,
                  queue=None, workers_per_job=None, job_time=None, project=None, min_num_workers=None,
-                 time_out=2000, job_extra=None, env_extra=None, cluster=None, debug=False, interaface=None):
+                 time_out=2000, job_extra=None, env_extra=None, cluster=None, debug=False, extra=None, interaface=None):
         self.cluster_id = cluster_id or cluster_type
         self.cluster_type = cluster_type
         self.queue = queue
@@ -28,6 +28,7 @@ class ClusterManager:
         self.min_num_workers = min_num_workers
         self.time_out = time_out
         self.env_extra = env_extra
+        self.extra = extra
         try:
             self.core_memory = str(int(self.worker_memory / self.worker_cores))
         except:
@@ -106,9 +107,7 @@ class ClusterManager:
 
     def start_cluster(self):
         if self.cluster is None:
-
             self.build_cluster()
-
         minimum_workers = self.min_num_workers or int(0.5 * self.num_workers)
 
         self._cluster.scale(self.num_workers)
@@ -139,6 +138,7 @@ class ClusterManager:
                              processes=self.workers_per_job,
                              walltime=self.job_time,# Passed to #BSUB -W option.
                              job_extra=self.job_extra,
+                             extra=self.extra,
                              cores=ncpus,
                              memory=dask_memory)
 
@@ -155,6 +155,7 @@ class ClusterManager:
                                cores=ncpus,
                                job_mem=mem_bytes,
                                job_extra=self.job_extra,
+                               extra=self.extra,
                                processes=self.workers_per_job,
                                memory=dask_memory)
         return cluster
