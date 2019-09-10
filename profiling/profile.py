@@ -1,6 +1,6 @@
 from nanopypes.utilities import PipelineConfiguration
 from nanopypes.core.pipeline_builder import PipelineBuilder
-from nanopypes.core.compute import CluserManager
+from nanopypes.core.compute import ClusterManager
 from distributed import LocalCluster
 from prefect.engine.executors.dask import DaskExecutor
 
