@@ -2,27 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="06fba5a6-e119-4d57-aa65-81370b2766cd" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/nanopypes/distributed_data/rsync_python.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/profiling/profile.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/nanopypes.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/nanopypes.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/nanopypes/entities/pipeline.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/conf.py" beforeDir="false" afterPath="$PROJECT_DIR$/docs/conf.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/make.bat" beforeDir="false" afterPath="$PROJECT_DIR$/docs/make.bat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nanopypes/cli.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/cli.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nanopypes/configs/pipelines/pipeline.yml" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/configs/pipelines/pipeline.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nanopypes/configs/pipes.yml" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/configs/pipes.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nanopypes/core/data_transform.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/core/data_transform.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nanopypes/core/pipeline_builder.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/core/pipeline_builder.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nanopypes/distributed_data/key_value_stores.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/distributed_data/key_value_stores.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nanopypes/distributed_data/partition_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/distributed_data/partition_data.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nanopypes/tasks/partition_file_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/tasks/partition_file_data.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nanopypes/tasks/transform_task.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/tasks/transform_task.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiling/.idea/profiling.iml" beforeDir="false" afterPath="$PROJECT_DIR$/profiling/.idea/profiling.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/profiling/test_code_push.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/configs/pipelines/albacore_ercc.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/scripts/push_code.py" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/push_code.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/setup.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nanopypes/configs/compute.yml" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/configs/compute.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/profiling/profile.py" beforeDir="false" afterPath="$PROJECT_DIR$/profiling/profile.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/dask-worker-space/worker-0shzh43l.dirlock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/dask-worker-space/worker-2ltoch_n.dirlock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/dask-worker-space/worker-a4ru140r.dirlock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/dask-worker-space/worker-zymrpquq.dirlock" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/test_data_partition.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_data_partition.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -335,9 +322,9 @@
           <option name="timeStamp" value="50" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/nanopypes/core/data_transform.py</url>
-          <line>43</line>
-          <option name="timeStamp" value="52" />
+          <url>file://$USER_HOME$/anaconda3/envs/nanopypes/lib/python3.6/site-packages/prefect/engine/flow_runner.py</url>
+          <line>393</line>
+          <option name="timeStamp" value="54" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>

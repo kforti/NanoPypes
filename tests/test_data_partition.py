@@ -232,8 +232,8 @@ def test_pipeline_builder2():
     from distributed import LocalCluster
     from prefect.engine.executors.dask import DaskExecutor
 
-    #cluster = LocalCluster()
-    #executor = DaskExecutor(cluster.scheduler_address)
+    cluster = LocalCluster()
+    executor = DaskExecutor(cluster.scheduler_address)
 
     pipeline_path = "../nanopypes/configs/pipelines/pipeline.yml"
     compute_path = "/home/kevin/my_projects/NanoPypes/nanopypes/configs/compute.yml"
@@ -258,7 +258,7 @@ def test_pipeline_builder2():
     # print('provenance', pb.data_provenance)
     pb.build_pipeline()
     pb.pipeline.visualize()
-    pb.pipeline.run() # executor=executor)
+    pb.pipeline.run(executor=executor)
 
 def test_pipeline_builder():
     from nanopypes.distributed_data.pipeline_data import PipelineBuilder

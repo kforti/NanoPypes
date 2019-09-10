@@ -1,5 +1,6 @@
 from nanopypes.utilities import PipelineConfiguration
 from nanopypes.core.pipeline_builder import PipelineBuilder
+from nanopypes.core.compute import CluserManager
 from distributed import LocalCluster
 from prefect.engine.executors.dask import DaskExecutor
 
@@ -13,6 +14,9 @@ def run_pipeline():
     user_input = {'flowcell': 'FLO-MIN106',
                   'kit': 'SQK-LSK109'}
     config = PipelineConfiguration(pipeline_path=pipeline_path, compute_config_path=compute_path, compute_id=compute_id, user_input=user_input)
+    cm = ClusterManager.from_dict(config.compute_config)
+    cm.start_cluster()
+    executor = DaskExecutor(cm.cluster.scheduler_address)
 
     inputs = "../tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/single_read_fast5/pass"
     save_path = "../tests/test_data/test_pipeline"
@@ -29,7 +33,7 @@ def run_pipeline():
     # print('provenance', pb.data_provenance)
     pb.build_pipeline()
     #pb.pipeline.visualize()
-    pb.pipeline.run() # executor=executor)
+    pb.pipeline.run(executor=executor) # executor=executor)
 
 
 if __name__ == '__main__':
