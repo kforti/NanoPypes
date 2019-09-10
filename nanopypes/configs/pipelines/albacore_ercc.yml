@@ -7,7 +7,7 @@ pipeline_order:
             type: "ont_directories_single_read_fast5"
         partition_transform:
             batch_size:
-            partitions: 5
+            partitions: 500
         data_transform_order: [["albacore", "basecall"]]
         merge_transforms: {}
 
