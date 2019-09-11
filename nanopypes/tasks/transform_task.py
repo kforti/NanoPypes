@@ -105,7 +105,7 @@ class ShellTransformTask(prefect.Task):
                         [self.shell, tmp.name], stderr=subprocess.STDOUT, env=current_env
                     )
                     out.wait()
-                    subprocess.kill(out.pid)
+                    out.terminate()
                     logger.info(
                         "Finished run ShellTransformTask with command '{}' on batch number {}".format(command, batch_num))
                     #all_outs.append(out)
