@@ -2,7 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="06fba5a6-e119-4d57-aa65-81370b2766cd" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/nanopypes/configs/compute.yml" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/configs/compute.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nanopypes/tasks/transform_task.py" beforeDir="false" afterPath="$PROJECT_DIR$/nanopypes/tasks/transform_task.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/dask-worker-space/worker-0acw3uaf.dirlock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/dask-worker-space/worker-lh3rppjo.dirlock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/dask-worker-space/worker-s0oidn_7.dirlock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/dask-worker-space/worker-vt7wn_xs.dirlock" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -309,24 +314,14 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/nanopypes/tasks/transform_task.py</url>
-          <line>116</line>
-          <option name="timeStamp" value="50" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$USER_HOME$/anaconda3/envs/nanopypes/lib/python3.6/site-packages/prefect/engine/flow_runner.py</url>
-          <line>393</line>
-          <option name="timeStamp" value="54" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/nanopypes/core/compute.py</url>
           <line>110</line>
           <option name="timeStamp" value="55" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/tests/test_data_partition.py</url>
-          <line>259</line>
-          <option name="timeStamp" value="56" />
+          <url>file://$PROJECT_DIR$/nanopypes/tasks/transform_task.py</url>
+          <line>105</line>
+          <option name="timeStamp" value="58" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>

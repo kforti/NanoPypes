@@ -101,9 +101,11 @@ class ShellTransformTask(prefect.Task):
                 try:
                     logger.info(
                         "Beginning to run ShellTransformTask with command '{}' on batch number {}".format(command, batch_num))
-                    out = subprocess.check_output(
+                    out = subprocess.Popen(
                         [self.shell, tmp.name], stderr=subprocess.STDOUT, env=current_env
                     )
+                    out.wait()
+                    subprocess.kill(out.pid)
                     logger.info(
                         "Finished run ShellTransformTask with command '{}' on batch number {}".format(command, batch_num))
                     #all_outs.append(out)
