@@ -24,9 +24,9 @@ umass_ghpcc_lsf_basecall:
     cluster_type: lsf
     job_time: 04:00
     project: /project/umw_athma_pai
-    queue: short
+    queue: large
     workers_per_job: 2
-    num_workers: 100
+    num_workers: 150
     min_num_workers:
     worker_cores: 4
     worker_memory: 16284
