@@ -19,7 +19,7 @@ def run_pipeline():
     executor = DaskExecutor(cm.cluster.scheduler_address)
 
     inputs = "/project/umw_athma_pai/raw/minion/20190220_1525_ERCC/fast5/pass/" #"../tests/test_data/minion_sample_raw_data/Experiment_01/sample_02_local/single_read_fast5/pass"
-    save_path = "/project/umw_athma_pai/kevin/profile/albacore_ercc_profile_fastq/"
+    save_path = "/project/umw_athma_pai/kevin/profile/albacore_ercc_profile2_fastq/"
     pipe_specs = config.pipe_configs
     print(pipe_specs)
     print("pipeline_order:", config.pipeline_order)
