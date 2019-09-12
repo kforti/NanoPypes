@@ -14,7 +14,7 @@ from multiprocessing import Process
 
 class ClusterManager:
     """ Cluster based task manager for running the basecaller in parallel"""
-    def __init__(self, cluster_id=None, num_workers=0, worker_memory=None, worker_cores=None, cluster_type=None,
+    def __init__(self, cluster_id=None, num_workers=0, worker_memory=None, cores=None, cluster_type=None, ncpus=None,
                  queue=None, workers_per_job=None, job_time=None, project=None, min_num_workers=None,
                  time_out=2000, job_extra=None, env_extra=None, cluster=None, debug=False, extra=None, interaface=None):
         self.cluster_id = cluster_id or cluster_type
@@ -22,7 +22,8 @@ class ClusterManager:
         self.queue = queue
         self.num_workers = num_workers
         self.worker_memory = worker_memory
-        self.worker_cores = worker_cores
+        self.cores = cores
+        self.ncpus = ncpus
         self.workers_per_job = workers_per_job
         self.job_time = job_time
         self.project = project
@@ -31,7 +32,7 @@ class ClusterManager:
         self.env_extra = env_extra
         self.extra = extra
         try:
-            self.core_memory = str(int(self.worker_memory / self.worker_cores))
+            self.core_memory = str(int(self.worker_memory / self.cores))
         except:
             "There was an error in assigning memory per core..."
             pass
@@ -133,7 +134,7 @@ class ClusterManager:
         return client
 
     def _build_lsf(self):
-        ncpus = self.workers_per_job * self.worker_cores
+        ncpus = self.workers_per_job * self.cores
         mem_bytes = self.worker_memory * self.workers_per_job * 1024**2
         dask_memory = str(int((self.worker_memory * self.workers_per_job)/ 1024)) + 'GB'
         cluster = LSFCluster(queue=self.queue, # Passed to #BSUB -q option.
@@ -142,13 +143,14 @@ class ClusterManager:
                              walltime=self.job_time,# Passed to #BSUB -W option.
                              job_extra=self.job_extra,
                              extra=self.extra,
-                             cores=ncpus,
+                             cores=self.cores,
+                             ncpus=self.ncpus,
                              memory=dask_memory)
 
         return cluster
 
     def _build_slurm(self):
-        ncpus = self.workers_per_job * self.worker_cores
+        ncpus = self.workers_per_job * self.cores
         mem_bytes = self.worker_memory * self.workers_per_job * 1024 ** 2
         dask_memory = str(int((self.worker_memory * self.workers_per_job)/ 1024)) + 'GB'
         cluster = SLURMCluster(queue=self.queue,
@@ -164,7 +166,7 @@ class ClusterManager:
         return cluster
 
     def _build_kubernetes(self):
-        ncpus = self.workers_per_job * self.worker_cores
+        ncpus = self.workers_per_job * self.cores
         mem_bytes = self.worker_memory * self.workers_per_job * 1024 ** 2
         dask_memory = str(int((self.worker_memory * self.workers_per_job) / 1024)) + 'GB'
         #cluster = KubeCluster(n_workers=self.num_workers,
