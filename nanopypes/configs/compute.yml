@@ -28,7 +28,8 @@ umass_ghpcc_lsf_basecall:
     workers_per_job: 2
     num_workers: 10
     min_num_workers:
-    worker_cores: 4
+    cores: 1
+    ncpus: 8
     worker_memory: 16284
     debug: True
 umass_c3ddb_slurm:
