@@ -6,6 +6,7 @@ from nanopypes.utilities import ComputeConfiguartion
 
 import logging
 import os
+from pathlib import Path
 import time
 from multiprocessing import Process
 
@@ -63,7 +64,8 @@ class ClusterManager:
     @classmethod
     def from_config_file(cls, id, path="configs/compute.yml", **kwargs):
         if path == "configs/compute.yml":
-            path = os.path.join(os.path.dirname(__file__), path)
+            nanopypes_path = Path(os.path.dirname(__file__)).parent
+            path = nanopypes_path.joinpath(path)
 
         cc = ComputeConfiguartion(id, path, **kwargs)
         config = cc.config
