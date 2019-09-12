@@ -29,7 +29,7 @@ umass_ghpcc_lsf_basecall:
     num_workers: 100
     min_num_workers:
     worker_cores: 4
-    worker_memory: 8192
+    worker_memory: 16284
     debug: True
 umass_c3ddb_slurm:
     cluster_type: slurm
