@@ -72,7 +72,7 @@ class ShellTransformTask(prefect.Task):
         logger = prefect.context.get("logger")
 
         failure = False
-        logger.info("Transform Data: Batch Num {}; DATA\n {}".format(batch_num, data))
+
         if is_initial:
             # command_data = data[batch_num]["command_data"]
             # batch_saves = data[batch_num]["saves"]
@@ -101,12 +101,9 @@ class ShellTransformTask(prefect.Task):
                 try:
                     logger.info(
                         "Beginning to run ShellTransformTask with command '{}' on batch number {}".format(command, batch_num))
-                    out = subprocess.Popen(
+                    out = subprocess.check_output(
                         [self.shell, tmp.name], stderr=subprocess.STDOUT, env=current_env
                     )
-                    out.wait()
-                    output = out.stdout
-                    out.terminate()
                     logger.info(
                         "Finished run ShellTransformTask with command '{}' on batch number {}".format(command, batch_num))
                     #all_outs.append(out)
