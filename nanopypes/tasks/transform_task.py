@@ -72,7 +72,7 @@ class ShellTransformTask(prefect.Task):
         logger = prefect.context.get("logger")
 
         failure = False
-
+        logger.info("Transform Data: Batch Num {}; DATA\n {}".format(batch_num, data))
         if is_initial:
             # command_data = data[batch_num]["command_data"]
             # batch_saves = data[batch_num]["saves"]
